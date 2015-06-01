@@ -1,0 +1,12 @@
+
+source simpleInterlockingElement multiple
+source ieLogic multiple
+
+gen GenerateShell null : root
+gen GenerateInterlockingElement simpleInterlockingElement : ieDataTypes
+gen GenerateInterlockingElementLogic ieLogic : ieLogicPou -> ioLogicTraceModel
+gen GenerateConditionals
+
+
+merge WeaverInterlockingElement idDataTypes in root
+
