@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="architecture" nsURI="http://www.cau.de/cs/se/geco/architecture/Architecture"
+    nsPrefix="architecture">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importSection" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore#//XImportSection"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
+        eType="#//Metamodel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
+        eType="#//Connection" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Metamodel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SourceMetamodel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetMetamodel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Intermediate" eSuperTypes="#//Metamodel #//SourceMetamodel #//TargetMetamodel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceInstanceMultiplicity"
+        eType="#//ModelMultiplicity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetInstanceMultiplicity"
+        eType="#//ModelMultiplicity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//MetamodelLocation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Source" eSuperTypes="#//Metamodel #//SourceMetamodel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceInstanceMultiplicity"
+        eType="#//ModelMultiplicity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//MetamodelLocation"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Target" eSuperTypes="#//Metamodel #//TargetMetamodel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetInstanceMultiplicity"
+        eType="#//ModelMultiplicity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//MetamodelLocation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModelMultiplicity">
+    <eLiterals name="SINGLE" literal="single"/>
+    <eLiterals name="MULTIPLE" value="1" literal="multiple"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MetamodelLocation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generator" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SourceMetamodel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//TargetMetamodel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModel" eType="#//TraceModel"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" unique="false"
+        upperBound="-1" eType="#//TraceModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TraceModel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeSetRelations" upperBound="-1"
+        eType="#//NodeSetRelation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeSetRelation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceNodes" upperBound="-1"
+        eType="#//NodeType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetNodes" upperBound="-1"
+        eType="#//NodeType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eclass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </eClassifiers>
+</ecore:EPackage>
