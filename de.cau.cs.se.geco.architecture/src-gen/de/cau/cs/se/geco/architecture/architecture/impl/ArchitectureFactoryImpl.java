@@ -5,7 +5,6 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 import de.cau.cs.se.geco.architecture.architecture.*;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -67,52 +66,17 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
     {
       case ArchitecturePackage.MODEL: return createModel();
       case ArchitecturePackage.METAMODEL: return createMetamodel();
-      case ArchitecturePackage.SOURCE_METAMODEL: return createSourceMetamodel();
-      case ArchitecturePackage.TARGET_METAMODEL: return createTargetMetamodel();
-      case ArchitecturePackage.INTERMEDIATE: return createIntermediate();
-      case ArchitecturePackage.SOURCE: return createSource();
-      case ArchitecturePackage.TARGET: return createTarget();
-      case ArchitecturePackage.METAMODEL_LOCATION: return createMetamodelLocation();
       case ArchitecturePackage.CONNECTION: return createConnection();
+      case ArchitecturePackage.MERGER: return createMerger();
+      case ArchitecturePackage.GENERATOR: return createGenerator();
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR: return createSourceModelNodeSelector();
+      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE: return createTargetModelNodeType();
+      case ArchitecturePackage.MODEL_NODE_TYPE: return createModelNodeType();
       case ArchitecturePackage.TRACE_MODEL: return createTraceModel();
       case ArchitecturePackage.NODE_SET_RELATION: return createNodeSetRelation();
       case ArchitecturePackage.NODE_TYPE: return createNodeType();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object createFromString(EDataType eDataType, String initialValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case ArchitecturePackage.MODEL_MULTIPLICITY:
-        return createModelMultiplicityFromString(eDataType, initialValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String convertToString(EDataType eDataType, Object instanceValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-      case ArchitecturePackage.MODEL_MULTIPLICITY:
-        return convertModelMultiplicityToString(eDataType, instanceValue);
-      default:
-        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -143,76 +107,65 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public SourceMetamodel createSourceMetamodel()
-  {
-    SourceMetamodelImpl sourceMetamodel = new SourceMetamodelImpl();
-    return sourceMetamodel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TargetMetamodel createTargetMetamodel()
-  {
-    TargetMetamodelImpl targetMetamodel = new TargetMetamodelImpl();
-    return targetMetamodel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Intermediate createIntermediate()
-  {
-    IntermediateImpl intermediate = new IntermediateImpl();
-    return intermediate;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Source createSource()
-  {
-    SourceImpl source = new SourceImpl();
-    return source;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Target createTarget()
-  {
-    TargetImpl target = new TargetImpl();
-    return target;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public MetamodelLocation createMetamodelLocation()
-  {
-    MetamodelLocationImpl metamodelLocation = new MetamodelLocationImpl();
-    return metamodelLocation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Connection createConnection()
   {
     ConnectionImpl connection = new ConnectionImpl();
     return connection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Merger createMerger()
+  {
+    MergerImpl merger = new MergerImpl();
+    return merger;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Generator createGenerator()
+  {
+    GeneratorImpl generator = new GeneratorImpl();
+    return generator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SourceModelNodeSelector createSourceModelNodeSelector()
+  {
+    SourceModelNodeSelectorImpl sourceModelNodeSelector = new SourceModelNodeSelectorImpl();
+    return sourceModelNodeSelector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TargetModelNodeType createTargetModelNodeType()
+  {
+    TargetModelNodeTypeImpl targetModelNodeType = new TargetModelNodeTypeImpl();
+    return targetModelNodeType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ModelNodeType createModelNodeType()
+  {
+    ModelNodeTypeImpl modelNodeType = new ModelNodeTypeImpl();
+    return modelNodeType;
   }
 
   /**
@@ -246,28 +199,6 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     NodeTypeImpl nodeType = new NodeTypeImpl();
     return nodeType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ModelMultiplicity createModelMultiplicityFromString(EDataType eDataType, String initialValue)
-  {
-    ModelMultiplicity result = ModelMultiplicity.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertModelMultiplicityToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

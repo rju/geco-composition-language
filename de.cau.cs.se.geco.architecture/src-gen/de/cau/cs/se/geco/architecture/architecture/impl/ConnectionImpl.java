@@ -4,26 +4,17 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
-import de.cau.cs.se.geco.architecture.architecture.SourceMetamodel;
-import de.cau.cs.se.geco.architecture.architecture.TargetMetamodel;
-import de.cau.cs.se.geco.architecture.architecture.TraceModel;
-
-import java.util.Collection;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,11 +23,9 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getGenerator <em>Generator</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getSource <em>Source</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getWriteTraceModel <em>Write Trace Model</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getReadTraceModels <em>Read Trace Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getSourceModel <em>Source Model</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getTargetModel <em>Target Model</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,54 +34,44 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public class ConnectionImpl extends MinimalEObjectImpl.Container implements Connection
 {
   /**
-   * The cached value of the '{@link #getGenerator() <em>Generator</em>}' containment reference.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getGenerator()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference generator;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSource()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected SourceMetamodel source;
+  protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
+   * The cached value of the '{@link #getSourceModel() <em>Source Model</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTarget()
+   * @see #getSourceModel()
    * @generated
    * @ordered
    */
-  protected TargetMetamodel target;
+  protected SourceModelNodeSelector sourceModel;
 
   /**
-   * The cached value of the '{@link #getWriteTraceModel() <em>Write Trace Model</em>}' containment reference.
+   * The cached value of the '{@link #getTargetModel() <em>Target Model</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWriteTraceModel()
+   * @see #getTargetModel()
    * @generated
    * @ordered
    */
-  protected TraceModel writeTraceModel;
-
-  /**
-   * The cached value of the '{@link #getReadTraceModels() <em>Read Trace Models</em>}' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReadTraceModels()
-   * @generated
-   * @ordered
-   */
-  protected EList<TraceModel> readTraceModels;
+  protected TargetModelNodeType targetModel;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,9 +99,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getGenerator()
+  public String getName()
   {
-    return generator;
+    return name;
   }
 
   /**
@@ -130,13 +109,36 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetGenerator(JvmTypeReference newGenerator, NotificationChain msgs)
+  public void setName(String newName)
   {
-    JvmTypeReference oldGenerator = generator;
-    generator = newGenerator;
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SourceModelNodeSelector getSourceModel()
+  {
+    return sourceModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSourceModel(SourceModelNodeSelector newSourceModel, NotificationChain msgs)
+  {
+    SourceModelNodeSelector oldSourceModel = sourceModel;
+    sourceModel = newSourceModel;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__GENERATOR, oldGenerator, newGenerator);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__SOURCE_MODEL, oldSourceModel, newSourceModel);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -147,20 +149,20 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setGenerator(JvmTypeReference newGenerator)
+  public void setSourceModel(SourceModelNodeSelector newSourceModel)
   {
-    if (newGenerator != generator)
+    if (newSourceModel != sourceModel)
     {
       NotificationChain msgs = null;
-      if (generator != null)
-        msgs = ((InternalEObject)generator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONNECTION__GENERATOR, null, msgs);
-      if (newGenerator != null)
-        msgs = ((InternalEObject)newGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONNECTION__GENERATOR, null, msgs);
-      msgs = basicSetGenerator(newGenerator, msgs);
+      if (sourceModel != null)
+        msgs = ((InternalEObject)sourceModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONNECTION__SOURCE_MODEL, null, msgs);
+      if (newSourceModel != null)
+        msgs = ((InternalEObject)newSourceModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONNECTION__SOURCE_MODEL, null, msgs);
+      msgs = basicSetSourceModel(newSourceModel, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__GENERATOR, newGenerator, newGenerator));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__SOURCE_MODEL, newSourceModel, newSourceModel));
   }
 
   /**
@@ -168,19 +170,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
    * <!-- end-user-doc -->
    * @generated
    */
-  public SourceMetamodel getSource()
+  public TargetModelNodeType getTargetModel()
   {
-    if (source != null && source.eIsProxy())
-    {
-      InternalEObject oldSource = (InternalEObject)source;
-      source = (SourceMetamodel)eResolveProxy(oldSource);
-      if (source != oldSource)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.CONNECTION__SOURCE, oldSource, source));
-      }
-    }
-    return source;
+    return targetModel;
   }
 
   /**
@@ -188,89 +180,13 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
    * <!-- end-user-doc -->
    * @generated
    */
-  public SourceMetamodel basicGetSource()
+  public NotificationChain basicSetTargetModel(TargetModelNodeType newTargetModel, NotificationChain msgs)
   {
-    return source;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setSource(SourceMetamodel newSource)
-  {
-    SourceMetamodel oldSource = source;
-    source = newSource;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__SOURCE, oldSource, source));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TargetMetamodel getTarget()
-  {
-    if (target != null && target.eIsProxy())
-    {
-      InternalEObject oldTarget = (InternalEObject)target;
-      target = (TargetMetamodel)eResolveProxy(oldTarget);
-      if (target != oldTarget)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.CONNECTION__TARGET, oldTarget, target));
-      }
-    }
-    return target;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TargetMetamodel basicGetTarget()
-  {
-    return target;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTarget(TargetMetamodel newTarget)
-  {
-    TargetMetamodel oldTarget = target;
-    target = newTarget;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__TARGET, oldTarget, target));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TraceModel getWriteTraceModel()
-  {
-    return writeTraceModel;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetWriteTraceModel(TraceModel newWriteTraceModel, NotificationChain msgs)
-  {
-    TraceModel oldWriteTraceModel = writeTraceModel;
-    writeTraceModel = newWriteTraceModel;
+    TargetModelNodeType oldTargetModel = targetModel;
+    targetModel = newTargetModel;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL, oldWriteTraceModel, newWriteTraceModel);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__TARGET_MODEL, oldTargetModel, newTargetModel);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -281,34 +197,20 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWriteTraceModel(TraceModel newWriteTraceModel)
+  public void setTargetModel(TargetModelNodeType newTargetModel)
   {
-    if (newWriteTraceModel != writeTraceModel)
+    if (newTargetModel != targetModel)
     {
       NotificationChain msgs = null;
-      if (writeTraceModel != null)
-        msgs = ((InternalEObject)writeTraceModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL, null, msgs);
-      if (newWriteTraceModel != null)
-        msgs = ((InternalEObject)newWriteTraceModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL, null, msgs);
-      msgs = basicSetWriteTraceModel(newWriteTraceModel, msgs);
+      if (targetModel != null)
+        msgs = ((InternalEObject)targetModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONNECTION__TARGET_MODEL, null, msgs);
+      if (newTargetModel != null)
+        msgs = ((InternalEObject)newTargetModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONNECTION__TARGET_MODEL, null, msgs);
+      msgs = basicSetTargetModel(newTargetModel, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL, newWriteTraceModel, newWriteTraceModel));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<TraceModel> getReadTraceModels()
-  {
-    if (readTraceModels == null)
-    {
-      readTraceModels = new EObjectResolvingEList<TraceModel>(TraceModel.class, this, ArchitecturePackage.CONNECTION__READ_TRACE_MODELS);
-    }
-    return readTraceModels;
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__TARGET_MODEL, newTargetModel, newTargetModel));
   }
 
   /**
@@ -321,10 +223,10 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__GENERATOR:
-        return basicSetGenerator(null, msgs);
-      case ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL:
-        return basicSetWriteTraceModel(null, msgs);
+      case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
+        return basicSetSourceModel(null, msgs);
+      case ArchitecturePackage.CONNECTION__TARGET_MODEL:
+        return basicSetTargetModel(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -339,18 +241,12 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__GENERATOR:
-        return getGenerator();
-      case ArchitecturePackage.CONNECTION__SOURCE:
-        if (resolve) return getSource();
-        return basicGetSource();
-      case ArchitecturePackage.CONNECTION__TARGET:
-        if (resolve) return getTarget();
-        return basicGetTarget();
-      case ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL:
-        return getWriteTraceModel();
-      case ArchitecturePackage.CONNECTION__READ_TRACE_MODELS:
-        return getReadTraceModels();
+      case ArchitecturePackage.CONNECTION__NAME:
+        return getName();
+      case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
+        return getSourceModel();
+      case ArchitecturePackage.CONNECTION__TARGET_MODEL:
+        return getTargetModel();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -360,27 +256,19 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__GENERATOR:
-        setGenerator((JvmTypeReference)newValue);
+      case ArchitecturePackage.CONNECTION__NAME:
+        setName((String)newValue);
         return;
-      case ArchitecturePackage.CONNECTION__SOURCE:
-        setSource((SourceMetamodel)newValue);
+      case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
+        setSourceModel((SourceModelNodeSelector)newValue);
         return;
-      case ArchitecturePackage.CONNECTION__TARGET:
-        setTarget((TargetMetamodel)newValue);
-        return;
-      case ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL:
-        setWriteTraceModel((TraceModel)newValue);
-        return;
-      case ArchitecturePackage.CONNECTION__READ_TRACE_MODELS:
-        getReadTraceModels().clear();
-        getReadTraceModels().addAll((Collection<? extends TraceModel>)newValue);
+      case ArchitecturePackage.CONNECTION__TARGET_MODEL:
+        setTargetModel((TargetModelNodeType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -396,20 +284,14 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__GENERATOR:
-        setGenerator((JvmTypeReference)null);
+      case ArchitecturePackage.CONNECTION__NAME:
+        setName(NAME_EDEFAULT);
         return;
-      case ArchitecturePackage.CONNECTION__SOURCE:
-        setSource((SourceMetamodel)null);
+      case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
+        setSourceModel((SourceModelNodeSelector)null);
         return;
-      case ArchitecturePackage.CONNECTION__TARGET:
-        setTarget((TargetMetamodel)null);
-        return;
-      case ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL:
-        setWriteTraceModel((TraceModel)null);
-        return;
-      case ArchitecturePackage.CONNECTION__READ_TRACE_MODELS:
-        getReadTraceModels().clear();
+      case ArchitecturePackage.CONNECTION__TARGET_MODEL:
+        setTargetModel((TargetModelNodeType)null);
         return;
     }
     super.eUnset(featureID);
@@ -425,18 +307,31 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__GENERATOR:
-        return generator != null;
-      case ArchitecturePackage.CONNECTION__SOURCE:
-        return source != null;
-      case ArchitecturePackage.CONNECTION__TARGET:
-        return target != null;
-      case ArchitecturePackage.CONNECTION__WRITE_TRACE_MODEL:
-        return writeTraceModel != null;
-      case ArchitecturePackage.CONNECTION__READ_TRACE_MODELS:
-        return readTraceModels != null && !readTraceModels.isEmpty();
+      case ArchitecturePackage.CONNECTION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
+        return sourceModel != null;
+      case ArchitecturePackage.CONNECTION__TARGET_MODEL:
+        return targetModel != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //ConnectionImpl

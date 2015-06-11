@@ -86,59 +86,47 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.SOURCE_METAMODEL:
-      {
-        SourceMetamodel sourceMetamodel = (SourceMetamodel)theEObject;
-        T result = caseSourceMetamodel(sourceMetamodel);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.TARGET_METAMODEL:
-      {
-        TargetMetamodel targetMetamodel = (TargetMetamodel)theEObject;
-        T result = caseTargetMetamodel(targetMetamodel);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.INTERMEDIATE:
-      {
-        Intermediate intermediate = (Intermediate)theEObject;
-        T result = caseIntermediate(intermediate);
-        if (result == null) result = caseMetamodel(intermediate);
-        if (result == null) result = caseSourceMetamodel(intermediate);
-        if (result == null) result = caseTargetMetamodel(intermediate);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.SOURCE:
-      {
-        Source source = (Source)theEObject;
-        T result = caseSource(source);
-        if (result == null) result = caseMetamodel(source);
-        if (result == null) result = caseSourceMetamodel(source);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.TARGET:
-      {
-        Target target = (Target)theEObject;
-        T result = caseTarget(target);
-        if (result == null) result = caseMetamodel(target);
-        if (result == null) result = caseTargetMetamodel(target);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.METAMODEL_LOCATION:
-      {
-        MetamodelLocation metamodelLocation = (MetamodelLocation)theEObject;
-        T result = caseMetamodelLocation(metamodelLocation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ArchitecturePackage.CONNECTION:
       {
         Connection connection = (Connection)theEObject;
         T result = caseConnection(connection);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.MERGER:
+      {
+        Merger merger = (Merger)theEObject;
+        T result = caseMerger(merger);
+        if (result == null) result = caseConnection(merger);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.GENERATOR:
+      {
+        Generator generator = (Generator)theEObject;
+        T result = caseGenerator(generator);
+        if (result == null) result = caseConnection(generator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR:
+      {
+        SourceModelNodeSelector sourceModelNodeSelector = (SourceModelNodeSelector)theEObject;
+        T result = caseSourceModelNodeSelector(sourceModelNodeSelector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE:
+      {
+        TargetModelNodeType targetModelNodeType = (TargetModelNodeType)theEObject;
+        T result = caseTargetModelNodeType(targetModelNodeType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.MODEL_NODE_TYPE:
+      {
+        ModelNodeType modelNodeType = (ModelNodeType)theEObject;
+        T result = caseModelNodeType(modelNodeType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -200,102 +188,6 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Source Metamodel</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Source Metamodel</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSourceMetamodel(SourceMetamodel object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Target Metamodel</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Target Metamodel</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTargetMetamodel(TargetMetamodel object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Intermediate</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Intermediate</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIntermediate(Intermediate object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Source</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Source</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSource(Source object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Target</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Target</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTarget(Target object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Metamodel Location</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Metamodel Location</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMetamodelLocation(MetamodelLocation object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Connection</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -307,6 +199,86 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConnection(Connection object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Merger</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Merger</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMerger(Merger object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Generator</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Generator</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseGenerator(Generator object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Source Model Node Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Source Model Node Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSourceModelNodeSelector(SourceModelNodeSelector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Target Model Node Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Target Model Node Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTargetModelNodeType(TargetModelNodeType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Model Node Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Model Node Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseModelNodeType(ModelNodeType object)
   {
     return null;
   }

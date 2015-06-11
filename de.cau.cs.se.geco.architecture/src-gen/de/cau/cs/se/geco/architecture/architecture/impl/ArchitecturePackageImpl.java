@@ -5,22 +5,19 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 import de.cau.cs.se.geco.architecture.architecture.ArchitectureFactory;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
-import de.cau.cs.se.geco.architecture.architecture.Intermediate;
+import de.cau.cs.se.geco.architecture.architecture.Generator;
+import de.cau.cs.se.geco.architecture.architecture.Merger;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelLocation;
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.ModelMultiplicity;
+import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
-import de.cau.cs.se.geco.architecture.architecture.Source;
-import de.cau.cs.se.geco.architecture.architecture.SourceMetamodel;
-import de.cau.cs.se.geco.architecture.architecture.Target;
-import de.cau.cs.se.geco.architecture.architecture.TargetMetamodel;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -57,49 +54,42 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass sourceMetamodelEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass targetMetamodelEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass intermediateEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass sourceEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass targetEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass metamodelLocationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass connectionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mergerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass generatorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass sourceModelNodeSelectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass targetModelNodeTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass modelNodeTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,13 +111,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * @generated
    */
   private EClass nodeTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum modelMultiplicityEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -260,9 +243,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSourceMetamodel()
+  public EAttribute getMetamodel_Name()
   {
-    return sourceMetamodelEClass;
+    return (EAttribute)metamodelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -270,9 +253,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getTargetMetamodel()
+  public EReference getMetamodel_ModelPackage()
   {
-    return targetMetamodelEClass;
+    return (EReference)metamodelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -280,9 +263,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getIntermediate()
+  public EAttribute getMetamodel_IsText()
   {
-    return intermediateEClass;
+    return (EAttribute)metamodelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -290,159 +273,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getIntermediate_Name()
+  public EAttribute getMetamodel_Extension()
   {
-    return (EAttribute)intermediateEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIntermediate_SourceInstanceMultiplicity()
-  {
-    return (EAttribute)intermediateEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIntermediate_TargetInstanceMultiplicity()
-  {
-    return (EAttribute)intermediateEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getIntermediate_Location()
-  {
-    return (EReference)intermediateEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSource()
-  {
-    return sourceEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSource_Name()
-  {
-    return (EAttribute)sourceEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSource_SourceInstanceMultiplicity()
-  {
-    return (EAttribute)sourceEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSource_Location()
-  {
-    return (EReference)sourceEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getTarget()
-  {
-    return targetEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getTarget_Name()
-  {
-    return (EAttribute)targetEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getTarget_TargetInstanceMultiplicity()
-  {
-    return (EAttribute)targetEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getTarget_Location()
-  {
-    return (EReference)targetEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getTarget_IsText()
-  {
-    return (EAttribute)targetEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getTarget_Extension()
-  {
-    return (EAttribute)targetEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getMetamodelLocation()
-  {
-    return metamodelLocationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getMetamodelLocation_Url()
-  {
-    return (EAttribute)metamodelLocationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)metamodelEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -460,9 +293,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConnection_Generator()
+  public EAttribute getConnection_Name()
   {
-    return (EReference)connectionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)connectionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -470,7 +303,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConnection_Source()
+  public EReference getConnection_SourceModel()
   {
     return (EReference)connectionEClass.getEStructuralFeatures().get(1);
   }
@@ -480,7 +313,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConnection_Target()
+  public EReference getConnection_TargetModel()
   {
     return (EReference)connectionEClass.getEStructuralFeatures().get(2);
   }
@@ -490,9 +323,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConnection_WriteTraceModel()
+  public EClass getMerger()
   {
-    return (EReference)connectionEClass.getEStructuralFeatures().get(3);
+    return mergerEClass;
   }
 
   /**
@@ -500,9 +333,139 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConnection_ReadTraceModels()
+  public EReference getMerger_Merger()
   {
-    return (EReference)connectionEClass.getEStructuralFeatures().get(4);
+    return (EReference)mergerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMerger_AspectModel()
+  {
+    return (EReference)mergerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getGenerator()
+  {
+    return generatorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGenerator_Generator()
+  {
+    return (EReference)generatorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGenerator_WriteTraceModel()
+  {
+    return (EReference)generatorEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGenerator_ReadTraceModels()
+  {
+    return (EReference)generatorEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSourceModelNodeSelector()
+  {
+    return sourceModelNodeSelectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSourceModelNodeSelector_Type()
+  {
+    return (EReference)sourceModelNodeSelectorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTargetModelNodeType()
+  {
+    return targetModelNodeTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTargetModelNodeType_NodeType()
+  {
+    return (EReference)targetModelNodeTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTargetModelNodeType_Multiply()
+  {
+    return (EAttribute)targetModelNodeTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getModelNodeType()
+  {
+    return modelNodeTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModelNodeType_Target()
+  {
+    return (EReference)modelNodeTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModelNodeType_Type()
+  {
+    return (EReference)modelNodeTypeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -590,16 +553,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getModelMultiplicity()
-  {
-    return modelMultiplicityEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ArchitectureFactory getArchitectureFactory()
   {
     return (ArchitectureFactory)getEFactoryInstance();
@@ -632,38 +585,35 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEReference(modelEClass, MODEL__CONNECTIONS);
 
     metamodelEClass = createEClass(METAMODEL);
-
-    sourceMetamodelEClass = createEClass(SOURCE_METAMODEL);
-
-    targetMetamodelEClass = createEClass(TARGET_METAMODEL);
-
-    intermediateEClass = createEClass(INTERMEDIATE);
-    createEAttribute(intermediateEClass, INTERMEDIATE__NAME);
-    createEAttribute(intermediateEClass, INTERMEDIATE__SOURCE_INSTANCE_MULTIPLICITY);
-    createEAttribute(intermediateEClass, INTERMEDIATE__TARGET_INSTANCE_MULTIPLICITY);
-    createEReference(intermediateEClass, INTERMEDIATE__LOCATION);
-
-    sourceEClass = createEClass(SOURCE);
-    createEAttribute(sourceEClass, SOURCE__NAME);
-    createEAttribute(sourceEClass, SOURCE__SOURCE_INSTANCE_MULTIPLICITY);
-    createEReference(sourceEClass, SOURCE__LOCATION);
-
-    targetEClass = createEClass(TARGET);
-    createEAttribute(targetEClass, TARGET__NAME);
-    createEAttribute(targetEClass, TARGET__TARGET_INSTANCE_MULTIPLICITY);
-    createEReference(targetEClass, TARGET__LOCATION);
-    createEAttribute(targetEClass, TARGET__IS_TEXT);
-    createEAttribute(targetEClass, TARGET__EXTENSION);
-
-    metamodelLocationEClass = createEClass(METAMODEL_LOCATION);
-    createEAttribute(metamodelLocationEClass, METAMODEL_LOCATION__URL);
+    createEAttribute(metamodelEClass, METAMODEL__NAME);
+    createEReference(metamodelEClass, METAMODEL__MODEL_PACKAGE);
+    createEAttribute(metamodelEClass, METAMODEL__IS_TEXT);
+    createEAttribute(metamodelEClass, METAMODEL__EXTENSION);
 
     connectionEClass = createEClass(CONNECTION);
-    createEReference(connectionEClass, CONNECTION__GENERATOR);
-    createEReference(connectionEClass, CONNECTION__SOURCE);
-    createEReference(connectionEClass, CONNECTION__TARGET);
-    createEReference(connectionEClass, CONNECTION__WRITE_TRACE_MODEL);
-    createEReference(connectionEClass, CONNECTION__READ_TRACE_MODELS);
+    createEAttribute(connectionEClass, CONNECTION__NAME);
+    createEReference(connectionEClass, CONNECTION__SOURCE_MODEL);
+    createEReference(connectionEClass, CONNECTION__TARGET_MODEL);
+
+    mergerEClass = createEClass(MERGER);
+    createEReference(mergerEClass, MERGER__MERGER);
+    createEReference(mergerEClass, MERGER__ASPECT_MODEL);
+
+    generatorEClass = createEClass(GENERATOR);
+    createEReference(generatorEClass, GENERATOR__GENERATOR);
+    createEReference(generatorEClass, GENERATOR__WRITE_TRACE_MODEL);
+    createEReference(generatorEClass, GENERATOR__READ_TRACE_MODELS);
+
+    sourceModelNodeSelectorEClass = createEClass(SOURCE_MODEL_NODE_SELECTOR);
+    createEReference(sourceModelNodeSelectorEClass, SOURCE_MODEL_NODE_SELECTOR__TYPE);
+
+    targetModelNodeTypeEClass = createEClass(TARGET_MODEL_NODE_TYPE);
+    createEReference(targetModelNodeTypeEClass, TARGET_MODEL_NODE_TYPE__NODE_TYPE);
+    createEAttribute(targetModelNodeTypeEClass, TARGET_MODEL_NODE_TYPE__MULTIPLY);
+
+    modelNodeTypeEClass = createEClass(MODEL_NODE_TYPE);
+    createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__TARGET);
+    createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__TYPE);
 
     traceModelEClass = createEClass(TRACE_MODEL);
     createEAttribute(traceModelEClass, TRACE_MODEL__NAME);
@@ -675,9 +625,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     nodeTypeEClass = createEClass(NODE_TYPE);
     createEReference(nodeTypeEClass, NODE_TYPE__ECLASS);
-
-    // Create enums
-    modelMultiplicityEEnum = createEEnum(MODEL_MULTIPLICITY);
   }
 
   /**
@@ -713,13 +660,8 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    intermediateEClass.getESuperTypes().add(this.getMetamodel());
-    intermediateEClass.getESuperTypes().add(this.getSourceMetamodel());
-    intermediateEClass.getESuperTypes().add(this.getTargetMetamodel());
-    sourceEClass.getESuperTypes().add(this.getMetamodel());
-    sourceEClass.getESuperTypes().add(this.getSourceMetamodel());
-    targetEClass.getESuperTypes().add(this.getMetamodel());
-    targetEClass.getESuperTypes().add(this.getTargetMetamodel());
+    mergerEClass.getESuperTypes().add(this.getConnection());
+    generatorEClass.getESuperTypes().add(this.getConnection());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -729,38 +671,35 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEReference(getModel_Connections(), this.getConnection(), null, "connections", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metamodelEClass, Metamodel.class, "Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(sourceMetamodelEClass, SourceMetamodel.class, "SourceMetamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(targetMetamodelEClass, TargetMetamodel.class, "TargetMetamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(intermediateEClass, Intermediate.class, "Intermediate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIntermediate_Name(), ecorePackage.getEString(), "name", null, 0, 1, Intermediate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getIntermediate_SourceInstanceMultiplicity(), this.getModelMultiplicity(), "sourceInstanceMultiplicity", null, 0, 1, Intermediate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getIntermediate_TargetInstanceMultiplicity(), this.getModelMultiplicity(), "targetInstanceMultiplicity", null, 0, 1, Intermediate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getIntermediate_Location(), this.getMetamodelLocation(), null, "location", null, 0, 1, Intermediate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(sourceEClass, Source.class, "Source", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSource_Name(), ecorePackage.getEString(), "name", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSource_SourceInstanceMultiplicity(), this.getModelMultiplicity(), "sourceInstanceMultiplicity", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSource_Location(), this.getMetamodelLocation(), null, "location", null, 0, 1, Source.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(targetEClass, Target.class, "Target", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTarget_Name(), ecorePackage.getEString(), "name", null, 0, 1, Target.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTarget_TargetInstanceMultiplicity(), this.getModelMultiplicity(), "targetInstanceMultiplicity", null, 0, 1, Target.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTarget_Location(), this.getMetamodelLocation(), null, "location", null, 0, 1, Target.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTarget_IsText(), ecorePackage.getEBoolean(), "isText", null, 0, 1, Target.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTarget_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, Target.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(metamodelLocationEClass, MetamodelLocation.class, "MetamodelLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMetamodelLocation_Url(), ecorePackage.getEString(), "url", null, 0, 1, MetamodelLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMetamodel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetamodel_ModelPackage(), ecorePackage.getEPackage(), null, "modelPackage", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMetamodel_IsText(), ecorePackage.getEBoolean(), "isText", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMetamodel_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getConnection_Generator(), theTypesPackage.getJvmTypeReference(), null, "generator", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConnection_Source(), this.getSourceMetamodel(), null, "source", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConnection_Target(), this.getTargetMetamodel(), null, "target", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConnection_WriteTraceModel(), this.getTraceModel(), null, "writeTraceModel", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConnection_ReadTraceModels(), this.getTraceModel(), null, "readTraceModels", null, 0, -1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConnection_Name(), ecorePackage.getEString(), "name", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConnection_SourceModel(), this.getSourceModelNodeSelector(), null, "sourceModel", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConnection_TargetModel(), this.getTargetModelNodeType(), null, "targetModel", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mergerEClass, Merger.class, "Merger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMerger_Merger(), theTypesPackage.getJvmTypeReference(), null, "merger", null, 0, 1, Merger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMerger_AspectModel(), this.getTargetModelNodeType(), null, "aspectModel", null, 0, 1, Merger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(generatorEClass, Generator.class, "Generator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGenerator_Generator(), theTypesPackage.getJvmTypeReference(), null, "generator", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerator_WriteTraceModel(), this.getTraceModel(), null, "writeTraceModel", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerator_ReadTraceModels(), this.getTraceModel(), null, "readTraceModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(sourceModelNodeSelectorEClass, SourceModelNodeSelector.class, "SourceModelNodeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSourceModelNodeSelector_Type(), this.getModelNodeType(), null, "type", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(targetModelNodeTypeEClass, TargetModelNodeType.class, "TargetModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTargetModelNodeType_NodeType(), this.getModelNodeType(), null, "nodeType", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTargetModelNodeType_Multiply(), ecorePackage.getEBoolean(), "multiply", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(modelNodeTypeEClass, ModelNodeType.class, "ModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getModelNodeType_Target(), this.getMetamodel(), null, "target", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModelNodeType_Type(), ecorePackage.getEClass(), null, "type", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(traceModelEClass, TraceModel.class, "TraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTraceModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -772,11 +711,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(nodeTypeEClass, NodeType.class, "NodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNodeType_Eclass(), ecorePackage.getEClass(), null, "eclass", null, 0, 1, NodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    // Initialize enums and add enum literals
-    initEEnum(modelMultiplicityEEnum, ModelMultiplicity.class, "ModelMultiplicity");
-    addEEnumLiteral(modelMultiplicityEEnum, ModelMultiplicity.SINGLE);
-    addEEnumLiteral(modelMultiplicityEEnum, ModelMultiplicity.MULTIPLE);
 
     // Create resource
     createResource(eNS_URI);

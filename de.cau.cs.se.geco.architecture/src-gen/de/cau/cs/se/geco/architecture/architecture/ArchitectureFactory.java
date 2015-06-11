@@ -41,60 +41,6 @@ public interface ArchitectureFactory extends EFactory
   Metamodel createMetamodel();
 
   /**
-   * Returns a new object of class '<em>Source Metamodel</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Source Metamodel</em>'.
-   * @generated
-   */
-  SourceMetamodel createSourceMetamodel();
-
-  /**
-   * Returns a new object of class '<em>Target Metamodel</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Target Metamodel</em>'.
-   * @generated
-   */
-  TargetMetamodel createTargetMetamodel();
-
-  /**
-   * Returns a new object of class '<em>Intermediate</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Intermediate</em>'.
-   * @generated
-   */
-  Intermediate createIntermediate();
-
-  /**
-   * Returns a new object of class '<em>Source</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Source</em>'.
-   * @generated
-   */
-  Source createSource();
-
-  /**
-   * Returns a new object of class '<em>Target</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Target</em>'.
-   * @generated
-   */
-  Target createTarget();
-
-  /**
-   * Returns a new object of class '<em>Metamodel Location</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Metamodel Location</em>'.
-   * @generated
-   */
-  MetamodelLocation createMetamodelLocation();
-
-  /**
    * Returns a new object of class '<em>Connection</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -102,6 +48,51 @@ public interface ArchitectureFactory extends EFactory
    * @generated
    */
   Connection createConnection();
+
+  /**
+   * Returns a new object of class '<em>Merger</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Merger</em>'.
+   * @generated
+   */
+  Merger createMerger();
+
+  /**
+   * Returns a new object of class '<em>Generator</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Generator</em>'.
+   * @generated
+   */
+  Generator createGenerator();
+
+  /**
+   * Returns a new object of class '<em>Source Model Node Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Source Model Node Selector</em>'.
+   * @generated
+   */
+  SourceModelNodeSelector createSourceModelNodeSelector();
+
+  /**
+   * Returns a new object of class '<em>Target Model Node Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Target Model Node Type</em>'.
+   * @generated
+   */
+  TargetModelNodeType createTargetModelNodeType();
+
+  /**
+   * Returns a new object of class '<em>Model Node Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Model Node Type</em>'.
+   * @generated
+   */
+  ModelNodeType createModelNodeType();
 
   /**
    * Returns a new object of class '<em>Trace Model</em>'.

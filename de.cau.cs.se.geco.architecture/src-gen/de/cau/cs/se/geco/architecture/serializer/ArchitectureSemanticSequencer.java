@@ -3,14 +3,15 @@ package de.cau.cs.se.geco.architecture.serializer;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.Connection;
-import de.cau.cs.se.geco.architecture.architecture.Intermediate;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelLocation;
+import de.cau.cs.se.geco.architecture.architecture.Generator;
+import de.cau.cs.se.geco.architecture.architecture.Merger;
+import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
-import de.cau.cs.se.geco.architecture.architecture.Source;
-import de.cau.cs.se.geco.architecture.architecture.Target;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.services.ArchitectureGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -78,30 +79,35 @@ public class ArchitectureSemanticSequencer extends XbaseSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == ArchitecturePackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case ArchitecturePackage.CONNECTION:
-				if(context == grammarAccess.getConnectionRule()) {
-					sequence_Connection(context, (Connection) semanticObject); 
+			case ArchitecturePackage.GENERATOR:
+				if(context == grammarAccess.getConnectionRule() ||
+				   context == grammarAccess.getGeneratorRule()) {
+					sequence_Generator(context, (Generator) semanticObject); 
 					return; 
 				}
 				else break;
-			case ArchitecturePackage.INTERMEDIATE:
-				if(context == grammarAccess.getIntermediateRule() ||
-				   context == grammarAccess.getMetamodelRule() ||
-				   context == grammarAccess.getSourceMetamodelRule() ||
-				   context == grammarAccess.getTargetMetamodelRule()) {
-					sequence_Intermediate(context, (Intermediate) semanticObject); 
+			case ArchitecturePackage.MERGER:
+				if(context == grammarAccess.getConnectionRule() ||
+				   context == grammarAccess.getMergerRule()) {
+					sequence_Merger(context, (Merger) semanticObject); 
 					return; 
 				}
 				else break;
-			case ArchitecturePackage.METAMODEL_LOCATION:
-				if(context == grammarAccess.getMetamodelLocationRule()) {
-					sequence_MetamodelLocation(context, (MetamodelLocation) semanticObject); 
+			case ArchitecturePackage.METAMODEL:
+				if(context == grammarAccess.getMetamodelRule()) {
+					sequence_Metamodel(context, (Metamodel) semanticObject); 
 					return; 
 				}
 				else break;
 			case ArchitecturePackage.MODEL:
 				if(context == grammarAccess.getModelRule()) {
 					sequence_Model(context, (Model) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchitecturePackage.MODEL_NODE_TYPE:
+				if(context == grammarAccess.getModelNodeTypeRule()) {
+					sequence_ModelNodeType(context, (ModelNodeType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -117,19 +123,15 @@ public class ArchitectureSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
-			case ArchitecturePackage.SOURCE:
-				if(context == grammarAccess.getMetamodelRule() ||
-				   context == grammarAccess.getSourceRule() ||
-				   context == grammarAccess.getSourceMetamodelRule()) {
-					sequence_Source(context, (Source) semanticObject); 
+			case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR:
+				if(context == grammarAccess.getSourceModelNodeSelectorRule()) {
+					sequence_SourceModelNodeSelector(context, (SourceModelNodeSelector) semanticObject); 
 					return; 
 				}
 				else break;
-			case ArchitecturePackage.TARGET:
-				if(context == grammarAccess.getMetamodelRule() ||
-				   context == grammarAccess.getTargetRule() ||
-				   context == grammarAccess.getTargetMetamodelRule()) {
-					sequence_Target(context, (Target) semanticObject); 
+			case ArchitecturePackage.TARGET_MODEL_NODE_TYPE:
+				if(context == grammarAccess.getTargetModelNodeTypeRule()) {
+					sequence_TargetModelNodeType(context, (TargetModelNodeType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1254,55 +1256,71 @@ public class ArchitectureSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         generator=JvmTypeReference 
-	 *         source=[SourceMetamodel|ValidID] 
-	 *         target=[TargetMetamodel|ValidID] 
+	 *         name=ID 
+	 *         sourceModel=SourceModelNodeSelector 
+	 *         targetModel=TargetModelNodeType 
 	 *         writeTraceModel=TraceModel? 
 	 *         readTraceModels+=[TraceModel|ValidID] 
 	 *         readTraceModels+=[TraceModel|ValidID]*
 	 *     )
 	 */
-	protected void sequence_Connection(EObject context, Connection semanticObject) {
+	protected void sequence_Generator(EObject context, Generator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ValidID sourceInstanceMultiplicity=ModelMultiplicity targetInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation)
+	 *     (merger=JvmTypeReference name=ID sourceModel=SourceModelNodeSelector aspectModel=TargetModelNodeType targetModel=TargetModelNodeType)
 	 */
-	protected void sequence_Intermediate(EObject context, Intermediate semanticObject) {
+	protected void sequence_Merger(EObject context, Merger semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.INTERMEDIATE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.INTERMEDIATE__NAME));
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.INTERMEDIATE__SOURCE_INSTANCE_MULTIPLICITY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.INTERMEDIATE__SOURCE_INSTANCE_MULTIPLICITY));
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.INTERMEDIATE__TARGET_INSTANCE_MULTIPLICITY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.INTERMEDIATE__TARGET_INSTANCE_MULTIPLICITY));
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.INTERMEDIATE__LOCATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.INTERMEDIATE__LOCATION));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.CONNECTION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.CONNECTION__NAME));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.CONNECTION__SOURCE_MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.CONNECTION__SOURCE_MODEL));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.CONNECTION__TARGET_MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.CONNECTION__TARGET_MODEL));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.MERGER__MERGER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.MERGER__MERGER));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.MERGER__ASPECT_MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.MERGER__ASPECT_MODEL));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIntermediateAccess().getNameValidIDParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getIntermediateAccess().getSourceInstanceMultiplicityModelMultiplicityEnumRuleCall_3_0(), semanticObject.getSourceInstanceMultiplicity());
-		feeder.accept(grammarAccess.getIntermediateAccess().getTargetInstanceMultiplicityModelMultiplicityEnumRuleCall_5_0(), semanticObject.getTargetInstanceMultiplicity());
-		feeder.accept(grammarAccess.getIntermediateAccess().getLocationMetamodelLocationParserRuleCall_6_0(), semanticObject.getLocation());
+		feeder.accept(grammarAccess.getMergerAccess().getMergerJvmTypeReferenceParserRuleCall_1_0(), semanticObject.getMerger());
+		feeder.accept(grammarAccess.getMergerAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getMergerAccess().getSourceModelSourceModelNodeSelectorParserRuleCall_3_0(), semanticObject.getSourceModel());
+		feeder.accept(grammarAccess.getMergerAccess().getAspectModelTargetModelNodeTypeParserRuleCall_4_0(), semanticObject.getAspectModel());
+		feeder.accept(grammarAccess.getMergerAccess().getTargetModelTargetModelNodeTypeParserRuleCall_5_0(), semanticObject.getTargetModel());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     url=STRING
+	 *     (name=ValidID (modelPackage=[EPackage|STRING] | (isText?='text' extension=STRING)))
 	 */
-	protected void sequence_MetamodelLocation(EObject context, MetamodelLocation semanticObject) {
+	protected void sequence_Metamodel(EObject context, Metamodel semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (target=[Metamodel|ValidID] type=[EClass|ValidID])
+	 */
+	protected void sequence_ModelNodeType(EObject context, ModelNodeType semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.METAMODEL_LOCATION__URL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.METAMODEL_LOCATION__URL));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.MODEL_NODE_TYPE__TARGET) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.MODEL_NODE_TYPE__TARGET));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.MODEL_NODE_TYPE__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.MODEL_NODE_TYPE__TYPE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMetamodelLocationAccess().getUrlSTRINGTerminalRuleCall_0(), semanticObject.getUrl());
+		feeder.accept(grammarAccess.getModelNodeTypeAccess().getTargetMetamodelValidIDParserRuleCall_0_0_1(), semanticObject.getTarget());
+		feeder.accept(grammarAccess.getModelNodeTypeAccess().getTypeEClassValidIDParserRuleCall_2_0_1(), semanticObject.getType());
 		feeder.finish();
 	}
 	
@@ -1343,31 +1361,25 @@ public class ArchitectureSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ValidID sourceInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation)
+	 *     type=ModelNodeType
 	 */
-	protected void sequence_Source(EObject context, Source semanticObject) {
+	protected void sequence_SourceModelNodeSelector(EObject context, SourceModelNodeSelector semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.SOURCE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.SOURCE__NAME));
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.SOURCE__SOURCE_INSTANCE_MULTIPLICITY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.SOURCE__SOURCE_INSTANCE_MULTIPLICITY));
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.SOURCE__LOCATION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.SOURCE__LOCATION));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.SOURCE_MODEL_NODE_SELECTOR__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.SOURCE_MODEL_NODE_SELECTOR__TYPE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSourceAccess().getNameValidIDParserRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getSourceAccess().getSourceInstanceMultiplicityModelMultiplicityEnumRuleCall_2_0(), semanticObject.getSourceInstanceMultiplicity());
-		feeder.accept(grammarAccess.getSourceAccess().getLocationMetamodelLocationParserRuleCall_3_0(), semanticObject.getLocation());
+		feeder.accept(grammarAccess.getSourceModelNodeSelectorAccess().getTypeModelNodeTypeParserRuleCall_0_1_0(), semanticObject.getType());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ValidID targetInstanceMultiplicity=ModelMultiplicity (location=MetamodelLocation | (isText?='text' extension=STRING)))
+	 *     (nodeType=ModelNodeType multiply?='*'?)
 	 */
-	protected void sequence_Target(EObject context, Target semanticObject) {
+	protected void sequence_TargetModelNodeType(EObject context, TargetModelNodeType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

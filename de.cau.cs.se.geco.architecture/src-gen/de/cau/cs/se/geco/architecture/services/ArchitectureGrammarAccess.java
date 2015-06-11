@@ -75,94 +75,29 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class MetamodelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Metamodel");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cSourceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cTargetParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cIntermediateParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cMetamodelKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cModelPackageAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final CrossReference cModelPackageEPackageCrossReference_2_0_0 = (CrossReference)cModelPackageAssignment_2_0.eContents().get(0);
+		private final RuleCall cModelPackageEPackageSTRINGTerminalRuleCall_2_0_0_1 = (RuleCall)cModelPackageEPackageCrossReference_2_0_0.eContents().get(1);
+		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
+		private final Assignment cIsTextAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
+		private final Keyword cIsTextTextKeyword_2_1_0_0 = (Keyword)cIsTextAssignment_2_1_0.eContents().get(0);
+		private final Assignment cExtensionAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final RuleCall cExtensionSTRINGTerminalRuleCall_2_1_1_0 = (RuleCall)cExtensionAssignment_2_1_1.eContents().get(0);
 		
 		//Metamodel:
-		//	Source | Target | Intermediate;
+		//	"metamodel" name=ValidID (modelPackage=[ecore::EPackage|STRING] | isText?="text" extension=STRING);
 		public ParserRule getRule() { return rule; }
 
-		//Source | Target | Intermediate
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//Source
-		public RuleCall getSourceParserRuleCall_0() { return cSourceParserRuleCall_0; }
-
-		//Target
-		public RuleCall getTargetParserRuleCall_1() { return cTargetParserRuleCall_1; }
-
-		//Intermediate
-		public RuleCall getIntermediateParserRuleCall_2() { return cIntermediateParserRuleCall_2; }
-	}
-
-	public class SourceMetamodelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SourceMetamodel");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cSourceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cIntermediateParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//SourceMetamodel:
-		//	Source | Intermediate;
-		public ParserRule getRule() { return rule; }
-
-		//Source | Intermediate
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//Source
-		public RuleCall getSourceParserRuleCall_0() { return cSourceParserRuleCall_0; }
-
-		//Intermediate
-		public RuleCall getIntermediateParserRuleCall_1() { return cIntermediateParserRuleCall_1; }
-	}
-
-	public class TargetMetamodelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TargetMetamodel");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cTargetParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cIntermediateParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//TargetMetamodel:
-		//	Target | Intermediate;
-		public ParserRule getRule() { return rule; }
-
-		//Target | Intermediate
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//Target
-		public RuleCall getTargetParserRuleCall_0() { return cTargetParserRuleCall_0; }
-
-		//Intermediate
-		public RuleCall getIntermediateParserRuleCall_1() { return cIntermediateParserRuleCall_1; }
-	}
-
-	public class IntermediateElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Intermediate");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cIntermediateKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cSourceKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSourceInstanceMultiplicityAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSourceInstanceMultiplicityModelMultiplicityEnumRuleCall_3_0 = (RuleCall)cSourceInstanceMultiplicityAssignment_3.eContents().get(0);
-		private final Keyword cTargetKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cTargetInstanceMultiplicityAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cTargetInstanceMultiplicityModelMultiplicityEnumRuleCall_5_0 = (RuleCall)cTargetInstanceMultiplicityAssignment_5.eContents().get(0);
-		private final Assignment cLocationAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cLocationMetamodelLocationParserRuleCall_6_0 = (RuleCall)cLocationAssignment_6.eContents().get(0);
-		
-		//Intermediate:
-		//	"intermediate" name=ValidID "source" sourceInstanceMultiplicity=ModelMultiplicity "target"
-		//	targetInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation;
-		public ParserRule getRule() { return rule; }
-
-		//"intermediate" name=ValidID "source" sourceInstanceMultiplicity=ModelMultiplicity "target"
-		//targetInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation
+		//"metamodel" name=ValidID (modelPackage=[ecore::EPackage|STRING] | isText?="text" extension=STRING)
 		public Group getGroup() { return cGroup; }
 
-		//"intermediate"
-		public Keyword getIntermediateKeyword_0() { return cIntermediateKeyword_0; }
+		//"metamodel"
+		public Keyword getMetamodelKeyword_0() { return cMetamodelKeyword_0; }
 
 		//name=ValidID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -170,166 +105,124 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
 
-		//"source"
-		public Keyword getSourceKeyword_2() { return cSourceKeyword_2; }
+		//modelPackage=[ecore::EPackage|STRING] | isText?="text" extension=STRING
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//sourceInstanceMultiplicity=ModelMultiplicity
-		public Assignment getSourceInstanceMultiplicityAssignment_3() { return cSourceInstanceMultiplicityAssignment_3; }
+		//modelPackage=[ecore::EPackage|STRING]
+		public Assignment getModelPackageAssignment_2_0() { return cModelPackageAssignment_2_0; }
 
-		//ModelMultiplicity
-		public RuleCall getSourceInstanceMultiplicityModelMultiplicityEnumRuleCall_3_0() { return cSourceInstanceMultiplicityModelMultiplicityEnumRuleCall_3_0; }
+		//[ecore::EPackage|STRING]
+		public CrossReference getModelPackageEPackageCrossReference_2_0_0() { return cModelPackageEPackageCrossReference_2_0_0; }
 
-		//"target"
-		public Keyword getTargetKeyword_4() { return cTargetKeyword_4; }
-
-		//targetInstanceMultiplicity=ModelMultiplicity
-		public Assignment getTargetInstanceMultiplicityAssignment_5() { return cTargetInstanceMultiplicityAssignment_5; }
-
-		//ModelMultiplicity
-		public RuleCall getTargetInstanceMultiplicityModelMultiplicityEnumRuleCall_5_0() { return cTargetInstanceMultiplicityModelMultiplicityEnumRuleCall_5_0; }
-
-		//location=MetamodelLocation
-		public Assignment getLocationAssignment_6() { return cLocationAssignment_6; }
-
-		//MetamodelLocation
-		public RuleCall getLocationMetamodelLocationParserRuleCall_6_0() { return cLocationMetamodelLocationParserRuleCall_6_0; }
-	}
-
-	public class SourceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Source");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSourceKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cSourceInstanceMultiplicityAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cSourceInstanceMultiplicityModelMultiplicityEnumRuleCall_2_0 = (RuleCall)cSourceInstanceMultiplicityAssignment_2.eContents().get(0);
-		private final Assignment cLocationAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cLocationMetamodelLocationParserRuleCall_3_0 = (RuleCall)cLocationAssignment_3.eContents().get(0);
-		
-		//Source:
-		//	"source" name=ValidID sourceInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation;
-		public ParserRule getRule() { return rule; }
-
-		//"source" name=ValidID sourceInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation
-		public Group getGroup() { return cGroup; }
-
-		//"source"
-		public Keyword getSourceKeyword_0() { return cSourceKeyword_0; }
-
-		//name=ValidID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
-
-		//sourceInstanceMultiplicity=ModelMultiplicity
-		public Assignment getSourceInstanceMultiplicityAssignment_2() { return cSourceInstanceMultiplicityAssignment_2; }
-
-		//ModelMultiplicity
-		public RuleCall getSourceInstanceMultiplicityModelMultiplicityEnumRuleCall_2_0() { return cSourceInstanceMultiplicityModelMultiplicityEnumRuleCall_2_0; }
-
-		//location=MetamodelLocation
-		public Assignment getLocationAssignment_3() { return cLocationAssignment_3; }
-
-		//MetamodelLocation
-		public RuleCall getLocationMetamodelLocationParserRuleCall_3_0() { return cLocationMetamodelLocationParserRuleCall_3_0; }
-	}
-
-	public class TargetElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Target");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTargetKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cTargetInstanceMultiplicityAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTargetInstanceMultiplicityModelMultiplicityEnumRuleCall_2_0 = (RuleCall)cTargetInstanceMultiplicityAssignment_2.eContents().get(0);
-		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
-		private final Assignment cLocationAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
-		private final RuleCall cLocationMetamodelLocationParserRuleCall_3_0_0 = (RuleCall)cLocationAssignment_3_0.eContents().get(0);
-		private final Group cGroup_3_1 = (Group)cAlternatives_3.eContents().get(1);
-		private final Assignment cIsTextAssignment_3_1_0 = (Assignment)cGroup_3_1.eContents().get(0);
-		private final Keyword cIsTextTextKeyword_3_1_0_0 = (Keyword)cIsTextAssignment_3_1_0.eContents().get(0);
-		private final Assignment cExtensionAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
-		private final RuleCall cExtensionSTRINGTerminalRuleCall_3_1_1_0 = (RuleCall)cExtensionAssignment_3_1_1.eContents().get(0);
-		
-		//Target:
-		//	"target" name=ValidID targetInstanceMultiplicity=ModelMultiplicity (location=MetamodelLocation | isText?="text"
-		//	extension=STRING);
-		public ParserRule getRule() { return rule; }
-
-		//"target" name=ValidID targetInstanceMultiplicity=ModelMultiplicity (location=MetamodelLocation | isText?="text"
-		//extension=STRING)
-		public Group getGroup() { return cGroup; }
-
-		//"target"
-		public Keyword getTargetKeyword_0() { return cTargetKeyword_0; }
-
-		//name=ValidID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
-
-		//targetInstanceMultiplicity=ModelMultiplicity
-		public Assignment getTargetInstanceMultiplicityAssignment_2() { return cTargetInstanceMultiplicityAssignment_2; }
-
-		//ModelMultiplicity
-		public RuleCall getTargetInstanceMultiplicityModelMultiplicityEnumRuleCall_2_0() { return cTargetInstanceMultiplicityModelMultiplicityEnumRuleCall_2_0; }
-
-		//location=MetamodelLocation | isText?="text" extension=STRING
-		public Alternatives getAlternatives_3() { return cAlternatives_3; }
-
-		//location=MetamodelLocation
-		public Assignment getLocationAssignment_3_0() { return cLocationAssignment_3_0; }
-
-		//MetamodelLocation
-		public RuleCall getLocationMetamodelLocationParserRuleCall_3_0_0() { return cLocationMetamodelLocationParserRuleCall_3_0_0; }
+		//STRING
+		public RuleCall getModelPackageEPackageSTRINGTerminalRuleCall_2_0_0_1() { return cModelPackageEPackageSTRINGTerminalRuleCall_2_0_0_1; }
 
 		//isText?="text" extension=STRING
-		public Group getGroup_3_1() { return cGroup_3_1; }
+		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//isText?="text"
-		public Assignment getIsTextAssignment_3_1_0() { return cIsTextAssignment_3_1_0; }
+		public Assignment getIsTextAssignment_2_1_0() { return cIsTextAssignment_2_1_0; }
 
 		//"text"
-		public Keyword getIsTextTextKeyword_3_1_0_0() { return cIsTextTextKeyword_3_1_0_0; }
+		public Keyword getIsTextTextKeyword_2_1_0_0() { return cIsTextTextKeyword_2_1_0_0; }
 
 		//extension=STRING
-		public Assignment getExtensionAssignment_3_1_1() { return cExtensionAssignment_3_1_1; }
+		public Assignment getExtensionAssignment_2_1_1() { return cExtensionAssignment_2_1_1; }
 
 		//STRING
-		public RuleCall getExtensionSTRINGTerminalRuleCall_3_1_1_0() { return cExtensionSTRINGTerminalRuleCall_3_1_1_0; }
-	}
-
-	public class MetamodelLocationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MetamodelLocation");
-		private final Assignment cUrlAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cUrlSTRINGTerminalRuleCall_0 = (RuleCall)cUrlAssignment.eContents().get(0);
-		
-		//MetamodelLocation:
-		//	url=STRING;
-		public ParserRule getRule() { return rule; }
-
-		//url=STRING
-		public Assignment getUrlAssignment() { return cUrlAssignment; }
-
-		//STRING
-		public RuleCall getUrlSTRINGTerminalRuleCall_0() { return cUrlSTRINGTerminalRuleCall_0; }
+		public RuleCall getExtensionSTRINGTerminalRuleCall_2_1_1_0() { return cExtensionSTRINGTerminalRuleCall_2_1_1_0; }
 	}
 
 	public class ConnectionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Connection");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cGeneratorParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMergerParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Connection:
+		//	Generator | Merger;
+		public ParserRule getRule() { return rule; }
+
+		//Generator | Merger
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//Generator
+		public RuleCall getGeneratorParserRuleCall_0() { return cGeneratorParserRuleCall_0; }
+
+		//Merger
+		public RuleCall getMergerParserRuleCall_1() { return cMergerParserRuleCall_1; }
+	}
+
+	public class MergerElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Merger");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cGenKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cMergeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cMergerAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMergerJvmTypeReferenceParserRuleCall_1_0 = (RuleCall)cMergerAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cSourceModelAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSourceModelSourceModelNodeSelectorParserRuleCall_3_0 = (RuleCall)cSourceModelAssignment_3.eContents().get(0);
+		private final Assignment cAspectModelAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAspectModelTargetModelNodeTypeParserRuleCall_4_0 = (RuleCall)cAspectModelAssignment_4.eContents().get(0);
+		private final Assignment cTargetModelAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cTargetModelTargetModelNodeTypeParserRuleCall_5_0 = (RuleCall)cTargetModelAssignment_5.eContents().get(0);
+		
+		//Merger:
+		//	"merge" merger=JvmTypeReference name=ID sourceModel=SourceModelNodeSelector aspectModel=TargetModelNodeType
+		//	targetModel=TargetModelNodeType;
+		public ParserRule getRule() { return rule; }
+
+		//"merge" merger=JvmTypeReference name=ID sourceModel=SourceModelNodeSelector aspectModel=TargetModelNodeType
+		//targetModel=TargetModelNodeType
+		public Group getGroup() { return cGroup; }
+
+		//"merge"
+		public Keyword getMergeKeyword_0() { return cMergeKeyword_0; }
+
+		//merger=JvmTypeReference
+		public Assignment getMergerAssignment_1() { return cMergerAssignment_1; }
+
+		//JvmTypeReference
+		public RuleCall getMergerJvmTypeReferenceParserRuleCall_1_0() { return cMergerJvmTypeReferenceParserRuleCall_1_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+
+		//sourceModel=SourceModelNodeSelector
+		public Assignment getSourceModelAssignment_3() { return cSourceModelAssignment_3; }
+
+		//SourceModelNodeSelector
+		public RuleCall getSourceModelSourceModelNodeSelectorParserRuleCall_3_0() { return cSourceModelSourceModelNodeSelectorParserRuleCall_3_0; }
+
+		//aspectModel=TargetModelNodeType
+		public Assignment getAspectModelAssignment_4() { return cAspectModelAssignment_4; }
+
+		//TargetModelNodeType
+		public RuleCall getAspectModelTargetModelNodeTypeParserRuleCall_4_0() { return cAspectModelTargetModelNodeTypeParserRuleCall_4_0; }
+
+		//targetModel=TargetModelNodeType
+		public Assignment getTargetModelAssignment_5() { return cTargetModelAssignment_5; }
+
+		//TargetModelNodeType
+		public RuleCall getTargetModelTargetModelNodeTypeParserRuleCall_5_0() { return cTargetModelTargetModelNodeTypeParserRuleCall_5_0; }
+	}
+
+	public class GeneratorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Generator");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGenerateKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cGeneratorAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cGeneratorJvmTypeReferenceParserRuleCall_1_0 = (RuleCall)cGeneratorAssignment_1.eContents().get(0);
-		private final Assignment cSourceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cSourceSourceMetamodelCrossReference_2_0 = (CrossReference)cSourceAssignment_2.eContents().get(0);
-		private final RuleCall cSourceSourceMetamodelValidIDParserRuleCall_2_0_1 = (RuleCall)cSourceSourceMetamodelCrossReference_2_0.eContents().get(1);
-		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cTargetAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cTargetTargetMetamodelCrossReference_4_0 = (CrossReference)cTargetAssignment_4.eContents().get(0);
-		private final RuleCall cTargetTargetMetamodelValidIDParserRuleCall_4_0_1 = (RuleCall)cTargetTargetMetamodelCrossReference_4_0.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cSourceModelAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSourceModelSourceModelNodeSelectorParserRuleCall_3_0 = (RuleCall)cSourceModelAssignment_3.eContents().get(0);
+		private final Assignment cTargetModelAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cTargetModelTargetModelNodeTypeParserRuleCall_4_0 = (RuleCall)cTargetModelAssignment_4.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cHyphenMinusGreaterThanSignKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Assignment cWriteTraceModelAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
@@ -345,18 +238,18 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cReadTraceModelsTraceModelCrossReference_6_2_1_0 = (CrossReference)cReadTraceModelsAssignment_6_2_1.eContents().get(0);
 		private final RuleCall cReadTraceModelsTraceModelValidIDParserRuleCall_6_2_1_0_1 = (RuleCall)cReadTraceModelsTraceModelCrossReference_6_2_1_0.eContents().get(1);
 		
-		//Connection:
-		//	"gen" generator=JvmTypeReference source=[SourceMetamodel|ValidID] ":" target=[TargetMetamodel|ValidID] ("->"
-		//	writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel|ValidID] (","
+		//Generator:
+		//	"generate" generator=JvmTypeReference name=ID sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType
+		//	("->" writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel|ValidID] (","
 		//	readTraceModels+=[TraceModel|ValidID])*);
 		public ParserRule getRule() { return rule; }
 
-		//"gen" generator=JvmTypeReference source=[SourceMetamodel|ValidID] ":" target=[TargetMetamodel|ValidID] ("->"
+		//"generate" generator=JvmTypeReference name=ID sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
 		//writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel|ValidID] ("," readTraceModels+=[TraceModel|ValidID])*)
 		public Group getGroup() { return cGroup; }
 
-		//"gen"
-		public Keyword getGenKeyword_0() { return cGenKeyword_0; }
+		//"generate"
+		public Keyword getGenerateKeyword_0() { return cGenerateKeyword_0; }
 
 		//generator=JvmTypeReference
 		public Assignment getGeneratorAssignment_1() { return cGeneratorAssignment_1; }
@@ -364,26 +257,23 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//JvmTypeReference
 		public RuleCall getGeneratorJvmTypeReferenceParserRuleCall_1_0() { return cGeneratorJvmTypeReferenceParserRuleCall_1_0; }
 
-		//source=[SourceMetamodel|ValidID]
-		public Assignment getSourceAssignment_2() { return cSourceAssignment_2; }
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
-		//[SourceMetamodel|ValidID]
-		public CrossReference getSourceSourceMetamodelCrossReference_2_0() { return cSourceSourceMetamodelCrossReference_2_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//ValidID
-		public RuleCall getSourceSourceMetamodelValidIDParserRuleCall_2_0_1() { return cSourceSourceMetamodelValidIDParserRuleCall_2_0_1; }
+		//sourceModel=SourceModelNodeSelector
+		public Assignment getSourceModelAssignment_3() { return cSourceModelAssignment_3; }
 
-		//":"
-		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
+		//SourceModelNodeSelector
+		public RuleCall getSourceModelSourceModelNodeSelectorParserRuleCall_3_0() { return cSourceModelSourceModelNodeSelectorParserRuleCall_3_0; }
 
-		//target=[TargetMetamodel|ValidID]
-		public Assignment getTargetAssignment_4() { return cTargetAssignment_4; }
+		//targetModel=TargetModelNodeType
+		public Assignment getTargetModelAssignment_4() { return cTargetModelAssignment_4; }
 
-		//[TargetMetamodel|ValidID]
-		public CrossReference getTargetTargetMetamodelCrossReference_4_0() { return cTargetTargetMetamodelCrossReference_4_0; }
-
-		//ValidID
-		public RuleCall getTargetTargetMetamodelValidIDParserRuleCall_4_0_1() { return cTargetTargetMetamodelValidIDParserRuleCall_4_0_1; }
+		//TargetModelNodeType
+		public RuleCall getTargetModelTargetModelNodeTypeParserRuleCall_4_0() { return cTargetModelTargetModelNodeTypeParserRuleCall_4_0; }
 
 		//("->" writeTraceModel=TraceModel)?
 		public Group getGroup_5() { return cGroup_5; }
@@ -426,6 +316,106 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ValidID
 		public RuleCall getReadTraceModelsTraceModelValidIDParserRuleCall_6_2_1_0_1() { return cReadTraceModelsTraceModelValidIDParserRuleCall_6_2_1_0_1; }
+	}
+
+	public class SourceModelNodeSelectorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SourceModelNodeSelector");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cSourceModelNodeSelectorAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cTypeAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cTypeModelNodeTypeParserRuleCall_0_1_0 = (RuleCall)cTypeAssignment_0_1.eContents().get(0);
+		private final Keyword cNullKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//SourceModelNodeSelector:
+		//	{SourceModelNodeSelector} type=ModelNodeType | "null";
+		public ParserRule getRule() { return rule; }
+
+		//{SourceModelNodeSelector} type=ModelNodeType | "null"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//{SourceModelNodeSelector} type=ModelNodeType
+		public Group getGroup_0() { return cGroup_0; }
+
+		//{SourceModelNodeSelector}
+		public Action getSourceModelNodeSelectorAction_0_0() { return cSourceModelNodeSelectorAction_0_0; }
+
+		//type=ModelNodeType
+		public Assignment getTypeAssignment_0_1() { return cTypeAssignment_0_1; }
+
+		//ModelNodeType
+		public RuleCall getTypeModelNodeTypeParserRuleCall_0_1_0() { return cTypeModelNodeTypeParserRuleCall_0_1_0; }
+
+		//"null"
+		public Keyword getNullKeyword_1() { return cNullKeyword_1; }
+	}
+
+	public class TargetModelNodeTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TargetModelNodeType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNodeTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNodeTypeModelNodeTypeParserRuleCall_0_0 = (RuleCall)cNodeTypeAssignment_0.eContents().get(0);
+		private final Assignment cMultiplyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cMultiplyAsteriskKeyword_1_0 = (Keyword)cMultiplyAssignment_1.eContents().get(0);
+		
+		//TargetModelNodeType:
+		//	nodeType=ModelNodeType multiply?="*"?;
+		public ParserRule getRule() { return rule; }
+
+		//nodeType=ModelNodeType multiply?="*"?
+		public Group getGroup() { return cGroup; }
+
+		//nodeType=ModelNodeType
+		public Assignment getNodeTypeAssignment_0() { return cNodeTypeAssignment_0; }
+
+		//ModelNodeType
+		public RuleCall getNodeTypeModelNodeTypeParserRuleCall_0_0() { return cNodeTypeModelNodeTypeParserRuleCall_0_0; }
+
+		//multiply?="*"?
+		public Assignment getMultiplyAssignment_1() { return cMultiplyAssignment_1; }
+
+		//"*"
+		public Keyword getMultiplyAsteriskKeyword_1_0() { return cMultiplyAsteriskKeyword_1_0; }
+	}
+
+	public class ModelNodeTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ModelNodeType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTargetAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cTargetMetamodelCrossReference_0_0 = (CrossReference)cTargetAssignment_0.eContents().get(0);
+		private final RuleCall cTargetMetamodelValidIDParserRuleCall_0_0_1 = (RuleCall)cTargetMetamodelCrossReference_0_0.eContents().get(1);
+		private final Keyword cSolidusKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cTypeEClassCrossReference_2_0 = (CrossReference)cTypeAssignment_2.eContents().get(0);
+		private final RuleCall cTypeEClassValidIDParserRuleCall_2_0_1 = (RuleCall)cTypeEClassCrossReference_2_0.eContents().get(1);
+		
+		//ModelNodeType:
+		//	target=[Metamodel|ValidID] "/" type=[ecore::EClass|ValidID];
+		public ParserRule getRule() { return rule; }
+
+		//target=[Metamodel|ValidID] "/" type=[ecore::EClass|ValidID]
+		public Group getGroup() { return cGroup; }
+
+		//target=[Metamodel|ValidID]
+		public Assignment getTargetAssignment_0() { return cTargetAssignment_0; }
+
+		//[Metamodel|ValidID]
+		public CrossReference getTargetMetamodelCrossReference_0_0() { return cTargetMetamodelCrossReference_0_0; }
+
+		//ValidID
+		public RuleCall getTargetMetamodelValidIDParserRuleCall_0_0_1() { return cTargetMetamodelValidIDParserRuleCall_0_0_1; }
+
+		//"/"
+		public Keyword getSolidusKeyword_1() { return cSolidusKeyword_1; }
+
+		//type=[ecore::EClass|ValidID]
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+
+		//[ecore::EClass|ValidID]
+		public CrossReference getTypeEClassCrossReference_2_0() { return cTypeEClassCrossReference_2_0; }
+
+		//ValidID
+		public RuleCall getTypeEClassValidIDParserRuleCall_2_0_1() { return cTypeEClassValidIDParserRuleCall_2_0_1; }
 	}
 
 	public class TraceModelElements extends AbstractParserRuleElementFinder {
@@ -557,44 +547,14 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	public class ModelMultiplicityElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ModelMultiplicity");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cSINGLEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cSINGLESingleKeyword_0_0 = (Keyword)cSINGLEEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cMULTIPLEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cMULTIPLEMultipleKeyword_1_0 = (Keyword)cMULTIPLEEnumLiteralDeclaration_1.eContents().get(0);
-		
-		//enum ModelMultiplicity:
-		//	SINGLE="single" | MULTIPLE="multiple";
-		public EnumRule getRule() { return rule; }
-
-		//SINGLE="single" | MULTIPLE="multiple"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//SINGLE="single"
-		public EnumLiteralDeclaration getSINGLEEnumLiteralDeclaration_0() { return cSINGLEEnumLiteralDeclaration_0; }
-
-		//"single"
-		public Keyword getSINGLESingleKeyword_0_0() { return cSINGLESingleKeyword_0_0; }
-
-		//MULTIPLE="multiple"
-		public EnumLiteralDeclaration getMULTIPLEEnumLiteralDeclaration_1() { return cMULTIPLEEnumLiteralDeclaration_1; }
-
-		//"multiple"
-		public Keyword getMULTIPLEMultipleKeyword_1_0() { return cMULTIPLEMultipleKeyword_1_0; }
-	}
-	
 	private final ModelElements pModel;
 	private final MetamodelElements pMetamodel;
-	private final SourceMetamodelElements pSourceMetamodel;
-	private final TargetMetamodelElements pTargetMetamodel;
-	private final IntermediateElements pIntermediate;
-	private final SourceElements pSource;
-	private final TargetElements pTarget;
-	private final ModelMultiplicityElements unknownRuleModelMultiplicity;
-	private final MetamodelLocationElements pMetamodelLocation;
 	private final ConnectionElements pConnection;
+	private final MergerElements pMerger;
+	private final GeneratorElements pGenerator;
+	private final SourceModelNodeSelectorElements pSourceModelNodeSelector;
+	private final TargetModelNodeTypeElements pTargetModelNodeType;
+	private final ModelNodeTypeElements pModelNodeType;
 	private final TraceModelElements pTraceModel;
 	private final NodeSetRelationElements pNodeSetRelation;
 	private final NodeTypeElements pNodeType;
@@ -610,14 +570,12 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaXbase = gaXbase;
 		this.pModel = new ModelElements();
 		this.pMetamodel = new MetamodelElements();
-		this.pSourceMetamodel = new SourceMetamodelElements();
-		this.pTargetMetamodel = new TargetMetamodelElements();
-		this.pIntermediate = new IntermediateElements();
-		this.pSource = new SourceElements();
-		this.pTarget = new TargetElements();
-		this.unknownRuleModelMultiplicity = new ModelMultiplicityElements();
-		this.pMetamodelLocation = new MetamodelLocationElements();
 		this.pConnection = new ConnectionElements();
+		this.pMerger = new MergerElements();
+		this.pGenerator = new GeneratorElements();
+		this.pSourceModelNodeSelector = new SourceModelNodeSelectorElements();
+		this.pTargetModelNodeType = new TargetModelNodeTypeElements();
+		this.pModelNodeType = new ModelNodeTypeElements();
 		this.pTraceModel = new TraceModelElements();
 		this.pNodeSetRelation = new NodeSetRelationElements();
 		this.pNodeType = new NodeTypeElements();
@@ -663,7 +621,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Metamodel:
-	//	Source | Target | Intermediate;
+	//	"metamodel" name=ValidID (modelPackage=[ecore::EPackage|STRING] | isText?="text" extension=STRING);
 	public MetamodelElements getMetamodelAccess() {
 		return pMetamodel;
 	}
@@ -672,88 +630,67 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		return getMetamodelAccess().getRule();
 	}
 
-	//SourceMetamodel:
-	//	Source | Intermediate;
-	public SourceMetamodelElements getSourceMetamodelAccess() {
-		return pSourceMetamodel;
-	}
-	
-	public ParserRule getSourceMetamodelRule() {
-		return getSourceMetamodelAccess().getRule();
-	}
-
-	//TargetMetamodel:
-	//	Target | Intermediate;
-	public TargetMetamodelElements getTargetMetamodelAccess() {
-		return pTargetMetamodel;
-	}
-	
-	public ParserRule getTargetMetamodelRule() {
-		return getTargetMetamodelAccess().getRule();
-	}
-
-	//Intermediate:
-	//	"intermediate" name=ValidID "source" sourceInstanceMultiplicity=ModelMultiplicity "target"
-	//	targetInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation;
-	public IntermediateElements getIntermediateAccess() {
-		return pIntermediate;
-	}
-	
-	public ParserRule getIntermediateRule() {
-		return getIntermediateAccess().getRule();
-	}
-
-	//Source:
-	//	"source" name=ValidID sourceInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation;
-	public SourceElements getSourceAccess() {
-		return pSource;
-	}
-	
-	public ParserRule getSourceRule() {
-		return getSourceAccess().getRule();
-	}
-
-	//Target:
-	//	"target" name=ValidID targetInstanceMultiplicity=ModelMultiplicity (location=MetamodelLocation | isText?="text"
-	//	extension=STRING);
-	public TargetElements getTargetAccess() {
-		return pTarget;
-	}
-	
-	public ParserRule getTargetRule() {
-		return getTargetAccess().getRule();
-	}
-
-	//enum ModelMultiplicity:
-	//	SINGLE="single" | MULTIPLE="multiple";
-	public ModelMultiplicityElements getModelMultiplicityAccess() {
-		return unknownRuleModelMultiplicity;
-	}
-	
-	public EnumRule getModelMultiplicityRule() {
-		return getModelMultiplicityAccess().getRule();
-	}
-
-	//MetamodelLocation:
-	//	url=STRING;
-	public MetamodelLocationElements getMetamodelLocationAccess() {
-		return pMetamodelLocation;
-	}
-	
-	public ParserRule getMetamodelLocationRule() {
-		return getMetamodelLocationAccess().getRule();
-	}
-
 	//Connection:
-	//	"gen" generator=JvmTypeReference source=[SourceMetamodel|ValidID] ":" target=[TargetMetamodel|ValidID] ("->"
-	//	writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel|ValidID] (","
-	//	readTraceModels+=[TraceModel|ValidID])*);
+	//	Generator | Merger;
 	public ConnectionElements getConnectionAccess() {
 		return pConnection;
 	}
 	
 	public ParserRule getConnectionRule() {
 		return getConnectionAccess().getRule();
+	}
+
+	//Merger:
+	//	"merge" merger=JvmTypeReference name=ID sourceModel=SourceModelNodeSelector aspectModel=TargetModelNodeType
+	//	targetModel=TargetModelNodeType;
+	public MergerElements getMergerAccess() {
+		return pMerger;
+	}
+	
+	public ParserRule getMergerRule() {
+		return getMergerAccess().getRule();
+	}
+
+	//Generator:
+	//	"generate" generator=JvmTypeReference name=ID sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType
+	//	("->" writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel|ValidID] (","
+	//	readTraceModels+=[TraceModel|ValidID])*);
+	public GeneratorElements getGeneratorAccess() {
+		return pGenerator;
+	}
+	
+	public ParserRule getGeneratorRule() {
+		return getGeneratorAccess().getRule();
+	}
+
+	//SourceModelNodeSelector:
+	//	{SourceModelNodeSelector} type=ModelNodeType | "null";
+	public SourceModelNodeSelectorElements getSourceModelNodeSelectorAccess() {
+		return pSourceModelNodeSelector;
+	}
+	
+	public ParserRule getSourceModelNodeSelectorRule() {
+		return getSourceModelNodeSelectorAccess().getRule();
+	}
+
+	//TargetModelNodeType:
+	//	nodeType=ModelNodeType multiply?="*"?;
+	public TargetModelNodeTypeElements getTargetModelNodeTypeAccess() {
+		return pTargetModelNodeType;
+	}
+	
+	public ParserRule getTargetModelNodeTypeRule() {
+		return getTargetModelNodeTypeAccess().getRule();
+	}
+
+	//ModelNodeType:
+	//	target=[Metamodel|ValidID] "/" type=[ecore::EClass|ValidID];
+	public ModelNodeTypeElements getModelNodeTypeAccess() {
+		return pModelNodeType;
+	}
+	
+	public ParserRule getModelNodeTypeRule() {
+		return getModelNodeTypeAccess().getRule();
 	}
 
 	//TraceModel:

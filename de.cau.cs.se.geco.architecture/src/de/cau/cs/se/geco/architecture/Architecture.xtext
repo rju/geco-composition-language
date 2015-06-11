@@ -14,52 +14,38 @@ Model:
 ;
 
 Metamodel:
-	Source | Target | Intermediate
-;
-
-SourceMetamodel:
-	Source | Intermediate
-;
-TargetMetamodel:
-	Target | Intermediate
-;
-
-Intermediate:
-	'intermediate' name=ValidID 
-	'source' sourceInstanceMultiplicity=ModelMultiplicity
-	'target' targetInstanceMultiplicity=ModelMultiplicity
-	location=MetamodelLocation 
-;
-
-Source:
-	'source' name=ValidID sourceInstanceMultiplicity=ModelMultiplicity location=MetamodelLocation 
-;
-
-Target:
-	'target' name=ValidID targetInstanceMultiplicity=ModelMultiplicity (location=MetamodelLocation|(isText?='text' extension=STRING))
-;
-
-enum ModelMultiplicity:
-	SINGLE = 'single' |
-	MULTIPLE = 'multiple'
-;
-
-MetamodelLocation:
-	url=STRING
+	'metamodel' name=ValidID (modelPackage=[ecore::EPackage|STRING] |(isText?='text' extension=STRING))
 ;
 
 Connection:
-	'gen' generator=JvmTypeReference source=SourceNodeType ':' 
-	('->' writeTraceModel=TraceModel)?
-	('<-' readTraceModels+=[TraceModel|ValidID] (',' readTraceModels+=[TraceModel|ValidID])*)
+	Generator | Merger
 ;
 
-SourceNodeType:
-	model=[SourceMetamodel|ValidID] '/' eclass=[ecore::EClass|ValidID]
+Merger:
+	'merge' merger=JvmTypeReference name=ID 
+		sourceModel=SourceModelNodeSelector
+		aspectModel=TargetModelNodeType
+		targetModel=TargetModelNodeType
+;
+	
+Generator:
+	'generate' generator=JvmTypeReference name=ID 
+		sourceModel=SourceModelNodeSelector
+		targetModel=TargetModelNodeType
+		('->' writeTraceModel=TraceModel)?
+		('<-' readTraceModels+=[TraceModel|ValidID] (',' readTraceModels+=[TraceModel|ValidID])*)
 ;
 
-TargetNodeType:
-	target=[TargetMetamodel|ValidID] '/' eclass=[ecore::EClass|ValidID]
+SourceModelNodeSelector: {SourceModelNodeSelector}
+	type=ModelNodeType | 'null' 
+;
+
+TargetModelNodeType:
+	nodeType=ModelNodeType (multiply?='*')?
+;
+
+ModelNodeType:
+	target=[Metamodel|ValidID] '/' type=[ecore::EClass|ValidID]
 ;
 
 TraceModel:

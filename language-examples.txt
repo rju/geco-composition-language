@@ -1,12 +1,41 @@
+import de.menges.types.metamodel.types.TypesUser.SimpleInterlockingElement
 
-source simpleInterlockingElement multiple
-source ieLogic multiple
+select de.menges.types.metamodel.Model.Model : {
+	statesets as set
+	enums as enum
+	communicationDescriptions as cd
+	interlockingElements filter(InterlockingElementInterface) as iface
+	interlockingElements filter(SimpleInterlockingElement) as ie
+}
 
-gen GenerateShell null : root
-gen GenerateInterlockingElement simpleInterlockingElement : ieDataTypes
-gen GenerateInterlockingElementLogic ieLogic : ieLogicPou -> ioLogicTraceModel
-gen GenerateConditionals
+GenerateShell null : shell
+
+GenerateNamedStateSet set : MergeDataType shell
+
+GenerateEnumerationType enum : MergeDataType shell
+
+GenerateCommunicationDescription cd : MergeDataType shell
+
+GenerateStateVarType iface.statevarSpecs : MergeDataType shell
+
+GenerateSimpleInterlockingElement ie : MergeDataType shell > ie_d in shell
 
 
-merge WeaverInterlockingElement idDataTypes in root
+
+GenerateStruct
+
+GenerateDevice
+
+
+
+GenerateInstantiation
+
+GeneratePredicate
+
+GenerateConditional
+
+GenerateStateMachine
+
+GenerateSimpleInterlockingElementLogic
+
 

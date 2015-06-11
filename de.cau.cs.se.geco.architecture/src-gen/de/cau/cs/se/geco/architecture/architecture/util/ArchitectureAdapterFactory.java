@@ -85,39 +85,34 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createMetamodelAdapter();
       }
       @Override
-      public Adapter caseSourceMetamodel(SourceMetamodel object)
-      {
-        return createSourceMetamodelAdapter();
-      }
-      @Override
-      public Adapter caseTargetMetamodel(TargetMetamodel object)
-      {
-        return createTargetMetamodelAdapter();
-      }
-      @Override
-      public Adapter caseIntermediate(Intermediate object)
-      {
-        return createIntermediateAdapter();
-      }
-      @Override
-      public Adapter caseSource(Source object)
-      {
-        return createSourceAdapter();
-      }
-      @Override
-      public Adapter caseTarget(Target object)
-      {
-        return createTargetAdapter();
-      }
-      @Override
-      public Adapter caseMetamodelLocation(MetamodelLocation object)
-      {
-        return createMetamodelLocationAdapter();
-      }
-      @Override
       public Adapter caseConnection(Connection object)
       {
         return createConnectionAdapter();
+      }
+      @Override
+      public Adapter caseMerger(Merger object)
+      {
+        return createMergerAdapter();
+      }
+      @Override
+      public Adapter caseGenerator(Generator object)
+      {
+        return createGeneratorAdapter();
+      }
+      @Override
+      public Adapter caseSourceModelNodeSelector(SourceModelNodeSelector object)
+      {
+        return createSourceModelNodeSelectorAdapter();
+      }
+      @Override
+      public Adapter caseTargetModelNodeType(TargetModelNodeType object)
+      {
+        return createTargetModelNodeTypeAdapter();
+      }
+      @Override
+      public Adapter caseModelNodeType(ModelNodeType object)
+      {
+        return createModelNodeTypeAdapter();
       }
       @Override
       public Adapter caseTraceModel(TraceModel object)
@@ -187,96 +182,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.SourceMetamodel <em>Source Metamodel</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.SourceMetamodel
-   * @generated
-   */
-  public Adapter createSourceMetamodelAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.TargetMetamodel <em>Target Metamodel</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.TargetMetamodel
-   * @generated
-   */
-  public Adapter createTargetMetamodelAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Intermediate <em>Intermediate</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Intermediate
-   * @generated
-   */
-  public Adapter createIntermediateAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Source <em>Source</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Source
-   * @generated
-   */
-  public Adapter createSourceAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Target <em>Target</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Target
-   * @generated
-   */
-  public Adapter createTargetAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelLocation <em>Metamodel Location</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelLocation
-   * @generated
-   */
-  public Adapter createMetamodelLocationAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Connection <em>Connection</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -287,6 +192,81 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConnectionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Merger <em>Merger</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.Merger
+   * @generated
+   */
+  public Adapter createMergerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Generator <em>Generator</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.Generator
+   * @generated
+   */
+  public Adapter createGeneratorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector <em>Source Model Node Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+   * @generated
+   */
+  public Adapter createSourceModelNodeSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType <em>Target Model Node Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+   * @generated
+   */
+  public Adapter createTargetModelNodeTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType <em>Model Node Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+   * @generated
+   */
+  public Adapter createModelNodeTypeAdapter()
   {
     return null;
   }

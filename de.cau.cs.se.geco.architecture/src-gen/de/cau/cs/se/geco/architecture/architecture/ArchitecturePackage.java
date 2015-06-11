@@ -4,7 +4,6 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -123,189 +122,22 @@ public interface ArchitecturePackage extends EPackage
   int METAMODEL = 1;
 
   /**
-   * The number of structural features of the '<em>Metamodel</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METAMODEL_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceMetamodelImpl <em>Source Metamodel</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceMetamodelImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceMetamodel()
-   * @generated
-   */
-  int SOURCE_METAMODEL = 2;
-
-  /**
-   * The number of structural features of the '<em>Source Metamodel</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SOURCE_METAMODEL_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetMetamodelImpl <em>Target Metamodel</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetMetamodelImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetMetamodel()
-   * @generated
-   */
-  int TARGET_METAMODEL = 3;
-
-  /**
-   * The number of structural features of the '<em>Target Metamodel</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TARGET_METAMODEL_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.IntermediateImpl <em>Intermediate</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.IntermediateImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getIntermediate()
-   * @generated
-   */
-  int INTERMEDIATE = 4;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INTERMEDIATE__NAME = METAMODEL_FEATURE_COUNT + 0;
+  int METAMODEL__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Source Instance Multiplicity</b></em>' attribute.
+   * The feature id for the '<em><b>Model Package</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INTERMEDIATE__SOURCE_INSTANCE_MULTIPLICITY = METAMODEL_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Target Instance Multiplicity</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTERMEDIATE__TARGET_INSTANCE_MULTIPLICITY = METAMODEL_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Location</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTERMEDIATE__LOCATION = METAMODEL_FEATURE_COUNT + 3;
-
-  /**
-   * The number of structural features of the '<em>Intermediate</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTERMEDIATE_FEATURE_COUNT = METAMODEL_FEATURE_COUNT + 4;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceImpl <em>Source</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSource()
-   * @generated
-   */
-  int SOURCE = 5;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SOURCE__NAME = METAMODEL_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Source Instance Multiplicity</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SOURCE__SOURCE_INSTANCE_MULTIPLICITY = METAMODEL_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Location</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SOURCE__LOCATION = METAMODEL_FEATURE_COUNT + 2;
-
-  /**
-   * The number of structural features of the '<em>Source</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SOURCE_FEATURE_COUNT = METAMODEL_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetImpl <em>Target</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTarget()
-   * @generated
-   */
-  int TARGET = 6;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TARGET__NAME = METAMODEL_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Target Instance Multiplicity</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TARGET__TARGET_INSTANCE_MULTIPLICITY = METAMODEL_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Location</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TARGET__LOCATION = METAMODEL_FEATURE_COUNT + 2;
+  int METAMODEL__MODEL_PACKAGE = 1;
 
   /**
    * The feature id for the '<em><b>Is Text</b></em>' attribute.
@@ -314,7 +146,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET__IS_TEXT = METAMODEL_FEATURE_COUNT + 3;
+  int METAMODEL__IS_TEXT = 2;
 
   /**
    * The feature id for the '<em><b>Extension</b></em>' attribute.
@@ -323,44 +155,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET__EXTENSION = METAMODEL_FEATURE_COUNT + 4;
+  int METAMODEL__EXTENSION = 3;
 
   /**
-   * The number of structural features of the '<em>Target</em>' class.
+   * The number of structural features of the '<em>Metamodel</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TARGET_FEATURE_COUNT = METAMODEL_FEATURE_COUNT + 5;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelLocationImpl <em>Metamodel Location</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.MetamodelLocationImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelLocation()
-   * @generated
-   */
-  int METAMODEL_LOCATION = 7;
-
-  /**
-   * The feature id for the '<em><b>Url</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METAMODEL_LOCATION__URL = 0;
-
-  /**
-   * The number of structural features of the '<em>Metamodel Location</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METAMODEL_LOCATION_FEATURE_COUNT = 1;
+  int METAMODEL_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl <em>Connection</em>}' class.
@@ -370,52 +174,34 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getConnection()
    * @generated
    */
-  int CONNECTION = 8;
+  int CONNECTION = 2;
 
   /**
-   * The feature id for the '<em><b>Generator</b></em>' containment reference.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONNECTION__GENERATOR = 0;
+  int CONNECTION__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Source</b></em>' reference.
+   * The feature id for the '<em><b>Source Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONNECTION__SOURCE = 1;
+  int CONNECTION__SOURCE_MODEL = 1;
 
   /**
-   * The feature id for the '<em><b>Target</b></em>' reference.
+   * The feature id for the '<em><b>Target Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONNECTION__TARGET = 2;
-
-  /**
-   * The feature id for the '<em><b>Write Trace Model</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONNECTION__WRITE_TRACE_MODEL = 3;
-
-  /**
-   * The feature id for the '<em><b>Read Trace Models</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONNECTION__READ_TRACE_MODELS = 4;
+  int CONNECTION__TARGET_MODEL = 2;
 
   /**
    * The number of structural features of the '<em>Connection</em>' class.
@@ -424,7 +210,246 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION_FEATURE_COUNT = 5;
+  int CONNECTION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl <em>Merger</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMerger()
+   * @generated
+   */
+  int MERGER = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGER__NAME = CONNECTION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Source Model</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGER__SOURCE_MODEL = CONNECTION__SOURCE_MODEL;
+
+  /**
+   * The feature id for the '<em><b>Target Model</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGER__TARGET_MODEL = CONNECTION__TARGET_MODEL;
+
+  /**
+   * The feature id for the '<em><b>Merger</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGER__MERGER = CONNECTION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Aspect Model</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGER__ASPECT_MODEL = CONNECTION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Merger</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGER_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl <em>Generator</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getGenerator()
+   * @generated
+   */
+  int GENERATOR = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR__NAME = CONNECTION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Source Model</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR__SOURCE_MODEL = CONNECTION__SOURCE_MODEL;
+
+  /**
+   * The feature id for the '<em><b>Target Model</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR__TARGET_MODEL = CONNECTION__TARGET_MODEL;
+
+  /**
+   * The feature id for the '<em><b>Generator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR__GENERATOR = CONNECTION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Write Trace Model</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR__WRITE_TRACE_MODEL = CONNECTION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Read Trace Models</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR__READ_TRACE_MODELS = CONNECTION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Generator</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceModelNodeSelector()
+   * @generated
+   */
+  int SOURCE_MODEL_NODE_SELECTOR = 5;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOURCE_MODEL_NODE_SELECTOR__TYPE = 0;
+
+  /**
+   * The number of structural features of the '<em>Source Model Node Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOURCE_MODEL_NODE_SELECTOR_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl <em>Target Model Node Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetModelNodeType()
+   * @generated
+   */
+  int TARGET_MODEL_NODE_TYPE = 6;
+
+  /**
+   * The feature id for the '<em><b>Node Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TARGET_MODEL_NODE_TYPE__NODE_TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Multiply</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TARGET_MODEL_NODE_TYPE__MULTIPLY = 1;
+
+  /**
+   * The number of structural features of the '<em>Target Model Node Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TARGET_MODEL_NODE_TYPE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl <em>Model Node Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelNodeType()
+   * @generated
+   */
+  int MODEL_NODE_TYPE = 7;
+
+  /**
+   * The feature id for the '<em><b>Target</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_NODE_TYPE__TARGET = 0;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_NODE_TYPE__TYPE = 1;
+
+  /**
+   * The number of structural features of the '<em>Model Node Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_NODE_TYPE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelImpl <em>Trace Model</em>}' class.
@@ -434,7 +459,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTraceModel()
    * @generated
    */
-  int TRACE_MODEL = 9;
+  int TRACE_MODEL = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -471,7 +496,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeSetRelation()
    * @generated
    */
-  int NODE_SET_RELATION = 10;
+  int NODE_SET_RELATION = 9;
 
   /**
    * The feature id for the '<em><b>Source Nodes</b></em>' containment reference list.
@@ -508,7 +533,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeType()
    * @generated
    */
-  int NODE_TYPE = 11;
+  int NODE_TYPE = 10;
 
   /**
    * The feature id for the '<em><b>Eclass</b></em>' reference.
@@ -527,16 +552,6 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int NODE_TYPE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.ModelMultiplicity <em>Model Multiplicity</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelMultiplicity
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelMultiplicity()
-   * @generated
-   */
-  int MODEL_MULTIPLICITY = 12;
 
 
   /**
@@ -604,207 +619,48 @@ public interface ArchitecturePackage extends EPackage
   EClass getMetamodel();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.SourceMetamodel <em>Source Metamodel</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Source Metamodel</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SourceMetamodel
-   * @generated
-   */
-  EClass getSourceMetamodel();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TargetMetamodel <em>Target Metamodel</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Target Metamodel</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.TargetMetamodel
-   * @generated
-   */
-  EClass getTargetMetamodel();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Intermediate <em>Intermediate</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Intermediate</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Intermediate
-   * @generated
-   */
-  EClass getIntermediate();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Intermediate#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Intermediate#getName()
-   * @see #getIntermediate()
+   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel#getName()
+   * @see #getMetamodel()
    * @generated
    */
-  EAttribute getIntermediate_Name();
+  EAttribute getMetamodel_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Intermediate#getSourceInstanceMultiplicity <em>Source Instance Multiplicity</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel#getModelPackage <em>Model Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Source Instance Multiplicity</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Intermediate#getSourceInstanceMultiplicity()
-   * @see #getIntermediate()
+   * @return the meta object for the reference '<em>Model Package</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel#getModelPackage()
+   * @see #getMetamodel()
    * @generated
    */
-  EAttribute getIntermediate_SourceInstanceMultiplicity();
+  EReference getMetamodel_ModelPackage();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Intermediate#getTargetInstanceMultiplicity <em>Target Instance Multiplicity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Instance Multiplicity</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Intermediate#getTargetInstanceMultiplicity()
-   * @see #getIntermediate()
-   * @generated
-   */
-  EAttribute getIntermediate_TargetInstanceMultiplicity();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Intermediate#getLocation <em>Location</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Location</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Intermediate#getLocation()
-   * @see #getIntermediate()
-   * @generated
-   */
-  EReference getIntermediate_Location();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Source <em>Source</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Source</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Source
-   * @generated
-   */
-  EClass getSource();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Source#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Source#getName()
-   * @see #getSource()
-   * @generated
-   */
-  EAttribute getSource_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Source#getSourceInstanceMultiplicity <em>Source Instance Multiplicity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Source Instance Multiplicity</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Source#getSourceInstanceMultiplicity()
-   * @see #getSource()
-   * @generated
-   */
-  EAttribute getSource_SourceInstanceMultiplicity();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Source#getLocation <em>Location</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Location</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Source#getLocation()
-   * @see #getSource()
-   * @generated
-   */
-  EReference getSource_Location();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Target <em>Target</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Target</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Target
-   * @generated
-   */
-  EClass getTarget();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Target#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Target#getName()
-   * @see #getTarget()
-   * @generated
-   */
-  EAttribute getTarget_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Target#getTargetInstanceMultiplicity <em>Target Instance Multiplicity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Target Instance Multiplicity</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Target#getTargetInstanceMultiplicity()
-   * @see #getTarget()
-   * @generated
-   */
-  EAttribute getTarget_TargetInstanceMultiplicity();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Target#getLocation <em>Location</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Location</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Target#getLocation()
-   * @see #getTarget()
-   * @generated
-   */
-  EReference getTarget_Location();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Target#isIsText <em>Is Text</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel#isIsText <em>Is Text</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Text</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Target#isIsText()
-   * @see #getTarget()
+   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel#isIsText()
+   * @see #getMetamodel()
    * @generated
    */
-  EAttribute getTarget_IsText();
+  EAttribute getMetamodel_IsText();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Target#getExtension <em>Extension</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel#getExtension <em>Extension</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Extension</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Target#getExtension()
-   * @see #getTarget()
+   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel#getExtension()
+   * @see #getMetamodel()
    * @generated
    */
-  EAttribute getTarget_Extension();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelLocation <em>Metamodel Location</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Metamodel Location</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelLocation
-   * @generated
-   */
-  EClass getMetamodelLocation();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelLocation#getUrl <em>Url</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Url</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelLocation#getUrl()
-   * @see #getMetamodelLocation()
-   * @generated
-   */
-  EAttribute getMetamodelLocation_Url();
+  EAttribute getMetamodel_Extension();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Connection <em>Connection</em>}'.
@@ -817,59 +673,197 @@ public interface ArchitecturePackage extends EPackage
   EClass getConnection();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getGenerator <em>Generator</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getName()
+   * @see #getConnection()
+   * @generated
+   */
+  EAttribute getConnection_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getSourceModel <em>Source Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Source Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getSourceModel()
+   * @see #getConnection()
+   * @generated
+   */
+  EReference getConnection_SourceModel();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getTargetModel <em>Target Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Target Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getTargetModel()
+   * @see #getConnection()
+   * @generated
+   */
+  EReference getConnection_TargetModel();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Merger <em>Merger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Merger</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Merger
+   * @generated
+   */
+  EClass getMerger();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Merger#getMerger <em>Merger</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Merger</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Merger#getMerger()
+   * @see #getMerger()
+   * @generated
+   */
+  EReference getMerger_Merger();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Merger#getAspectModel <em>Aspect Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Aspect Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Merger#getAspectModel()
+   * @see #getMerger()
+   * @generated
+   */
+  EReference getMerger_AspectModel();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Generator <em>Generator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Generator</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Generator
+   * @generated
+   */
+  EClass getGenerator();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator <em>Generator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Generator</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getGenerator()
-   * @see #getConnection()
+   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator()
+   * @see #getGenerator()
    * @generated
    */
-  EReference getConnection_Generator();
+  EReference getGenerator_Generator();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getSource <em>Source</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Source</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getSource()
-   * @see #getConnection()
-   * @generated
-   */
-  EReference getConnection_Source();
-
-  /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getTarget <em>Target</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Target</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getTarget()
-   * @see #getConnection()
-   * @generated
-   */
-  EReference getConnection_Target();
-
-  /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getWriteTraceModel <em>Write Trace Model</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getWriteTraceModel <em>Write Trace Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Write Trace Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getWriteTraceModel()
-   * @see #getConnection()
+   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getWriteTraceModel()
+   * @see #getGenerator()
    * @generated
    */
-  EReference getConnection_WriteTraceModel();
+  EReference getGenerator_WriteTraceModel();
 
   /**
-   * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getReadTraceModels <em>Read Trace Models</em>}'.
+   * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getReadTraceModels <em>Read Trace Models</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference list '<em>Read Trace Models</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getReadTraceModels()
-   * @see #getConnection()
+   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getReadTraceModels()
+   * @see #getGenerator()
    * @generated
    */
-  EReference getConnection_ReadTraceModels();
+  EReference getGenerator_ReadTraceModels();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector <em>Source Model Node Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Source Model Node Selector</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+   * @generated
+   */
+  EClass getSourceModelNodeSelector();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getType()
+   * @see #getSourceModelNodeSelector()
+   * @generated
+   */
+  EReference getSourceModelNodeSelector_Type();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType <em>Target Model Node Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Target Model Node Type</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+   * @generated
+   */
+  EClass getTargetModelNodeType();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getNodeType <em>Node Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Node Type</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getNodeType()
+   * @see #getTargetModelNodeType()
+   * @generated
+   */
+  EReference getTargetModelNodeType_NodeType();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#isMultiply <em>Multiply</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Multiply</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#isMultiply()
+   * @see #getTargetModelNodeType()
+   * @generated
+   */
+  EAttribute getTargetModelNodeType_Multiply();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType <em>Model Node Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Model Node Type</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+   * @generated
+   */
+  EClass getModelNodeType();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget <em>Target</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Target</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget()
+   * @see #getModelNodeType()
+   * @generated
+   */
+  EReference getModelNodeType_Target();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getType()
+   * @see #getModelNodeType()
+   * @generated
+   */
+  EReference getModelNodeType_Type();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TraceModel <em>Trace Model</em>}'.
@@ -957,16 +951,6 @@ public interface ArchitecturePackage extends EPackage
   EReference getNodeType_Eclass();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.geco.architecture.architecture.ModelMultiplicity <em>Model Multiplicity</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Model Multiplicity</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelMultiplicity
-   * @generated
-   */
-  EEnum getModelMultiplicity();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1042,134 +1026,20 @@ public interface ArchitecturePackage extends EPackage
     EClass METAMODEL = eINSTANCE.getMetamodel();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceMetamodelImpl <em>Source Metamodel</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceMetamodelImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceMetamodel()
-     * @generated
-     */
-    EClass SOURCE_METAMODEL = eINSTANCE.getSourceMetamodel();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetMetamodelImpl <em>Target Metamodel</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetMetamodelImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetMetamodel()
-     * @generated
-     */
-    EClass TARGET_METAMODEL = eINSTANCE.getTargetMetamodel();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.IntermediateImpl <em>Intermediate</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.IntermediateImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getIntermediate()
-     * @generated
-     */
-    EClass INTERMEDIATE = eINSTANCE.getIntermediate();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INTERMEDIATE__NAME = eINSTANCE.getIntermediate_Name();
+    EAttribute METAMODEL__NAME = eINSTANCE.getMetamodel_Name();
 
     /**
-     * The meta object literal for the '<em><b>Source Instance Multiplicity</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Model Package</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INTERMEDIATE__SOURCE_INSTANCE_MULTIPLICITY = eINSTANCE.getIntermediate_SourceInstanceMultiplicity();
-
-    /**
-     * The meta object literal for the '<em><b>Target Instance Multiplicity</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INTERMEDIATE__TARGET_INSTANCE_MULTIPLICITY = eINSTANCE.getIntermediate_TargetInstanceMultiplicity();
-
-    /**
-     * The meta object literal for the '<em><b>Location</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INTERMEDIATE__LOCATION = eINSTANCE.getIntermediate_Location();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceImpl <em>Source</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSource()
-     * @generated
-     */
-    EClass SOURCE = eINSTANCE.getSource();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SOURCE__NAME = eINSTANCE.getSource_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Source Instance Multiplicity</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SOURCE__SOURCE_INSTANCE_MULTIPLICITY = eINSTANCE.getSource_SourceInstanceMultiplicity();
-
-    /**
-     * The meta object literal for the '<em><b>Location</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SOURCE__LOCATION = eINSTANCE.getSource_Location();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetImpl <em>Target</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTarget()
-     * @generated
-     */
-    EClass TARGET = eINSTANCE.getTarget();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TARGET__NAME = eINSTANCE.getTarget_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Target Instance Multiplicity</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TARGET__TARGET_INSTANCE_MULTIPLICITY = eINSTANCE.getTarget_TargetInstanceMultiplicity();
-
-    /**
-     * The meta object literal for the '<em><b>Location</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TARGET__LOCATION = eINSTANCE.getTarget_Location();
+    EReference METAMODEL__MODEL_PACKAGE = eINSTANCE.getMetamodel_ModelPackage();
 
     /**
      * The meta object literal for the '<em><b>Is Text</b></em>' attribute feature.
@@ -1177,7 +1047,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TARGET__IS_TEXT = eINSTANCE.getTarget_IsText();
+    EAttribute METAMODEL__IS_TEXT = eINSTANCE.getMetamodel_IsText();
 
     /**
      * The meta object literal for the '<em><b>Extension</b></em>' attribute feature.
@@ -1185,25 +1055,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute TARGET__EXTENSION = eINSTANCE.getTarget_Extension();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelLocationImpl <em>Metamodel Location</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.MetamodelLocationImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelLocation()
-     * @generated
-     */
-    EClass METAMODEL_LOCATION = eINSTANCE.getMetamodelLocation();
-
-    /**
-     * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METAMODEL_LOCATION__URL = eINSTANCE.getMetamodelLocation_Url();
+    EAttribute METAMODEL__EXTENSION = eINSTANCE.getMetamodel_Extension();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl <em>Connection</em>}' class.
@@ -1216,28 +1068,72 @@ public interface ArchitecturePackage extends EPackage
     EClass CONNECTION = eINSTANCE.getConnection();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONNECTION__NAME = eINSTANCE.getConnection_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Source Model</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONNECTION__SOURCE_MODEL = eINSTANCE.getConnection_SourceModel();
+
+    /**
+     * The meta object literal for the '<em><b>Target Model</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONNECTION__TARGET_MODEL = eINSTANCE.getConnection_TargetModel();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl <em>Merger</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMerger()
+     * @generated
+     */
+    EClass MERGER = eINSTANCE.getMerger();
+
+    /**
+     * The meta object literal for the '<em><b>Merger</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MERGER__MERGER = eINSTANCE.getMerger_Merger();
+
+    /**
+     * The meta object literal for the '<em><b>Aspect Model</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MERGER__ASPECT_MODEL = eINSTANCE.getMerger_AspectModel();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl <em>Generator</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getGenerator()
+     * @generated
+     */
+    EClass GENERATOR = eINSTANCE.getGenerator();
+
+    /**
      * The meta object literal for the '<em><b>Generator</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONNECTION__GENERATOR = eINSTANCE.getConnection_Generator();
-
-    /**
-     * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONNECTION__SOURCE = eINSTANCE.getConnection_Source();
-
-    /**
-     * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CONNECTION__TARGET = eINSTANCE.getConnection_Target();
+    EReference GENERATOR__GENERATOR = eINSTANCE.getGenerator_Generator();
 
     /**
      * The meta object literal for the '<em><b>Write Trace Model</b></em>' containment reference feature.
@@ -1245,7 +1141,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONNECTION__WRITE_TRACE_MODEL = eINSTANCE.getConnection_WriteTraceModel();
+    EReference GENERATOR__WRITE_TRACE_MODEL = eINSTANCE.getGenerator_WriteTraceModel();
 
     /**
      * The meta object literal for the '<em><b>Read Trace Models</b></em>' reference list feature.
@@ -1253,7 +1149,77 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONNECTION__READ_TRACE_MODELS = eINSTANCE.getConnection_ReadTraceModels();
+    EReference GENERATOR__READ_TRACE_MODELS = eINSTANCE.getGenerator_ReadTraceModels();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceModelNodeSelector()
+     * @generated
+     */
+    EClass SOURCE_MODEL_NODE_SELECTOR = eINSTANCE.getSourceModelNodeSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SOURCE_MODEL_NODE_SELECTOR__TYPE = eINSTANCE.getSourceModelNodeSelector_Type();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl <em>Target Model Node Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetModelNodeType()
+     * @generated
+     */
+    EClass TARGET_MODEL_NODE_TYPE = eINSTANCE.getTargetModelNodeType();
+
+    /**
+     * The meta object literal for the '<em><b>Node Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TARGET_MODEL_NODE_TYPE__NODE_TYPE = eINSTANCE.getTargetModelNodeType_NodeType();
+
+    /**
+     * The meta object literal for the '<em><b>Multiply</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TARGET_MODEL_NODE_TYPE__MULTIPLY = eINSTANCE.getTargetModelNodeType_Multiply();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl <em>Model Node Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelNodeType()
+     * @generated
+     */
+    EClass MODEL_NODE_TYPE = eINSTANCE.getModelNodeType();
+
+    /**
+     * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL_NODE_TYPE__TARGET = eINSTANCE.getModelNodeType_Target();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL_NODE_TYPE__TYPE = eINSTANCE.getModelNodeType_Type();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelImpl <em>Trace Model</em>}' class.
@@ -1324,16 +1290,6 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EReference NODE_TYPE__ECLASS = eINSTANCE.getNodeType_Eclass();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.ModelMultiplicity <em>Model Multiplicity</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.ModelMultiplicity
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelMultiplicity()
-     * @generated
-     */
-    EEnum MODEL_MULTIPLICITY = eINSTANCE.getModelMultiplicity();
 
   }
 
