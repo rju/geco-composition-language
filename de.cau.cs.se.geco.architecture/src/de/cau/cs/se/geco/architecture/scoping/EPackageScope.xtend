@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright 2015 GECO
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,25 +15,27 @@
  ***************************************************************************/
 package de.cau.cs.se.geco.architecture.scoping
 
-import java.util.ArrayList
-import java.util.Collection
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.xtext.naming.QualifiedName
-import org.eclipse.xtext.resource.EObjectDescription
-import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.xtext.resource.IEObjectDescription
+import org.eclipse.xtext.naming.QualifiedName
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.resource.EObjectDescription
+import java.util.Collection
+import java.util.ArrayList
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.common.util.EList
 
 /**
- * Scope for EPackages in a resource set.
+ * Scope for an EPackage.
  * 
  * @author Reiner Jung
  */
 class EPackageScope implements IScope {
 	
-	val Collection<IEObjectDescription> descriptors =  new ArrayList<IEObjectDescription>()
-	val Collection<EPackage> packages =  new ArrayList<EPackage>()
+	private ResourceSet resourceSet
 
 	/**
 	 * Create a new EPackageScope in the context of a resource set.
@@ -41,20 +43,44 @@ class EPackageScope implements IScope {
 	 * @param resourceSet the resource set where the packages should be searched for. 
 	 */
 	new (ResourceSet resourceSet) {
-		System.out.println("set " + resourceSet)
-		System.out.println("set content " + resourceSet.resources)
-		resourceSet.resources.forEach[resource | 
-			System.out.println("resource " + resource)
-			resource.contents.filter(EPackage).forEach[
-				System.out.println("package " + it)
-				descriptors.add(EObjectDescription.create(it.name, it))
-				packages.add(it)
-			] 
-		]
+		this.resourceSet = resourceSet
 	}
 
 	override IEObjectDescription getSingleElement(QualifiedName name) {
-		return descriptors.findFirst[it.name.equals(name)]
+		val URI ePackageURI = URI.createURI(name.toString(), true)
+		val plainPackageURI = ePackageURI.trimFragment
+		val fragment = ePackageURI.fragment
+		
+		var Resource resource = resourceSet.getResource(plainPackageURI, true)
+		if (!resource.getContents().isEmpty()) {
+			var EPackage ePackage = resource.getContents().get(0) as EPackage
+			if (fragment != null) {
+				var list = fragment.split('.')
+				ePackage = findPackage(ePackage.ESubpackages,
+					if (list.empty)
+						QualifiedName.create(fragment)
+					else
+						QualifiedName.create(list)
+					)
+			}
+			if (ePackage != null)
+				return EObjectDescription.create(name, ePackage)
+			else
+				return null
+		} else
+			return null
+	}
+	
+	private def EPackage findPackage(EList<EPackage> ePackages, QualifiedName qualifiedPackageName) {
+		val packageName = qualifiedPackageName.firstSegment
+		val ePackage = ePackages.findFirst[it.name.equals(packageName)]
+		if (ePackage != null) {
+			if (qualifiedPackageName.segmentCount > 1)
+				return findPackage(ePackage.ESubpackages, qualifiedPackageName.skipFirst(1))
+			else
+				return ePackage
+		} else
+			return null
 	}
 
 	override Iterable<IEObjectDescription> getElements(QualifiedName name) {
@@ -66,7 +92,11 @@ class EPackageScope implements IScope {
 
 	override IEObjectDescription getSingleElement(EObject object) {
 		System.out.println("EPackageScope.getSingleElement(object) " + object)
-		return descriptors.findFirst[it.getEObjectOrProxy().equals(object)]
+		// TODO what shall we return here?
+		//if (object instanceof EPackage) {
+		//	return EObjectDescription.create(((EPackage)object).eResource().getURI().toString(), object)
+		//} else
+			return null
 	}
 
 	override Iterable<IEObjectDescription> getElements(EObject object) {
@@ -78,7 +108,9 @@ class EPackageScope implements IScope {
 
 	override Iterable<IEObjectDescription> getAllElements() {
 		System.out.println("EPackageScope.getAllElements()")
-		return descriptors
+		val Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>()
+		// what must be returned by this? all ePackage URIs?
+		return result
 	}
 	
 }

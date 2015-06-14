@@ -15,6 +15,8 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 
 @SuppressWarnings("all")
 public class ArchitectureScopeProvider extends AbstractDeclarativeScopeProvider {
+  public final static String NAMED_DELEGATE = "de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider.delegate";
+  
   public IScope scope_ModelNodeType_type(final ModelNodeType ctx, final EReference reference) {
     Metamodel _target = ctx.getTarget();
     EPackage _modelPackage = _target.getModelPackage();

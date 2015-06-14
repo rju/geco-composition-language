@@ -9,6 +9,8 @@ import org.eclipse.xtext.scoping.Scopes
 
 class ArchitectureScopeProvider extends AbstractDeclarativeScopeProvider {
 	
+	public final static String NAMED_DELEGATE = "de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider.delegate";
+	
 	def scope_ModelNodeType_type(ModelNodeType ctx, EReference reference) {
 		return Scopes.scopeFor(ctx.target.modelPackage.EClassifiers)
 	}

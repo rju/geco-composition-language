@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 GECO
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,12 @@
  */
 package de.cau.cs.se.geco.architecture.scoping;
 
-import com.google.common.collect.Iterables;
+import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Consumer;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -28,19 +29,18 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
- * Scope for EPackages in a resource set.
+ * Scope for an EPackage.
  * 
  * @author Reiner Jung
  */
 @SuppressWarnings("all")
 public class EPackageScope implements IScope {
-  private final Collection<IEObjectDescription> descriptors = new ArrayList<IEObjectDescription>();
-  
-  private final Collection<EPackage> packages = new ArrayList<EPackage>();
+  private ResourceSet resourceSet;
   
   /**
    * Create a new EPackageScope in the context of a resource set.
@@ -48,39 +48,71 @@ public class EPackageScope implements IScope {
    * @param resourceSet the resource set where the packages should be searched for.
    */
   public EPackageScope(final ResourceSet resourceSet) {
-    System.out.println(("set " + resourceSet));
-    EList<Resource> _resources = resourceSet.getResources();
-    String _plus = ("set content " + _resources);
-    System.out.println(_plus);
-    EList<Resource> _resources_1 = resourceSet.getResources();
-    final Consumer<Resource> _function = new Consumer<Resource>() {
-      public void accept(final Resource resource) {
-        System.out.println(("resource " + resource));
-        EList<EObject> _contents = resource.getContents();
-        Iterable<EPackage> _filter = Iterables.<EPackage>filter(_contents, EPackage.class);
-        final Consumer<EPackage> _function = new Consumer<EPackage>() {
-          public void accept(final EPackage it) {
-            System.out.println(("package " + it));
-            String _name = it.getName();
-            IEObjectDescription _create = EObjectDescription.create(_name, it);
-            EPackageScope.this.descriptors.add(_create);
-            EPackageScope.this.packages.add(it);
-          }
-        };
-        _filter.forEach(_function);
-      }
-    };
-    _resources_1.forEach(_function);
+    this.resourceSet = resourceSet;
   }
   
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    final Function1<IEObjectDescription, Boolean> _function = new Function1<IEObjectDescription, Boolean>() {
-      public Boolean apply(final IEObjectDescription it) {
-        QualifiedName _name = it.getName();
-        return Boolean.valueOf(_name.equals(name));
+    String _string = name.toString();
+    final URI ePackageURI = URI.createURI(_string, true);
+    final URI plainPackageURI = ePackageURI.trimFragment();
+    final String fragment = ePackageURI.fragment();
+    Resource resource = this.resourceSet.getResource(plainPackageURI, true);
+    EList<EObject> _contents = resource.getContents();
+    boolean _isEmpty = _contents.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      EList<EObject> _contents_1 = resource.getContents();
+      EObject _get = _contents_1.get(0);
+      EPackage ePackage = ((EPackage) _get);
+      boolean _notEquals = (!Objects.equal(fragment, null));
+      if (_notEquals) {
+        String[] list = fragment.split(".");
+        EList<EPackage> _eSubpackages = ePackage.getESubpackages();
+        QualifiedName _xifexpression = null;
+        final String[] _converted_list = (String[])list;
+        boolean _isEmpty_1 = ((List<String>)Conversions.doWrapArray(_converted_list)).isEmpty();
+        if (_isEmpty_1) {
+          _xifexpression = QualifiedName.create(fragment);
+        } else {
+          _xifexpression = QualifiedName.create(list);
+        }
+        EPackage _findPackage = this.findPackage(_eSubpackages, _xifexpression);
+        ePackage = _findPackage;
+      }
+      boolean _notEquals_1 = (!Objects.equal(ePackage, null));
+      if (_notEquals_1) {
+        return EObjectDescription.create(name, ePackage);
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
+  
+  private EPackage findPackage(final EList<EPackage> ePackages, final QualifiedName qualifiedPackageName) {
+    final String packageName = qualifiedPackageName.getFirstSegment();
+    final Function1<EPackage, Boolean> _function = new Function1<EPackage, Boolean>() {
+      public Boolean apply(final EPackage it) {
+        String _name = it.getName();
+        return Boolean.valueOf(_name.equals(packageName));
       }
     };
-    return IterableExtensions.<IEObjectDescription>findFirst(this.descriptors, _function);
+    final EPackage ePackage = IterableExtensions.<EPackage>findFirst(ePackages, _function);
+    boolean _notEquals = (!Objects.equal(ePackage, null));
+    if (_notEquals) {
+      int _segmentCount = qualifiedPackageName.getSegmentCount();
+      boolean _greaterThan = (_segmentCount > 1);
+      if (_greaterThan) {
+        EList<EPackage> _eSubpackages = ePackage.getESubpackages();
+        QualifiedName _skipFirst = qualifiedPackageName.skipFirst(1);
+        return this.findPackage(_eSubpackages, _skipFirst);
+      } else {
+        return ePackage;
+      }
+    } else {
+      return null;
+    }
   }
   
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
@@ -93,13 +125,7 @@ public class EPackageScope implements IScope {
   
   public IEObjectDescription getSingleElement(final EObject object) {
     System.out.println(("EPackageScope.getSingleElement(object) " + object));
-    final Function1<IEObjectDescription, Boolean> _function = new Function1<IEObjectDescription, Boolean>() {
-      public Boolean apply(final IEObjectDescription it) {
-        EObject _eObjectOrProxy = it.getEObjectOrProxy();
-        return Boolean.valueOf(_eObjectOrProxy.equals(object));
-      }
-    };
-    return IterableExtensions.<IEObjectDescription>findFirst(this.descriptors, _function);
+    return null;
   }
   
   public Iterable<IEObjectDescription> getElements(final EObject object) {
@@ -112,6 +138,7 @@ public class EPackageScope implements IScope {
   
   public Iterable<IEObjectDescription> getAllElements() {
     System.out.println("EPackageScope.getAllElements()");
-    return this.descriptors;
+    final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+    return result;
   }
 }
