@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget <em>Target</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,12 +34,12 @@ public interface ModelNodeType extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Target</em>' reference.
-   * @see #setTarget(Metamodel)
+   * @see #setTarget(RegisteredPackage)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModelNodeType_Target()
    * @model
    * @generated
    */
-  Metamodel getTarget();
+  RegisteredPackage getTarget();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget <em>Target</em>}' reference.
@@ -48,7 +49,7 @@ public interface ModelNodeType extends EObject
    * @see #getTarget()
    * @generated
    */
-  void setTarget(Metamodel value);
+  void setTarget(RegisteredPackage value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' reference.
@@ -75,5 +76,31 @@ public interface ModelNodeType extends EObject
    * @generated
    */
   void setType(EClass value);
+
+  /**
+   * Returns the value of the '<em><b>Property</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Property</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Property</em>' containment reference.
+   * @see #setProperty(NodeProperty)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModelNodeType_Property()
+   * @model containment="true"
+   * @generated
+   */
+  NodeProperty getProperty();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty <em>Property</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Property</em>' containment reference.
+   * @see #getProperty()
+   * @generated
+   */
+  void setProperty(NodeProperty value);
 
 } // ModelNodeType

@@ -24,7 +24,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * @model
  * @generated
  */
-public interface Generator extends Connection
+public interface Generator extends Connection, AspectModel
 {
   /**
    * Returns the value of the '<em><b>Generator</b></em>' containment reference.

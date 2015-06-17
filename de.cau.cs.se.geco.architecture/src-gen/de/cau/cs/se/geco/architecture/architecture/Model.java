@@ -18,8 +18,9 @@ import org.eclipse.xtext.xtype.XImportSection;
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getImportSection <em>Import Section</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getRegisteredPackages <em>Registered Packages</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getConections <em>Conections</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getMetamodels <em>Metamodels</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getConnections <em>Connections</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,8 +83,40 @@ public interface Model extends EObject
   void setImportSection(XImportSection value);
 
   /**
+   * Returns the value of the '<em><b>Registered Packages</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Registered Packages</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Registered Packages</em>' containment reference list.
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModel_RegisteredPackages()
+   * @model containment="true"
+   * @generated
+   */
+  EList<RegisteredPackage> getRegisteredPackages();
+
+  /**
+   * Returns the value of the '<em><b>Conections</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Connection}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Conections</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Conections</em>' containment reference list.
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModel_Conections()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Connection> getConections();
+
+  /**
    * Returns the value of the '<em><b>Metamodels</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Metamodel}.
+   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Metamodels</em>' containment reference list isn't clear,
@@ -95,22 +128,6 @@ public interface Model extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Metamodel> getMetamodels();
-
-  /**
-   * Returns the value of the '<em><b>Connections</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Connection}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Connections</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Connections</em>' containment reference list.
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModel_Connections()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Connection> getConnections();
+  EList<MetamodelSequence> getMetamodels();
 
 } // Model

@@ -3,8 +3,8 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.Merger;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.AspectModel;
+import de.cau.cs.se.geco.architecture.architecture.Weaver;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -18,29 +18,29 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Merger</b></em>'.
+ * An implementation of the model object '<em><b>Weaver</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl#getMerger <em>Merger</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl#getAspectModel <em>Aspect Model</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl#getWeaver <em>Weaver</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl#getAspectModel <em>Aspect Model</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class MergerImpl extends ConnectionImpl implements Merger
+public class WeaverImpl extends ConnectionImpl implements Weaver
 {
   /**
-   * The cached value of the '{@link #getMerger() <em>Merger</em>}' containment reference.
+   * The cached value of the '{@link #getWeaver() <em>Weaver</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMerger()
+   * @see #getWeaver()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference merger;
+  protected JvmTypeReference weaver;
 
   /**
    * The cached value of the '{@link #getAspectModel() <em>Aspect Model</em>}' containment reference.
@@ -50,14 +50,14 @@ public class MergerImpl extends ConnectionImpl implements Merger
    * @generated
    * @ordered
    */
-  protected TargetModelNodeType aspectModel;
+  protected AspectModel aspectModel;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MergerImpl()
+  protected WeaverImpl()
   {
     super();
   }
@@ -70,7 +70,7 @@ public class MergerImpl extends ConnectionImpl implements Merger
   @Override
   protected EClass eStaticClass()
   {
-    return ArchitecturePackage.Literals.MERGER;
+    return ArchitecturePackage.Literals.WEAVER;
   }
 
   /**
@@ -78,9 +78,9 @@ public class MergerImpl extends ConnectionImpl implements Merger
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getMerger()
+  public JvmTypeReference getWeaver()
   {
-    return merger;
+    return weaver;
   }
 
   /**
@@ -88,13 +88,13 @@ public class MergerImpl extends ConnectionImpl implements Merger
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMerger(JvmTypeReference newMerger, NotificationChain msgs)
+  public NotificationChain basicSetWeaver(JvmTypeReference newWeaver, NotificationChain msgs)
   {
-    JvmTypeReference oldMerger = merger;
-    merger = newMerger;
+    JvmTypeReference oldWeaver = weaver;
+    weaver = newWeaver;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MERGER__MERGER, oldMerger, newMerger);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.WEAVER__WEAVER, oldWeaver, newWeaver);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -105,20 +105,20 @@ public class MergerImpl extends ConnectionImpl implements Merger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMerger(JvmTypeReference newMerger)
+  public void setWeaver(JvmTypeReference newWeaver)
   {
-    if (newMerger != merger)
+    if (newWeaver != weaver)
     {
       NotificationChain msgs = null;
-      if (merger != null)
-        msgs = ((InternalEObject)merger).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.MERGER__MERGER, null, msgs);
-      if (newMerger != null)
-        msgs = ((InternalEObject)newMerger).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.MERGER__MERGER, null, msgs);
-      msgs = basicSetMerger(newMerger, msgs);
+      if (weaver != null)
+        msgs = ((InternalEObject)weaver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.WEAVER__WEAVER, null, msgs);
+      if (newWeaver != null)
+        msgs = ((InternalEObject)newWeaver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.WEAVER__WEAVER, null, msgs);
+      msgs = basicSetWeaver(newWeaver, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MERGER__MERGER, newMerger, newMerger));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.WEAVER__WEAVER, newWeaver, newWeaver));
   }
 
   /**
@@ -126,7 +126,7 @@ public class MergerImpl extends ConnectionImpl implements Merger
    * <!-- end-user-doc -->
    * @generated
    */
-  public TargetModelNodeType getAspectModel()
+  public AspectModel getAspectModel()
   {
     return aspectModel;
   }
@@ -136,13 +136,13 @@ public class MergerImpl extends ConnectionImpl implements Merger
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetAspectModel(TargetModelNodeType newAspectModel, NotificationChain msgs)
+  public NotificationChain basicSetAspectModel(AspectModel newAspectModel, NotificationChain msgs)
   {
-    TargetModelNodeType oldAspectModel = aspectModel;
+    AspectModel oldAspectModel = aspectModel;
     aspectModel = newAspectModel;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MERGER__ASPECT_MODEL, oldAspectModel, newAspectModel);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.WEAVER__ASPECT_MODEL, oldAspectModel, newAspectModel);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -153,20 +153,20 @@ public class MergerImpl extends ConnectionImpl implements Merger
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAspectModel(TargetModelNodeType newAspectModel)
+  public void setAspectModel(AspectModel newAspectModel)
   {
     if (newAspectModel != aspectModel)
     {
       NotificationChain msgs = null;
       if (aspectModel != null)
-        msgs = ((InternalEObject)aspectModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.MERGER__ASPECT_MODEL, null, msgs);
+        msgs = ((InternalEObject)aspectModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.WEAVER__ASPECT_MODEL, null, msgs);
       if (newAspectModel != null)
-        msgs = ((InternalEObject)newAspectModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.MERGER__ASPECT_MODEL, null, msgs);
+        msgs = ((InternalEObject)newAspectModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.WEAVER__ASPECT_MODEL, null, msgs);
       msgs = basicSetAspectModel(newAspectModel, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MERGER__ASPECT_MODEL, newAspectModel, newAspectModel));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.WEAVER__ASPECT_MODEL, newAspectModel, newAspectModel));
   }
 
   /**
@@ -179,9 +179,9 @@ public class MergerImpl extends ConnectionImpl implements Merger
   {
     switch (featureID)
     {
-      case ArchitecturePackage.MERGER__MERGER:
-        return basicSetMerger(null, msgs);
-      case ArchitecturePackage.MERGER__ASPECT_MODEL:
+      case ArchitecturePackage.WEAVER__WEAVER:
+        return basicSetWeaver(null, msgs);
+      case ArchitecturePackage.WEAVER__ASPECT_MODEL:
         return basicSetAspectModel(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -197,9 +197,9 @@ public class MergerImpl extends ConnectionImpl implements Merger
   {
     switch (featureID)
     {
-      case ArchitecturePackage.MERGER__MERGER:
-        return getMerger();
-      case ArchitecturePackage.MERGER__ASPECT_MODEL:
+      case ArchitecturePackage.WEAVER__WEAVER:
+        return getWeaver();
+      case ArchitecturePackage.WEAVER__ASPECT_MODEL:
         return getAspectModel();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -215,11 +215,11 @@ public class MergerImpl extends ConnectionImpl implements Merger
   {
     switch (featureID)
     {
-      case ArchitecturePackage.MERGER__MERGER:
-        setMerger((JvmTypeReference)newValue);
+      case ArchitecturePackage.WEAVER__WEAVER:
+        setWeaver((JvmTypeReference)newValue);
         return;
-      case ArchitecturePackage.MERGER__ASPECT_MODEL:
-        setAspectModel((TargetModelNodeType)newValue);
+      case ArchitecturePackage.WEAVER__ASPECT_MODEL:
+        setAspectModel((AspectModel)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -235,11 +235,11 @@ public class MergerImpl extends ConnectionImpl implements Merger
   {
     switch (featureID)
     {
-      case ArchitecturePackage.MERGER__MERGER:
-        setMerger((JvmTypeReference)null);
+      case ArchitecturePackage.WEAVER__WEAVER:
+        setWeaver((JvmTypeReference)null);
         return;
-      case ArchitecturePackage.MERGER__ASPECT_MODEL:
-        setAspectModel((TargetModelNodeType)null);
+      case ArchitecturePackage.WEAVER__ASPECT_MODEL:
+        setAspectModel((AspectModel)null);
         return;
     }
     super.eUnset(featureID);
@@ -255,12 +255,12 @@ public class MergerImpl extends ConnectionImpl implements Merger
   {
     switch (featureID)
     {
-      case ArchitecturePackage.MERGER__MERGER:
-        return merger != null;
-      case ArchitecturePackage.MERGER__ASPECT_MODEL:
+      case ArchitecturePackage.WEAVER__WEAVER:
+        return weaver != null;
+      case ArchitecturePackage.WEAVER__ASPECT_MODEL:
         return aspectModel != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //MergerImpl
+} //WeaverImpl

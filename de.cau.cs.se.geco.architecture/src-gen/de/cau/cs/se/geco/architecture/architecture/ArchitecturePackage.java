@@ -85,22 +85,31 @@ public interface ArchitecturePackage extends EPackage
   int MODEL__IMPORT_SECTION = 1;
 
   /**
+   * The feature id for the '<em><b>Registered Packages</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__REGISTERED_PACKAGES = 2;
+
+  /**
+   * The feature id for the '<em><b>Conections</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__CONECTIONS = 3;
+
+  /**
    * The feature id for the '<em><b>Metamodels</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__METAMODELS = 2;
-
-  /**
-   * The feature id for the '<em><b>Connections</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__CONNECTIONS = 3;
+  int MODEL__METAMODELS = 4;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -109,7 +118,44 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 4;
+  int MODEL_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl <em>Metamodel Sequence</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelSequence()
+   * @generated
+   */
+  int METAMODEL_SEQUENCE = 1;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METAMODEL_SEQUENCE__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Metamodels</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METAMODEL_SEQUENCE__METAMODELS = 1;
+
+  /**
+   * The number of structural features of the '<em>Metamodel Sequence</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METAMODEL_SEQUENCE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelImpl <em>Metamodel</em>}' class.
@@ -119,7 +165,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodel()
    * @generated
    */
-  int METAMODEL = 1;
+  int METAMODEL = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -131,13 +177,41 @@ public interface ArchitecturePackage extends EPackage
   int METAMODEL__NAME = 0;
 
   /**
+   * The number of structural features of the '<em>Metamodel</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METAMODEL_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl <em>Registered Package</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getRegisteredPackage()
+   * @generated
+   */
+  int REGISTERED_PACKAGE = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REGISTERED_PACKAGE__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Model Package</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METAMODEL__MODEL_PACKAGE = 1;
+  int REGISTERED_PACKAGE__MODEL_PACKAGE = 1;
 
   /**
    * The feature id for the '<em><b>Is Text</b></em>' attribute.
@@ -146,7 +220,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int METAMODEL__IS_TEXT = 2;
+  int REGISTERED_PACKAGE__IS_TEXT = 2;
 
   /**
    * The feature id for the '<em><b>Extension</b></em>' attribute.
@@ -155,16 +229,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int METAMODEL__EXTENSION = 3;
+  int REGISTERED_PACKAGE__EXTENSION = 3;
 
   /**
-   * The number of structural features of the '<em>Metamodel</em>' class.
+   * The number of structural features of the '<em>Registered Package</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METAMODEL_FEATURE_COUNT = 4;
+  int REGISTERED_PACKAGE_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl <em>Connection</em>}' class.
@@ -174,16 +248,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getConnection()
    * @generated
    */
-  int CONNECTION = 2;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONNECTION__NAME = 0;
+  int CONNECTION = 4;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -192,7 +257,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION__SOURCE_MODEL = 1;
+  int CONNECTION__SOURCE_MODEL = 0;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -201,7 +266,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION__TARGET_MODEL = 2;
+  int CONNECTION__TARGET_MODEL = 1;
 
   /**
    * The number of structural features of the '<em>Connection</em>' class.
@@ -210,26 +275,17 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION_FEATURE_COUNT = 3;
+  int CONNECTION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl <em>Merger</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl <em>Weaver</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMerger()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getWeaver()
    * @generated
    */
-  int MERGER = 3;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MERGER__NAME = CONNECTION__NAME;
+  int WEAVER = 5;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -238,7 +294,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MERGER__SOURCE_MODEL = CONNECTION__SOURCE_MODEL;
+  int WEAVER__SOURCE_MODEL = CONNECTION__SOURCE_MODEL;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -247,16 +303,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MERGER__TARGET_MODEL = CONNECTION__TARGET_MODEL;
+  int WEAVER__TARGET_MODEL = CONNECTION__TARGET_MODEL;
 
   /**
-   * The feature id for the '<em><b>Merger</b></em>' containment reference.
+   * The feature id for the '<em><b>Weaver</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MERGER__MERGER = CONNECTION_FEATURE_COUNT + 0;
+  int WEAVER__WEAVER = CONNECTION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Aspect Model</b></em>' containment reference.
@@ -265,16 +321,35 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MERGER__ASPECT_MODEL = CONNECTION_FEATURE_COUNT + 1;
+  int WEAVER__ASPECT_MODEL = CONNECTION_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Merger</em>' class.
+   * The number of structural features of the '<em>Weaver</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MERGER_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 2;
+  int WEAVER_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AspectModelImpl <em>Aspect Model</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.AspectModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getAspectModel()
+   * @generated
+   */
+  int ASPECT_MODEL = 6;
+
+  /**
+   * The number of structural features of the '<em>Aspect Model</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASPECT_MODEL_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl <em>Generator</em>}' class.
@@ -284,16 +359,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getGenerator()
    * @generated
    */
-  int GENERATOR = 4;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GENERATOR__NAME = CONNECTION__NAME;
+  int GENERATOR = 7;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -357,16 +423,25 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceModelNodeSelector()
    * @generated
    */
-  int SOURCE_MODEL_NODE_SELECTOR = 5;
+  int SOURCE_MODEL_NODE_SELECTOR = 8;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Reference</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SOURCE_MODEL_NODE_SELECTOR__TYPE = 0;
+  int SOURCE_MODEL_NODE_SELECTOR__REFERENCE = 0;
+
+  /**
+   * The feature id for the '<em><b>Property</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SOURCE_MODEL_NODE_SELECTOR__PROPERTY = 1;
 
   /**
    * The number of structural features of the '<em>Source Model Node Selector</em>' class.
@@ -375,7 +450,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int SOURCE_MODEL_NODE_SELECTOR_FEATURE_COUNT = 1;
+  int SOURCE_MODEL_NODE_SELECTOR_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl <em>Target Model Node Type</em>}' class.
@@ -385,16 +460,16 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetModelNodeType()
    * @generated
    */
-  int TARGET_MODEL_NODE_TYPE = 6;
+  int TARGET_MODEL_NODE_TYPE = 9;
 
   /**
-   * The feature id for the '<em><b>Node Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Reference</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_NODE_TYPE__NODE_TYPE = 0;
+  int TARGET_MODEL_NODE_TYPE__REFERENCE = ASPECT_MODEL_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Multiply</b></em>' attribute.
@@ -403,7 +478,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_NODE_TYPE__MULTIPLY = 1;
+  int TARGET_MODEL_NODE_TYPE__MULTIPLY = ASPECT_MODEL_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Target Model Node Type</em>' class.
@@ -412,7 +487,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_NODE_TYPE_FEATURE_COUNT = 2;
+  int TARGET_MODEL_NODE_TYPE_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl <em>Model Node Type</em>}' class.
@@ -422,7 +497,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelNodeType()
    * @generated
    */
-  int MODEL_NODE_TYPE = 7;
+  int MODEL_NODE_TYPE = 10;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -443,13 +518,205 @@ public interface ArchitecturePackage extends EPackage
   int MODEL_NODE_TYPE__TYPE = 1;
 
   /**
+   * The feature id for the '<em><b>Property</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_NODE_TYPE__PROPERTY = 2;
+
+  /**
    * The number of structural features of the '<em>Model Node Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_NODE_TYPE_FEATURE_COUNT = 2;
+  int MODEL_NODE_TYPE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl <em>Constraint Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getConstraintExpression()
+   * @generated
+   */
+  int CONSTRAINT_EXPRESSION = 12;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_EXPRESSION__LEFT = 0;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_EXPRESSION__OPERATOR = 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_EXPRESSION__RIGHT = 2;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_EXPRESSION__CONSTRAINT = 3;
+
+  /**
+   * The number of structural features of the '<em>Constraint Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_EXPRESSION_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.OperandImpl <em>Operand</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.OperandImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getOperand()
+   * @generated
+   */
+  int OPERAND = 13;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERAND__LEFT = CONSTRAINT_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERAND__OPERATOR = CONSTRAINT_EXPRESSION__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERAND__RIGHT = CONSTRAINT_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERAND__CONSTRAINT = CONSTRAINT_EXPRESSION__CONSTRAINT;
+
+  /**
+   * The number of structural features of the '<em>Operand</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERAND_FEATURE_COUNT = CONSTRAINT_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl <em>Node Property</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeProperty()
+   * @generated
+   */
+  int NODE_PROPERTY = 11;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY__LEFT = OPERAND__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY__OPERATOR = OPERAND__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY__RIGHT = OPERAND__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY__CONSTRAINT = OPERAND__CONSTRAINT;
+
+  /**
+   * The feature id for the '<em><b>Property</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY__PROPERTY = OPERAND_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Sub Property</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY__SUB_PROPERTY = OPERAND_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Node Property</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY_FEATURE_COUNT = OPERAND_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelImpl <em>Trace Model</em>}' class.
@@ -459,7 +726,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTraceModel()
    * @generated
    */
-  int TRACE_MODEL = 8;
+  int TRACE_MODEL = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -496,7 +763,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeSetRelation()
    * @generated
    */
-  int NODE_SET_RELATION = 9;
+  int NODE_SET_RELATION = 15;
 
   /**
    * The feature id for the '<em><b>Source Nodes</b></em>' containment reference list.
@@ -533,7 +800,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeType()
    * @generated
    */
-  int NODE_TYPE = 10;
+  int NODE_TYPE = 16;
 
   /**
    * The feature id for the '<em><b>Eclass</b></em>' reference.
@@ -552,6 +819,500 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int NODE_TYPE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.LiteralImpl <em>Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.LiteralImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLiteral()
+   * @generated
+   */
+  int LITERAL = 17;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL__LEFT = OPERAND__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL__OPERATOR = OPERAND__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL__RIGHT = OPERAND__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL__CONSTRAINT = OPERAND__CONSTRAINT;
+
+  /**
+   * The number of structural features of the '<em>Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL_FEATURE_COUNT = OPERAND_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ArrayLiteralImpl <em>Array Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArrayLiteralImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getArrayLiteral()
+   * @generated
+   */
+  int ARRAY_LITERAL = 18;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_LITERAL__LEFT = LITERAL__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_LITERAL__OPERATOR = LITERAL__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
+
+  /**
+   * The feature id for the '<em><b>Literals</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_LITERAL__LITERALS = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Array Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.StringLiteralImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getStringLiteral()
+   * @generated
+   */
+  int STRING_LITERAL = 19;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__LEFT = LITERAL__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__OPERATOR = LITERAL__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.IntLiteralImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getIntLiteral()
+   * @generated
+   */
+  int INT_LITERAL = 20;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__LEFT = LITERAL__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__OPERATOR = LITERAL__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Int Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.FloatLiteralImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getFloatLiteral()
+   * @generated
+   */
+  int FLOAT_LITERAL = 21;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOAT_LITERAL__LEFT = LITERAL__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOAT_LITERAL__OPERATOR = LITERAL__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOAT_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOAT_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOAT_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Float Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOAT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.BooleanLiteralImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBooleanLiteral()
+   * @generated
+   */
+  int BOOLEAN_LITERAL = 22;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__LEFT = LITERAL__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__OPERATOR = LITERAL__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Boolean Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.LogicOperatorImpl <em>Logic Operator</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.LogicOperatorImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLogicOperator()
+   * @generated
+   */
+  int LOGIC_OPERATOR = 23;
+
+  /**
+   * The feature id for the '<em><b>AND</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_OPERATOR__AND = 0;
+
+  /**
+   * The feature id for the '<em><b>OR</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_OPERATOR__OR = 1;
+
+  /**
+   * The number of structural features of the '<em>Logic Operator</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOGIC_OPERATOR_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ComparatorImpl <em>Comparator</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ComparatorImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getComparator()
+   * @generated
+   */
+  int COMPARATOR = 24;
+
+  /**
+   * The feature id for the '<em><b>EQ</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARATOR__EQ = 0;
+
+  /**
+   * The feature id for the '<em><b>NE</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARATOR__NE = 1;
+
+  /**
+   * The feature id for the '<em><b>GR</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARATOR__GR = 2;
+
+  /**
+   * The feature id for the '<em><b>LW</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARATOR__LW = 3;
+
+  /**
+   * The feature id for the '<em><b>GE</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARATOR__GE = 4;
+
+  /**
+   * The feature id for the '<em><b>LE</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARATOR__LE = 5;
+
+  /**
+   * The feature id for the '<em><b>LIKE</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARATOR__LIKE = 6;
+
+  /**
+   * The number of structural features of the '<em>Comparator</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARATOR_FEATURE_COUNT = 7;
 
 
   /**
@@ -587,6 +1348,28 @@ public interface ArchitecturePackage extends EPackage
   EReference getModel_ImportSection();
 
   /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getRegisteredPackages <em>Registered Packages</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Registered Packages</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Model#getRegisteredPackages()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_RegisteredPackages();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getConections <em>Conections</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Conections</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Model#getConections()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Conections();
+
+  /**
    * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getMetamodels <em>Metamodels</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -598,15 +1381,36 @@ public interface ArchitecturePackage extends EPackage
   EReference getModel_Metamodels();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getConnections <em>Connections</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence <em>Metamodel Sequence</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Connections</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model#getConnections()
-   * @see #getModel()
+   * @return the meta object for class '<em>Metamodel Sequence</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
    * @generated
    */
-  EReference getModel_Connections();
+  EClass getMetamodelSequence();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getType()
+   * @see #getMetamodelSequence()
+   * @generated
+   */
+  EReference getMetamodelSequence_Type();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getMetamodels <em>Metamodels</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Metamodels</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getMetamodels()
+   * @see #getMetamodelSequence()
+   * @generated
+   */
+  EReference getMetamodelSequence_Metamodels();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel <em>Metamodel</em>}'.
@@ -630,37 +1434,58 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getMetamodel_Name();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel#getModelPackage <em>Model Package</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage <em>Registered Package</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Registered Package</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
+   * @generated
+   */
+  EClass getRegisteredPackage();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getName()
+   * @see #getRegisteredPackage()
+   * @generated
+   */
+  EAttribute getRegisteredPackage_Name();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getModelPackage <em>Model Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Model Package</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel#getModelPackage()
-   * @see #getMetamodel()
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getModelPackage()
+   * @see #getRegisteredPackage()
    * @generated
    */
-  EReference getMetamodel_ModelPackage();
+  EReference getRegisteredPackage_ModelPackage();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel#isIsText <em>Is Text</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#isIsText <em>Is Text</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Is Text</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel#isIsText()
-   * @see #getMetamodel()
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#isIsText()
+   * @see #getRegisteredPackage()
    * @generated
    */
-  EAttribute getMetamodel_IsText();
+  EAttribute getRegisteredPackage_IsText();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel#getExtension <em>Extension</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getExtension <em>Extension</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Extension</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel#getExtension()
-   * @see #getMetamodel()
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getExtension()
+   * @see #getRegisteredPackage()
    * @generated
    */
-  EAttribute getMetamodel_Extension();
+  EAttribute getRegisteredPackage_Extension();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Connection <em>Connection</em>}'.
@@ -671,17 +1496,6 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EClass getConnection();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getName()
-   * @see #getConnection()
-   * @generated
-   */
-  EAttribute getConnection_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getSourceModel <em>Source Model</em>}'.
@@ -706,36 +1520,46 @@ public interface ArchitecturePackage extends EPackage
   EReference getConnection_TargetModel();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Merger <em>Merger</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Weaver <em>Weaver</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Merger</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Merger
+   * @return the meta object for class '<em>Weaver</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Weaver
    * @generated
    */
-  EClass getMerger();
+  EClass getWeaver();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Merger#getMerger <em>Merger</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Weaver#getWeaver <em>Weaver</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Merger</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Merger#getMerger()
-   * @see #getMerger()
+   * @return the meta object for the containment reference '<em>Weaver</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Weaver#getWeaver()
+   * @see #getWeaver()
    * @generated
    */
-  EReference getMerger_Merger();
+  EReference getWeaver_Weaver();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Merger#getAspectModel <em>Aspect Model</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Weaver#getAspectModel <em>Aspect Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Aspect Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Merger#getAspectModel()
-   * @see #getMerger()
+   * @see de.cau.cs.se.geco.architecture.architecture.Weaver#getAspectModel()
+   * @see #getWeaver()
    * @generated
    */
-  EReference getMerger_AspectModel();
+  EReference getWeaver_AspectModel();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.AspectModel <em>Aspect Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Aspect Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.AspectModel
+   * @generated
+   */
+  EClass getAspectModel();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Generator <em>Generator</em>}'.
@@ -791,15 +1615,26 @@ public interface ArchitecturePackage extends EPackage
   EClass getSourceModelNodeSelector();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getType()
+   * @return the meta object for the reference '<em>Reference</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getReference()
    * @see #getSourceModelNodeSelector()
    * @generated
    */
-  EReference getSourceModelNodeSelector_Type();
+  EReference getSourceModelNodeSelector_Reference();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getProperty <em>Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Property</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getProperty()
+   * @see #getSourceModelNodeSelector()
+   * @generated
+   */
+  EReference getSourceModelNodeSelector_Property();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType <em>Target Model Node Type</em>}'.
@@ -812,15 +1647,15 @@ public interface ArchitecturePackage extends EPackage
   EClass getTargetModelNodeType();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getNodeType <em>Node Type</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Node Type</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getNodeType()
+   * @return the meta object for the reference '<em>Reference</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getReference()
    * @see #getTargetModelNodeType()
    * @generated
    */
-  EReference getTargetModelNodeType_NodeType();
+  EReference getTargetModelNodeType_Reference();
 
   /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#isMultiply <em>Multiply</em>}'.
@@ -864,6 +1699,113 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EReference getModelNodeType_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty <em>Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Property</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty()
+   * @see #getModelNodeType()
+   * @generated
+   */
+  EReference getModelNodeType_Property();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty <em>Node Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Node Property</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.NodeProperty
+   * @generated
+   */
+  EClass getNodeProperty();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty#getProperty <em>Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Property</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.NodeProperty#getProperty()
+   * @see #getNodeProperty()
+   * @generated
+   */
+  EReference getNodeProperty_Property();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty#getSubProperty <em>Sub Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Sub Property</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.NodeProperty#getSubProperty()
+   * @see #getNodeProperty()
+   * @generated
+   */
+  EReference getNodeProperty_SubProperty();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression <em>Constraint Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constraint Expression</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
+   * @generated
+   */
+  EClass getConstraintExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getLeft()
+   * @see #getConstraintExpression()
+   * @generated
+   */
+  EReference getConstraintExpression_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Operator</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getOperator()
+   * @see #getConstraintExpression()
+   * @generated
+   */
+  EReference getConstraintExpression_Operator();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getRight()
+   * @see #getConstraintExpression()
+   * @generated
+   */
+  EReference getConstraintExpression_Right();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getConstraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Constraint</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getConstraint()
+   * @see #getConstraintExpression()
+   * @generated
+   */
+  EReference getConstraintExpression_Constraint();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Operand <em>Operand</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Operand</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Operand
+   * @generated
+   */
+  EClass getOperand();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TraceModel <em>Trace Model</em>}'.
@@ -951,6 +1893,240 @@ public interface ArchitecturePackage extends EPackage
   EReference getNodeType_Eclass();
 
   /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Literal</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Literal
+   * @generated
+   */
+  EClass getLiteral();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.ArrayLiteral <em>Array Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Array Literal</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ArrayLiteral
+   * @generated
+   */
+  EClass getArrayLiteral();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.ArrayLiteral#getLiterals <em>Literals</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Literals</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ArrayLiteral#getLiterals()
+   * @see #getArrayLiteral()
+   * @generated
+   */
+  EReference getArrayLiteral_Literals();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.StringLiteral
+   * @generated
+   */
+  EClass getStringLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.StringLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.StringLiteral#getValue()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EAttribute getStringLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.IntLiteral <em>Int Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Int Literal</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.IntLiteral
+   * @generated
+   */
+  EClass getIntLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.IntLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.IntLiteral#getValue()
+   * @see #getIntLiteral()
+   * @generated
+   */
+  EAttribute getIntLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.FloatLiteral <em>Float Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Float Literal</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.FloatLiteral
+   * @generated
+   */
+  EClass getFloatLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.FloatLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.FloatLiteral#getValue()
+   * @see #getFloatLiteral()
+   * @generated
+   */
+  EAttribute getFloatLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Boolean Literal</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.BooleanLiteral
+   * @generated
+   */
+  EClass getBooleanLiteral();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.BooleanLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.BooleanLiteral#getValue()
+   * @see #getBooleanLiteral()
+   * @generated
+   */
+  EReference getBooleanLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Logic Operator</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator
+   * @generated
+   */
+  EClass getLogicOperator();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator#getAND <em>AND</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>AND</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator#getAND()
+   * @see #getLogicOperator()
+   * @generated
+   */
+  EAttribute getLogicOperator_AND();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator#getOR <em>OR</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>OR</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator#getOR()
+   * @see #getLogicOperator()
+   * @generated
+   */
+  EAttribute getLogicOperator_OR();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Comparator</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator
+   * @generated
+   */
+  EClass getComparator();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getEQ <em>EQ</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>EQ</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getEQ()
+   * @see #getComparator()
+   * @generated
+   */
+  EAttribute getComparator_EQ();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getNE <em>NE</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>NE</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getNE()
+   * @see #getComparator()
+   * @generated
+   */
+  EAttribute getComparator_NE();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getGR <em>GR</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>GR</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getGR()
+   * @see #getComparator()
+   * @generated
+   */
+  EAttribute getComparator_GR();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLW <em>LW</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>LW</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getLW()
+   * @see #getComparator()
+   * @generated
+   */
+  EAttribute getComparator_LW();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getGE <em>GE</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>GE</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getGE()
+   * @see #getComparator()
+   * @generated
+   */
+  EAttribute getComparator_GE();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLE <em>LE</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>LE</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getLE()
+   * @see #getComparator()
+   * @generated
+   */
+  EAttribute getComparator_LE();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLIKE <em>LIKE</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>LIKE</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getLIKE()
+   * @see #getComparator()
+   * @generated
+   */
+  EAttribute getComparator_LIKE();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1000,6 +2176,22 @@ public interface ArchitecturePackage extends EPackage
     EReference MODEL__IMPORT_SECTION = eINSTANCE.getModel_ImportSection();
 
     /**
+     * The meta object literal for the '<em><b>Registered Packages</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__REGISTERED_PACKAGES = eINSTANCE.getModel_RegisteredPackages();
+
+    /**
+     * The meta object literal for the '<em><b>Conections</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__CONECTIONS = eINSTANCE.getModel_Conections();
+
+    /**
      * The meta object literal for the '<em><b>Metamodels</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1008,12 +2200,30 @@ public interface ArchitecturePackage extends EPackage
     EReference MODEL__METAMODELS = eINSTANCE.getModel_Metamodels();
 
     /**
-     * The meta object literal for the '<em><b>Connections</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl <em>Metamodel Sequence</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelSequence()
+     * @generated
+     */
+    EClass METAMODEL_SEQUENCE = eINSTANCE.getMetamodelSequence();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__CONNECTIONS = eINSTANCE.getModel_Connections();
+    EReference METAMODEL_SEQUENCE__TYPE = eINSTANCE.getMetamodelSequence_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Metamodels</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METAMODEL_SEQUENCE__METAMODELS = eINSTANCE.getMetamodelSequence_Metamodels();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelImpl <em>Metamodel</em>}' class.
@@ -1034,12 +2244,30 @@ public interface ArchitecturePackage extends EPackage
     EAttribute METAMODEL__NAME = eINSTANCE.getMetamodel_Name();
 
     /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl <em>Registered Package</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getRegisteredPackage()
+     * @generated
+     */
+    EClass REGISTERED_PACKAGE = eINSTANCE.getRegisteredPackage();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REGISTERED_PACKAGE__NAME = eINSTANCE.getRegisteredPackage_Name();
+
+    /**
      * The meta object literal for the '<em><b>Model Package</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference METAMODEL__MODEL_PACKAGE = eINSTANCE.getMetamodel_ModelPackage();
+    EReference REGISTERED_PACKAGE__MODEL_PACKAGE = eINSTANCE.getRegisteredPackage_ModelPackage();
 
     /**
      * The meta object literal for the '<em><b>Is Text</b></em>' attribute feature.
@@ -1047,7 +2275,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute METAMODEL__IS_TEXT = eINSTANCE.getMetamodel_IsText();
+    EAttribute REGISTERED_PACKAGE__IS_TEXT = eINSTANCE.getRegisteredPackage_IsText();
 
     /**
      * The meta object literal for the '<em><b>Extension</b></em>' attribute feature.
@@ -1055,7 +2283,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute METAMODEL__EXTENSION = eINSTANCE.getMetamodel_Extension();
+    EAttribute REGISTERED_PACKAGE__EXTENSION = eINSTANCE.getRegisteredPackage_Extension();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl <em>Connection</em>}' class.
@@ -1066,14 +2294,6 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EClass CONNECTION = eINSTANCE.getConnection();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CONNECTION__NAME = eINSTANCE.getConnection_Name();
 
     /**
      * The meta object literal for the '<em><b>Source Model</b></em>' containment reference feature.
@@ -1092,22 +2312,22 @@ public interface ArchitecturePackage extends EPackage
     EReference CONNECTION__TARGET_MODEL = eINSTANCE.getConnection_TargetModel();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl <em>Merger</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl <em>Weaver</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.MergerImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMerger()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getWeaver()
      * @generated
      */
-    EClass MERGER = eINSTANCE.getMerger();
+    EClass WEAVER = eINSTANCE.getWeaver();
 
     /**
-     * The meta object literal for the '<em><b>Merger</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Weaver</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MERGER__MERGER = eINSTANCE.getMerger_Merger();
+    EReference WEAVER__WEAVER = eINSTANCE.getWeaver_Weaver();
 
     /**
      * The meta object literal for the '<em><b>Aspect Model</b></em>' containment reference feature.
@@ -1115,7 +2335,17 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MERGER__ASPECT_MODEL = eINSTANCE.getMerger_AspectModel();
+    EReference WEAVER__ASPECT_MODEL = eINSTANCE.getWeaver_AspectModel();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AspectModelImpl <em>Aspect Model</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.AspectModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getAspectModel()
+     * @generated
+     */
+    EClass ASPECT_MODEL = eINSTANCE.getAspectModel();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl <em>Generator</em>}' class.
@@ -1162,12 +2392,20 @@ public interface ArchitecturePackage extends EPackage
     EClass SOURCE_MODEL_NODE_SELECTOR = eINSTANCE.getSourceModelNodeSelector();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SOURCE_MODEL_NODE_SELECTOR__TYPE = eINSTANCE.getSourceModelNodeSelector_Type();
+    EReference SOURCE_MODEL_NODE_SELECTOR__REFERENCE = eINSTANCE.getSourceModelNodeSelector_Reference();
+
+    /**
+     * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SOURCE_MODEL_NODE_SELECTOR__PROPERTY = eINSTANCE.getSourceModelNodeSelector_Property();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl <em>Target Model Node Type</em>}' class.
@@ -1180,12 +2418,12 @@ public interface ArchitecturePackage extends EPackage
     EClass TARGET_MODEL_NODE_TYPE = eINSTANCE.getTargetModelNodeType();
 
     /**
-     * The meta object literal for the '<em><b>Node Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TARGET_MODEL_NODE_TYPE__NODE_TYPE = eINSTANCE.getTargetModelNodeType_NodeType();
+    EReference TARGET_MODEL_NODE_TYPE__REFERENCE = eINSTANCE.getTargetModelNodeType_Reference();
 
     /**
      * The meta object literal for the '<em><b>Multiply</b></em>' attribute feature.
@@ -1220,6 +2458,92 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EReference MODEL_NODE_TYPE__TYPE = eINSTANCE.getModelNodeType_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL_NODE_TYPE__PROPERTY = eINSTANCE.getModelNodeType_Property();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl <em>Node Property</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeProperty()
+     * @generated
+     */
+    EClass NODE_PROPERTY = eINSTANCE.getNodeProperty();
+
+    /**
+     * The meta object literal for the '<em><b>Property</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NODE_PROPERTY__PROPERTY = eINSTANCE.getNodeProperty_Property();
+
+    /**
+     * The meta object literal for the '<em><b>Sub Property</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NODE_PROPERTY__SUB_PROPERTY = eINSTANCE.getNodeProperty_SubProperty();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl <em>Constraint Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getConstraintExpression()
+     * @generated
+     */
+    EClass CONSTRAINT_EXPRESSION = eINSTANCE.getConstraintExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT_EXPRESSION__LEFT = eINSTANCE.getConstraintExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT_EXPRESSION__OPERATOR = eINSTANCE.getConstraintExpression_Operator();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT_EXPRESSION__RIGHT = eINSTANCE.getConstraintExpression_Right();
+
+    /**
+     * The meta object literal for the '<em><b>Constraint</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT_EXPRESSION__CONSTRAINT = eINSTANCE.getConstraintExpression_Constraint();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.OperandImpl <em>Operand</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.OperandImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getOperand()
+     * @generated
+     */
+    EClass OPERAND = eINSTANCE.getOperand();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelImpl <em>Trace Model</em>}' class.
@@ -1290,6 +2614,198 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EReference NODE_TYPE__ECLASS = eINSTANCE.getNodeType_Eclass();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.LiteralImpl <em>Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.LiteralImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLiteral()
+     * @generated
+     */
+    EClass LITERAL = eINSTANCE.getLiteral();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ArrayLiteralImpl <em>Array Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArrayLiteralImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getArrayLiteral()
+     * @generated
+     */
+    EClass ARRAY_LITERAL = eINSTANCE.getArrayLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Literals</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ARRAY_LITERAL__LITERALS = eINSTANCE.getArrayLiteral_Literals();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.StringLiteralImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getStringLiteral()
+     * @generated
+     */
+    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.IntLiteralImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getIntLiteral()
+     * @generated
+     */
+    EClass INT_LITERAL = eINSTANCE.getIntLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INT_LITERAL__VALUE = eINSTANCE.getIntLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.FloatLiteralImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getFloatLiteral()
+     * @generated
+     */
+    EClass FLOAT_LITERAL = eINSTANCE.getFloatLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FLOAT_LITERAL__VALUE = eINSTANCE.getFloatLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.BooleanLiteralImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBooleanLiteral()
+     * @generated
+     */
+    EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.LogicOperatorImpl <em>Logic Operator</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.LogicOperatorImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLogicOperator()
+     * @generated
+     */
+    EClass LOGIC_OPERATOR = eINSTANCE.getLogicOperator();
+
+    /**
+     * The meta object literal for the '<em><b>AND</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOGIC_OPERATOR__AND = eINSTANCE.getLogicOperator_AND();
+
+    /**
+     * The meta object literal for the '<em><b>OR</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOGIC_OPERATOR__OR = eINSTANCE.getLogicOperator_OR();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ComparatorImpl <em>Comparator</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ComparatorImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getComparator()
+     * @generated
+     */
+    EClass COMPARATOR = eINSTANCE.getComparator();
+
+    /**
+     * The meta object literal for the '<em><b>EQ</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARATOR__EQ = eINSTANCE.getComparator_EQ();
+
+    /**
+     * The meta object literal for the '<em><b>NE</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARATOR__NE = eINSTANCE.getComparator_NE();
+
+    /**
+     * The meta object literal for the '<em><b>GR</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARATOR__GR = eINSTANCE.getComparator_GR();
+
+    /**
+     * The meta object literal for the '<em><b>LW</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARATOR__LW = eINSTANCE.getComparator_LW();
+
+    /**
+     * The meta object literal for the '<em><b>GE</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARATOR__GE = eINSTANCE.getComparator_GE();
+
+    /**
+     * The meta object literal for the '<em><b>LE</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARATOR__LE = eINSTANCE.getComparator_LE();
+
+    /**
+     * The meta object literal for the '<em><b>LIKE</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARATOR__LIKE = eINSTANCE.getComparator_LIKE();
 
   }
 

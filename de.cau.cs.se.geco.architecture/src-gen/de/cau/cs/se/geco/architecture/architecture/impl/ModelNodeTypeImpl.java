@@ -3,10 +3,12 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
+import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -23,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,7 +41,7 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * @generated
    * @ordered
    */
-  protected Metamodel target;
+  protected RegisteredPackage target;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -49,6 +52,16 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * @ordered
    */
   protected EClass type;
+
+  /**
+   * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProperty()
+   * @generated
+   * @ordered
+   */
+  protected NodeProperty property;
 
   /**
    * <!-- begin-user-doc -->
@@ -76,12 +89,12 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel getTarget()
+  public RegisteredPackage getTarget()
   {
     if (target != null && target.eIsProxy())
     {
       InternalEObject oldTarget = (InternalEObject)target;
-      target = (Metamodel)eResolveProxy(oldTarget);
+      target = (RegisteredPackage)eResolveProxy(oldTarget);
       if (target != oldTarget)
       {
         if (eNotificationRequired())
@@ -96,7 +109,7 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel basicGetTarget()
+  public RegisteredPackage basicGetTarget()
   {
     return target;
   }
@@ -106,9 +119,9 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTarget(Metamodel newTarget)
+  public void setTarget(RegisteredPackage newTarget)
   {
-    Metamodel oldTarget = target;
+    RegisteredPackage oldTarget = target;
     target = newTarget;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MODEL_NODE_TYPE__TARGET, oldTarget, target));
@@ -162,6 +175,70 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
+  public NodeProperty getProperty()
+  {
+    return property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetProperty(NodeProperty newProperty, NotificationChain msgs)
+  {
+    NodeProperty oldProperty = property;
+    property = newProperty;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY, oldProperty, newProperty);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setProperty(NodeProperty newProperty)
+  {
+    if (newProperty != property)
+    {
+      NotificationChain msgs = null;
+      if (property != null)
+        msgs = ((InternalEObject)property).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY, null, msgs);
+      if (newProperty != null)
+        msgs = ((InternalEObject)newProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY, null, msgs);
+      msgs = basicSetProperty(newProperty, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY, newProperty, newProperty));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
+        return basicSetProperty(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -173,6 +250,8 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
       case ArchitecturePackage.MODEL_NODE_TYPE__TYPE:
         if (resolve) return getType();
         return basicGetType();
+      case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
+        return getProperty();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -188,10 +267,13 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
     switch (featureID)
     {
       case ArchitecturePackage.MODEL_NODE_TYPE__TARGET:
-        setTarget((Metamodel)newValue);
+        setTarget((RegisteredPackage)newValue);
         return;
       case ArchitecturePackage.MODEL_NODE_TYPE__TYPE:
         setType((EClass)newValue);
+        return;
+      case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
+        setProperty((NodeProperty)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -208,10 +290,13 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
     switch (featureID)
     {
       case ArchitecturePackage.MODEL_NODE_TYPE__TARGET:
-        setTarget((Metamodel)null);
+        setTarget((RegisteredPackage)null);
         return;
       case ArchitecturePackage.MODEL_NODE_TYPE__TYPE:
         setType((EClass)null);
+        return;
+      case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
+        setProperty((NodeProperty)null);
         return;
     }
     super.eUnset(featureID);
@@ -231,6 +316,8 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
         return target != null;
       case ArchitecturePackage.MODEL_NODE_TYPE__TYPE:
         return type != null;
+      case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
+        return property != null;
     }
     return super.eIsSet(featureID);
   }

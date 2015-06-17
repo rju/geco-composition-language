@@ -7,14 +7,23 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 Model:
 	'package' name=QualifiedName
 	importSection=XImportSection?
-	metamodels+=Metamodel+ 
+	registeredPackages+=RegisteredPackage+
+	
 	// prerequisites
 	// handle results
-	connections+=Connection*
+	(conections+=Connection | metamodels+=MetamodelSequence)*
+;
+
+MetamodelSequence:
+	'model' type=ModelNodeType metamodels+=Metamodel (',' metamodels+=Metamodel)*
 ;
 
 Metamodel:
-	'metamodel' name=ValidID (modelPackage=[ecore::EPackage|STRING] |(isText?='text' extension=STRING))
+	name=ValidID 
+;
+
+RegisteredPackage:
+	'register' name=ValidID (modelPackage=[ecore::EPackage|STRING] |(isText?='text' extension=STRING))
 ;
 
 Connection:
@@ -22,31 +31,60 @@ Connection:
 ;
 
 Weaver:
-	'weave' merger=JvmTypeReference name=ID 
+	'weave' weaver=JvmTypeReference  
 		sourceModel=SourceModelNodeSelector
-		aspectModel=TargetModelNodeType
-		targetModel=TargetModelNodeType
+		aspectModel=AspectModel
+		('=>' targetModel=TargetModelNodeType)?
+;
+
+AspectModel:
+	(':' TargetModelNodeType) | Generator
 ;
 	
 Generator:
-	'generate' generator=JvmTypeReference name=ID 
+	'generate' generator=JvmTypeReference 
 		sourceModel=SourceModelNodeSelector
 		targetModel=TargetModelNodeType
 		('->' writeTraceModel=TraceModel)?
-		('<-' readTraceModels+=[TraceModel|ValidID] (',' readTraceModels+=[TraceModel|ValidID])*)
+		('<-' readTraceModels+=[TraceModel|ValidID] (',' readTraceModels+=[TraceModel|ValidID])*)?
 ;
 
 SourceModelNodeSelector: 
-	type=ModelNodeType | 
+	reference = [Metamodel|ValidID] ('/' property=NodeProperty)? | 
 	{SourceModelNodeSelector} 'null' 
 ;
 
-TargetModelNodeType:
-	nodeType=ModelNodeType (multiply?='*')?
+TargetModelNodeType: {TargetModelNodeType}
+	(reference = [Metamodel|ValidID])? (multiply?='*')?
 ;
 
 ModelNodeType:
-	target=[Metamodel|ValidID] '/' type=[ecore::EClass|ValidID]
+	target=[RegisteredPackage|ValidID] '/' type=[ecore::EClass|ValidID] ('/' property=NodeProperty)?
+;
+
+NodeProperty:
+	property=[ecore::EReference|ValidID] ('[' constraint=ConstraintExpression ']')? ('/' subProperty=NodeProperty)? 
+;
+
+ConstraintExpression:
+	CompareExpression (=>({ConstraintExpression.left=current} operator=LogicOperator) right=ConstraintExpression)?
+;
+
+CompareExpression returns ConstraintExpression:
+	BasicConstraint (=>({ConstraintExpression.left=current} operator=Comparator) right=BasicConstraint)?
+;
+
+BasicConstraint returns ConstraintExpression:
+	ParenthesisConstraint |
+	Operand
+;
+
+ParenthesisConstraint returns ConstraintExpression:
+	'(' constraint=ConstraintExpression ')'
+;
+
+Operand:
+	Literal | NodeProperty
 ;
 
 TraceModel:
@@ -62,3 +100,62 @@ NodeSetRelation:
 ;
 
 NodeType: eclass=[ecore::EClass|ValidID];
+
+// -----------------------------------
+// Literal
+
+Literal:
+	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ArrayLiteral
+;
+
+ArrayLiteral:
+	'{' literals+=Literal (',' literals+=Literal)* '}'
+;
+
+StringLiteral:
+	value=STRING
+;
+
+IntLiteral:
+	value=AINT
+;
+
+FloatLiteral:
+	value=FLOAT
+;
+
+BooleanLiteral: 
+	value=XBooleanLiteral
+;
+
+// -----------------------------------
+// Terminals
+
+LogicOperator:
+	AND = '&' |
+	OR = '|'
+;
+
+Comparator:
+	EQ = '==' |
+	NE = '!=' |
+	GR = '>' |
+	LW = '<' |
+	GE = '>=' |
+	LE = '<=' |
+	LIKE = '~'
+;
+
+// terminals
+terminal fragment DIGIT :
+    '0'..'9';
+    
+// redefine INT terminal to allow negative numbers
+terminal AINT returns ecore::EInt:
+    '-'? DIGIT+;
+    
+// make sure the Float rule does not shadow the INT rule
+terminal FLOAT returns ecore::EFloatObject :
+    '-'? DIGIT+ ('.' DIGIT*) (("e"|"E") ("+"|"-")? DIGIT+)? 'f'? |
+    '-'? DIGIT+ 'f';
+    

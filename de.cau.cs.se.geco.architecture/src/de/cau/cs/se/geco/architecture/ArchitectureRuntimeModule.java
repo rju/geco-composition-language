@@ -5,6 +5,10 @@ package de.cau.cs.se.geco.architecture;
 
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 
+import com.google.inject.name.Names;
+
+import de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
@@ -17,6 +21,15 @@ public class ArchitectureRuntimeModule extends de.cau.cs.se.geco.architecture.Ab
 	 */
 	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
 		return IQualifiedNameConverter.DefaultImpl.class;
+	}
+	
+	/**
+	 * Redefined delegate chain for scoping.
+	 */
+	@SuppressWarnings("restriction")
+	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(Names.named(org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(ArchitectureScopeProvider.class);
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(Names.named(ArchitectureScopeProvider.NAMED_DELEGATE)).to(org.eclipse.xtext.xbase.scoping.XImportSectionNamespaceScopeProvider.class);
 	}
 	
 }

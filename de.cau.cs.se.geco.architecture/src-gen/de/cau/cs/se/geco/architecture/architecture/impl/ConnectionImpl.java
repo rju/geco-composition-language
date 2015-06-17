@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getSourceModel <em>Source Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getTargetModel <em>Target Model</em>}</li>
  * </ul>
@@ -33,26 +32,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ConnectionImpl extends MinimalEObjectImpl.Container implements Connection
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getSourceModel() <em>Source Model</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -92,29 +71,6 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   protected EClass eStaticClass()
   {
     return ArchitecturePackage.Literals.CONNECTION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__NAME, oldName, name));
   }
 
   /**
@@ -241,8 +197,6 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__NAME:
-        return getName();
       case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
         return getSourceModel();
       case ArchitecturePackage.CONNECTION__TARGET_MODEL:
@@ -261,9 +215,6 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__NAME:
-        setName((String)newValue);
-        return;
       case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
         setSourceModel((SourceModelNodeSelector)newValue);
         return;
@@ -284,9 +235,6 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
         setSourceModel((SourceModelNodeSelector)null);
         return;
@@ -307,31 +255,12 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
-      case ArchitecturePackage.CONNECTION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
         return sourceModel != null;
       case ArchitecturePackage.CONNECTION__TARGET_MODEL:
         return targetModel != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //ConnectionImpl

@@ -3,17 +3,15 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,24 +20,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl#getReference <em>Reference</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl#isMultiply <em>Multiply</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TargetModelNodeTypeImpl extends MinimalEObjectImpl.Container implements TargetModelNodeType
+public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetModelNodeType
 {
   /**
-   * The cached value of the '{@link #getNodeType() <em>Node Type</em>}' containment reference.
+   * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNodeType()
+   * @see #getReference()
    * @generated
    * @ordered
    */
-  protected ModelNodeType nodeType;
+  protected Metamodel reference;
 
   /**
    * The default value of the '{@link #isMultiply() <em>Multiply</em>}' attribute.
@@ -87,9 +85,19 @@ public class TargetModelNodeTypeImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelNodeType getNodeType()
+  public Metamodel getReference()
   {
-    return nodeType;
+    if (reference != null && reference.eIsProxy())
+    {
+      InternalEObject oldReference = (InternalEObject)reference;
+      reference = (Metamodel)eResolveProxy(oldReference);
+      if (reference != oldReference)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE, oldReference, reference));
+      }
+    }
+    return reference;
   }
 
   /**
@@ -97,37 +105,22 @@ public class TargetModelNodeTypeImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetNodeType(ModelNodeType newNodeType, NotificationChain msgs)
+  public Metamodel basicGetReference()
   {
-    ModelNodeType oldNodeType = nodeType;
-    nodeType = newNodeType;
+    return reference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReference(Metamodel newReference)
+  {
+    Metamodel oldReference = reference;
+    reference = newReference;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE, oldNodeType, newNodeType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setNodeType(ModelNodeType newNodeType)
-  {
-    if (newNodeType != nodeType)
-    {
-      NotificationChain msgs = null;
-      if (nodeType != null)
-        msgs = ((InternalEObject)nodeType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE, null, msgs);
-      if (newNodeType != null)
-        msgs = ((InternalEObject)newNodeType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE, null, msgs);
-      msgs = basicSetNodeType(newNodeType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE, newNodeType, newNodeType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE, oldReference, reference));
   }
 
   /**
@@ -159,28 +152,13 @@ public class TargetModelNodeTypeImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE:
-        return basicSetNodeType(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE:
-        return getNodeType();
+      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
+        if (resolve) return getReference();
+        return basicGetReference();
       case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__MULTIPLY:
         return isMultiply();
     }
@@ -197,8 +175,8 @@ public class TargetModelNodeTypeImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE:
-        setNodeType((ModelNodeType)newValue);
+      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
+        setReference((Metamodel)newValue);
         return;
       case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__MULTIPLY:
         setMultiply((Boolean)newValue);
@@ -217,8 +195,8 @@ public class TargetModelNodeTypeImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE:
-        setNodeType((ModelNodeType)null);
+      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
+        setReference((Metamodel)null);
         return;
       case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__MULTIPLY:
         setMultiply(MULTIPLY_EDEFAULT);
@@ -237,8 +215,8 @@ public class TargetModelNodeTypeImpl extends MinimalEObjectImpl.Container implem
   {
     switch (featureID)
     {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__NODE_TYPE:
-        return nodeType != null;
+      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
+        return reference != null;
       case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__MULTIPLY:
         return multiply != MULTIPLY_EDEFAULT;
     }

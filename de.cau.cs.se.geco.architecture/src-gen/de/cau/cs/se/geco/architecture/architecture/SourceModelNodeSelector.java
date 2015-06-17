@@ -12,7 +12,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getReference <em>Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,29 +24,55 @@ import org.eclipse.emf.ecore.EObject;
 public interface SourceModelNodeSelector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Reference</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Reference</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(ModelNodeType)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getSourceModelNodeSelector_Type()
+   * @return the value of the '<em>Reference</em>' reference.
+   * @see #setReference(Metamodel)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getSourceModelNodeSelector_Reference()
+   * @model
+   * @generated
+   */
+  Metamodel getReference();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getReference <em>Reference</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Reference</em>' reference.
+   * @see #getReference()
+   * @generated
+   */
+  void setReference(Metamodel value);
+
+  /**
+   * Returns the value of the '<em><b>Property</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Property</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Property</em>' containment reference.
+   * @see #setProperty(NodeProperty)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getSourceModelNodeSelector_Property()
    * @model containment="true"
    * @generated
    */
-  ModelNodeType getType();
+  NodeProperty getProperty();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getProperty <em>Property</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
+   * @param value the new value of the '<em>Property</em>' containment reference.
+   * @see #getProperty()
    * @generated
    */
-  void setType(ModelNodeType value);
+  void setProperty(NodeProperty value);
 
 } // SourceModelNodeSelector

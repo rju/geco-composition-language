@@ -3,7 +3,8 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.Metamodel;
+import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,7 +23,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getReference <em>Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,14 +33,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container implements SourceModelNodeSelector
 {
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getReference()
    * @generated
    * @ordered
    */
-  protected ModelNodeType type;
+  protected Metamodel reference;
+
+  /**
+   * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProperty()
+   * @generated
+   * @ordered
+   */
+  protected NodeProperty property;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,9 +78,19 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelNodeType getType()
+  public Metamodel getReference()
   {
-    return type;
+    if (reference != null && reference.eIsProxy())
+    {
+      InternalEObject oldReference = (InternalEObject)reference;
+      reference = (Metamodel)eResolveProxy(oldReference);
+      if (reference != oldReference)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE, oldReference, reference));
+      }
+    }
+    return reference;
   }
 
   /**
@@ -76,13 +98,46 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(ModelNodeType newType, NotificationChain msgs)
+  public Metamodel basicGetReference()
   {
-    ModelNodeType oldType = type;
-    type = newType;
+    return reference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReference(Metamodel newReference)
+  {
+    Metamodel oldReference = reference;
+    reference = newReference;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE, oldReference, reference));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NodeProperty getProperty()
+  {
+    return property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetProperty(NodeProperty newProperty, NotificationChain msgs)
+  {
+    NodeProperty oldProperty = property;
+    property = newProperty;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE, oldType, newType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY, oldProperty, newProperty);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -93,20 +148,20 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(ModelNodeType newType)
+  public void setProperty(NodeProperty newProperty)
   {
-    if (newType != type)
+    if (newProperty != property)
     {
       NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
+      if (property != null)
+        msgs = ((InternalEObject)property).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY, null, msgs);
+      if (newProperty != null)
+        msgs = ((InternalEObject)newProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY, null, msgs);
+      msgs = basicSetProperty(newProperty, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY, newProperty, newProperty));
   }
 
   /**
@@ -119,8 +174,8 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
-      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE:
-        return basicSetType(null, msgs);
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
+        return basicSetProperty(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -135,8 +190,11 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
-      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE:
-        return getType();
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
+        if (resolve) return getReference();
+        return basicGetReference();
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
+        return getProperty();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -151,8 +209,11 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
-      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE:
-        setType((ModelNodeType)newValue);
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
+        setReference((Metamodel)newValue);
+        return;
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
+        setProperty((NodeProperty)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,8 +229,11 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
-      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE:
-        setType((ModelNodeType)null);
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
+        setReference((Metamodel)null);
+        return;
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
+        setProperty((NodeProperty)null);
         return;
     }
     super.eUnset(featureID);
@@ -185,8 +249,10 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
-      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__TYPE:
-        return type != null;
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
+        return reference != null;
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
+        return property != null;
     }
     return super.eIsSet(featureID);
   }

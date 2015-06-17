@@ -2,7 +2,6 @@
  */
 package de.cau.cs.se.geco.architecture.architecture;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getReference <em>Reference</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#isMultiply <em>Multiply</em>}</li>
  * </ul>
  * </p>
@@ -21,33 +20,33 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface TargetModelNodeType extends EObject
+public interface TargetModelNodeType extends AspectModel
 {
   /**
-   * Returns the value of the '<em><b>Node Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Reference</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Node Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Reference</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Node Type</em>' containment reference.
-   * @see #setNodeType(ModelNodeType)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getTargetModelNodeType_NodeType()
-   * @model containment="true"
+   * @return the value of the '<em>Reference</em>' reference.
+   * @see #setReference(Metamodel)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getTargetModelNodeType_Reference()
+   * @model
    * @generated
    */
-  ModelNodeType getNodeType();
+  Metamodel getReference();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getNodeType <em>Node Type</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getReference <em>Reference</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Node Type</em>' containment reference.
-   * @see #getNodeType()
+   * @param value the new value of the '<em>Reference</em>' reference.
+   * @see #getReference()
    * @generated
    */
-  void setNodeType(ModelNodeType value);
+  void setReference(Metamodel value);
 
   /**
    * Returns the value of the '<em><b>Multiply</b></em>' attribute.

@@ -4,46 +4,67 @@
     editorDirectory="/de.cau.cs.se.geco.architecture.editor/src" modelPluginID="de.cau.cs.se.geco.architecture"
     forceOverwrite="true" modelName="Architecture" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.geco.architecture.edit"
-    editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
+    editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
   <genPackages prefix="Architecture" basePackage="de.cau.cs.se.geco.architecture"
       disposableProviderFactory="true" fileExtensions="core" ecorePackage="Architecture.ecore#/">
     <genClasses ecoreClass="Architecture.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Model/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/importSection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/registeredPackages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/conections"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/metamodels"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/connections"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//MetamodelSequence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//MetamodelSequence/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//MetamodelSequence/metamodels"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Metamodel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Metamodel/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Metamodel/modelPackage"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Metamodel/isText"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Metamodel/extension"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//RegisteredPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//RegisteredPackage/modelPackage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/isText"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/extension"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Connection">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Connection/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Connection/sourceModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Connection/targetModel"/>
     </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//Merger">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Merger/merger"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Merger/aspectModel"/>
+    <genClasses ecoreClass="Architecture.ecore#//Weaver">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Weaver/weaver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Weaver/aspectModel"/>
     </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//AspectModel"/>
     <genClasses ecoreClass="Architecture.ecore#//Generator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/generator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/writeTraceModel"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/readTraceModels"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//SourceModelNodeSelector">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelNodeSelector/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelNodeSelector/reference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelNodeSelector/property"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//TargetModelNodeType">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//TargetModelNodeType/nodeType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//TargetModelNodeType/reference"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//TargetModelNodeType/multiply"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//ModelNodeType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/target"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/property"/>
     </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//NodeProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeProperty/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeProperty/subProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//ConstraintExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/right"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/constraint"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//Operand"/>
     <genClasses ecoreClass="Architecture.ecore#//TraceModel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//TraceModel/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//TraceModel/nodeSetRelations"/>
@@ -54,6 +75,35 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//NodeType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeType/eclass"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//Literal"/>
+    <genClasses ecoreClass="Architecture.ecore#//ArrayLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ArrayLiteral/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//IntLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//IntLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//FloatLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//FloatLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//BooleanLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//BooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//LogicOperator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//LogicOperator/AND"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//LogicOperator/OR"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//Comparator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/EQ"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/NE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/GR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/LW"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/GE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/LE"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/LIKE"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -79,10 +79,24 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchitecturePackage.METAMODEL_SEQUENCE:
+      {
+        MetamodelSequence metamodelSequence = (MetamodelSequence)theEObject;
+        T result = caseMetamodelSequence(metamodelSequence);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArchitecturePackage.METAMODEL:
       {
         Metamodel metamodel = (Metamodel)theEObject;
         T result = caseMetamodel(metamodel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.REGISTERED_PACKAGE:
+      {
+        RegisteredPackage registeredPackage = (RegisteredPackage)theEObject;
+        T result = caseRegisteredPackage(registeredPackage);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -93,11 +107,18 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.MERGER:
+      case ArchitecturePackage.WEAVER:
       {
-        Merger merger = (Merger)theEObject;
-        T result = caseMerger(merger);
-        if (result == null) result = caseConnection(merger);
+        Weaver weaver = (Weaver)theEObject;
+        T result = caseWeaver(weaver);
+        if (result == null) result = caseConnection(weaver);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.ASPECT_MODEL:
+      {
+        AspectModel aspectModel = (AspectModel)theEObject;
+        T result = caseAspectModel(aspectModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -106,6 +127,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         Generator generator = (Generator)theEObject;
         T result = caseGenerator(generator);
         if (result == null) result = caseConnection(generator);
+        if (result == null) result = caseAspectModel(generator);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -120,6 +142,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
       {
         TargetModelNodeType targetModelNodeType = (TargetModelNodeType)theEObject;
         T result = caseTargetModelNodeType(targetModelNodeType);
+        if (result == null) result = caseAspectModel(targetModelNodeType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -127,6 +150,30 @@ public class ArchitectureSwitch<T> extends Switch<T>
       {
         ModelNodeType modelNodeType = (ModelNodeType)theEObject;
         T result = caseModelNodeType(modelNodeType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.NODE_PROPERTY:
+      {
+        NodeProperty nodeProperty = (NodeProperty)theEObject;
+        T result = caseNodeProperty(nodeProperty);
+        if (result == null) result = caseOperand(nodeProperty);
+        if (result == null) result = caseConstraintExpression(nodeProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.CONSTRAINT_EXPRESSION:
+      {
+        ConstraintExpression constraintExpression = (ConstraintExpression)theEObject;
+        T result = caseConstraintExpression(constraintExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.OPERAND:
+      {
+        Operand operand = (Operand)theEObject;
+        T result = caseOperand(operand);
+        if (result == null) result = caseConstraintExpression(operand);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -151,6 +198,79 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchitecturePackage.LITERAL:
+      {
+        Literal literal = (Literal)theEObject;
+        T result = caseLiteral(literal);
+        if (result == null) result = caseOperand(literal);
+        if (result == null) result = caseConstraintExpression(literal);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.ARRAY_LITERAL:
+      {
+        ArrayLiteral arrayLiteral = (ArrayLiteral)theEObject;
+        T result = caseArrayLiteral(arrayLiteral);
+        if (result == null) result = caseLiteral(arrayLiteral);
+        if (result == null) result = caseOperand(arrayLiteral);
+        if (result == null) result = caseConstraintExpression(arrayLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.STRING_LITERAL:
+      {
+        StringLiteral stringLiteral = (StringLiteral)theEObject;
+        T result = caseStringLiteral(stringLiteral);
+        if (result == null) result = caseLiteral(stringLiteral);
+        if (result == null) result = caseOperand(stringLiteral);
+        if (result == null) result = caseConstraintExpression(stringLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.INT_LITERAL:
+      {
+        IntLiteral intLiteral = (IntLiteral)theEObject;
+        T result = caseIntLiteral(intLiteral);
+        if (result == null) result = caseLiteral(intLiteral);
+        if (result == null) result = caseOperand(intLiteral);
+        if (result == null) result = caseConstraintExpression(intLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.FLOAT_LITERAL:
+      {
+        FloatLiteral floatLiteral = (FloatLiteral)theEObject;
+        T result = caseFloatLiteral(floatLiteral);
+        if (result == null) result = caseLiteral(floatLiteral);
+        if (result == null) result = caseOperand(floatLiteral);
+        if (result == null) result = caseConstraintExpression(floatLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.BOOLEAN_LITERAL:
+      {
+        BooleanLiteral booleanLiteral = (BooleanLiteral)theEObject;
+        T result = caseBooleanLiteral(booleanLiteral);
+        if (result == null) result = caseLiteral(booleanLiteral);
+        if (result == null) result = caseOperand(booleanLiteral);
+        if (result == null) result = caseConstraintExpression(booleanLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.LOGIC_OPERATOR:
+      {
+        LogicOperator logicOperator = (LogicOperator)theEObject;
+        T result = caseLogicOperator(logicOperator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.COMPARATOR:
+      {
+        Comparator comparator = (Comparator)theEObject;
+        T result = caseComparator(comparator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -172,6 +292,22 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Metamodel Sequence</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Metamodel Sequence</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMetamodelSequence(MetamodelSequence object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Metamodel</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -183,6 +319,22 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMetamodel(Metamodel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Registered Package</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Registered Package</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRegisteredPackage(RegisteredPackage object)
   {
     return null;
   }
@@ -204,17 +356,33 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Merger</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Weaver</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Merger</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Weaver</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMerger(Merger object)
+  public T caseWeaver(Weaver object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Aspect Model</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Aspect Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAspectModel(AspectModel object)
   {
     return null;
   }
@@ -284,6 +452,54 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Node Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Node Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNodeProperty(NodeProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constraint Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constraint Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstraintExpression(ConstraintExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Operand</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Operand</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOperand(Operand object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Trace Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -327,6 +543,134 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNodeType(NodeType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteral(Literal object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Array Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Array Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArrayLiteral(ArrayLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringLiteral(StringLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Int Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Int Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntLiteral(IntLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Float Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Float Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFloatLiteral(FloatLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBooleanLiteral(BooleanLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Logic Operator</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Logic Operator</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLogicOperator(LogicOperator object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Comparator</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Comparator</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseComparator(Comparator object)
   {
     return null;
   }
