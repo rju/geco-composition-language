@@ -11,6 +11,8 @@ import org.eclipse.xtext.service.DefaultRuntimeModule;
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
 
+import de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider;
+
 /**
  * Manual modifications go to {de.cau.cs.se.geco.architecture.ArchitectureRuntimeModule}
  */
@@ -186,7 +188,8 @@ public abstract class AbstractArchitectureRuntimeModule extends DefaultRuntimeMo
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment
 	public void configureIScopeProviderDelegate(com.google.inject.Binder binder) {
-		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(Names.named(org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(org.eclipse.xtext.xbase.scoping.XImportSectionNamespaceScopeProvider.class);
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(Names.named(org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider.NAMED_DELEGATE)).to(ArchitectureScopeProvider.class);
+		binder.bind(org.eclipse.xtext.scoping.IScopeProvider.class).annotatedWith(Names.named(ArchitectureScopeProvider.NAMED_DELEGATE)).to(org.eclipse.xtext.xbase.scoping.XImportSectionNamespaceScopeProvider.class);
 	}
 
 	// contributed by org.eclipse.xtext.generator.xbase.XbaseGeneratorFragment

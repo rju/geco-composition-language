@@ -1,31 +1,34 @@
 package de.cau.cs.se.geco.architecture.scoping
 
-import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
 import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.scoping.IScope
 import de.cau.cs.se.geco.architecture.architecture.Metamodel
 import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.xtext.scoping.IScopeProvider
+import com.google.inject.name.Named
+import com.google.inject.Inject
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.scoping.impl.IDelegatingScopeProvider
 
-class ArchitectureScopeProvider extends AbstractDeclarativeScopeProvider {
-	
+class ArchitectureScopeProvider implements IDelegatingScopeProvider {
+		
 	public final static String NAMED_DELEGATE = "de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider.delegate";
 	
-	def scope_ModelNodeType_type(ModelNodeType ctx, EReference reference) {
-		return Scopes.scopeFor(ctx.target.modelPackage.EClassifiers)
+	@Inject @Named(NAMED_DELEGATE)
+	IScopeProvider delegate
+		
+	override getScope(EObject context, EReference reference) {
+		System.out.println(">> " + context + " " + reference)
+		switch(context) {
+			// Find scope for the package property in the MetaModel rule.
+			Metamodel case reference.name.equals("modelPackage"): new EPackageScope(context.eResource().getResourceSet())
+			ModelNodeType case reference.name.equals("type"): Scopes.scopeFor(context.target.modelPackage.EClassifiers)
+			default: delegate.getScope(context, reference)
+		}
 	}
 	
-	/**
-	 * Find scope for the package property in the MetaModel rule.
-	 * 
-	 * @param context
-	 *            The Package-object of the resulting model.
-	 * @param reference
-	 *            The EReference-reference object of the AST.
-	 * @return The scope for the package attribute.
-	 */
-	def IScope scope_Metamodel_modelPackage(Metamodel context, EReference reference) {
- 		val IScope result = new EPackageScope(context.eResource().getResourceSet())
-		return result
+	override getDelegate() {
+		return delegate
 	}
+	
 }

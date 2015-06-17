@@ -18,11 +18,11 @@ Metamodel:
 ;
 
 Connection:
-	Generator | Merger
+	Generator | Weaver
 ;
 
-Merger:
-	'merge' merger=JvmTypeReference name=ID 
+Weaver:
+	'weave' merger=JvmTypeReference name=ID 
 		sourceModel=SourceModelNodeSelector
 		aspectModel=TargetModelNodeType
 		targetModel=TargetModelNodeType
@@ -36,8 +36,9 @@ Generator:
 		('<-' readTraceModels+=[TraceModel|ValidID] (',' readTraceModels+=[TraceModel|ValidID])*)
 ;
 
-SourceModelNodeSelector: {SourceModelNodeSelector}
-	type=ModelNodeType | 'null' 
+SourceModelNodeSelector: 
+	type=ModelNodeType | 
+	{SourceModelNodeSelector} 'null' 
 ;
 
 TargetModelNodeType:
