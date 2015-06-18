@@ -4,8 +4,6 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Generator</b></em>'.
@@ -27,30 +25,30 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public interface Generator extends Connection, AspectModel
 {
   /**
-   * Returns the value of the '<em><b>Generator</b></em>' containment reference.
+   * Returns the value of the '<em><b>Generator</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Generator</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Generator</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Generator</em>' containment reference.
-   * @see #setGenerator(JvmTypeReference)
+   * @return the value of the '<em>Generator</em>' reference.
+   * @see #setGenerator(GeneratorImport)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getGenerator_Generator()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  JvmTypeReference getGenerator();
+  GeneratorImport getGenerator();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator <em>Generator</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator <em>Generator</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Generator</em>' containment reference.
+   * @param value the new value of the '<em>Generator</em>' reference.
    * @see #getGenerator()
    * @generated
    */
-  void setGenerator(JvmTypeReference value);
+  void setGenerator(GeneratorImport value);
 
   /**
    * Returns the value of the '<em><b>Write Trace Model</b></em>' containment reference.

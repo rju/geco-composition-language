@@ -4,15 +4,20 @@
     nsPrefix="architecture">
   <eClassifiers xsi:type="ecore:EClass" name="Model">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importSection" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore#//XImportSection"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//Import" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="registeredPackages" upperBound="-1"
         eType="#//RegisteredPackage" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="conections" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
         eType="#//Connection" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
         eType="#//MetamodelSequence" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Import">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WeaverImport" eSuperTypes="#//Import"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneratorImport" eSuperTypes="#//Import"/>
   <eClassifiers xsi:type="ecore:EClass" name="MetamodelSequence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ModelNodeType"
         containment="true"/>
@@ -35,15 +40,13 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Weaver" eSuperTypes="#//Connection">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="weaver" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="weaver" eType="#//WeaverImport"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aspectModel" eType="#//AspectModel"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AspectModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Connection #//AspectModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="generator" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generator" eType="#//GeneratorImport"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModel" eType="#//TraceModel"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" unique="false"
@@ -109,8 +112,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloatObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LogicOperator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="AND" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

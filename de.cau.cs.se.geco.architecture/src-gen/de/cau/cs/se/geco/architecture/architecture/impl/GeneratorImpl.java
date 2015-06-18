@@ -4,6 +4,7 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
+import de.cau.cs.se.geco.architecture.architecture.GeneratorImport;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 
 import java.util.Collection;
@@ -19,8 +20,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,14 +39,14 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public class GeneratorImpl extends ConnectionImpl implements Generator
 {
   /**
-   * The cached value of the '{@link #getGenerator() <em>Generator</em>}' containment reference.
+   * The cached value of the '{@link #getGenerator() <em>Generator</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getGenerator()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference generator;
+  protected GeneratorImport generator;
 
   /**
    * The cached value of the '{@link #getWriteTraceModel() <em>Write Trace Model</em>}' containment reference.
@@ -95,7 +94,27 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getGenerator()
+  public GeneratorImport getGenerator()
+  {
+    if (generator != null && generator.eIsProxy())
+    {
+      InternalEObject oldGenerator = (InternalEObject)generator;
+      generator = (GeneratorImport)eResolveProxy(oldGenerator);
+      if (generator != oldGenerator)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.GENERATOR__GENERATOR, oldGenerator, generator));
+      }
+    }
+    return generator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GeneratorImport basicGetGenerator()
   {
     return generator;
   }
@@ -105,37 +124,12 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetGenerator(JvmTypeReference newGenerator, NotificationChain msgs)
+  public void setGenerator(GeneratorImport newGenerator)
   {
-    JvmTypeReference oldGenerator = generator;
+    GeneratorImport oldGenerator = generator;
     generator = newGenerator;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.GENERATOR__GENERATOR, oldGenerator, newGenerator);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGenerator(JvmTypeReference newGenerator)
-  {
-    if (newGenerator != generator)
-    {
-      NotificationChain msgs = null;
-      if (generator != null)
-        msgs = ((InternalEObject)generator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.GENERATOR__GENERATOR, null, msgs);
-      if (newGenerator != null)
-        msgs = ((InternalEObject)newGenerator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.GENERATOR__GENERATOR, null, msgs);
-      msgs = basicSetGenerator(newGenerator, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.GENERATOR__GENERATOR, newGenerator, newGenerator));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.GENERATOR__GENERATOR, oldGenerator, generator));
   }
 
   /**
@@ -210,8 +204,6 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__GENERATOR:
-        return basicSetGenerator(null, msgs);
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         return basicSetWriteTraceModel(null, msgs);
     }
@@ -229,7 +221,8 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
     switch (featureID)
     {
       case ArchitecturePackage.GENERATOR__GENERATOR:
-        return getGenerator();
+        if (resolve) return getGenerator();
+        return basicGetGenerator();
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         return getWriteTraceModel();
       case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
@@ -250,7 +243,7 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
     switch (featureID)
     {
       case ArchitecturePackage.GENERATOR__GENERATOR:
-        setGenerator((JvmTypeReference)newValue);
+        setGenerator((GeneratorImport)newValue);
         return;
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         setWriteTraceModel((TraceModel)newValue);
@@ -274,7 +267,7 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
     switch (featureID)
     {
       case ArchitecturePackage.GENERATOR__GENERATOR:
-        setGenerator((JvmTypeReference)null);
+        setGenerator((GeneratorImport)null);
         return;
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         setWriteTraceModel((TraceModel)null);

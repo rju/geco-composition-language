@@ -65,6 +65,9 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
     switch (eClass.getClassifierID())
     {
       case ArchitecturePackage.MODEL: return createModel();
+      case ArchitecturePackage.IMPORT: return createImport();
+      case ArchitecturePackage.WEAVER_IMPORT: return createWeaverImport();
+      case ArchitecturePackage.GENERATOR_IMPORT: return createGeneratorImport();
       case ArchitecturePackage.METAMODEL_SEQUENCE: return createMetamodelSequence();
       case ArchitecturePackage.METAMODEL: return createMetamodel();
       case ArchitecturePackage.REGISTERED_PACKAGE: return createRegisteredPackage();
@@ -103,6 +106,39 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     ModelImpl model = new ModelImpl();
     return model;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Import createImport()
+  {
+    ImportImpl import_ = new ImportImpl();
+    return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WeaverImport createWeaverImport()
+  {
+    WeaverImportImpl weaverImport = new WeaverImportImpl();
+    return weaverImport;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public GeneratorImport createGeneratorImport()
+  {
+    GeneratorImportImpl generatorImport = new GeneratorImportImpl();
+    return generatorImport;
   }
 
   /**

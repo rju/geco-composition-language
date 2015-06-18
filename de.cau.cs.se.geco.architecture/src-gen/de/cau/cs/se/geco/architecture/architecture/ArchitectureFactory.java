@@ -32,6 +32,33 @@ public interface ArchitectureFactory extends EFactory
   Model createModel();
 
   /**
+   * Returns a new object of class '<em>Import</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import</em>'.
+   * @generated
+   */
+  Import createImport();
+
+  /**
+   * Returns a new object of class '<em>Weaver Import</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Weaver Import</em>'.
+   * @generated
+   */
+  WeaverImport createWeaverImport();
+
+  /**
+   * Returns a new object of class '<em>Generator Import</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Generator Import</em>'.
+   * @generated
+   */
+  GeneratorImport createGeneratorImport();
+
+  /**
    * Returns a new object of class '<em>Metamodel Sequence</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

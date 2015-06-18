@@ -18,18 +18,21 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase.lib,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.cau.cs.se.geco.architecture,
- de.cau.cs.se.geco.architecture.services,
  de.cau.cs.se.geco.architecture.architecture,
  de.cau.cs.se.geco.architecture.architecture.impl,
  de.cau.cs.se.geco.architecture.architecture.util,
- de.cau.cs.se.geco.architecture.serializer,
+ de.cau.cs.se.geco.architecture.formatting,
+ de.cau.cs.se.geco.architecture.generator,
  de.cau.cs.se.geco.architecture.parser.antlr,
  de.cau.cs.se.geco.architecture.parser.antlr.internal,
- de.cau.cs.se.geco.architecture.validation,
- de.cau.cs.se.geco.architecture.formatting,
- de.cau.cs.se.geco.architecture.jvmmodel
+ de.cau.cs.se.geco.architecture.scoping,
+ de.cau.cs.se.geco.architecture.serializer,
+ de.cau.cs.se.geco.architecture.services,
+ de.cau.cs.se.geco.architecture.typing,
+ de.cau.cs.se.geco.architecture.validation
 

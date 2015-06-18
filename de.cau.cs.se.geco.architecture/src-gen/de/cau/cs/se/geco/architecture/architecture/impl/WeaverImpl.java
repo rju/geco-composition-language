@@ -5,6 +5,7 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
+import de.cau.cs.se.geco.architecture.architecture.WeaverImport;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -13,8 +14,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,14 +32,14 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public class WeaverImpl extends ConnectionImpl implements Weaver
 {
   /**
-   * The cached value of the '{@link #getWeaver() <em>Weaver</em>}' containment reference.
+   * The cached value of the '{@link #getWeaver() <em>Weaver</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getWeaver()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference weaver;
+  protected WeaverImport weaver;
 
   /**
    * The cached value of the '{@link #getAspectModel() <em>Aspect Model</em>}' containment reference.
@@ -78,7 +77,27 @@ public class WeaverImpl extends ConnectionImpl implements Weaver
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getWeaver()
+  public WeaverImport getWeaver()
+  {
+    if (weaver != null && weaver.eIsProxy())
+    {
+      InternalEObject oldWeaver = (InternalEObject)weaver;
+      weaver = (WeaverImport)eResolveProxy(oldWeaver);
+      if (weaver != oldWeaver)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.WEAVER__WEAVER, oldWeaver, weaver));
+      }
+    }
+    return weaver;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WeaverImport basicGetWeaver()
   {
     return weaver;
   }
@@ -88,37 +107,12 @@ public class WeaverImpl extends ConnectionImpl implements Weaver
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWeaver(JvmTypeReference newWeaver, NotificationChain msgs)
+  public void setWeaver(WeaverImport newWeaver)
   {
-    JvmTypeReference oldWeaver = weaver;
+    WeaverImport oldWeaver = weaver;
     weaver = newWeaver;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.WEAVER__WEAVER, oldWeaver, newWeaver);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setWeaver(JvmTypeReference newWeaver)
-  {
-    if (newWeaver != weaver)
-    {
-      NotificationChain msgs = null;
-      if (weaver != null)
-        msgs = ((InternalEObject)weaver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.WEAVER__WEAVER, null, msgs);
-      if (newWeaver != null)
-        msgs = ((InternalEObject)newWeaver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.WEAVER__WEAVER, null, msgs);
-      msgs = basicSetWeaver(newWeaver, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.WEAVER__WEAVER, newWeaver, newWeaver));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.WEAVER__WEAVER, oldWeaver, weaver));
   }
 
   /**
@@ -179,8 +173,6 @@ public class WeaverImpl extends ConnectionImpl implements Weaver
   {
     switch (featureID)
     {
-      case ArchitecturePackage.WEAVER__WEAVER:
-        return basicSetWeaver(null, msgs);
       case ArchitecturePackage.WEAVER__ASPECT_MODEL:
         return basicSetAspectModel(null, msgs);
     }
@@ -198,7 +190,8 @@ public class WeaverImpl extends ConnectionImpl implements Weaver
     switch (featureID)
     {
       case ArchitecturePackage.WEAVER__WEAVER:
-        return getWeaver();
+        if (resolve) return getWeaver();
+        return basicGetWeaver();
       case ArchitecturePackage.WEAVER__ASPECT_MODEL:
         return getAspectModel();
     }
@@ -216,7 +209,7 @@ public class WeaverImpl extends ConnectionImpl implements Weaver
     switch (featureID)
     {
       case ArchitecturePackage.WEAVER__WEAVER:
-        setWeaver((JvmTypeReference)newValue);
+        setWeaver((WeaverImport)newValue);
         return;
       case ArchitecturePackage.WEAVER__ASPECT_MODEL:
         setAspectModel((AspectModel)newValue);
@@ -236,7 +229,7 @@ public class WeaverImpl extends ConnectionImpl implements Weaver
     switch (featureID)
     {
       case ArchitecturePackage.WEAVER__WEAVER:
-        setWeaver((JvmTypeReference)null);
+        setWeaver((WeaverImport)null);
         return;
       case ArchitecturePackage.WEAVER__ASPECT_MODEL:
         setAspectModel((AspectModel)null);

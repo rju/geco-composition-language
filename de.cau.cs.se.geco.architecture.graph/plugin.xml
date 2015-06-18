@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="de.cau.cs.kieler.klighd.diagramSyntheses">
+   <diagramSynthesis
+         class="de.cau.cs.kieler.klighd.syntheses.GuiceBasedSynthesisFactory:de.cau.cs.se.geco.architecture.graph.ModelDiagramSynthesis"
+         id="de.cau.cs.se.geco.architecture.graph.ModelDiagramSynthesis">
+   </diagramSynthesis>
+   </extension>
+<extension
+      point="org.eclipse.ui.commands">
+   <category
+         description="Generator Diagram"
+         id="de.cau.cs.se.geco.architecture.graph.ModelDiagrams"
+         name="ModelDiagrams">
+   </category>
+   <command
+         categoryId="de.cau.cs.se.geco.architecture.graph.ModelDiagrams"
+         defaultHandler="de.cau.cs.se.geco.architecture.graph.OpenDiagramHandler"
+         description="Primitive helper command that opens KLighD-based Model diagrams."
+         id="de.cau.cs.se.geco.architecture.graph.openModelDiagram"
+         name="Open Generator Diagram">
+   </command>
+</extension>
+
+<extension
+      point="org.eclipse.ui.menus">
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+      <command
+            commandId="de.cau.cs.se.geco.architecture.graph.openModelDiagram"
+            label="Open Generator Diagram"
+            style="push">
+      </command>
+   </menuContribution>
+</extension>
+
+</plugin>

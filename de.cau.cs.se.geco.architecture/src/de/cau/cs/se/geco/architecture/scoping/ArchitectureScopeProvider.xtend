@@ -12,23 +12,33 @@ import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
-import org.eclipse.emf.ecore.EClass
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
+import de.cau.cs.se.geco.architecture.architecture.Weaver
+import de.cau.cs.se.geco.architecture.architecture.WeaverImport
+import de.cau.cs.se.geco.architecture.architecture.GeneratorImport
+import de.cau.cs.se.geco.architecture.architecture.Generator
+
+import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 
 class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 		
-	public final static String NAMED_DELEGATE = "de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider.delegate";
+	//public final static String NAMED_DELEGATE = "de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider.delegate";
 	
-	@Inject @Named(NAMED_DELEGATE)
+	@Inject @Named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)
 	IScopeProvider delegate
 		
 	override getScope(EObject context, EReference reference) {
-		System.out.println(">> " + context + " " + reference)
 		switch(context) {
 			// Find scope for the package property in the MetaModel rule.
 			RegisteredPackage case reference.name.equals("modelPackage"): new EPackageScope(context.eResource().getResourceSet())
 			ModelNodeType case reference.name.equals("type"): Scopes.scopeFor(context.target.modelPackage.EClassifiers)
 			NodeProperty case reference.name.equals("property"): createNodePropertyScope(context.eContainer)
-			default: delegate.getScope(context, reference)
+			Weaver case reference.name.equals("weaver"): new JvmScope(context.eResource(), WeaverImport)
+			Generator case reference.name.equals("generator"): new JvmScope(context.eResource(), GeneratorImport)
+			default: {
+				System.out.println(">> " + context + " " + reference)
+				delegate.getScope(context, reference)
+			}
 		}
 	}
 	
@@ -40,19 +50,7 @@ class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 		}
 	}
 	
-	private def EClass resolveType(ModelNodeType type) {
-		if (type.property == null)
-			return type.type
-		else
-			return type.property.resolveType
-	}
-	
-	private def EClass resolveType(NodeProperty property) {
-		if (property.subProperty == null)
-			return property.property.EReferenceType
-		else
-			return property.subProperty.resolveType
-	} 
+
 	
 	override getDelegate() {
 		return delegate

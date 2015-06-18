@@ -2,7 +2,6 @@
  */
 package de.cau.cs.se.geco.architecture.architecture;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,30 +23,30 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public interface Weaver extends Connection
 {
   /**
-   * Returns the value of the '<em><b>Weaver</b></em>' containment reference.
+   * Returns the value of the '<em><b>Weaver</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Weaver</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Weaver</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Weaver</em>' containment reference.
-   * @see #setWeaver(JvmTypeReference)
+   * @return the value of the '<em>Weaver</em>' reference.
+   * @see #setWeaver(WeaverImport)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getWeaver_Weaver()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  JvmTypeReference getWeaver();
+  WeaverImport getWeaver();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Weaver#getWeaver <em>Weaver</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Weaver#getWeaver <em>Weaver</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Weaver</em>' containment reference.
+   * @param value the new value of the '<em>Weaver</em>' reference.
    * @see #getWeaver()
    * @generated
    */
-  void setWeaver(JvmTypeReference value);
+  void setWeaver(WeaverImport value);
 
   /**
    * Returns the value of the '<em><b>Aspect Model</b></em>' containment reference.

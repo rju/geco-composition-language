@@ -4,6 +4,7 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
+import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
@@ -24,8 +25,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtext.xtype.XImportSection;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Model</b></em>'.
@@ -34,9 +33,9 @@ import org.eclipse.xtext.xtype.XImportSection;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getImportSection <em>Import Section</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getRegisteredPackages <em>Registered Packages</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getConections <em>Conections</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getConnections <em>Connections</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getMetamodels <em>Metamodels</em>}</li>
  * </ul>
  * </p>
@@ -66,14 +65,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getImportSection() <em>Import Section</em>}' containment reference.
+   * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getImportSection()
+   * @see #getImports()
    * @generated
    * @ordered
    */
-  protected XImportSection importSection;
+  protected EList<Import> imports;
 
   /**
    * The cached value of the '{@link #getRegisteredPackages() <em>Registered Packages</em>}' containment reference list.
@@ -86,14 +85,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EList<RegisteredPackage> registeredPackages;
 
   /**
-   * The cached value of the '{@link #getConections() <em>Conections</em>}' containment reference list.
+   * The cached value of the '{@link #getConnections() <em>Connections</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getConections()
+   * @see #getConnections()
    * @generated
    * @ordered
    */
-  protected EList<Connection> conections;
+  protected EList<Connection> connections;
 
   /**
    * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
@@ -154,47 +153,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public XImportSection getImportSection()
+  public EList<Import> getImports()
   {
-    return importSection;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetImportSection(XImportSection newImportSection, NotificationChain msgs)
-  {
-    XImportSection oldImportSection = importSection;
-    importSection = newImportSection;
-    if (eNotificationRequired())
+    if (imports == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MODEL__IMPORT_SECTION, oldImportSection, newImportSection);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      imports = new EObjectContainmentEList<Import>(Import.class, this, ArchitecturePackage.MODEL__IMPORTS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setImportSection(XImportSection newImportSection)
-  {
-    if (newImportSection != importSection)
-    {
-      NotificationChain msgs = null;
-      if (importSection != null)
-        msgs = ((InternalEObject)importSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.MODEL__IMPORT_SECTION, null, msgs);
-      if (newImportSection != null)
-        msgs = ((InternalEObject)newImportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.MODEL__IMPORT_SECTION, null, msgs);
-      msgs = basicSetImportSection(newImportSection, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MODEL__IMPORT_SECTION, newImportSection, newImportSection));
+    return imports;
   }
 
   /**
@@ -216,13 +181,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Connection> getConections()
+  public EList<Connection> getConnections()
   {
-    if (conections == null)
+    if (connections == null)
     {
-      conections = new EObjectContainmentEList<Connection>(Connection.class, this, ArchitecturePackage.MODEL__CONECTIONS);
+      connections = new EObjectContainmentEList<Connection>(Connection.class, this, ArchitecturePackage.MODEL__CONNECTIONS);
     }
-    return conections;
+    return connections;
   }
 
   /**
@@ -249,12 +214,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case ArchitecturePackage.MODEL__IMPORT_SECTION:
-        return basicSetImportSection(null, msgs);
+      case ArchitecturePackage.MODEL__IMPORTS:
+        return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case ArchitecturePackage.MODEL__REGISTERED_PACKAGES:
         return ((InternalEList<?>)getRegisteredPackages()).basicRemove(otherEnd, msgs);
-      case ArchitecturePackage.MODEL__CONECTIONS:
-        return ((InternalEList<?>)getConections()).basicRemove(otherEnd, msgs);
+      case ArchitecturePackage.MODEL__CONNECTIONS:
+        return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
       case ArchitecturePackage.MODEL__METAMODELS:
         return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
     }
@@ -273,12 +238,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ArchitecturePackage.MODEL__NAME:
         return getName();
-      case ArchitecturePackage.MODEL__IMPORT_SECTION:
-        return getImportSection();
+      case ArchitecturePackage.MODEL__IMPORTS:
+        return getImports();
       case ArchitecturePackage.MODEL__REGISTERED_PACKAGES:
         return getRegisteredPackages();
-      case ArchitecturePackage.MODEL__CONECTIONS:
-        return getConections();
+      case ArchitecturePackage.MODEL__CONNECTIONS:
+        return getConnections();
       case ArchitecturePackage.MODEL__METAMODELS:
         return getMetamodels();
     }
@@ -299,16 +264,17 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchitecturePackage.MODEL__NAME:
         setName((String)newValue);
         return;
-      case ArchitecturePackage.MODEL__IMPORT_SECTION:
-        setImportSection((XImportSection)newValue);
+      case ArchitecturePackage.MODEL__IMPORTS:
+        getImports().clear();
+        getImports().addAll((Collection<? extends Import>)newValue);
         return;
       case ArchitecturePackage.MODEL__REGISTERED_PACKAGES:
         getRegisteredPackages().clear();
         getRegisteredPackages().addAll((Collection<? extends RegisteredPackage>)newValue);
         return;
-      case ArchitecturePackage.MODEL__CONECTIONS:
-        getConections().clear();
-        getConections().addAll((Collection<? extends Connection>)newValue);
+      case ArchitecturePackage.MODEL__CONNECTIONS:
+        getConnections().clear();
+        getConnections().addAll((Collection<? extends Connection>)newValue);
         return;
       case ArchitecturePackage.MODEL__METAMODELS:
         getMetamodels().clear();
@@ -331,14 +297,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchitecturePackage.MODEL__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ArchitecturePackage.MODEL__IMPORT_SECTION:
-        setImportSection((XImportSection)null);
+      case ArchitecturePackage.MODEL__IMPORTS:
+        getImports().clear();
         return;
       case ArchitecturePackage.MODEL__REGISTERED_PACKAGES:
         getRegisteredPackages().clear();
         return;
-      case ArchitecturePackage.MODEL__CONECTIONS:
-        getConections().clear();
+      case ArchitecturePackage.MODEL__CONNECTIONS:
+        getConnections().clear();
         return;
       case ArchitecturePackage.MODEL__METAMODELS:
         getMetamodels().clear();
@@ -359,12 +325,12 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ArchitecturePackage.MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ArchitecturePackage.MODEL__IMPORT_SECTION:
-        return importSection != null;
+      case ArchitecturePackage.MODEL__IMPORTS:
+        return imports != null && !imports.isEmpty();
       case ArchitecturePackage.MODEL__REGISTERED_PACKAGES:
         return registeredPackages != null && !registeredPackages.isEmpty();
-      case ArchitecturePackage.MODEL__CONECTIONS:
-        return conections != null && !conections.isEmpty();
+      case ArchitecturePackage.MODEL__CONNECTIONS:
+        return connections != null && !connections.isEmpty();
       case ArchitecturePackage.MODEL__METAMODELS:
         return metamodels != null && !metamodels.isEmpty();
     }
