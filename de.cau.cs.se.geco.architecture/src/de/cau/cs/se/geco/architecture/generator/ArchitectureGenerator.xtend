@@ -22,11 +22,11 @@ import de.cau.cs.se.geco.architecture.architecture.Generator
 class ArchitectureGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		val targetUri = resource.URI.trimFileExtension.appendFileExtension("xtend")
-		fsa.generateFile(targetUri.toFileString, 
-			'''''' /*createGenerator(resource.allContents.filter(Model).next, 
-				resource.URI.lastSegment.split('\\.').get(0))*/
-		)
+//		val targetUri = resource.URI.trimFileExtension.appendFileExtension("xtend")
+//		fsa.generateFile(targetUri.toFileString, 
+//			'''''' /*createGenerator(resource.allContents.filter(Model).next, 
+//				resource.URI.lastSegment.split('\\.').get(0))*/
+//		)
 	}
 	
 	private def CharSequence createGenerator(Model model, String className) '''

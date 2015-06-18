@@ -117,7 +117,10 @@ public class ArchitectureScopeProvider implements IDelegatingScopeProvider {
         EObject _eContainer = _reference.eContainer();
         ModelNodeType _type = ((MetamodelSequence) _eContainer).getType();
         EClass _resolveType = ArchitectureTyping.resolveType(_type);
-        EList<EReference> _eAllReferences = _resolveType.getEAllReferences();
+        EList<EReference> _eAllReferences = null;
+        if (_resolveType!=null) {
+          _eAllReferences=_resolveType.getEAllReferences();
+        }
         _switchResult = Scopes.scopeFor(_eAllReferences);
       }
     }

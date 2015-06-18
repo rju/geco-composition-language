@@ -21,9 +21,7 @@ import de.cau.cs.se.geco.architecture.architecture.Generator
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 
 class ArchitectureScopeProvider implements IDelegatingScopeProvider {
-		
-	//public final static String NAMED_DELEGATE = "de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider.delegate";
-	
+			
 	@Inject @Named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)
 	IScopeProvider delegate
 		
@@ -44,7 +42,9 @@ class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 	
 	private def createNodePropertyScope(EObject container) {
 		switch(container) {
-			SourceModelNodeSelector: Scopes.scopeFor((container.reference.eContainer as MetamodelSequence).type.resolveType.EAllReferences)
+			SourceModelNodeSelector: Scopes.scopeFor((container.reference.eContainer as MetamodelSequence).
+				type.resolveType?.EAllReferences
+			)
 			ModelNodeType: Scopes.scopeFor(container.type.EAllReferences)
 			NodeProperty: Scopes.scopeFor(container.property.EReferenceType.EAllReferences)
 		}

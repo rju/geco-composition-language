@@ -13,7 +13,6 @@ import de.cau.cs.se.geco.architecture.architecture.WeaverImport;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
@@ -32,12 +31,6 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 @SuppressWarnings("all")
 public class ArchitectureGenerator implements IGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    URI _uRI = resource.getURI();
-    URI _trimFileExtension = _uRI.trimFileExtension();
-    final URI targetUri = _trimFileExtension.appendFileExtension("xtend");
-    String _fileString = targetUri.toFileString();
-    StringConcatenation _builder = new StringConcatenation();
-    fsa.generateFile(_fileString, _builder);
   }
   
   private CharSequence createGenerator(final Model model, final String className) {
