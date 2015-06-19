@@ -17,7 +17,7 @@ import com.google.inject.Injector;
 public class ArchitectureStandaloneSetupGenerated implements ISetup {
 
 	public Injector createInjectorAndDoEMFRegistration() {
-		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
+		org.eclipse.xtext.xbase.XbaseStandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);
@@ -38,6 +38,7 @@ public class ArchitectureStandaloneSetupGenerated implements ISetup {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("gmm", resourceFactory);
 		org.eclipse.xtext.resource.IResourceServiceProvider.Registry.INSTANCE.getExtensionToFactoryMap().put("gmm", serviceProvider);
 		
+
 
 
 	}

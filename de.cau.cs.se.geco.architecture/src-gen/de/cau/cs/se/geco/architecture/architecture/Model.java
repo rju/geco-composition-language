@@ -6,6 +6,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.xtype.XImportSection;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model</b></em>'.
@@ -71,20 +73,30 @@ public interface Model extends EObject
   EList<Import> getImports();
 
   /**
-   * Returns the value of the '<em><b>Registered Packages</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage}.
+   * Returns the value of the '<em><b>Registered Packages</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Registered Packages</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Registered Packages</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Registered Packages</em>' containment reference list.
+   * @return the value of the '<em>Registered Packages</em>' containment reference.
+   * @see #setRegisteredPackages(XImportSection)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModel_RegisteredPackages()
    * @model containment="true"
    * @generated
    */
-  EList<RegisteredPackage> getRegisteredPackages();
+  XImportSection getRegisteredPackages();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Model#getRegisteredPackages <em>Registered Packages</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Registered Packages</em>' containment reference.
+   * @see #getRegisteredPackages()
+   * @generated
+   */
+  void setRegisteredPackages(XImportSection value);
 
   /**
    * Returns the value of the '<em><b>Connections</b></em>' containment reference list.

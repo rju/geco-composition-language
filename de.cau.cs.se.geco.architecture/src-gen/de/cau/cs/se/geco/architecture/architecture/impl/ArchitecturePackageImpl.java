@@ -4,30 +4,16 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitectureFactory;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
-import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral;
-import de.cau.cs.se.geco.architecture.architecture.Comparator;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
-import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
-import de.cau.cs.se.geco.architecture.architecture.FloatLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.GeneratorImport;
 import de.cau.cs.se.geco.architecture.architecture.Import;
-import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
-import de.cau.cs.se.geco.architecture.architecture.Literal;
-import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
-import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
-import de.cau.cs.se.geco.architecture.architecture.NodeType;
-import de.cau.cs.se.geco.architecture.architecture.Operand;
-import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
-import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
@@ -39,6 +25,12 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.eclipse.xtext.common.types.TypesPackage;
+
+import org.eclipse.xtext.xbase.XbasePackage;
+
+import org.eclipse.xtext.xtype.XtypePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -95,13 +87,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass registeredPackageEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass connectionEClass = null;
 
   /**
@@ -144,34 +129,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelNodeTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass nodePropertyEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass constraintExpressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass operandEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass traceModelEClass = null;
 
   /**
@@ -180,69 +137,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * @generated
    */
   private EClass nodeSetRelationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass nodeTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass literalEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass arrayLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass stringLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass intLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass floatLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass booleanLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass logicOperatorEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass comparatorEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -291,6 +185,10 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     ArchitecturePackageImpl theArchitecturePackage = (ArchitecturePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ArchitecturePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ArchitecturePackageImpl());
 
     isInited = true;
+
+    // Initialize simple dependencies
+    XbasePackage.eINSTANCE.eClass();
+    XtypePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theArchitecturePackage.createPackageContents();
@@ -455,56 +353,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
   public EAttribute getMetamodel_Name()
   {
     return (EAttribute)metamodelEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getRegisteredPackage()
-  {
-    return registeredPackageEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRegisteredPackage_Name()
-  {
-    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRegisteredPackage_ModelPackage()
-  {
-    return (EReference)registeredPackageEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRegisteredPackage_IsText()
-  {
-    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRegisteredPackage_Extension()
-  {
-    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -682,136 +530,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModelNodeType()
-  {
-    return modelNodeTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getModelNodeType_Target()
-  {
-    return (EReference)modelNodeTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getModelNodeType_Type()
-  {
-    return (EReference)modelNodeTypeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getModelNodeType_Property()
-  {
-    return (EReference)modelNodeTypeEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getNodeProperty()
-  {
-    return nodePropertyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getNodeProperty_Property()
-  {
-    return (EReference)nodePropertyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getNodeProperty_SubProperty()
-  {
-    return (EReference)nodePropertyEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getConstraintExpression()
-  {
-    return constraintExpressionEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getConstraintExpression_Left()
-  {
-    return (EReference)constraintExpressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getConstraintExpression_Operator()
-  {
-    return (EReference)constraintExpressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getConstraintExpression_Right()
-  {
-    return (EReference)constraintExpressionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getConstraintExpression_Constraint()
-  {
-    return (EReference)constraintExpressionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getOperand()
-  {
-    return operandEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getTraceModel()
   {
     return traceModelEClass;
@@ -872,246 +590,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getNodeType()
-  {
-    return nodeTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getNodeType_Eclass()
-  {
-    return (EReference)nodeTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLiteral()
-  {
-    return literalEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getArrayLiteral()
-  {
-    return arrayLiteralEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getArrayLiteral_Literals()
-  {
-    return (EReference)arrayLiteralEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getStringLiteral()
-  {
-    return stringLiteralEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getStringLiteral_Value()
-  {
-    return (EAttribute)stringLiteralEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIntLiteral()
-  {
-    return intLiteralEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIntLiteral_Value()
-  {
-    return (EAttribute)intLiteralEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFloatLiteral()
-  {
-    return floatLiteralEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getFloatLiteral_Value()
-  {
-    return (EAttribute)floatLiteralEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getBooleanLiteral()
-  {
-    return booleanLiteralEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getBooleanLiteral_Value()
-  {
-    return (EAttribute)booleanLiteralEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getLogicOperator()
-  {
-    return logicOperatorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getLogicOperator_AND()
-  {
-    return (EAttribute)logicOperatorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getLogicOperator_OR()
-  {
-    return (EAttribute)logicOperatorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getComparator()
-  {
-    return comparatorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_EQ()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_NE()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_GR()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_LW()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_GE()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_LE()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_LIKE()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ArchitectureFactory getArchitectureFactory()
   {
     return (ArchitectureFactory)getEFactoryInstance();
@@ -1158,12 +636,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     metamodelEClass = createEClass(METAMODEL);
     createEAttribute(metamodelEClass, METAMODEL__NAME);
 
-    registeredPackageEClass = createEClass(REGISTERED_PACKAGE);
-    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__NAME);
-    createEReference(registeredPackageEClass, REGISTERED_PACKAGE__MODEL_PACKAGE);
-    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__IS_TEXT);
-    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__EXTENSION);
-
     connectionEClass = createEClass(CONNECTION);
     createEReference(connectionEClass, CONNECTION__SOURCE_MODEL);
     createEReference(connectionEClass, CONNECTION__TARGET_MODEL);
@@ -1187,23 +659,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEReference(targetModelNodeTypeEClass, TARGET_MODEL_NODE_TYPE__REFERENCE);
     createEAttribute(targetModelNodeTypeEClass, TARGET_MODEL_NODE_TYPE__MULTIPLY);
 
-    modelNodeTypeEClass = createEClass(MODEL_NODE_TYPE);
-    createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__TARGET);
-    createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__TYPE);
-    createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__PROPERTY);
-
-    nodePropertyEClass = createEClass(NODE_PROPERTY);
-    createEReference(nodePropertyEClass, NODE_PROPERTY__PROPERTY);
-    createEReference(nodePropertyEClass, NODE_PROPERTY__SUB_PROPERTY);
-
-    constraintExpressionEClass = createEClass(CONSTRAINT_EXPRESSION);
-    createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__LEFT);
-    createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__OPERATOR);
-    createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__RIGHT);
-    createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__CONSTRAINT);
-
-    operandEClass = createEClass(OPERAND);
-
     traceModelEClass = createEClass(TRACE_MODEL);
     createEAttribute(traceModelEClass, TRACE_MODEL__NAME);
     createEReference(traceModelEClass, TRACE_MODEL__NODE_SET_RELATIONS);
@@ -1211,39 +666,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     nodeSetRelationEClass = createEClass(NODE_SET_RELATION);
     createEReference(nodeSetRelationEClass, NODE_SET_RELATION__SOURCE_NODES);
     createEReference(nodeSetRelationEClass, NODE_SET_RELATION__TARGET_NODES);
-
-    nodeTypeEClass = createEClass(NODE_TYPE);
-    createEReference(nodeTypeEClass, NODE_TYPE__ECLASS);
-
-    literalEClass = createEClass(LITERAL);
-
-    arrayLiteralEClass = createEClass(ARRAY_LITERAL);
-    createEReference(arrayLiteralEClass, ARRAY_LITERAL__LITERALS);
-
-    stringLiteralEClass = createEClass(STRING_LITERAL);
-    createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
-
-    intLiteralEClass = createEClass(INT_LITERAL);
-    createEAttribute(intLiteralEClass, INT_LITERAL__VALUE);
-
-    floatLiteralEClass = createEClass(FLOAT_LITERAL);
-    createEAttribute(floatLiteralEClass, FLOAT_LITERAL__VALUE);
-
-    booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
-    createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
-
-    logicOperatorEClass = createEClass(LOGIC_OPERATOR);
-    createEAttribute(logicOperatorEClass, LOGIC_OPERATOR__AND);
-    createEAttribute(logicOperatorEClass, LOGIC_OPERATOR__OR);
-
-    comparatorEClass = createEClass(COMPARATOR);
-    createEAttribute(comparatorEClass, COMPARATOR__EQ);
-    createEAttribute(comparatorEClass, COMPARATOR__NE);
-    createEAttribute(comparatorEClass, COMPARATOR__GR);
-    createEAttribute(comparatorEClass, COMPARATOR__LW);
-    createEAttribute(comparatorEClass, COMPARATOR__GE);
-    createEAttribute(comparatorEClass, COMPARATOR__LE);
-    createEAttribute(comparatorEClass, COMPARATOR__LIKE);
   }
 
   /**
@@ -1270,6 +692,11 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
 
+    // Obtain other dependent packages
+    XtypePackage theXtypePackage = (XtypePackage)EPackage.Registry.INSTANCE.getEPackage(XtypePackage.eNS_URI);
+    TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+    XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
+
     // Create type parameters
 
     // Set bounds for type parameters
@@ -1281,20 +708,12 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     generatorEClass.getESuperTypes().add(this.getConnection());
     generatorEClass.getESuperTypes().add(this.getAspectModel());
     targetModelNodeTypeEClass.getESuperTypes().add(this.getAspectModel());
-    nodePropertyEClass.getESuperTypes().add(this.getOperand());
-    operandEClass.getESuperTypes().add(this.getConstraintExpression());
-    literalEClass.getESuperTypes().add(this.getOperand());
-    arrayLiteralEClass.getESuperTypes().add(this.getLiteral());
-    stringLiteralEClass.getESuperTypes().add(this.getLiteral());
-    intLiteralEClass.getESuperTypes().add(this.getLiteral());
-    floatLiteralEClass.getESuperTypes().add(this.getLiteral());
-    booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_RegisteredPackages(), this.getRegisteredPackage(), null, "registeredPackages", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_RegisteredPackages(), theXtypePackage.getXImportSection(), null, "registeredPackages", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Connections(), this.getConnection(), null, "connections", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Metamodels(), this.getMetamodelSequence(), null, "metamodels", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1306,17 +725,11 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEClass(generatorImportEClass, GeneratorImport.class, "GeneratorImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(metamodelSequenceEClass, MetamodelSequence.class, "MetamodelSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMetamodelSequence_Type(), this.getModelNodeType(), null, "type", null, 0, 1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetamodelSequence_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMetamodelSequence_Metamodels(), this.getMetamodel(), null, "metamodels", null, 0, -1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metamodelEClass, Metamodel.class, "Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMetamodel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(registeredPackageEClass, RegisteredPackage.class, "RegisteredPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRegisteredPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRegisteredPackage_ModelPackage(), ecorePackage.getEPackage(), null, "modelPackage", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRegisteredPackage_IsText(), ecorePackage.getEBoolean(), "isText", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRegisteredPackage_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConnection_SourceModel(), this.getSourceModelNodeSelector(), null, "sourceModel", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1335,69 +748,19 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(sourceModelNodeSelectorEClass, SourceModelNodeSelector.class, "SourceModelNodeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSourceModelNodeSelector_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSourceModelNodeSelector_Property(), this.getNodeProperty(), null, "property", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSourceModelNodeSelector_Property(), theXbasePackage.getXExpression(), null, "property", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(targetModelNodeTypeEClass, TargetModelNodeType.class, "TargetModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTargetModelNodeType_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTargetModelNodeType_Multiply(), ecorePackage.getEBoolean(), "multiply", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(modelNodeTypeEClass, ModelNodeType.class, "ModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModelNodeType_Target(), this.getRegisteredPackage(), null, "target", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModelNodeType_Type(), ecorePackage.getEClass(), null, "type", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModelNodeType_Property(), this.getNodeProperty(), null, "property", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(nodePropertyEClass, NodeProperty.class, "NodeProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getNodeProperty_Property(), ecorePackage.getEReference(), null, "property", null, 0, 1, NodeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNodeProperty_SubProperty(), this.getNodeProperty(), null, "subProperty", null, 0, 1, NodeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(constraintExpressionEClass, ConstraintExpression.class, "ConstraintExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getConstraintExpression_Left(), this.getConstraintExpression(), null, "left", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraintExpression_Operator(), ecorePackage.getEObject(), null, "operator", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraintExpression_Right(), this.getConstraintExpression(), null, "right", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraintExpression_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(operandEClass, Operand.class, "Operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(traceModelEClass, TraceModel.class, "TraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTraceModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTraceModel_NodeSetRelations(), this.getNodeSetRelation(), null, "nodeSetRelations", null, 0, -1, TraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(nodeSetRelationEClass, NodeSetRelation.class, "NodeSetRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getNodeSetRelation_SourceNodes(), this.getNodeType(), null, "sourceNodes", null, 0, -1, NodeSetRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNodeSetRelation_TargetNodes(), this.getNodeType(), null, "targetNodes", null, 0, -1, NodeSetRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(nodeTypeEClass, NodeType.class, "NodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getNodeType_Eclass(), ecorePackage.getEClass(), null, "eclass", null, 0, 1, NodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(arrayLiteralEClass, ArrayLiteral.class, "ArrayLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getArrayLiteral_Literals(), this.getLiteral(), null, "literals", null, 0, -1, ArrayLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(intLiteralEClass, IntLiteral.class, "IntLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getIntLiteral_Value(), ecorePackage.getEInt(), "value", null, 0, 1, IntLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(floatLiteralEClass, FloatLiteral.class, "FloatLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFloatLiteral_Value(), ecorePackage.getEFloatObject(), "value", null, 0, 1, FloatLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEBooleanObject(), "value", null, 0, 1, BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(logicOperatorEClass, LogicOperator.class, "LogicOperator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLogicOperator_AND(), ecorePackage.getEString(), "AND", null, 0, 1, LogicOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLogicOperator_OR(), ecorePackage.getEString(), "OR", null, 0, 1, LogicOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(comparatorEClass, Comparator.class, "Comparator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getComparator_EQ(), ecorePackage.getEString(), "EQ", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_NE(), ecorePackage.getEString(), "NE", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_GR(), ecorePackage.getEString(), "GR", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_LW(), ecorePackage.getEString(), "LW", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_GE(), ecorePackage.getEString(), "GE", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_LE(), ecorePackage.getEString(), "LE", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_LIKE(), ecorePackage.getEString(), "LIKE", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeSetRelation_SourceNodes(), theTypesPackage.getJvmTypeReference(), null, "sourceNodes", null, 0, -1, NodeSetRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeSetRelation_TargetNodes(), theTypesPackage.getJvmTypeReference(), null, "targetNodes", null, 0, -1, NodeSetRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

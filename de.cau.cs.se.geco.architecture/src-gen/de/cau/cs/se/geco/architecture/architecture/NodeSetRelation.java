@@ -6,6 +6,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Node Set Relation</b></em>'.
@@ -27,7 +29,7 @@ public interface NodeSetRelation extends EObject
 {
   /**
    * Returns the value of the '<em><b>Source Nodes</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.NodeType}.
+   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmTypeReference}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Source Nodes</em>' containment reference list isn't clear,
@@ -39,11 +41,11 @@ public interface NodeSetRelation extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<NodeType> getSourceNodes();
+  EList<JvmTypeReference> getSourceNodes();
 
   /**
    * Returns the value of the '<em><b>Target Nodes</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.NodeType}.
+   * The list contents are of type {@link org.eclipse.xtext.common.types.JvmTypeReference}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Target Nodes</em>' containment reference list isn't clear,
@@ -55,6 +57,6 @@ public interface NodeSetRelation extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<NodeType> getTargetNodes();
+  EList<JvmTypeReference> getTargetNodes();
 
 } // NodeSetRelation

@@ -33,6 +33,6 @@ Export-Package: de.cau.cs.se.geco.architecture,
  de.cau.cs.se.geco.architecture.scoping,
  de.cau.cs.se.geco.architecture.serializer,
  de.cau.cs.se.geco.architecture.services,
- de.cau.cs.se.geco.architecture.typing,
- de.cau.cs.se.geco.architecture.validation
+ de.cau.cs.se.geco.architecture.validation,
+ de.cau.cs.se.geco.architecture.jvmmodel
 

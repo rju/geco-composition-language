@@ -6,6 +6,8 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Metamodel Sequence</b></em>'.
@@ -34,12 +36,12 @@ public interface MetamodelSequence extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(ModelNodeType)
+   * @see #setType(JvmTypeReference)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getMetamodelSequence_Type()
    * @model containment="true"
    * @generated
    */
-  ModelNodeType getType();
+  JvmTypeReference getType();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getType <em>Type</em>}' containment reference.
@@ -49,7 +51,7 @@ public interface MetamodelSequence extends EObject
    * @see #getType()
    * @generated
    */
-  void setType(ModelNodeType value);
+  void setType(JvmTypeReference value);
 
   /**
    * Returns the value of the '<em><b>Metamodels</b></em>' containment reference list.

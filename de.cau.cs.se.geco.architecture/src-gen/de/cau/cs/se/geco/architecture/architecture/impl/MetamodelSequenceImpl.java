@@ -5,7 +5,6 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 
 import java.util.Collection;
 
@@ -22,6 +21,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,7 +48,7 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected ModelNodeType type;
+  protected JvmTypeReference type;
 
   /**
    * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
@@ -85,7 +86,7 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelNodeType getType()
+  public JvmTypeReference getType()
   {
     return type;
   }
@@ -95,9 +96,9 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(ModelNodeType newType, NotificationChain msgs)
+  public NotificationChain basicSetType(JvmTypeReference newType, NotificationChain msgs)
   {
-    ModelNodeType oldType = type;
+    JvmTypeReference oldType = type;
     type = newType;
     if (eNotificationRequired())
     {
@@ -112,7 +113,7 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(ModelNodeType newType)
+  public void setType(JvmTypeReference newType)
   {
     if (newType != type)
     {
@@ -190,7 +191,7 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case ArchitecturePackage.METAMODEL_SEQUENCE__TYPE:
-        setType((ModelNodeType)newValue);
+        setType((JvmTypeReference)newValue);
         return;
       case ArchitecturePackage.METAMODEL_SEQUENCE__METAMODELS:
         getMetamodels().clear();
@@ -211,7 +212,7 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case ArchitecturePackage.METAMODEL_SEQUENCE__TYPE:
-        setType((ModelNodeType)null);
+        setType((JvmTypeReference)null);
         return;
       case ArchitecturePackage.METAMODEL_SEQUENCE__METAMODELS:
         getMetamodels().clear();

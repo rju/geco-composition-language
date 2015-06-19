@@ -4,6 +4,8 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.xbase.XExpression;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Source Model Node Selector</b></em>'.
@@ -58,12 +60,12 @@ public interface SourceModelNodeSelector extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Property</em>' containment reference.
-   * @see #setProperty(NodeProperty)
+   * @see #setProperty(XExpression)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getSourceModelNodeSelector_Property()
    * @model containment="true"
    * @generated
    */
-  NodeProperty getProperty();
+  XExpression getProperty();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getProperty <em>Property</em>}' containment reference.
@@ -73,6 +75,6 @@ public interface SourceModelNodeSelector extends EObject
    * @see #getProperty()
    * @generated
    */
-  void setProperty(NodeProperty value);
+  void setProperty(XExpression value);
 
 } // SourceModelNodeSelector

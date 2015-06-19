@@ -4,7 +4,6 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
-import de.cau.cs.se.geco.architecture.architecture.NodeType;
 
 import java.util.Collection;
 
@@ -19,6 +18,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,7 +45,7 @@ public class NodeSetRelationImpl extends MinimalEObjectImpl.Container implements
    * @generated
    * @ordered
    */
-  protected EList<NodeType> sourceNodes;
+  protected EList<JvmTypeReference> sourceNodes;
 
   /**
    * The cached value of the '{@link #getTargetNodes() <em>Target Nodes</em>}' containment reference list.
@@ -54,7 +55,7 @@ public class NodeSetRelationImpl extends MinimalEObjectImpl.Container implements
    * @generated
    * @ordered
    */
-  protected EList<NodeType> targetNodes;
+  protected EList<JvmTypeReference> targetNodes;
 
   /**
    * <!-- begin-user-doc -->
@@ -82,11 +83,11 @@ public class NodeSetRelationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<NodeType> getSourceNodes()
+  public EList<JvmTypeReference> getSourceNodes()
   {
     if (sourceNodes == null)
     {
-      sourceNodes = new EObjectContainmentEList<NodeType>(NodeType.class, this, ArchitecturePackage.NODE_SET_RELATION__SOURCE_NODES);
+      sourceNodes = new EObjectContainmentEList<JvmTypeReference>(JvmTypeReference.class, this, ArchitecturePackage.NODE_SET_RELATION__SOURCE_NODES);
     }
     return sourceNodes;
   }
@@ -96,11 +97,11 @@ public class NodeSetRelationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<NodeType> getTargetNodes()
+  public EList<JvmTypeReference> getTargetNodes()
   {
     if (targetNodes == null)
     {
-      targetNodes = new EObjectContainmentEList<NodeType>(NodeType.class, this, ArchitecturePackage.NODE_SET_RELATION__TARGET_NODES);
+      targetNodes = new EObjectContainmentEList<JvmTypeReference>(JvmTypeReference.class, this, ArchitecturePackage.NODE_SET_RELATION__TARGET_NODES);
     }
     return targetNodes;
   }
@@ -154,11 +155,11 @@ public class NodeSetRelationImpl extends MinimalEObjectImpl.Container implements
     {
       case ArchitecturePackage.NODE_SET_RELATION__SOURCE_NODES:
         getSourceNodes().clear();
-        getSourceNodes().addAll((Collection<? extends NodeType>)newValue);
+        getSourceNodes().addAll((Collection<? extends JvmTypeReference>)newValue);
         return;
       case ArchitecturePackage.NODE_SET_RELATION__TARGET_NODES:
         getTargetNodes().clear();
-        getTargetNodes().addAll((Collection<? extends NodeType>)newValue);
+        getTargetNodes().addAll((Collection<? extends JvmTypeReference>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

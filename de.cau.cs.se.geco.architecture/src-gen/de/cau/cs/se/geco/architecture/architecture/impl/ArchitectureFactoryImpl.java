@@ -70,28 +70,14 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.GENERATOR_IMPORT: return createGeneratorImport();
       case ArchitecturePackage.METAMODEL_SEQUENCE: return createMetamodelSequence();
       case ArchitecturePackage.METAMODEL: return createMetamodel();
-      case ArchitecturePackage.REGISTERED_PACKAGE: return createRegisteredPackage();
       case ArchitecturePackage.CONNECTION: return createConnection();
       case ArchitecturePackage.WEAVER: return createWeaver();
       case ArchitecturePackage.ASPECT_MODEL: return createAspectModel();
       case ArchitecturePackage.GENERATOR: return createGenerator();
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR: return createSourceModelNodeSelector();
       case ArchitecturePackage.TARGET_MODEL_NODE_TYPE: return createTargetModelNodeType();
-      case ArchitecturePackage.MODEL_NODE_TYPE: return createModelNodeType();
-      case ArchitecturePackage.NODE_PROPERTY: return createNodeProperty();
-      case ArchitecturePackage.CONSTRAINT_EXPRESSION: return createConstraintExpression();
-      case ArchitecturePackage.OPERAND: return createOperand();
       case ArchitecturePackage.TRACE_MODEL: return createTraceModel();
       case ArchitecturePackage.NODE_SET_RELATION: return createNodeSetRelation();
-      case ArchitecturePackage.NODE_TYPE: return createNodeType();
-      case ArchitecturePackage.LITERAL: return createLiteral();
-      case ArchitecturePackage.ARRAY_LITERAL: return createArrayLiteral();
-      case ArchitecturePackage.STRING_LITERAL: return createStringLiteral();
-      case ArchitecturePackage.INT_LITERAL: return createIntLiteral();
-      case ArchitecturePackage.FLOAT_LITERAL: return createFloatLiteral();
-      case ArchitecturePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
-      case ArchitecturePackage.LOGIC_OPERATOR: return createLogicOperator();
-      case ArchitecturePackage.COMPARATOR: return createComparator();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -168,17 +154,6 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public RegisteredPackage createRegisteredPackage()
-  {
-    RegisteredPackageImpl registeredPackage = new RegisteredPackageImpl();
-    return registeredPackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Connection createConnection()
   {
     ConnectionImpl connection = new ConnectionImpl();
@@ -245,50 +220,6 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelNodeType createModelNodeType()
-  {
-    ModelNodeTypeImpl modelNodeType = new ModelNodeTypeImpl();
-    return modelNodeType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NodeProperty createNodeProperty()
-  {
-    NodePropertyImpl nodeProperty = new NodePropertyImpl();
-    return nodeProperty;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ConstraintExpression createConstraintExpression()
-  {
-    ConstraintExpressionImpl constraintExpression = new ConstraintExpressionImpl();
-    return constraintExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Operand createOperand()
-  {
-    OperandImpl operand = new OperandImpl();
-    return operand;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public TraceModel createTraceModel()
   {
     TraceModelImpl traceModel = new TraceModelImpl();
@@ -304,105 +235,6 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     NodeSetRelationImpl nodeSetRelation = new NodeSetRelationImpl();
     return nodeSetRelation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NodeType createNodeType()
-  {
-    NodeTypeImpl nodeType = new NodeTypeImpl();
-    return nodeType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Literal createLiteral()
-  {
-    LiteralImpl literal = new LiteralImpl();
-    return literal;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ArrayLiteral createArrayLiteral()
-  {
-    ArrayLiteralImpl arrayLiteral = new ArrayLiteralImpl();
-    return arrayLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public StringLiteral createStringLiteral()
-  {
-    StringLiteralImpl stringLiteral = new StringLiteralImpl();
-    return stringLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IntLiteral createIntLiteral()
-  {
-    IntLiteralImpl intLiteral = new IntLiteralImpl();
-    return intLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FloatLiteral createFloatLiteral()
-  {
-    FloatLiteralImpl floatLiteral = new FloatLiteralImpl();
-    return floatLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public BooleanLiteral createBooleanLiteral()
-  {
-    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
-    return booleanLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LogicOperator createLogicOperator()
-  {
-    LogicOperatorImpl logicOperator = new LogicOperatorImpl();
-    return logicOperator;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Comparator createComparator()
-  {
-    ComparatorImpl comparator = new ComparatorImpl();
-    return comparator;
   }
 
   /**

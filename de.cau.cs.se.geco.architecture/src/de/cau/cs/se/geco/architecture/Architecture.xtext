@@ -1,16 +1,14 @@
-grammar de.cau.cs.se.geco.architecture.Architecture with org.eclipse.xtext.common.Terminals
+grammar de.cau.cs.se.geco.architecture.Architecture with org.eclipse.xtext.xbase.Xbase
 
 generate architecture "http://www.cau.de/cs/se/geco/architecture/Architecture"
 
-import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://www.eclipse.org/xtext/xbase/Xbase"
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 Model:
 	'package' name=QualifiedName
-	'import' imports+=Import*
-	registeredPackages+=RegisteredPackage+
-	
-	// prerequisites
-	// handle results
+	'fragments' imports+=Import*
+	registeredPackages = XImportSection
 	(connections+=Connection | metamodels+=MetamodelSequence)*
 ;
 
@@ -19,24 +17,27 @@ Import:
 ;
 
 WeaverImport:
-	'weave' importedNamespace = QualifiedNameWithWildcard
+	'weave' importedNamespace = QualifiedName
 ;
 
 GeneratorImport:
-	'gen' importedNamespace = QualifiedNameWithWildcard
+	'gen' importedNamespace = QualifiedName
 ;
 
 MetamodelSequence:
-	'model' type=ModelNodeType metamodels+=Metamodel (',' metamodels+=Metamodel)*
+	'model' type=JvmTypeReference metamodels+=Metamodel (',' metamodels+=Metamodel)*
 ;
 
 Metamodel:
 	name=ID 
 ;
 
-RegisteredPackage:
-	'register' name=ID (modelPackage=[ecore::EPackage|STRING] |(isText?='text' extension=STRING))
-;
+//XImportDeclaration: 
+//	'import' (
+//		importedType=[types::JvmDeclaredType|QualifiedName] | 
+//		importedNamespace=QualifiedNameWithWildcard
+//	) 
+//;
 
 Connection:
 	Generator | Weaver
@@ -62,41 +63,12 @@ Generator:
 ;
 
 SourceModelNodeSelector: 
-	reference = [Metamodel|ID] ('/' property=NodeProperty)? | 
+	reference = [Metamodel|ID] ('/' property=XMemberFeatureCall)? | 
 	{SourceModelNodeSelector} 'null' 
 ;
 
 TargetModelNodeType: {TargetModelNodeType}
 	(reference = [Metamodel|ID])? (multiply?='*')?
-;
-
-ModelNodeType:
-	target=[RegisteredPackage|ID] '/' type=[ecore::EClass|ID] ('/' property=NodeProperty)?
-;
-
-NodeProperty:
-	property=[ecore::EReference|ID] ('[' constraint=ConstraintExpression ']')? ('/' subProperty=NodeProperty)? 
-;
-
-ConstraintExpression:
-	CompareExpression (=>({ConstraintExpression.left=current} operator=LogicOperator) right=ConstraintExpression)?
-;
-
-CompareExpression returns ConstraintExpression:
-	BasicConstraint (=>({ConstraintExpression.left=current} operator=Comparator) right=BasicConstraint)?
-;
-
-BasicConstraint returns ConstraintExpression:
-	ParenthesisConstraint |
-	Operand
-;
-
-ParenthesisConstraint returns ConstraintExpression:
-	'(' constraint=ConstraintExpression ')'
-;
-
-Operand:
-	Literal | NodeProperty
 ;
 
 TraceModel:
@@ -105,79 +77,10 @@ TraceModel:
 
 NodeSetRelation:
 	'(' 
-		sourceNodes+=NodeType (',' sourceNodes+=NodeType)*
+		sourceNodes+=JvmTypeReference (',' sourceNodes+=JvmTypeReference)*
 	':' 
-		targetNodes+=NodeType (',' targetNodes+=NodeType)* 
+		targetNodes+=JvmTypeReference (',' targetNodes+=JvmTypeReference)* 
 	')'
 ;
 
-NodeType: eclass=[ecore::EClass|ID];
-
-// -----------------------------------
-// Literal
-
-Literal:
-	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ArrayLiteral
-;
-
-ArrayLiteral:
-	'{' literals+=Literal (',' literals+=Literal)* '}'
-;
-
-StringLiteral:
-	value=STRING
-;
-
-IntLiteral:
-	value=INT
-;
-
-FloatLiteral:
-	value=FLOAT
-;
-
-BooleanLiteral: 
-	value=BOOLEAN
-;
-
-// -----------------------------------
-// Terminals
-
-LogicOperator:
-	AND = '&' |
-	OR = '|'
-;
-
-Comparator:
-	EQ = '==' |
-	NE = '!=' |
-	GR = '>' |
-	LW = '<' |
-	GE = '>=' |
-	LE = '<=' |
-	LIKE = '~'
-;
-
-QualifiedName:
-  ID (=>'.' ID)*;
-
-QualifiedNameWithWildcard:
-	QualifiedName ('.' '*')?
-;
-
-// terminals
-terminal fragment DIGIT :
-    '0'..'9';
    
-// redefine INT terminal to allow negative numbers
-terminal INT returns ecore::EInt:
-    '-'? DIGIT+;
-
-// make sure the Float rule does not shadow the INT rule
-terminal FLOAT returns ecore::EFloatObject :
-    '-'? DIGIT+ ('.' DIGIT*) (("e"|"E") ("+"|"-")? DIGIT+)? 'f'? |
-    '-'? DIGIT+ 'f';
-    
-// introduce boolean values
-terminal BOOLEAN returns ecore::EBooleanObject :
-    'true' | 'false';

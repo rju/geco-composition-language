@@ -105,11 +105,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createMetamodelAdapter();
       }
       @Override
-      public Adapter caseRegisteredPackage(RegisteredPackage object)
-      {
-        return createRegisteredPackageAdapter();
-      }
-      @Override
       public Adapter caseConnection(Connection object)
       {
         return createConnectionAdapter();
@@ -140,26 +135,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createTargetModelNodeTypeAdapter();
       }
       @Override
-      public Adapter caseModelNodeType(ModelNodeType object)
-      {
-        return createModelNodeTypeAdapter();
-      }
-      @Override
-      public Adapter caseNodeProperty(NodeProperty object)
-      {
-        return createNodePropertyAdapter();
-      }
-      @Override
-      public Adapter caseConstraintExpression(ConstraintExpression object)
-      {
-        return createConstraintExpressionAdapter();
-      }
-      @Override
-      public Adapter caseOperand(Operand object)
-      {
-        return createOperandAdapter();
-      }
-      @Override
       public Adapter caseTraceModel(TraceModel object)
       {
         return createTraceModelAdapter();
@@ -168,51 +143,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
       public Adapter caseNodeSetRelation(NodeSetRelation object)
       {
         return createNodeSetRelationAdapter();
-      }
-      @Override
-      public Adapter caseNodeType(NodeType object)
-      {
-        return createNodeTypeAdapter();
-      }
-      @Override
-      public Adapter caseLiteral(Literal object)
-      {
-        return createLiteralAdapter();
-      }
-      @Override
-      public Adapter caseArrayLiteral(ArrayLiteral object)
-      {
-        return createArrayLiteralAdapter();
-      }
-      @Override
-      public Adapter caseStringLiteral(StringLiteral object)
-      {
-        return createStringLiteralAdapter();
-      }
-      @Override
-      public Adapter caseIntLiteral(IntLiteral object)
-      {
-        return createIntLiteralAdapter();
-      }
-      @Override
-      public Adapter caseFloatLiteral(FloatLiteral object)
-      {
-        return createFloatLiteralAdapter();
-      }
-      @Override
-      public Adapter caseBooleanLiteral(BooleanLiteral object)
-      {
-        return createBooleanLiteralAdapter();
-      }
-      @Override
-      public Adapter caseLogicOperator(LogicOperator object)
-      {
-        return createLogicOperatorAdapter();
-      }
-      @Override
-      public Adapter caseComparator(Comparator object)
-      {
-        return createComparatorAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -327,21 +257,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage <em>Registered Package</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
-   * @generated
-   */
-  public Adapter createRegisteredPackageAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Connection <em>Connection</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -432,66 +347,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType <em>Model Node Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType
-   * @generated
-   */
-  public Adapter createModelNodeTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty <em>Node Property</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.NodeProperty
-   * @generated
-   */
-  public Adapter createNodePropertyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression <em>Constraint Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
-   * @generated
-   */
-  public Adapter createConstraintExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Operand <em>Operand</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Operand
-   * @generated
-   */
-  public Adapter createOperandAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.TraceModel <em>Trace Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -517,141 +372,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNodeSetRelationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.NodeType <em>Node Type</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.NodeType
-   * @generated
-   */
-  public Adapter createNodeTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Literal <em>Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Literal
-   * @generated
-   */
-  public Adapter createLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.ArrayLiteral <em>Array Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.ArrayLiteral
-   * @generated
-   */
-  public Adapter createArrayLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.StringLiteral <em>String Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.StringLiteral
-   * @generated
-   */
-  public Adapter createStringLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.IntLiteral <em>Int Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.IntLiteral
-   * @generated
-   */
-  public Adapter createIntLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.FloatLiteral <em>Float Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.FloatLiteral
-   * @generated
-   */
-  public Adapter createFloatLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.BooleanLiteral <em>Boolean Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.BooleanLiteral
-   * @generated
-   */
-  public Adapter createBooleanLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator
-   * @generated
-   */
-  public Adapter createLogicOperatorAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator
-   * @generated
-   */
-  public Adapter createComparatorAdapter()
   {
     return null;
   }

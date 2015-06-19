@@ -4,7 +4,6 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -15,6 +14,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -50,7 +51,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * @generated
    * @ordered
    */
-  protected NodeProperty property;
+  protected XExpression property;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,7 +122,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public NodeProperty getProperty()
+  public XExpression getProperty()
   {
     return property;
   }
@@ -131,9 +132,9 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetProperty(NodeProperty newProperty, NotificationChain msgs)
+  public NotificationChain basicSetProperty(XExpression newProperty, NotificationChain msgs)
   {
-    NodeProperty oldProperty = property;
+    XExpression oldProperty = property;
     property = newProperty;
     if (eNotificationRequired())
     {
@@ -148,7 +149,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setProperty(NodeProperty newProperty)
+  public void setProperty(XExpression newProperty)
   {
     if (newProperty != property)
     {
@@ -213,7 +214,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
         setReference((Metamodel)newValue);
         return;
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
-        setProperty((NodeProperty)newValue);
+        setProperty((XExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -233,7 +234,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
         setReference((Metamodel)null);
         return;
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
-        setProperty((NodeProperty)null);
+        setProperty((XExpression)null);
         return;
     }
     super.eUnset(featureID);
