@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.architecture;
 
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.common.types.JvmMember;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,12 +32,12 @@ public interface NodeProperty extends Operand
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Property</em>' reference.
-   * @see #setProperty(EReference)
+   * @see #setProperty(JvmMember)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getNodeProperty_Property()
    * @model
    * @generated
    */
-  EReference getProperty();
+  JvmMember getProperty();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty#getProperty <em>Property</em>}' reference.
@@ -47,7 +47,7 @@ public interface NodeProperty extends Operand
    * @see #getProperty()
    * @generated
    */
-  void setProperty(EReference value);
+  void setProperty(JvmMember value);
 
   /**
    * Returns the value of the '<em><b>Sub Property</b></em>' containment reference.

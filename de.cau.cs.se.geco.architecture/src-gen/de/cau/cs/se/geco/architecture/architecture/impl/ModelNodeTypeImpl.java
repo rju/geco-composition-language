@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
@@ -42,16 +41,6 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * @ordered
    */
   protected RegisteredPackage target;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected EClass type;
 
   /**
    * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
@@ -132,49 +121,6 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getType()
-  {
-    if (type != null && type.eIsProxy())
-    {
-      InternalEObject oldType = (InternalEObject)type;
-      type = (EClass)eResolveProxy(oldType);
-      if (type != oldType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.MODEL_NODE_TYPE__TYPE, oldType, type));
-      }
-    }
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass basicGetType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(EClass newType)
-  {
-    EClass oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MODEL_NODE_TYPE__TYPE, oldType, type));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public NodeProperty getProperty()
   {
     return property;
@@ -247,9 +193,6 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
       case ArchitecturePackage.MODEL_NODE_TYPE__TARGET:
         if (resolve) return getTarget();
         return basicGetTarget();
-      case ArchitecturePackage.MODEL_NODE_TYPE__TYPE:
-        if (resolve) return getType();
-        return basicGetType();
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         return getProperty();
     }
@@ -268,9 +211,6 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
     {
       case ArchitecturePackage.MODEL_NODE_TYPE__TARGET:
         setTarget((RegisteredPackage)newValue);
-        return;
-      case ArchitecturePackage.MODEL_NODE_TYPE__TYPE:
-        setType((EClass)newValue);
         return;
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         setProperty((NodeProperty)newValue);
@@ -292,9 +232,6 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
       case ArchitecturePackage.MODEL_NODE_TYPE__TARGET:
         setTarget((RegisteredPackage)null);
         return;
-      case ArchitecturePackage.MODEL_NODE_TYPE__TYPE:
-        setType((EClass)null);
-        return;
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         setProperty((NodeProperty)null);
         return;
@@ -314,8 +251,6 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
     {
       case ArchitecturePackage.MODEL_NODE_TYPE__TARGET:
         return target != null;
-      case ArchitecturePackage.MODEL_NODE_TYPE__TYPE:
-        return type != null;
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         return property != null;
     }

@@ -2,7 +2,6 @@
  */
 package de.cau.cs.se.geco.architecture.architecture;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget <em>Target</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
@@ -50,32 +48,6 @@ public interface ModelNodeType extends EObject
    * @generated
    */
   void setTarget(RegisteredPackage value);
-
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Type</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' reference.
-   * @see #setType(EClass)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModelNodeType_Type()
-   * @model
-   * @generated
-   */
-  EClass getType();
-
-  /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getType <em>Type</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' reference.
-   * @see #getType()
-   * @generated
-   */
-  void setType(EClass value);
 
   /**
    * Returns the value of the '<em><b>Property</b></em>' containment reference.

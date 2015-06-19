@@ -113,23 +113,27 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cWeaveKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
+		private final CrossReference cImportedNamespaceJvmTypeCrossReference_1_0 = (CrossReference)cImportedNamespaceAssignment_1.eContents().get(0);
+		private final RuleCall cImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cImportedNamespaceJvmTypeCrossReference_1_0.eContents().get(1);
 		
 		//WeaverImport:
-		//	"weave" importedNamespace=QualifiedNameWithWildcard;
+		//	"weave" importedNamespace=[types::JvmType|QualifiedName];
 		public ParserRule getRule() { return rule; }
 
-		//"weave" importedNamespace=QualifiedNameWithWildcard
+		//"weave" importedNamespace=[types::JvmType|QualifiedName]
 		public Group getGroup() { return cGroup; }
 
 		//"weave"
 		public Keyword getWeaveKeyword_0() { return cWeaveKeyword_0; }
 
-		//importedNamespace=QualifiedNameWithWildcard
+		//importedNamespace=[types::JvmType|QualifiedName]
 		public Assignment getImportedNamespaceAssignment_1() { return cImportedNamespaceAssignment_1; }
 
-		//QualifiedNameWithWildcard
-		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0; }
+		//[types::JvmType|QualifiedName]
+		public CrossReference getImportedNamespaceJvmTypeCrossReference_1_0() { return cImportedNamespaceJvmTypeCrossReference_1_0; }
+
+		//QualifiedName
+		public RuleCall getImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1() { return cImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1; }
 	}
 
 	public class GeneratorImportElements extends AbstractParserRuleElementFinder {
@@ -137,23 +141,27 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cGenKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
+		private final CrossReference cImportedNamespaceJvmTypeCrossReference_1_0 = (CrossReference)cImportedNamespaceAssignment_1.eContents().get(0);
+		private final RuleCall cImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cImportedNamespaceJvmTypeCrossReference_1_0.eContents().get(1);
 		
 		//GeneratorImport:
-		//	"gen" importedNamespace=QualifiedNameWithWildcard;
+		//	"gen" importedNamespace=[types::JvmType|QualifiedName];
 		public ParserRule getRule() { return rule; }
 
-		//"gen" importedNamespace=QualifiedNameWithWildcard
+		//"gen" importedNamespace=[types::JvmType|QualifiedName]
 		public Group getGroup() { return cGroup; }
 
 		//"gen"
 		public Keyword getGenKeyword_0() { return cGenKeyword_0; }
 
-		//importedNamespace=QualifiedNameWithWildcard
+		//importedNamespace=[types::JvmType|QualifiedName]
 		public Assignment getImportedNamespaceAssignment_1() { return cImportedNamespaceAssignment_1; }
 
-		//QualifiedNameWithWildcard
-		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0; }
+		//[types::JvmType|QualifiedName]
+		public CrossReference getImportedNamespaceJvmTypeCrossReference_1_0() { return cImportedNamespaceJvmTypeCrossReference_1_0; }
+
+		//QualifiedName
+		public RuleCall getImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1() { return cImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1; }
 	}
 
 	public class MetamodelSequenceElements extends AbstractParserRuleElementFinder {
@@ -227,8 +235,9 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Assignment cImportedNamespaceAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0_0 = (RuleCall)cImportedNamespaceAssignment_2_0.eContents().get(0);
+		private final Assignment cRegisteredPackageAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final CrossReference cRegisteredPackageJvmTypeCrossReference_2_0_0 = (CrossReference)cRegisteredPackageAssignment_2_0.eContents().get(0);
+		private final RuleCall cRegisteredPackageJvmTypeQualifiedNameParserRuleCall_2_0_0_1 = (RuleCall)cRegisteredPackageJvmTypeCrossReference_2_0_0.eContents().get(1);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
 		private final Assignment cIsTextAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
 		private final Keyword cIsTextTextKeyword_2_1_0_0 = (Keyword)cIsTextAssignment_2_1_0.eContents().get(0);
@@ -236,10 +245,10 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExtensionSTRINGTerminalRuleCall_2_1_1_0 = (RuleCall)cExtensionAssignment_2_1_1.eContents().get(0);
 		
 		//RegisteredPackage:
-		//	"register" name=ID (importedNamespace=QualifiedNameWithWildcard | isText?="text" extension=STRING);
+		//	"register" name=ID (registeredPackage=[types::JvmType|QualifiedName] | isText?="text" extension=STRING);
 		public ParserRule getRule() { return rule; }
 
-		//"register" name=ID (importedNamespace=QualifiedNameWithWildcard | isText?="text" extension=STRING)
+		//"register" name=ID (registeredPackage=[types::JvmType|QualifiedName] | isText?="text" extension=STRING)
 		public Group getGroup() { return cGroup; }
 
 		//"register"
@@ -251,14 +260,17 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//importedNamespace=QualifiedNameWithWildcard | isText?="text" extension=STRING
+		//registeredPackage=[types::JvmType|QualifiedName] | isText?="text" extension=STRING
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//importedNamespace=QualifiedNameWithWildcard
-		public Assignment getImportedNamespaceAssignment_2_0() { return cImportedNamespaceAssignment_2_0; }
+		//registeredPackage=[types::JvmType|QualifiedName]
+		public Assignment getRegisteredPackageAssignment_2_0() { return cRegisteredPackageAssignment_2_0; }
 
-		//QualifiedNameWithWildcard
-		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0_0; }
+		//[types::JvmType|QualifiedName]
+		public CrossReference getRegisteredPackageJvmTypeCrossReference_2_0_0() { return cRegisteredPackageJvmTypeCrossReference_2_0_0; }
+
+		//QualifiedName
+		public RuleCall getRegisteredPackageJvmTypeQualifiedNameParserRuleCall_2_0_0_1() { return cRegisteredPackageJvmTypeQualifiedNameParserRuleCall_2_0_0_1; }
 
 		//isText?="text" extension=STRING
 		public Group getGroup_2_1() { return cGroup_2_1; }
@@ -301,8 +313,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cWeaveKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cWeaverAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cWeaverWeaverImportCrossReference_1_0 = (CrossReference)cWeaverAssignment_1.eContents().get(0);
-		private final RuleCall cWeaverWeaverImportIDTerminalRuleCall_1_0_1 = (RuleCall)cWeaverWeaverImportCrossReference_1_0.eContents().get(1);
+		private final CrossReference cWeaverJvmTypeCrossReference_1_0 = (CrossReference)cWeaverAssignment_1.eContents().get(0);
+		private final RuleCall cWeaverJvmTypeIDTerminalRuleCall_1_0_1 = (RuleCall)cWeaverJvmTypeCrossReference_1_0.eContents().get(1);
 		private final Assignment cSourceModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cSourceModelSourceModelNodeSelectorParserRuleCall_2_0 = (RuleCall)cSourceModelAssignment_2.eContents().get(0);
 		private final Assignment cAspectModelAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -313,25 +325,25 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTargetModelTargetModelNodeTypeParserRuleCall_4_1_0 = (RuleCall)cTargetModelAssignment_4_1.eContents().get(0);
 		
 		//Weaver:
-		//	"weave" weaver=[WeaverImport] sourceModel=SourceModelNodeSelector aspectModel=AspectModel ("=>"
+		//	"weave" weaver=[types::JvmType] sourceModel=SourceModelNodeSelector aspectModel=AspectModel ("=>"
 		//	targetModel=TargetModelNodeType)?;
 		public ParserRule getRule() { return rule; }
 
-		//"weave" weaver=[WeaverImport] sourceModel=SourceModelNodeSelector aspectModel=AspectModel ("=>"
+		//"weave" weaver=[types::JvmType] sourceModel=SourceModelNodeSelector aspectModel=AspectModel ("=>"
 		//targetModel=TargetModelNodeType)?
 		public Group getGroup() { return cGroup; }
 
 		//"weave"
 		public Keyword getWeaveKeyword_0() { return cWeaveKeyword_0; }
 
-		//weaver=[WeaverImport]
+		//weaver=[types::JvmType]
 		public Assignment getWeaverAssignment_1() { return cWeaverAssignment_1; }
 
-		//[WeaverImport]
-		public CrossReference getWeaverWeaverImportCrossReference_1_0() { return cWeaverWeaverImportCrossReference_1_0; }
+		//[types::JvmType]
+		public CrossReference getWeaverJvmTypeCrossReference_1_0() { return cWeaverJvmTypeCrossReference_1_0; }
 
 		//ID
-		public RuleCall getWeaverWeaverImportIDTerminalRuleCall_1_0_1() { return cWeaverWeaverImportIDTerminalRuleCall_1_0_1; }
+		public RuleCall getWeaverJvmTypeIDTerminalRuleCall_1_0_1() { return cWeaverJvmTypeIDTerminalRuleCall_1_0_1; }
 
 		//sourceModel=SourceModelNodeSelector
 		public Assignment getSourceModelAssignment_2() { return cSourceModelAssignment_2; }
@@ -391,8 +403,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cGenerateKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cGeneratorAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cGeneratorGeneratorImportCrossReference_1_0 = (CrossReference)cGeneratorAssignment_1.eContents().get(0);
-		private final RuleCall cGeneratorGeneratorImportIDTerminalRuleCall_1_0_1 = (RuleCall)cGeneratorGeneratorImportCrossReference_1_0.eContents().get(1);
+		private final CrossReference cGeneratorJvmTypeCrossReference_1_0 = (CrossReference)cGeneratorAssignment_1.eContents().get(0);
+		private final RuleCall cGeneratorJvmTypeIDTerminalRuleCall_1_0_1 = (RuleCall)cGeneratorJvmTypeCrossReference_1_0.eContents().get(1);
 		private final Assignment cSourceModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cSourceModelSourceModelNodeSelectorParserRuleCall_2_0 = (RuleCall)cSourceModelAssignment_2.eContents().get(0);
 		private final Assignment cTargetModelAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -413,25 +425,25 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cReadTraceModelsTraceModelIDTerminalRuleCall_5_2_1_0_1 = (RuleCall)cReadTraceModelsTraceModelCrossReference_5_2_1_0.eContents().get(1);
 		
 		//Generator:
-		//	"generate" generator=[GeneratorImport] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
+		//	"generate" generator=[types::JvmType] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
 		//	writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel] ("," readTraceModels+=[TraceModel])*)?;
 		public ParserRule getRule() { return rule; }
 
-		//"generate" generator=[GeneratorImport] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
+		//"generate" generator=[types::JvmType] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
 		//writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel] ("," readTraceModels+=[TraceModel])*)?
 		public Group getGroup() { return cGroup; }
 
 		//"generate"
 		public Keyword getGenerateKeyword_0() { return cGenerateKeyword_0; }
 
-		//generator=[GeneratorImport]
+		//generator=[types::JvmType]
 		public Assignment getGeneratorAssignment_1() { return cGeneratorAssignment_1; }
 
-		//[GeneratorImport]
-		public CrossReference getGeneratorGeneratorImportCrossReference_1_0() { return cGeneratorGeneratorImportCrossReference_1_0; }
+		//[types::JvmType]
+		public CrossReference getGeneratorJvmTypeCrossReference_1_0() { return cGeneratorJvmTypeCrossReference_1_0; }
 
 		//ID
-		public RuleCall getGeneratorGeneratorImportIDTerminalRuleCall_1_0_1() { return cGeneratorGeneratorImportIDTerminalRuleCall_1_0_1; }
+		public RuleCall getGeneratorJvmTypeIDTerminalRuleCall_1_0_1() { return cGeneratorJvmTypeIDTerminalRuleCall_1_0_1; }
 
 		//sourceModel=SourceModelNodeSelector
 		public Assignment getSourceModelAssignment_2() { return cSourceModelAssignment_2; }
@@ -586,20 +598,16 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTargetAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cTargetRegisteredPackageCrossReference_0_0 = (CrossReference)cTargetAssignment_0.eContents().get(0);
 		private final RuleCall cTargetRegisteredPackageIDTerminalRuleCall_0_0_1 = (RuleCall)cTargetRegisteredPackageCrossReference_0_0.eContents().get(1);
-		private final Keyword cSolidusKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cTypeEClassCrossReference_2_0 = (CrossReference)cTypeAssignment_2.eContents().get(0);
-		private final RuleCall cTypeEClassIDTerminalRuleCall_2_0_1 = (RuleCall)cTypeEClassCrossReference_2_0.eContents().get(1);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cSolidusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cPropertyAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cPropertyNodePropertyParserRuleCall_3_1_0 = (RuleCall)cPropertyAssignment_3_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSolidusKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cPropertyAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cPropertyNodePropertyParserRuleCall_1_1_0 = (RuleCall)cPropertyAssignment_1_1.eContents().get(0);
 		
 		//ModelNodeType:
-		//	target=[RegisteredPackage] "/" type=[ecore::EClass] ("/" property=NodeProperty)?;
+		//	target=[RegisteredPackage] ("/" property=NodeProperty)?;
 		public ParserRule getRule() { return rule; }
 
-		//target=[RegisteredPackage] "/" type=[ecore::EClass] ("/" property=NodeProperty)?
+		//target=[RegisteredPackage] ("/" property=NodeProperty)?
 		public Group getGroup() { return cGroup; }
 
 		//target=[RegisteredPackage]
@@ -611,37 +619,25 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getTargetRegisteredPackageIDTerminalRuleCall_0_0_1() { return cTargetRegisteredPackageIDTerminalRuleCall_0_0_1; }
 
-		//"/"
-		public Keyword getSolidusKeyword_1() { return cSolidusKeyword_1; }
-
-		//type=[ecore::EClass]
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
-
-		//[ecore::EClass]
-		public CrossReference getTypeEClassCrossReference_2_0() { return cTypeEClassCrossReference_2_0; }
-
-		//ID
-		public RuleCall getTypeEClassIDTerminalRuleCall_2_0_1() { return cTypeEClassIDTerminalRuleCall_2_0_1; }
-
 		//("/" property=NodeProperty)?
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_1() { return cGroup_1; }
 
 		//"/"
-		public Keyword getSolidusKeyword_3_0() { return cSolidusKeyword_3_0; }
+		public Keyword getSolidusKeyword_1_0() { return cSolidusKeyword_1_0; }
 
 		//property=NodeProperty
-		public Assignment getPropertyAssignment_3_1() { return cPropertyAssignment_3_1; }
+		public Assignment getPropertyAssignment_1_1() { return cPropertyAssignment_1_1; }
 
 		//NodeProperty
-		public RuleCall getPropertyNodePropertyParserRuleCall_3_1_0() { return cPropertyNodePropertyParserRuleCall_3_1_0; }
+		public RuleCall getPropertyNodePropertyParserRuleCall_1_1_0() { return cPropertyNodePropertyParserRuleCall_1_1_0; }
 	}
 
 	public class NodePropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NodeProperty");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cPropertyAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cPropertyEReferenceCrossReference_0_0 = (CrossReference)cPropertyAssignment_0.eContents().get(0);
-		private final RuleCall cPropertyEReferenceIDTerminalRuleCall_0_0_1 = (RuleCall)cPropertyEReferenceCrossReference_0_0.eContents().get(1);
+		private final CrossReference cPropertyJvmMemberCrossReference_0_0 = (CrossReference)cPropertyAssignment_0.eContents().get(0);
+		private final RuleCall cPropertyJvmMemberIDTerminalRuleCall_0_0_1 = (RuleCall)cPropertyJvmMemberCrossReference_0_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cLeftSquareBracketKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cConstraintAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
@@ -653,20 +649,20 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSubPropertyNodePropertyParserRuleCall_2_1_0 = (RuleCall)cSubPropertyAssignment_2_1.eContents().get(0);
 		
 		//NodeProperty:
-		//	property=[ecore::EReference] ("[" constraint=ConstraintExpression "]")? ("/" subProperty=NodeProperty)?;
+		//	property=[types::JvmMember] ("[" constraint=ConstraintExpression "]")? ("/" subProperty=NodeProperty)?;
 		public ParserRule getRule() { return rule; }
 
-		//property=[ecore::EReference] ("[" constraint=ConstraintExpression "]")? ("/" subProperty=NodeProperty)?
+		//property=[types::JvmMember] ("[" constraint=ConstraintExpression "]")? ("/" subProperty=NodeProperty)?
 		public Group getGroup() { return cGroup; }
 
-		//property=[ecore::EReference]
+		//property=[types::JvmMember]
 		public Assignment getPropertyAssignment_0() { return cPropertyAssignment_0; }
 
-		//[ecore::EReference]
-		public CrossReference getPropertyEReferenceCrossReference_0_0() { return cPropertyEReferenceCrossReference_0_0; }
+		//[types::JvmMember]
+		public CrossReference getPropertyJvmMemberCrossReference_0_0() { return cPropertyJvmMemberCrossReference_0_0; }
 
 		//ID
-		public RuleCall getPropertyEReferenceIDTerminalRuleCall_0_0_1() { return cPropertyEReferenceIDTerminalRuleCall_0_0_1; }
+		public RuleCall getPropertyJvmMemberIDTerminalRuleCall_0_0_1() { return cPropertyJvmMemberIDTerminalRuleCall_0_0_1; }
 
 		//("[" constraint=ConstraintExpression "]")?
 		public Group getGroup_1() { return cGroup_1; }
@@ -971,21 +967,17 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	public class NodeTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "NodeType");
 		private final Assignment cEclassAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cEclassEClassCrossReference_0 = (CrossReference)cEclassAssignment.eContents().get(0);
-		private final RuleCall cEclassEClassIDTerminalRuleCall_0_1 = (RuleCall)cEclassEClassCrossReference_0.eContents().get(1);
+		private final RuleCall cEclassIDTerminalRuleCall_0 = (RuleCall)cEclassAssignment.eContents().get(0);
 		
 		//NodeType:
-		//	eclass=[ecore::EClass];
+		//	eclass=ID;
 		public ParserRule getRule() { return rule; }
 
-		//eclass=[ecore::EClass]
+		//eclass=ID
 		public Assignment getEclassAssignment() { return cEclassAssignment; }
 
-		//[ecore::EClass]
-		public CrossReference getEclassEClassCrossReference_0() { return cEclassEClassCrossReference_0; }
-
 		//ID
-		public RuleCall getEclassEClassIDTerminalRuleCall_0_1() { return cEclassEClassIDTerminalRuleCall_0_1; }
+		public RuleCall getEclassIDTerminalRuleCall_0() { return cEclassIDTerminalRuleCall_0; }
 	}
 
 	public class LiteralElements extends AbstractParserRuleElementFinder {
@@ -1319,7 +1311,6 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	private final QualifiedNameElements pQualifiedName;
 	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final TerminalRule tDIGIT;
-	private final TerminalRule tINT;
 	private final TerminalRule tFLOAT;
 	private final TerminalRule tBOOLEAN;
 	
@@ -1366,7 +1357,6 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DIGIT");
-		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT");
 		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FLOAT");
 		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN");
 	}
@@ -1421,7 +1411,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WeaverImport:
-	//	"weave" importedNamespace=QualifiedNameWithWildcard;
+	//	"weave" importedNamespace=[types::JvmType|QualifiedName];
 	public WeaverImportElements getWeaverImportAccess() {
 		return pWeaverImport;
 	}
@@ -1431,7 +1421,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//GeneratorImport:
-	//	"gen" importedNamespace=QualifiedNameWithWildcard;
+	//	"gen" importedNamespace=[types::JvmType|QualifiedName];
 	public GeneratorImportElements getGeneratorImportAccess() {
 		return pGeneratorImport;
 	}
@@ -1461,7 +1451,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RegisteredPackage:
-	//	"register" name=ID (importedNamespace=QualifiedNameWithWildcard | isText?="text" extension=STRING);
+	//	"register" name=ID (registeredPackage=[types::JvmType|QualifiedName] | isText?="text" extension=STRING);
 	public RegisteredPackageElements getRegisteredPackageAccess() {
 		return pRegisteredPackage;
 	}
@@ -1481,7 +1471,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Weaver:
-	//	"weave" weaver=[WeaverImport] sourceModel=SourceModelNodeSelector aspectModel=AspectModel ("=>"
+	//	"weave" weaver=[types::JvmType] sourceModel=SourceModelNodeSelector aspectModel=AspectModel ("=>"
 	//	targetModel=TargetModelNodeType)?;
 	public WeaverElements getWeaverAccess() {
 		return pWeaver;
@@ -1502,7 +1492,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Generator:
-	//	"generate" generator=[GeneratorImport] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
+	//	"generate" generator=[types::JvmType] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
 	//	writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel] ("," readTraceModels+=[TraceModel])*)?;
 	public GeneratorElements getGeneratorAccess() {
 		return pGenerator;
@@ -1533,7 +1523,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ModelNodeType:
-	//	target=[RegisteredPackage] "/" type=[ecore::EClass] ("/" property=NodeProperty)?;
+	//	target=[RegisteredPackage] ("/" property=NodeProperty)?;
 	public ModelNodeTypeElements getModelNodeTypeAccess() {
 		return pModelNodeType;
 	}
@@ -1543,7 +1533,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//NodeProperty:
-	//	property=[ecore::EReference] ("[" constraint=ConstraintExpression "]")? ("/" subProperty=NodeProperty)?;
+	//	property=[types::JvmMember] ("[" constraint=ConstraintExpression "]")? ("/" subProperty=NodeProperty)?;
 	public NodePropertyElements getNodePropertyAccess() {
 		return pNodeProperty;
 	}
@@ -1623,7 +1613,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//NodeType:
-	//	eclass=[ecore::EClass];
+	//	eclass=ID;
 	public NodeTypeElements getNodeTypeAccess() {
 		return pNodeType;
 	}
@@ -1743,22 +1733,15 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		return tDIGIT;
 	} 
 
-	//// redefine INT terminal to allow negative numbers
-	//terminal INT returns ecore::EInt:
-	//	"-"? DIGIT+;
-	public TerminalRule getINTRule() {
-		return tINT;
-	} 
-
 	//// make sure the Float rule does not shadow the INT rule
-	//terminal FLOAT returns ecore::EFloatObject:
+	//terminal FLOAT:
 	//	"-"? DIGIT+ ("." DIGIT*) (("e" | "E") ("+" | "-")? DIGIT+)? "f"? | "-"? DIGIT+ "f";
 	public TerminalRule getFLOATRule() {
 		return tFLOAT;
 	} 
 
 	//// introduce boolean values
-	//terminal BOOLEAN returns ecore::EBooleanObject:
+	//terminal BOOLEAN:
 	//	"true" | "false";
 	public TerminalRule getBOOLEANRule() {
 		return tBOOLEAN;
@@ -1768,6 +1751,12 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
+	} 
+
+	//terminal INT returns ecore::EInt:
+	//	"0".."9"+;
+	public TerminalRule getINTRule() {
+		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:

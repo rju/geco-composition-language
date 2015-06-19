@@ -54,16 +54,14 @@ class ArchitectureGenerator implements IGenerator {
 	'''
 	
 	private def dispatch CharSequence createField(Weaver connection) {
-		val name = connection.weaver.importedNamespace.split('\\.').last
-		'''val «name» = new «name.toFirstLower»()'''
+		
 	}
 	
 	private def dispatch CharSequence createField(Generator connection) {
-		val name = connection.generator.importedNamespace.split('\\.').last
-		'''val «name» = new «name.toFirstLower»()'''
+		
 	}
 	
-	private def CharSequence createImport(Import node) '''import «node.importedNamespace»'''
+	private def CharSequence createImport(Import node) '''import «node.importedNamespace.qualifiedName»'''
 	
 	
 }

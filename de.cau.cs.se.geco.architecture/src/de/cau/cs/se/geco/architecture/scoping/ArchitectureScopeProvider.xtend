@@ -1,28 +1,24 @@
 package de.cau.cs.se.geco.architecture.scoping
 
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
-import org.eclipse.emf.ecore.EReference
-import org.eclipse.xtext.scoping.Scopes
-import org.eclipse.xtext.scoping.IScopeProvider
-import com.google.inject.name.Named
 import com.google.inject.Inject
+import com.google.inject.name.Named
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.scoping.impl.IDelegatingScopeProvider
-import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
-import de.cau.cs.se.geco.architecture.architecture.NodeProperty
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.scoping.IScopeProvider
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
-import de.cau.cs.se.geco.architecture.architecture.Weaver
-import de.cau.cs.se.geco.architecture.architecture.WeaverImport
-import de.cau.cs.se.geco.architecture.architecture.GeneratorImport
-import de.cau.cs.se.geco.architecture.architecture.Generator
-
-import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
-import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation
-import de.cau.cs.se.geco.architecture.architecture.NodeType
+import org.eclipse.xtext.scoping.impl.IDelegatingScopeProvider
+import de.cau.cs.se.geco.architecture.architecture.NodeProperty
+import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+import org.eclipse.xtext.common.types.JvmType
+import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.scoping.IScope
-import de.cau.cs.se.geco.architecture.architecture.TraceModel
+import org.eclipse.xtext.scoping.Scopes
+import de.cau.cs.se.geco.architecture.architecture.Generator
+import de.cau.cs.se.geco.architecture.architecture.Model
+import org.eclipse.emf.common.util.EList
+import de.cau.cs.se.geco.architecture.architecture.Import
+import java.util.ArrayList
+import de.cau.cs.se.geco.architecture.architecture.Weaver
 
 class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 			
@@ -32,12 +28,9 @@ class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 	override getScope(EObject context, EReference reference) {
 		switch(context) {
 			// Find scope for the package property in the MetaModel rule.
-			RegisteredPackage case reference.name.equals("modelPackage"): new EPackageScope(context.eResource().getResourceSet())
-			//ModelNodeType case reference.name.equals("type"): Scopes.scopeFor(context.target.modelPackage.EClassifiers)
-			NodeProperty case reference.name.equals("property"): createNodePropertyScope(context.eContainer)
-			Weaver case reference.name.equals("weaver"): new JvmScope(context.eResource(), WeaverImport)
-			Generator case reference.name.equals("generator"): new JvmScope(context.eResource(), GeneratorImport)
-			NodeType case reference.name.equals("eclass"): createNodeTypeScope(context.eContainer as NodeSetRelation, context)
+			// reference.name.equals("property name")
+			NodeProperty case reference.name.equals("property"): createPropertyScope(context.eContainer, reference)
+			Generator case reference.name.equals("generator"): createJvmTypeScope(context.eContainer)
 			default: {
 				System.out.println(">> " + context + " " + reference)
 				delegate.getScope(context, reference)
@@ -45,29 +38,33 @@ class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 		}
 	}
 	
-	private def createNodeTypeScope(NodeSetRelation relation, NodeType nodeType) {
-		/** determine if the node type is a source or target model node type. */
-		if (relation.sourceNodes.exists[it.equals(nodeType)]) {
-			val modelRootType = ((relation.eContainer as TraceModel).eContainer as Generator).
-				sourceModel.reference.resolveType
-			return new EPackageContentScope(modelRootType.eResource)
-		} else {
-			return IScope.NULLSCOPE
+	private def IScope createJvmTypeScope(EObject container) {
+		if (container instanceof Model) { 
+			val result = new ArrayList<JvmType>()
+			(container as Model).imports.forEach[result += it.importedNamespace]
+			return Scopes.scopeFor(result)
+		} else if (container instanceof Weaver)
+			createJvmTypeScope(container.eContainer)
+		else				
+			throw new UnsupportedOperationException("Illegal nesting of generator inside a " + container.class.name)
+	}
+	
+	private def IScope createPropertyScope(EObject container, EReference reference) {
+		switch(container) {
+			ModelNodeType: container.target.registeredPackage.createJvmDeclaredTypeScope(reference)
+			NodeProperty: IScope.NULLSCOPE
+			default: IScope.NULLSCOPE
 		}
 	}
 	
-	private def createNodePropertyScope(EObject container) {
-		switch(container) {
-			SourceModelNodeSelector: Scopes.scopeFor((container.reference.eContainer as MetamodelSequence).
-				type.resolveType?.EAllReferences
-			)
-			ModelNodeType: Scopes.scopeFor(container.type.EAllReferences)
-			NodeProperty: Scopes.scopeFor(container.property.EReferenceType.EAllReferences)
+	private def IScope createJvmDeclaredTypeScope(JvmType type, EReference reference) {
+		switch(type) {
+			JvmDeclaredType: new JvmMemberType(type)
+			default: IScope.NULLSCOPE
 		}
 	}
 	
 
-	
 	override getDelegate() {
 		return delegate
 	}

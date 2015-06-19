@@ -34,7 +34,7 @@ public class FloatLiteralImpl extends LiteralImpl implements FloatLiteral
    * @generated
    * @ordered
    */
-  protected static final Float VALUE_EDEFAULT = null;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -44,7 +44,7 @@ public class FloatLiteralImpl extends LiteralImpl implements FloatLiteral
    * @generated
    * @ordered
    */
-  protected Float value = VALUE_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,7 +72,7 @@ public class FloatLiteralImpl extends LiteralImpl implements FloatLiteral
    * <!-- end-user-doc -->
    * @generated
    */
-  public Float getValue()
+  public String getValue()
   {
     return value;
   }
@@ -82,9 +82,9 @@ public class FloatLiteralImpl extends LiteralImpl implements FloatLiteral
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(Float newValue)
+  public void setValue(String newValue)
   {
-    Float oldValue = value;
+    String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.FLOAT_LITERAL__VALUE, oldValue, value));
@@ -117,7 +117,7 @@ public class FloatLiteralImpl extends LiteralImpl implements FloatLiteral
     switch (featureID)
     {
       case ArchitecturePackage.FLOAT_LITERAL__VALUE:
-        setValue((Float)newValue);
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);

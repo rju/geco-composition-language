@@ -1,6 +1,7 @@
 grammar de.cau.cs.se.geco.architecture.Architecture with org.eclipse.xtext.common.Terminals
 
 generate architecture "http://www.cau.de/cs/se/geco/architecture/Architecture"
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 Model:
 	'package' name=QualifiedName
@@ -17,11 +18,11 @@ Import:
 ;
 
 WeaverImport:
-	'weave' importedNamespace = QualifiedNameWithWildcard
+	'weave' importedNamespace = [types::JvmType|QualifiedName]
 ;
 
 GeneratorImport:
-	'gen' importedNamespace = QualifiedNameWithWildcard
+	'gen' importedNamespace = [types::JvmType|QualifiedName]
 ;
 
 MetamodelSequence:
@@ -33,7 +34,7 @@ Metamodel:
 ;
 
 RegisteredPackage:
-	'register' name=ID (importedNamespace = QualifiedNameWithWildcard |(isText?='text' extension=STRING))
+	'register' name=ID (registeredPackage = [types::JvmType|QualifiedName] |(isText?='text' extension=STRING))
 ;
 
 Connection:
@@ -41,7 +42,7 @@ Connection:
 ;
 
 Weaver:
-	'weave' weaver=[WeaverImport|ID]  
+	'weave' weaver=[types::JvmType|ID]  
 		sourceModel=SourceModelNodeSelector
 		aspectModel=AspectModel
 		('=>' targetModel=TargetModelNodeType)?
@@ -52,7 +53,7 @@ AspectModel:
 ;
 	
 Generator:
-	'generate' generator=[GeneratorImport|ID] 
+	'generate' generator=[types::JvmType|ID] 
 		sourceModel=SourceModelNodeSelector
 		targetModel=TargetModelNodeType
 		('->' writeTraceModel=TraceModel)?
@@ -69,11 +70,11 @@ TargetModelNodeType: {TargetModelNodeType}
 ;
 
 ModelNodeType:
-	target=[RegisteredPackage|ID] '/' type=ID ('/' property=NodeProperty)?
+	target=[RegisteredPackage|ID] ('/' property=NodeProperty)?
 ;
 
 NodeProperty:
-	property=ID ('[' constraint=ConstraintExpression ']')? ('/' subProperty=NodeProperty)? 
+	property=[types::JvmMember|ID] ('[' constraint=ConstraintExpression ']')? ('/' subProperty=NodeProperty)? 
 ;
 
 ConstraintExpression:

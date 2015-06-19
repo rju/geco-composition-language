@@ -4,7 +4,7 @@
     editorDirectory="/de.cau.cs.se.geco.architecture.editor/src" modelPluginID="de.cau.cs.se.geco.architecture"
     forceOverwrite="true" modelName="Architecture" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.geco.architecture.edit"
-    editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10">
+    editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
   <genPackages prefix="Architecture" basePackage="de.cau.cs.se.geco.architecture"
       disposableProviderFactory="true" fileExtensions="gmm" ecorePackage="Architecture.ecore#/">
     <genClasses ecoreClass="Architecture.ecore#//Model">
@@ -15,7 +15,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/metamodels"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Import/importedNamespace"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Import/importedNamespace"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//WeaverImport"/>
     <genClasses ecoreClass="Architecture.ecore#//GeneratorImport"/>
@@ -28,7 +28,7 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//RegisteredPackage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/importedNamespace"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//RegisteredPackage/registeredPackage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/isText"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/extension"/>
     </genClasses>
@@ -56,7 +56,6 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//ModelNodeType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/target"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/property"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//NodeProperty">
@@ -79,7 +78,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeSetRelation/targetNodes"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//NodeType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeType/eclass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//NodeType/eclass"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Literal"/>
     <genClasses ecoreClass="Architecture.ecore#//ArrayLiteral">

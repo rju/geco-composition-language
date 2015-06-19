@@ -9,10 +9,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.xtext.common.types.JvmMember;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +39,7 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
    * @generated
    * @ordered
    */
-  protected EReference property;
+  protected JvmMember property;
 
   /**
    * The cached value of the '{@link #getSubProperty() <em>Sub Property</em>}' containment reference.
@@ -76,12 +77,12 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProperty()
+  public JvmMember getProperty()
   {
     if (property != null && property.eIsProxy())
     {
       InternalEObject oldProperty = (InternalEObject)property;
-      property = (EReference)eResolveProxy(oldProperty);
+      property = (JvmMember)eResolveProxy(oldProperty);
       if (property != oldProperty)
       {
         if (eNotificationRequired())
@@ -96,7 +97,7 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference basicGetProperty()
+  public JvmMember basicGetProperty()
   {
     return property;
   }
@@ -106,9 +107,9 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setProperty(EReference newProperty)
+  public void setProperty(JvmMember newProperty)
   {
-    EReference oldProperty = property;
+    JvmMember oldProperty = property;
     property = newProperty;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.NODE_PROPERTY__PROPERTY, oldProperty, property));
@@ -208,7 +209,7 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
     switch (featureID)
     {
       case ArchitecturePackage.NODE_PROPERTY__PROPERTY:
-        setProperty((EReference)newValue);
+        setProperty((JvmMember)newValue);
         return;
       case ArchitecturePackage.NODE_PROPERTY__SUB_PROPERTY:
         setSubProperty((NodeProperty)newValue);
@@ -228,7 +229,7 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
     switch (featureID)
     {
       case ArchitecturePackage.NODE_PROPERTY__PROPERTY:
-        setProperty((EReference)null);
+        setProperty((JvmMember)null);
         return;
       case ArchitecturePackage.NODE_PROPERTY__SUB_PROPERTY:
         setSubProperty((NodeProperty)null);

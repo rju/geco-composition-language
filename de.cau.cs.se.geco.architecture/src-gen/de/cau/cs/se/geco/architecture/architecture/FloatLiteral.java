@@ -30,12 +30,12 @@ public interface FloatLiteral extends Literal
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(Float)
+   * @see #setValue(String)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getFloatLiteral_Value()
    * @model
    * @generated
    */
-  Float getValue();
+  String getValue();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.FloatLiteral#getValue <em>Value</em>}' attribute.
@@ -45,6 +45,6 @@ public interface FloatLiteral extends Literal
    * @see #getValue()
    * @generated
    */
-  void setValue(Float value);
+  void setValue(String value);
 
 } // FloatLiteral

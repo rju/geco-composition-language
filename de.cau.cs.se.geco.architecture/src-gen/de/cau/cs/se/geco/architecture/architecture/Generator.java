@@ -4,6 +4,8 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.xtext.common.types.JvmType;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Generator</b></em>'.
@@ -33,12 +35,12 @@ public interface Generator extends Connection, AspectModel
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Generator</em>' reference.
-   * @see #setGenerator(GeneratorImport)
+   * @see #setGenerator(JvmType)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getGenerator_Generator()
    * @model
    * @generated
    */
-  GeneratorImport getGenerator();
+  JvmType getGenerator();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator <em>Generator</em>}' reference.
@@ -48,7 +50,7 @@ public interface Generator extends Connection, AspectModel
    * @see #getGenerator()
    * @generated
    */
-  void setGenerator(GeneratorImport value);
+  void setGenerator(JvmType value);
 
   /**
    * Returns the value of the '<em><b>Write Trace Model</b></em>' containment reference.

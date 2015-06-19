@@ -2,7 +2,6 @@
  */
 package de.cau.cs.se.geco.architecture.architecture;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,29 +23,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface NodeType extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Eclass</b></em>' reference.
+   * Returns the value of the '<em><b>Eclass</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Eclass</em>' reference isn't clear,
+   * If the meaning of the '<em>Eclass</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Eclass</em>' reference.
-   * @see #setEclass(EClass)
+   * @return the value of the '<em>Eclass</em>' attribute.
+   * @see #setEclass(String)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getNodeType_Eclass()
    * @model
    * @generated
    */
-  EClass getEclass();
+  String getEclass();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.NodeType#getEclass <em>Eclass</em>}' reference.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.NodeType#getEclass <em>Eclass</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Eclass</em>' reference.
+   * @param value the new value of the '<em>Eclass</em>' attribute.
    * @see #getEclass()
    * @generated
    */
-  void setEclass(EClass value);
+  void setEclass(String value);
 
 } // NodeType

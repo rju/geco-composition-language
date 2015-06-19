@@ -30,12 +30,12 @@ public interface BooleanLiteral extends Literal
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(Boolean)
+   * @see #setValue(String)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getBooleanLiteral_Value()
    * @model
    * @generated
    */
-  Boolean getValue();
+  String getValue();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.BooleanLiteral#getValue <em>Value</em>}' attribute.
@@ -45,6 +45,6 @@ public interface BooleanLiteral extends Literal
    * @see #getValue()
    * @generated
    */
-  void setValue(Boolean value);
+  void setValue(String value);
 
 } // BooleanLiteral

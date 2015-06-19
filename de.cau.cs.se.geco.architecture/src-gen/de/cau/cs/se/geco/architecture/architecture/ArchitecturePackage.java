@@ -131,7 +131,7 @@ public interface ArchitecturePackage extends EPackage
   int IMPORT = 1;
 
   /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
+   * The feature id for the '<em><b>Imported Namespace</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -159,7 +159,7 @@ public interface ArchitecturePackage extends EPackage
   int WEAVER_IMPORT = 2;
 
   /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
+   * The feature id for the '<em><b>Imported Namespace</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -187,7 +187,7 @@ public interface ArchitecturePackage extends EPackage
   int GENERATOR_IMPORT = 3;
 
   /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
+   * The feature id for the '<em><b>Imported Namespace</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -289,13 +289,13 @@ public interface ArchitecturePackage extends EPackage
   int REGISTERED_PACKAGE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
+   * The feature id for the '<em><b>Registered Package</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REGISTERED_PACKAGE__IMPORTED_NAMESPACE = 1;
+  int REGISTERED_PACKAGE__REGISTERED_PACKAGE = 1;
 
   /**
    * The feature id for the '<em><b>Is Text</b></em>' attribute.
@@ -593,22 +593,13 @@ public interface ArchitecturePackage extends EPackage
   int MODEL_NODE_TYPE__TARGET = 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL_NODE_TYPE__TYPE = 1;
-
-  /**
    * The feature id for the '<em><b>Property</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_NODE_TYPE__PROPERTY = 2;
+  int MODEL_NODE_TYPE__PROPERTY = 1;
 
   /**
    * The number of structural features of the '<em>Model Node Type</em>' class.
@@ -617,7 +608,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_NODE_TYPE_FEATURE_COUNT = 3;
+  int MODEL_NODE_TYPE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl <em>Constraint Expression</em>}' class.
@@ -887,7 +878,7 @@ public interface ArchitecturePackage extends EPackage
   int NODE_TYPE = 19;
 
   /**
-   * The feature id for the '<em><b>Eclass</b></em>' reference.
+   * The feature id for the '<em><b>Eclass</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1475,15 +1466,15 @@ public interface ArchitecturePackage extends EPackage
   EClass getImport();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Import#getImportedNamespace <em>Imported Namespace</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Import#getImportedNamespace <em>Imported Namespace</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Imported Namespace</em>'.
+   * @return the meta object for the reference '<em>Imported Namespace</em>'.
    * @see de.cau.cs.se.geco.architecture.architecture.Import#getImportedNamespace()
    * @see #getImport()
    * @generated
    */
-  EAttribute getImport_ImportedNamespace();
+  EReference getImport_ImportedNamespace();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.WeaverImport <em>Weaver Import</em>}'.
@@ -1580,15 +1571,15 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getRegisteredPackage_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace <em>Imported Namespace</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getRegisteredPackage <em>Registered Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Imported Namespace</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace()
+   * @return the meta object for the reference '<em>Registered Package</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getRegisteredPackage()
    * @see #getRegisteredPackage()
    * @generated
    */
-  EAttribute getRegisteredPackage_ImportedNamespace();
+  EReference getRegisteredPackage_RegisteredPackage();
 
   /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#isIsText <em>Is Text</em>}'.
@@ -1815,17 +1806,6 @@ public interface ArchitecturePackage extends EPackage
   EReference getModelNodeType_Target();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Type</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getType()
-   * @see #getModelNodeType()
-   * @generated
-   */
-  EReference getModelNodeType_Type();
-
-  /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2007,15 +1987,15 @@ public interface ArchitecturePackage extends EPackage
   EClass getNodeType();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.NodeType#getEclass <em>Eclass</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.NodeType#getEclass <em>Eclass</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Eclass</em>'.
+   * @return the meta object for the attribute '<em>Eclass</em>'.
    * @see de.cau.cs.se.geco.architecture.architecture.NodeType#getEclass()
    * @see #getNodeType()
    * @generated
    */
-  EReference getNodeType_Eclass();
+  EAttribute getNodeType_Eclass();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Literal <em>Literal</em>}'.
@@ -2335,12 +2315,12 @@ public interface ArchitecturePackage extends EPackage
     EClass IMPORT = eINSTANCE.getImport();
 
     /**
-     * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Imported Namespace</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
+    EReference IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImportImpl <em>Weaver Import</em>}' class.
@@ -2425,12 +2405,12 @@ public interface ArchitecturePackage extends EPackage
     EAttribute REGISTERED_PACKAGE__NAME = eINSTANCE.getRegisteredPackage_Name();
 
     /**
-     * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Registered Package</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute REGISTERED_PACKAGE__IMPORTED_NAMESPACE = eINSTANCE.getRegisteredPackage_ImportedNamespace();
+    EReference REGISTERED_PACKAGE__REGISTERED_PACKAGE = eINSTANCE.getRegisteredPackage_RegisteredPackage();
 
     /**
      * The meta object literal for the '<em><b>Is Text</b></em>' attribute feature.
@@ -2615,14 +2595,6 @@ public interface ArchitecturePackage extends EPackage
     EReference MODEL_NODE_TYPE__TARGET = eINSTANCE.getModelNodeType_Target();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL_NODE_TYPE__TYPE = eINSTANCE.getModelNodeType_Type();
-
-    /**
      * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2771,12 +2743,12 @@ public interface ArchitecturePackage extends EPackage
     EClass NODE_TYPE = eINSTANCE.getNodeType();
 
     /**
-     * The meta object literal for the '<em><b>Eclass</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Eclass</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference NODE_TYPE__ECLASS = eINSTANCE.getNodeType_Eclass();
+    EAttribute NODE_TYPE__ECLASS = eINSTANCE.getNodeType_Eclass();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.LiteralImpl <em>Literal</em>}' class.

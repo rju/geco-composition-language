@@ -34,7 +34,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral
    * @generated
    * @ordered
    */
-  protected static final Boolean VALUE_EDEFAULT = null;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -44,7 +44,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral
    * @generated
    * @ordered
    */
-  protected Boolean value = VALUE_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,7 +72,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral
    * <!-- end-user-doc -->
    * @generated
    */
-  public Boolean getValue()
+  public String getValue()
   {
     return value;
   }
@@ -82,9 +82,9 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(Boolean newValue)
+  public void setValue(String newValue)
   {
-    Boolean oldValue = value;
+    String oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.BOOLEAN_LITERAL__VALUE, oldValue, value));
@@ -117,7 +117,7 @@ public class BooleanLiteralImpl extends LiteralImpl implements BooleanLiteral
     switch (featureID)
     {
       case ArchitecturePackage.BOOLEAN_LITERAL__VALUE:
-        setValue((Boolean)newValue);
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);

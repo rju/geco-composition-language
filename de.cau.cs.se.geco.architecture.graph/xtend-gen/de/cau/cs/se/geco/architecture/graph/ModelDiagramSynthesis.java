@@ -23,26 +23,19 @@ import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.GeneratorImport;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
-import de.cau.cs.se.geco.architecture.architecture.WeaverImport;
-import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -196,35 +189,9 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   }
   
   private KNode createMetamodel(final Metamodel metamodel, final MetamodelSequence sequence) {
-    KNode _createNode = this._kNodeExtensions.createNode(metamodel);
-    KNode _associateWith = this.<KNode>associateWith(_createNode, metamodel);
-    final Procedure1<KNode> _function = new Procedure1<KNode>() {
-      public void apply(final KNode it) {
-        KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
-        final Procedure1<KRectangle> _function = new Procedure1<KRectangle>() {
-          public void apply(final KRectangle it) {
-            ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 2);
-            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("white");
-            KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("LemonChiffon");
-            ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackgroundGradient(it, _color, _color_1, 0);
-            KColor _color_2 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
-            ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_2);
-            KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 2);
-            KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 2, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 2, 0);
-            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 2, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 2, 0);
-            String _name = metamodel.getName();
-            String _plus = (_name + ":");
-            ModelNodeType _type = sequence.getType();
-            EClass _resolveType = ArchitectureTyping.resolveType(_type);
-            String _name_1 = _resolveType.getName();
-            String _plus_1 = (_plus + _name_1);
-            ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, _plus_1);
-          }
-        };
-        ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle, _function);
-      }
-    };
-    return ObjectExtensions.<KNode>operator_doubleArrow(_associateWith, _function);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method resolveType is undefined for the type ModelDiagramSynthesis"
+      + "\nname cannot be resolved");
   }
   
   /**
@@ -298,16 +265,16 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   }
   
   private String getName(final Generator generator) {
-    GeneratorImport _generator = generator.getGenerator();
-    String _importedNamespace = _generator.getImportedNamespace();
-    String[] _split = _importedNamespace.split("\\.");
-    return IterableExtensions.<String>last(((Iterable<String>)Conversions.doWrapArray(_split)));
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method importedNamespace is undefined for the type ModelDiagramSynthesis"
+      + "\nsplit cannot be resolved"
+      + "\nlast cannot be resolved");
   }
   
   private String getName(final Weaver weaver) {
-    WeaverImport _weaver = weaver.getWeaver();
-    String _importedNamespace = _weaver.getImportedNamespace();
-    String[] _split = _importedNamespace.split("\\.");
-    return IterableExtensions.<String>last(((Iterable<String>)Conversions.doWrapArray(_split)));
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method importedNamespace is undefined for the type ModelDiagramSynthesis"
+      + "\nsplit cannot be resolved"
+      + "\nlast cannot be resolved");
   }
 }

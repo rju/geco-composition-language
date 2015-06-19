@@ -8,7 +8,6 @@ import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -29,14 +28,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeType
 {
   /**
-   * The cached value of the '{@link #getEclass() <em>Eclass</em>}' reference.
+   * The default value of the '{@link #getEclass() <em>Eclass</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getEclass()
    * @generated
    * @ordered
    */
-  protected EClass eclass;
+  protected static final String ECLASS_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEclass() <em>Eclass</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEclass()
+   * @generated
+   * @ordered
+   */
+  protected String eclass = ECLASS_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,27 +73,7 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEclass()
-  {
-    if (eclass != null && eclass.eIsProxy())
-    {
-      InternalEObject oldEclass = (InternalEObject)eclass;
-      eclass = (EClass)eResolveProxy(oldEclass);
-      if (eclass != oldEclass)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.NODE_TYPE__ECLASS, oldEclass, eclass));
-      }
-    }
-    return eclass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass basicGetEclass()
+  public String getEclass()
   {
     return eclass;
   }
@@ -94,9 +83,9 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setEclass(EClass newEclass)
+  public void setEclass(String newEclass)
   {
-    EClass oldEclass = eclass;
+    String oldEclass = eclass;
     eclass = newEclass;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.NODE_TYPE__ECLASS, oldEclass, eclass));
@@ -113,8 +102,7 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
     switch (featureID)
     {
       case ArchitecturePackage.NODE_TYPE__ECLASS:
-        if (resolve) return getEclass();
-        return basicGetEclass();
+        return getEclass();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -130,7 +118,7 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
     switch (featureID)
     {
       case ArchitecturePackage.NODE_TYPE__ECLASS:
-        setEclass((EClass)newValue);
+        setEclass((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +135,7 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
     switch (featureID)
     {
       case ArchitecturePackage.NODE_TYPE__ECLASS:
-        setEclass((EClass)null);
+        setEclass(ECLASS_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -164,9 +152,26 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
     switch (featureID)
     {
       case ArchitecturePackage.NODE_TYPE__ECLASS:
-        return eclass != null;
+        return ECLASS_EDEFAULT == null ? eclass != null : !ECLASS_EDEFAULT.equals(eclass);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (eclass: ");
+    result.append(eclass);
+    result.append(')');
+    return result.toString();
   }
 
 } //NodeTypeImpl

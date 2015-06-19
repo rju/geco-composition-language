@@ -67,7 +67,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getGroup_1(), "rule__SourceModelNodeSelector__Group_1__0");
 					put(grammarAccess.getTargetModelNodeTypeAccess().getGroup(), "rule__TargetModelNodeType__Group__0");
 					put(grammarAccess.getModelNodeTypeAccess().getGroup(), "rule__ModelNodeType__Group__0");
-					put(grammarAccess.getModelNodeTypeAccess().getGroup_3(), "rule__ModelNodeType__Group_3__0");
+					put(grammarAccess.getModelNodeTypeAccess().getGroup_1(), "rule__ModelNodeType__Group_1__0");
 					put(grammarAccess.getNodePropertyAccess().getGroup(), "rule__NodeProperty__Group__0");
 					put(grammarAccess.getNodePropertyAccess().getGroup_1(), "rule__NodeProperty__Group_1__0");
 					put(grammarAccess.getNodePropertyAccess().getGroup_2(), "rule__NodeProperty__Group_2__0");
@@ -102,7 +102,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_3_1(), "rule__MetamodelSequence__MetamodelsAssignment_3_1");
 					put(grammarAccess.getMetamodelAccess().getNameAssignment(), "rule__Metamodel__NameAssignment");
 					put(grammarAccess.getRegisteredPackageAccess().getNameAssignment_1(), "rule__RegisteredPackage__NameAssignment_1");
-					put(grammarAccess.getRegisteredPackageAccess().getImportedNamespaceAssignment_2_0(), "rule__RegisteredPackage__ImportedNamespaceAssignment_2_0");
+					put(grammarAccess.getRegisteredPackageAccess().getRegisteredPackageAssignment_2_0(), "rule__RegisteredPackage__RegisteredPackageAssignment_2_0");
 					put(grammarAccess.getRegisteredPackageAccess().getIsTextAssignment_2_1_0(), "rule__RegisteredPackage__IsTextAssignment_2_1_0");
 					put(grammarAccess.getRegisteredPackageAccess().getExtensionAssignment_2_1_1(), "rule__RegisteredPackage__ExtensionAssignment_2_1_1");
 					put(grammarAccess.getWeaverAccess().getWeaverAssignment_1(), "rule__Weaver__WeaverAssignment_1");
@@ -120,8 +120,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTargetModelNodeTypeAccess().getReferenceAssignment_1(), "rule__TargetModelNodeType__ReferenceAssignment_1");
 					put(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAssignment_2(), "rule__TargetModelNodeType__MultiplyAssignment_2");
 					put(grammarAccess.getModelNodeTypeAccess().getTargetAssignment_0(), "rule__ModelNodeType__TargetAssignment_0");
-					put(grammarAccess.getModelNodeTypeAccess().getTypeAssignment_2(), "rule__ModelNodeType__TypeAssignment_2");
-					put(grammarAccess.getModelNodeTypeAccess().getPropertyAssignment_3_1(), "rule__ModelNodeType__PropertyAssignment_3_1");
+					put(grammarAccess.getModelNodeTypeAccess().getPropertyAssignment_1_1(), "rule__ModelNodeType__PropertyAssignment_1_1");
 					put(grammarAccess.getNodePropertyAccess().getPropertyAssignment_0(), "rule__NodeProperty__PropertyAssignment_0");
 					put(grammarAccess.getNodePropertyAccess().getConstraintAssignment_1_1(), "rule__NodeProperty__ConstraintAssignment_1_1");
 					put(grammarAccess.getNodePropertyAccess().getSubPropertyAssignment_2_1(), "rule__NodeProperty__SubPropertyAssignment_2_1");

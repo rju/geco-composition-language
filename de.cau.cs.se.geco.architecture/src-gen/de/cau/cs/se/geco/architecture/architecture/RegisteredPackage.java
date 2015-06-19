@@ -4,6 +4,8 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.common.types.JvmType;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Registered Package</b></em>'.
@@ -13,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace <em>Imported Namespace</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getRegisteredPackage <em>Registered Package</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#isIsText <em>Is Text</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getExtension <em>Extension</em>}</li>
  * </ul>
@@ -52,30 +54,30 @@ public interface RegisteredPackage extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Imported Namespace</b></em>' attribute.
+   * Returns the value of the '<em><b>Registered Package</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Imported Namespace</em>' attribute isn't clear,
+   * If the meaning of the '<em>Registered Package</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Imported Namespace</em>' attribute.
-   * @see #setImportedNamespace(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getRegisteredPackage_ImportedNamespace()
+   * @return the value of the '<em>Registered Package</em>' reference.
+   * @see #setRegisteredPackage(JvmType)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getRegisteredPackage_RegisteredPackage()
    * @model
    * @generated
    */
-  String getImportedNamespace();
+  JvmType getRegisteredPackage();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace <em>Imported Namespace</em>}' attribute.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getRegisteredPackage <em>Registered Package</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Imported Namespace</em>' attribute.
-   * @see #getImportedNamespace()
+   * @param value the new value of the '<em>Registered Package</em>' reference.
+   * @see #getRegisteredPackage()
    * @generated
    */
-  void setImportedNamespace(String value);
+  void setRegisteredPackage(JvmType value);
 
   /**
    * Returns the value of the '<em><b>Is Text</b></em>' attribute.

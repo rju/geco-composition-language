@@ -2,6 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.architecture;
 
+import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,12 +32,12 @@ public interface Weaver extends Connection
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Weaver</em>' reference.
-   * @see #setWeaver(WeaverImport)
+   * @see #setWeaver(JvmType)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getWeaver_Weaver()
    * @model
    * @generated
    */
-  WeaverImport getWeaver();
+  JvmType getWeaver();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Weaver#getWeaver <em>Weaver</em>}' reference.
@@ -46,7 +47,7 @@ public interface Weaver extends Connection
    * @see #getWeaver()
    * @generated
    */
-  void setWeaver(WeaverImport value);
+  void setWeaver(JvmType value);
 
   /**
    * Returns the value of the '<em><b>Aspect Model</b></em>' containment reference.

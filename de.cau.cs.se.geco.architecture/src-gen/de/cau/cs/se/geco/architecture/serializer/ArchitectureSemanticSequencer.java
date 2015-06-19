@@ -315,7 +315,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     importedNamespace=QualifiedNameWithWildcard
+	 *     importedNamespace=[JvmType|QualifiedName]
 	 */
 	protected void sequence_GeneratorImport(EObject context, GeneratorImport semanticObject) {
 		if(errorAcceptor != null) {
@@ -324,7 +324,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getGeneratorImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
+		feeder.accept(grammarAccess.getGeneratorImportAccess().getImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1(), semanticObject.getImportedNamespace());
 		feeder.finish();
 	}
 	
@@ -332,7 +332,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	/**
 	 * Constraint:
 	 *     (
-	 *         generator=[GeneratorImport|ID] 
+	 *         generator=[JvmType|ID] 
 	 *         sourceModel=SourceModelNodeSelector 
 	 *         targetModel=TargetModelNodeType 
 	 *         writeTraceModel=TraceModel? 
@@ -389,7 +389,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (target=[RegisteredPackage|ID] type=[EClass|ID] property=NodeProperty?)
+	 *     (target=[RegisteredPackage|ID] property=NodeProperty?)
 	 */
 	protected void sequence_ModelNodeType(EObject context, ModelNodeType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -407,7 +407,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (property=[EReference|ID] constraint=ConstraintExpression? subProperty=NodeProperty?)
+	 *     (property=[JvmMember|ID] constraint=ConstraintExpression? subProperty=NodeProperty?)
 	 */
 	protected void sequence_NodeProperty(EObject context, NodeProperty semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -425,7 +425,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     eclass=[EClass|ID]
+	 *     eclass=ID
 	 */
 	protected void sequence_NodeType(EObject context, NodeType semanticObject) {
 		if(errorAcceptor != null) {
@@ -434,7 +434,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getNodeTypeAccess().getEclassEClassIDTerminalRuleCall_0_1(), semanticObject.getEclass());
+		feeder.accept(grammarAccess.getNodeTypeAccess().getEclassIDTerminalRuleCall_0(), semanticObject.getEclass());
 		feeder.finish();
 	}
 	
@@ -450,7 +450,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (importedNamespace=QualifiedNameWithWildcard | (isText?='text' extension=STRING)))
+	 *     (name=ID (registeredPackage=[JvmType|QualifiedName] | (isText?='text' extension=STRING)))
 	 */
 	protected void sequence_RegisteredPackage(EObject context, RegisteredPackage semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -495,7 +495,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     importedNamespace=QualifiedNameWithWildcard
+	 *     importedNamespace=[JvmType|QualifiedName]
 	 */
 	protected void sequence_WeaverImport(EObject context, WeaverImport semanticObject) {
 		if(errorAcceptor != null) {
@@ -504,14 +504,14 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getWeaverImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
+		feeder.accept(grammarAccess.getWeaverImportAccess().getImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1(), semanticObject.getImportedNamespace());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (weaver=[WeaverImport|ID] sourceModel=SourceModelNodeSelector aspectModel=AspectModel targetModel=TargetModelNodeType?)
+	 *     (weaver=[JvmType|ID] sourceModel=SourceModelNodeSelector aspectModel=AspectModel targetModel=TargetModelNodeType?)
 	 */
 	protected void sequence_Weaver(EObject context, Weaver semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -7,21 +7,5 @@ import de.cau.cs.se.geco.architecture.architecture.Metamodel
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
 
 class ArchitectureTyping {
-	def static EClass resolveType(ModelNodeType type) {
-		if (type.property == null)
-			return type.type
-		else
-			return type.property.resolveType
-	}
 	
-	def static EClass resolveType(NodeProperty property) {
-		if (property.subProperty == null)
-			return property.property.EReferenceType
-		else
-			return property.subProperty.resolveType
-	}
-	
-	def static EClass resolveType(Metamodel metamodel) {
-		(metamodel.eContainer as MetamodelSequence).type.resolveType
-	}
 }

@@ -5,23 +5,20 @@ package de.cau.cs.se.geco.architecture.generator;
 
 import de.cau.cs.se.geco.architecture.architecture.Connection;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.GeneratorImport;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
-import de.cau.cs.se.geco.architecture.architecture.WeaverImport;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -103,48 +100,19 @@ public class ArchitectureGenerator implements IGenerator {
   }
   
   private CharSequence _createField(final Weaver connection) {
-    CharSequence _xblockexpression = null;
-    {
-      WeaverImport _weaver = connection.getWeaver();
-      String _importedNamespace = _weaver.getImportedNamespace();
-      String[] _split = _importedNamespace.split("\\.");
-      final String name = IterableExtensions.<String>last(((Iterable<String>)Conversions.doWrapArray(_split)));
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("val ");
-      _builder.append(name, "");
-      _builder.append(" = new ");
-      String _firstLower = StringExtensions.toFirstLower(name);
-      _builder.append(_firstLower, "");
-      _builder.append("()");
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
+    return null;
   }
   
   private CharSequence _createField(final Generator connection) {
-    CharSequence _xblockexpression = null;
-    {
-      GeneratorImport _generator = connection.getGenerator();
-      String _importedNamespace = _generator.getImportedNamespace();
-      String[] _split = _importedNamespace.split("\\.");
-      final String name = IterableExtensions.<String>last(((Iterable<String>)Conversions.doWrapArray(_split)));
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("val ");
-      _builder.append(name, "");
-      _builder.append(" = new ");
-      String _firstLower = StringExtensions.toFirstLower(name);
-      _builder.append(_firstLower, "");
-      _builder.append("()");
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
+    return null;
   }
   
   private CharSequence createImport(final Import node) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
-    String _importedNamespace = node.getImportedNamespace();
-    _builder.append(_importedNamespace, "");
+    JvmType _importedNamespace = node.getImportedNamespace();
+    String _qualifiedName = _importedNamespace.getQualifiedName();
+    _builder.append(_qualifiedName, "");
     return _builder;
   }
   
