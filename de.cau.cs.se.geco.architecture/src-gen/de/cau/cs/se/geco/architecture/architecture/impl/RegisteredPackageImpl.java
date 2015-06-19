@@ -8,8 +8,6 @@ import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -22,7 +20,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl#getModelPackage <em>Model Package</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl#isIsText <em>Is Text</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl#getExtension <em>Extension</em>}</li>
  * </ul>
@@ -53,14 +51,24 @@ public class RegisteredPackageImpl extends MinimalEObjectImpl.Container implemen
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getModelPackage() <em>Model Package</em>}' reference.
+   * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModelPackage()
+   * @see #getImportedNamespace()
    * @generated
    * @ordered
    */
-  protected EPackage modelPackage;
+  protected static final String IMPORTED_NAMESPACE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImportedNamespace()
+   * @generated
+   * @ordered
+   */
+  protected String importedNamespace = IMPORTED_NAMESPACE_EDEFAULT;
 
   /**
    * The default value of the '{@link #isIsText() <em>Is Text</em>}' attribute.
@@ -151,19 +159,9 @@ public class RegisteredPackageImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EPackage getModelPackage()
+  public String getImportedNamespace()
   {
-    if (modelPackage != null && modelPackage.eIsProxy())
-    {
-      InternalEObject oldModelPackage = (InternalEObject)modelPackage;
-      modelPackage = (EPackage)eResolveProxy(oldModelPackage);
-      if (modelPackage != oldModelPackage)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.REGISTERED_PACKAGE__MODEL_PACKAGE, oldModelPackage, modelPackage));
-      }
-    }
-    return modelPackage;
+    return importedNamespace;
   }
 
   /**
@@ -171,22 +169,12 @@ public class RegisteredPackageImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EPackage basicGetModelPackage()
+  public void setImportedNamespace(String newImportedNamespace)
   {
-    return modelPackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setModelPackage(EPackage newModelPackage)
-  {
-    EPackage oldModelPackage = modelPackage;
-    modelPackage = newModelPackage;
+    String oldImportedNamespace = importedNamespace;
+    importedNamespace = newImportedNamespace;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.REGISTERED_PACKAGE__MODEL_PACKAGE, oldModelPackage, modelPackage));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.REGISTERED_PACKAGE__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
   }
 
   /**
@@ -247,9 +235,8 @@ public class RegisteredPackageImpl extends MinimalEObjectImpl.Container implemen
     {
       case ArchitecturePackage.REGISTERED_PACKAGE__NAME:
         return getName();
-      case ArchitecturePackage.REGISTERED_PACKAGE__MODEL_PACKAGE:
-        if (resolve) return getModelPackage();
-        return basicGetModelPackage();
+      case ArchitecturePackage.REGISTERED_PACKAGE__IMPORTED_NAMESPACE:
+        return getImportedNamespace();
       case ArchitecturePackage.REGISTERED_PACKAGE__IS_TEXT:
         return isIsText();
       case ArchitecturePackage.REGISTERED_PACKAGE__EXTENSION:
@@ -271,8 +258,8 @@ public class RegisteredPackageImpl extends MinimalEObjectImpl.Container implemen
       case ArchitecturePackage.REGISTERED_PACKAGE__NAME:
         setName((String)newValue);
         return;
-      case ArchitecturePackage.REGISTERED_PACKAGE__MODEL_PACKAGE:
-        setModelPackage((EPackage)newValue);
+      case ArchitecturePackage.REGISTERED_PACKAGE__IMPORTED_NAMESPACE:
+        setImportedNamespace((String)newValue);
         return;
       case ArchitecturePackage.REGISTERED_PACKAGE__IS_TEXT:
         setIsText((Boolean)newValue);
@@ -297,8 +284,8 @@ public class RegisteredPackageImpl extends MinimalEObjectImpl.Container implemen
       case ArchitecturePackage.REGISTERED_PACKAGE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ArchitecturePackage.REGISTERED_PACKAGE__MODEL_PACKAGE:
-        setModelPackage((EPackage)null);
+      case ArchitecturePackage.REGISTERED_PACKAGE__IMPORTED_NAMESPACE:
+        setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
         return;
       case ArchitecturePackage.REGISTERED_PACKAGE__IS_TEXT:
         setIsText(IS_TEXT_EDEFAULT);
@@ -322,8 +309,8 @@ public class RegisteredPackageImpl extends MinimalEObjectImpl.Container implemen
     {
       case ArchitecturePackage.REGISTERED_PACKAGE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ArchitecturePackage.REGISTERED_PACKAGE__MODEL_PACKAGE:
-        return modelPackage != null;
+      case ArchitecturePackage.REGISTERED_PACKAGE__IMPORTED_NAMESPACE:
+        return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
       case ArchitecturePackage.REGISTERED_PACKAGE__IS_TEXT:
         return isText != IS_TEXT_EDEFAULT;
       case ArchitecturePackage.REGISTERED_PACKAGE__EXTENSION:
@@ -345,6 +332,8 @@ public class RegisteredPackageImpl extends MinimalEObjectImpl.Container implemen
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", importedNamespace: ");
+    result.append(importedNamespace);
     result.append(", isText: ");
     result.append(isText);
     result.append(", extension: ");

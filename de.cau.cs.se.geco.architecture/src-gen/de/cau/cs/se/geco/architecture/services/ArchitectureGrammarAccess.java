@@ -227,9 +227,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Assignment cModelPackageAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final CrossReference cModelPackageEPackageCrossReference_2_0_0 = (CrossReference)cModelPackageAssignment_2_0.eContents().get(0);
-		private final RuleCall cModelPackageEPackageSTRINGTerminalRuleCall_2_0_0_1 = (RuleCall)cModelPackageEPackageCrossReference_2_0_0.eContents().get(1);
+		private final Assignment cImportedNamespaceAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0_0 = (RuleCall)cImportedNamespaceAssignment_2_0.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
 		private final Assignment cIsTextAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
 		private final Keyword cIsTextTextKeyword_2_1_0_0 = (Keyword)cIsTextAssignment_2_1_0.eContents().get(0);
@@ -237,10 +236,10 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cExtensionSTRINGTerminalRuleCall_2_1_1_0 = (RuleCall)cExtensionAssignment_2_1_1.eContents().get(0);
 		
 		//RegisteredPackage:
-		//	"register" name=ID (modelPackage=[ecore::EPackage|STRING] | isText?="text" extension=STRING);
+		//	"register" name=ID (importedNamespace=QualifiedNameWithWildcard | isText?="text" extension=STRING);
 		public ParserRule getRule() { return rule; }
 
-		//"register" name=ID (modelPackage=[ecore::EPackage|STRING] | isText?="text" extension=STRING)
+		//"register" name=ID (importedNamespace=QualifiedNameWithWildcard | isText?="text" extension=STRING)
 		public Group getGroup() { return cGroup; }
 
 		//"register"
@@ -252,17 +251,14 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//modelPackage=[ecore::EPackage|STRING] | isText?="text" extension=STRING
+		//importedNamespace=QualifiedNameWithWildcard | isText?="text" extension=STRING
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//modelPackage=[ecore::EPackage|STRING]
-		public Assignment getModelPackageAssignment_2_0() { return cModelPackageAssignment_2_0; }
+		//importedNamespace=QualifiedNameWithWildcard
+		public Assignment getImportedNamespaceAssignment_2_0() { return cImportedNamespaceAssignment_2_0; }
 
-		//[ecore::EPackage|STRING]
-		public CrossReference getModelPackageEPackageCrossReference_2_0_0() { return cModelPackageEPackageCrossReference_2_0_0; }
-
-		//STRING
-		public RuleCall getModelPackageEPackageSTRINGTerminalRuleCall_2_0_0_1() { return cModelPackageEPackageSTRINGTerminalRuleCall_2_0_0_1; }
+		//QualifiedNameWithWildcard
+		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0_0; }
 
 		//isText?="text" extension=STRING
 		public Group getGroup_2_1() { return cGroup_2_1; }
@@ -1465,7 +1461,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RegisteredPackage:
-	//	"register" name=ID (modelPackage=[ecore::EPackage|STRING] | isText?="text" extension=STRING);
+	//	"register" name=ID (importedNamespace=QualifiedNameWithWildcard | isText?="text" extension=STRING);
 	public RegisteredPackageElements getRegisteredPackageAccess() {
 		return pRegisteredPackage;
 	}

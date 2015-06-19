@@ -102,7 +102,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_3_1(), "rule__MetamodelSequence__MetamodelsAssignment_3_1");
 					put(grammarAccess.getMetamodelAccess().getNameAssignment(), "rule__Metamodel__NameAssignment");
 					put(grammarAccess.getRegisteredPackageAccess().getNameAssignment_1(), "rule__RegisteredPackage__NameAssignment_1");
-					put(grammarAccess.getRegisteredPackageAccess().getModelPackageAssignment_2_0(), "rule__RegisteredPackage__ModelPackageAssignment_2_0");
+					put(grammarAccess.getRegisteredPackageAccess().getImportedNamespaceAssignment_2_0(), "rule__RegisteredPackage__ImportedNamespaceAssignment_2_0");
 					put(grammarAccess.getRegisteredPackageAccess().getIsTextAssignment_2_1_0(), "rule__RegisteredPackage__IsTextAssignment_2_1_0");
 					put(grammarAccess.getRegisteredPackageAccess().getExtensionAssignment_2_1_1(), "rule__RegisteredPackage__ExtensionAssignment_2_1_1");
 					put(grammarAccess.getWeaverAccess().getWeaverAssignment_1(), "rule__Weaver__WeaverAssignment_1");

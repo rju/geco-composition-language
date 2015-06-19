@@ -33,7 +33,7 @@ class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 		switch(context) {
 			// Find scope for the package property in the MetaModel rule.
 			RegisteredPackage case reference.name.equals("modelPackage"): new EPackageScope(context.eResource().getResourceSet())
-			ModelNodeType case reference.name.equals("type"): Scopes.scopeFor(context.target.modelPackage.EClassifiers)
+			//ModelNodeType case reference.name.equals("type"): Scopes.scopeFor(context.target.modelPackage.EClassifiers)
 			NodeProperty case reference.name.equals("property"): createNodePropertyScope(context.eContainer)
 			Weaver case reference.name.equals("weaver"): new JvmScope(context.eResource(), WeaverImport)
 			Generator case reference.name.equals("generator"): new JvmScope(context.eResource(), GeneratorImport)

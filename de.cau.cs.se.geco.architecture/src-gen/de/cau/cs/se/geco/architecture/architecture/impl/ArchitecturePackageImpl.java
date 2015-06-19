@@ -482,9 +482,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRegisteredPackage_ModelPackage()
+  public EAttribute getRegisteredPackage_ImportedNamespace()
   {
-    return (EReference)registeredPackageEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1160,7 +1160,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     registeredPackageEClass = createEClass(REGISTERED_PACKAGE);
     createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__NAME);
-    createEReference(registeredPackageEClass, REGISTERED_PACKAGE__MODEL_PACKAGE);
+    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__IMPORTED_NAMESPACE);
     createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__IS_TEXT);
     createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__EXTENSION);
 
@@ -1314,7 +1314,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(registeredPackageEClass, RegisteredPackage.class, "RegisteredPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRegisteredPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRegisteredPackage_ModelPackage(), ecorePackage.getEPackage(), null, "modelPackage", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRegisteredPackage_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRegisteredPackage_IsText(), ecorePackage.getEBoolean(), "isText", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRegisteredPackage_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

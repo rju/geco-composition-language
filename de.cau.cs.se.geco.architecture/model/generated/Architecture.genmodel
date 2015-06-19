@@ -28,7 +28,7 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//RegisteredPackage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//RegisteredPackage/modelPackage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/importedNamespace"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/isText"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/extension"/>
     </genClasses>

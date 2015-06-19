@@ -3,7 +3,6 @@
 package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +13,7 @@ import org.eclipse.emf.ecore.EPackage;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getModelPackage <em>Model Package</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace <em>Imported Namespace</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#isIsText <em>Is Text</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getExtension <em>Extension</em>}</li>
  * </ul>
@@ -53,30 +52,30 @@ public interface RegisteredPackage extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Model Package</b></em>' reference.
+   * Returns the value of the '<em><b>Imported Namespace</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Model Package</em>' reference isn't clear,
+   * If the meaning of the '<em>Imported Namespace</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Model Package</em>' reference.
-   * @see #setModelPackage(EPackage)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getRegisteredPackage_ModelPackage()
+   * @return the value of the '<em>Imported Namespace</em>' attribute.
+   * @see #setImportedNamespace(String)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getRegisteredPackage_ImportedNamespace()
    * @model
    * @generated
    */
-  EPackage getModelPackage();
+  String getImportedNamespace();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getModelPackage <em>Model Package</em>}' reference.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Model Package</em>' reference.
-   * @see #getModelPackage()
+   * @param value the new value of the '<em>Imported Namespace</em>' attribute.
+   * @see #getImportedNamespace()
    * @generated
    */
-  void setModelPackage(EPackage value);
+  void setImportedNamespace(String value);
 
   /**
    * Returns the value of the '<em><b>Is Text</b></em>' attribute.

@@ -21,9 +21,7 @@ import de.cau.cs.se.geco.architecture.scoping.JvmScope;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -53,19 +51,6 @@ public class ArchitectureScopeProvider implements IDelegatingScopeProvider {
           Resource _eResource = ((RegisteredPackage)context).eResource();
           ResourceSet _resourceSet = _eResource.getResourceSet();
           _switchResult = new EPackageScope(_resourceSet);
-        }
-      }
-    }
-    if (!_matched) {
-      if (context instanceof ModelNodeType) {
-        String _name = reference.getName();
-        boolean _equals = _name.equals("type");
-        if (_equals) {
-          _matched=true;
-          RegisteredPackage _target = ((ModelNodeType)context).getTarget();
-          EPackage _modelPackage = _target.getModelPackage();
-          EList<EClassifier> _eClassifiers = _modelPackage.getEClassifiers();
-          _switchResult = Scopes.scopeFor(_eClassifiers);
         }
       }
     }

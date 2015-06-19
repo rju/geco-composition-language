@@ -289,13 +289,13 @@ public interface ArchitecturePackage extends EPackage
   int REGISTERED_PACKAGE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Model Package</b></em>' reference.
+   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REGISTERED_PACKAGE__MODEL_PACKAGE = 1;
+  int REGISTERED_PACKAGE__IMPORTED_NAMESPACE = 1;
 
   /**
    * The feature id for the '<em><b>Is Text</b></em>' attribute.
@@ -1580,15 +1580,15 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getRegisteredPackage_Name();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getModelPackage <em>Model Package</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace <em>Imported Namespace</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Model Package</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getModelPackage()
+   * @return the meta object for the attribute '<em>Imported Namespace</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace()
    * @see #getRegisteredPackage()
    * @generated
    */
-  EReference getRegisteredPackage_ModelPackage();
+  EAttribute getRegisteredPackage_ImportedNamespace();
 
   /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#isIsText <em>Is Text</em>}'.
@@ -2425,12 +2425,12 @@ public interface ArchitecturePackage extends EPackage
     EAttribute REGISTERED_PACKAGE__NAME = eINSTANCE.getRegisteredPackage_Name();
 
     /**
-     * The meta object literal for the '<em><b>Model Package</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference REGISTERED_PACKAGE__MODEL_PACKAGE = eINSTANCE.getRegisteredPackage_ModelPackage();
+    EAttribute REGISTERED_PACKAGE__IMPORTED_NAMESPACE = eINSTANCE.getRegisteredPackage_ImportedNamespace();
 
     /**
      * The meta object literal for the '<em><b>Is Text</b></em>' attribute feature.

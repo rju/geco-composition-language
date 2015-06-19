@@ -469,15 +469,20 @@ ruleRegisteredPackage returns [EObject current=null]
 )
 )((
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getRegisteredPackageRule());
+		{ 
+	        newCompositeNode(grammarAccess.getRegisteredPackageAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_2_0_0()); 
+	    }
+		lv_importedNamespace_2_0=ruleQualifiedNameWithWildcard		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getRegisteredPackageRule());
 	        }
-        }
-	otherlv_2=RULE_STRING
-	{
-		newLeafNode(otherlv_2, grammarAccess.getRegisteredPackageAccess().getModelPackageEPackageCrossReference_2_0_0()); 
-	}
+       		set(
+       			$current, 
+       			"importedNamespace",
+        		lv_importedNamespace_2_0, 
+        		"QualifiedNameWithWildcard");
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )

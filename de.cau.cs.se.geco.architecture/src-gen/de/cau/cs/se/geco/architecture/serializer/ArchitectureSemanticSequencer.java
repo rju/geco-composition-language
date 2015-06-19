@@ -450,7 +450,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (modelPackage=[EPackage|STRING] | (isText?='text' extension=STRING)))
+	 *     (name=ID (importedNamespace=QualifiedNameWithWildcard | (isText?='text' extension=STRING)))
 	 */
 	protected void sequence_RegisteredPackage(EObject context, RegisteredPackage semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
