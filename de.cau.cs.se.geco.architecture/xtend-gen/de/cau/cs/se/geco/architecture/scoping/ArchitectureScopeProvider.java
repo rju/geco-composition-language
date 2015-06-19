@@ -8,10 +8,14 @@ import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
+import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
+import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.architecture.WeaverImport;
+import de.cau.cs.se.geco.architecture.scoping.EPackageContentScope;
 import de.cau.cs.se.geco.architecture.scoping.EPackageScope;
 import de.cau.cs.se.geco.architecture.scoping.JvmScope;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
@@ -28,6 +32,8 @@ import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.IDelegatingScopeProvider;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ArchitectureScopeProvider implements IDelegatingScopeProvider {
@@ -97,6 +103,17 @@ public class ArchitectureScopeProvider implements IDelegatingScopeProvider {
       }
     }
     if (!_matched) {
+      if (context instanceof NodeType) {
+        String _name = reference.getName();
+        boolean _equals = _name.equals("eclass");
+        if (_equals) {
+          _matched=true;
+          EObject _eContainer = ((NodeType)context).eContainer();
+          _switchResult = this.createNodeTypeScope(((NodeSetRelation) _eContainer), ((NodeType)context));
+        }
+      }
+    }
+    if (!_matched) {
       IScope _xblockexpression = null;
       {
         System.out.println((((">> " + context) + " ") + reference));
@@ -105,6 +122,27 @@ public class ArchitectureScopeProvider implements IDelegatingScopeProvider {
       _switchResult = _xblockexpression;
     }
     return _switchResult;
+  }
+  
+  private IScope createNodeTypeScope(final NodeSetRelation relation, final NodeType nodeType) {
+    EList<NodeType> _sourceNodes = relation.getSourceNodes();
+    final Function1<NodeType, Boolean> _function = new Function1<NodeType, Boolean>() {
+      public Boolean apply(final NodeType it) {
+        return Boolean.valueOf(it.equals(nodeType));
+      }
+    };
+    boolean _exists = IterableExtensions.<NodeType>exists(_sourceNodes, _function);
+    if (_exists) {
+      EObject _eContainer = relation.eContainer();
+      EObject _eContainer_1 = ((TraceModel) _eContainer).eContainer();
+      SourceModelNodeSelector _sourceModel = ((Generator) _eContainer_1).getSourceModel();
+      Metamodel _reference = _sourceModel.getReference();
+      final EClass modelRootType = ArchitectureTyping.resolveType(_reference);
+      Resource _eResource = modelRootType.eResource();
+      return new EPackageContentScope(_eResource);
+    } else {
+      return IScope.NULLSCOPE;
+    }
   }
   
   private IScope createNodePropertyScope(final EObject container) {

@@ -19,6 +19,10 @@ import de.cau.cs.se.geco.architecture.architecture.GeneratorImport
 import de.cau.cs.se.geco.architecture.architecture.Generator
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
+import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation
+import de.cau.cs.se.geco.architecture.architecture.NodeType
+import org.eclipse.xtext.scoping.IScope
+import de.cau.cs.se.geco.architecture.architecture.TraceModel
 
 class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 			
@@ -33,10 +37,22 @@ class ArchitectureScopeProvider implements IDelegatingScopeProvider {
 			NodeProperty case reference.name.equals("property"): createNodePropertyScope(context.eContainer)
 			Weaver case reference.name.equals("weaver"): new JvmScope(context.eResource(), WeaverImport)
 			Generator case reference.name.equals("generator"): new JvmScope(context.eResource(), GeneratorImport)
+			NodeType case reference.name.equals("eclass"): createNodeTypeScope(context.eContainer as NodeSetRelation, context)
 			default: {
 				System.out.println(">> " + context + " " + reference)
 				delegate.getScope(context, reference)
 			}
+		}
+	}
+	
+	private def createNodeTypeScope(NodeSetRelation relation, NodeType nodeType) {
+		/** determine if the node type is a source or target model node type. */
+		if (relation.sourceNodes.exists[it.equals(nodeType)]) {
+			val modelRootType = ((relation.eContainer as TraceModel).eContainer as Generator).
+				sourceModel.reference.resolveType
+			return new EPackageContentScope(modelRootType.eResource)
+		} else {
+			return IScope.NULLSCOPE
 		}
 	}
 	

@@ -1,9 +1,12 @@
 package de.cau.cs.se.geco.architecture.typing;
 
 import com.google.common.base.Objects;
+import de.cau.cs.se.geco.architecture.architecture.Metamodel;
+import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 
 @SuppressWarnings("all")
@@ -29,5 +32,11 @@ public class ArchitectureTyping {
       NodeProperty _subProperty_1 = property.getSubProperty();
       return ArchitectureTyping.resolveType(_subProperty_1);
     }
+  }
+  
+  public static EClass resolveType(final Metamodel metamodel) {
+    EObject _eContainer = metamodel.eContainer();
+    ModelNodeType _type = ((MetamodelSequence) _eContainer).getType();
+    return ArchitectureTyping.resolveType(_type);
   }
 }
