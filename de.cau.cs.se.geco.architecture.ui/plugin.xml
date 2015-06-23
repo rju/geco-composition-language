@@ -9,9 +9,8 @@
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="core"
+            extensions="geco"
             id="de.cau.cs.se.geco.architecture.Architecture"
-            matchingStrategy="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
             name="Architecture Editor">
         </editor>
     </extension>
@@ -214,13 +213,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="core">
+			type="geco">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="core">
+            uriExtension="geco">
         </resourceServiceProvider>
     </extension>
 
@@ -252,7 +251,7 @@
          point="org.eclipse.xtext.builder.participant">
       <participant
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-            fileExtensions="core"
+            fileExtensions="geco"
             >
       </participant>
    </extension>
@@ -377,207 +376,22 @@
 	    </page>
 	</extension>
 
-<!-- Type Hierarchy  -->
-	<extension
-		point="org.eclipse.ui.handlers">
-		<handler 
-			class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchyHandler"
-			commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchy">
-			<activeWhen>
-				<reference
-					definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-				</reference>
-			</activeWhen>
-		</handler>
-		<handler 
-			class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchyHandler"
-			commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy">
-			<activeWhen>
-				<reference
-					definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-				</reference>
-			</activeWhen>
-		</handler>
-		<handler
-            class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.imports.OrganizeImportsHandler"
-            commandId="org.eclipse.xtext.xbase.ui.organizeImports">
-           	<activeWhen>
-				<reference
-					definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-				</reference>
-			</activeWhen>
-        </handler>
-	</extension>
-	<extension point="org.eclipse.ui.menus">
-	    <menuContribution
-            locationURI="popup:#TextEditorContext?after=group.edit">
-             <command
-                 commandId="org.eclipse.xtext.xbase.ui.organizeImports"
-                 style="push"
-                 tooltip="Organize Imports">
-                <visibleWhen checkEnabled="false">
-                    <reference
-                        definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-                    </reference>
-                </visibleWhen>
-            </command>  
-        </menuContribution>
-		<menuContribution
-			locationURI="popup:#TextEditorContext?after=group.open">
-			<command commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchy"
-				style="push"
-				tooltip="Open Type Hierarchy">
-				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened"/>
-				</visibleWhen>
-			</command>
-		</menuContribution>
-		<menuContribution
-			locationURI="popup:#TextEditorContext?after=group.open">
-			<command commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy"
-				style="push"
-				tooltip="Quick Type Hierarchy">
-				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened"/>
-				</visibleWhen>
-			</command>
-		</menuContribution>
-	</extension>
-	<!-- Call Hierachy -->
-	<extension
-		point="org.eclipse.ui.handlers">
-		<handler 
-			class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierachyHandler"
-			commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierarchy">
-			<activeWhen>
-				<reference
-					definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-				</reference>
-			</activeWhen>
-		</handler>
-	</extension>
-	
-	<extension point="org.eclipse.ui.menus">
-		<menuContribution
-			locationURI="popup:#TextEditorContext?after=group.open">
-			<command commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierarchy"
-				style="push"
-				tooltip="Open Call Hierarchy">
-				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened"/>
-				</visibleWhen>
-			</command>
-		</menuContribution>
-	</extension>
-	<extension
-         point="org.eclipse.core.runtime.adapters">
-      <factory class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.builder.smap.StratumBreakpointAdapterFactory"
-         adaptableType="org.eclipse.xtext.ui.editor.XtextEditor">
-         <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
-      </factory> 
-   </extension>
-   <extension point="org.eclipse.ui.editorActions">
-      <editorContribution targetID="de.cau.cs.se.geco.architecture.Architecture" 
-                          id="de.cau.cs.se.geco.architecture.Architecture.rulerActions">
-	     <action
-	             label="Not Used"
-	             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
-	             style="push"
-	             actionID="RulerDoubleClick"
-	             id="de.cau.cs.se.geco.architecture.Architecture.doubleClickBreakpointAction"/>
-	  </editorContribution>
-   </extension>
-   <extension point="org.eclipse.ui.popupMenus">
-      <viewerContribution
-         targetID="de.cau.cs.se.geco.architecture.Architecture.RulerContext"
-         id="de.cau.cs.se.geco.architecture.Architecture.RulerPopupActions">
-         <action
-            label="Toggle Breakpoint"
-            class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
-            menubarPath="debug"
-            id="de.cau.cs.se.geco.architecture.Architecture.rulerContextMenu.toggleBreakpointAction">
-         </action>
-         <action
-            label="Not used"
-            class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
-            menubarPath="debug"
-            id="de.cau.cs.se.geco.architecture.Architecture.rulerContextMenu.enableDisableBreakpointAction">
-         </action>
-         <action
-           label="Breakpoint Properties"
-           helpContextId="breakpoint_properties_action_context"
-           class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.jdt.debug.ui.actions.JavaBreakpointPropertiesRulerActionDelegate"
-           menubarPath="group.properties"
-           id="de.cau.cs.se.geco.architecture.Architecture.rulerContextMenu.openBreapointPropertiesAction">
-         </action>
-      </viewerContribution>
-   </extension>
-    <!-- Introduce Local Variable Refactoring -->
-	<extension point="org.eclipse.ui.handlers">
-		<handler 
-			class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.refactoring.ExtractVariableHandler"
-			commandId="org.eclipse.xtext.xbase.ui.refactoring.ExtractLocalVariable">
-			<activeWhen>
-				<reference
-					definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-				</reference>
-			</activeWhen>
-		</handler>
-	</extension>
-    <extension point="org.eclipse.ui.menus">
-         <menuContribution
-            locationURI="popup:#TextEditorContext?after=group.edit">
-         <command commandId="org.eclipse.xtext.xbase.ui.refactoring.ExtractLocalVariable"
-               style="push">
-            <visibleWhen checkEnabled="false">
-               <reference
-                     definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-               </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
-   </extension>  
-   <!-- Open implementation -->
-   <extension point="org.eclipse.ui.handlers">
-      <handler
-            class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.navigation.OpenImplementationHandler"
-            commandId="org.eclipse.xtext.xbase.ui.OpenImplementationCommand">
-            <activeWhen>
-				<reference
-					definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-				</reference>
-			</activeWhen>
-      </handler>
-   </extension>
- <extension point="org.eclipse.ui.menus">
-       <menuContribution
-            locationURI="menu:navigate?after=open.ext4">
-         <command commandId="org.eclipse.xtext.xbase.ui.OpenImplementationCommand">
-		<visibleWhen checkEnabled="false">
-              <reference
-                 definitionId="de.cau.cs.se.geco.architecture.Architecture.Editor.opened">
-              </reference>
-		</visibleWhen>
-         </command>
-      </menuContribution>
-   </extension>
-
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="de.cau.cs.se.geco.architecture.Architecture.compare.contentViewers"
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="core">
+            extensions="geco">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="de.cau.cs.se.geco.architecture.Architecture.compare.contentMergeViewers"
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="core" label="Architecture Compare">
+            extensions="geco" label="Architecture Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
     <provider id="de.cau.cs.se.geco.architecture.Architecture.editors.documentProviders"
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="core">
+            extensions="geco">
     </provider>
   </extension>
 

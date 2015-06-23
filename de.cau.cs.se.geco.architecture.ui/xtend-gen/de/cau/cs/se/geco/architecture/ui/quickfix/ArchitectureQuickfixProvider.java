@@ -3,7 +3,7 @@
  */
 package de.cau.cs.se.geco.architecture.ui.quickfix;
 
-import org.eclipse.xtext.xbase.ui.quickfix.XbaseQuickfixProvider;
+import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 
 /**
  * Custom quickfixes.
@@ -11,5 +11,5 @@ import org.eclipse.xtext.xbase.ui.quickfix.XbaseQuickfixProvider;
  * see http://www.eclipse.org/Xtext/documentation.html#quickfixes
  */
 @SuppressWarnings("all")
-public class ArchitectureQuickfixProvider extends XbaseQuickfixProvider {
+public class ArchitectureQuickfixProvider extends DefaultQuickfixProvider {
 }

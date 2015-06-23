@@ -379,9 +379,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getImport_ImportedNamespace()
+  public EReference getImport_ImportedNamespace()
   {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+    return (EReference)importEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -499,7 +499,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConnection_SourceModel()
+  public EReference getConnection_Reference()
   {
     return (EReference)connectionEClass.getEStructuralFeatures().get(0);
   }
@@ -509,9 +509,19 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConnection_TargetModel()
+  public EReference getConnection_SourceModel()
   {
     return (EReference)connectionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConnection_TargetModel()
+  {
+    return (EReference)connectionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -529,19 +539,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWeaver_Weaver()
-  {
-    return (EReference)weaverEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getWeaver_AspectModel()
   {
-    return (EReference)weaverEClass.getEStructuralFeatures().get(1);
+    return (EReference)weaverEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -569,7 +569,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGenerator_Generator()
+  public EReference getGenerator_WriteTraceModel()
   {
     return (EReference)generatorEClass.getEStructuralFeatures().get(0);
   }
@@ -579,19 +579,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGenerator_WriteTraceModel()
-  {
-    return (EReference)generatorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getGenerator_ReadTraceModels()
   {
-    return (EReference)generatorEClass.getEStructuralFeatures().get(2);
+    return (EReference)generatorEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1142,7 +1132,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEReference(modelEClass, MODEL__CONNECTIONS);
 
     importEClass = createEClass(IMPORT);
-    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
+    createEReference(importEClass, IMPORT__IMPORTED_NAMESPACE);
 
     metamodelSequenceEClass = createEClass(METAMODEL_SEQUENCE);
     createEReference(metamodelSequenceEClass, METAMODEL_SEQUENCE__TYPE);
@@ -1158,17 +1148,16 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__EXTENSION);
 
     connectionEClass = createEClass(CONNECTION);
+    createEReference(connectionEClass, CONNECTION__REFERENCE);
     createEReference(connectionEClass, CONNECTION__SOURCE_MODEL);
     createEReference(connectionEClass, CONNECTION__TARGET_MODEL);
 
     weaverEClass = createEClass(WEAVER);
-    createEReference(weaverEClass, WEAVER__WEAVER);
     createEReference(weaverEClass, WEAVER__ASPECT_MODEL);
 
     aspectModelEClass = createEClass(ASPECT_MODEL);
 
     generatorEClass = createEClass(GENERATOR);
-    createEReference(generatorEClass, GENERATOR__GENERATOR);
     createEReference(generatorEClass, GENERATOR__WRITE_TRACE_MODEL);
     createEReference(generatorEClass, GENERATOR__READ_TRACE_MODELS);
 
@@ -1297,7 +1286,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEReference(getModel_Connections(), this.getConnection(), null, "connections", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImport_ImportedNamespace(), theTypesPackage.getJvmType(), null, "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metamodelSequenceEClass, MetamodelSequence.class, "MetamodelSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMetamodelSequence_Type(), this.getModelNodeType(), null, "type", null, 0, 1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1313,17 +1302,16 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEAttribute(getRegisteredPackage_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(connectionEClass, Connection.class, "Connection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConnection_Reference(), theTypesPackage.getJvmType(), null, "reference", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConnection_SourceModel(), this.getSourceModelNodeSelector(), null, "sourceModel", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConnection_TargetModel(), this.getTargetModelNodeType(), null, "targetModel", null, 0, 1, Connection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(weaverEClass, Weaver.class, "Weaver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getWeaver_Weaver(), theTypesPackage.getJvmType(), null, "weaver", null, 0, 1, Weaver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWeaver_AspectModel(), this.getAspectModel(), null, "aspectModel", null, 0, 1, Weaver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aspectModelEClass, AspectModel.class, "AspectModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(generatorEClass, Generator.class, "Generator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGenerator_Generator(), theTypesPackage.getJvmType(), null, "generator", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGenerator_WriteTraceModel(), this.getTraceModel(), null, "writeTraceModel", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGenerator_ReadTraceModels(), this.getTraceModel(), null, "readTraceModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.xtext.common.types.JvmType;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Connection</b></em>'.
@@ -23,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getReference <em>Reference</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getSourceModel <em>Source Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl#getTargetModel <em>Target Model</em>}</li>
  * </ul>
@@ -32,6 +35,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class ConnectionImpl extends MinimalEObjectImpl.Container implements Connection
 {
+  /**
+   * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReference()
+   * @generated
+   * @ordered
+   */
+  protected JvmType reference;
+
   /**
    * The cached value of the '{@link #getSourceModel() <em>Source Model</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -71,6 +84,49 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   protected EClass eStaticClass()
   {
     return ArchitecturePackage.Literals.CONNECTION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmType getReference()
+  {
+    if (reference != null && reference.eIsProxy())
+    {
+      InternalEObject oldReference = (InternalEObject)reference;
+      reference = (JvmType)eResolveProxy(oldReference);
+      if (reference != oldReference)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.CONNECTION__REFERENCE, oldReference, reference));
+      }
+    }
+    return reference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmType basicGetReference()
+  {
+    return reference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReference(JvmType newReference)
+  {
+    JvmType oldReference = reference;
+    reference = newReference;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONNECTION__REFERENCE, oldReference, reference));
   }
 
   /**
@@ -197,6 +253,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
+      case ArchitecturePackage.CONNECTION__REFERENCE:
+        if (resolve) return getReference();
+        return basicGetReference();
       case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
         return getSourceModel();
       case ArchitecturePackage.CONNECTION__TARGET_MODEL:
@@ -215,6 +274,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
+      case ArchitecturePackage.CONNECTION__REFERENCE:
+        setReference((JvmType)newValue);
+        return;
       case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
         setSourceModel((SourceModelNodeSelector)newValue);
         return;
@@ -235,6 +297,9 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
+      case ArchitecturePackage.CONNECTION__REFERENCE:
+        setReference((JvmType)null);
+        return;
       case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
         setSourceModel((SourceModelNodeSelector)null);
         return;
@@ -255,6 +320,8 @@ public class ConnectionImpl extends MinimalEObjectImpl.Container implements Conn
   {
     switch (featureID)
     {
+      case ArchitecturePackage.CONNECTION__REFERENCE:
+        return reference != null;
       case ArchitecturePackage.CONNECTION__SOURCE_MODEL:
         return sourceModel != null;
       case ArchitecturePackage.CONNECTION__TARGET_MODEL:

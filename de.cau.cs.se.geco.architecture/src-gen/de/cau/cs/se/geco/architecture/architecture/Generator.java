@@ -4,8 +4,6 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtext.common.types.JvmType;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Generator</b></em>'.
@@ -14,7 +12,6 @@ import org.eclipse.xtext.common.types.JvmType;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator <em>Generator</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Generator#getWriteTraceModel <em>Write Trace Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Generator#getReadTraceModels <em>Read Trace Models</em>}</li>
  * </ul>
@@ -26,32 +23,6 @@ import org.eclipse.xtext.common.types.JvmType;
  */
 public interface Generator extends Connection, AspectModel
 {
-  /**
-   * Returns the value of the '<em><b>Generator</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Generator</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Generator</em>' reference.
-   * @see #setGenerator(JvmType)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getGenerator_Generator()
-   * @model
-   * @generated
-   */
-  JvmType getGenerator();
-
-  /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator <em>Generator</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Generator</em>' reference.
-   * @see #getGenerator()
-   * @generated
-   */
-  void setGenerator(JvmType value);
-
   /**
    * Returns the value of the '<em><b>Write Trace Model</b></em>' containment reference.
    * <!-- begin-user-doc -->

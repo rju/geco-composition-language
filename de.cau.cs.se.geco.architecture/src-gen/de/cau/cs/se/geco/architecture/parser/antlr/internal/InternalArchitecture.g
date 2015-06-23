@@ -198,18 +198,15 @@ ruleImport returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameParserRuleCall_1_0()); 
-	    }
-		lv_importedNamespace_1_0=ruleQualifiedName		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getImportRule());
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getImportRule());
 	        }
-       		set(
-       			$current, 
-       			"importedNamespace",
-        		lv_importedNamespace_1_0, 
-        		"QualifiedName");
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getImportAccess().getImportedNamespaceJvmTypeCrossReference_1_0()); 
+	    }
+		ruleQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -502,7 +499,7 @@ ruleWeaver returns [EObject current=null]
         }
 	otherlv_1=RULE_ID
 	{
-		newLeafNode(otherlv_1, grammarAccess.getWeaverAccess().getWeaverJvmTypeCrossReference_1_0()); 
+		newLeafNode(otherlv_1, grammarAccess.getWeaverAccess().getReferenceJvmTypeCrossReference_1_0()); 
 	}
 
 )
@@ -647,7 +644,7 @@ ruleGenerator returns [EObject current=null]
         }
 	otherlv_1=RULE_ID
 	{
-		newLeafNode(otherlv_1, grammarAccess.getGeneratorAccess().getGeneratorJvmTypeCrossReference_1_0()); 
+		newLeafNode(otherlv_1, grammarAccess.getGeneratorAccess().getReferenceJvmTypeCrossReference_1_0()); 
 	}
 
 )

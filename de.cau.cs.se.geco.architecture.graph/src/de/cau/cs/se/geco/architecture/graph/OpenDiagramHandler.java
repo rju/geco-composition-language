@@ -5,11 +5,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -38,7 +34,6 @@ public class OpenDiagramHandler extends AbstractHandler {
             Object model = null;
             if (sSelection.getFirstElement() instanceof IFile) {
             	final IFile f = (IFile) sSelection.getFirstElement();
-            	
             	final Injector injector = new ArchitectureStandaloneSetupGenerated().createInjectorAndDoEMFRegistration();
 				injector.injectMembers(this);
 				final XtextResourceSet resourceSet = new XtextResourceSet();

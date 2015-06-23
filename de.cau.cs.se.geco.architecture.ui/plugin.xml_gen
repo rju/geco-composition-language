@@ -9,7 +9,7 @@
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
-            extensions="gmm"
+            extensions="geco"
             id="de.cau.cs.se.geco.architecture.Architecture"
             name="Architecture Editor">
         </editor>
@@ -213,13 +213,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="gmm">
+			type="geco">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-            uriExtension="gmm">
+            uriExtension="geco">
         </resourceServiceProvider>
     </extension>
 
@@ -251,7 +251,7 @@
          point="org.eclipse.xtext.builder.participant">
       <participant
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-            fileExtensions="gmm"
+            fileExtensions="geco"
             >
       </participant>
    </extension>
@@ -379,19 +379,19 @@
   <extension point="org.eclipse.compare.contentViewers">
     <viewer id="de.cau.cs.se.geco.architecture.Architecture.compare.contentViewers"
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="gmm">
+            extensions="geco">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="de.cau.cs.se.geco.architecture.Architecture.compare.contentMergeViewers"
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="gmm" label="Architecture Compare">
+            extensions="geco" label="Architecture Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
     <provider id="de.cau.cs.se.geco.architecture.Architecture.editors.documentProviders"
             class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-            extensions="gmm">
+            extensions="geco">
     </provider>
   </extension>
 

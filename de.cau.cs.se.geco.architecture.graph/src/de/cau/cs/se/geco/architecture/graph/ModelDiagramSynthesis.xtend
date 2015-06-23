@@ -28,6 +28,7 @@ import java.util.Map
 import java.util.HashMap
 import de.cau.cs.se.geco.architecture.architecture.Connection
 import org.eclipse.xtext.common.types.JvmTypeParameterDeclarator
+import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 
 class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     
@@ -85,11 +86,23 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
             		it.children += generatorNode
             		it.children += anonymousMetamodelNode
             	}
+            	if (weaver.targetModel == null) {
+            		val anonymousMetamodelNode = weaver.createAnonymousMetamodel
+            		targetWeaverModelNodes.put(weaver, anonymousMetamodelNode)
+            		it.children += anonymousMetamodelNode
+            	}
+            		
             ]
         ]
         
         generatorNodes.forEach[generator, generatorNode |
-        	val sourceModelNode = metamodelNodes.get(generator.sourceModel.reference)
+        	val sourceModelNode = if (generator.sourceModel.reference !=null) {
+        		metamodelNodes.get(generator.sourceModel.reference)
+        	} else {
+        		val anonymousMetamodelNode = createMetamodel(createNode(), "", "empty")
+        		root.children += anonymousMetamodelNode
+        		anonymousMetamodelNode
+        	}
         	val targetModelNode = if (generator.targetModel.reference != null) {
         		metamodelNodes.get(generator.targetModel.reference)
         	} else {
@@ -101,6 +114,28 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         	}
         	createConnectionNoArrow(sourceModelNode, generatorNode)
         	createConnectionWithArrow(generatorNode, targetModelNode)
+        ]
+        
+        weaverNodes.forEach[weaver, weaverNode |
+        	val sourceModelNode = if (weaver.sourceModel != null) {
+        		metamodelNodes.get(weaver.sourceModel.reference)
+        	} else {
+        		targetWeaverModelNodes.get(weaver.predecessingWeaver)
+        	}
+        	val targetModelNode = if (weaver.targetModel != null) {
+        		metamodelNodes.get(weaver.targetModel.reference)
+        	} else {
+        		targetWeaverModelNodes.get(weaver)
+        	}
+        	val aspectModelNode = if (weaver.aspectModel instanceof TargetModelNodeType) {
+        		metamodelNodes.get((weaver.aspectModel as TargetModelNodeType).reference)
+        	} else {
+        		targetGeneratorModelNodes.get((weaver.aspectModel as Generator))
+        	}
+        	
+        	createConnectionNoArrow(sourceModelNode, weaverNode)
+        	createConnectionWithArrow(weaverNode, targetModelNode)
+        	createConnectionWithArrow(aspectModelNode, weaverNode)
         ]
         return root;
     }
@@ -115,7 +150,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		val className = if (generator.targetModel.reference != null)
 			generator.targetModel.reference.resolveType.simpleName
 		else
-			generator.generator.simpleName
+			generator.reference.simpleName
 			
 		createMetamodel(createNode(), instanceName, className)
 	}
@@ -200,10 +235,10 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	}
 	
 	private def String getName(Generator generator) {
-		return generator.generator.simpleName
+		return "G " +generator.reference.simpleName
 	}
     
     private def String getName(Weaver weaver) {
-		return weaver.weaver.simpleName
+		return "W " + weaver.reference.simpleName
 	}
 }

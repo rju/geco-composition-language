@@ -104,11 +104,11 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRegisteredPackageAccess().getImportedNamespaceAssignment_2_0(), "rule__RegisteredPackage__ImportedNamespaceAssignment_2_0");
 					put(grammarAccess.getRegisteredPackageAccess().getIsTextAssignment_2_1_0(), "rule__RegisteredPackage__IsTextAssignment_2_1_0");
 					put(grammarAccess.getRegisteredPackageAccess().getExtensionAssignment_2_1_1(), "rule__RegisteredPackage__ExtensionAssignment_2_1_1");
-					put(grammarAccess.getWeaverAccess().getWeaverAssignment_1(), "rule__Weaver__WeaverAssignment_1");
+					put(grammarAccess.getWeaverAccess().getReferenceAssignment_1(), "rule__Weaver__ReferenceAssignment_1");
 					put(grammarAccess.getWeaverAccess().getSourceModelAssignment_2_0(), "rule__Weaver__SourceModelAssignment_2_0");
 					put(grammarAccess.getWeaverAccess().getAspectModelAssignment_3(), "rule__Weaver__AspectModelAssignment_3");
 					put(grammarAccess.getWeaverAccess().getTargetModelAssignment_4_1(), "rule__Weaver__TargetModelAssignment_4_1");
-					put(grammarAccess.getGeneratorAccess().getGeneratorAssignment_1(), "rule__Generator__GeneratorAssignment_1");
+					put(grammarAccess.getGeneratorAccess().getReferenceAssignment_1(), "rule__Generator__ReferenceAssignment_1");
 					put(grammarAccess.getGeneratorAccess().getSourceModelAssignment_2(), "rule__Generator__SourceModelAssignment_2");
 					put(grammarAccess.getGeneratorAccess().getTargetModelAssignment_3(), "rule__Generator__TargetModelAssignment_3");
 					put(grammarAccess.getGeneratorAccess().getWriteTraceModelAssignment_4_1(), "rule__Generator__WriteTraceModelAssignment_4_1");

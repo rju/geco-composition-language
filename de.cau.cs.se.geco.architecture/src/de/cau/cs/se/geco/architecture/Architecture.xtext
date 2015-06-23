@@ -12,7 +12,7 @@ Model:
 ;
 
 Import:
-	'import' importedNamespace = QualifiedName
+	'import' importedNamespace = [types::JvmType|QualifiedName]
 ;
 
 MetamodelSequence:
@@ -32,7 +32,7 @@ Connection:
 ;
 
 Weaver:
-	'weave' weaver=[types::JvmType|ID]  
+	'weave' reference=[types::JvmType|ID]  
 		(sourceModel=SourceModelNodeSelector|'link')
 		aspectModel=AspectModel
 		('=>' targetModel=TargetModelNodeType)?
@@ -43,7 +43,7 @@ AspectModel:
 ;
 	
 Generator:
-	'generate' generator=[types::JvmType|ID] 
+	'generate' reference=[types::JvmType|ID] 
 		sourceModel=SourceModelNodeSelector
 		targetModel=TargetModelNodeType
 		('->' writeTraceModel=TraceModel)?

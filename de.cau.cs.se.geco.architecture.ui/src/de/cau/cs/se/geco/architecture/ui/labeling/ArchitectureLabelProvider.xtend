@@ -29,11 +29,11 @@ class ArchitectureLabelProvider extends DefaultEObjectLabelProvider {
 	}
 	
 	def text(Generator generator) {
-		"generator " + generator.generator.simpleName
+		"generator " + generator.reference.simpleName
 	}
 	
 	def text(Weaver weaver) {
-		"weaver " + weaver.weaver.simpleName
+		"weaver " + weaver.reference.simpleName
 	}
 
 //	def image(Greeting ele) {

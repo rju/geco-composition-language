@@ -3,9 +3,11 @@ package de.cau.cs.se.geco.architecture.scoping;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
@@ -21,6 +23,17 @@ public class JvmImportTypeScope implements IScope {
   private final Map<JvmType, IEObjectDescription> imports = new HashMap<JvmType, IEObjectDescription>();
   
   public JvmImportTypeScope(final Iterable<Import> list) {
+    final Consumer<Import> _function = new Consumer<Import>() {
+      public void accept(final Import it) {
+        JvmType _importedNamespace = it.getImportedNamespace();
+        JvmType _importedNamespace_1 = it.getImportedNamespace();
+        String _simpleName = _importedNamespace_1.getSimpleName();
+        JvmType _importedNamespace_2 = it.getImportedNamespace();
+        IEObjectDescription _create = EObjectDescription.create(_simpleName, _importedNamespace_2);
+        JvmImportTypeScope.this.imports.put(_importedNamespace, _create);
+      }
+    };
+    list.forEach(_function);
   }
   
   public Iterable<IEObjectDescription> getAllElements() {

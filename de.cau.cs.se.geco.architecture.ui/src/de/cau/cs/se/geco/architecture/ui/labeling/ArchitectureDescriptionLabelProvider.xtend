@@ -10,7 +10,7 @@ package de.cau.cs.se.geco.architecture.ui.labeling
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#labelProvider
  */
-class ArchitectureDescriptionLabelProvider extends org.eclipse.xtext.xbase.ui.labeling.XbaseDescriptionLabelProvider {
+class ArchitectureDescriptionLabelProvider extends org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider {
 
 	// Labels and icons can be computed like this:
 	

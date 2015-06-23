@@ -32,14 +32,14 @@ public class ArchitectureLabelProvider extends DefaultEObjectLabelProvider {
   }
   
   public String text(final Generator generator) {
-    JvmType _generator = generator.getGenerator();
-    String _simpleName = _generator.getSimpleName();
+    JvmType _reference = generator.getReference();
+    String _simpleName = _reference.getSimpleName();
     return ("generator " + _simpleName);
   }
   
   public String text(final Weaver weaver) {
-    JvmType _weaver = weaver.getWeaver();
-    String _simpleName = _weaver.getSimpleName();
+    JvmType _reference = weaver.getReference();
+    String _simpleName = _reference.getSimpleName();
     return ("weaver " + _simpleName);
   }
 }

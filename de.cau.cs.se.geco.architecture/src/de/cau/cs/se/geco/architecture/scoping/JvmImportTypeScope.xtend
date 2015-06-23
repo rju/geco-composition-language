@@ -19,8 +19,8 @@ class JvmImportTypeScope implements IScope {
 	val Map<JvmType, IEObjectDescription> imports = new HashMap<JvmType, IEObjectDescription>
 	
 	new(Iterable<Import> list) {
-		//list.forEach[imports.put(it.importedNamespace,
-		//	EObjectDescription.create(it.importedNamespace.simpleName, it.importedNamespace))]
+		list.forEach[imports.put(it.importedNamespace,
+			EObjectDescription.create(it.importedNamespace.simpleName, it.importedNamespace))]
 	}
 	
 	override getAllElements() {

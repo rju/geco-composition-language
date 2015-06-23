@@ -153,6 +153,14 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
               EList<KNode> _children_2 = it.getChildren();
               _children_2.add(anonymousMetamodelNode);
             }
+            TargetModelNodeType _targetModel = weaver.getTargetModel();
+            boolean _equals = Objects.equal(_targetModel, null);
+            if (_equals) {
+              final KNode anonymousMetamodelNode_1 = ModelDiagramSynthesis.this.createAnonymousMetamodel(weaver);
+              ModelDiagramSynthesis.this.targetWeaverModelNodes.put(weaver, anonymousMetamodelNode_1);
+              EList<KNode> _children_3 = it.getChildren();
+              _children_3.add(anonymousMetamodelNode_1);
+            }
           }
         };
         _filter_1.forEach(_function_2);
@@ -162,28 +170,45 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     final BiConsumer<Generator, KNode> _function_1 = new BiConsumer<Generator, KNode>() {
       public void accept(final Generator generator, final KNode generatorNode) {
         try {
+          KNode _xifexpression = null;
           SourceModelNodeSelector _sourceModel = generator.getSourceModel();
           Metamodel _reference = _sourceModel.getReference();
-          final KNode sourceModelNode = ModelDiagramSynthesis.this.metamodelNodes.get(_reference);
-          KNode _xifexpression = null;
-          TargetModelNodeType _targetModel = generator.getTargetModel();
-          Metamodel _reference_1 = _targetModel.getReference();
-          boolean _notEquals = (!Objects.equal(_reference_1, null));
+          boolean _notEquals = (!Objects.equal(_reference, null));
           if (_notEquals) {
-            TargetModelNodeType _targetModel_1 = generator.getTargetModel();
-            Metamodel _reference_2 = _targetModel_1.getReference();
-            _xifexpression = ModelDiagramSynthesis.this.metamodelNodes.get(_reference_2);
+            SourceModelNodeSelector _sourceModel_1 = generator.getSourceModel();
+            Metamodel _reference_1 = _sourceModel_1.getReference();
+            _xifexpression = ModelDiagramSynthesis.this.metamodelNodes.get(_reference_1);
           } else {
-            KNode _xifexpression_1 = null;
+            KNode _xblockexpression = null;
+            {
+              KNode _createNode = ModelDiagramSynthesis.this._kNodeExtensions.createNode();
+              final KNode anonymousMetamodelNode = ModelDiagramSynthesis.this.createMetamodel(_createNode, "", "empty");
+              EList<KNode> _children = root.getChildren();
+              _children.add(anonymousMetamodelNode);
+              _xblockexpression = anonymousMetamodelNode;
+            }
+            _xifexpression = _xblockexpression;
+          }
+          final KNode sourceModelNode = _xifexpression;
+          KNode _xifexpression_1 = null;
+          TargetModelNodeType _targetModel = generator.getTargetModel();
+          Metamodel _reference_2 = _targetModel.getReference();
+          boolean _notEquals_1 = (!Objects.equal(_reference_2, null));
+          if (_notEquals_1) {
+            TargetModelNodeType _targetModel_1 = generator.getTargetModel();
+            Metamodel _reference_3 = _targetModel_1.getReference();
+            _xifexpression_1 = ModelDiagramSynthesis.this.metamodelNodes.get(_reference_3);
+          } else {
+            KNode _xifexpression_2 = null;
             EObject _eContainer = generator.eContainer();
             if ((_eContainer instanceof Weaver)) {
-              _xifexpression_1 = ModelDiagramSynthesis.this.targetGeneratorModelNodes.get(generator);
+              _xifexpression_2 = ModelDiagramSynthesis.this.targetGeneratorModelNodes.get(generator);
             } else {
               throw new Exception("Broken model.");
             }
-            _xifexpression = _xifexpression_1;
+            _xifexpression_1 = _xifexpression_2;
           }
-          final KNode targetModelNode = _xifexpression;
+          final KNode targetModelNode = _xifexpression_1;
           ModelDiagramSynthesis.this.createConnectionNoArrow(sourceModelNode, generatorNode);
           ModelDiagramSynthesis.this.createConnectionWithArrow(generatorNode, targetModelNode);
         } catch (Throwable _e) {
@@ -192,6 +217,48 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
       }
     };
     this.generatorNodes.forEach(_function_1);
+    final BiConsumer<Weaver, KNode> _function_2 = new BiConsumer<Weaver, KNode>() {
+      public void accept(final Weaver weaver, final KNode weaverNode) {
+        KNode _xifexpression = null;
+        SourceModelNodeSelector _sourceModel = weaver.getSourceModel();
+        boolean _notEquals = (!Objects.equal(_sourceModel, null));
+        if (_notEquals) {
+          SourceModelNodeSelector _sourceModel_1 = weaver.getSourceModel();
+          Metamodel _reference = _sourceModel_1.getReference();
+          _xifexpression = ModelDiagramSynthesis.this.metamodelNodes.get(_reference);
+        } else {
+          Weaver _predecessingWeaver = ArchitectureTyping.predecessingWeaver(weaver);
+          _xifexpression = ModelDiagramSynthesis.this.targetWeaverModelNodes.get(_predecessingWeaver);
+        }
+        final KNode sourceModelNode = _xifexpression;
+        KNode _xifexpression_1 = null;
+        TargetModelNodeType _targetModel = weaver.getTargetModel();
+        boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
+        if (_notEquals_1) {
+          TargetModelNodeType _targetModel_1 = weaver.getTargetModel();
+          Metamodel _reference_1 = _targetModel_1.getReference();
+          _xifexpression_1 = ModelDiagramSynthesis.this.metamodelNodes.get(_reference_1);
+        } else {
+          _xifexpression_1 = ModelDiagramSynthesis.this.targetWeaverModelNodes.get(weaver);
+        }
+        final KNode targetModelNode = _xifexpression_1;
+        KNode _xifexpression_2 = null;
+        AspectModel _aspectModel = weaver.getAspectModel();
+        if ((_aspectModel instanceof TargetModelNodeType)) {
+          AspectModel _aspectModel_1 = weaver.getAspectModel();
+          Metamodel _reference_2 = ((TargetModelNodeType) _aspectModel_1).getReference();
+          _xifexpression_2 = ModelDiagramSynthesis.this.metamodelNodes.get(_reference_2);
+        } else {
+          AspectModel _aspectModel_2 = weaver.getAspectModel();
+          _xifexpression_2 = ModelDiagramSynthesis.this.targetGeneratorModelNodes.get(((Generator) _aspectModel_2));
+        }
+        final KNode aspectModelNode = _xifexpression_2;
+        ModelDiagramSynthesis.this.createConnectionNoArrow(sourceModelNode, weaverNode);
+        ModelDiagramSynthesis.this.createConnectionWithArrow(weaverNode, targetModelNode);
+        ModelDiagramSynthesis.this.createConnectionWithArrow(aspectModelNode, weaverNode);
+      }
+    };
+    this.weaverNodes.forEach(_function_2);
     return root;
   }
   
@@ -214,8 +281,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         JvmType _resolveType = ArchitectureTyping.resolveType(_reference_1);
         _xifexpression = _resolveType.getSimpleName();
       } else {
-        JvmType _generator = generator.getGenerator();
-        _xifexpression = _generator.getSimpleName();
+        JvmType _reference_2 = generator.getReference();
+        _xifexpression = _reference_2.getSimpleName();
       }
       final String className = _xifexpression;
       KNode _createNode = this._kNodeExtensions.createNode();
@@ -356,13 +423,15 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   }
   
   private String getName(final Generator generator) {
-    JvmType _generator = generator.getGenerator();
-    return _generator.getSimpleName();
+    JvmType _reference = generator.getReference();
+    String _simpleName = _reference.getSimpleName();
+    return ("G " + _simpleName);
   }
   
   private String getName(final Weaver weaver) {
-    JvmType _weaver = weaver.getWeaver();
-    return _weaver.getSimpleName();
+    JvmType _reference = weaver.getReference();
+    String _simpleName = _reference.getSimpleName();
+    return ("W " + _simpleName);
   }
   
   private KNode createAnonymousMetamodel(final Connection generator) {

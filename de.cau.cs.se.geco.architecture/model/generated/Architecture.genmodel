@@ -6,7 +6,7 @@
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.geco.architecture.edit"
     editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
   <genPackages prefix="Architecture" basePackage="de.cau.cs.se.geco.architecture"
-      disposableProviderFactory="true" fileExtensions="gmm" ecorePackage="Architecture.ecore#/">
+      disposableProviderFactory="true" fileExtensions="geco" ecorePackage="Architecture.ecore#/">
     <genClasses ecoreClass="Architecture.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Model/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/imports"/>
@@ -15,7 +15,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/connections"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Import">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Import/importedNamespace"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Import/importedNamespace"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//MetamodelSequence">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//MetamodelSequence/type"/>
@@ -31,16 +31,15 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/extension"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Connection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Connection/reference"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Connection/sourceModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Connection/targetModel"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Weaver">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Weaver/weaver"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Weaver/aspectModel"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//AspectModel"/>
     <genClasses ecoreClass="Architecture.ecore#//Generator">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/generator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/writeTraceModel"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/readTraceModels"/>
     </genClasses>

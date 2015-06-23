@@ -3,25 +3,9 @@
  */
 package de.cau.cs.se.geco.architecture;
 
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
-
-import com.google.inject.name.Names;
-
-import de.cau.cs.se.geco.architecture.scoping.ArchitectureScopeProvider;
-
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class ArchitectureRuntimeModule extends de.cau.cs.se.geco.architecture.AbstractArchitectureRuntimeModule {
 
-	
-	/**
-	 * Use the XtextQualifiedNameConverter to support URIs??
-	 * @return
-	 */
-	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
-		return IQualifiedNameConverter.DefaultImpl.class;
-	}
-	
-	
 }

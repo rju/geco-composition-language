@@ -14,7 +14,7 @@
         eType="#//Connection" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetamodelSequence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ModelNodeType"
@@ -32,19 +32,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="extension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Connection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModel" eType="#//SourceModelNodeSelector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetModel" eType="#//TargetModelNodeType"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Weaver" eSuperTypes="#//Connection">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="weaver" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aspectModel" eType="#//AspectModel"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AspectModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Connection #//AspectModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="generator" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModel" eType="#//TraceModel"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" unique="false"

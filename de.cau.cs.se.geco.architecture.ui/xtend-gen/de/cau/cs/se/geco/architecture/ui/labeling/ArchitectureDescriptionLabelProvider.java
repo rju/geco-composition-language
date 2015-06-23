@@ -3,7 +3,7 @@
  */
 package de.cau.cs.se.geco.architecture.ui.labeling;
 
-import org.eclipse.xtext.xbase.ui.labeling.XbaseDescriptionLabelProvider;
+import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider;
 
 /**
  * Provides labels for a IEObjectDescriptions and IResourceDescriptions.
@@ -11,5 +11,5 @@ import org.eclipse.xtext.xbase.ui.labeling.XbaseDescriptionLabelProvider;
  * see http://www.eclipse.org/Xtext/documentation.html#labelProvider
  */
 @SuppressWarnings("all")
-public class ArchitectureDescriptionLabelProvider extends XbaseDescriptionLabelProvider {
+public class ArchitectureDescriptionLabelProvider extends DefaultDescriptionLabelProvider {
 }

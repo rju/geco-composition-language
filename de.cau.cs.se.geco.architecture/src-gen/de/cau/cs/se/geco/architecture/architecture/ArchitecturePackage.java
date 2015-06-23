@@ -131,7 +131,7 @@ public interface ArchitecturePackage extends EPackage
   int IMPORT = 1;
 
   /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
+   * The feature id for the '<em><b>Imported Namespace</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -279,13 +279,22 @@ public interface ArchitecturePackage extends EPackage
   int CONNECTION = 5;
 
   /**
+   * The feature id for the '<em><b>Reference</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONNECTION__REFERENCE = 0;
+
+  /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONNECTION__SOURCE_MODEL = 0;
+  int CONNECTION__SOURCE_MODEL = 1;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -294,7 +303,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION__TARGET_MODEL = 1;
+  int CONNECTION__TARGET_MODEL = 2;
 
   /**
    * The number of structural features of the '<em>Connection</em>' class.
@@ -303,7 +312,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION_FEATURE_COUNT = 2;
+  int CONNECTION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl <em>Weaver</em>}' class.
@@ -314,6 +323,15 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   int WEAVER = 6;
+
+  /**
+   * The feature id for the '<em><b>Reference</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WEAVER__REFERENCE = CONNECTION__REFERENCE;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -334,22 +352,13 @@ public interface ArchitecturePackage extends EPackage
   int WEAVER__TARGET_MODEL = CONNECTION__TARGET_MODEL;
 
   /**
-   * The feature id for the '<em><b>Weaver</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WEAVER__WEAVER = CONNECTION_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Aspect Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WEAVER__ASPECT_MODEL = CONNECTION_FEATURE_COUNT + 1;
+  int WEAVER__ASPECT_MODEL = CONNECTION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Weaver</em>' class.
@@ -358,7 +367,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 2;
+  int WEAVER_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AspectModelImpl <em>Aspect Model</em>}' class.
@@ -390,6 +399,15 @@ public interface ArchitecturePackage extends EPackage
   int GENERATOR = 8;
 
   /**
+   * The feature id for the '<em><b>Reference</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR__REFERENCE = CONNECTION__REFERENCE;
+
+  /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -408,22 +426,13 @@ public interface ArchitecturePackage extends EPackage
   int GENERATOR__TARGET_MODEL = CONNECTION__TARGET_MODEL;
 
   /**
-   * The feature id for the '<em><b>Generator</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GENERATOR__GENERATOR = CONNECTION_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Write Trace Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GENERATOR__WRITE_TRACE_MODEL = CONNECTION_FEATURE_COUNT + 1;
+  int GENERATOR__WRITE_TRACE_MODEL = CONNECTION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Read Trace Models</b></em>' reference list.
@@ -432,7 +441,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__READ_TRACE_MODELS = CONNECTION_FEATURE_COUNT + 2;
+  int GENERATOR__READ_TRACE_MODELS = CONNECTION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Generator</em>' class.
@@ -441,7 +450,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 3;
+  int GENERATOR_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
@@ -1483,15 +1492,15 @@ public interface ArchitecturePackage extends EPackage
   EClass getImport();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Import#getImportedNamespace <em>Imported Namespace</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Import#getImportedNamespace <em>Imported Namespace</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Imported Namespace</em>'.
+   * @return the meta object for the reference '<em>Imported Namespace</em>'.
    * @see de.cau.cs.se.geco.architecture.architecture.Import#getImportedNamespace()
    * @see #getImport()
    * @generated
    */
-  EAttribute getImport_ImportedNamespace();
+  EReference getImport_ImportedNamespace();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence <em>Metamodel Sequence</em>}'.
@@ -1611,6 +1620,17 @@ public interface ArchitecturePackage extends EPackage
   EClass getConnection();
 
   /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getReference <em>Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Reference</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getReference()
+   * @see #getConnection()
+   * @generated
+   */
+  EReference getConnection_Reference();
+
+  /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getSourceModel <em>Source Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1643,17 +1663,6 @@ public interface ArchitecturePackage extends EPackage
   EClass getWeaver();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Weaver#getWeaver <em>Weaver</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Weaver</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Weaver#getWeaver()
-   * @see #getWeaver()
-   * @generated
-   */
-  EReference getWeaver_Weaver();
-
-  /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Weaver#getAspectModel <em>Aspect Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1683,17 +1692,6 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EClass getGenerator();
-
-  /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator <em>Generator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Generator</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getGenerator()
-   * @see #getGenerator()
-   * @generated
-   */
-  EReference getGenerator_Generator();
 
   /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getWriteTraceModel <em>Write Trace Model</em>}'.
@@ -2344,12 +2342,12 @@ public interface ArchitecturePackage extends EPackage
     EClass IMPORT = eINSTANCE.getImport();
 
     /**
-     * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Imported Namespace</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
+    EReference IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl <em>Metamodel Sequence</em>}' class.
@@ -2448,6 +2446,14 @@ public interface ArchitecturePackage extends EPackage
     EClass CONNECTION = eINSTANCE.getConnection();
 
     /**
+     * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONNECTION__REFERENCE = eINSTANCE.getConnection_Reference();
+
+    /**
      * The meta object literal for the '<em><b>Source Model</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2472,14 +2478,6 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EClass WEAVER = eINSTANCE.getWeaver();
-
-    /**
-     * The meta object literal for the '<em><b>Weaver</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference WEAVER__WEAVER = eINSTANCE.getWeaver_Weaver();
 
     /**
      * The meta object literal for the '<em><b>Aspect Model</b></em>' containment reference feature.
@@ -2508,14 +2506,6 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EClass GENERATOR = eINSTANCE.getGenerator();
-
-    /**
-     * The meta object literal for the '<em><b>Generator</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference GENERATOR__GENERATOR = eINSTANCE.getGenerator_Generator();
 
     /**
      * The meta object literal for the '<em><b>Write Trace Model</b></em>' containment reference feature.

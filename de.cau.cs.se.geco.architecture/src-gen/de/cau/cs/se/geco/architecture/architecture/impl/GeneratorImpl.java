@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
-import org.eclipse.xtext.common.types.JvmType;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Generator</b></em>'.
@@ -29,7 +27,6 @@ import org.eclipse.xtext.common.types.JvmType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl#getGenerator <em>Generator</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl#getWriteTraceModel <em>Write Trace Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl#getReadTraceModels <em>Read Trace Models</em>}</li>
  * </ul>
@@ -39,16 +36,6 @@ import org.eclipse.xtext.common.types.JvmType;
  */
 public class GeneratorImpl extends ConnectionImpl implements Generator
 {
-  /**
-   * The cached value of the '{@link #getGenerator() <em>Generator</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGenerator()
-   * @generated
-   * @ordered
-   */
-  protected JvmType generator;
-
   /**
    * The cached value of the '{@link #getWriteTraceModel() <em>Write Trace Model</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -88,49 +75,6 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
   protected EClass eStaticClass()
   {
     return ArchitecturePackage.Literals.GENERATOR;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType getGenerator()
-  {
-    if (generator != null && generator.eIsProxy())
-    {
-      InternalEObject oldGenerator = (InternalEObject)generator;
-      generator = (JvmType)eResolveProxy(oldGenerator);
-      if (generator != oldGenerator)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.GENERATOR__GENERATOR, oldGenerator, generator));
-      }
-    }
-    return generator;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType basicGetGenerator()
-  {
-    return generator;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGenerator(JvmType newGenerator)
-  {
-    JvmType oldGenerator = generator;
-    generator = newGenerator;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.GENERATOR__GENERATOR, oldGenerator, generator));
   }
 
   /**
@@ -221,9 +165,6 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__GENERATOR:
-        if (resolve) return getGenerator();
-        return basicGetGenerator();
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         return getWriteTraceModel();
       case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
@@ -243,9 +184,6 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__GENERATOR:
-        setGenerator((JvmType)newValue);
-        return;
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         setWriteTraceModel((TraceModel)newValue);
         return;
@@ -267,9 +205,6 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__GENERATOR:
-        setGenerator((JvmType)null);
-        return;
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         setWriteTraceModel((TraceModel)null);
         return;
@@ -290,8 +225,6 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__GENERATOR:
-        return generator != null;
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         return writeTraceModel != null;
       case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
