@@ -8,12 +8,9 @@ import de.cau.cs.se.geco.architecture.architecture.Import;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,14 +28,24 @@ import org.eclipse.xtext.common.types.JvmType;
 public class ImportImpl extends MinimalEObjectImpl.Container implements Import
 {
   /**
-   * The cached value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' reference.
+   * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getImportedNamespace()
    * @generated
    * @ordered
    */
-  protected JvmType importedNamespace;
+  protected static final String IMPORTED_NAMESPACE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImportedNamespace()
+   * @generated
+   * @ordered
+   */
+  protected String importedNamespace = IMPORTED_NAMESPACE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,27 +73,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmType getImportedNamespace()
-  {
-    if (importedNamespace != null && importedNamespace.eIsProxy())
-    {
-      InternalEObject oldImportedNamespace = (InternalEObject)importedNamespace;
-      importedNamespace = (JvmType)eResolveProxy(oldImportedNamespace);
-      if (importedNamespace != oldImportedNamespace)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.IMPORT__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
-      }
-    }
-    return importedNamespace;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType basicGetImportedNamespace()
+  public String getImportedNamespace()
   {
     return importedNamespace;
   }
@@ -96,9 +83,9 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setImportedNamespace(JvmType newImportedNamespace)
+  public void setImportedNamespace(String newImportedNamespace)
   {
-    JvmType oldImportedNamespace = importedNamespace;
+    String oldImportedNamespace = importedNamespace;
     importedNamespace = newImportedNamespace;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.IMPORT__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
@@ -115,8 +102,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
     switch (featureID)
     {
       case ArchitecturePackage.IMPORT__IMPORTED_NAMESPACE:
-        if (resolve) return getImportedNamespace();
-        return basicGetImportedNamespace();
+        return getImportedNamespace();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -132,7 +118,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
     switch (featureID)
     {
       case ArchitecturePackage.IMPORT__IMPORTED_NAMESPACE:
-        setImportedNamespace((JvmType)newValue);
+        setImportedNamespace((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -149,7 +135,7 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
     switch (featureID)
     {
       case ArchitecturePackage.IMPORT__IMPORTED_NAMESPACE:
-        setImportedNamespace((JvmType)null);
+        setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -166,9 +152,26 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
     switch (featureID)
     {
       case ArchitecturePackage.IMPORT__IMPORTED_NAMESPACE:
-        return importedNamespace != null;
+        return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (importedNamespace: ");
+    result.append(importedNamespace);
+    result.append(')');
+    return result.toString();
   }
 
 } //ImportImpl

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getReference <em>Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getConstraint <em>Constraint</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
@@ -48,6 +49,32 @@ public interface SourceModelNodeSelector extends EObject
    * @generated
    */
   void setReference(Metamodel value);
+
+  /**
+   * Returns the value of the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Constraint</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Constraint</em>' containment reference.
+   * @see #setConstraint(ConstraintExpression)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getSourceModelNodeSelector_Constraint()
+   * @model containment="true"
+   * @generated
+   */
+  ConstraintExpression getConstraint();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getConstraint <em>Constraint</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Constraint</em>' containment reference.
+   * @see #getConstraint()
+   * @generated
+   */
+  void setConstraint(ConstraintExpression value);
 
   /**
    * Returns the value of the '<em><b>Property</b></em>' containment reference.

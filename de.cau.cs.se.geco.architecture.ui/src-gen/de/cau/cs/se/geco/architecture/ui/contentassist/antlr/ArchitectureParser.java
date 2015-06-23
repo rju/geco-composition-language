@@ -37,10 +37,9 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getModelAccess().getAlternatives_5(), "rule__Model__Alternatives_5");
-					put(grammarAccess.getImportAccess().getAlternatives(), "rule__Import__Alternatives");
 					put(grammarAccess.getRegisteredPackageAccess().getAlternatives_2(), "rule__RegisteredPackage__Alternatives_2");
 					put(grammarAccess.getConnectionAccess().getAlternatives(), "rule__Connection__Alternatives");
+					put(grammarAccess.getWeaverAccess().getAlternatives_2(), "rule__Weaver__Alternatives_2");
 					put(grammarAccess.getAspectModelAccess().getAlternatives(), "rule__AspectModel__Alternatives");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getAlternatives(), "rule__SourceModelNodeSelector__Alternatives");
 					put(grammarAccess.getBasicConstraintAccess().getAlternatives(), "rule__BasicConstraint__Alternatives");
@@ -49,8 +48,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLogicOperatorAccess().getAlternatives(), "rule__LogicOperator__Alternatives");
 					put(grammarAccess.getComparatorAccess().getAlternatives(), "rule__Comparator__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
-					put(grammarAccess.getWeaverImportAccess().getGroup(), "rule__WeaverImport__Group__0");
-					put(grammarAccess.getGeneratorImportAccess().getGroup(), "rule__GeneratorImport__Group__0");
+					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 					put(grammarAccess.getMetamodelSequenceAccess().getGroup(), "rule__MetamodelSequence__Group__0");
 					put(grammarAccess.getMetamodelSequenceAccess().getGroup_3(), "rule__MetamodelSequence__Group_3__0");
 					put(grammarAccess.getRegisteredPackageAccess().getGroup(), "rule__RegisteredPackage__Group__0");
@@ -64,6 +62,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGeneratorAccess().getGroup_5_2(), "rule__Generator__Group_5_2__0");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getGroup_0(), "rule__SourceModelNodeSelector__Group_0__0");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getGroup_0_1(), "rule__SourceModelNodeSelector__Group_0_1__0");
+					put(grammarAccess.getSourceModelNodeSelectorAccess().getGroup_0_2(), "rule__SourceModelNodeSelector__Group_0_2__0");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getGroup_1(), "rule__SourceModelNodeSelector__Group_1__0");
 					put(grammarAccess.getTargetModelNodeTypeAccess().getGroup(), "rule__TargetModelNodeType__Group__0");
 					put(grammarAccess.getModelNodeTypeAccess().getGroup(), "rule__ModelNodeType__Group__0");
@@ -80,6 +79,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCompareExpressionAccess().getGroup_1_0(), "rule__CompareExpression__Group_1_0__0");
 					put(grammarAccess.getCompareExpressionAccess().getGroup_1_0_0(), "rule__CompareExpression__Group_1_0_0__0");
 					put(grammarAccess.getParenthesisConstraintAccess().getGroup(), "rule__ParenthesisConstraint__Group__0");
+					put(grammarAccess.getTypeofAccess().getGroup(), "rule__Typeof__Group__0");
 					put(grammarAccess.getTraceModelAccess().getGroup(), "rule__TraceModel__Group__0");
 					put(grammarAccess.getNodeSetRelationAccess().getGroup(), "rule__NodeSetRelation__Group__0");
 					put(grammarAccess.getNodeSetRelationAccess().getGroup_2(), "rule__NodeSetRelation__Group_2__0");
@@ -91,22 +91,21 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup_1(), "rule__QualifiedNameWithWildcard__Group_1__0");
 					put(grammarAccess.getModelAccess().getNameAssignment_1(), "rule__Model__NameAssignment_1");
-					put(grammarAccess.getModelAccess().getImportsAssignment_3(), "rule__Model__ImportsAssignment_3");
-					put(grammarAccess.getModelAccess().getRegisteredPackagesAssignment_4(), "rule__Model__RegisteredPackagesAssignment_4");
-					put(grammarAccess.getModelAccess().getConnectionsAssignment_5_0(), "rule__Model__ConnectionsAssignment_5_0");
-					put(grammarAccess.getModelAccess().getMetamodelsAssignment_5_1(), "rule__Model__MetamodelsAssignment_5_1");
-					put(grammarAccess.getWeaverImportAccess().getImportedNamespaceAssignment_1(), "rule__WeaverImport__ImportedNamespaceAssignment_1");
-					put(grammarAccess.getGeneratorImportAccess().getImportedNamespaceAssignment_1(), "rule__GeneratorImport__ImportedNamespaceAssignment_1");
+					put(grammarAccess.getModelAccess().getImportsAssignment_2(), "rule__Model__ImportsAssignment_2");
+					put(grammarAccess.getModelAccess().getRegisteredPackagesAssignment_3(), "rule__Model__RegisteredPackagesAssignment_3");
+					put(grammarAccess.getModelAccess().getMetamodelsAssignment_4(), "rule__Model__MetamodelsAssignment_4");
+					put(grammarAccess.getModelAccess().getConnectionsAssignment_5(), "rule__Model__ConnectionsAssignment_5");
+					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
 					put(grammarAccess.getMetamodelSequenceAccess().getTypeAssignment_1(), "rule__MetamodelSequence__TypeAssignment_1");
 					put(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_2(), "rule__MetamodelSequence__MetamodelsAssignment_2");
 					put(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_3_1(), "rule__MetamodelSequence__MetamodelsAssignment_3_1");
 					put(grammarAccess.getMetamodelAccess().getNameAssignment(), "rule__Metamodel__NameAssignment");
 					put(grammarAccess.getRegisteredPackageAccess().getNameAssignment_1(), "rule__RegisteredPackage__NameAssignment_1");
-					put(grammarAccess.getRegisteredPackageAccess().getRegisteredPackageAssignment_2_0(), "rule__RegisteredPackage__RegisteredPackageAssignment_2_0");
+					put(grammarAccess.getRegisteredPackageAccess().getImportedNamespaceAssignment_2_0(), "rule__RegisteredPackage__ImportedNamespaceAssignment_2_0");
 					put(grammarAccess.getRegisteredPackageAccess().getIsTextAssignment_2_1_0(), "rule__RegisteredPackage__IsTextAssignment_2_1_0");
 					put(grammarAccess.getRegisteredPackageAccess().getExtensionAssignment_2_1_1(), "rule__RegisteredPackage__ExtensionAssignment_2_1_1");
 					put(grammarAccess.getWeaverAccess().getWeaverAssignment_1(), "rule__Weaver__WeaverAssignment_1");
-					put(grammarAccess.getWeaverAccess().getSourceModelAssignment_2(), "rule__Weaver__SourceModelAssignment_2");
+					put(grammarAccess.getWeaverAccess().getSourceModelAssignment_2_0(), "rule__Weaver__SourceModelAssignment_2_0");
 					put(grammarAccess.getWeaverAccess().getAspectModelAssignment_3(), "rule__Weaver__AspectModelAssignment_3");
 					put(grammarAccess.getWeaverAccess().getTargetModelAssignment_4_1(), "rule__Weaver__TargetModelAssignment_4_1");
 					put(grammarAccess.getGeneratorAccess().getGeneratorAssignment_1(), "rule__Generator__GeneratorAssignment_1");
@@ -116,7 +115,8 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGeneratorAccess().getReadTraceModelsAssignment_5_1(), "rule__Generator__ReadTraceModelsAssignment_5_1");
 					put(grammarAccess.getGeneratorAccess().getReadTraceModelsAssignment_5_2_1(), "rule__Generator__ReadTraceModelsAssignment_5_2_1");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceAssignment_0_0(), "rule__SourceModelNodeSelector__ReferenceAssignment_0_0");
-					put(grammarAccess.getSourceModelNodeSelectorAccess().getPropertyAssignment_0_1_1(), "rule__SourceModelNodeSelector__PropertyAssignment_0_1_1");
+					put(grammarAccess.getSourceModelNodeSelectorAccess().getConstraintAssignment_0_1_1(), "rule__SourceModelNodeSelector__ConstraintAssignment_0_1_1");
+					put(grammarAccess.getSourceModelNodeSelectorAccess().getPropertyAssignment_0_2_1(), "rule__SourceModelNodeSelector__PropertyAssignment_0_2_1");
 					put(grammarAccess.getTargetModelNodeTypeAccess().getReferenceAssignment_1(), "rule__TargetModelNodeType__ReferenceAssignment_1");
 					put(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAssignment_2(), "rule__TargetModelNodeType__MultiplyAssignment_2");
 					put(grammarAccess.getModelNodeTypeAccess().getTargetAssignment_0(), "rule__ModelNodeType__TargetAssignment_0");
@@ -129,13 +129,14 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCompareExpressionAccess().getOperatorAssignment_1_0_0_1(), "rule__CompareExpression__OperatorAssignment_1_0_0_1");
 					put(grammarAccess.getCompareExpressionAccess().getRightAssignment_1_1(), "rule__CompareExpression__RightAssignment_1_1");
 					put(grammarAccess.getParenthesisConstraintAccess().getConstraintAssignment_1(), "rule__ParenthesisConstraint__ConstraintAssignment_1");
+					put(grammarAccess.getTypeofAccess().getTypeAssignment_1(), "rule__Typeof__TypeAssignment_1");
 					put(grammarAccess.getTraceModelAccess().getNameAssignment_0(), "rule__TraceModel__NameAssignment_0");
 					put(grammarAccess.getTraceModelAccess().getNodeSetRelationsAssignment_2(), "rule__TraceModel__NodeSetRelationsAssignment_2");
 					put(grammarAccess.getNodeSetRelationAccess().getSourceNodesAssignment_1(), "rule__NodeSetRelation__SourceNodesAssignment_1");
 					put(grammarAccess.getNodeSetRelationAccess().getSourceNodesAssignment_2_1(), "rule__NodeSetRelation__SourceNodesAssignment_2_1");
 					put(grammarAccess.getNodeSetRelationAccess().getTargetNodesAssignment_4(), "rule__NodeSetRelation__TargetNodesAssignment_4");
 					put(grammarAccess.getNodeSetRelationAccess().getTargetNodesAssignment_5_1(), "rule__NodeSetRelation__TargetNodesAssignment_5_1");
-					put(grammarAccess.getNodeTypeAccess().getEclassAssignment(), "rule__NodeType__EclassAssignment");
+					put(grammarAccess.getNodeTypeAccess().getTypeAssignment(), "rule__NodeType__TypeAssignment");
 					put(grammarAccess.getArrayLiteralAccess().getLiteralsAssignment_1(), "rule__ArrayLiteral__LiteralsAssignment_1");
 					put(grammarAccess.getArrayLiteralAccess().getLiteralsAssignment_2_1(), "rule__ArrayLiteral__LiteralsAssignment_2_1");
 					put(grammarAccess.getStringLiteralAccess().getValueAssignment(), "rule__StringLiteral__ValueAssignment");

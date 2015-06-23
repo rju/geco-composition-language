@@ -86,22 +86,6 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.WEAVER_IMPORT:
-      {
-        WeaverImport weaverImport = (WeaverImport)theEObject;
-        T result = caseWeaverImport(weaverImport);
-        if (result == null) result = caseImport(weaverImport);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.GENERATOR_IMPORT:
-      {
-        GeneratorImport generatorImport = (GeneratorImport)theEObject;
-        T result = caseGeneratorImport(generatorImport);
-        if (result == null) result = caseImport(generatorImport);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ArchitecturePackage.METAMODEL_SEQUENCE:
       {
         MetamodelSequence metamodelSequence = (MetamodelSequence)theEObject;
@@ -197,6 +181,15 @@ public class ArchitectureSwitch<T> extends Switch<T>
         Operand operand = (Operand)theEObject;
         T result = caseOperand(operand);
         if (result == null) result = caseConstraintExpression(operand);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.TYPEOF:
+      {
+        Typeof typeof = (Typeof)theEObject;
+        T result = caseTypeof(typeof);
+        if (result == null) result = caseOperand(typeof);
+        if (result == null) result = caseConstraintExpression(typeof);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -326,38 +319,6 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseImport(Import object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Weaver Import</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Weaver Import</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWeaverImport(WeaverImport object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Generator Import</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Generator Import</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseGeneratorImport(GeneratorImport object)
   {
     return null;
   }
@@ -566,6 +527,22 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOperand(Operand object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Typeof</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Typeof</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeof(Typeof object)
   {
     return null;
   }

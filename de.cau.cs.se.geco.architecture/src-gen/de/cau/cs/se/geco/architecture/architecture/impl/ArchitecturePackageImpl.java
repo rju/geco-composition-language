@@ -12,7 +12,6 @@ import de.cau.cs.se.geco.architecture.architecture.Connection;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.FloatLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.GeneratorImport;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Literal;
@@ -30,8 +29,8 @@ import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
+import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
-import de.cau.cs.se.geco.architecture.architecture.WeaverImport;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -63,20 +62,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * @generated
    */
   private EClass importEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass weaverImportEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass generatorImportEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -168,6 +153,13 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * @generated
    */
   private EClass operandEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeofEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -357,7 +349,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Connections()
+  public EReference getModel_Metamodels()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(3);
   }
@@ -367,7 +359,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Metamodels()
+  public EReference getModel_Connections()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(4);
   }
@@ -387,29 +379,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getImport_ImportedNamespace()
+  public EAttribute getImport_ImportedNamespace()
   {
-    return (EReference)importEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getWeaverImport()
-  {
-    return weaverImportEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getGeneratorImport()
-  {
-    return generatorImportEClass;
+    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -487,7 +459,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRegisteredPackage_RegisteredPackage()
+  public EReference getRegisteredPackage_ImportedNamespace()
   {
     return (EReference)registeredPackageEClass.getEStructuralFeatures().get(1);
   }
@@ -647,9 +619,19 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSourceModelNodeSelector_Property()
+  public EReference getSourceModelNodeSelector_Constraint()
   {
     return (EReference)sourceModelNodeSelectorEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSourceModelNodeSelector_Property()
+  {
+    return (EReference)sourceModelNodeSelectorEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -807,6 +789,26 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getTypeof()
+  {
+    return typeofEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTypeof_Type()
+  {
+    return (EReference)typeofEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getTraceModel()
   {
     return traceModelEClass;
@@ -877,9 +879,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNodeType_Eclass()
+  public EReference getNodeType_Type()
   {
-    return (EAttribute)nodeTypeEClass.getEStructuralFeatures().get(0);
+    return (EReference)nodeTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1136,15 +1138,11 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEAttribute(modelEClass, MODEL__NAME);
     createEReference(modelEClass, MODEL__IMPORTS);
     createEReference(modelEClass, MODEL__REGISTERED_PACKAGES);
-    createEReference(modelEClass, MODEL__CONNECTIONS);
     createEReference(modelEClass, MODEL__METAMODELS);
+    createEReference(modelEClass, MODEL__CONNECTIONS);
 
     importEClass = createEClass(IMPORT);
-    createEReference(importEClass, IMPORT__IMPORTED_NAMESPACE);
-
-    weaverImportEClass = createEClass(WEAVER_IMPORT);
-
-    generatorImportEClass = createEClass(GENERATOR_IMPORT);
+    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
 
     metamodelSequenceEClass = createEClass(METAMODEL_SEQUENCE);
     createEReference(metamodelSequenceEClass, METAMODEL_SEQUENCE__TYPE);
@@ -1155,7 +1153,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     registeredPackageEClass = createEClass(REGISTERED_PACKAGE);
     createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__NAME);
-    createEReference(registeredPackageEClass, REGISTERED_PACKAGE__REGISTERED_PACKAGE);
+    createEReference(registeredPackageEClass, REGISTERED_PACKAGE__IMPORTED_NAMESPACE);
     createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__IS_TEXT);
     createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__EXTENSION);
 
@@ -1176,6 +1174,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     sourceModelNodeSelectorEClass = createEClass(SOURCE_MODEL_NODE_SELECTOR);
     createEReference(sourceModelNodeSelectorEClass, SOURCE_MODEL_NODE_SELECTOR__REFERENCE);
+    createEReference(sourceModelNodeSelectorEClass, SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT);
     createEReference(sourceModelNodeSelectorEClass, SOURCE_MODEL_NODE_SELECTOR__PROPERTY);
 
     targetModelNodeTypeEClass = createEClass(TARGET_MODEL_NODE_TYPE);
@@ -1198,6 +1197,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     operandEClass = createEClass(OPERAND);
 
+    typeofEClass = createEClass(TYPEOF);
+    createEReference(typeofEClass, TYPEOF__TYPE);
+
     traceModelEClass = createEClass(TRACE_MODEL);
     createEAttribute(traceModelEClass, TRACE_MODEL__NAME);
     createEReference(traceModelEClass, TRACE_MODEL__NODE_SET_RELATIONS);
@@ -1207,7 +1209,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEReference(nodeSetRelationEClass, NODE_SET_RELATION__TARGET_NODES);
 
     nodeTypeEClass = createEClass(NODE_TYPE);
-    createEAttribute(nodeTypeEClass, NODE_TYPE__ECLASS);
+    createEReference(nodeTypeEClass, NODE_TYPE__TYPE);
 
     literalEClass = createEClass(LITERAL);
 
@@ -1272,14 +1274,13 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    weaverImportEClass.getESuperTypes().add(this.getImport());
-    generatorImportEClass.getESuperTypes().add(this.getImport());
     weaverEClass.getESuperTypes().add(this.getConnection());
     generatorEClass.getESuperTypes().add(this.getConnection());
     generatorEClass.getESuperTypes().add(this.getAspectModel());
     targetModelNodeTypeEClass.getESuperTypes().add(this.getAspectModel());
     nodePropertyEClass.getESuperTypes().add(this.getOperand());
     operandEClass.getESuperTypes().add(this.getConstraintExpression());
+    typeofEClass.getESuperTypes().add(this.getOperand());
     literalEClass.getESuperTypes().add(this.getOperand());
     arrayLiteralEClass.getESuperTypes().add(this.getLiteral());
     stringLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -1292,15 +1293,11 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_RegisteredPackages(), this.getRegisteredPackage(), null, "registeredPackages", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Connections(), this.getConnection(), null, "connections", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Metamodels(), this.getMetamodelSequence(), null, "metamodels", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Connections(), this.getConnection(), null, "connections", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getImport_ImportedNamespace(), theTypesPackage.getJvmType(), null, "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(weaverImportEClass, WeaverImport.class, "WeaverImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(generatorImportEClass, GeneratorImport.class, "GeneratorImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getImport_ImportedNamespace(), ecorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metamodelSequenceEClass, MetamodelSequence.class, "MetamodelSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMetamodelSequence_Type(), this.getModelNodeType(), null, "type", null, 0, 1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1311,7 +1308,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(registeredPackageEClass, RegisteredPackage.class, "RegisteredPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRegisteredPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRegisteredPackage_RegisteredPackage(), theTypesPackage.getJvmType(), null, "registeredPackage", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRegisteredPackage_ImportedNamespace(), theTypesPackage.getJvmType(), null, "importedNamespace", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRegisteredPackage_IsText(), ecorePackage.getEBoolean(), "isText", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRegisteredPackage_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1332,6 +1329,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(sourceModelNodeSelectorEClass, SourceModelNodeSelector.class, "SourceModelNodeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSourceModelNodeSelector_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSourceModelNodeSelector_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSourceModelNodeSelector_Property(), this.getNodeProperty(), null, "property", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(targetModelNodeTypeEClass, TargetModelNodeType.class, "TargetModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1354,6 +1352,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(operandEClass, Operand.class, "Operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(typeofEClass, Typeof.class, "Typeof", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTypeof_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, Typeof.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(traceModelEClass, TraceModel.class, "TraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTraceModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTraceModel_NodeSetRelations(), this.getNodeSetRelation(), null, "nodeSetRelations", null, 0, -1, TraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1363,7 +1364,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEReference(getNodeSetRelation_TargetNodes(), this.getNodeType(), null, "targetNodes", null, 0, -1, NodeSetRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(nodeTypeEClass, NodeType.class, "NodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNodeType_Eclass(), ecorePackage.getEString(), "eclass", null, 0, 1, NodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeType_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, NodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

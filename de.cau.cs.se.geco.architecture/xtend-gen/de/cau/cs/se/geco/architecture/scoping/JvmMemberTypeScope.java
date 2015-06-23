@@ -1,7 +1,6 @@
 package de.cau.cs.se.geco.architecture.scoping;
 
 import com.google.common.collect.Iterables;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -20,11 +19,16 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.MapExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
+/**
+ * This scope comprises of a set of feature names of an EObject descendant,
+ * which are represented in Java as either get* or is* following Java
+ * coding conventions.
+ */
 @SuppressWarnings("all")
-public class JvmMemberType implements IScope {
+public class JvmMemberTypeScope implements IScope {
   private final Map<JvmOperation, IEObjectDescription> fields = new HashMap<JvmOperation, IEObjectDescription>();
   
-  public JvmMemberType(final JvmDeclaredType type) {
+  public JvmMemberTypeScope(final JvmDeclaredType type) {
     EList<JvmMember> _members = type.getMembers();
     Iterable<JvmOperation> _filter = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
     final Function1<JvmOperation, Boolean> _function = new Function1<JvmOperation, Boolean>() {
@@ -45,9 +49,9 @@ public class JvmMemberType implements IScope {
     Iterable<JvmOperation> _filter_1 = IterableExtensions.<JvmOperation>filter(_filter, _function);
     final Consumer<JvmOperation> _function_1 = new Consumer<JvmOperation>() {
       public void accept(final JvmOperation it) {
-        String _createName = JvmMemberType.this.createName(it);
+        String _createName = JvmMemberTypeScope.this.createName(it);
         IEObjectDescription _create = EObjectDescription.create(_createName, it);
-        JvmMemberType.this.fields.put(it, _create);
+        JvmMemberTypeScope.this.fields.put(it, _create);
       }
     };
     _filter_1.forEach(_function_1);
@@ -66,7 +70,7 @@ public class JvmMemberType implements IScope {
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
     final Function2<JvmOperation, IEObjectDescription, Boolean> _function = new Function2<JvmOperation, IEObjectDescription, Boolean>() {
       public Boolean apply(final JvmOperation object, final IEObjectDescription description) {
-        String _createName = JvmMemberType.this.createName(object);
+        String _createName = JvmMemberTypeScope.this.createName(object);
         String _string = name.toString();
         return Boolean.valueOf(_createName.equals(_string));
       }
@@ -86,26 +90,12 @@ public class JvmMemberType implements IScope {
   }
   
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    final Function2<JvmOperation, IEObjectDescription, Boolean> _function = new Function2<JvmOperation, IEObjectDescription, Boolean>() {
-      public Boolean apply(final JvmOperation object, final IEObjectDescription description) {
-        String _createName = JvmMemberType.this.createName(object);
-        String _string = name.toString();
-        return Boolean.valueOf(_createName.equals(_string));
-      }
-    };
-    Map<JvmOperation, IEObjectDescription> _filter = MapExtensions.<JvmOperation, IEObjectDescription>filter(this.fields, _function);
-    Collection<IEObjectDescription> _values = _filter.values();
-    return IterableExtensions.<IEObjectDescription>last(_values);
+    Iterable<IEObjectDescription> _elements = this.getElements(name);
+    return IterableExtensions.<IEObjectDescription>last(_elements);
   }
   
   public IEObjectDescription getSingleElement(final EObject object) {
-    final Function2<JvmOperation, IEObjectDescription, Boolean> _function = new Function2<JvmOperation, IEObjectDescription, Boolean>() {
-      public Boolean apply(final JvmOperation op, final IEObjectDescription description) {
-        return Boolean.valueOf(op.equals(object));
-      }
-    };
-    Map<JvmOperation, IEObjectDescription> _filter = MapExtensions.<JvmOperation, IEObjectDescription>filter(this.fields, _function);
-    Collection<IEObjectDescription> _values = _filter.values();
-    return IterableExtensions.<IEObjectDescription>last(_values);
+    Iterable<IEObjectDescription> _elements = this.getElements(object);
+    return IterableExtensions.<IEObjectDescription>last(_elements);
   }
 }

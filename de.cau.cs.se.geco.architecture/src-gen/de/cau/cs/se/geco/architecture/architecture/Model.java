@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getRegisteredPackages <em>Registered Packages</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getConnections <em>Connections</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getMetamodels <em>Metamodels</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getConnections <em>Connections</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,22 +87,6 @@ public interface Model extends EObject
   EList<RegisteredPackage> getRegisteredPackages();
 
   /**
-   * Returns the value of the '<em><b>Connections</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Connection}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Connections</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Connections</em>' containment reference list.
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModel_Connections()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Connection> getConnections();
-
-  /**
    * Returns the value of the '<em><b>Metamodels</b></em>' containment reference list.
    * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence}.
    * <!-- begin-user-doc -->
@@ -117,5 +101,21 @@ public interface Model extends EObject
    * @generated
    */
   EList<MetamodelSequence> getMetamodels();
+
+  /**
+   * Returns the value of the '<em><b>Connections</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Connection}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Connections</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Connections</em>' containment reference list.
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModel_Connections()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Connection> getConnections();
 
 } // Model

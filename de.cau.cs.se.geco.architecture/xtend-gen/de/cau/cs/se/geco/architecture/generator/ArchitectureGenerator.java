@@ -13,7 +13,6 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -110,9 +109,8 @@ public class ArchitectureGenerator implements IGenerator {
   private CharSequence createImport(final Import node) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
-    JvmType _importedNamespace = node.getImportedNamespace();
-    String _qualifiedName = _importedNamespace.getQualifiedName();
-    _builder.append(_qualifiedName, "");
+    String _importedNamespace = node.getImportedNamespace();
+    _builder.append(_importedNamespace, "");
     return _builder;
   }
   

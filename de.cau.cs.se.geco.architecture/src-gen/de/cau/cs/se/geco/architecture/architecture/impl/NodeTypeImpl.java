@@ -8,9 +8,12 @@ import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.NodeTypeImpl#getEclass <em>Eclass</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.NodeTypeImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,24 +31,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeType
 {
   /**
-   * The default value of the '{@link #getEclass() <em>Eclass</em>}' attribute.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEclass()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected static final String ECLASS_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getEclass() <em>Eclass</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getEclass()
-   * @generated
-   * @ordered
-   */
-  protected String eclass = ECLASS_EDEFAULT;
+  protected JvmType type;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,9 +66,19 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getEclass()
+  public JvmType getType()
   {
-    return eclass;
+    if (type != null && type.eIsProxy())
+    {
+      InternalEObject oldType = (InternalEObject)type;
+      type = (JvmType)eResolveProxy(oldType);
+      if (type != oldType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.NODE_TYPE__TYPE, oldType, type));
+      }
+    }
+    return type;
   }
 
   /**
@@ -83,12 +86,22 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setEclass(String newEclass)
+  public JvmType basicGetType()
   {
-    String oldEclass = eclass;
-    eclass = newEclass;
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(JvmType newType)
+  {
+    JvmType oldType = type;
+    type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.NODE_TYPE__ECLASS, oldEclass, eclass));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.NODE_TYPE__TYPE, oldType, type));
   }
 
   /**
@@ -101,8 +114,9 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
   {
     switch (featureID)
     {
-      case ArchitecturePackage.NODE_TYPE__ECLASS:
-        return getEclass();
+      case ArchitecturePackage.NODE_TYPE__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +131,8 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
   {
     switch (featureID)
     {
-      case ArchitecturePackage.NODE_TYPE__ECLASS:
-        setEclass((String)newValue);
+      case ArchitecturePackage.NODE_TYPE__TYPE:
+        setType((JvmType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,8 +148,8 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
   {
     switch (featureID)
     {
-      case ArchitecturePackage.NODE_TYPE__ECLASS:
-        setEclass(ECLASS_EDEFAULT);
+      case ArchitecturePackage.NODE_TYPE__TYPE:
+        setType((JvmType)null);
         return;
     }
     super.eUnset(featureID);
@@ -151,27 +165,10 @@ public class NodeTypeImpl extends MinimalEObjectImpl.Container implements NodeTy
   {
     switch (featureID)
     {
-      case ArchitecturePackage.NODE_TYPE__ECLASS:
-        return ECLASS_EDEFAULT == null ? eclass != null : !ECLASS_EDEFAULT.equals(eclass);
+      case ArchitecturePackage.NODE_TYPE__TYPE:
+        return type != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (eclass: ");
-    result.append(eclass);
-    result.append(')');
-    return result.toString();
   }
 
 } //NodeTypeImpl

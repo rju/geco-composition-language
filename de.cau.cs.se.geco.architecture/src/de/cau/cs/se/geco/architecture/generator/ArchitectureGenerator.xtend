@@ -61,7 +61,7 @@ class ArchitectureGenerator implements IGenerator {
 		
 	}
 	
-	private def CharSequence createImport(Import node) '''import «node.importedNamespace.qualifiedName»'''
+	private def CharSequence createImport(Import node) '''import «node.importedNamespace»'''
 	
 	
 }

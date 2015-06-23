@@ -4,6 +4,8 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.common.types.JvmType;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Node Type</b></em>'.
@@ -12,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.NodeType#getEclass <em>Eclass</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.NodeType#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,29 +25,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface NodeType extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Eclass</b></em>' attribute.
+   * Returns the value of the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Eclass</em>' attribute isn't clear,
+   * If the meaning of the '<em>Type</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Eclass</em>' attribute.
-   * @see #setEclass(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getNodeType_Eclass()
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(JvmType)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getNodeType_Type()
    * @model
    * @generated
    */
-  String getEclass();
+  JvmType getType();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.NodeType#getEclass <em>Eclass</em>}' attribute.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.NodeType#getType <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Eclass</em>' attribute.
-   * @see #getEclass()
+   * @param value the new value of the '<em>Type</em>' reference.
+   * @see #getType()
    * @generated
    */
-  void setEclass(String value);
+  void setType(JvmType value);
 
 } // NodeType

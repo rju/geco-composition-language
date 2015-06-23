@@ -85,16 +85,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createImportAdapter();
       }
       @Override
-      public Adapter caseWeaverImport(WeaverImport object)
-      {
-        return createWeaverImportAdapter();
-      }
-      @Override
-      public Adapter caseGeneratorImport(GeneratorImport object)
-      {
-        return createGeneratorImportAdapter();
-      }
-      @Override
       public Adapter caseMetamodelSequence(MetamodelSequence object)
       {
         return createMetamodelSequenceAdapter();
@@ -158,6 +148,11 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
       public Adapter caseOperand(Operand object)
       {
         return createOperandAdapter();
+      }
+      @Override
+      public Adapter caseTypeof(Typeof object)
+      {
+        return createTypeofAdapter();
       }
       @Override
       public Adapter caseTraceModel(TraceModel object)
@@ -262,36 +257,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createImportAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.WeaverImport <em>Weaver Import</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.WeaverImport
-   * @generated
-   */
-  public Adapter createWeaverImportAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.GeneratorImport <em>Generator Import</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.GeneratorImport
-   * @generated
-   */
-  public Adapter createGeneratorImportAdapter()
   {
     return null;
   }
@@ -487,6 +452,21 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOperandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Typeof <em>Typeof</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.Typeof
+   * @generated
+   */
+  public Adapter createTypeofAdapter()
   {
     return null;
   }

@@ -66,8 +66,6 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
     {
       case ArchitecturePackage.MODEL: return createModel();
       case ArchitecturePackage.IMPORT: return createImport();
-      case ArchitecturePackage.WEAVER_IMPORT: return createWeaverImport();
-      case ArchitecturePackage.GENERATOR_IMPORT: return createGeneratorImport();
       case ArchitecturePackage.METAMODEL_SEQUENCE: return createMetamodelSequence();
       case ArchitecturePackage.METAMODEL: return createMetamodel();
       case ArchitecturePackage.REGISTERED_PACKAGE: return createRegisteredPackage();
@@ -81,6 +79,7 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.NODE_PROPERTY: return createNodeProperty();
       case ArchitecturePackage.CONSTRAINT_EXPRESSION: return createConstraintExpression();
       case ArchitecturePackage.OPERAND: return createOperand();
+      case ArchitecturePackage.TYPEOF: return createTypeof();
       case ArchitecturePackage.TRACE_MODEL: return createTraceModel();
       case ArchitecturePackage.NODE_SET_RELATION: return createNodeSetRelation();
       case ArchitecturePackage.NODE_TYPE: return createNodeType();
@@ -117,28 +116,6 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     ImportImpl import_ = new ImportImpl();
     return import_;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WeaverImport createWeaverImport()
-  {
-    WeaverImportImpl weaverImport = new WeaverImportImpl();
-    return weaverImport;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GeneratorImport createGeneratorImport()
-  {
-    GeneratorImportImpl generatorImport = new GeneratorImportImpl();
-    return generatorImport;
   }
 
   /**
@@ -282,6 +259,17 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     OperandImpl operand = new OperandImpl();
     return operand;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Typeof createTypeof()
+  {
+    TypeofImpl typeof = new TypeofImpl();
+    return typeof;
   }
 
   /**

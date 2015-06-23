@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject
 import java.util.Map
 import java.util.HashMap
 import de.cau.cs.se.geco.architecture.architecture.Connection
+import org.eclipse.xtext.common.types.JvmTypeParameterDeclarator
 
 class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     
@@ -40,7 +41,17 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     @Inject extension KColorExtensions
     extension KRenderingFactory = KRenderingFactory.eINSTANCE
     
-    val Map<EObject,KNode> nodes = new HashMap<EObject,KNode>()
+    val Map<Weaver,KNode> weaverNodes = new HashMap<Weaver,KNode>()
+    val Map<Generator,KNode> generatorNodes = new HashMap<Generator,KNode>()
+    val Map<Weaver,KNode> targetWeaverModelNodes = new HashMap<Weaver,KNode>()
+    val Map<Generator,KNode> targetGeneratorModelNodes = new HashMap<Generator,KNode>()
+    val Map<Metamodel,KNode> metamodelNodes = new HashMap<Metamodel,KNode>()
+    
+    /*
+    		val sourceModelNode = this.metamodelNodes.get(generator.sourceModel.reference)
+		createModelEdgeNoArrow(sourceModelNode, generatorNode)
+		createModelEdge(generatorNode, targetModelNode)
+    */
     
     override KNode transform(Model model) {
         val root = model.createNode().associateWith(model);
@@ -48,45 +59,49 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         root => [
         	it.addLayoutParam(LayoutOptions::ALGORITHM, "de.cau.cs.kieler.kiml.ogdf.planarization")
             it.addLayoutParam(LayoutOptions::SPACING, 75f)
-            it.addLayoutParam(LayoutOptions::DIRECTION, Direction::UP)
+            it.addLayoutParam(LayoutOptions::DIRECTION, Direction::RIGHT)
 
 			model.metamodels.forEach[seq | seq.metamodels.forEach[metamodel | 
 				val metaModelNode = metamodel.createMetamodel(seq)
-				nodes.put(metamodel,metaModelNode)
+				metamodelNodes.put(metamodel, metaModelNode)
 				it.children += metaModelNode
 			]]
 			
             model.connections.filter(Generator).forEach[generator | 
-            	val generatorNode = generator.createGenerator(this.nodes.get(generator.targetModel.reference))
-            	nodes.put(generator, generatorNode)
+            	val generatorNode = generator.createGenerator
+            	generatorNodes.put(generator, generatorNode)
             	it.children += generatorNode
             ]
             model.connections.filter(Weaver).forEach[weaver |
             	val weaverNode = weaver.createWeaver 
-            	nodes.put(weaver, weaverNode)
+            	weaverNodes.put(weaver, weaverNode)
             	it.children += weaverNode
             	if (weaver.aspectModel instanceof Generator) {
             		val generator = (weaver.aspectModel as Generator)
-            		val modelNode = generator.createAnonymousMetamodel
-            		val generatorNode = generator.createGenerator(modelNode)
-            		nodes.put(generator, generatorNode)
-            		
-            		createModelEdge(modelNode, weaverNode)
-            		
-            		it.children += modelNode
+            		val generatorNode = generator.createGenerator
+            		val anonymousMetamodelNode = generator.createAnonymousMetamodel
+            		targetGeneratorModelNodes.put(generator, anonymousMetamodelNode)
+            		generatorNodes.put(generator, generatorNode)
             		it.children += generatorNode
-            	}
-            	if (weaver.targetModel == null) {
-            		/** use implicit target model. */
-            		val modelNode = weaver.createAnonymousMetamodel
-            		createModelEdge(weaverNode, modelNode)
-            		it.children += modelNode
-            	} else {
-            		createModelEdge(weaverNode, nodes.get(weaver.targetModel))
+            		it.children += anonymousMetamodelNode
             	}
             ]
-        ]      
+        ]
         
+        generatorNodes.forEach[generator, generatorNode |
+        	val sourceModelNode = metamodelNodes.get(generator.sourceModel.reference)
+        	val targetModelNode = if (generator.targetModel.reference != null) {
+        		metamodelNodes.get(generator.targetModel.reference)
+        	} else {
+        		if (generator.eContainer instanceof Weaver) {
+        			targetGeneratorModelNodes.get(generator)
+        		} else {
+        			throw new Exception("Broken model.")
+        		}
+        	}
+        	createConnectionNoArrow(sourceModelNode, generatorNode)
+        	createConnectionWithArrow(generatorNode, targetModelNode)
+        ]
         return root;
     }
 	
@@ -95,26 +110,43 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	 * target meta-model is not explicitly specified. Therefore,
 	 * an anonymous metamodel is placed in the graph instead
 	 */
-	def KNode createAnonymousMetamodel(Connection connection) {
-		createNode() => [
-			it.addRectangle => [
-				it.lineWidth = 2
-				it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
-                it.shadow = "black".color
-                it.setGridPlacement(2).from(LEFT, 2, 0, TOP, 2, 0).to(RIGHT, 2, 0, BOTTOM, 2, 0)
-                it.addText(":" + "Use JDT")
-			]
-		]
+	private def dispatch KNode createAnonymousMetamodel(Generator generator) {
+		val instanceName = "anonyoums" 
+		val className = if (generator.targetModel.reference != null)
+			generator.targetModel.reference.resolveType.simpleName
+		else
+			generator.generator.simpleName
+			
+		createMetamodel(createNode(), instanceName, className)
+	}
+	
+	private def dispatch KNode createAnonymousMetamodel(Weaver weaver) {
+		val instanceName = weaver.resolveWeaverSourceModel.name
+		val className = if (weaver.targetModel != null)
+			if (weaver.targetModel.reference != null)
+				weaver.targetModel.reference.resolveType.simpleName
+			else
+				weaver.resolveWeaverSourceModel.resolveType.simpleName
+		else
+			weaver.resolveWeaverSourceModel.resolveType.simpleName
+		
+		createMetamodel(createNode(), instanceName, className)
 	}
 	
 	private def KNode createMetamodel(Metamodel metamodel, MetamodelSequence sequence) {
-		metamodel.createNode().associateWith(metamodel) => [
+		createMetamodel(metamodel.createNode().associateWith(metamodel), 
+			metamodel.name, sequence.type.resolveType.simpleName
+		) 
+	}
+	
+	private def KNode createMetamodel(KNode node, String instanceName, String className) {
+		node => [
 			it.addRectangle => [
 				it.lineWidth = 2
 				it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
                 it.shadow = "black".color
                 it.setGridPlacement(2).from(LEFT, 2, 0, TOP, 2, 0).to(RIGHT, 2, 0, BOTTOM, 2, 0)
-                it.addText(metamodel.name + ":" + sequence.type.resolveType.name)
+                it.addText(instanceName + " : " + className)
 			]
 		]
 	}
@@ -122,7 +154,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	/**
 	 * Create an edge between a model and a generator or weaver.
 	 */
-	private def KEdge createModelEdge(KNode source, KNode target) {
+	private def KEdge createConnectionWithArrow(KNode source, KNode target) {
 		createEdge() => [
 			it.source = source
             it.target = target
@@ -134,7 +166,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	 * Create an edge between a model and the weaver or generator.
 	 * Input only for main model.
 	 */
-	private def KEdge createModelEdgeNoArrow(KNode source, KNode target) {
+	private def KEdge createConnectionNoArrow(KNode source, KNode target) {
 		createEdge() => [
 			it.source = source
             it.target = target
@@ -146,33 +178,32 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		val weaverNode = weaver.createNode().associateWith(weaver) => [
 			it.addText(weaver.name)
 		]
-		
-		val sourceModelNode = this.nodes.get(weaver.sourceModel.reference)
-		createModelEdgeNoArrow(sourceModelNode, weaverNode)
-		
+//		
+//		if (weaver.sourceModel == null) { /** chaining weavers. */
+//			createModelEdgeNoArrow(targetWeaverModelNodes.get(weaver.predecessingWeaver), weaverNode)
+//		} else { /** dedicated named input model. */
+//			createModelEdgeNoArrow(this.connectionNodes.get(weaver.resolveWeaverSourceModel), weaverNode)
+//		}
+//
 		return weaverNode
 	}
 	
 	/**
 	 * Create generator node and its connections.
 	 */
-	private def KNode createGenerator(Generator generator, KNode targetModelNode) {
+	private def KNode createGenerator(Generator generator) {
 		val generatorNode = generator.createNode().associateWith(generator) => [
 			it.addText(generator.name)
 		]
-		
-		val sourceModelNode = this.nodes.get(generator.sourceModel.reference)
-		createModelEdgeNoArrow(sourceModelNode, generatorNode)
-		createModelEdge(generatorNode, targetModelNode)
-		
+				
 		return generatorNode
 	}
 	
 	private def String getName(Generator generator) {
-		return generator.generator.importedNamespace.split('\\.').last
+		return generator.generator.simpleName
 	}
     
     private def String getName(Weaver weaver) {
-		return weaver.weaver.importedNamespace.split('\\.').last
+		return weaver.weaver.simpleName
 	}
 }

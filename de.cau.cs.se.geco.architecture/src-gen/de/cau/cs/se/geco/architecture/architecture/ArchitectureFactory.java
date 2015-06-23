@@ -41,24 +41,6 @@ public interface ArchitectureFactory extends EFactory
   Import createImport();
 
   /**
-   * Returns a new object of class '<em>Weaver Import</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Weaver Import</em>'.
-   * @generated
-   */
-  WeaverImport createWeaverImport();
-
-  /**
-   * Returns a new object of class '<em>Generator Import</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Generator Import</em>'.
-   * @generated
-   */
-  GeneratorImport createGeneratorImport();
-
-  /**
    * Returns a new object of class '<em>Metamodel Sequence</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -174,6 +156,15 @@ public interface ArchitectureFactory extends EFactory
    * @generated
    */
   Operand createOperand();
+
+  /**
+   * Returns a new object of class '<em>Typeof</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Typeof</em>'.
+   * @generated
+   */
+  Typeof createTypeof();
 
   /**
    * Returns a new object of class '<em>Trace Model</em>'.

@@ -4,8 +4,6 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmType;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Import</b></em>'.
@@ -25,29 +23,29 @@ import org.eclipse.xtext.common.types.JvmType;
 public interface Import extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Imported Namespace</b></em>' reference.
+   * Returns the value of the '<em><b>Imported Namespace</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Imported Namespace</em>' reference isn't clear,
+   * If the meaning of the '<em>Imported Namespace</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Imported Namespace</em>' reference.
-   * @see #setImportedNamespace(JvmType)
+   * @return the value of the '<em>Imported Namespace</em>' attribute.
+   * @see #setImportedNamespace(String)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getImport_ImportedNamespace()
    * @model
    * @generated
    */
-  JvmType getImportedNamespace();
+  String getImportedNamespace();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Import#getImportedNamespace <em>Imported Namespace</em>}' reference.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Import#getImportedNamespace <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Imported Namespace</em>' reference.
+   * @param value the new value of the '<em>Imported Namespace</em>' attribute.
    * @see #getImportedNamespace()
    * @generated
    */
-  void setImportedNamespace(JvmType value);
+  void setImportedNamespace(String value);
 
 } // Import

@@ -10,7 +10,12 @@ import java.util.Map
 import java.util.HashMap
 import org.eclipse.xtext.resource.EObjectDescription
 
-class JvmMemberType implements IScope {
+/**
+ * This scope comprises of a set of feature names of an EObject descendant,
+ * which are represented in Java as either get* or is* following Java
+ * coding conventions. 
+ */
+class JvmMemberTypeScope implements IScope {
 	
 	val Map<JvmOperation, IEObjectDescription> fields = new HashMap<JvmOperation, IEObjectDescription>
 	
@@ -40,11 +45,10 @@ class JvmMemberType implements IScope {
 	}
 	
 	override getSingleElement(QualifiedName name) {
-		fields.filter[object, description | object.createName.equals(name.toString)].values.last
+		getElements(name).last
 	}
 	
 	override getSingleElement(EObject object) {
-		fields.filter[op, description | op.equals(object)].values.last
-	}
-	
+		getElements(object).last
+	}	
 }

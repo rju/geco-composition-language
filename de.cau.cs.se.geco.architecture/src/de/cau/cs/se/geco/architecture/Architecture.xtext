@@ -5,24 +5,14 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
 Model:
 	'package' name=QualifiedName
-	'import' imports+=Import*
-	registeredPackages+=RegisteredPackage+
-	
-	// prerequisites
-	// handle results
-	(connections+=Connection | metamodels+=MetamodelSequence)*
+	imports+=Import*
+	registeredPackages+=RegisteredPackage*
+	metamodels+=MetamodelSequence*	
+	connections+=Connection*
 ;
 
 Import:
-	WeaverImport | GeneratorImport
-;
-
-WeaverImport:
-	'weave' importedNamespace = [types::JvmType|QualifiedName]
-;
-
-GeneratorImport:
-	'gen' importedNamespace = [types::JvmType|QualifiedName]
+	'import' importedNamespace = QualifiedName
 ;
 
 MetamodelSequence:
@@ -34,7 +24,7 @@ Metamodel:
 ;
 
 RegisteredPackage:
-	'register' name=ID (registeredPackage = [types::JvmType|QualifiedName] |(isText?='text' extension=STRING))
+	'register' name=ID (importedNamespace = [types::JvmType|QualifiedName] |(isText?='text' extension=STRING))
 ;
 
 Connection:
@@ -43,7 +33,7 @@ Connection:
 
 Weaver:
 	'weave' weaver=[types::JvmType|ID]  
-		sourceModel=SourceModelNodeSelector
+		(sourceModel=SourceModelNodeSelector|'link')
 		aspectModel=AspectModel
 		('=>' targetModel=TargetModelNodeType)?
 ;
@@ -60,8 +50,9 @@ Generator:
 		('<-' readTraceModels+=[TraceModel|ID] (',' readTraceModels+=[TraceModel|ID])*)?
 ;
 
+
 SourceModelNodeSelector: 
-	reference = [Metamodel|ID] ('/' property=NodeProperty)? | 
+	reference = [Metamodel|ID]  ('[' constraint=ConstraintExpression ']')? ('/' property=NodeProperty)? | 
 	{SourceModelNodeSelector} 'null' 
 ;
 
@@ -95,7 +86,11 @@ ParenthesisConstraint returns ConstraintExpression:
 ;
 
 Operand:
-	Literal | NodeProperty
+	Literal | NodeProperty | Typeof
+;
+
+Typeof:
+	'typeof' type = [types::JvmType|ID] 	
 ;
 
 TraceModel:
@@ -110,7 +105,7 @@ NodeSetRelation:
 	')'
 ;
 
-NodeType: eclass=ID;
+NodeType: type = [types::JvmType|ID] ;
 
 // -----------------------------------
 // Literal

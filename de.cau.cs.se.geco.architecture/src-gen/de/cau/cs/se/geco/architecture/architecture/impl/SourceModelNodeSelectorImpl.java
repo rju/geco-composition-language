@@ -3,6 +3,7 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
+import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getReference <em>Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getConstraint <em>Constraint</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getProperty <em>Property</em>}</li>
  * </ul>
  * </p>
@@ -41,6 +43,16 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * @ordered
    */
   protected Metamodel reference;
+
+  /**
+   * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstraint()
+   * @generated
+   * @ordered
+   */
+  protected ConstraintExpression constraint;
 
   /**
    * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
@@ -121,6 +133,54 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
+  public ConstraintExpression getConstraint()
+  {
+    return constraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConstraint(ConstraintExpression newConstraint, NotificationChain msgs)
+  {
+    ConstraintExpression oldConstraint = constraint;
+    constraint = newConstraint;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT, oldConstraint, newConstraint);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setConstraint(ConstraintExpression newConstraint)
+  {
+    if (newConstraint != constraint)
+    {
+      NotificationChain msgs = null;
+      if (constraint != null)
+        msgs = ((InternalEObject)constraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT, null, msgs);
+      if (newConstraint != null)
+        msgs = ((InternalEObject)newConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT, null, msgs);
+      msgs = basicSetConstraint(newConstraint, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT, newConstraint, newConstraint));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public NodeProperty getProperty()
   {
     return property;
@@ -174,6 +234,8 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
   {
     switch (featureID)
     {
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT:
+        return basicSetConstraint(null, msgs);
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
         return basicSetProperty(null, msgs);
     }
@@ -193,6 +255,8 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
         if (resolve) return getReference();
         return basicGetReference();
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT:
+        return getConstraint();
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
         return getProperty();
     }
@@ -211,6 +275,9 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
     {
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
         setReference((Metamodel)newValue);
+        return;
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT:
+        setConstraint((ConstraintExpression)newValue);
         return;
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
         setProperty((NodeProperty)newValue);
@@ -232,6 +299,9 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
         setReference((Metamodel)null);
         return;
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT:
+        setConstraint((ConstraintExpression)null);
+        return;
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
         setProperty((NodeProperty)null);
         return;
@@ -251,6 +321,8 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
     {
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
         return reference != null;
+      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT:
+        return constraint != null;
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__PROPERTY:
         return property != null;
     }
