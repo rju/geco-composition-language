@@ -27,12 +27,16 @@ import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
+import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -42,6 +46,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -92,11 +99,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   
   private final Map<Metamodel, KNode> metamodelNodes = new HashMap<Metamodel, KNode>();
   
-  /**
-   * val sourceModelNode = this.metamodelNodes.get(generator.sourceModel.reference)
-   * createModelEdgeNoArrow(sourceModelNode, generatorNode)
-   * createModelEdge(generatorNode, targetModelNode)
-   */
+  private final Map<TraceModel, KNode> traceModelNodes = new HashMap<TraceModel, KNode>(9);
+  
   public KNode transform(final Model model) {
     KNode _createNode = this._kNodeExtensions.createNode(model);
     final KNode root = this.<KNode>associateWith(_createNode, model);
@@ -127,8 +131,18 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
           public void accept(final Generator generator) {
             final KNode generatorNode = ModelDiagramSynthesis.this.createGenerator(generator);
             ModelDiagramSynthesis.this.generatorNodes.put(generator, generatorNode);
-            EList<KNode> _children = it.getChildren();
-            _children.add(generatorNode);
+            TraceModel _writeTraceModel = generator.getWriteTraceModel();
+            boolean _notEquals = (!Objects.equal(_writeTraceModel, null));
+            if (_notEquals) {
+              TraceModel _writeTraceModel_1 = generator.getWriteTraceModel();
+              final KNode traceModelNode = ModelDiagramSynthesis.this.createTraceModel(_writeTraceModel_1);
+              TraceModel _writeTraceModel_2 = generator.getWriteTraceModel();
+              ModelDiagramSynthesis.this.traceModelNodes.put(_writeTraceModel_2, traceModelNode);
+              EList<KNode> _children = it.getChildren();
+              _children.add(traceModelNode);
+            }
+            EList<KNode> _children_1 = it.getChildren();
+            _children_1.add(generatorNode);
           }
         };
         _filter.forEach(_function_1);
@@ -148,18 +162,29 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
               final KNode anonymousMetamodelNode = ModelDiagramSynthesis.this.createAnonymousMetamodel(generator);
               ModelDiagramSynthesis.this.targetGeneratorModelNodes.put(generator, anonymousMetamodelNode);
               ModelDiagramSynthesis.this.generatorNodes.put(generator, generatorNode);
-              EList<KNode> _children_1 = it.getChildren();
-              _children_1.add(generatorNode);
+              TraceModel _writeTraceModel = generator.getWriteTraceModel();
+              boolean _notEquals = (!Objects.equal(_writeTraceModel, null));
+              if (_notEquals) {
+                TraceModel _writeTraceModel_1 = generator.getWriteTraceModel();
+                final KNode traceModelNode = ModelDiagramSynthesis.this.createTraceModel(_writeTraceModel_1);
+                TraceModel _writeTraceModel_2 = generator.getWriteTraceModel();
+                ModelDiagramSynthesis.this.traceModelNodes.put(_writeTraceModel_2, traceModelNode);
+                ModelDiagramSynthesis.this.createConnectionWithArrow(generatorNode, traceModelNode);
+                EList<KNode> _children_1 = it.getChildren();
+                _children_1.add(traceModelNode);
+              }
               EList<KNode> _children_2 = it.getChildren();
-              _children_2.add(anonymousMetamodelNode);
+              _children_2.add(generatorNode);
+              EList<KNode> _children_3 = it.getChildren();
+              _children_3.add(anonymousMetamodelNode);
             }
             TargetModelNodeType _targetModel = weaver.getTargetModel();
             boolean _equals = Objects.equal(_targetModel, null);
             if (_equals) {
               final KNode anonymousMetamodelNode_1 = ModelDiagramSynthesis.this.createAnonymousMetamodel(weaver);
               ModelDiagramSynthesis.this.targetWeaverModelNodes.put(weaver, anonymousMetamodelNode_1);
-              EList<KNode> _children_3 = it.getChildren();
-              _children_3.add(anonymousMetamodelNode_1);
+              EList<KNode> _children_4 = it.getChildren();
+              _children_4.add(anonymousMetamodelNode_1);
             }
           }
         };
@@ -209,6 +234,14 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
             _xifexpression_1 = _xifexpression_2;
           }
           final KNode targetModelNode = _xifexpression_1;
+          EList<TraceModel> _readTraceModels = generator.getReadTraceModels();
+          final Consumer<TraceModel> _function = new Consumer<TraceModel>() {
+            public void accept(final TraceModel traceModel) {
+              final KNode traceModelNode = ModelDiagramSynthesis.this.traceModelNodes.get(traceModel);
+              ModelDiagramSynthesis.this.createConnectionWithArrow(traceModelNode, generatorNode);
+            }
+          };
+          _readTraceModels.forEach(_function);
           ModelDiagramSynthesis.this.createConnectionNoArrow(sourceModelNode, generatorNode);
           ModelDiagramSynthesis.this.createConnectionWithArrow(generatorNode, targetModelNode);
         } catch (Throwable _e) {
@@ -260,6 +293,65 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     };
     this.weaverNodes.forEach(_function_2);
     return root;
+  }
+  
+  private KNode createTraceModel(final TraceModel traceModel) {
+    KNode _xblockexpression = null;
+    {
+      EList<NodeSetRelation> _nodeSetRelations = traceModel.getNodeSetRelations();
+      final Function1<NodeSetRelation, String> _function = new Function1<NodeSetRelation, String>() {
+        public String apply(final NodeSetRelation it) {
+          EList<NodeType> _sourceNodes = it.getSourceNodes();
+          final Function1<NodeType, String> _function = new Function1<NodeType, String>() {
+            public String apply(final NodeType it) {
+              JvmType _type = it.getType();
+              return _type.getSimpleName();
+            }
+          };
+          List<String> _map = ListExtensions.<NodeType, String>map(_sourceNodes, _function);
+          String _join = IterableExtensions.join(_map, ",");
+          String _plus = ("(" + _join);
+          String _plus_1 = (_plus + ":");
+          EList<NodeType> _targetNodes = it.getTargetNodes();
+          final Function1<NodeType, String> _function_1 = new Function1<NodeType, String>() {
+            public String apply(final NodeType it) {
+              JvmType _type = it.getType();
+              return _type.getSimpleName();
+            }
+          };
+          List<String> _map_1 = ListExtensions.<NodeType, String>map(_targetNodes, _function_1);
+          String _join_1 = IterableExtensions.join(_map_1, ",");
+          String _plus_2 = (_plus_1 + _join_1);
+          return (_plus_2 + ")");
+        }
+      };
+      List<String> _map = ListExtensions.<NodeSetRelation, String>map(_nodeSetRelations, _function);
+      final String types = IterableExtensions.join(_map, " ");
+      KNode _createNode = this._kNodeExtensions.createNode(traceModel);
+      KNode _associateWith = this.<KNode>associateWith(_createNode, traceModel);
+      final Procedure1<KNode> _function_1 = new Procedure1<KNode>() {
+        public void apply(final KNode it) {
+          KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+          final Procedure1<KRectangle> _function = new Procedure1<KRectangle>() {
+            public void apply(final KRectangle it) {
+              ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 2);
+              KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("blue");
+              KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("white");
+              ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackgroundGradient(it, _color, _color_1, 0);
+              KColor _color_2 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+              ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_2);
+              KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 2);
+              KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 2, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 2, 0);
+              ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 2, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 2, 0);
+              ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, types);
+            }
+          };
+          ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle, _function);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<KNode>operator_doubleArrow(_associateWith, _function_1);
+    }
+    return _xblockexpression;
   }
   
   /**

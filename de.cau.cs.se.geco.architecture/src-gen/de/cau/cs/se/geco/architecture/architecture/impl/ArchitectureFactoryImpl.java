@@ -78,6 +78,9 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.MODEL_NODE_TYPE: return createModelNodeType();
       case ArchitecturePackage.NODE_PROPERTY: return createNodeProperty();
       case ArchitecturePackage.CONSTRAINT_EXPRESSION: return createConstraintExpression();
+      case ArchitecturePackage.BASIC_CONSTRAINT: return createBasicConstraint();
+      case ArchitecturePackage.NEGATION: return createNegation();
+      case ArchitecturePackage.PARENTHESIS_CONSTRAINT: return createParenthesisConstraint();
       case ArchitecturePackage.OPERAND: return createOperand();
       case ArchitecturePackage.TYPEOF: return createTypeof();
       case ArchitecturePackage.TRACE_MODEL: return createTraceModel();
@@ -248,6 +251,39 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     ConstraintExpressionImpl constraintExpression = new ConstraintExpressionImpl();
     return constraintExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasicConstraint createBasicConstraint()
+  {
+    BasicConstraintImpl basicConstraint = new BasicConstraintImpl();
+    return basicConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Negation createNegation()
+  {
+    NegationImpl negation = new NegationImpl();
+    return negation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParenthesisConstraint createParenthesisConstraint()
+  {
+    ParenthesisConstraintImpl parenthesisConstraint = new ParenthesisConstraintImpl();
+    return parenthesisConstraint;
   }
 
   /**

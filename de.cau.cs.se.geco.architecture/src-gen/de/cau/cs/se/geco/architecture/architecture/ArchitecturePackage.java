@@ -518,22 +518,13 @@ public interface ArchitecturePackage extends EPackage
   int TARGET_MODEL_NODE_TYPE__REFERENCE = ASPECT_MODEL_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Multiply</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TARGET_MODEL_NODE_TYPE__MULTIPLY = ASPECT_MODEL_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Target Model Node Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_NODE_TYPE_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 2;
+  int TARGET_MODEL_NODE_TYPE_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl <em>Model Node Type</em>}' class.
@@ -610,22 +601,59 @@ public interface ArchitecturePackage extends EPackage
   int CONSTRAINT_EXPRESSION__RIGHT = 2;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CONSTRAINT_EXPRESSION__CONSTRAINT = 3;
-
-  /**
    * The number of structural features of the '<em>Constraint Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONSTRAINT_EXPRESSION_FEATURE_COUNT = 4;
+  int CONSTRAINT_EXPRESSION_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl <em>Basic Constraint</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBasicConstraint()
+   * @generated
+   */
+  int BASIC_CONSTRAINT = 14;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONSTRAINT__LEFT = CONSTRAINT_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONSTRAINT__OPERATOR = CONSTRAINT_EXPRESSION__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONSTRAINT__RIGHT = CONSTRAINT_EXPRESSION__RIGHT;
+
+  /**
+   * The number of structural features of the '<em>Basic Constraint</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.OperandImpl <em>Operand</em>}' class.
@@ -635,7 +663,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getOperand()
    * @generated
    */
-  int OPERAND = 14;
+  int OPERAND = 17;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -644,7 +672,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERAND__LEFT = CONSTRAINT_EXPRESSION__LEFT;
+  int OPERAND__LEFT = BASIC_CONSTRAINT__LEFT;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' containment reference.
@@ -653,7 +681,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERAND__OPERATOR = CONSTRAINT_EXPRESSION__OPERATOR;
+  int OPERAND__OPERATOR = BASIC_CONSTRAINT__OPERATOR;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -662,16 +690,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERAND__RIGHT = CONSTRAINT_EXPRESSION__RIGHT;
-
-  /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERAND__CONSTRAINT = CONSTRAINT_EXPRESSION__CONSTRAINT;
+  int OPERAND__RIGHT = BASIC_CONSTRAINT__RIGHT;
 
   /**
    * The number of structural features of the '<em>Operand</em>' class.
@@ -680,7 +699,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERAND_FEATURE_COUNT = CONSTRAINT_EXPRESSION_FEATURE_COUNT + 0;
+  int OPERAND_FEATURE_COUNT = BASIC_CONSTRAINT_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl <em>Node Property</em>}' class.
@@ -720,15 +739,6 @@ public interface ArchitecturePackage extends EPackage
   int NODE_PROPERTY__RIGHT = OPERAND__RIGHT;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NODE_PROPERTY__CONSTRAINT = OPERAND__CONSTRAINT;
-
-  /**
    * The feature id for the '<em><b>Property</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -738,13 +748,22 @@ public interface ArchitecturePackage extends EPackage
   int NODE_PROPERTY__PROPERTY = OPERAND_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY__CONSTRAINT = OPERAND_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Sub Property</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NODE_PROPERTY__SUB_PROPERTY = OPERAND_FEATURE_COUNT + 1;
+  int NODE_PROPERTY__SUB_PROPERTY = OPERAND_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Node Property</em>' class.
@@ -753,7 +772,117 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int NODE_PROPERTY_FEATURE_COUNT = OPERAND_FEATURE_COUNT + 2;
+  int NODE_PROPERTY_FEATURE_COUNT = OPERAND_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NegationImpl <em>Negation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.NegationImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNegation()
+   * @generated
+   */
+  int NEGATION = 15;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION__LEFT = BASIC_CONSTRAINT__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION__OPERATOR = BASIC_CONSTRAINT__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION__RIGHT = BASIC_CONSTRAINT__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION__CONSTRAINT = BASIC_CONSTRAINT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Negation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION_FEATURE_COUNT = BASIC_CONSTRAINT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ParenthesisConstraintImpl <em>Parenthesis Constraint</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ParenthesisConstraintImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getParenthesisConstraint()
+   * @generated
+   */
+  int PARENTHESIS_CONSTRAINT = 16;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS_CONSTRAINT__LEFT = BASIC_CONSTRAINT__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS_CONSTRAINT__OPERATOR = BASIC_CONSTRAINT__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS_CONSTRAINT__RIGHT = BASIC_CONSTRAINT__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS_CONSTRAINT__CONSTRAINT = BASIC_CONSTRAINT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Parenthesis Constraint</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS_CONSTRAINT_FEATURE_COUNT = BASIC_CONSTRAINT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TypeofImpl <em>Typeof</em>}' class.
@@ -763,7 +892,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTypeof()
    * @generated
    */
-  int TYPEOF = 15;
+  int TYPEOF = 18;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -793,15 +922,6 @@ public interface ArchitecturePackage extends EPackage
   int TYPEOF__RIGHT = OPERAND__RIGHT;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPEOF__CONSTRAINT = OPERAND__CONSTRAINT;
-
-  /**
    * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -827,7 +947,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTraceModel()
    * @generated
    */
-  int TRACE_MODEL = 16;
+  int TRACE_MODEL = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -864,7 +984,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeSetRelation()
    * @generated
    */
-  int NODE_SET_RELATION = 17;
+  int NODE_SET_RELATION = 20;
 
   /**
    * The feature id for the '<em><b>Source Nodes</b></em>' containment reference list.
@@ -901,7 +1021,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeType()
    * @generated
    */
-  int NODE_TYPE = 18;
+  int NODE_TYPE = 21;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -929,7 +1049,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 19;
+  int LITERAL = 22;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -959,15 +1079,6 @@ public interface ArchitecturePackage extends EPackage
   int LITERAL__RIGHT = OPERAND__RIGHT;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LITERAL__CONSTRAINT = OPERAND__CONSTRAINT;
-
-  /**
    * The number of structural features of the '<em>Literal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -984,7 +1095,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getArrayLiteral()
    * @generated
    */
-  int ARRAY_LITERAL = 20;
+  int ARRAY_LITERAL = 23;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1014,15 +1125,6 @@ public interface ArchitecturePackage extends EPackage
   int ARRAY_LITERAL__RIGHT = LITERAL__RIGHT;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ARRAY_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
-
-  /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1048,7 +1150,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 21;
+  int STRING_LITERAL = 24;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1078,15 +1180,6 @@ public interface ArchitecturePackage extends EPackage
   int STRING_LITERAL__RIGHT = LITERAL__RIGHT;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
-
-  /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1112,7 +1205,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 22;
+  int INT_LITERAL = 25;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1142,15 +1235,6 @@ public interface ArchitecturePackage extends EPackage
   int INT_LITERAL__RIGHT = LITERAL__RIGHT;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
-
-  /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1176,7 +1260,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 23;
+  int FLOAT_LITERAL = 26;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1206,15 +1290,6 @@ public interface ArchitecturePackage extends EPackage
   int FLOAT_LITERAL__RIGHT = LITERAL__RIGHT;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FLOAT_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
-
-  /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1240,7 +1315,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 24;
+  int BOOLEAN_LITERAL = 27;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1270,15 +1345,6 @@ public interface ArchitecturePackage extends EPackage
   int BOOLEAN_LITERAL__RIGHT = LITERAL__RIGHT;
 
   /**
-   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_LITERAL__CONSTRAINT = LITERAL__CONSTRAINT;
-
-  /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1304,7 +1370,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 25;
+  int LOGIC_OPERATOR = 28;
 
   /**
    * The feature id for the '<em><b>AND</b></em>' attribute.
@@ -1341,7 +1407,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getComparator()
    * @generated
    */
-  int COMPARATOR = 26;
+  int COMPARATOR = 29;
 
   /**
    * The feature id for the '<em><b>EQ</b></em>' attribute.
@@ -1780,17 +1846,6 @@ public interface ArchitecturePackage extends EPackage
   EReference getTargetModelNodeType_Reference();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#isMultiply <em>Multiply</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Multiply</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#isMultiply()
-   * @see #getTargetModelNodeType()
-   * @generated
-   */
-  EAttribute getTargetModelNodeType_Multiply();
-
-  /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType <em>Model Node Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1842,6 +1897,17 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EReference getNodeProperty_Property();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty#getConstraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Constraint</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.NodeProperty#getConstraint()
+   * @see #getNodeProperty()
+   * @generated
+   */
+  EReference getNodeProperty_Constraint();
 
   /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty#getSubProperty <em>Sub Property</em>}'.
@@ -1898,15 +1964,56 @@ public interface ArchitecturePackage extends EPackage
   EReference getConstraintExpression_Right();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getConstraint <em>Constraint</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.BasicConstraint <em>Basic Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Basic Constraint</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.BasicConstraint
+   * @generated
+   */
+  EClass getBasicConstraint();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Negation <em>Negation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Negation</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Negation
+   * @generated
+   */
+  EClass getNegation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Negation#getConstraint <em>Constraint</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Constraint</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getConstraint()
-   * @see #getConstraintExpression()
+   * @see de.cau.cs.se.geco.architecture.architecture.Negation#getConstraint()
+   * @see #getNegation()
    * @generated
    */
-  EReference getConstraintExpression_Constraint();
+  EReference getNegation_Constraint();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint <em>Parenthesis Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parenthesis Constraint</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint
+   * @generated
+   */
+  EClass getParenthesisConstraint();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint#getConstraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Constraint</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint#getConstraint()
+   * @see #getParenthesisConstraint()
+   * @generated
+   */
+  EReference getParenthesisConstraint_Constraint();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Operand <em>Operand</em>}'.
@@ -2576,14 +2683,6 @@ public interface ArchitecturePackage extends EPackage
     EReference TARGET_MODEL_NODE_TYPE__REFERENCE = eINSTANCE.getTargetModelNodeType_Reference();
 
     /**
-     * The meta object literal for the '<em><b>Multiply</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TARGET_MODEL_NODE_TYPE__MULTIPLY = eINSTANCE.getTargetModelNodeType_Multiply();
-
-    /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl <em>Model Node Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2628,6 +2727,14 @@ public interface ArchitecturePackage extends EPackage
     EReference NODE_PROPERTY__PROPERTY = eINSTANCE.getNodeProperty_Property();
 
     /**
+     * The meta object literal for the '<em><b>Constraint</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NODE_PROPERTY__CONSTRAINT = eINSTANCE.getNodeProperty_Constraint();
+
+    /**
      * The meta object literal for the '<em><b>Sub Property</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2670,12 +2777,50 @@ public interface ArchitecturePackage extends EPackage
     EReference CONSTRAINT_EXPRESSION__RIGHT = eINSTANCE.getConstraintExpression_Right();
 
     /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl <em>Basic Constraint</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBasicConstraint()
+     * @generated
+     */
+    EClass BASIC_CONSTRAINT = eINSTANCE.getBasicConstraint();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NegationImpl <em>Negation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.NegationImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNegation()
+     * @generated
+     */
+    EClass NEGATION = eINSTANCE.getNegation();
+
+    /**
      * The meta object literal for the '<em><b>Constraint</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTRAINT_EXPRESSION__CONSTRAINT = eINSTANCE.getConstraintExpression_Constraint();
+    EReference NEGATION__CONSTRAINT = eINSTANCE.getNegation_Constraint();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ParenthesisConstraintImpl <em>Parenthesis Constraint</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ParenthesisConstraintImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getParenthesisConstraint()
+     * @generated
+     */
+    EClass PARENTHESIS_CONSTRAINT = eINSTANCE.getParenthesisConstraint();
+
+    /**
+     * The meta object literal for the '<em><b>Constraint</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARENTHESIS_CONSTRAINT__CONSTRAINT = eINSTANCE.getParenthesisConstraint_Constraint();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.OperandImpl <em>Operand</em>}' class.

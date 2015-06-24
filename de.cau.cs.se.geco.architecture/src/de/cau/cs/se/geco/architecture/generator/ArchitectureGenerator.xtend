@@ -13,6 +13,9 @@ import de.cau.cs.se.geco.architecture.architecture.Import
 import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.architecture.Connection
 import de.cau.cs.se.geco.architecture.architecture.Generator
+import java.io.File
+import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
+import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
 
 /**
  * Generates code from your model files on save.
@@ -22,11 +25,10 @@ import de.cau.cs.se.geco.architecture.architecture.Generator
 class ArchitectureGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-//		val targetUri = resource.URI.trimFileExtension.appendFileExtension("xtend")
-//		fsa.generateFile(targetUri.toFileString, 
-//			'''''' /*createGenerator(resource.allContents.filter(Model).next, 
-//				resource.URI.lastSegment.split('\\.').get(0))*/
-//		)
+		val fileName = resource.URI.trimFileExtension.lastSegment
+		fsa.generateFile('''«resource.allContents.filter(Model).last.name.replace('.', File.separator)»«File.separator»«fileName».xtend''', 
+			createGenerator(resource.allContents.filter(Model).last, fileName)
+		)
 	}
 	
 	private def CharSequence createGenerator(Model model, String className) '''
@@ -39,29 +41,42 @@ class ArchitectureGenerator implements IGenerator {
 		
 		«model.imports.map[it.createImport].join»
 		
-		«model.connections.map[it.createField].join»
-
+		«model.registeredPackages.map[it.createRegisterImport].join»
+		
 		class «model.name».«className» {
+		
+			«model.connections.map[it.createField].join»
 			
 			new(URI uri) {
 				this.uri = uri
 			}
 			
 			def void execute(Collection<EObject> models) {
-				
+				«model.connections.map[it.createExecution].join»
 			}
 		}
 	'''
 	
-	private def dispatch CharSequence createField(Weaver connection) {
+
+	private def CharSequence createRegisterImport(RegisteredPackage node) '''
+		import «node.importedNamespace.qualifiedName»
+	'''
+		
+	private def CharSequence createImport(Import node) '''
+		import «node.importedNamespace.qualifiedName»
+	'''
+	
+	private def CharSequence createField(Connection connection) '''
+		val «connection.reference.simpleName.toFirstLower» = new «connection.reference.simpleName»()
+	''' 
+	
+	private def dispatch CharSequence createExecution(Generator generator) {
+		if (generator.sourceModel.reference == null) '''
+			val «generator.targetModel.reference.name» = «generator.reference.simpleName.toFirstLower».generate(null)'''
+		
+	} 
+		
+	private def dispatch CharSequence createExecution(Weaver weaver) {
 		
 	}
-	
-	private def dispatch CharSequence createField(Generator connection) {
-		
-	}
-	
-	private def CharSequence createImport(Import node) '''import «node.importedNamespace»'''
-	
-	
 }

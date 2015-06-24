@@ -50,7 +50,6 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//TargetModelNodeType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//TargetModelNodeType/reference"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//TargetModelNodeType/multiply"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//ModelNodeType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/target"/>
@@ -58,13 +57,20 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//NodeProperty">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeProperty/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeProperty/constraint"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeProperty/subProperty"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//ConstraintExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/right"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/constraint"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//BasicConstraint"/>
+    <genClasses ecoreClass="Architecture.ecore#//Negation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Negation/constraint"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//ParenthesisConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ParenthesisConstraint/constraint"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Operand"/>
     <genClasses ecoreClass="Architecture.ecore#//Typeof">

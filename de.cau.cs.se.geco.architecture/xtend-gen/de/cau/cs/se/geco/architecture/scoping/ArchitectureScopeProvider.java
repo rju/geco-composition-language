@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
@@ -105,11 +106,35 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       }
     }
     if (!_matched) {
-      if (context instanceof Import) {
-        _matched=true;
+      if (context instanceof Generator) {
+        String _name = reference.getName();
+        boolean _equals = _name.equals("readTraceModels");
+        if (_equals) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof Import) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof ModelNodeType) {
+          _matched=true;
+        }
       }
       if (!_matched) {
         if (context instanceof RegisteredPackage) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof SourceModelNodeSelector) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof TargetModelNodeType) {
           _matched=true;
         }
       }
@@ -118,12 +143,12 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       }
     }
     if (!_matched) {
-      IScope _xblockexpression = null;
       {
         System.out.println((((">> " + context) + " ") + reference));
-        _xblockexpression = this.delegate.getScope(context, reference);
+        Class<? extends EObject> _class = context.getClass();
+        String _plus = ("No scope available for " + _class);
+        throw new UnsupportedOperationException(_plus);
       }
-      _switchResult = _xblockexpression;
     }
     return _switchResult;
   }
@@ -149,7 +174,17 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
     if (!_matched) {
       if (container instanceof NodeProperty) {
         _matched=true;
-        _switchResult = IScope.NULLSCOPE;
+        JvmMember _property = ((NodeProperty)container).getProperty();
+        JvmTypeReference _returnType = ((JvmOperation) _property).getReturnType();
+        JvmType _type = _returnType.getType();
+        _switchResult = this.createJvmDeclaredTypeScope(_type, reference);
+      }
+    }
+    if (!_matched) {
+      if (container instanceof SourceModelNodeSelector) {
+        _matched=true;
+        JvmType _resolveType = ArchitectureTyping.resolveType(((SourceModelNodeSelector)container));
+        _switchResult = this.createJvmDeclaredTypeScope(_resolveType, reference);
       }
     }
     if (!_matched) {
@@ -249,12 +284,17 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
           EObject _eContainer_1 = generator.eContainer();
           if ((_eContainer_1 instanceof Weaver)) {
             EObject _eContainer_2 = generator.eContainer();
-            Metamodel _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(((Weaver) _eContainer_2));
-            JvmType _resolveType_1 = ArchitectureTyping.resolveType(_resolveWeaverSourceModel);
-            Model _modelRoot_1 = this.getModelRoot(nodeType);
-            Resource _eResource_1 = _modelRoot_1.eResource();
-            ResourceSet _resourceSet_1 = _eResource_1.getResourceSet();
-            return new JvmRegisterMetamodelImportScope(_resolveType_1, _resourceSet_1, this.typeProviderFactory);
+            final Metamodel sourceModel = ArchitectureTyping.resolveWeaverSourceModel(((Weaver) _eContainer_2));
+            boolean _notEquals_1 = (!Objects.equal(sourceModel, null));
+            if (_notEquals_1) {
+              JvmType _resolveType_1 = ArchitectureTyping.resolveType(sourceModel);
+              Model _modelRoot_1 = this.getModelRoot(nodeType);
+              Resource _eResource_1 = _modelRoot_1.eResource();
+              ResourceSet _resourceSet_1 = _eResource_1.getResourceSet();
+              return new JvmRegisterMetamodelImportScope(_resolveType_1, _resourceSet_1, this.typeProviderFactory);
+            } else {
+              return IScope.NULLSCOPE;
+            }
           } else {
             _xifexpression_2 = IScope.NULLSCOPE;
           }
@@ -402,32 +442,50 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
    * Check if the given JvmType implements the interface specified by typeName.
    */
   private Boolean implementsInterface(final JvmType type, final EObject object, final String typeName) {
-    boolean _xblockexpression = false;
+    Boolean _xblockexpression = null;
     {
       Resource _eResource = object.eResource();
       ResourceSet _resourceSet = _eResource.getResourceSet();
       IJvmTypeProvider _createTypeProvider = this.typeProviderFactory.createTypeProvider(_resourceSet);
       final JvmType matchingType = _createTypeProvider.findTypeByName(typeName);
-      boolean _switchResult = false;
+      Boolean _switchResult = null;
       boolean _matched = false;
       if (!_matched) {
         if (type instanceof JvmGenericType) {
           _matched=true;
-          EList<JvmTypeReference> _superTypes = ((JvmGenericType)type).getSuperTypes();
-          final Function1<JvmTypeReference, Boolean> _function = new Function1<JvmTypeReference, Boolean>() {
-            public Boolean apply(final JvmTypeReference it) {
-              JvmType _type = it.getType();
-              return Boolean.valueOf(_type.equals(matchingType));
-            }
-          };
-          _switchResult = IterableExtensions.<JvmTypeReference>exists(_superTypes, _function);
+          _switchResult = this.isSubtypeOf(((JvmGenericType)type), matchingType);
         }
       }
       if (!_matched) {
-        _switchResult = false;
+        _switchResult = Boolean.valueOf(false);
       }
       _xblockexpression = _switchResult;
     }
-    return Boolean.valueOf(_xblockexpression);
+    return _xblockexpression;
+  }
+  
+  public Boolean isSubtypeOf(final JvmGenericType type, final JvmType matchingType) {
+    boolean _xifexpression = false;
+    EList<JvmTypeReference> _superTypes = type.getSuperTypes();
+    final Function1<JvmTypeReference, Boolean> _function = new Function1<JvmTypeReference, Boolean>() {
+      public Boolean apply(final JvmTypeReference it) {
+        JvmType _type = it.getType();
+        return Boolean.valueOf(_type.equals(matchingType));
+      }
+    };
+    boolean _exists = IterableExtensions.<JvmTypeReference>exists(_superTypes, _function);
+    if (_exists) {
+      return Boolean.valueOf(true);
+    } else {
+      EList<JvmTypeReference> _superTypes_1 = type.getSuperTypes();
+      final Function1<JvmTypeReference, Boolean> _function_1 = new Function1<JvmTypeReference, Boolean>() {
+        public Boolean apply(final JvmTypeReference it) {
+          JvmType _type = it.getType();
+          return ArchitectureScopeProvider.this.isSubtypeOf(((JvmGenericType) _type), matchingType);
+        }
+      };
+      _xifexpression = IterableExtensions.<JvmTypeReference>exists(_superTypes_1, _function_1);
+    }
+    return Boolean.valueOf(_xifexpression);
   }
 }

@@ -505,6 +505,34 @@ finally {
 
 
 
+// Entry rule entryRuleNegation
+entryRuleNegation 
+:
+{ before(grammarAccess.getNegationRule()); }
+	 ruleNegation
+{ after(grammarAccess.getNegationRule()); } 
+	 EOF 
+;
+
+// Rule Negation
+ruleNegation
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getNegationAccess().getGroup()); }
+(rule__Negation__Group__0)
+{ after(grammarAccess.getNegationAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleParenthesisConstraint
 entryRuleParenthesisConstraint 
 :
@@ -1055,6 +1083,12 @@ rule__BasicConstraint__Alternatives
 { before(grammarAccess.getBasicConstraintAccess().getOperandParserRuleCall_1()); }
 	ruleOperand
 { after(grammarAccess.getBasicConstraintAccess().getOperandParserRuleCall_1()); }
+)
+
+    |(
+{ before(grammarAccess.getBasicConstraintAccess().getNegationParserRuleCall_2()); }
+	ruleNegation
+{ after(grammarAccess.getBasicConstraintAccess().getNegationParserRuleCall_2()); }
 )
 
 ;
@@ -2841,7 +2875,6 @@ rule__TargetModelNodeType__Group__1
     }
 :
 	rule__TargetModelNodeType__Group__1__Impl
-	rule__TargetModelNodeType__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2862,36 +2895,6 @@ rule__TargetModelNodeType__Group__1__Impl
 finally {
 	restoreStackSize(stackSize);
 }
-
-
-rule__TargetModelNodeType__Group__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__TargetModelNodeType__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__TargetModelNodeType__Group__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAssignment_2()); }
-(rule__TargetModelNodeType__MultiplyAssignment_2)?
-{ after(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAssignment_2()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
 
 
 
@@ -3691,6 +3694,69 @@ rule__CompareExpression__Group_1_0_0__1__Impl
 { before(grammarAccess.getCompareExpressionAccess().getOperatorAssignment_1_0_0_1()); }
 (rule__CompareExpression__OperatorAssignment_1_0_0_1)
 { after(grammarAccess.getCompareExpressionAccess().getOperatorAssignment_1_0_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__Negation__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Negation__Group__0__Impl
+	rule__Negation__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Negation__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNegationAccess().getExclamationMarkKeyword_0()); }
+
+	'!' 
+
+{ after(grammarAccess.getNegationAccess().getExclamationMarkKeyword_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Negation__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Negation__Group__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Negation__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNegationAccess().getConstraintAssignment_1()); }
+(rule__Negation__ConstraintAssignment_1)
+{ after(grammarAccess.getNegationAccess().getConstraintAssignment_1()); }
 )
 
 ;
@@ -5121,29 +5187,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__TargetModelNodeType__MultiplyAssignment_2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAsteriskKeyword_2_0()); }
-(
-{ before(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAsteriskKeyword_2_0()); }
-
-	'*' 
-
-{ after(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAsteriskKeyword_2_0()); }
-)
-
-{ after(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAsteriskKeyword_2_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__ModelNodeType__TargetAssignment_0
     @init {
 		int stackSize = keepStackSize();
@@ -5280,6 +5323,21 @@ rule__CompareExpression__RightAssignment_1_1
 (
 { before(grammarAccess.getCompareExpressionAccess().getRightBasicConstraintParserRuleCall_1_1_0()); }
 	ruleBasicConstraint{ after(grammarAccess.getCompareExpressionAccess().getRightBasicConstraintParserRuleCall_1_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Negation__ConstraintAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getNegationAccess().getConstraintConstraintExpressionParserRuleCall_1_0()); }
+	ruleConstraintExpression{ after(grammarAccess.getNegationAccess().getConstraintConstraintExpressionParserRuleCall_1_0()); }
 )
 
 ;

@@ -873,21 +873,6 @@ ruleTargetModelNodeType returns [EObject current=null]
 	}
 
 )
-)?(
-(
-		lv_multiply_2_0=	'*' 
-    {
-        newLeafNode(lv_multiply_2_0, grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAsteriskKeyword_2_0());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getTargetModelNodeTypeRule());
-	        }
-       		setWithLastConsumed($current, "multiply", true, "*");
-	    }
-
-)
 )?)
 ;
 
@@ -1220,7 +1205,60 @@ ruleBasicConstraint returns [EObject current=null]
         $current = $this_Operand_1.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getBasicConstraintAccess().getNegationParserRuleCall_2()); 
+    }
+    this_Negation_2=ruleNegation
+    { 
+        $current = $this_Negation_2.current; 
+        afterParserOrEnumRuleCall();
+    }
 )
+;
+
+
+
+
+
+// Entry rule entryRuleNegation
+entryRuleNegation returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getNegationRule()); }
+	 iv_ruleNegation=ruleNegation 
+	 { $current=$iv_ruleNegation.current; } 
+	 EOF 
+;
+
+// Rule Negation
+ruleNegation returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='!' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getNegationAccess().getExclamationMarkKeyword_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getNegationAccess().getConstraintConstraintExpressionParserRuleCall_1_0()); 
+	    }
+		lv_constraint_1_0=ruleConstraintExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getNegationRule());
+	        }
+       		set(
+       			$current, 
+       			"constraint",
+        		lv_constraint_1_0, 
+        		"ConstraintExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
 ;
 
 

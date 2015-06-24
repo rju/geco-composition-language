@@ -13,6 +13,6 @@ package de.cau.cs.se.geco.architecture.architecture;
  * @model
  * @generated
  */
-public interface Operand extends ConstraintExpression
+public interface Operand extends BasicConstraint
 {
 } // Operand

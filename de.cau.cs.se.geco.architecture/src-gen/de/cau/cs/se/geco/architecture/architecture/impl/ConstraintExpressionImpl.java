@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl#getRight <em>Right</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl#getConstraint <em>Constraint</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,16 +61,6 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
    * @ordered
    */
   protected ConstraintExpression right;
-
-  /**
-   * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getConstraint()
-   * @generated
-   * @ordered
-   */
-  protected ConstraintExpression constraint;
 
   /**
    * <!-- begin-user-doc -->
@@ -243,54 +232,6 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public ConstraintExpression getConstraint()
-  {
-    return constraint;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetConstraint(ConstraintExpression newConstraint, NotificationChain msgs)
-  {
-    ConstraintExpression oldConstraint = constraint;
-    constraint = newConstraint;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT, oldConstraint, newConstraint);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setConstraint(ConstraintExpression newConstraint)
-  {
-    if (newConstraint != constraint)
-    {
-      NotificationChain msgs = null;
-      if (constraint != null)
-        msgs = ((InternalEObject)constraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT, null, msgs);
-      if (newConstraint != null)
-        msgs = ((InternalEObject)newConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT, null, msgs);
-      msgs = basicSetConstraint(newConstraint, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT, newConstraint, newConstraint));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -302,8 +243,6 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
         return basicSetOperator(null, msgs);
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         return basicSetRight(null, msgs);
-      case ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT:
-        return basicSetConstraint(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -324,8 +263,6 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
         return getOperator();
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         return getRight();
-      case ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT:
-        return getConstraint();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -348,9 +285,6 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
         return;
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         setRight((ConstraintExpression)newValue);
-        return;
-      case ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT:
-        setConstraint((ConstraintExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -375,9 +309,6 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         setRight((ConstraintExpression)null);
         return;
-      case ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT:
-        setConstraint((ConstraintExpression)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -398,8 +329,6 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
         return operator != null;
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         return right != null;
-      case ArchitecturePackage.CONSTRAINT_EXPRESSION__CONSTRAINT:
-        return constraint != null;
     }
     return super.eIsSet(featureID);
   }

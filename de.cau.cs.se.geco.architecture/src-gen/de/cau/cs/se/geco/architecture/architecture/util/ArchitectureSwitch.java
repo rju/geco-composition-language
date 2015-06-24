@@ -165,6 +165,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         NodeProperty nodeProperty = (NodeProperty)theEObject;
         T result = caseNodeProperty(nodeProperty);
         if (result == null) result = caseOperand(nodeProperty);
+        if (result == null) result = caseBasicConstraint(nodeProperty);
         if (result == null) result = caseConstraintExpression(nodeProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -176,10 +177,37 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchitecturePackage.BASIC_CONSTRAINT:
+      {
+        BasicConstraint basicConstraint = (BasicConstraint)theEObject;
+        T result = caseBasicConstraint(basicConstraint);
+        if (result == null) result = caseConstraintExpression(basicConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.NEGATION:
+      {
+        Negation negation = (Negation)theEObject;
+        T result = caseNegation(negation);
+        if (result == null) result = caseBasicConstraint(negation);
+        if (result == null) result = caseConstraintExpression(negation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.PARENTHESIS_CONSTRAINT:
+      {
+        ParenthesisConstraint parenthesisConstraint = (ParenthesisConstraint)theEObject;
+        T result = caseParenthesisConstraint(parenthesisConstraint);
+        if (result == null) result = caseBasicConstraint(parenthesisConstraint);
+        if (result == null) result = caseConstraintExpression(parenthesisConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArchitecturePackage.OPERAND:
       {
         Operand operand = (Operand)theEObject;
         T result = caseOperand(operand);
+        if (result == null) result = caseBasicConstraint(operand);
         if (result == null) result = caseConstraintExpression(operand);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -189,6 +217,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         Typeof typeof = (Typeof)theEObject;
         T result = caseTypeof(typeof);
         if (result == null) result = caseOperand(typeof);
+        if (result == null) result = caseBasicConstraint(typeof);
         if (result == null) result = caseConstraintExpression(typeof);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -219,6 +248,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         Literal literal = (Literal)theEObject;
         T result = caseLiteral(literal);
         if (result == null) result = caseOperand(literal);
+        if (result == null) result = caseBasicConstraint(literal);
         if (result == null) result = caseConstraintExpression(literal);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -229,6 +259,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         T result = caseArrayLiteral(arrayLiteral);
         if (result == null) result = caseLiteral(arrayLiteral);
         if (result == null) result = caseOperand(arrayLiteral);
+        if (result == null) result = caseBasicConstraint(arrayLiteral);
         if (result == null) result = caseConstraintExpression(arrayLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -239,6 +270,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         T result = caseStringLiteral(stringLiteral);
         if (result == null) result = caseLiteral(stringLiteral);
         if (result == null) result = caseOperand(stringLiteral);
+        if (result == null) result = caseBasicConstraint(stringLiteral);
         if (result == null) result = caseConstraintExpression(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -249,6 +281,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         T result = caseIntLiteral(intLiteral);
         if (result == null) result = caseLiteral(intLiteral);
         if (result == null) result = caseOperand(intLiteral);
+        if (result == null) result = caseBasicConstraint(intLiteral);
         if (result == null) result = caseConstraintExpression(intLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -259,6 +292,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         T result = caseFloatLiteral(floatLiteral);
         if (result == null) result = caseLiteral(floatLiteral);
         if (result == null) result = caseOperand(floatLiteral);
+        if (result == null) result = caseBasicConstraint(floatLiteral);
         if (result == null) result = caseConstraintExpression(floatLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -269,6 +303,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         T result = caseBooleanLiteral(booleanLiteral);
         if (result == null) result = caseLiteral(booleanLiteral);
         if (result == null) result = caseOperand(booleanLiteral);
+        if (result == null) result = caseBasicConstraint(booleanLiteral);
         if (result == null) result = caseConstraintExpression(booleanLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -511,6 +546,54 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConstraintExpression(ConstraintExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Basic Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Basic Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBasicConstraint(BasicConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Negation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Negation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNegation(Negation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parenthesis Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parenthesis Constraint</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParenthesisConstraint(ParenthesisConstraint object)
   {
     return null;
   }

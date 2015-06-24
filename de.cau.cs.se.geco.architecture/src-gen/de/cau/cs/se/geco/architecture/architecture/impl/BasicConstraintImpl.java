@@ -3,27 +3,27 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.Operand;
+import de.cau.cs.se.geco.architecture.architecture.BasicConstraint;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Operand</b></em>'.
+ * An implementation of the model object '<em><b>Basic Constraint</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class OperandImpl extends BasicConstraintImpl implements Operand
+public class BasicConstraintImpl extends ConstraintExpressionImpl implements BasicConstraint
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected OperandImpl()
+  protected BasicConstraintImpl()
   {
     super();
   }
@@ -36,7 +36,7 @@ public class OperandImpl extends BasicConstraintImpl implements Operand
   @Override
   protected EClass eStaticClass()
   {
-    return ArchitecturePackage.Literals.OPERAND;
+    return ArchitecturePackage.Literals.BASIC_CONSTRAINT;
   }
 
-} //OperandImpl
+} //BasicConstraintImpl

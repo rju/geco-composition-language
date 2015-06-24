@@ -57,7 +57,7 @@ SourceModelNodeSelector:
 ;
 
 TargetModelNodeType: {TargetModelNodeType}
-	(reference = [Metamodel|ID])? (multiply?='*')?
+	(reference = [Metamodel|ID])?
 ;
 
 ModelNodeType:
@@ -76,13 +76,18 @@ CompareExpression returns ConstraintExpression:
 	BasicConstraint (=>({ConstraintExpression.left=current} operator=Comparator) right=BasicConstraint)?
 ;
 
-BasicConstraint returns ConstraintExpression:
+BasicConstraint:
 	ParenthesisConstraint |
-	Operand
+	Operand |
+	Negation
 ;
 
-ParenthesisConstraint returns ConstraintExpression:
-	'(' constraint=ConstraintExpression ')'
+Negation:
+	'!' constraint = ConstraintExpression
+;
+
+ParenthesisConstraint:
+	'(' constraint = ConstraintExpression ')'
 ;
 
 Operand:

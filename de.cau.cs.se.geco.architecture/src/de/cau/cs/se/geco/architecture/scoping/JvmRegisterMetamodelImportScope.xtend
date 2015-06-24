@@ -1,29 +1,27 @@
 package de.cau.cs.se.geco.architecture.scoping
 
-import java.util.HashMap
-import java.util.Map
+import java.util.ArrayList
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmType
-import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.resource.EObjectDescription
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
-import org.eclipse.emf.ecore.resource.ResourceSet
-import java.util.ArrayList
-import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 
 class JvmRegisterMetamodelImportScope implements IScope {
-			
-	IJvmTypeProvider typeProvider
 	
 	String packageName
+	
+	IJvmTypeProvider typeProvider
 	
 	new(JvmType type, ResourceSet resourceSet, IJvmTypeProvider.Factory typeProviderFactory) {
 		this.packageName = switch (type) {
 			JvmDeclaredType: type.packageName
 			default: "nop"
-		} 
+		} 		
 		this.typeProvider = typeProviderFactory.findOrCreateTypeProvider(resourceSet)
 	}
 	
@@ -33,7 +31,9 @@ class JvmRegisterMetamodelImportScope implements IScope {
 	
 	override getElements(QualifiedName name) {
 		val result = new ArrayList<IEObjectDescription>
-		result.add(EObjectDescription.create(name.segments.last, typeProvider.findTypeByName(packageName + "." + name.toString)))
+		val type = typeProvider.findTypeByName(packageName + "." + name.toString)
+		if (type != null)
+			result.add(EObjectDescription.create(name.segments.last, type))
 		return result
 	}
 	

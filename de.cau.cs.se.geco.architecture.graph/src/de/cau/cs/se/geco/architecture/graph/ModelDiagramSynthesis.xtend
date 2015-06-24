@@ -29,6 +29,7 @@ import java.util.HashMap
 import de.cau.cs.se.geco.architecture.architecture.Connection
 import org.eclipse.xtext.common.types.JvmTypeParameterDeclarator
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.TraceModel
 
 class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     
@@ -47,13 +48,8 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     val Map<Weaver,KNode> targetWeaverModelNodes = new HashMap<Weaver,KNode>()
     val Map<Generator,KNode> targetGeneratorModelNodes = new HashMap<Generator,KNode>()
     val Map<Metamodel,KNode> metamodelNodes = new HashMap<Metamodel,KNode>()
-    
-    /*
-    		val sourceModelNode = this.metamodelNodes.get(generator.sourceModel.reference)
-		createModelEdgeNoArrow(sourceModelNode, generatorNode)
-		createModelEdge(generatorNode, targetModelNode)
-    */
-    
+	val Map<TraceModel,KNode> traceModelNodes = new HashMap<TraceModel,KNode>(9)
+       
     override KNode transform(Model model) {
         val root = model.createNode().associateWith(model);
         
@@ -71,6 +67,12 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
             model.connections.filter(Generator).forEach[generator | 
             	val generatorNode = generator.createGenerator
             	generatorNodes.put(generator, generatorNode)
+            	if (generator.writeTraceModel != null) {
+            		val traceModelNode = generator.writeTraceModel.createTraceModel	
+            		traceModelNodes.put(generator.writeTraceModel, traceModelNode)
+            		it.children += traceModelNode
+            	}
+            	
             	it.children += generatorNode
             ]
             model.connections.filter(Weaver).forEach[weaver |
@@ -83,6 +85,14 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
             		val anonymousMetamodelNode = generator.createAnonymousMetamodel
             		targetGeneratorModelNodes.put(generator, anonymousMetamodelNode)
             		generatorNodes.put(generator, generatorNode)
+            		
+            		if (generator.writeTraceModel != null) {
+            			val traceModelNode = generator.writeTraceModel.createTraceModel	
+            			traceModelNodes.put(generator.writeTraceModel, traceModelNode)
+            			createConnectionWithArrow(generatorNode, traceModelNode)            			
+            			it.children += traceModelNode
+            		}
+            		
             		it.children += generatorNode
             		it.children += anonymousMetamodelNode
             	}
@@ -112,6 +122,11 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         			throw new Exception("Broken model.")
         		}
         	}
+        	generator.readTraceModels.forEach[traceModel |
+        		val traceModelNode = traceModelNodes.get(traceModel)
+        		createConnectionWithArrow(traceModelNode, generatorNode)
+        	]
+        	
         	createConnectionNoArrow(sourceModelNode, generatorNode)
         	createConnectionWithArrow(generatorNode, targetModelNode)
         ]
@@ -138,6 +153,22 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         	createConnectionWithArrow(aspectModelNode, weaverNode)
         ]
         return root;
+    }
+    
+    private def KNode createTraceModel(TraceModel traceModel) {
+    	val types = traceModel.nodeSetRelations.map[
+    		'(' + it.sourceNodes.map[it.type.simpleName].join(',') + ":" +
+    		it.targetNodes.map[it.type.simpleName].join(',') + ')'
+    	].join(' ')
+    	traceModel.createNode().associateWith(traceModel) => [
+			it.addRectangle => [
+				it.lineWidth = 2
+				it.setBackgroundGradient("blue".color, "white".color, 0)
+                it.shadow = "black".color
+                it.setGridPlacement(2).from(LEFT, 2, 0, TOP, 2, 0).to(RIGHT, 2, 0, BOTTOM, 2, 0)
+                it.addText(types)
+			]
+		]
     }
 	
 	/**

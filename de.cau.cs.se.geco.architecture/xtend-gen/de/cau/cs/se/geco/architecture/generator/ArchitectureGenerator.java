@@ -3,14 +3,25 @@
  */
 package de.cau.cs.se.geco.architecture.generator;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterators;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
+import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
+import java.io.File;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmType;
@@ -18,7 +29,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -28,6 +41,24 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 @SuppressWarnings("all")
 public class ArchitectureGenerator implements IGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+    URI _uRI = resource.getURI();
+    URI _trimFileExtension = _uRI.trimFileExtension();
+    final String fileName = _trimFileExtension.lastSegment();
+    StringConcatenation _builder = new StringConcatenation();
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterator<Model> _filter = Iterators.<Model>filter(_allContents, Model.class);
+    Model _last = IteratorExtensions.<Model>last(_filter);
+    String _name = _last.getName();
+    String _replace = _name.replace(".", File.separator);
+    _builder.append(_replace, "");
+    _builder.append(File.separator, "");
+    _builder.append(fileName, "");
+    _builder.append(".xtend");
+    TreeIterator<EObject> _allContents_1 = resource.getAllContents();
+    Iterator<Model> _filter_1 = Iterators.<Model>filter(_allContents_1, Model.class);
+    Model _last_1 = IteratorExtensions.<Model>last(_filter_1);
+    CharSequence _createGenerator = this.createGenerator(_last_1, fileName);
+    fsa.generateFile(_builder.toString(), _createGenerator);
   }
   
   private CharSequence createGenerator(final Model model, final String className) {
@@ -55,13 +86,13 @@ public class ArchitectureGenerator implements IGenerator {
     _builder.append(_join, "");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    EList<Connection> _connections = model.getConnections();
-    final Function1<Connection, CharSequence> _function_1 = new Function1<Connection, CharSequence>() {
-      public CharSequence apply(final Connection it) {
-        return ArchitectureGenerator.this.createField(it);
+    EList<RegisteredPackage> _registeredPackages = model.getRegisteredPackages();
+    final Function1<RegisteredPackage, CharSequence> _function_1 = new Function1<RegisteredPackage, CharSequence>() {
+      public CharSequence apply(final RegisteredPackage it) {
+        return ArchitectureGenerator.this.createRegisterImport(it);
       }
     };
-    List<CharSequence> _map_1 = ListExtensions.<Connection, CharSequence>map(_connections, _function_1);
+    List<CharSequence> _map_1 = ListExtensions.<RegisteredPackage, CharSequence>map(_registeredPackages, _function_1);
     String _join_1 = IterableExtensions.join(_map_1);
     _builder.append(_join_1, "");
     _builder.newLineIfNotEmpty();
@@ -72,6 +103,18 @@ public class ArchitectureGenerator implements IGenerator {
     _builder.append(".");
     _builder.append(className, "");
     _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("\t");
+    EList<Connection> _connections = model.getConnections();
+    final Function1<Connection, CharSequence> _function_2 = new Function1<Connection, CharSequence>() {
+      public CharSequence apply(final Connection it) {
+        return ArchitectureGenerator.this.createField(it);
+      }
+    };
+    List<CharSequence> _map_2 = ListExtensions.<Connection, CharSequence>map(_connections, _function_2);
+    String _join_2 = IterableExtensions.join(_map_2);
+    _builder.append(_join_2, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.newLine();
@@ -90,7 +133,16 @@ public class ArchitectureGenerator implements IGenerator {
     _builder.append("def void execute(Collection<EObject> models) {");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.newLine();
+    EList<Connection> _connections_1 = model.getConnections();
+    final Function1<Connection, CharSequence> _function_3 = new Function1<Connection, CharSequence>() {
+      public CharSequence apply(final Connection it) {
+        return ArchitectureGenerator.this.createExecution(it);
+      }
+    };
+    List<CharSequence> _map_3 = ListExtensions.<Connection, CharSequence>map(_connections_1, _function_3);
+    String _join_3 = IterableExtensions.join(_map_3);
+    _builder.append(_join_3, "\t\t");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
     _builder.newLine();
@@ -99,30 +151,77 @@ public class ArchitectureGenerator implements IGenerator {
     return _builder;
   }
   
-  private CharSequence _createField(final Weaver connection) {
-    return null;
-  }
-  
-  private CharSequence _createField(final Generator connection) {
-    return null;
+  private CharSequence createRegisterImport(final RegisteredPackage node) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import ");
+    JvmType _importedNamespace = node.getImportedNamespace();
+    String _qualifiedName = _importedNamespace.getQualifiedName();
+    _builder.append(_qualifiedName, "");
+    _builder.newLineIfNotEmpty();
+    return _builder;
   }
   
   private CharSequence createImport(final Import node) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
     JvmType _importedNamespace = node.getImportedNamespace();
-    _builder.append(_importedNamespace, "");
+    String _qualifiedName = _importedNamespace.getQualifiedName();
+    _builder.append(_qualifiedName, "");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   private CharSequence createField(final Connection connection) {
-    if (connection instanceof Generator) {
-      return _createField((Generator)connection);
-    } else if (connection instanceof Weaver) {
-      return _createField((Weaver)connection);
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("val ");
+    JvmType _reference = connection.getReference();
+    String _simpleName = _reference.getSimpleName();
+    String _firstLower = StringExtensions.toFirstLower(_simpleName);
+    _builder.append(_firstLower, "");
+    _builder.append(" = new ");
+    JvmType _reference_1 = connection.getReference();
+    String _simpleName_1 = _reference_1.getSimpleName();
+    _builder.append(_simpleName_1, "");
+    _builder.append("()");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  private CharSequence _createExecution(final Generator generator) {
+    CharSequence _xifexpression = null;
+    SourceModelNodeSelector _sourceModel = generator.getSourceModel();
+    Metamodel _reference = _sourceModel.getReference();
+    boolean _equals = Objects.equal(_reference, null);
+    if (_equals) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("val ");
+      TargetModelNodeType _targetModel = generator.getTargetModel();
+      Metamodel _reference_1 = _targetModel.getReference();
+      String _name = _reference_1.getName();
+      _builder.append(_name, "");
+      _builder.append(" = ");
+      JvmType _reference_2 = generator.getReference();
+      String _simpleName = _reference_2.getSimpleName();
+      String _firstLower = StringExtensions.toFirstLower(_simpleName);
+      _builder.append(_firstLower, "");
+      _builder.append(".generate(null)");
+      _xifexpression = _builder;
+    }
+    return _xifexpression;
+  }
+  
+  private CharSequence _createExecution(final Weaver weaver) {
+    return null;
+  }
+  
+  private CharSequence createExecution(final Connection generator) {
+    if (generator instanceof Generator) {
+      return _createExecution((Generator)generator);
+    } else if (generator instanceof Weaver) {
+      return _createExecution((Weaver)generator);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(connection).toString());
+        Arrays.<Object>asList(generator).toString());
     }
   }
 }

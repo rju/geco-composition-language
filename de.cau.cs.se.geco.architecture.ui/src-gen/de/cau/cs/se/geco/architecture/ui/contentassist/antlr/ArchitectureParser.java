@@ -78,6 +78,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCompareExpressionAccess().getGroup_1(), "rule__CompareExpression__Group_1__0");
 					put(grammarAccess.getCompareExpressionAccess().getGroup_1_0(), "rule__CompareExpression__Group_1_0__0");
 					put(grammarAccess.getCompareExpressionAccess().getGroup_1_0_0(), "rule__CompareExpression__Group_1_0_0__0");
+					put(grammarAccess.getNegationAccess().getGroup(), "rule__Negation__Group__0");
 					put(grammarAccess.getParenthesisConstraintAccess().getGroup(), "rule__ParenthesisConstraint__Group__0");
 					put(grammarAccess.getTypeofAccess().getGroup(), "rule__Typeof__Group__0");
 					put(grammarAccess.getTraceModelAccess().getGroup(), "rule__TraceModel__Group__0");
@@ -118,7 +119,6 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getConstraintAssignment_0_1_1(), "rule__SourceModelNodeSelector__ConstraintAssignment_0_1_1");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getPropertyAssignment_0_2_1(), "rule__SourceModelNodeSelector__PropertyAssignment_0_2_1");
 					put(grammarAccess.getTargetModelNodeTypeAccess().getReferenceAssignment_1(), "rule__TargetModelNodeType__ReferenceAssignment_1");
-					put(grammarAccess.getTargetModelNodeTypeAccess().getMultiplyAssignment_2(), "rule__TargetModelNodeType__MultiplyAssignment_2");
 					put(grammarAccess.getModelNodeTypeAccess().getTargetAssignment_0(), "rule__ModelNodeType__TargetAssignment_0");
 					put(grammarAccess.getModelNodeTypeAccess().getPropertyAssignment_1_1(), "rule__ModelNodeType__PropertyAssignment_1_1");
 					put(grammarAccess.getNodePropertyAccess().getPropertyAssignment_0(), "rule__NodeProperty__PropertyAssignment_0");
@@ -128,6 +128,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstraintExpressionAccess().getRightAssignment_1_1(), "rule__ConstraintExpression__RightAssignment_1_1");
 					put(grammarAccess.getCompareExpressionAccess().getOperatorAssignment_1_0_0_1(), "rule__CompareExpression__OperatorAssignment_1_0_0_1");
 					put(grammarAccess.getCompareExpressionAccess().getRightAssignment_1_1(), "rule__CompareExpression__RightAssignment_1_1");
+					put(grammarAccess.getNegationAccess().getConstraintAssignment_1(), "rule__Negation__ConstraintAssignment_1");
 					put(grammarAccess.getParenthesisConstraintAccess().getConstraintAssignment_1(), "rule__ParenthesisConstraint__ConstraintAssignment_1");
 					put(grammarAccess.getTypeofAccess().getTypeAssignment_1(), "rule__Typeof__TypeAssignment_1");
 					put(grammarAccess.getTraceModelAccess().getNameAssignment_0(), "rule__TraceModel__NameAssignment_0");

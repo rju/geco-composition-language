@@ -3,6 +3,7 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
+import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -23,6 +24,7 @@ import org.eclipse.xtext.common.types.JvmMember;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl#getConstraint <em>Constraint</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl#getSubProperty <em>Sub Property</em>}</li>
  * </ul>
  * </p>
@@ -40,6 +42,16 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
    * @ordered
    */
   protected JvmMember property;
+
+  /**
+   * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstraint()
+   * @generated
+   * @ordered
+   */
+  protected ConstraintExpression constraint;
 
   /**
    * The cached value of the '{@link #getSubProperty() <em>Sub Property</em>}' containment reference.
@@ -120,6 +132,54 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
    * <!-- end-user-doc -->
    * @generated
    */
+  public ConstraintExpression getConstraint()
+  {
+    return constraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetConstraint(ConstraintExpression newConstraint, NotificationChain msgs)
+  {
+    ConstraintExpression oldConstraint = constraint;
+    constraint = newConstraint;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.NODE_PROPERTY__CONSTRAINT, oldConstraint, newConstraint);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setConstraint(ConstraintExpression newConstraint)
+  {
+    if (newConstraint != constraint)
+    {
+      NotificationChain msgs = null;
+      if (constraint != null)
+        msgs = ((InternalEObject)constraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.NODE_PROPERTY__CONSTRAINT, null, msgs);
+      if (newConstraint != null)
+        msgs = ((InternalEObject)newConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.NODE_PROPERTY__CONSTRAINT, null, msgs);
+      msgs = basicSetConstraint(newConstraint, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.NODE_PROPERTY__CONSTRAINT, newConstraint, newConstraint));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public NodeProperty getSubProperty()
   {
     return subProperty;
@@ -173,6 +233,8 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
   {
     switch (featureID)
     {
+      case ArchitecturePackage.NODE_PROPERTY__CONSTRAINT:
+        return basicSetConstraint(null, msgs);
       case ArchitecturePackage.NODE_PROPERTY__SUB_PROPERTY:
         return basicSetSubProperty(null, msgs);
     }
@@ -192,6 +254,8 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
       case ArchitecturePackage.NODE_PROPERTY__PROPERTY:
         if (resolve) return getProperty();
         return basicGetProperty();
+      case ArchitecturePackage.NODE_PROPERTY__CONSTRAINT:
+        return getConstraint();
       case ArchitecturePackage.NODE_PROPERTY__SUB_PROPERTY:
         return getSubProperty();
     }
@@ -210,6 +274,9 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
     {
       case ArchitecturePackage.NODE_PROPERTY__PROPERTY:
         setProperty((JvmMember)newValue);
+        return;
+      case ArchitecturePackage.NODE_PROPERTY__CONSTRAINT:
+        setConstraint((ConstraintExpression)newValue);
         return;
       case ArchitecturePackage.NODE_PROPERTY__SUB_PROPERTY:
         setSubProperty((NodeProperty)newValue);
@@ -231,6 +298,9 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
       case ArchitecturePackage.NODE_PROPERTY__PROPERTY:
         setProperty((JvmMember)null);
         return;
+      case ArchitecturePackage.NODE_PROPERTY__CONSTRAINT:
+        setConstraint((ConstraintExpression)null);
+        return;
       case ArchitecturePackage.NODE_PROPERTY__SUB_PROPERTY:
         setSubProperty((NodeProperty)null);
         return;
@@ -250,6 +320,8 @@ public class NodePropertyImpl extends OperandImpl implements NodeProperty
     {
       case ArchitecturePackage.NODE_PROPERTY__PROPERTY:
         return property != null;
+      case ArchitecturePackage.NODE_PROPERTY__CONSTRAINT:
+        return constraint != null;
       case ArchitecturePackage.NODE_PROPERTY__SUB_PROPERTY:
         return subProperty != null;
     }

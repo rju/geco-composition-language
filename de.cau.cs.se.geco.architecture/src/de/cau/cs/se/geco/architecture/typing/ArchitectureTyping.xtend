@@ -14,6 +14,12 @@ import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.architecture.Model
 import java.util.Iterator
 import de.cau.cs.se.geco.architecture.architecture.Connection
+import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+import de.cau.cs.se.geco.architecture.architecture.Typeof
+import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
+import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint
+import de.cau.cs.se.geco.architecture.architecture.BasicConstraint
+import de.cau.cs.se.geco.architecture.architecture.Negation
 
 class ArchitectureTyping {
 	
@@ -49,6 +55,45 @@ class ArchitectureTyping {
 	
 	def static JvmType resolveType(Metamodel metamodel) {
 		(metamodel.eContainer as MetamodelSequence).type.resolveType
+	}
+	
+	/**
+	 * Resolve type of a source model node selector.
+	 */
+	def static JvmType resolveType(SourceModelNodeSelector selector) {
+		val baseType = selector.reference.resolveType
+		val type = selector.constraint.findTypeOf
+		if (type != null)
+			type
+		else
+			baseType
+	}
+	
+	private def dispatch static JvmType findTypeOf(ConstraintExpression expression) {
+		val result = expression.left.findTypeOf
+		if (result == null)
+			if (expression.right != null)
+				return expression.right.findTypeOf
+			else
+				return null
+		else
+			return result
+	}
+	
+	private def dispatch static JvmType findTypeOf(ParenthesisConstraint expression) {
+		expression.constraint.findTypeOf
+	}
+	
+	private def dispatch static JvmType findTypeOf(Typeof expression) {
+		expression.type
+	}
+	
+	private def dispatch static JvmType findTypeOf(Negation expression) {
+		expression.constraint.findTypeOf
+	}
+	
+	private def dispatch static JvmType findTypeOf(BasicConstraint expression) {
+		null
 	}
 	
 	/**

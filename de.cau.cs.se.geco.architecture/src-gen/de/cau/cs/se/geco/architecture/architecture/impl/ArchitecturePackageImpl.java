@@ -6,6 +6,7 @@ import de.cau.cs.se.geco.architecture.architecture.ArchitectureFactory;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
+import de.cau.cs.se.geco.architecture.architecture.BasicConstraint;
 import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Comparator;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
@@ -20,10 +21,12 @@ import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.Operand;
+import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
@@ -146,6 +149,27 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * @generated
    */
   private EClass constraintExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass basicConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass negationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parenthesisConstraintEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -649,16 +673,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTargetModelNodeType_Multiply()
-  {
-    return (EAttribute)targetModelNodeTypeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getModelNodeType()
   {
     return modelNodeTypeEClass;
@@ -709,9 +723,19 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getNodeProperty_SubProperty()
+  public EReference getNodeProperty_Constraint()
   {
     return (EReference)nodePropertyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNodeProperty_SubProperty()
+  {
+    return (EReference)nodePropertyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -759,9 +783,49 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConstraintExpression_Constraint()
+  public EClass getBasicConstraint()
   {
-    return (EReference)constraintExpressionEClass.getEStructuralFeatures().get(3);
+    return basicConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNegation()
+  {
+    return negationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getNegation_Constraint()
+  {
+    return (EReference)negationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParenthesisConstraint()
+  {
+    return parenthesisConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParenthesisConstraint_Constraint()
+  {
+    return (EReference)parenthesisConstraintEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1168,7 +1232,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     targetModelNodeTypeEClass = createEClass(TARGET_MODEL_NODE_TYPE);
     createEReference(targetModelNodeTypeEClass, TARGET_MODEL_NODE_TYPE__REFERENCE);
-    createEAttribute(targetModelNodeTypeEClass, TARGET_MODEL_NODE_TYPE__MULTIPLY);
 
     modelNodeTypeEClass = createEClass(MODEL_NODE_TYPE);
     createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__TARGET);
@@ -1176,13 +1239,21 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     nodePropertyEClass = createEClass(NODE_PROPERTY);
     createEReference(nodePropertyEClass, NODE_PROPERTY__PROPERTY);
+    createEReference(nodePropertyEClass, NODE_PROPERTY__CONSTRAINT);
     createEReference(nodePropertyEClass, NODE_PROPERTY__SUB_PROPERTY);
 
     constraintExpressionEClass = createEClass(CONSTRAINT_EXPRESSION);
     createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__LEFT);
     createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__OPERATOR);
     createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__RIGHT);
-    createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__CONSTRAINT);
+
+    basicConstraintEClass = createEClass(BASIC_CONSTRAINT);
+
+    negationEClass = createEClass(NEGATION);
+    createEReference(negationEClass, NEGATION__CONSTRAINT);
+
+    parenthesisConstraintEClass = createEClass(PARENTHESIS_CONSTRAINT);
+    createEReference(parenthesisConstraintEClass, PARENTHESIS_CONSTRAINT__CONSTRAINT);
 
     operandEClass = createEClass(OPERAND);
 
@@ -1268,7 +1339,10 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     generatorEClass.getESuperTypes().add(this.getAspectModel());
     targetModelNodeTypeEClass.getESuperTypes().add(this.getAspectModel());
     nodePropertyEClass.getESuperTypes().add(this.getOperand());
-    operandEClass.getESuperTypes().add(this.getConstraintExpression());
+    basicConstraintEClass.getESuperTypes().add(this.getConstraintExpression());
+    negationEClass.getESuperTypes().add(this.getBasicConstraint());
+    parenthesisConstraintEClass.getESuperTypes().add(this.getBasicConstraint());
+    operandEClass.getESuperTypes().add(this.getBasicConstraint());
     typeofEClass.getESuperTypes().add(this.getOperand());
     literalEClass.getESuperTypes().add(this.getOperand());
     arrayLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -1322,7 +1396,6 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(targetModelNodeTypeEClass, TargetModelNodeType.class, "TargetModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTargetModelNodeType_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getTargetModelNodeType_Multiply(), ecorePackage.getEBoolean(), "multiply", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modelNodeTypeEClass, ModelNodeType.class, "ModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModelNodeType_Target(), this.getRegisteredPackage(), null, "target", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1330,13 +1403,21 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(nodePropertyEClass, NodeProperty.class, "NodeProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNodeProperty_Property(), theTypesPackage.getJvmMember(), null, "property", null, 0, 1, NodeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNodeProperty_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, NodeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNodeProperty_SubProperty(), this.getNodeProperty(), null, "subProperty", null, 0, 1, NodeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constraintExpressionEClass, ConstraintExpression.class, "ConstraintExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConstraintExpression_Left(), this.getConstraintExpression(), null, "left", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstraintExpression_Operator(), ecorePackage.getEObject(), null, "operator", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstraintExpression_Right(), this.getConstraintExpression(), null, "right", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraintExpression_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(basicConstraintEClass, BasicConstraint.class, "BasicConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(negationEClass, Negation.class, "Negation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNegation_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, Negation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parenthesisConstraintEClass, ParenthesisConstraint.class, "ParenthesisConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParenthesisConstraint_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, ParenthesisConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(operandEClass, Operand.class, "Operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

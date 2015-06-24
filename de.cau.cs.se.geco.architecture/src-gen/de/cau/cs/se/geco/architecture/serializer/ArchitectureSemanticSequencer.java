@@ -16,9 +16,11 @@ import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
+import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
@@ -80,19 +82,13 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 				}
 				else break;
 			case ArchitecturePackage.CONSTRAINT_EXPRESSION:
-				if(context == grammarAccess.getConstraintExpressionRule()) {
-					sequence_CompareExpression_ConstraintExpression_ParenthesisConstraint(context, (ConstraintExpression) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getCompareExpressionRule() ||
+				if(context == grammarAccess.getCompareExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0()) {
-					sequence_CompareExpression_ParenthesisConstraint(context, (ConstraintExpression) semanticObject); 
+					sequence_CompareExpression(context, (ConstraintExpression) semanticObject); 
 					return; 
 				}
-				else if(context == grammarAccess.getBasicConstraintRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
-				   context == grammarAccess.getParenthesisConstraintRule()) {
-					sequence_ParenthesisConstraint(context, (ConstraintExpression) semanticObject); 
+				else if(context == grammarAccess.getConstraintExpressionRule()) {
+					sequence_CompareExpression_ConstraintExpression(context, (ConstraintExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -166,6 +162,17 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 					return; 
 				}
 				else break;
+			case ArchitecturePackage.NEGATION:
+				if(context == grammarAccess.getBasicConstraintRule() ||
+				   context == grammarAccess.getCompareExpressionRule() ||
+				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getConstraintExpressionRule() ||
+				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getNegationRule()) {
+					sequence_Negation(context, (Negation) semanticObject); 
+					return; 
+				}
+				else break;
 			case ArchitecturePackage.NODE_PROPERTY:
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
@@ -187,6 +194,17 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.NODE_TYPE:
 				if(context == grammarAccess.getNodeTypeRule()) {
 					sequence_NodeType(context, (NodeType) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchitecturePackage.PARENTHESIS_CONSTRAINT:
+				if(context == grammarAccess.getBasicConstraintRule() ||
+				   context == grammarAccess.getCompareExpressionRule() ||
+				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getConstraintExpressionRule() ||
+				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getParenthesisConstraintRule()) {
+					sequence_ParenthesisConstraint(context, (ParenthesisConstraint) semanticObject); 
 					return; 
 				}
 				else break;
@@ -288,22 +306,34 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         (left=CompareExpression_ConstraintExpression_1_0_0_0 operator=Comparator right=BasicConstraint) | 
-	 *         constraint=ConstraintExpression | 
-	 *         (left=ConstraintExpression_ConstraintExpression_1_0_0_0 operator=LogicOperator right=ConstraintExpression)
-	 *     )
+	 *     (left=CompareExpression_ConstraintExpression_1_0_0_0 operator=Comparator right=BasicConstraint)
 	 */
-	protected void sequence_CompareExpression_ConstraintExpression_ParenthesisConstraint(EObject context, ConstraintExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_CompareExpression(EObject context, ConstraintExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.CONSTRAINT_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.CONSTRAINT_EXPRESSION__LEFT));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.CONSTRAINT_EXPRESSION__OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.CONSTRAINT_EXPRESSION__OPERATOR));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.CONSTRAINT_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.CONSTRAINT_EXPRESSION__RIGHT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getCompareExpressionAccess().getOperatorComparatorParserRuleCall_1_0_0_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getCompareExpressionAccess().getRightBasicConstraintParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     ((left=CompareExpression_ConstraintExpression_1_0_0_0 operator=Comparator right=BasicConstraint) | constraint=ConstraintExpression)
+	 *     (
+	 *         (left=ConstraintExpression_ConstraintExpression_1_0_0_0 operator=LogicOperator right=ConstraintExpression) | 
+	 *         (left=CompareExpression_ConstraintExpression_1_0_0_0 operator=Comparator right=BasicConstraint)
+	 *     )
 	 */
-	protected void sequence_CompareExpression_ParenthesisConstraint(EObject context, ConstraintExpression semanticObject) {
+	protected void sequence_CompareExpression_ConstraintExpression(EObject context, ConstraintExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -411,6 +441,15 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
+	 *     constraint=ConstraintExpression
+	 */
+	protected void sequence_Negation(EObject context, Negation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (property=[JvmMember|ID] constraint=ConstraintExpression? subProperty=NodeProperty?)
 	 */
 	protected void sequence_NodeProperty(EObject context, NodeProperty semanticObject) {
@@ -447,7 +486,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 * Constraint:
 	 *     constraint=ConstraintExpression
 	 */
-	protected void sequence_ParenthesisConstraint(EObject context, ConstraintExpression semanticObject) {
+	protected void sequence_ParenthesisConstraint(EObject context, ParenthesisConstraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -481,7 +520,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (reference=[Metamodel|ID]? multiply?='*'?)
+	 *     (reference=[Metamodel|ID]?)
 	 */
 	protected void sequence_TargetModelNodeType(EObject context, TargetModelNodeType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

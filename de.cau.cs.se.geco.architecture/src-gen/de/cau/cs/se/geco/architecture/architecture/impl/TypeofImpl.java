@@ -3,8 +3,7 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.Typeof;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,37 +12,39 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.common.types.JvmType;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Target Model Node Type</b></em>'.
+ * An implementation of the model object '<em><b>Typeof</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl#getReference <em>Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.TypeofImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetModelNodeType
+public class TypeofImpl extends OperandImpl implements Typeof
 {
   /**
-   * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReference()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected Metamodel reference;
+  protected JvmType type;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected TargetModelNodeTypeImpl()
+  protected TypeofImpl()
   {
     super();
   }
@@ -56,7 +57,7 @@ public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetMo
   @Override
   protected EClass eStaticClass()
   {
-    return ArchitecturePackage.Literals.TARGET_MODEL_NODE_TYPE;
+    return ArchitecturePackage.Literals.TYPEOF;
   }
 
   /**
@@ -64,19 +65,19 @@ public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetMo
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel getReference()
+  public JvmType getType()
   {
-    if (reference != null && reference.eIsProxy())
+    if (type != null && type.eIsProxy())
     {
-      InternalEObject oldReference = (InternalEObject)reference;
-      reference = (Metamodel)eResolveProxy(oldReference);
-      if (reference != oldReference)
+      InternalEObject oldType = (InternalEObject)type;
+      type = (JvmType)eResolveProxy(oldType);
+      if (type != oldType)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE, oldReference, reference));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArchitecturePackage.TYPEOF__TYPE, oldType, type));
       }
     }
-    return reference;
+    return type;
   }
 
   /**
@@ -84,9 +85,9 @@ public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetMo
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel basicGetReference()
+  public JvmType basicGetType()
   {
-    return reference;
+    return type;
   }
 
   /**
@@ -94,12 +95,12 @@ public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetMo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReference(Metamodel newReference)
+  public void setType(JvmType newType)
   {
-    Metamodel oldReference = reference;
-    reference = newReference;
+    JvmType oldType = type;
+    type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE, oldReference, reference));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.TYPEOF__TYPE, oldType, type));
   }
 
   /**
@@ -112,9 +113,9 @@ public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetMo
   {
     switch (featureID)
     {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
-        if (resolve) return getReference();
-        return basicGetReference();
+      case ArchitecturePackage.TYPEOF__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -129,8 +130,8 @@ public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetMo
   {
     switch (featureID)
     {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
-        setReference((Metamodel)newValue);
+      case ArchitecturePackage.TYPEOF__TYPE:
+        setType((JvmType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -146,8 +147,8 @@ public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetMo
   {
     switch (featureID)
     {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
-        setReference((Metamodel)null);
+      case ArchitecturePackage.TYPEOF__TYPE:
+        setType((JvmType)null);
         return;
     }
     super.eUnset(featureID);
@@ -163,10 +164,10 @@ public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetMo
   {
     switch (featureID)
     {
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
-        return reference != null;
+      case ArchitecturePackage.TYPEOF__TYPE:
+        return type != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //TargetModelNodeTypeImpl
+} //TypeofImpl

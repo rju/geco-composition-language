@@ -21,7 +21,7 @@ import org.eclipse.xtext.scoping.IScopeProvider
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.access.IJvmTypeProvider
+import org.eclipse.xtext.common.types.JvmOperation
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
 import org.eclipse.xtext.common.types.JvmDeclaredType
@@ -31,12 +31,14 @@ import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
 import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
 import de.cau.cs.se.geco.architecture.architecture.Import
+import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 
 class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelegatingScopeProvider {
 	
 	@Inject
-	private IJvmTypeProvider.Factory typeProviderFactory
-
+	IJvmTypeProvider.Factory typeProviderFactory
+	
 	@Inject @Named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)
 	IScopeProvider delegate
 
@@ -53,16 +55,21 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			NodeType: createNodeTypeScope(context, reference)
 			Typeof: createTypeofScope(context, reference)
 			// delegation scope
-			Import, RegisteredPackage: delegate.getScope(context, reference)
+			Generator case reference.name.equals("readTraceModels"),
+			Import,
+			ModelNodeType,
+			RegisteredPackage,
+			SourceModelNodeSelector,
+			TargetModelNodeType: delegate.getScope(context, reference)
 			// default scope, prints out node type and reference. Should not be called.
 			// Development and debugging helper
 			default: {
 				System.out.println(">> " + context + " " + reference)
-				delegate.getScope(context, reference)
+				throw new UnsupportedOperationException("No scope available for " + context.class)
 			}
 		}
 	}
-	
+		
 	override getDelegate() {
 		return delegate
 	}
@@ -73,11 +80,12 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 	private def IScope createPropertyScope(EObject container, EReference reference) {
 		switch(container) {
 			ModelNodeType: container.target.importedNamespace.createJvmDeclaredTypeScope(reference)
-			NodeProperty: IScope.NULLSCOPE
+			NodeProperty: (container.property as JvmOperation).returnType.type.createJvmDeclaredTypeScope(reference)
+			SourceModelNodeSelector: container.resolveType.createJvmDeclaredTypeScope(reference)
 			default: IScope.NULLSCOPE
 		}
 	}
-	
+		
 	/**
 	 * Create scope of JvmDeclareType for its member (getters for features).
 	 */
@@ -114,19 +122,23 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 		if ((nodeType.eContainer as NodeSetRelation).sourceNodes.exists[it.equals(nodeType)]) {
 			if (generator.sourceModel.reference != null) {
 				/** source node type */
+				
 				return new JvmRegisterMetamodelImportScope(generator.sourceModel.reference.resolveType, 
 					nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
 				)
-			} else 
+			} else /** this should not happen in a valid model. Provide solid fallback for incomplete model. */
 				return IScope.NULLSCOPE
 		} else {
 			if (generator.targetModel.reference == null) {
 				if (generator.eContainer instanceof Weaver) {
-					return new JvmRegisterMetamodelImportScope((generator.eContainer as Weaver).
-							resolveWeaverSourceModel.resolveType,
-						nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
-					)
-				} else
+					val sourceModel = (generator.eContainer as Weaver).resolveWeaverSourceModel
+					if (sourceModel != null)
+						return new JvmRegisterMetamodelImportScope(sourceModel.resolveType,
+							nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
+						)
+					else
+						return IScope.NULLSCOPE
+				} else /** this should not happen in a valid model. Provide solid fallback for incomplete model. */
 					IScope.NULLSCOPE
 			} else {
 				return new JvmRegisterMetamodelImportScope(generator.targetModel.reference.resolveType, 
@@ -185,8 +197,17 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 		val matchingType = typeProviderFactory.createTypeProvider(object.eResource.resourceSet).
 			findTypeByName(typeName)
 		switch(type) {
-			JvmGenericType: type.superTypes.exists[it.type.equals(matchingType)]
+			JvmGenericType: type.isSubtypeOf(matchingType)
 			default: false
 		}
 	}
+	
+	def Boolean isSubtypeOf(JvmGenericType type, JvmType matchingType) {
+		if (type.superTypes.exists[it.type.equals(matchingType)]) {
+			return true
+		} else {
+			type.superTypes.exists[(it.type as JvmGenericType).isSubtypeOf(matchingType)]		
+		}
+	}
+	
 }

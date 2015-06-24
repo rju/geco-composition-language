@@ -1,5 +1,6 @@
 package de.cau.cs.se.geco.architecture.scoping;
 
+import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
@@ -15,9 +16,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class JvmRegisterMetamodelImportScope implements IScope {
-  private IJvmTypeProvider typeProvider;
-  
   private String packageName;
+  
+  private IJvmTypeProvider typeProvider;
   
   public JvmRegisterMetamodelImportScope(final JvmType type, final ResourceSet resourceSet, final IJvmTypeProvider.Factory typeProviderFactory) {
     String _switchResult = null;
@@ -42,13 +43,16 @@ public class JvmRegisterMetamodelImportScope implements IScope {
   
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
     final ArrayList<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
-    List<String> _segments = name.getSegments();
-    String _last = IterableExtensions.<String>last(_segments);
     String _string = name.toString();
     String _plus = ((this.packageName + ".") + _string);
-    JvmType _findTypeByName = this.typeProvider.findTypeByName(_plus);
-    IEObjectDescription _create = EObjectDescription.create(_last, _findTypeByName);
-    result.add(_create);
+    final JvmType type = this.typeProvider.findTypeByName(_plus);
+    boolean _notEquals = (!Objects.equal(type, null));
+    if (_notEquals) {
+      List<String> _segments = name.getSegments();
+      String _last = IterableExtensions.<String>last(_segments);
+      IEObjectDescription _create = EObjectDescription.create(_last, type);
+      result.add(_create);
+    }
     return result;
   }
   

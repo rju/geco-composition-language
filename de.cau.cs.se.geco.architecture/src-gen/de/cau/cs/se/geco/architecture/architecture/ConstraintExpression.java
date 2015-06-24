@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getLeft <em>Left</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getOperator <em>Operator</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getRight <em>Right</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getConstraint <em>Constraint</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,31 +101,5 @@ public interface ConstraintExpression extends EObject
    * @generated
    */
   void setRight(ConstraintExpression value);
-
-  /**
-   * Returns the value of the '<em><b>Constraint</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Constraint</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Constraint</em>' containment reference.
-   * @see #setConstraint(ConstraintExpression)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getConstraintExpression_Constraint()
-   * @model containment="true"
-   * @generated
-   */
-  ConstraintExpression getConstraint();
-
-  /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getConstraint <em>Constraint</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Constraint</em>' containment reference.
-   * @see #getConstraint()
-   * @generated
-   */
-  void setConstraint(ConstraintExpression value);
 
 } // ConstraintExpression

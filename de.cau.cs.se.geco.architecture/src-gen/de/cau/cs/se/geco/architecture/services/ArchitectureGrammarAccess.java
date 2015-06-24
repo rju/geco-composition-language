@@ -533,14 +533,12 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cReferenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cReferenceMetamodelCrossReference_1_0 = (CrossReference)cReferenceAssignment_1.eContents().get(0);
 		private final RuleCall cReferenceMetamodelIDTerminalRuleCall_1_0_1 = (RuleCall)cReferenceMetamodelCrossReference_1_0.eContents().get(1);
-		private final Assignment cMultiplyAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Keyword cMultiplyAsteriskKeyword_2_0 = (Keyword)cMultiplyAssignment_2.eContents().get(0);
 		
 		//TargetModelNodeType:
-		//	{TargetModelNodeType} reference=[Metamodel]? multiply?="*"?;
+		//	{TargetModelNodeType} reference=[Metamodel]?;
 		public ParserRule getRule() { return rule; }
 
-		//{TargetModelNodeType} reference=[Metamodel]? multiply?="*"?
+		//{TargetModelNodeType} reference=[Metamodel]?
 		public Group getGroup() { return cGroup; }
 
 		//{TargetModelNodeType}
@@ -554,12 +552,6 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getReferenceMetamodelIDTerminalRuleCall_1_0_1() { return cReferenceMetamodelIDTerminalRuleCall_1_0_1; }
-
-		//multiply?="*"?
-		public Assignment getMultiplyAssignment_2() { return cMultiplyAssignment_2; }
-
-		//"*"
-		public Keyword getMultiplyAsteriskKeyword_2_0() { return cMultiplyAsteriskKeyword_2_0; }
 	}
 
 	public class ModelNodeTypeElements extends AbstractParserRuleElementFinder {
@@ -763,12 +755,13 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cParenthesisConstraintParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cOperandParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cNegationParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//BasicConstraint returns ConstraintExpression:
-		//	ParenthesisConstraint | Operand;
+		//BasicConstraint:
+		//	ParenthesisConstraint | Operand | Negation;
 		public ParserRule getRule() { return rule; }
 
-		//ParenthesisConstraint | Operand
+		//ParenthesisConstraint | Operand | Negation
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ParenthesisConstraint
@@ -776,6 +769,33 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Operand
 		public RuleCall getOperandParserRuleCall_1() { return cOperandParserRuleCall_1; }
+
+		//Negation
+		public RuleCall getNegationParserRuleCall_2() { return cNegationParserRuleCall_2; }
+	}
+
+	public class NegationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Negation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cExclamationMarkKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cConstraintAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cConstraintConstraintExpressionParserRuleCall_1_0 = (RuleCall)cConstraintAssignment_1.eContents().get(0);
+		
+		//Negation:
+		//	"!" constraint=ConstraintExpression;
+		public ParserRule getRule() { return rule; }
+
+		//"!" constraint=ConstraintExpression
+		public Group getGroup() { return cGroup; }
+
+		//"!"
+		public Keyword getExclamationMarkKeyword_0() { return cExclamationMarkKeyword_0; }
+
+		//constraint=ConstraintExpression
+		public Assignment getConstraintAssignment_1() { return cConstraintAssignment_1; }
+
+		//ConstraintExpression
+		public RuleCall getConstraintConstraintExpressionParserRuleCall_1_0() { return cConstraintConstraintExpressionParserRuleCall_1_0; }
 	}
 
 	public class ParenthesisConstraintElements extends AbstractParserRuleElementFinder {
@@ -786,7 +806,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConstraintConstraintExpressionParserRuleCall_1_0 = (RuleCall)cConstraintAssignment_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//ParenthesisConstraint returns ConstraintExpression:
+		//ParenthesisConstraint:
 		//	"(" constraint=ConstraintExpression ")";
 		public ParserRule getRule() { return rule; }
 
@@ -1299,6 +1319,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	private final ConstraintExpressionElements pConstraintExpression;
 	private final CompareExpressionElements pCompareExpression;
 	private final BasicConstraintElements pBasicConstraint;
+	private final NegationElements pNegation;
 	private final ParenthesisConstraintElements pParenthesisConstraint;
 	private final OperandElements pOperand;
 	private final TypeofElements pTypeof;
@@ -1344,6 +1365,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		this.pConstraintExpression = new ConstraintExpressionElements();
 		this.pCompareExpression = new CompareExpressionElements();
 		this.pBasicConstraint = new BasicConstraintElements();
+		this.pNegation = new NegationElements();
 		this.pParenthesisConstraint = new ParenthesisConstraintElements();
 		this.pOperand = new OperandElements();
 		this.pTypeof = new TypeofElements();
@@ -1497,7 +1519,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TargetModelNodeType:
-	//	{TargetModelNodeType} reference=[Metamodel]? multiply?="*"?;
+	//	{TargetModelNodeType} reference=[Metamodel]?;
 	public TargetModelNodeTypeElements getTargetModelNodeTypeAccess() {
 		return pTargetModelNodeType;
 	}
@@ -1546,8 +1568,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		return getCompareExpressionAccess().getRule();
 	}
 
-	//BasicConstraint returns ConstraintExpression:
-	//	ParenthesisConstraint | Operand;
+	//BasicConstraint:
+	//	ParenthesisConstraint | Operand | Negation;
 	public BasicConstraintElements getBasicConstraintAccess() {
 		return pBasicConstraint;
 	}
@@ -1556,7 +1578,17 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		return getBasicConstraintAccess().getRule();
 	}
 
-	//ParenthesisConstraint returns ConstraintExpression:
+	//Negation:
+	//	"!" constraint=ConstraintExpression;
+	public NegationElements getNegationAccess() {
+		return pNegation;
+	}
+	
+	public ParserRule getNegationRule() {
+		return getNegationAccess().getRule();
+	}
+
+	//ParenthesisConstraint:
 	//	"(" constraint=ConstraintExpression ")";
 	public ParenthesisConstraintElements getParenthesisConstraintAccess() {
 		return pParenthesisConstraint;

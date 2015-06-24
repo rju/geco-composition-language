@@ -145,6 +145,21 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createConstraintExpressionAdapter();
       }
       @Override
+      public Adapter caseBasicConstraint(BasicConstraint object)
+      {
+        return createBasicConstraintAdapter();
+      }
+      @Override
+      public Adapter caseNegation(Negation object)
+      {
+        return createNegationAdapter();
+      }
+      @Override
+      public Adapter caseParenthesisConstraint(ParenthesisConstraint object)
+      {
+        return createParenthesisConstraintAdapter();
+      }
+      @Override
       public Adapter caseOperand(Operand object)
       {
         return createOperandAdapter();
@@ -437,6 +452,51 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConstraintExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.BasicConstraint <em>Basic Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.BasicConstraint
+   * @generated
+   */
+  public Adapter createBasicConstraintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Negation <em>Negation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.Negation
+   * @generated
+   */
+  public Adapter createNegationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint <em>Parenthesis Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint
+   * @generated
+   */
+  public Adapter createParenthesisConstraintAdapter()
   {
     return null;
   }

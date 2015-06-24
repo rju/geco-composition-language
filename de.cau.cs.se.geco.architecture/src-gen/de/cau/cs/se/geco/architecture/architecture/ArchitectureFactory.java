@@ -149,6 +149,33 @@ public interface ArchitectureFactory extends EFactory
   ConstraintExpression createConstraintExpression();
 
   /**
+   * Returns a new object of class '<em>Basic Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Basic Constraint</em>'.
+   * @generated
+   */
+  BasicConstraint createBasicConstraint();
+
+  /**
+   * Returns a new object of class '<em>Negation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Negation</em>'.
+   * @generated
+   */
+  Negation createNegation();
+
+  /**
+   * Returns a new object of class '<em>Parenthesis Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parenthesis Constraint</em>'.
+   * @generated
+   */
+  ParenthesisConstraint createParenthesisConstraint();
+
+  /**
    * Returns a new object of class '<em>Operand</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
