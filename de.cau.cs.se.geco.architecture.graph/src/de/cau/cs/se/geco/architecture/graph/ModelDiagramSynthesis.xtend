@@ -155,6 +155,9 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         return root;
     }
     
+    /**
+     * Create trace model.
+     */
     private def KNode createTraceModel(TraceModel traceModel) {
     	val types = traceModel.nodeSetRelations.map[
     		'(' + it.sourceNodes.map[it.type.simpleName].join(',') + ":" +
@@ -163,9 +166,9 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     	traceModel.createNode().associateWith(traceModel) => [
 			it.addRectangle => [
 				it.lineWidth = 2
-				it.setBackgroundGradient("blue".color, "white".color, 0)
+				it.setBackgroundGradient("lightblue".color, "white".color, 0)
                 it.shadow = "black".color
-                it.setGridPlacement(2).from(LEFT, 2, 0, TOP, 2, 0).to(RIGHT, 2, 0, BOTTOM, 2, 0)
+                it.setGridPlacement(2).from(LEFT, 10, 0, TOP, 10, 0).to(RIGHT, 10, 0, BOTTOM, 10, 0)
                 it.addText(types)
 			]
 		]
@@ -199,6 +202,9 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		createMetamodel(createNode(), instanceName, className)
 	}
 	
+	/**
+	 * Create a metamodel node for a given metamodel and type.
+	 */
 	private def KNode createMetamodel(Metamodel metamodel, MetamodelSequence sequence) {
 		createMetamodel(metamodel.createNode().associateWith(metamodel), 
 			metamodel.name, sequence.type.resolveType.simpleName
@@ -211,7 +217,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 				it.lineWidth = 2
 				it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
                 it.shadow = "black".color
-                it.setGridPlacement(2).from(LEFT, 2, 0, TOP, 2, 0).to(RIGHT, 2, 0, BOTTOM, 2, 0)
+                it.setGridPlacement(2).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
                 it.addText(instanceName + " : " + className)
 			]
 		]
@@ -244,13 +250,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		val weaverNode = weaver.createNode().associateWith(weaver) => [
 			it.addText(weaver.name)
 		]
-//		
-//		if (weaver.sourceModel == null) { /** chaining weavers. */
-//			createModelEdgeNoArrow(targetWeaverModelNodes.get(weaver.predecessingWeaver), weaverNode)
-//		} else { /** dedicated named input model. */
-//			createModelEdgeNoArrow(this.connectionNodes.get(weaver.resolveWeaverSourceModel), weaverNode)
-//		}
-//
+
 		return weaverNode
 	}
 	

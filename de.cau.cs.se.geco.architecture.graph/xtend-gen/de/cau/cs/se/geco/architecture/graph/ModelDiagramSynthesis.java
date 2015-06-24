@@ -295,6 +295,9 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     return root;
   }
   
+  /**
+   * Create trace model.
+   */
   private KNode createTraceModel(final TraceModel traceModel) {
     KNode _xblockexpression = null;
     {
@@ -335,14 +338,14 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
           final Procedure1<KRectangle> _function = new Procedure1<KRectangle>() {
             public void apply(final KRectangle it) {
               ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 2);
-              KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("blue");
+              KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("lightblue");
               KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("white");
               ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackgroundGradient(it, _color, _color_1, 0);
               KColor _color_2 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
               ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_2);
               KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 2);
-              KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 2, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 2, 0);
-              ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 2, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 2, 0);
+              KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 10, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 10, 0);
+              ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 10, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 10, 0);
               ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, types);
             }
           };
@@ -419,6 +422,9 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     return _xblockexpression;
   }
   
+  /**
+   * Create a metamodel node for a given metamodel and type.
+   */
   private KNode createMetamodel(final Metamodel metamodel, final MetamodelSequence sequence) {
     KNode _createNode = this._kNodeExtensions.createNode(metamodel);
     KNode _associateWith = this.<KNode>associateWith(_createNode, metamodel);
@@ -442,8 +448,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
             KColor _color_2 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_2);
             KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 2);
-            KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 2, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 2, 0);
-            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 2, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 2, 0);
+            KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 15, 0);
+            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 15, 0);
             ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, ((instanceName + " : ") + className));
           }
         };
