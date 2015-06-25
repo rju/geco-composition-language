@@ -5,13 +5,12 @@ import com.google.inject.Provider;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral;
 import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral;
-import de.cau.cs.se.geco.architecture.architecture.Comparator;
+import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.FloatLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
-import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Model;
@@ -26,6 +25,7 @@ import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.services.ArchitectureGrammarAccess;
@@ -53,7 +53,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 				if(context == grammarAccess.getArrayLiteralRule() ||
 				   context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getLiteralRule() ||
@@ -66,7 +66,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getBooleanLiteralRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getLiteralRule() ||
@@ -75,27 +75,24 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 					return; 
 				}
 				else break;
-			case ArchitecturePackage.COMPARATOR:
-				if(context == grammarAccess.getComparatorRule()) {
-					sequence_Comparator(context, (Comparator) semanticObject); 
+			case ArchitecturePackage.COMPARE_EXPRESSION:
+				if(context == grammarAccess.getCompareExpressionRule() ||
+				   context == grammarAccess.getConstraintExpressionRule() ||
+				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0()) {
+					sequence_CompareExpression(context, (CompareExpression) semanticObject); 
 					return; 
 				}
 				else break;
 			case ArchitecturePackage.CONSTRAINT_EXPRESSION:
-				if(context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0()) {
-					sequence_CompareExpression(context, (ConstraintExpression) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getConstraintExpressionRule()) {
-					sequence_CompareExpression_ConstraintExpression(context, (ConstraintExpression) semanticObject); 
+				if(context == grammarAccess.getConstraintExpressionRule()) {
+					sequence_ConstraintExpression(context, (ConstraintExpression) semanticObject); 
 					return; 
 				}
 				else break;
 			case ArchitecturePackage.FLOAT_LITERAL:
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getFloatLiteralRule() ||
@@ -122,19 +119,13 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.INT_LITERAL:
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getIntLiteralRule() ||
 				   context == grammarAccess.getLiteralRule() ||
 				   context == grammarAccess.getOperandRule()) {
 					sequence_IntLiteral(context, (IntLiteral) semanticObject); 
-					return; 
-				}
-				else break;
-			case ArchitecturePackage.LOGIC_OPERATOR:
-				if(context == grammarAccess.getLogicOperatorRule()) {
-					sequence_LogicOperator(context, (LogicOperator) semanticObject); 
 					return; 
 				}
 				else break;
@@ -165,7 +156,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.NEGATION:
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getNegationRule()) {
@@ -176,7 +167,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.NODE_PROPERTY:
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getNodePropertyRule() ||
@@ -200,7 +191,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.PARENTHESIS_CONSTRAINT:
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getParenthesisConstraintRule()) {
@@ -223,7 +214,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.STRING_LITERAL:
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getLiteralRule() ||
@@ -241,15 +232,23 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 				}
 				else break;
 			case ArchitecturePackage.TRACE_MODEL:
-				if(context == grammarAccess.getTraceModelRule()) {
+				if(context == grammarAccess.getTraceModelRule() ||
+				   context == grammarAccess.getWriteTraceModelRule()) {
 					sequence_TraceModel(context, (TraceModel) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchitecturePackage.TRACE_MODEL_REFERENCE:
+				if(context == grammarAccess.getTraceModelReferenceRule() ||
+				   context == grammarAccess.getWriteTraceModelRule()) {
+					sequence_TraceModelReference(context, (TraceModelReference) semanticObject); 
 					return; 
 				}
 				else break;
 			case ArchitecturePackage.TYPEOF:
 				if(context == grammarAccess.getBasicConstraintRule() ||
 				   context == grammarAccess.getCompareExpressionRule() ||
-				   context == grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
+				   context == grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getConstraintExpressionRule() ||
 				   context == grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0() ||
 				   context == grammarAccess.getOperandRule() ||
@@ -289,26 +288,18 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         EQ='==' | 
-	 *         NE='!=' | 
-	 *         GR='>' | 
-	 *         LW='<' | 
-	 *         GE='>=' | 
-	 *         LE='<=' | 
-	 *         LIKE='~'
-	 *     )
+	 *     (left=CompareExpression_CompareExpression_1_0_0_0 comparator=Comparator right=BasicConstraint)
 	 */
-	protected void sequence_Comparator(EObject context, Comparator semanticObject) {
+	protected void sequence_CompareExpression(EObject context, CompareExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (left=CompareExpression_ConstraintExpression_1_0_0_0 operator=Comparator right=BasicConstraint)
+	 *     (left=ConstraintExpression_ConstraintExpression_1_0_0_0 operator=LogicOperator right=ConstraintExpression)
 	 */
-	protected void sequence_CompareExpression(EObject context, ConstraintExpression semanticObject) {
+	protected void sequence_ConstraintExpression(EObject context, ConstraintExpression semanticObject) {
 		if(errorAcceptor != null) {
 			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.CONSTRAINT_EXPRESSION__LEFT) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.CONSTRAINT_EXPRESSION__LEFT));
@@ -319,22 +310,10 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getCompareExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getCompareExpressionAccess().getOperatorComparatorParserRuleCall_1_0_0_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getCompareExpressionAccess().getRightBasicConstraintParserRuleCall_1_1_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getConstraintExpressionAccess().getOperatorLogicOperatorEnumRuleCall_1_0_0_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getConstraintExpressionAccess().getRightConstraintExpressionParserRuleCall_1_1_0(), semanticObject.getRight());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (
-	 *         (left=ConstraintExpression_ConstraintExpression_1_0_0_0 operator=LogicOperator right=ConstraintExpression) | 
-	 *         (left=CompareExpression_ConstraintExpression_1_0_0_0 operator=Comparator right=BasicConstraint)
-	 *     )
-	 */
-	protected void sequence_CompareExpression_ConstraintExpression(EObject context, ConstraintExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -353,8 +332,8 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *         reference=[JvmType|ID] 
 	 *         sourceModel=SourceModelNodeSelector 
 	 *         targetModel=TargetModelNodeType 
-	 *         writeTraceModel=TraceModel? 
-	 *         (readTraceModels+=[TraceModel|ID] readTraceModels+=[TraceModel|ID]*)?
+	 *         writeTraceModel=WriteTraceModel? 
+	 *         (readTraceModels+=TraceModelReference readTraceModels+=TraceModelReference*)?
 	 *     )
 	 */
 	protected void sequence_Generator(EObject context, Generator semanticObject) {
@@ -383,15 +362,6 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     value=INT
 	 */
 	protected void sequence_IntLiteral(EObject context, IntLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (AND='&' | OR='|')
-	 */
-	protected void sequence_LogicOperator(EObject context, LogicOperator semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -524,6 +494,22 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 */
 	protected void sequence_TargetModelNodeType(EObject context, TargetModelNodeType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     traceModel=[TraceModel|ID]
+	 */
+	protected void sequence_TraceModelReference(EObject context, TraceModelReference semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.TRACE_MODEL_REFERENCE__TRACE_MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.TRACE_MODEL_REFERENCE__TRACE_MODEL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getTraceModelReferenceAccess().getTraceModelTraceModelIDTerminalRuleCall_0_1(), semanticObject.getTraceModel());
+		feeder.finish();
 	}
 	
 	

@@ -166,6 +166,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         T result = caseNodeProperty(nodeProperty);
         if (result == null) result = caseOperand(nodeProperty);
         if (result == null) result = caseBasicConstraint(nodeProperty);
+        if (result == null) result = caseCompareExpression(nodeProperty);
         if (result == null) result = caseConstraintExpression(nodeProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -177,10 +178,19 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchitecturePackage.COMPARE_EXPRESSION:
+      {
+        CompareExpression compareExpression = (CompareExpression)theEObject;
+        T result = caseCompareExpression(compareExpression);
+        if (result == null) result = caseConstraintExpression(compareExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArchitecturePackage.BASIC_CONSTRAINT:
       {
         BasicConstraint basicConstraint = (BasicConstraint)theEObject;
         T result = caseBasicConstraint(basicConstraint);
+        if (result == null) result = caseCompareExpression(basicConstraint);
         if (result == null) result = caseConstraintExpression(basicConstraint);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -190,6 +200,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         Negation negation = (Negation)theEObject;
         T result = caseNegation(negation);
         if (result == null) result = caseBasicConstraint(negation);
+        if (result == null) result = caseCompareExpression(negation);
         if (result == null) result = caseConstraintExpression(negation);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -199,6 +210,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         ParenthesisConstraint parenthesisConstraint = (ParenthesisConstraint)theEObject;
         T result = caseParenthesisConstraint(parenthesisConstraint);
         if (result == null) result = caseBasicConstraint(parenthesisConstraint);
+        if (result == null) result = caseCompareExpression(parenthesisConstraint);
         if (result == null) result = caseConstraintExpression(parenthesisConstraint);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -208,6 +220,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         Operand operand = (Operand)theEObject;
         T result = caseOperand(operand);
         if (result == null) result = caseBasicConstraint(operand);
+        if (result == null) result = caseCompareExpression(operand);
         if (result == null) result = caseConstraintExpression(operand);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -218,7 +231,23 @@ public class ArchitectureSwitch<T> extends Switch<T>
         T result = caseTypeof(typeof);
         if (result == null) result = caseOperand(typeof);
         if (result == null) result = caseBasicConstraint(typeof);
+        if (result == null) result = caseCompareExpression(typeof);
         if (result == null) result = caseConstraintExpression(typeof);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.WRITE_TRACE_MODEL:
+      {
+        WriteTraceModel writeTraceModel = (WriteTraceModel)theEObject;
+        T result = caseWriteTraceModel(writeTraceModel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.TRACE_MODEL_REFERENCE:
+      {
+        TraceModelReference traceModelReference = (TraceModelReference)theEObject;
+        T result = caseTraceModelReference(traceModelReference);
+        if (result == null) result = caseWriteTraceModel(traceModelReference);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -226,6 +255,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
       {
         TraceModel traceModel = (TraceModel)theEObject;
         T result = caseTraceModel(traceModel);
+        if (result == null) result = caseWriteTraceModel(traceModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -249,6 +279,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         T result = caseLiteral(literal);
         if (result == null) result = caseOperand(literal);
         if (result == null) result = caseBasicConstraint(literal);
+        if (result == null) result = caseCompareExpression(literal);
         if (result == null) result = caseConstraintExpression(literal);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -260,6 +291,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = caseLiteral(arrayLiteral);
         if (result == null) result = caseOperand(arrayLiteral);
         if (result == null) result = caseBasicConstraint(arrayLiteral);
+        if (result == null) result = caseCompareExpression(arrayLiteral);
         if (result == null) result = caseConstraintExpression(arrayLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -271,6 +303,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = caseLiteral(stringLiteral);
         if (result == null) result = caseOperand(stringLiteral);
         if (result == null) result = caseBasicConstraint(stringLiteral);
+        if (result == null) result = caseCompareExpression(stringLiteral);
         if (result == null) result = caseConstraintExpression(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -282,6 +315,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = caseLiteral(intLiteral);
         if (result == null) result = caseOperand(intLiteral);
         if (result == null) result = caseBasicConstraint(intLiteral);
+        if (result == null) result = caseCompareExpression(intLiteral);
         if (result == null) result = caseConstraintExpression(intLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -293,6 +327,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = caseLiteral(floatLiteral);
         if (result == null) result = caseOperand(floatLiteral);
         if (result == null) result = caseBasicConstraint(floatLiteral);
+        if (result == null) result = caseCompareExpression(floatLiteral);
         if (result == null) result = caseConstraintExpression(floatLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -304,21 +339,8 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = caseLiteral(booleanLiteral);
         if (result == null) result = caseOperand(booleanLiteral);
         if (result == null) result = caseBasicConstraint(booleanLiteral);
+        if (result == null) result = caseCompareExpression(booleanLiteral);
         if (result == null) result = caseConstraintExpression(booleanLiteral);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.LOGIC_OPERATOR:
-      {
-        LogicOperator logicOperator = (LogicOperator)theEObject;
-        T result = caseLogicOperator(logicOperator);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.COMPARATOR:
-      {
-        Comparator comparator = (Comparator)theEObject;
-        T result = caseComparator(comparator);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -551,6 +573,22 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Compare Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Compare Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCompareExpression(CompareExpression object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Basic Constraint</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -626,6 +664,38 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTypeof(Typeof object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Write Trace Model</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Write Trace Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWriteTraceModel(WriteTraceModel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Trace Model Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Trace Model Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTraceModelReference(TraceModelReference object)
   {
     return null;
   }
@@ -770,38 +840,6 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBooleanLiteral(BooleanLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Logic Operator</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Logic Operator</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseLogicOperator(LogicOperator object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Comparator</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Comparator</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseComparator(Comparator object)
   {
     return null;
   }

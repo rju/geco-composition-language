@@ -2,77 +2,222 @@
  */
 package de.cau.cs.se.geco.architecture.architecture;
 
-import org.eclipse.emf.ecore.EObject;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Logic Operator</b></em>'.
+ * A representation of the literals of the enumeration '<em><b>Logic Operator</b></em>',
+ * and utility methods for working with them.
  * <!-- end-user-doc -->
- *
- * <p>
- * The following features are supported:
- * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator#getAND <em>AND</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator#getOR <em>OR</em>}</li>
- * </ul>
- * </p>
- *
  * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getLogicOperator()
  * @model
  * @generated
  */
-public interface LogicOperator extends EObject
+public enum LogicOperator implements Enumerator
 {
   /**
-   * Returns the value of the '<em><b>AND</b></em>' attribute.
+   * The '<em><b>AND</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #AND_VALUE
+   * @generated
+   * @ordered
+   */
+  AND(0, "AND", "&"),
+
+  /**
+   * The '<em><b>OR</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #OR_VALUE
+   * @generated
+   * @ordered
+   */
+  OR(1, "OR", "|");
+
+  /**
+   * The '<em><b>AND</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>AND</em>' attribute isn't clear,
+   * If the meaning of '<em><b>AND</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>AND</em>' attribute.
-   * @see #setAND(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getLogicOperator_AND()
-   * @model
+   * @see #AND
+   * @model literal="&"
    * @generated
+   * @ordered
    */
-  String getAND();
+  public static final int AND_VALUE = 0;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator#getAND <em>AND</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>AND</em>' attribute.
-   * @see #getAND()
-   * @generated
-   */
-  void setAND(String value);
-
-  /**
-   * Returns the value of the '<em><b>OR</b></em>' attribute.
+   * The '<em><b>OR</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>OR</em>' attribute isn't clear,
+   * If the meaning of '<em><b>OR</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>OR</em>' attribute.
-   * @see #setOR(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getLogicOperator_OR()
-   * @model
+   * @see #OR
+   * @model literal="|"
    * @generated
+   * @ordered
    */
-  String getOR();
+  public static final int OR_VALUE = 1;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator#getOR <em>OR</em>}' attribute.
+   * An array of all the '<em><b>Logic Operator</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>OR</em>' attribute.
-   * @see #getOR()
    * @generated
    */
-  void setOR(String value);
+  private static final LogicOperator[] VALUES_ARRAY =
+    new LogicOperator[]
+    {
+      AND,
+      OR,
+    };
 
-} // LogicOperator
+  /**
+   * A public read-only list of all the '<em><b>Logic Operator</b></em>' enumerators.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static final List<LogicOperator> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+
+  /**
+   * Returns the '<em><b>Logic Operator</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static LogicOperator get(String literal)
+  {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      LogicOperator result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the '<em><b>Logic Operator</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static LogicOperator getByName(String name)
+  {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      LogicOperator result = VALUES_ARRAY[i];
+      if (result.getName().equals(name))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the '<em><b>Logic Operator</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static LogicOperator get(int value)
+  {
+    switch (value)
+    {
+      case AND_VALUE: return AND;
+      case OR_VALUE: return OR;
+    }
+    return null;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final int value;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String name;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String literal;
+
+  /**
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private LogicOperator(int value, String name, String literal)
+  {
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getValue()
+  {
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getLiteral()
+  {
+    return literal;
+  }
+
+  /**
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    return literal;
+  }
+  
+} //LogicOperator

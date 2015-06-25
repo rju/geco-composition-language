@@ -46,8 +46,8 @@ Generator:
 	'generate' reference=[types::JvmType|ID] 
 		sourceModel=SourceModelNodeSelector
 		targetModel=TargetModelNodeType
-		('->' writeTraceModel=TraceModel)?
-		('<-' readTraceModels+=[TraceModel|ID] (',' readTraceModels+=[TraceModel|ID])*)?
+		('->' writeTraceModel=WriteTraceModel)?
+		('<-' readTraceModels+=TraceModelReference (',' readTraceModels+=TraceModelReference)*)?
 ;
 
 
@@ -72,8 +72,8 @@ ConstraintExpression:
 	CompareExpression (=>({ConstraintExpression.left=current} operator=LogicOperator) right=ConstraintExpression)?
 ;
 
-CompareExpression returns ConstraintExpression:
-	BasicConstraint (=>({ConstraintExpression.left=current} operator=Comparator) right=BasicConstraint)?
+CompareExpression:
+	BasicConstraint (=>({CompareExpression.left=current} comparator=Comparator) right=BasicConstraint)?
 ;
 
 BasicConstraint:
@@ -96,6 +96,14 @@ Operand:
 
 Typeof:
 	'typeof' type = [types::JvmType|ID] 	
+;
+
+WriteTraceModel:
+	TraceModel | 'use' TraceModelReference
+;
+
+TraceModelReference:
+	traceModel = [TraceModel|ID]
 ;
 
 TraceModel:
@@ -142,12 +150,12 @@ BooleanLiteral:
 // -----------------------------------
 // Terminals
 
-LogicOperator:
+enum LogicOperator:
 	AND = '&' |
 	OR = '|'
 ;
 
-Comparator:
+enum Comparator:
 	EQ = '==' |
 	NE = '!=' |
 	GR = '>' |

@@ -2,212 +2,357 @@
  */
 package de.cau.cs.se.geco.architecture.architecture;
 
-import org.eclipse.emf.ecore.EObject;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Comparator</b></em>'.
+ * A representation of the literals of the enumeration '<em><b>Comparator</b></em>',
+ * and utility methods for working with them.
  * <!-- end-user-doc -->
- *
- * <p>
- * The following features are supported:
- * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getEQ <em>EQ</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getNE <em>NE</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getGR <em>GR</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLW <em>LW</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getGE <em>GE</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLE <em>LE</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLIKE <em>LIKE</em>}</li>
- * </ul>
- * </p>
- *
  * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getComparator()
  * @model
  * @generated
  */
-public interface Comparator extends EObject
+public enum Comparator implements Enumerator
 {
   /**
-   * Returns the value of the '<em><b>EQ</b></em>' attribute.
+   * The '<em><b>EQ</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #EQ_VALUE
+   * @generated
+   * @ordered
+   */
+  EQ(0, "EQ", "=="),
+
+  /**
+   * The '<em><b>NE</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #NE_VALUE
+   * @generated
+   * @ordered
+   */
+  NE(1, "NE", "!="),
+
+  /**
+   * The '<em><b>GR</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #GR_VALUE
+   * @generated
+   * @ordered
+   */
+  GR(2, "GR", ">"),
+
+  /**
+   * The '<em><b>LW</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #LW_VALUE
+   * @generated
+   * @ordered
+   */
+  LW(3, "LW", "<"),
+
+  /**
+   * The '<em><b>GE</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #GE_VALUE
+   * @generated
+   * @ordered
+   */
+  GE(4, "GE", ">="),
+
+  /**
+   * The '<em><b>LE</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #LE_VALUE
+   * @generated
+   * @ordered
+   */
+  LE(5, "LE", "<="),
+
+  /**
+   * The '<em><b>LIKE</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #LIKE_VALUE
+   * @generated
+   * @ordered
+   */
+  LIKE(6, "LIKE", "~");
+
+  /**
+   * The '<em><b>EQ</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>EQ</em>' attribute isn't clear,
+   * If the meaning of '<em><b>EQ</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>EQ</em>' attribute.
-   * @see #setEQ(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getComparator_EQ()
-   * @model
+   * @see #EQ
+   * @model literal="=="
    * @generated
+   * @ordered
    */
-  String getEQ();
+  public static final int EQ_VALUE = 0;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getEQ <em>EQ</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>EQ</em>' attribute.
-   * @see #getEQ()
-   * @generated
-   */
-  void setEQ(String value);
-
-  /**
-   * Returns the value of the '<em><b>NE</b></em>' attribute.
+   * The '<em><b>NE</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>NE</em>' attribute isn't clear,
+   * If the meaning of '<em><b>NE</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>NE</em>' attribute.
-   * @see #setNE(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getComparator_NE()
-   * @model
+   * @see #NE
+   * @model literal="!="
    * @generated
+   * @ordered
    */
-  String getNE();
+  public static final int NE_VALUE = 1;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getNE <em>NE</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>NE</em>' attribute.
-   * @see #getNE()
-   * @generated
-   */
-  void setNE(String value);
-
-  /**
-   * Returns the value of the '<em><b>GR</b></em>' attribute.
+   * The '<em><b>GR</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>GR</em>' attribute isn't clear,
+   * If the meaning of '<em><b>GR</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>GR</em>' attribute.
-   * @see #setGR(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getComparator_GR()
-   * @model
+   * @see #GR
+   * @model literal=">"
    * @generated
+   * @ordered
    */
-  String getGR();
+  public static final int GR_VALUE = 2;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getGR <em>GR</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>GR</em>' attribute.
-   * @see #getGR()
-   * @generated
-   */
-  void setGR(String value);
-
-  /**
-   * Returns the value of the '<em><b>LW</b></em>' attribute.
+   * The '<em><b>LW</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>LW</em>' attribute isn't clear,
+   * If the meaning of '<em><b>LW</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>LW</em>' attribute.
-   * @see #setLW(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getComparator_LW()
-   * @model
+   * @see #LW
+   * @model literal="<"
    * @generated
+   * @ordered
    */
-  String getLW();
+  public static final int LW_VALUE = 3;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLW <em>LW</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>LW</em>' attribute.
-   * @see #getLW()
-   * @generated
-   */
-  void setLW(String value);
-
-  /**
-   * Returns the value of the '<em><b>GE</b></em>' attribute.
+   * The '<em><b>GE</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>GE</em>' attribute isn't clear,
+   * If the meaning of '<em><b>GE</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>GE</em>' attribute.
-   * @see #setGE(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getComparator_GE()
-   * @model
+   * @see #GE
+   * @model literal=">="
    * @generated
+   * @ordered
    */
-  String getGE();
+  public static final int GE_VALUE = 4;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getGE <em>GE</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>GE</em>' attribute.
-   * @see #getGE()
-   * @generated
-   */
-  void setGE(String value);
-
-  /**
-   * Returns the value of the '<em><b>LE</b></em>' attribute.
+   * The '<em><b>LE</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>LE</em>' attribute isn't clear,
+   * If the meaning of '<em><b>LE</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>LE</em>' attribute.
-   * @see #setLE(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getComparator_LE()
-   * @model
+   * @see #LE
+   * @model literal="<="
    * @generated
+   * @ordered
    */
-  String getLE();
+  public static final int LE_VALUE = 5;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLE <em>LE</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>LE</em>' attribute.
-   * @see #getLE()
-   * @generated
-   */
-  void setLE(String value);
-
-  /**
-   * Returns the value of the '<em><b>LIKE</b></em>' attribute.
+   * The '<em><b>LIKE</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>LIKE</em>' attribute isn't clear,
+   * If the meaning of '<em><b>LIKE</b></em>' literal object isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>LIKE</em>' attribute.
-   * @see #setLIKE(String)
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getComparator_LIKE()
-   * @model
+   * @see #LIKE
+   * @model literal="~"
    * @generated
+   * @ordered
    */
-  String getLIKE();
+  public static final int LIKE_VALUE = 6;
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLIKE <em>LIKE</em>}' attribute.
+   * An array of all the '<em><b>Comparator</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>LIKE</em>' attribute.
-   * @see #getLIKE()
    * @generated
    */
-  void setLIKE(String value);
+  private static final Comparator[] VALUES_ARRAY =
+    new Comparator[]
+    {
+      EQ,
+      NE,
+      GR,
+      LW,
+      GE,
+      LE,
+      LIKE,
+    };
 
-} // Comparator
+  /**
+   * A public read-only list of all the '<em><b>Comparator</b></em>' enumerators.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static final List<Comparator> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+
+  /**
+   * Returns the '<em><b>Comparator</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static Comparator get(String literal)
+  {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      Comparator result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the '<em><b>Comparator</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static Comparator getByName(String name)
+  {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      Comparator result = VALUES_ARRAY[i];
+      if (result.getName().equals(name))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the '<em><b>Comparator</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static Comparator get(int value)
+  {
+    switch (value)
+    {
+      case EQ_VALUE: return EQ;
+      case NE_VALUE: return NE;
+      case GR_VALUE: return GR;
+      case LW_VALUE: return LW;
+      case GE_VALUE: return GE;
+      case LE_VALUE: return LE;
+      case LIKE_VALUE: return LIKE;
+    }
+    return null;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final int value;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String name;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String literal;
+
+  /**
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private Comparator(int value, String name, String literal)
+  {
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public int getValue()
+  {
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getLiteral()
+  {
+    return literal;
+  }
+
+  /**
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    return literal;
+  }
+  
+} //Comparator

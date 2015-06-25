@@ -33,6 +33,7 @@ import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
 import de.cau.cs.se.geco.architecture.architecture.Import
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 
 class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelegatingScopeProvider {
 	
@@ -56,6 +57,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			Typeof: createTypeofScope(context, reference)
 			// delegation scope
 			Generator case reference.name.equals("readTraceModels"),
+			TraceModelReference,
 			Import,
 			ModelNodeType,
 			RegisteredPackage,

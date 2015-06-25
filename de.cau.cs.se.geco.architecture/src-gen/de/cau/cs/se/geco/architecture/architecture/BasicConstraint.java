@@ -13,6 +13,6 @@ package de.cau.cs.se.geco.architecture.architecture;
  * @model
  * @generated
  */
-public interface BasicConstraint extends ConstraintExpression
+public interface BasicConstraint extends CompareExpression
 {
 } // BasicConstraint

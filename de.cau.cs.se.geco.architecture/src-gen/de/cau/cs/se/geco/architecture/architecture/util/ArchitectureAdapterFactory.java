@@ -145,6 +145,11 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createConstraintExpressionAdapter();
       }
       @Override
+      public Adapter caseCompareExpression(CompareExpression object)
+      {
+        return createCompareExpressionAdapter();
+      }
+      @Override
       public Adapter caseBasicConstraint(BasicConstraint object)
       {
         return createBasicConstraintAdapter();
@@ -168,6 +173,16 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
       public Adapter caseTypeof(Typeof object)
       {
         return createTypeofAdapter();
+      }
+      @Override
+      public Adapter caseWriteTraceModel(WriteTraceModel object)
+      {
+        return createWriteTraceModelAdapter();
+      }
+      @Override
+      public Adapter caseTraceModelReference(TraceModelReference object)
+      {
+        return createTraceModelReferenceAdapter();
       }
       @Override
       public Adapter caseTraceModel(TraceModel object)
@@ -213,16 +228,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
       public Adapter caseBooleanLiteral(BooleanLiteral object)
       {
         return createBooleanLiteralAdapter();
-      }
-      @Override
-      public Adapter caseLogicOperator(LogicOperator object)
-      {
-        return createLogicOperatorAdapter();
-      }
-      @Override
-      public Adapter caseComparator(Comparator object)
-      {
-        return createComparatorAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -457,6 +462,21 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.CompareExpression <em>Compare Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.CompareExpression
+   * @generated
+   */
+  public Adapter createCompareExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.BasicConstraint <em>Basic Constraint</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -527,6 +547,36 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTypeofAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.WriteTraceModel <em>Write Trace Model</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.WriteTraceModel
+   * @generated
+   */
+  public Adapter createWriteTraceModelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.TraceModelReference <em>Trace Model Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.TraceModelReference
+   * @generated
+   */
+  public Adapter createTraceModelReferenceAdapter()
   {
     return null;
   }
@@ -662,36 +712,6 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBooleanLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator
-   * @generated
-   */
-  public Adapter createLogicOperatorAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator
-   * @generated
-   */
-  public Adapter createComparatorAdapter()
   {
     return null;
   }

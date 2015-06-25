@@ -44,10 +44,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AspectModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Connection #//AspectModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModel" eType="#//TraceModel"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModel" eType="#//WriteTraceModel"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" unique="false"
-        upperBound="-1" eType="#//TraceModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" upperBound="-1"
+        eType="#//TraceModelReference" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceModelNodeSelector">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Metamodel"/>
@@ -72,14 +72,16 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConstraintExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ConstraintExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//CompareExpression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operator" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//LogicOperator"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ConstraintExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BasicConstraint" eSuperTypes="#//ConstraintExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CompareExpression" eSuperTypes="#//ConstraintExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comparator" eType="#//Comparator"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicConstraint" eSuperTypes="#//CompareExpression"/>
   <eClassifiers xsi:type="ecore:EClass" name="Negation" eSuperTypes="#//BasicConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" eType="#//ConstraintExpression"
         containment="true"/>
@@ -92,7 +94,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="Typeof" eSuperTypes="#//Operand">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TraceModel">
+  <eClassifiers xsi:type="ecore:EClass" name="WriteTraceModel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TraceModelReference" eSuperTypes="#//WriteTraceModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="traceModel" eType="#//TraceModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TraceModel" eSuperTypes="#//WriteTraceModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeSetRelations" upperBound="-1"
         eType="#//NodeSetRelation" containment="true"/>
@@ -123,17 +129,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LogicOperator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AND" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="OR" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="LogicOperator">
+    <eLiterals name="AND" literal="&amp;"/>
+    <eLiterals name="OR" value="1" literal="|"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Comparator">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="EQ" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="GR" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LW" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="GE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LIKE" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Comparator">
+    <eLiterals name="EQ" literal="=="/>
+    <eLiterals name="NE" value="1" literal="!="/>
+    <eLiterals name="GR" value="2" literal=">"/>
+    <eLiterals name="LW" value="3" literal="&lt;"/>
+    <eLiterals name="GE" value="4" literal=">="/>
+    <eLiterals name="LE" value="5" literal="&lt;="/>
+    <eLiterals name="LIKE" value="6" literal="~"/>
   </eClassifiers>
 </ecore:EPackage>

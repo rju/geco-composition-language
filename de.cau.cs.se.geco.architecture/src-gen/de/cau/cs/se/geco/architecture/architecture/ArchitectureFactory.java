@@ -149,6 +149,15 @@ public interface ArchitectureFactory extends EFactory
   ConstraintExpression createConstraintExpression();
 
   /**
+   * Returns a new object of class '<em>Compare Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Compare Expression</em>'.
+   * @generated
+   */
+  CompareExpression createCompareExpression();
+
+  /**
    * Returns a new object of class '<em>Basic Constraint</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -192,6 +201,24 @@ public interface ArchitectureFactory extends EFactory
    * @generated
    */
   Typeof createTypeof();
+
+  /**
+   * Returns a new object of class '<em>Write Trace Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Write Trace Model</em>'.
+   * @generated
+   */
+  WriteTraceModel createWriteTraceModel();
+
+  /**
+   * Returns a new object of class '<em>Trace Model Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Trace Model Reference</em>'.
+   * @generated
+   */
+  TraceModelReference createTraceModelReference();
 
   /**
    * Returns a new object of class '<em>Trace Model</em>'.
@@ -273,24 +300,6 @@ public interface ArchitectureFactory extends EFactory
    * @generated
    */
   BooleanLiteral createBooleanLiteral();
-
-  /**
-   * Returns a new object of class '<em>Logic Operator</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Logic Operator</em>'.
-   * @generated
-   */
-  LogicOperator createLogicOperator();
-
-  /**
-   * Returns a new object of class '<em>Comparator</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Comparator</em>'.
-   * @generated
-   */
-  Comparator createComparator();
 
   /**
    * Returns the package supported by this factory.

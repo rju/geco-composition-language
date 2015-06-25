@@ -17,6 +17,7 @@ import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
@@ -110,6 +111,11 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         String _name = reference.getName();
         boolean _equals = _name.equals("readTraceModels");
         if (_equals) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof TraceModelReference) {
           _matched=true;
         }
       }

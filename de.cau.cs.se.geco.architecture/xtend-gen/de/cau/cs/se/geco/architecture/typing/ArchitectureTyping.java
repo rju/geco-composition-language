@@ -2,6 +2,7 @@ package de.cau.cs.se.geco.architecture.typing;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.geco.architecture.architecture.BasicConstraint;
+import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
@@ -127,7 +128,7 @@ public class ArchitectureTyping {
   }
   
   private static JvmType _findTypeOf(final ConstraintExpression expression) {
-    ConstraintExpression _left = expression.getLeft();
+    CompareExpression _left = expression.getLeft();
     final JvmType result = ArchitectureTyping.findTypeOf(_left);
     boolean _equals = Objects.equal(result, null);
     if (_equals) {

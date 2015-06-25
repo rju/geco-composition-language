@@ -3,13 +3,14 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
+import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
+import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -40,17 +41,27 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
    * @generated
    * @ordered
    */
-  protected ConstraintExpression left;
+  protected CompareExpression left;
 
   /**
-   * The cached value of the '{@link #getOperator() <em>Operator</em>}' containment reference.
+   * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getOperator()
    * @generated
    * @ordered
    */
-  protected EObject operator;
+  protected static final LogicOperator OPERATOR_EDEFAULT = LogicOperator.AND;
+
+  /**
+   * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOperator()
+   * @generated
+   * @ordered
+   */
+  protected LogicOperator operator = OPERATOR_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
@@ -88,7 +99,7 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public ConstraintExpression getLeft()
+  public CompareExpression getLeft()
   {
     return left;
   }
@@ -98,9 +109,9 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLeft(ConstraintExpression newLeft, NotificationChain msgs)
+  public NotificationChain basicSetLeft(CompareExpression newLeft, NotificationChain msgs)
   {
-    ConstraintExpression oldLeft = left;
+    CompareExpression oldLeft = left;
     left = newLeft;
     if (eNotificationRequired())
     {
@@ -115,7 +126,7 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLeft(ConstraintExpression newLeft)
+  public void setLeft(CompareExpression newLeft)
   {
     if (newLeft != left)
     {
@@ -136,7 +147,7 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public EObject getOperator()
+  public LogicOperator getOperator()
   {
     return operator;
   }
@@ -146,37 +157,12 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetOperator(EObject newOperator, NotificationChain msgs)
+  public void setOperator(LogicOperator newOperator)
   {
-    EObject oldOperator = operator;
-    operator = newOperator;
+    LogicOperator oldOperator = operator;
+    operator = newOperator == null ? OPERATOR_EDEFAULT : newOperator;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR, oldOperator, newOperator);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setOperator(EObject newOperator)
-  {
-    if (newOperator != operator)
-    {
-      NotificationChain msgs = null;
-      if (operator != null)
-        msgs = ((InternalEObject)operator).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR, null, msgs);
-      if (newOperator != null)
-        msgs = ((InternalEObject)newOperator).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR, null, msgs);
-      msgs = basicSetOperator(newOperator, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR, newOperator, newOperator));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR, oldOperator, operator));
   }
 
   /**
@@ -239,8 +225,6 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
     {
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__LEFT:
         return basicSetLeft(null, msgs);
-      case ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR:
-        return basicSetOperator(null, msgs);
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         return basicSetRight(null, msgs);
     }
@@ -278,10 +262,10 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
     switch (featureID)
     {
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__LEFT:
-        setLeft((ConstraintExpression)newValue);
+        setLeft((CompareExpression)newValue);
         return;
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR:
-        setOperator((EObject)newValue);
+        setOperator((LogicOperator)newValue);
         return;
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         setRight((ConstraintExpression)newValue);
@@ -301,10 +285,10 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
     switch (featureID)
     {
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__LEFT:
-        setLeft((ConstraintExpression)null);
+        setLeft((CompareExpression)null);
         return;
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR:
-        setOperator((EObject)null);
+        setOperator(OPERATOR_EDEFAULT);
         return;
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         setRight((ConstraintExpression)null);
@@ -326,11 +310,28 @@ public class ConstraintExpressionImpl extends MinimalEObjectImpl.Container imple
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__LEFT:
         return left != null;
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__OPERATOR:
-        return operator != null;
+        return operator != OPERATOR_EDEFAULT;
       case ArchitecturePackage.CONSTRAINT_EXPRESSION__RIGHT:
         return right != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (operator: ");
+    result.append(operator);
+    result.append(')');
+    return result.toString();
   }
 
 } //ConstraintExpressionImpl

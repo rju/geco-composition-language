@@ -7,6 +7,19 @@
     editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
   <genPackages prefix="Architecture" basePackage="de.cau.cs.se.geco.architecture"
       disposableProviderFactory="true" fileExtensions="geco" ecorePackage="Architecture.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Architecture.ecore#//LogicOperator">
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//LogicOperator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//LogicOperator/OR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Architecture.ecore#//Comparator">
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/EQ"/>
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/NE"/>
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/GR"/>
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/LW"/>
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/GE"/>
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/LE"/>
+      <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/LIKE"/>
+    </genEnums>
     <genClasses ecoreClass="Architecture.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Model/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/imports"/>
@@ -41,7 +54,7 @@
     <genClasses ecoreClass="Architecture.ecore#//AspectModel"/>
     <genClasses ecoreClass="Architecture.ecore#//Generator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/writeTraceModel"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/readTraceModels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/readTraceModels"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//SourceModelNodeSelector">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelNodeSelector/reference"/>
@@ -62,8 +75,11 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//ConstraintExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//ConstraintExpression/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ConstraintExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//CompareExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//CompareExpression/comparator"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//BasicConstraint"/>
     <genClasses ecoreClass="Architecture.ecore#//Negation">
@@ -75,6 +91,10 @@
     <genClasses ecoreClass="Architecture.ecore#//Operand"/>
     <genClasses ecoreClass="Architecture.ecore#//Typeof">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Typeof/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//WriteTraceModel"/>
+    <genClasses ecoreClass="Architecture.ecore#//TraceModelReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//TraceModelReference/traceModel"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//TraceModel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//TraceModel/name"/>
@@ -102,19 +122,6 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//BooleanLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//BooleanLiteral/value"/>
-    </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//LogicOperator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//LogicOperator/AND"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//LogicOperator/OR"/>
-    </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//Comparator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/EQ"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/NE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/GR"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/LW"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/GE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/LE"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Comparator/LIKE"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

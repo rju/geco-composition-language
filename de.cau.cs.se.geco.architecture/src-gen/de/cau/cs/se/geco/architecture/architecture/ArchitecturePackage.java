@@ -4,6 +4,7 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -435,7 +436,7 @@ public interface ArchitecturePackage extends EPackage
   int GENERATOR__WRITE_TRACE_MODEL = CONNECTION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Read Trace Models</b></em>' reference list.
+   * The feature id for the '<em><b>Read Trace Models</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -583,7 +584,7 @@ public interface ArchitecturePackage extends EPackage
   int CONSTRAINT_EXPRESSION__LEFT = 0;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -610,14 +611,14 @@ public interface ArchitecturePackage extends EPackage
   int CONSTRAINT_EXPRESSION_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl <em>Basic Constraint</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.CompareExpressionImpl <em>Compare Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBasicConstraint()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.CompareExpressionImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getCompareExpression()
    * @generated
    */
-  int BASIC_CONSTRAINT = 14;
+  int COMPARE_EXPRESSION = 14;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -626,16 +627,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BASIC_CONSTRAINT__LEFT = CONSTRAINT_EXPRESSION__LEFT;
+  int COMPARE_EXPRESSION__LEFT = CONSTRAINT_EXPRESSION__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BASIC_CONSTRAINT__OPERATOR = CONSTRAINT_EXPRESSION__OPERATOR;
+  int COMPARE_EXPRESSION__OPERATOR = CONSTRAINT_EXPRESSION__OPERATOR;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -644,7 +645,71 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BASIC_CONSTRAINT__RIGHT = CONSTRAINT_EXPRESSION__RIGHT;
+  int COMPARE_EXPRESSION__RIGHT = CONSTRAINT_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARE_EXPRESSION__COMPARATOR = CONSTRAINT_EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Compare Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARE_EXPRESSION_FEATURE_COUNT = CONSTRAINT_EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl <em>Basic Constraint</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBasicConstraint()
+   * @generated
+   */
+  int BASIC_CONSTRAINT = 15;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONSTRAINT__LEFT = COMPARE_EXPRESSION__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONSTRAINT__OPERATOR = COMPARE_EXPRESSION__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONSTRAINT__RIGHT = COMPARE_EXPRESSION__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONSTRAINT__COMPARATOR = COMPARE_EXPRESSION__COMPARATOR;
 
   /**
    * The number of structural features of the '<em>Basic Constraint</em>' class.
@@ -653,7 +718,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int BASIC_CONSTRAINT_FEATURE_COUNT = CONSTRAINT_EXPRESSION_FEATURE_COUNT + 0;
+  int BASIC_CONSTRAINT_FEATURE_COUNT = COMPARE_EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.OperandImpl <em>Operand</em>}' class.
@@ -663,7 +728,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getOperand()
    * @generated
    */
-  int OPERAND = 17;
+  int OPERAND = 18;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -675,7 +740,7 @@ public interface ArchitecturePackage extends EPackage
   int OPERAND__LEFT = BASIC_CONSTRAINT__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -691,6 +756,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int OPERAND__RIGHT = BASIC_CONSTRAINT__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPERAND__COMPARATOR = BASIC_CONSTRAINT__COMPARATOR;
 
   /**
    * The number of structural features of the '<em>Operand</em>' class.
@@ -721,7 +795,7 @@ public interface ArchitecturePackage extends EPackage
   int NODE_PROPERTY__LEFT = OPERAND__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -737,6 +811,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int NODE_PROPERTY__RIGHT = OPERAND__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NODE_PROPERTY__COMPARATOR = OPERAND__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' reference.
@@ -782,7 +865,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNegation()
    * @generated
    */
-  int NEGATION = 15;
+  int NEGATION = 16;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -794,7 +877,7 @@ public interface ArchitecturePackage extends EPackage
   int NEGATION__LEFT = BASIC_CONSTRAINT__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -810,6 +893,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int NEGATION__RIGHT = BASIC_CONSTRAINT__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NEGATION__COMPARATOR = BASIC_CONSTRAINT__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -837,7 +929,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getParenthesisConstraint()
    * @generated
    */
-  int PARENTHESIS_CONSTRAINT = 16;
+  int PARENTHESIS_CONSTRAINT = 17;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -849,7 +941,7 @@ public interface ArchitecturePackage extends EPackage
   int PARENTHESIS_CONSTRAINT__LEFT = BASIC_CONSTRAINT__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -865,6 +957,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int PARENTHESIS_CONSTRAINT__RIGHT = BASIC_CONSTRAINT__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS_CONSTRAINT__COMPARATOR = BASIC_CONSTRAINT__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -892,7 +993,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTypeof()
    * @generated
    */
-  int TYPEOF = 18;
+  int TYPEOF = 19;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -904,7 +1005,7 @@ public interface ArchitecturePackage extends EPackage
   int TYPEOF__LEFT = OPERAND__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -920,6 +1021,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int TYPEOF__RIGHT = OPERAND__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPEOF__COMPARATOR = OPERAND__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -940,6 +1050,53 @@ public interface ArchitecturePackage extends EPackage
   int TYPEOF_FEATURE_COUNT = OPERAND_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WriteTraceModelImpl <em>Write Trace Model</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.WriteTraceModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getWriteTraceModel()
+   * @generated
+   */
+  int WRITE_TRACE_MODEL = 20;
+
+  /**
+   * The number of structural features of the '<em>Write Trace Model</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WRITE_TRACE_MODEL_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelReferenceImpl <em>Trace Model Reference</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.TraceModelReferenceImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTraceModelReference()
+   * @generated
+   */
+  int TRACE_MODEL_REFERENCE = 21;
+
+  /**
+   * The feature id for the '<em><b>Trace Model</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRACE_MODEL_REFERENCE__TRACE_MODEL = WRITE_TRACE_MODEL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Trace Model Reference</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TRACE_MODEL_REFERENCE_FEATURE_COUNT = WRITE_TRACE_MODEL_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelImpl <em>Trace Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -947,7 +1104,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTraceModel()
    * @generated
    */
-  int TRACE_MODEL = 19;
+  int TRACE_MODEL = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -956,7 +1113,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_MODEL__NAME = 0;
+  int TRACE_MODEL__NAME = WRITE_TRACE_MODEL_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Node Set Relations</b></em>' containment reference list.
@@ -965,7 +1122,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_MODEL__NODE_SET_RELATIONS = 1;
+  int TRACE_MODEL__NODE_SET_RELATIONS = WRITE_TRACE_MODEL_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Trace Model</em>' class.
@@ -974,7 +1131,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_MODEL_FEATURE_COUNT = 2;
+  int TRACE_MODEL_FEATURE_COUNT = WRITE_TRACE_MODEL_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NodeSetRelationImpl <em>Node Set Relation</em>}' class.
@@ -984,7 +1141,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeSetRelation()
    * @generated
    */
-  int NODE_SET_RELATION = 20;
+  int NODE_SET_RELATION = 23;
 
   /**
    * The feature id for the '<em><b>Source Nodes</b></em>' containment reference list.
@@ -1021,7 +1178,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeType()
    * @generated
    */
-  int NODE_TYPE = 21;
+  int NODE_TYPE = 24;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1049,7 +1206,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 22;
+  int LITERAL = 25;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1061,7 +1218,7 @@ public interface ArchitecturePackage extends EPackage
   int LITERAL__LEFT = OPERAND__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1077,6 +1234,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int LITERAL__RIGHT = OPERAND__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LITERAL__COMPARATOR = OPERAND__COMPARATOR;
 
   /**
    * The number of structural features of the '<em>Literal</em>' class.
@@ -1095,7 +1261,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getArrayLiteral()
    * @generated
    */
-  int ARRAY_LITERAL = 23;
+  int ARRAY_LITERAL = 26;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1107,7 +1273,7 @@ public interface ArchitecturePackage extends EPackage
   int ARRAY_LITERAL__LEFT = LITERAL__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1123,6 +1289,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int ARRAY_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_LITERAL__COMPARATOR = LITERAL__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference list.
@@ -1150,7 +1325,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 24;
+  int STRING_LITERAL = 27;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1162,7 +1337,7 @@ public interface ArchitecturePackage extends EPackage
   int STRING_LITERAL__LEFT = LITERAL__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1178,6 +1353,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int STRING_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__COMPARATOR = LITERAL__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1205,7 +1389,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 25;
+  int INT_LITERAL = 28;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1217,7 +1401,7 @@ public interface ArchitecturePackage extends EPackage
   int INT_LITERAL__LEFT = LITERAL__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1233,6 +1417,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int INT_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__COMPARATOR = LITERAL__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1260,7 +1453,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 26;
+  int FLOAT_LITERAL = 29;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1272,7 +1465,7 @@ public interface ArchitecturePackage extends EPackage
   int FLOAT_LITERAL__LEFT = LITERAL__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1288,6 +1481,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int FLOAT_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FLOAT_LITERAL__COMPARATOR = LITERAL__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1315,7 +1517,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 27;
+  int BOOLEAN_LITERAL = 30;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1327,7 +1529,7 @@ public interface ArchitecturePackage extends EPackage
   int BOOLEAN_LITERAL__LEFT = LITERAL__LEFT;
 
   /**
-   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1343,6 +1545,15 @@ public interface ArchitecturePackage extends EPackage
    * @ordered
    */
   int BOOLEAN_LITERAL__RIGHT = LITERAL__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__COMPARATOR = LITERAL__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1363,123 +1574,24 @@ public interface ArchitecturePackage extends EPackage
   int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.LogicOperatorImpl <em>Logic Operator</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.LogicOperatorImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 28;
+  int LOGIC_OPERATOR = 31;
 
   /**
-   * The feature id for the '<em><b>AND</b></em>' attribute.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_OPERATOR__AND = 0;
-
-  /**
-   * The feature id for the '<em><b>OR</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_OPERATOR__OR = 1;
-
-  /**
-   * The number of structural features of the '<em>Logic Operator</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int LOGIC_OPERATOR_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ComparatorImpl <em>Comparator</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ComparatorImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.Comparator
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getComparator()
    * @generated
    */
-  int COMPARATOR = 29;
-
-  /**
-   * The feature id for the '<em><b>EQ</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARATOR__EQ = 0;
-
-  /**
-   * The feature id for the '<em><b>NE</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARATOR__NE = 1;
-
-  /**
-   * The feature id for the '<em><b>GR</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARATOR__GR = 2;
-
-  /**
-   * The feature id for the '<em><b>LW</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARATOR__LW = 3;
-
-  /**
-   * The feature id for the '<em><b>GE</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARATOR__GE = 4;
-
-  /**
-   * The feature id for the '<em><b>LE</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARATOR__LE = 5;
-
-  /**
-   * The feature id for the '<em><b>LIKE</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARATOR__LIKE = 6;
-
-  /**
-   * The number of structural features of the '<em>Comparator</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARATOR_FEATURE_COUNT = 7;
+  int COMPARATOR = 32;
 
 
   /**
@@ -1771,10 +1883,10 @@ public interface ArchitecturePackage extends EPackage
   EReference getGenerator_WriteTraceModel();
 
   /**
-   * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getReadTraceModels <em>Read Trace Models</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getReadTraceModels <em>Read Trace Models</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Read Trace Models</em>'.
+   * @return the meta object for the containment reference list '<em>Read Trace Models</em>'.
    * @see de.cau.cs.se.geco.architecture.architecture.Generator#getReadTraceModels()
    * @see #getGenerator()
    * @generated
@@ -1942,15 +2054,15 @@ public interface ArchitecturePackage extends EPackage
   EReference getConstraintExpression_Left();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getOperator <em>Operator</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getOperator <em>Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Operator</em>'.
+   * @return the meta object for the attribute '<em>Operator</em>'.
    * @see de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getOperator()
    * @see #getConstraintExpression()
    * @generated
    */
-  EReference getConstraintExpression_Operator();
+  EAttribute getConstraintExpression_Operator();
 
   /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getRight <em>Right</em>}'.
@@ -1962,6 +2074,27 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EReference getConstraintExpression_Right();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.CompareExpression <em>Compare Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Compare Expression</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.CompareExpression
+   * @generated
+   */
+  EClass getCompareExpression();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.CompareExpression#getComparator <em>Comparator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Comparator</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.CompareExpression#getComparator()
+   * @see #getCompareExpression()
+   * @generated
+   */
+  EAttribute getCompareExpression_Comparator();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.BasicConstraint <em>Basic Constraint</em>}'.
@@ -2045,6 +2178,37 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EReference getTypeof_Type();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.WriteTraceModel <em>Write Trace Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Write Trace Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.WriteTraceModel
+   * @generated
+   */
+  EClass getWriteTraceModel();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TraceModelReference <em>Trace Model Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Trace Model Reference</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.TraceModelReference
+   * @generated
+   */
+  EClass getTraceModelReference();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.TraceModelReference#getTraceModel <em>Trace Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Trace Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.TraceModelReference#getTraceModel()
+   * @see #getTraceModelReference()
+   * @generated
+   */
+  EReference getTraceModelReference_TraceModel();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TraceModel <em>Trace Model</em>}'.
@@ -2247,123 +2411,24 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getBooleanLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}'.
+   * Returns the meta object for enum '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Logic Operator</em>'.
+   * @return the meta object for enum '<em>Logic Operator</em>'.
    * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator
    * @generated
    */
-  EClass getLogicOperator();
+  EEnum getLogicOperator();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator#getAND <em>AND</em>}'.
+   * Returns the meta object for enum '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>AND</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator#getAND()
-   * @see #getLogicOperator()
-   * @generated
-   */
-  EAttribute getLogicOperator_AND();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator#getOR <em>OR</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>OR</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator#getOR()
-   * @see #getLogicOperator()
-   * @generated
-   */
-  EAttribute getLogicOperator_OR();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Comparator</em>'.
+   * @return the meta object for enum '<em>Comparator</em>'.
    * @see de.cau.cs.se.geco.architecture.architecture.Comparator
    * @generated
    */
-  EClass getComparator();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getEQ <em>EQ</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>EQ</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getEQ()
-   * @see #getComparator()
-   * @generated
-   */
-  EAttribute getComparator_EQ();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getNE <em>NE</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>NE</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getNE()
-   * @see #getComparator()
-   * @generated
-   */
-  EAttribute getComparator_NE();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getGR <em>GR</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>GR</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getGR()
-   * @see #getComparator()
-   * @generated
-   */
-  EAttribute getComparator_GR();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLW <em>LW</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>LW</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getLW()
-   * @see #getComparator()
-   * @generated
-   */
-  EAttribute getComparator_LW();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getGE <em>GE</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>GE</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getGE()
-   * @see #getComparator()
-   * @generated
-   */
-  EAttribute getComparator_GE();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLE <em>LE</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>LE</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getLE()
-   * @see #getComparator()
-   * @generated
-   */
-  EAttribute getComparator_LE();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Comparator#getLIKE <em>LIKE</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>LIKE</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Comparator#getLIKE()
-   * @see #getComparator()
-   * @generated
-   */
-  EAttribute getComparator_LIKE();
+  EEnum getComparator();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -2623,7 +2688,7 @@ public interface ArchitecturePackage extends EPackage
     EReference GENERATOR__WRITE_TRACE_MODEL = eINSTANCE.getGenerator_WriteTraceModel();
 
     /**
-     * The meta object literal for the '<em><b>Read Trace Models</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Read Trace Models</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -2761,12 +2826,12 @@ public interface ArchitecturePackage extends EPackage
     EReference CONSTRAINT_EXPRESSION__LEFT = eINSTANCE.getConstraintExpression_Left();
 
     /**
-     * The meta object literal for the '<em><b>Operator</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONSTRAINT_EXPRESSION__OPERATOR = eINSTANCE.getConstraintExpression_Operator();
+    EAttribute CONSTRAINT_EXPRESSION__OPERATOR = eINSTANCE.getConstraintExpression_Operator();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -2775,6 +2840,24 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EReference CONSTRAINT_EXPRESSION__RIGHT = eINSTANCE.getConstraintExpression_Right();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.CompareExpressionImpl <em>Compare Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.CompareExpressionImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getCompareExpression()
+     * @generated
+     */
+    EClass COMPARE_EXPRESSION = eINSTANCE.getCompareExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Comparator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARE_EXPRESSION__COMPARATOR = eINSTANCE.getCompareExpression_Comparator();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.BasicConstraintImpl <em>Basic Constraint</em>}' class.
@@ -2849,6 +2932,34 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EReference TYPEOF__TYPE = eINSTANCE.getTypeof_Type();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WriteTraceModelImpl <em>Write Trace Model</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.WriteTraceModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getWriteTraceModel()
+     * @generated
+     */
+    EClass WRITE_TRACE_MODEL = eINSTANCE.getWriteTraceModel();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelReferenceImpl <em>Trace Model Reference</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.TraceModelReferenceImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTraceModelReference()
+     * @generated
+     */
+    EClass TRACE_MODEL_REFERENCE = eINSTANCE.getTraceModelReference();
+
+    /**
+     * The meta object literal for the '<em><b>Trace Model</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TRACE_MODEL_REFERENCE__TRACE_MODEL = eINSTANCE.getTraceModelReference_TraceModel();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelImpl <em>Trace Model</em>}' class.
@@ -3021,96 +3132,24 @@ public interface ArchitecturePackage extends EPackage
     EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.LogicOperatorImpl <em>Logic Operator</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.LogicOperatorImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator
      * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLogicOperator()
      * @generated
      */
-    EClass LOGIC_OPERATOR = eINSTANCE.getLogicOperator();
+    EEnum LOGIC_OPERATOR = eINSTANCE.getLogicOperator();
 
     /**
-     * The meta object literal for the '<em><b>AND</b></em>' attribute feature.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LOGIC_OPERATOR__AND = eINSTANCE.getLogicOperator_AND();
-
-    /**
-     * The meta object literal for the '<em><b>OR</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute LOGIC_OPERATOR__OR = eINSTANCE.getLogicOperator_OR();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ComparatorImpl <em>Comparator</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ComparatorImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.Comparator
      * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getComparator()
      * @generated
      */
-    EClass COMPARATOR = eINSTANCE.getComparator();
-
-    /**
-     * The meta object literal for the '<em><b>EQ</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPARATOR__EQ = eINSTANCE.getComparator_EQ();
-
-    /**
-     * The meta object literal for the '<em><b>NE</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPARATOR__NE = eINSTANCE.getComparator_NE();
-
-    /**
-     * The meta object literal for the '<em><b>GR</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPARATOR__GR = eINSTANCE.getComparator_GR();
-
-    /**
-     * The meta object literal for the '<em><b>LW</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPARATOR__LW = eINSTANCE.getComparator_LW();
-
-    /**
-     * The meta object literal for the '<em><b>GE</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPARATOR__GE = eINSTANCE.getComparator_GE();
-
-    /**
-     * The meta object literal for the '<em><b>LE</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPARATOR__LE = eINSTANCE.getComparator_LE();
-
-    /**
-     * The meta object literal for the '<em><b>LIKE</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPARATOR__LIKE = eINSTANCE.getComparator_LIKE();
+    EEnum COMPARATOR = eINSTANCE.getComparator();
 
   }
 

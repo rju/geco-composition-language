@@ -4,8 +4,6 @@ package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Trace Model</b></em>'.
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface TraceModel extends EObject
+public interface TraceModel extends WriteTraceModel
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

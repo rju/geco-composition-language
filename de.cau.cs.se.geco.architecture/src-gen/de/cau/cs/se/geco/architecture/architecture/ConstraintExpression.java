@@ -33,12 +33,12 @@ public interface ConstraintExpression extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
-   * @see #setLeft(ConstraintExpression)
+   * @see #setLeft(CompareExpression)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getConstraintExpression_Left()
    * @model containment="true"
    * @generated
    */
-  ConstraintExpression getLeft();
+  CompareExpression getLeft();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getLeft <em>Left</em>}' containment reference.
@@ -48,33 +48,36 @@ public interface ConstraintExpression extends EObject
    * @see #getLeft()
    * @generated
    */
-  void setLeft(ConstraintExpression value);
+  void setLeft(CompareExpression value);
 
   /**
-   * Returns the value of the '<em><b>Operator</b></em>' containment reference.
+   * Returns the value of the '<em><b>Operator</b></em>' attribute.
+   * The literals are from the enumeration {@link de.cau.cs.se.geco.architecture.architecture.LogicOperator}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Operator</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Operator</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Operator</em>' containment reference.
-   * @see #setOperator(EObject)
+   * @return the value of the '<em>Operator</em>' attribute.
+   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator
+   * @see #setOperator(LogicOperator)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getConstraintExpression_Operator()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  EObject getOperator();
+  LogicOperator getOperator();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getOperator <em>Operator</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ConstraintExpression#getOperator <em>Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Operator</em>' containment reference.
+   * @param value the new value of the '<em>Operator</em>' attribute.
+   * @see de.cau.cs.se.geco.architecture.architecture.LogicOperator
    * @see #getOperator()
    * @generated
    */
-  void setOperator(EObject value);
+  void setOperator(LogicOperator value);
 
   /**
    * Returns the value of the '<em><b>Right</b></em>' containment reference.

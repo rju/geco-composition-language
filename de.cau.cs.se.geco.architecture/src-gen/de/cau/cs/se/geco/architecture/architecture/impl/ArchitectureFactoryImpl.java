@@ -5,6 +5,7 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 import de.cau.cs.se.geco.architecture.architecture.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -78,11 +79,14 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.MODEL_NODE_TYPE: return createModelNodeType();
       case ArchitecturePackage.NODE_PROPERTY: return createNodeProperty();
       case ArchitecturePackage.CONSTRAINT_EXPRESSION: return createConstraintExpression();
+      case ArchitecturePackage.COMPARE_EXPRESSION: return createCompareExpression();
       case ArchitecturePackage.BASIC_CONSTRAINT: return createBasicConstraint();
       case ArchitecturePackage.NEGATION: return createNegation();
       case ArchitecturePackage.PARENTHESIS_CONSTRAINT: return createParenthesisConstraint();
       case ArchitecturePackage.OPERAND: return createOperand();
       case ArchitecturePackage.TYPEOF: return createTypeof();
+      case ArchitecturePackage.WRITE_TRACE_MODEL: return createWriteTraceModel();
+      case ArchitecturePackage.TRACE_MODEL_REFERENCE: return createTraceModelReference();
       case ArchitecturePackage.TRACE_MODEL: return createTraceModel();
       case ArchitecturePackage.NODE_SET_RELATION: return createNodeSetRelation();
       case ArchitecturePackage.NODE_TYPE: return createNodeType();
@@ -92,10 +96,46 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.INT_LITERAL: return createIntLiteral();
       case ArchitecturePackage.FLOAT_LITERAL: return createFloatLiteral();
       case ArchitecturePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
-      case ArchitecturePackage.LOGIC_OPERATOR: return createLogicOperator();
-      case ArchitecturePackage.COMPARATOR: return createComparator();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case ArchitecturePackage.LOGIC_OPERATOR:
+        return createLogicOperatorFromString(eDataType, initialValue);
+      case ArchitecturePackage.COMPARATOR:
+        return createComparatorFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case ArchitecturePackage.LOGIC_OPERATOR:
+        return convertLogicOperatorToString(eDataType, instanceValue);
+      case ArchitecturePackage.COMPARATOR:
+        return convertComparatorToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -258,6 +298,17 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
+  public CompareExpression createCompareExpression()
+  {
+    CompareExpressionImpl compareExpression = new CompareExpressionImpl();
+    return compareExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public BasicConstraint createBasicConstraint()
   {
     BasicConstraintImpl basicConstraint = new BasicConstraintImpl();
@@ -306,6 +357,28 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     TypeofImpl typeof = new TypeofImpl();
     return typeof;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WriteTraceModel createWriteTraceModel()
+  {
+    WriteTraceModelImpl writeTraceModel = new WriteTraceModelImpl();
+    return writeTraceModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TraceModelReference createTraceModelReference()
+  {
+    TraceModelReferenceImpl traceModelReference = new TraceModelReferenceImpl();
+    return traceModelReference;
   }
 
   /**
@@ -412,10 +485,11 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public LogicOperator createLogicOperator()
+  public LogicOperator createLogicOperatorFromString(EDataType eDataType, String initialValue)
   {
-    LogicOperatorImpl logicOperator = new LogicOperatorImpl();
-    return logicOperator;
+    LogicOperator result = LogicOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
   }
 
   /**
@@ -423,10 +497,31 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public Comparator createComparator()
+  public String convertLogicOperatorToString(EDataType eDataType, Object instanceValue)
   {
-    ComparatorImpl comparator = new ComparatorImpl();
-    return comparator;
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Comparator createComparatorFromString(EDataType eDataType, String initialValue)
+  {
+    Comparator result = Comparator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertComparatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

@@ -9,6 +9,7 @@ import de.cau.cs.se.geco.architecture.architecture.AspectModel;
 import de.cau.cs.se.geco.architecture.architecture.BasicConstraint;
 import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Comparator;
+import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.Connection;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.FloatLiteral;
@@ -32,11 +33,14 @@ import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
+import de.cau.cs.se.geco.architecture.architecture.WriteTraceModel;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -155,6 +159,13 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass compareExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass basicConstraintEClass = null;
 
   /**
@@ -184,6 +195,20 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * @generated
    */
   private EClass typeofEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass writeTraceModelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass traceModelReferenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -253,14 +278,14 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass logicOperatorEClass = null;
+  private EEnum logicOperatorEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass comparatorEClass = null;
+  private EEnum comparatorEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -763,9 +788,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getConstraintExpression_Operator()
+  public EAttribute getConstraintExpression_Operator()
   {
-    return (EReference)constraintExpressionEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)constraintExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -776,6 +801,26 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
   public EReference getConstraintExpression_Right()
   {
     return (EReference)constraintExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCompareExpression()
+  {
+    return compareExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCompareExpression_Comparator()
+  {
+    return (EAttribute)compareExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -856,6 +901,36 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
   public EReference getTypeof_Type()
   {
     return (EReference)typeofEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWriteTraceModel()
+  {
+    return writeTraceModelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTraceModelReference()
+  {
+    return traceModelReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTraceModelReference_TraceModel()
+  {
+    return (EReference)traceModelReferenceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1053,9 +1128,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getLogicOperator()
+  public EEnum getLogicOperator()
   {
-    return logicOperatorEClass;
+    return logicOperatorEEnum;
   }
 
   /**
@@ -1063,99 +1138,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getLogicOperator_AND()
+  public EEnum getComparator()
   {
-    return (EAttribute)logicOperatorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getLogicOperator_OR()
-  {
-    return (EAttribute)logicOperatorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getComparator()
-  {
-    return comparatorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_EQ()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_NE()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_GR()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_LW()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_GE()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_LE()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getComparator_LIKE()
-  {
-    return (EAttribute)comparatorEClass.getEStructuralFeatures().get(6);
+    return comparatorEEnum;
   }
 
   /**
@@ -1244,8 +1229,11 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     constraintExpressionEClass = createEClass(CONSTRAINT_EXPRESSION);
     createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__LEFT);
-    createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__OPERATOR);
+    createEAttribute(constraintExpressionEClass, CONSTRAINT_EXPRESSION__OPERATOR);
     createEReference(constraintExpressionEClass, CONSTRAINT_EXPRESSION__RIGHT);
+
+    compareExpressionEClass = createEClass(COMPARE_EXPRESSION);
+    createEAttribute(compareExpressionEClass, COMPARE_EXPRESSION__COMPARATOR);
 
     basicConstraintEClass = createEClass(BASIC_CONSTRAINT);
 
@@ -1259,6 +1247,11 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     typeofEClass = createEClass(TYPEOF);
     createEReference(typeofEClass, TYPEOF__TYPE);
+
+    writeTraceModelEClass = createEClass(WRITE_TRACE_MODEL);
+
+    traceModelReferenceEClass = createEClass(TRACE_MODEL_REFERENCE);
+    createEReference(traceModelReferenceEClass, TRACE_MODEL_REFERENCE__TRACE_MODEL);
 
     traceModelEClass = createEClass(TRACE_MODEL);
     createEAttribute(traceModelEClass, TRACE_MODEL__NAME);
@@ -1288,18 +1281,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
     createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
 
-    logicOperatorEClass = createEClass(LOGIC_OPERATOR);
-    createEAttribute(logicOperatorEClass, LOGIC_OPERATOR__AND);
-    createEAttribute(logicOperatorEClass, LOGIC_OPERATOR__OR);
-
-    comparatorEClass = createEClass(COMPARATOR);
-    createEAttribute(comparatorEClass, COMPARATOR__EQ);
-    createEAttribute(comparatorEClass, COMPARATOR__NE);
-    createEAttribute(comparatorEClass, COMPARATOR__GR);
-    createEAttribute(comparatorEClass, COMPARATOR__LW);
-    createEAttribute(comparatorEClass, COMPARATOR__GE);
-    createEAttribute(comparatorEClass, COMPARATOR__LE);
-    createEAttribute(comparatorEClass, COMPARATOR__LIKE);
+    // Create enums
+    logicOperatorEEnum = createEEnum(LOGIC_OPERATOR);
+    comparatorEEnum = createEEnum(COMPARATOR);
   }
 
   /**
@@ -1339,11 +1323,14 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     generatorEClass.getESuperTypes().add(this.getAspectModel());
     targetModelNodeTypeEClass.getESuperTypes().add(this.getAspectModel());
     nodePropertyEClass.getESuperTypes().add(this.getOperand());
-    basicConstraintEClass.getESuperTypes().add(this.getConstraintExpression());
+    compareExpressionEClass.getESuperTypes().add(this.getConstraintExpression());
+    basicConstraintEClass.getESuperTypes().add(this.getCompareExpression());
     negationEClass.getESuperTypes().add(this.getBasicConstraint());
     parenthesisConstraintEClass.getESuperTypes().add(this.getBasicConstraint());
     operandEClass.getESuperTypes().add(this.getBasicConstraint());
     typeofEClass.getESuperTypes().add(this.getOperand());
+    traceModelReferenceEClass.getESuperTypes().add(this.getWriteTraceModel());
+    traceModelEClass.getESuperTypes().add(this.getWriteTraceModel());
     literalEClass.getESuperTypes().add(this.getOperand());
     arrayLiteralEClass.getESuperTypes().add(this.getLiteral());
     stringLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -1386,8 +1373,8 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEClass(aspectModelEClass, AspectModel.class, "AspectModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(generatorEClass, Generator.class, "Generator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGenerator_WriteTraceModel(), this.getTraceModel(), null, "writeTraceModel", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGenerator_ReadTraceModels(), this.getTraceModel(), null, "readTraceModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerator_WriteTraceModel(), this.getWriteTraceModel(), null, "writeTraceModel", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerator_ReadTraceModels(), this.getTraceModelReference(), null, "readTraceModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sourceModelNodeSelectorEClass, SourceModelNodeSelector.class, "SourceModelNodeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSourceModelNodeSelector_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1407,9 +1394,12 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEReference(getNodeProperty_SubProperty(), this.getNodeProperty(), null, "subProperty", null, 0, 1, NodeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constraintExpressionEClass, ConstraintExpression.class, "ConstraintExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getConstraintExpression_Left(), this.getConstraintExpression(), null, "left", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getConstraintExpression_Operator(), ecorePackage.getEObject(), null, "operator", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraintExpression_Left(), this.getCompareExpression(), null, "left", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstraintExpression_Operator(), this.getLogicOperator(), "operator", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstraintExpression_Right(), this.getConstraintExpression(), null, "right", null, 0, 1, ConstraintExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(compareExpressionEClass, CompareExpression.class, "CompareExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCompareExpression_Comparator(), this.getComparator(), "comparator", null, 0, 1, CompareExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(basicConstraintEClass, BasicConstraint.class, "BasicConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1423,6 +1413,11 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(typeofEClass, Typeof.class, "Typeof", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypeof_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, Typeof.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(writeTraceModelEClass, WriteTraceModel.class, "WriteTraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(traceModelReferenceEClass, TraceModelReference.class, "TraceModelReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTraceModelReference_TraceModel(), this.getTraceModel(), null, "traceModel", null, 0, 1, TraceModelReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(traceModelEClass, TraceModel.class, "TraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTraceModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TraceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1452,18 +1447,19 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(logicOperatorEClass, LogicOperator.class, "LogicOperator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLogicOperator_AND(), ecorePackage.getEString(), "AND", null, 0, 1, LogicOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLogicOperator_OR(), ecorePackage.getEString(), "OR", null, 0, 1, LogicOperator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    // Initialize enums and add enum literals
+    initEEnum(logicOperatorEEnum, LogicOperator.class, "LogicOperator");
+    addEEnumLiteral(logicOperatorEEnum, LogicOperator.AND);
+    addEEnumLiteral(logicOperatorEEnum, LogicOperator.OR);
 
-    initEClass(comparatorEClass, Comparator.class, "Comparator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getComparator_EQ(), ecorePackage.getEString(), "EQ", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_NE(), ecorePackage.getEString(), "NE", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_GR(), ecorePackage.getEString(), "GR", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_LW(), ecorePackage.getEString(), "LW", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_GE(), ecorePackage.getEString(), "GE", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_LE(), ecorePackage.getEString(), "LE", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getComparator_LIKE(), ecorePackage.getEString(), "LIKE", null, 0, 1, Comparator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEEnum(comparatorEEnum, Comparator.class, "Comparator");
+    addEEnumLiteral(comparatorEEnum, Comparator.EQ);
+    addEEnumLiteral(comparatorEEnum, Comparator.NE);
+    addEEnumLiteral(comparatorEEnum, Comparator.GR);
+    addEEnumLiteral(comparatorEEnum, Comparator.LW);
+    addEEnumLiteral(comparatorEEnum, Comparator.GE);
+    addEEnumLiteral(comparatorEEnum, Comparator.LE);
+    addEEnumLiteral(comparatorEEnum, Comparator.LIKE);
 
     // Create resource
     createResource(eNS_URI);

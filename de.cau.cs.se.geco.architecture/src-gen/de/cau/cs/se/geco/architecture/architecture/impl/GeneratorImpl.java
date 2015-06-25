@@ -4,7 +4,8 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.TraceModel;
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
+import de.cau.cs.se.geco.architecture.architecture.WriteTraceModel;
 
 import java.util.Collection;
 
@@ -18,7 +19,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,17 +46,17 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
    * @generated
    * @ordered
    */
-  protected TraceModel writeTraceModel;
+  protected WriteTraceModel writeTraceModel;
 
   /**
-   * The cached value of the '{@link #getReadTraceModels() <em>Read Trace Models</em>}' reference list.
+   * The cached value of the '{@link #getReadTraceModels() <em>Read Trace Models</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReadTraceModels()
    * @generated
    * @ordered
    */
-  protected EList<TraceModel> readTraceModels;
+  protected EList<TraceModelReference> readTraceModels;
 
   /**
    * <!-- begin-user-doc -->
@@ -82,7 +84,7 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public TraceModel getWriteTraceModel()
+  public WriteTraceModel getWriteTraceModel()
   {
     return writeTraceModel;
   }
@@ -92,9 +94,9 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWriteTraceModel(TraceModel newWriteTraceModel, NotificationChain msgs)
+  public NotificationChain basicSetWriteTraceModel(WriteTraceModel newWriteTraceModel, NotificationChain msgs)
   {
-    TraceModel oldWriteTraceModel = writeTraceModel;
+    WriteTraceModel oldWriteTraceModel = writeTraceModel;
     writeTraceModel = newWriteTraceModel;
     if (eNotificationRequired())
     {
@@ -109,7 +111,7 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWriteTraceModel(TraceModel newWriteTraceModel)
+  public void setWriteTraceModel(WriteTraceModel newWriteTraceModel)
   {
     if (newWriteTraceModel != writeTraceModel)
     {
@@ -130,11 +132,11 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TraceModel> getReadTraceModels()
+  public EList<TraceModelReference> getReadTraceModels()
   {
     if (readTraceModels == null)
     {
-      readTraceModels = new EObjectResolvingEList<TraceModel>(TraceModel.class, this, ArchitecturePackage.GENERATOR__READ_TRACE_MODELS);
+      readTraceModels = new EObjectContainmentEList<TraceModelReference>(TraceModelReference.class, this, ArchitecturePackage.GENERATOR__READ_TRACE_MODELS);
     }
     return readTraceModels;
   }
@@ -151,6 +153,8 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
     {
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
         return basicSetWriteTraceModel(null, msgs);
+      case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
+        return ((InternalEList<?>)getReadTraceModels()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -185,11 +189,11 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
     switch (featureID)
     {
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
-        setWriteTraceModel((TraceModel)newValue);
+        setWriteTraceModel((WriteTraceModel)newValue);
         return;
       case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
         getReadTraceModels().clear();
-        getReadTraceModels().addAll((Collection<? extends TraceModel>)newValue);
+        getReadTraceModels().addAll((Collection<? extends TraceModelReference>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -206,7 +210,7 @@ public class GeneratorImpl extends ConnectionImpl implements Generator
     switch (featureID)
     {
       case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
-        setWriteTraceModel((TraceModel)null);
+        setWriteTraceModel((WriteTraceModel)null);
         return;
       case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
         getReadTraceModels().clear();

@@ -32,12 +32,12 @@ public interface Generator extends Connection, AspectModel
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Write Trace Model</em>' containment reference.
-   * @see #setWriteTraceModel(TraceModel)
+   * @see #setWriteTraceModel(WriteTraceModel)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getGenerator_WriteTraceModel()
    * @model containment="true"
    * @generated
    */
-  TraceModel getWriteTraceModel();
+  WriteTraceModel getWriteTraceModel();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getWriteTraceModel <em>Write Trace Model</em>}' containment reference.
@@ -47,22 +47,22 @@ public interface Generator extends Connection, AspectModel
    * @see #getWriteTraceModel()
    * @generated
    */
-  void setWriteTraceModel(TraceModel value);
+  void setWriteTraceModel(WriteTraceModel value);
 
   /**
-   * Returns the value of the '<em><b>Read Trace Models</b></em>' reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.TraceModel}.
+   * Returns the value of the '<em><b>Read Trace Models</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.TraceModelReference}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Read Trace Models</em>' reference list isn't clear,
+   * If the meaning of the '<em>Read Trace Models</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Read Trace Models</em>' reference list.
+   * @return the value of the '<em>Read Trace Models</em>' containment reference list.
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getGenerator_ReadTraceModels()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  EList<TraceModel> getReadTraceModels();
+  EList<TraceModelReference> getReadTraceModels();
 
 } // Generator

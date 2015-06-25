@@ -360,25 +360,25 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cHyphenMinusGreaterThanSignKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cWriteTraceModelAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cWriteTraceModelTraceModelParserRuleCall_4_1_0 = (RuleCall)cWriteTraceModelAssignment_4_1.eContents().get(0);
+		private final RuleCall cWriteTraceModelWriteTraceModelParserRuleCall_4_1_0 = (RuleCall)cWriteTraceModelAssignment_4_1.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cLessThanSignHyphenMinusKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Assignment cReadTraceModelsAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final CrossReference cReadTraceModelsTraceModelCrossReference_5_1_0 = (CrossReference)cReadTraceModelsAssignment_5_1.eContents().get(0);
-		private final RuleCall cReadTraceModelsTraceModelIDTerminalRuleCall_5_1_0_1 = (RuleCall)cReadTraceModelsTraceModelCrossReference_5_1_0.eContents().get(1);
+		private final RuleCall cReadTraceModelsTraceModelReferenceParserRuleCall_5_1_0 = (RuleCall)cReadTraceModelsAssignment_5_1.eContents().get(0);
 		private final Group cGroup_5_2 = (Group)cGroup_5.eContents().get(2);
 		private final Keyword cCommaKeyword_5_2_0 = (Keyword)cGroup_5_2.eContents().get(0);
 		private final Assignment cReadTraceModelsAssignment_5_2_1 = (Assignment)cGroup_5_2.eContents().get(1);
-		private final CrossReference cReadTraceModelsTraceModelCrossReference_5_2_1_0 = (CrossReference)cReadTraceModelsAssignment_5_2_1.eContents().get(0);
-		private final RuleCall cReadTraceModelsTraceModelIDTerminalRuleCall_5_2_1_0_1 = (RuleCall)cReadTraceModelsTraceModelCrossReference_5_2_1_0.eContents().get(1);
+		private final RuleCall cReadTraceModelsTraceModelReferenceParserRuleCall_5_2_1_0 = (RuleCall)cReadTraceModelsAssignment_5_2_1.eContents().get(0);
 		
 		//Generator:
 		//	"generate" reference=[types::JvmType] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
-		//	writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel] ("," readTraceModels+=[TraceModel])*)?;
+		//	writeTraceModel=WriteTraceModel)? ("<-" readTraceModels+=TraceModelReference (","
+		//	readTraceModels+=TraceModelReference)*)?;
 		public ParserRule getRule() { return rule; }
 
 		//"generate" reference=[types::JvmType] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
-		//writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel] ("," readTraceModels+=[TraceModel])*)?
+		//writeTraceModel=WriteTraceModel)? ("<-" readTraceModels+=TraceModelReference (","
+		//readTraceModels+=TraceModelReference)*)?
 		public Group getGroup() { return cGroup; }
 
 		//"generate"
@@ -405,47 +405,41 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//TargetModelNodeType
 		public RuleCall getTargetModelTargetModelNodeTypeParserRuleCall_3_0() { return cTargetModelTargetModelNodeTypeParserRuleCall_3_0; }
 
-		//("->" writeTraceModel=TraceModel)?
+		//("->" writeTraceModel=WriteTraceModel)?
 		public Group getGroup_4() { return cGroup_4; }
 
 		//"->"
 		public Keyword getHyphenMinusGreaterThanSignKeyword_4_0() { return cHyphenMinusGreaterThanSignKeyword_4_0; }
 
-		//writeTraceModel=TraceModel
+		//writeTraceModel=WriteTraceModel
 		public Assignment getWriteTraceModelAssignment_4_1() { return cWriteTraceModelAssignment_4_1; }
 
-		//TraceModel
-		public RuleCall getWriteTraceModelTraceModelParserRuleCall_4_1_0() { return cWriteTraceModelTraceModelParserRuleCall_4_1_0; }
+		//WriteTraceModel
+		public RuleCall getWriteTraceModelWriteTraceModelParserRuleCall_4_1_0() { return cWriteTraceModelWriteTraceModelParserRuleCall_4_1_0; }
 
-		//("<-" readTraceModels+=[TraceModel] ("," readTraceModels+=[TraceModel])*)?
+		//("<-" readTraceModels+=TraceModelReference ("," readTraceModels+=TraceModelReference)*)?
 		public Group getGroup_5() { return cGroup_5; }
 
 		//"<-"
 		public Keyword getLessThanSignHyphenMinusKeyword_5_0() { return cLessThanSignHyphenMinusKeyword_5_0; }
 
-		//readTraceModels+=[TraceModel]
+		//readTraceModels+=TraceModelReference
 		public Assignment getReadTraceModelsAssignment_5_1() { return cReadTraceModelsAssignment_5_1; }
 
-		//[TraceModel]
-		public CrossReference getReadTraceModelsTraceModelCrossReference_5_1_0() { return cReadTraceModelsTraceModelCrossReference_5_1_0; }
+		//TraceModelReference
+		public RuleCall getReadTraceModelsTraceModelReferenceParserRuleCall_5_1_0() { return cReadTraceModelsTraceModelReferenceParserRuleCall_5_1_0; }
 
-		//ID
-		public RuleCall getReadTraceModelsTraceModelIDTerminalRuleCall_5_1_0_1() { return cReadTraceModelsTraceModelIDTerminalRuleCall_5_1_0_1; }
-
-		//("," readTraceModels+=[TraceModel])*
+		//("," readTraceModels+=TraceModelReference)*
 		public Group getGroup_5_2() { return cGroup_5_2; }
 
 		//","
 		public Keyword getCommaKeyword_5_2_0() { return cCommaKeyword_5_2_0; }
 
-		//readTraceModels+=[TraceModel]
+		//readTraceModels+=TraceModelReference
 		public Assignment getReadTraceModelsAssignment_5_2_1() { return cReadTraceModelsAssignment_5_2_1; }
 
-		//[TraceModel]
-		public CrossReference getReadTraceModelsTraceModelCrossReference_5_2_1_0() { return cReadTraceModelsTraceModelCrossReference_5_2_1_0; }
-
-		//ID
-		public RuleCall getReadTraceModelsTraceModelIDTerminalRuleCall_5_2_1_0_1() { return cReadTraceModelsTraceModelIDTerminalRuleCall_5_2_1_0_1; }
+		//TraceModelReference
+		public RuleCall getReadTraceModelsTraceModelReferenceParserRuleCall_5_2_1_0() { return cReadTraceModelsTraceModelReferenceParserRuleCall_5_2_1_0; }
 	}
 
 	public class SourceModelNodeSelectorElements extends AbstractParserRuleElementFinder {
@@ -663,7 +657,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1_0_0 = (Group)cGroup_1_0.eContents().get(0);
 		private final Action cConstraintExpressionLeftAction_1_0_0_0 = (Action)cGroup_1_0_0.eContents().get(0);
 		private final Assignment cOperatorAssignment_1_0_0_1 = (Assignment)cGroup_1_0_0.eContents().get(1);
-		private final RuleCall cOperatorLogicOperatorParserRuleCall_1_0_0_1_0 = (RuleCall)cOperatorAssignment_1_0_0_1.eContents().get(0);
+		private final RuleCall cOperatorLogicOperatorEnumRuleCall_1_0_0_1_0 = (RuleCall)cOperatorAssignment_1_0_0_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cRightConstraintExpressionParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
 		
@@ -693,7 +687,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		public Assignment getOperatorAssignment_1_0_0_1() { return cOperatorAssignment_1_0_0_1; }
 
 		//LogicOperator
-		public RuleCall getOperatorLogicOperatorParserRuleCall_1_0_0_1_0() { return cOperatorLogicOperatorParserRuleCall_1_0_0_1_0; }
+		public RuleCall getOperatorLogicOperatorEnumRuleCall_1_0_0_1_0() { return cOperatorLogicOperatorEnumRuleCall_1_0_0_1_0; }
 
 		//right=ConstraintExpression
 		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
@@ -709,39 +703,39 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Group cGroup_1_0 = (Group)cGroup_1.eContents().get(0);
 		private final Group cGroup_1_0_0 = (Group)cGroup_1_0.eContents().get(0);
-		private final Action cConstraintExpressionLeftAction_1_0_0_0 = (Action)cGroup_1_0_0.eContents().get(0);
-		private final Assignment cOperatorAssignment_1_0_0_1 = (Assignment)cGroup_1_0_0.eContents().get(1);
-		private final RuleCall cOperatorComparatorParserRuleCall_1_0_0_1_0 = (RuleCall)cOperatorAssignment_1_0_0_1.eContents().get(0);
+		private final Action cCompareExpressionLeftAction_1_0_0_0 = (Action)cGroup_1_0_0.eContents().get(0);
+		private final Assignment cComparatorAssignment_1_0_0_1 = (Assignment)cGroup_1_0_0.eContents().get(1);
+		private final RuleCall cComparatorComparatorEnumRuleCall_1_0_0_1_0 = (RuleCall)cComparatorAssignment_1_0_0_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cRightBasicConstraintParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
 		
-		//CompareExpression returns ConstraintExpression:
-		//	BasicConstraint (=> ({ConstraintExpression.left=current} operator=Comparator) right=BasicConstraint)?;
+		//CompareExpression:
+		//	BasicConstraint (=> ({CompareExpression.left=current} comparator=Comparator) right=BasicConstraint)?;
 		public ParserRule getRule() { return rule; }
 
-		//BasicConstraint (=> ({ConstraintExpression.left=current} operator=Comparator) right=BasicConstraint)?
+		//BasicConstraint (=> ({CompareExpression.left=current} comparator=Comparator) right=BasicConstraint)?
 		public Group getGroup() { return cGroup; }
 
 		//BasicConstraint
 		public RuleCall getBasicConstraintParserRuleCall_0() { return cBasicConstraintParserRuleCall_0; }
 
-		//(=> ({ConstraintExpression.left=current} operator=Comparator) right=BasicConstraint)?
+		//(=> ({CompareExpression.left=current} comparator=Comparator) right=BasicConstraint)?
 		public Group getGroup_1() { return cGroup_1; }
 
-		//=> ({ConstraintExpression.left=current} operator=Comparator)
+		//=> ({CompareExpression.left=current} comparator=Comparator)
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//{ConstraintExpression.left=current} operator=Comparator
+		//{CompareExpression.left=current} comparator=Comparator
 		public Group getGroup_1_0_0() { return cGroup_1_0_0; }
 
-		//{ConstraintExpression.left=current}
-		public Action getConstraintExpressionLeftAction_1_0_0_0() { return cConstraintExpressionLeftAction_1_0_0_0; }
+		//{CompareExpression.left=current}
+		public Action getCompareExpressionLeftAction_1_0_0_0() { return cCompareExpressionLeftAction_1_0_0_0; }
 
-		//operator=Comparator
-		public Assignment getOperatorAssignment_1_0_0_1() { return cOperatorAssignment_1_0_0_1; }
+		//comparator=Comparator
+		public Assignment getComparatorAssignment_1_0_0_1() { return cComparatorAssignment_1_0_0_1; }
 
 		//Comparator
-		public RuleCall getOperatorComparatorParserRuleCall_1_0_0_1_0() { return cOperatorComparatorParserRuleCall_1_0_0_1_0; }
+		public RuleCall getComparatorComparatorEnumRuleCall_1_0_0_1_0() { return cComparatorComparatorEnumRuleCall_1_0_0_1_0; }
 
 		//right=BasicConstraint
 		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
@@ -876,6 +870,54 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getTypeJvmTypeIDTerminalRuleCall_1_0_1() { return cTypeJvmTypeIDTerminalRuleCall_1_0_1; }
+	}
+
+	public class WriteTraceModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WriteTraceModel");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cTraceModelParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Keyword cUseKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cTraceModelReferenceParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//WriteTraceModel:
+		//	TraceModel | "use" TraceModelReference;
+		public ParserRule getRule() { return rule; }
+
+		//TraceModel | "use" TraceModelReference
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//TraceModel
+		public RuleCall getTraceModelParserRuleCall_0() { return cTraceModelParserRuleCall_0; }
+
+		//"use" TraceModelReference
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"use"
+		public Keyword getUseKeyword_1_0() { return cUseKeyword_1_0; }
+
+		//TraceModelReference
+		public RuleCall getTraceModelReferenceParserRuleCall_1_1() { return cTraceModelReferenceParserRuleCall_1_1; }
+	}
+
+	public class TraceModelReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TraceModelReference");
+		private final Assignment cTraceModelAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cTraceModelTraceModelCrossReference_0 = (CrossReference)cTraceModelAssignment.eContents().get(0);
+		private final RuleCall cTraceModelTraceModelIDTerminalRuleCall_0_1 = (RuleCall)cTraceModelTraceModelCrossReference_0.eContents().get(1);
+		
+		//TraceModelReference:
+		//	traceModel=[TraceModel];
+		public ParserRule getRule() { return rule; }
+
+		//traceModel=[TraceModel]
+		public Assignment getTraceModelAssignment() { return cTraceModelAssignment; }
+
+		//[TraceModel]
+		public CrossReference getTraceModelTraceModelCrossReference_0() { return cTraceModelTraceModelCrossReference_0; }
+
+		//ID
+		public RuleCall getTraceModelTraceModelIDTerminalRuleCall_0_1() { return cTraceModelTraceModelIDTerminalRuleCall_0_1; }
 	}
 
 	public class TraceModelElements extends AbstractParserRuleElementFinder {
@@ -1148,104 +1190,6 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueBOOLEANTerminalRuleCall_0() { return cValueBOOLEANTerminalRuleCall_0; }
 	}
 
-	public class LogicOperatorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LogicOperator");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cANDAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final Keyword cANDAmpersandKeyword_0_0 = (Keyword)cANDAssignment_0.eContents().get(0);
-		private final Assignment cORAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final Keyword cORVerticalLineKeyword_1_0 = (Keyword)cORAssignment_1.eContents().get(0);
-		
-		//// -----------------------------------
-		//// Terminals
-		//LogicOperator:
-		//	AND="&" | OR="|";
-		public ParserRule getRule() { return rule; }
-
-		//AND="&" | OR="|"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//AND="&"
-		public Assignment getANDAssignment_0() { return cANDAssignment_0; }
-
-		//"&"
-		public Keyword getANDAmpersandKeyword_0_0() { return cANDAmpersandKeyword_0_0; }
-
-		//OR="|"
-		public Assignment getORAssignment_1() { return cORAssignment_1; }
-
-		//"|"
-		public Keyword getORVerticalLineKeyword_1_0() { return cORVerticalLineKeyword_1_0; }
-	}
-
-	public class ComparatorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Comparator");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cEQAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final Keyword cEQEqualsSignEqualsSignKeyword_0_0 = (Keyword)cEQAssignment_0.eContents().get(0);
-		private final Assignment cNEAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final Keyword cNEExclamationMarkEqualsSignKeyword_1_0 = (Keyword)cNEAssignment_1.eContents().get(0);
-		private final Assignment cGRAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final Keyword cGRGreaterThanSignKeyword_2_0 = (Keyword)cGRAssignment_2.eContents().get(0);
-		private final Assignment cLWAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
-		private final Keyword cLWLessThanSignKeyword_3_0 = (Keyword)cLWAssignment_3.eContents().get(0);
-		private final Assignment cGEAssignment_4 = (Assignment)cAlternatives.eContents().get(4);
-		private final Keyword cGEGreaterThanSignEqualsSignKeyword_4_0 = (Keyword)cGEAssignment_4.eContents().get(0);
-		private final Assignment cLEAssignment_5 = (Assignment)cAlternatives.eContents().get(5);
-		private final Keyword cLELessThanSignEqualsSignKeyword_5_0 = (Keyword)cLEAssignment_5.eContents().get(0);
-		private final Assignment cLIKEAssignment_6 = (Assignment)cAlternatives.eContents().get(6);
-		private final Keyword cLIKETildeKeyword_6_0 = (Keyword)cLIKEAssignment_6.eContents().get(0);
-		
-		//Comparator:
-		//	EQ="==" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<=" | LIKE="~";
-		public ParserRule getRule() { return rule; }
-
-		//EQ="==" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<=" | LIKE="~"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//EQ="=="
-		public Assignment getEQAssignment_0() { return cEQAssignment_0; }
-
-		//"=="
-		public Keyword getEQEqualsSignEqualsSignKeyword_0_0() { return cEQEqualsSignEqualsSignKeyword_0_0; }
-
-		//NE="!="
-		public Assignment getNEAssignment_1() { return cNEAssignment_1; }
-
-		//"!="
-		public Keyword getNEExclamationMarkEqualsSignKeyword_1_0() { return cNEExclamationMarkEqualsSignKeyword_1_0; }
-
-		//GR=">"
-		public Assignment getGRAssignment_2() { return cGRAssignment_2; }
-
-		//">"
-		public Keyword getGRGreaterThanSignKeyword_2_0() { return cGRGreaterThanSignKeyword_2_0; }
-
-		//LW="<"
-		public Assignment getLWAssignment_3() { return cLWAssignment_3; }
-
-		//"<"
-		public Keyword getLWLessThanSignKeyword_3_0() { return cLWLessThanSignKeyword_3_0; }
-
-		//GE=">="
-		public Assignment getGEAssignment_4() { return cGEAssignment_4; }
-
-		//">="
-		public Keyword getGEGreaterThanSignEqualsSignKeyword_4_0() { return cGEGreaterThanSignEqualsSignKeyword_4_0; }
-
-		//LE="<="
-		public Assignment getLEAssignment_5() { return cLEAssignment_5; }
-
-		//"<="
-		public Keyword getLELessThanSignEqualsSignKeyword_5_0() { return cLELessThanSignEqualsSignKeyword_5_0; }
-
-		//LIKE="~"
-		public Assignment getLIKEAssignment_6() { return cLIKEAssignment_6; }
-
-		//"~"
-		public Keyword getLIKETildeKeyword_6_0() { return cLIKETildeKeyword_6_0; }
-	}
-
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1303,6 +1247,104 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	public class LogicOperatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "LogicOperator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cANDEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cANDAmpersandKeyword_0_0 = (Keyword)cANDEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cOREnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cORVerticalLineKeyword_1_0 = (Keyword)cOREnumLiteralDeclaration_1.eContents().get(0);
+		
+		//// -----------------------------------
+		//// Terminals
+		//enum LogicOperator:
+		//	AND="&" | OR="|";
+		public EnumRule getRule() { return rule; }
+
+		//AND="&" | OR="|"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//AND="&"
+		public EnumLiteralDeclaration getANDEnumLiteralDeclaration_0() { return cANDEnumLiteralDeclaration_0; }
+
+		//"&"
+		public Keyword getANDAmpersandKeyword_0_0() { return cANDAmpersandKeyword_0_0; }
+
+		//OR="|"
+		public EnumLiteralDeclaration getOREnumLiteralDeclaration_1() { return cOREnumLiteralDeclaration_1; }
+
+		//"|"
+		public Keyword getORVerticalLineKeyword_1_0() { return cORVerticalLineKeyword_1_0; }
+	}
+
+	public class ComparatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "Comparator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cEQEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cEQEqualsSignEqualsSignKeyword_0_0 = (Keyword)cEQEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cNEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cNEExclamationMarkEqualsSignKeyword_1_0 = (Keyword)cNEEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cGREnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cGRGreaterThanSignKeyword_2_0 = (Keyword)cGREnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cLWEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cLWLessThanSignKeyword_3_0 = (Keyword)cLWEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cGEEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cGEGreaterThanSignEqualsSignKeyword_4_0 = (Keyword)cGEEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cLEEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cLELessThanSignEqualsSignKeyword_5_0 = (Keyword)cLEEnumLiteralDeclaration_5.eContents().get(0);
+		private final EnumLiteralDeclaration cLIKEEnumLiteralDeclaration_6 = (EnumLiteralDeclaration)cAlternatives.eContents().get(6);
+		private final Keyword cLIKETildeKeyword_6_0 = (Keyword)cLIKEEnumLiteralDeclaration_6.eContents().get(0);
+		
+		//enum Comparator:
+		//	EQ="==" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<=" | LIKE="~";
+		public EnumRule getRule() { return rule; }
+
+		//EQ="==" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<=" | LIKE="~"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//EQ="=="
+		public EnumLiteralDeclaration getEQEnumLiteralDeclaration_0() { return cEQEnumLiteralDeclaration_0; }
+
+		//"=="
+		public Keyword getEQEqualsSignEqualsSignKeyword_0_0() { return cEQEqualsSignEqualsSignKeyword_0_0; }
+
+		//NE="!="
+		public EnumLiteralDeclaration getNEEnumLiteralDeclaration_1() { return cNEEnumLiteralDeclaration_1; }
+
+		//"!="
+		public Keyword getNEExclamationMarkEqualsSignKeyword_1_0() { return cNEExclamationMarkEqualsSignKeyword_1_0; }
+
+		//GR=">"
+		public EnumLiteralDeclaration getGREnumLiteralDeclaration_2() { return cGREnumLiteralDeclaration_2; }
+
+		//">"
+		public Keyword getGRGreaterThanSignKeyword_2_0() { return cGRGreaterThanSignKeyword_2_0; }
+
+		//LW="<"
+		public EnumLiteralDeclaration getLWEnumLiteralDeclaration_3() { return cLWEnumLiteralDeclaration_3; }
+
+		//"<"
+		public Keyword getLWLessThanSignKeyword_3_0() { return cLWLessThanSignKeyword_3_0; }
+
+		//GE=">="
+		public EnumLiteralDeclaration getGEEnumLiteralDeclaration_4() { return cGEEnumLiteralDeclaration_4; }
+
+		//">="
+		public Keyword getGEGreaterThanSignEqualsSignKeyword_4_0() { return cGEGreaterThanSignEqualsSignKeyword_4_0; }
+
+		//LE="<="
+		public EnumLiteralDeclaration getLEEnumLiteralDeclaration_5() { return cLEEnumLiteralDeclaration_5; }
+
+		//"<="
+		public Keyword getLELessThanSignEqualsSignKeyword_5_0() { return cLELessThanSignEqualsSignKeyword_5_0; }
+
+		//LIKE="~"
+		public EnumLiteralDeclaration getLIKEEnumLiteralDeclaration_6() { return cLIKEEnumLiteralDeclaration_6; }
+
+		//"~"
+		public Keyword getLIKETildeKeyword_6_0() { return cLIKETildeKeyword_6_0; }
+	}
+	
 	private final ModelElements pModel;
 	private final ImportElements pImport;
 	private final MetamodelSequenceElements pMetamodelSequence;
@@ -1323,6 +1365,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	private final ParenthesisConstraintElements pParenthesisConstraint;
 	private final OperandElements pOperand;
 	private final TypeofElements pTypeof;
+	private final WriteTraceModelElements pWriteTraceModel;
+	private final TraceModelReferenceElements pTraceModelReference;
 	private final TraceModelElements pTraceModel;
 	private final NodeSetRelationElements pNodeSetRelation;
 	private final NodeTypeElements pNodeType;
@@ -1332,8 +1376,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	private final IntLiteralElements pIntLiteral;
 	private final FloatLiteralElements pFloatLiteral;
 	private final BooleanLiteralElements pBooleanLiteral;
-	private final LogicOperatorElements pLogicOperator;
-	private final ComparatorElements pComparator;
+	private final LogicOperatorElements unknownRuleLogicOperator;
+	private final ComparatorElements unknownRuleComparator;
 	private final QualifiedNameElements pQualifiedName;
 	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final TerminalRule tDIGIT;
@@ -1369,6 +1413,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		this.pParenthesisConstraint = new ParenthesisConstraintElements();
 		this.pOperand = new OperandElements();
 		this.pTypeof = new TypeofElements();
+		this.pWriteTraceModel = new WriteTraceModelElements();
+		this.pTraceModelReference = new TraceModelReferenceElements();
 		this.pTraceModel = new TraceModelElements();
 		this.pNodeSetRelation = new NodeSetRelationElements();
 		this.pNodeType = new NodeTypeElements();
@@ -1378,8 +1424,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		this.pIntLiteral = new IntLiteralElements();
 		this.pFloatLiteral = new FloatLiteralElements();
 		this.pBooleanLiteral = new BooleanLiteralElements();
-		this.pLogicOperator = new LogicOperatorElements();
-		this.pComparator = new ComparatorElements();
+		this.unknownRuleLogicOperator = new LogicOperatorElements();
+		this.unknownRuleComparator = new ComparatorElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DIGIT");
@@ -1498,7 +1544,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Generator:
 	//	"generate" reference=[types::JvmType] sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType ("->"
-	//	writeTraceModel=TraceModel)? ("<-" readTraceModels+=[TraceModel] ("," readTraceModels+=[TraceModel])*)?;
+	//	writeTraceModel=WriteTraceModel)? ("<-" readTraceModels+=TraceModelReference (","
+	//	readTraceModels+=TraceModelReference)*)?;
 	public GeneratorElements getGeneratorAccess() {
 		return pGenerator;
 	}
@@ -1558,8 +1605,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		return getConstraintExpressionAccess().getRule();
 	}
 
-	//CompareExpression returns ConstraintExpression:
-	//	BasicConstraint (=> ({ConstraintExpression.left=current} operator=Comparator) right=BasicConstraint)?;
+	//CompareExpression:
+	//	BasicConstraint (=> ({CompareExpression.left=current} comparator=Comparator) right=BasicConstraint)?;
 	public CompareExpressionElements getCompareExpressionAccess() {
 		return pCompareExpression;
 	}
@@ -1616,6 +1663,26 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getTypeofRule() {
 		return getTypeofAccess().getRule();
+	}
+
+	//WriteTraceModel:
+	//	TraceModel | "use" TraceModelReference;
+	public WriteTraceModelElements getWriteTraceModelAccess() {
+		return pWriteTraceModel;
+	}
+	
+	public ParserRule getWriteTraceModelRule() {
+		return getWriteTraceModelAccess().getRule();
+	}
+
+	//TraceModelReference:
+	//	traceModel=[TraceModel];
+	public TraceModelReferenceElements getTraceModelReferenceAccess() {
+		return pTraceModelReference;
+	}
+	
+	public ParserRule getTraceModelReferenceRule() {
+		return getTraceModelReferenceAccess().getRule();
 	}
 
 	//TraceModel:
@@ -1712,23 +1779,23 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// -----------------------------------
 	//// Terminals
-	//LogicOperator:
+	//enum LogicOperator:
 	//	AND="&" | OR="|";
 	public LogicOperatorElements getLogicOperatorAccess() {
-		return pLogicOperator;
+		return unknownRuleLogicOperator;
 	}
 	
-	public ParserRule getLogicOperatorRule() {
+	public EnumRule getLogicOperatorRule() {
 		return getLogicOperatorAccess().getRule();
 	}
 
-	//Comparator:
+	//enum Comparator:
 	//	EQ="==" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<=" | LIKE="~";
 	public ComparatorElements getComparatorAccess() {
-		return pComparator;
+		return unknownRuleComparator;
 	}
 	
-	public ParserRule getComparatorRule() {
+	public EnumRule getComparatorRule() {
 		return getComparatorAccess().getRule();
 	}
 

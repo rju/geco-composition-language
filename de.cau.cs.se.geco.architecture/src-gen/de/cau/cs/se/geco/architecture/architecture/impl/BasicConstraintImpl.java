@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class BasicConstraintImpl extends ConstraintExpressionImpl implements BasicConstraint
+public class BasicConstraintImpl extends CompareExpressionImpl implements BasicConstraint
 {
   /**
    * <!-- begin-user-doc -->
