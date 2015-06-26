@@ -14,7 +14,7 @@
         eType="#//Connection" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetamodelSequence">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ModelNodeType"
@@ -27,12 +27,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RegisteredPackage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="extension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Connection">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModel" eType="#//SourceModelNodeSelector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetModel" eType="#//TargetModelNodeType"
@@ -65,7 +65,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeProperty" eSuperTypes="#//Operand">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" eType="#//ConstraintExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subProperty" eType="#//NodeProperty"
@@ -92,7 +92,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operand" eSuperTypes="#//BasicConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="Typeof" eSuperTypes="#//Operand">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WriteTraceModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="TraceModelReference" eSuperTypes="#//WriteTraceModel">
@@ -110,7 +110,7 @@
         eType="#//NodeType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Operand"/>
   <eClassifiers xsi:type="ecore:EClass" name="ArrayLiteral" eSuperTypes="#//Literal">

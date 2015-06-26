@@ -13,4 +13,12 @@
 
 
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated BoxingModel -->
+      <package
+            uri="http://www.cau.de/cs/se/geco/architecture/boxing"
+            class="de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage"
+            genModel="src/de/cau/cs/se/geco/architecture/model/BoxingModel.genmodel"/>
+   </extension>
+
 </plugin>
