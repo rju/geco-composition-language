@@ -3,6 +3,7 @@
  */
 package de.cau.cs.se.geco.architecture.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.generator.GenerateBoxingModel;
@@ -26,6 +27,7 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
  */
 @SuppressWarnings("all")
 public class ArchitectureGenerator implements IGenerator {
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterator<Model> _filter = Iterators.<Model>filter(_allContents, Model.class);
