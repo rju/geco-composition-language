@@ -1,3 +1,4 @@
 **/bin/**
 **/.launch/**
 **.*._trace
+**/xtend-gen/**
