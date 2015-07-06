@@ -31,6 +31,14 @@ import org.eclipse.emf.common.util.EList
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 import de.cau.cs.kieler.core.krendering.LineStyle
+import de.cau.cs.kieler.core.krendering.LineJoin
+import de.cau.cs.kieler.klighd.KlighdConstants
+import de.cau.cs.kieler.kiml.options.PortSide
+import de.cau.cs.kieler.core.kgraph.KPort
+import de.cau.cs.kieler.core.kgraph.KLabeledGraphElement
+import de.cau.cs.kieler.kiml.options.PortConstraints
+import de.cau.cs.kieler.kiml.options.EdgeType
+import de.cau.cs.kieler.core.math.KVectorChain
 
 class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     
@@ -43,6 +51,22 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     @Inject extension KPolylineExtensions
     @Inject extension KColorExtensions
     extension KRenderingFactory = KRenderingFactory.eINSTANCE
+    
+    private val GENERATOR_IN = 0
+    private val GENERATOR_OUT = 1
+    private val GENERATOR_TR_IN = 2
+    private val GENERATOR_TR_OUT = 3
+    
+    private val WEAVER_IN = 0
+    private val WEAVER_OUT = 1
+    private val WEAVER_ASPECT = 2
+    
+    private val TRACE_MODEL_IN = 0
+    private val TRACE_MODEL_OUT = 1
+    
+    private val MODEL_IN = 0
+    private val MODEL_OUT = 1
+    
     
     val Map<Weaver,KNode> weaverNodes = new HashMap<Weaver,KNode>()
     val Map<Generator,KNode> generatorNodes = new HashMap<Generator,KNode>()
@@ -58,7 +82,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         	it.addLayoutParam(LayoutOptions::ALGORITHM, "de.cau.cs.kieler.klay.layered")
             it.addLayoutParam(LayoutOptions::SPACING, 25f)
             it.addLayoutParam(LayoutOptions::DIRECTION, Direction::RIGHT)
-            it.addLayoutParam(LayoutOptions::EDGE_ROUTING, EdgeRouting::POLYLINE)
+            it.addLayoutParam(LayoutOptions::EDGE_ROUTING, EdgeRouting::ORTHOGONAL)
             
 			model.metamodels.createNamedMetaModels(it)
             model.connections.createAllToplevelGenerators(it)
@@ -91,9 +115,18 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     		targetGeneratorModelNodes.get((weaver.aspectModel as Generator))
     	}
     	
-    	drawConnectionNoArrow(sourceModelNode, weaverNode, LineStyle.SOLID)
-    	drawConnectionWithArrow(weaverNode, targetModelNode, LineStyle.SOLID)
-    	drawConnectionWithArrow(aspectModelNode, weaverNode, LineStyle.SOLID)
+    	drawConnectionNoArrow(sourceModelNode, weaverNode, LineStyle.SOLID) => [
+    		it.sourcePort = sourceModelNode.ports.get(MODEL_OUT)
+    		it.targetPort = weaverNode.ports.get(WEAVER_IN)
+    	]
+    	drawConnectionWithArrow(weaverNode, targetModelNode, LineStyle.SOLID) => [
+    		it.sourcePort = weaverNode.ports.get(WEAVER_OUT)
+    		it.targetPort = targetModelNode.ports.get(MODEL_IN)
+    	]
+    	drawConnectionWithArrow(aspectModelNode, weaverNode, LineStyle.SOLID) => [
+    		it.sourcePort = aspectModelNode.ports.get(MODEL_OUT)
+    		it.targetPort = weaverNode.ports.get(WEAVER_ASPECT)
+    	]
 	}
 	
 	/**
@@ -118,11 +151,20 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     	}
     	generator.readTraceModels.forEach[traceModel |
     		val traceModelNode = traceModelNodes.get(traceModel.traceModel)
-    		drawConnectionWithArrow(traceModelNode, generatorNode, LineStyle.DASH)
+    		drawConnectionWithArrow(traceModelNode, generatorNode, LineStyle.DASH) => [
+    			sourcePort = traceModelNode.ports.get(TRACE_MODEL_OUT)
+    			targetPort = generatorNode.ports.get(GENERATOR_TR_IN)
+    		]
     	]
     	
-    	drawConnectionNoArrow(sourceModelNode, generatorNode, LineStyle.SOLID)
-    	drawConnectionWithArrow(generatorNode, targetModelNode, LineStyle.SOLID)
+    	drawConnectionNoArrow(sourceModelNode, generatorNode, LineStyle.SOLID) => [
+    		it.sourcePort = sourceModelNode.ports.get(MODEL_OUT)
+    		it.targetPort = generatorNode.ports.get(GENERATOR_IN)
+    	]
+    	drawConnectionWithArrow(generatorNode, targetModelNode, LineStyle.SOLID) => [
+    		it.sourcePort = generatorNode.ports.get(GENERATOR_OUT)
+    		it.targetPort = targetModelNode.ports.get(MODEL_IN)
+    	]
 	}
 	
 	/**
@@ -166,7 +208,10 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 				TraceModelReference: traceModelNodes.get((generator.writeTraceModel as TraceModelReference).traceModel)
 			}
 			
-			drawConnectionWithArrow(generatorNode, traceModelNode, LineStyle.DASH)
+			drawConnectionWithArrow(generatorNode, traceModelNode , LineStyle.DASH) => [
+				it.sourcePort = generatorNode.ports.get(GENERATOR_TR_OUT) 
+				it.targetPort = traceModelNode.ports.get(TRACE_MODEL_IN) 	
+			]
 		}
 		
 		parent.children += generatorNode
@@ -267,6 +312,25 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	 */
 	private def KNode drawMetamodelRectangle(KNode node, String instanceName, String className) {
 		node => [
+			it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
+			
+			it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.WEST)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("in", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
+    		it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.EAST)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("out", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
+    		
 			it.addRectangle => [
 				it.lineWidth = 2
 				it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
@@ -311,6 +375,32 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	
 	private def KNode drawWeaver(Weaver weaver) {
 		val weaverNode = weaver.createNode().associateWith(weaver) => [
+			it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
+			
+			it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.WEST)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("in", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
+    		it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.EAST)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("out", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
+    		it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.SOUTH)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("aspect", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
 			it.addText(weaver.name) => [
                	it.fontBold = true
             ]
@@ -324,8 +414,43 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	 */
 	private def KNode drawGenerator(Generator generator) {
 		val generatorNode = generator.createNode().associateWith(generator) => [
+			it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
+    		
+			it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.WEST)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("in", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
+    		it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.EAST)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("out", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
+    		it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.SOUTH)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("tr in", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
+    		it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.NORTH)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("tr out", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
 			it.addText(generator.name) => [
               	it.fontBold = true
+              	it.setAreaPlacementData.from(LEFT, 10, 0, TOP, 10, 0).to(RIGHT, 10, 0, BOTTOM, 10, 0)
             ]
 		]
 				
@@ -341,6 +466,23 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     		it.targetNodes.map[it.type.simpleName].join(',') + ')'
     	].join(' ')
     	traceModel.createNode().associateWith(traceModel) => [
+    		it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
+    		it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.SOUTH)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("out", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
+    		it.ports.add(createPort() => [
+    			it.setPortSize(2,2)
+    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.NORTH)
+    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+                
+                // last but not least add a label exhibiting the ports name
+                it.addInsidePortLabel("in", 8, KlighdConstants.DEFAULT_FONT_NAME)
+    		])
 			it.addRectangle => [
 				it.lineWidth = 2
 				it.setBackgroundGradient("lightblue".color, "white".color, 0)
@@ -359,7 +501,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     }
 	
 	private def String getName(Generator generator) {
-		return "G " +generator.reference.simpleName
+		return "G " + generator.reference.simpleName
 	}
     
     private def String getName(Weaver weaver) {
