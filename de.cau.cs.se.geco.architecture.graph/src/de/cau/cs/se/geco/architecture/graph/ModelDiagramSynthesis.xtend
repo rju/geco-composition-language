@@ -3,6 +3,8 @@ package de.cau.cs.se.geco.architecture.graph
 import de.cau.cs.kieler.core.kgraph.KEdge
 import de.cau.cs.kieler.core.kgraph.KNode
 import de.cau.cs.kieler.core.krendering.KRenderingFactory
+import de.cau.cs.kieler.core.krendering.LineJoin
+import de.cau.cs.kieler.core.krendering.LineStyle
 import de.cau.cs.kieler.core.krendering.extensions.KColorExtensions
 import de.cau.cs.kieler.core.krendering.extensions.KContainerRenderingExtensions
 import de.cau.cs.kieler.core.krendering.extensions.KEdgeExtensions
@@ -14,6 +16,9 @@ import de.cau.cs.kieler.core.krendering.extensions.KRenderingExtensions
 import de.cau.cs.kieler.kiml.options.Direction
 import de.cau.cs.kieler.kiml.options.EdgeRouting
 import de.cau.cs.kieler.kiml.options.LayoutOptions
+import de.cau.cs.kieler.kiml.options.PortConstraints
+import de.cau.cs.kieler.kiml.options.PortSide
+import de.cau.cs.kieler.klighd.KlighdConstants
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
 import de.cau.cs.se.geco.architecture.architecture.Connection
 import de.cau.cs.se.geco.architecture.architecture.Generator
@@ -22,23 +27,21 @@ import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
 import de.cau.cs.se.geco.architecture.architecture.Model
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import de.cau.cs.se.geco.architecture.architecture.TraceModel
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 import de.cau.cs.se.geco.architecture.architecture.Weaver
+import de.cau.cs.se.geco.architecture.framework.AbstractRequireTraceModelGenerator
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 import java.util.HashMap
 import java.util.Map
 import javax.inject.Inject
 import org.eclipse.emf.common.util.EList
+import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
-import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
-import de.cau.cs.kieler.core.krendering.LineStyle
-import de.cau.cs.kieler.core.krendering.LineJoin
-import de.cau.cs.kieler.klighd.KlighdConstants
-import de.cau.cs.kieler.kiml.options.PortSide
-import de.cau.cs.kieler.core.kgraph.KPort
-import de.cau.cs.kieler.core.kgraph.KLabeledGraphElement
-import de.cau.cs.kieler.kiml.options.PortConstraints
-import de.cau.cs.kieler.kiml.options.EdgeType
-import de.cau.cs.kieler.core.math.KVectorChain
+import de.cau.cs.kieler.klay.layered.properties.Properties
+import de.cau.cs.kieler.klighd.SynthesisOption
+import com.google.common.collect.ImmutableList
 
 class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     
@@ -52,38 +55,89 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     @Inject extension KColorExtensions
     extension KRenderingFactory = KRenderingFactory.eINSTANCE
     
-    private val GENERATOR_IN = 0
-    private val GENERATOR_OUT = 1
-    private val GENERATOR_TR_IN = 2
-    private val GENERATOR_TR_OUT = 3
+    /** changes in visualization */
+    private static val TRACE_MODEL_VISIBLE_NAME = "Trace models visible"
+    private static val TRACE_MODEL_VISIBLE_NO = "No"
+    private static val TRACE_MODEL_VISIBLE_YES = "Yes"
     
-    private val WEAVER_IN = 0
-    private val WEAVER_OUT = 1
-    private val WEAVER_ASPECT = 2
+    /** changes in layout direction */
+    private static val DIRECTION_NAME = "Layout Direction"
+    private static val DIRECTION_UP = "up"
+    private static val DIRECTION_DOWN = "down"
+    private static val DIRECTION_LEFT = "left"
+    private static val DIRECTION_RIGHT = "right"
     
-    private val TRACE_MODEL_IN = 0
-    private val TRACE_MODEL_OUT = 1
+    /** changes in edge routing */
+    private static val ROUTING_NAME = "Edge Routing"
+    private static val ROUTING_POLYLINE = "polyline"
+    private static val ROUTING_ORTHOGONAL = "orthogonal"
+    private static val ROUTING_SPLINES = "splines"
     
-    private val MODEL_IN = 0
-    private val MODEL_OUT = 1
+    private static val SPACING_NAME = "Spacing"
     
+    /**
+     * The filter option definition that allows users to customize the constructed class diagrams.
+     */
+    private static val SynthesisOption TRACE_MODEL_VISIBLE = SynthesisOption::createChoiceOption(TRACE_MODEL_VISIBLE_NAME,
+       ImmutableList::of(TRACE_MODEL_VISIBLE_YES, TRACE_MODEL_VISIBLE_NO), TRACE_MODEL_VISIBLE_YES)
+       
+    private static val SynthesisOption DIRECTION = SynthesisOption::createChoiceOption(DIRECTION_NAME,
+       ImmutableList::of(DIRECTION_UP, DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT), DIRECTION_LEFT)
+       
+    private static val SynthesisOption ROUTING = SynthesisOption::createChoiceOption(ROUTING_NAME,
+       ImmutableList::of(ROUTING_POLYLINE, ROUTING_ORTHOGONAL, ROUTING_SPLINES), ROUTING_POLYLINE)
+       
+   	private static val SynthesisOption SPACING = SynthesisOption::createRangeOption(SPACING_NAME, 5f, 200f, 50f)
     
+    private static val GENERATOR_IN = 0
+    private static val GENERATOR_OUT = 1
+    private static val GENERATOR_TR_IN = 2
+    private static val GENERATOR_TR_OUT = 3
+    
+    private static val WEAVER_IN = 0
+    private static val WEAVER_OUT = 1
+    private static val WEAVER_ASPECT = 2
+    
+    private static val TRACE_MODEL_IN = 0
+    private static val TRACE_MODEL_OUT = 1
+    
+    private static val MODEL_IN = 0
+    private static val MODEL_OUT = 1
+        
     val Map<Weaver,KNode> weaverNodes = new HashMap<Weaver,KNode>()
     val Map<Generator,KNode> generatorNodes = new HashMap<Generator,KNode>()
     val Map<Weaver,KNode> targetWeaverModelNodes = new HashMap<Weaver,KNode>()
     val Map<Generator,KNode> targetGeneratorModelNodes = new HashMap<Generator,KNode>()
     val Map<Metamodel,KNode> metamodelNodes = new HashMap<Metamodel,KNode>()
 	val Map<TraceModel,KNode> traceModelNodes = new HashMap<TraceModel,KNode>()
+	
+	/**
+     * {@inheritDoc}<br>
+     * <br>
+     * Registers the diagram filter option declared above, which allow users to tailor the constructed diagrams.
+     */
+    override public getDisplayedSynthesisOptions() {
+        return ImmutableList::of(TRACE_MODEL_VISIBLE, DIRECTION, ROUTING, SPACING)
+    }
        
     override KNode transform(Model model) {
         val root = model.createNode().associateWith(model);
         
         root => [
         	it.addLayoutParam(LayoutOptions::ALGORITHM, "de.cau.cs.kieler.klay.layered")
-            it.addLayoutParam(LayoutOptions::SPACING, 25f)
-            it.addLayoutParam(LayoutOptions::DIRECTION, Direction::RIGHT)
-            it.addLayoutParam(LayoutOptions::EDGE_ROUTING, EdgeRouting::ORTHOGONAL)
-            
+            it.setLayoutOption(LayoutOptions::SPACING, SPACING.objectValue as Float)
+            it.setLayoutOption(LayoutOptions::DIRECTION, switch(DIRECTION.objectValue) {
+            	case DIRECTION_UP: Direction::UP
+            	case DIRECTION_DOWN: Direction::DOWN
+            	case DIRECTION_LEFT: Direction::LEFT
+            	case DIRECTION_RIGHT: Direction::RIGHT
+            })
+            it.setLayoutOption(LayoutOptions::EDGE_ROUTING, switch(ROUTING.objectValue) {
+            	case ROUTING_POLYLINE: EdgeRouting::POLYLINE
+            	case ROUTING_ORTHOGONAL: EdgeRouting::ORTHOGONAL
+            	case ROUTING_SPLINES: EdgeRouting::SPLINES
+            })
+                        
 			model.metamodels.createNamedMetaModels(it)
             model.connections.createAllToplevelGenerators(it)
             model.connections.createAllWeavers(it)
@@ -149,13 +203,15 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     			throw new Exception("Broken model.")
     		}
     	}
-    	generator.readTraceModels.forEach[traceModel |
-    		val traceModelNode = traceModelNodes.get(traceModel.traceModel)
-    		drawConnectionWithArrow(traceModelNode, generatorNode, LineStyle.DASH) => [
-    			sourcePort = traceModelNode.ports.get(TRACE_MODEL_OUT)
-    			targetPort = generatorNode.ports.get(GENERATOR_TR_IN)
-    		]
-    	]
+    	if (TRACE_MODEL_VISIBLE.objectValue.equals(TRACE_MODEL_VISIBLE_YES)) {
+	    	generator.readTraceModels.forEach[traceModel |
+	    		val traceModelNode = traceModelNodes.get(traceModel.traceModel)
+	    		drawConnectionWithArrow(traceModelNode, generatorNode, LineStyle.DASH) => [
+	    			sourcePort = traceModelNode.ports.get(TRACE_MODEL_OUT)
+	    			targetPort = generatorNode.ports.get(GENERATOR_TR_IN)
+	    		]
+	    	]
+    	}
     	
     	drawConnectionNoArrow(sourceModelNode, generatorNode, LineStyle.SOLID) => [
     		it.sourcePort = sourceModelNode.ports.get(MODEL_OUT)
@@ -202,7 +258,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		generatorNodes.put(generator, generatorNode)
 		
 		/** create trace model and write edge. */
-		if (generator.writeTraceModel != null) {
+		if (generator.writeTraceModel != null && TRACE_MODEL_VISIBLE.objectValue.equals(TRACE_MODEL_VISIBLE_YES)) {
 			val traceModelNode = switch(generator.writeTraceModel) {
 				TraceModel: (generator.writeTraceModel as TraceModel).createTraceModel(parent)
 				TraceModelReference: traceModelNodes.get((generator.writeTraceModel as TraceModelReference).traceModel)
@@ -276,8 +332,25 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		val instanceName = "" 
 		val className = if (generator.targetModel.reference != null)
 			generator.targetModel.reference.resolveType.simpleName
-		else
-			generator.reference.simpleName
+		else {
+			val superTypes = (generator.reference as JvmGenericType).superTypes
+			val interfaceType = superTypes.findFirst[it.simpleName.startsWith(IGenerator.simpleName + '<')]
+			if (interfaceType != null) {
+				switch (interfaceType) {
+					JvmParameterizedTypeReference: interfaceType.arguments.get(1).simpleName
+					default: 'ERROR'
+				}
+			} else {
+				val abstractType = superTypes.findFirst[it.simpleName.startsWith(AbstractRequireTraceModelGenerator.simpleName + '<')]
+				if (abstractType != null) {
+					switch(abstractType) {
+						JvmParameterizedTypeReference: abstractType.arguments.get(1).simpleName
+						default: 'ERROR'
+					}
+				}
+			}
+				
+		} 
 			
 		drawMetamodelRectangle(createNode(), instanceName, className)
 	}
@@ -350,6 +423,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		createEdge() => [
 			it.source = source
             it.target = target
+
             it.addPolyline => [
             	it.addHeadArrowDecorator
             	it.lineWidth = 2
@@ -366,6 +440,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		createEdge() => [
 			it.source = source
             it.target = target
+                             
             it.addPolyline => [
             	it.lineWidth = 2
             	it.lineStyle = lineStyle
@@ -473,7 +548,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
-                it.addInsidePortLabel("out", 8, KlighdConstants.DEFAULT_FONT_NAME)
+                it.addInsidePortLabel("in", 8, KlighdConstants.DEFAULT_FONT_NAME)
     		])
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
@@ -481,7 +556,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
-                it.addInsidePortLabel("in", 8, KlighdConstants.DEFAULT_FONT_NAME)
+                it.addInsidePortLabel("out", 8, KlighdConstants.DEFAULT_FONT_NAME)
     		])
 			it.addRectangle => [
 				it.lineWidth = 2
