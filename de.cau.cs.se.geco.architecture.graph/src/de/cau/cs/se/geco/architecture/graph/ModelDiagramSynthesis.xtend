@@ -59,14 +59,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     private static val TRACE_MODEL_VISIBLE_NAME = "Trace models visible"
     private static val TRACE_MODEL_VISIBLE_NO = "No"
     private static val TRACE_MODEL_VISIBLE_YES = "Yes"
-    
-    /** changes in layout direction */
-    private static val DIRECTION_NAME = "Layout Direction"
-    private static val DIRECTION_UP = "up"
-    private static val DIRECTION_DOWN = "down"
-    private static val DIRECTION_LEFT = "left"
-    private static val DIRECTION_RIGHT = "right"
-    
+        
     /** changes in edge routing */
     private static val ROUTING_NAME = "Edge Routing"
     private static val ROUTING_POLYLINE = "polyline"
@@ -80,10 +73,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
      */
     private static val SynthesisOption TRACE_MODEL_VISIBLE = SynthesisOption::createChoiceOption(TRACE_MODEL_VISIBLE_NAME,
        ImmutableList::of(TRACE_MODEL_VISIBLE_YES, TRACE_MODEL_VISIBLE_NO), TRACE_MODEL_VISIBLE_YES)
-       
-    private static val SynthesisOption DIRECTION = SynthesisOption::createChoiceOption(DIRECTION_NAME,
-       ImmutableList::of(DIRECTION_UP, DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT), DIRECTION_LEFT)
-       
+              
     private static val SynthesisOption ROUTING = SynthesisOption::createChoiceOption(ROUTING_NAME,
        ImmutableList::of(ROUTING_POLYLINE, ROUTING_ORTHOGONAL, ROUTING_SPLINES), ROUTING_POLYLINE)
        
@@ -117,7 +107,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
      * Registers the diagram filter option declared above, which allow users to tailor the constructed diagrams.
      */
     override public getDisplayedSynthesisOptions() {
-        return ImmutableList::of(TRACE_MODEL_VISIBLE, DIRECTION, ROUTING, SPACING)
+        return ImmutableList::of(TRACE_MODEL_VISIBLE, ROUTING, SPACING)
     }
        
     override KNode transform(Model model) {
@@ -126,12 +116,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         root => [
         	it.addLayoutParam(LayoutOptions::ALGORITHM, "de.cau.cs.kieler.klay.layered")
             it.setLayoutOption(LayoutOptions::SPACING, SPACING.objectValue as Float)
-            it.setLayoutOption(LayoutOptions::DIRECTION, switch(DIRECTION.objectValue) {
-            	case DIRECTION_UP: Direction::UP
-            	case DIRECTION_DOWN: Direction::DOWN
-            	case DIRECTION_LEFT: Direction::LEFT
-            	case DIRECTION_RIGHT: Direction::RIGHT
-            })
+            it.setLayoutOption(LayoutOptions::DIRECTION, Direction::RIGHT)
             it.setLayoutOption(LayoutOptions::EDGE_ROUTING, switch(ROUTING.objectValue) {
             	case ROUTING_POLYLINE: EdgeRouting::POLYLINE
             	case ROUTING_ORTHOGONAL: EdgeRouting::ORTHOGONAL
@@ -440,7 +425,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		createEdge() => [
 			it.source = source
             it.target = target
-                             
+                                         
             it.addPolyline => [
             	it.lineWidth = 2
             	it.lineStyle = lineStyle
