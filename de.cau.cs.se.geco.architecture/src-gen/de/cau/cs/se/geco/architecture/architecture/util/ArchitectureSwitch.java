@@ -107,10 +107,10 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.CONNECTION:
+      case ArchitecturePackage.PROCESSOR:
       {
-        Connection connection = (Connection)theEObject;
-        T result = caseConnection(connection);
+        Processor processor = (Processor)theEObject;
+        T result = caseProcessor(processor);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -118,7 +118,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
       {
         Weaver weaver = (Weaver)theEObject;
         T result = caseWeaver(weaver);
-        if (result == null) result = caseConnection(weaver);
+        if (result == null) result = caseProcessor(weaver);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -133,7 +133,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
       {
         Generator generator = (Generator)theEObject;
         T result = caseGenerator(generator);
-        if (result == null) result = caseConnection(generator);
+        if (result == null) result = caseProcessor(generator);
         if (result == null) result = caseAspectModel(generator);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -429,17 +429,17 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Connection</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Processor</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Connection</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Processor</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseConnection(Connection object)
+  public T caseProcessor(Processor object)
   {
     return null;
   }

@@ -3,7 +3,9 @@
 package de.cau.cs.se.geco.architecture.model.boxing;
 
 import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.Processor;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,10 +15,9 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getSourceModels <em>Source Models</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getTargetModels <em>Target Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getGroups <em>Groups</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getDerivedFrom <em>Derived From</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getTransformations <em>Transformations</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getAllProcessors <em>All Processors</em>}</li>
  * </ul>
  * </p>
  *
@@ -24,38 +25,22 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface BoxingModel extends GeneratorContainer {
+public interface BoxingModel extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Source Models</b></em>' containment reference list.
-	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.model.boxing.RootModelNode}.
+	 * Returns the value of the '<em><b>Groups</b></em>' containment reference list.
+	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.model.boxing.Group}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source Models</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Groups</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Models</em>' containment reference list.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_SourceModels()
+	 * @return the value of the '<em>Groups</em>' containment reference list.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_Groups()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<RootModelNode> getSourceModels();
-
-	/**
-	 * Returns the value of the '<em><b>Target Models</b></em>' containment reference list.
-	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.model.boxing.RootModelNode}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Target Models</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Models</em>' containment reference list.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_TargetModels()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<RootModelNode> getTargetModels();
+	EList<Group> getGroups();
 
 	/**
 	 * Returns the value of the '<em><b>Derived From</b></em>' reference.
@@ -84,19 +69,19 @@ public interface BoxingModel extends GeneratorContainer {
 	void setDerivedFrom(Model value);
 
 	/**
-	 * Returns the value of the '<em><b>Transformations</b></em>' containment reference list.
-	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.model.boxing.Transformation}.
+	 * Returns the value of the '<em><b>All Processors</b></em>' reference list.
+	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Processor}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Transformations</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>All Processors</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transformations</em>' containment reference list.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_Transformations()
-	 * @model containment="true"
+	 * @return the value of the '<em>All Processors</em>' reference list.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_AllProcessors()
+	 * @model derived="true"
 	 * @generated
 	 */
-	EList<Transformation> getTransformations();
+	EList<Processor> getAllProcessors();
 
 } // BoxingModel

@@ -2,35 +2,27 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="boxing" nsURI="http://www.cau.de/cs/se/geco/architecture/boxing"
     nsPrefix="boxing">
-  <eClassifiers xsi:type="ecore:EClass" name="BoxingModel" eSuperTypes="#//GeneratorContainer">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" upperBound="-1"
-        eType="#//RootModelNode" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetModels" upperBound="-1"
-        eType="#//RootModelNode" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoxingModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
+        eType="#//Group" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="derivedFrom" lowerBound="1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allProcessors" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Processor"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Group">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//SourceModelNodeSelector"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transformations" upperBound="-1"
-        eType="#//Transformation" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GeneratorContainer" abstract="true"
-      interface="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="invocations" upperBound="-1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Generator"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transformation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="derivedFrom" lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BoxingModelNode" abstract="true" eSuperTypes="#//GeneratorContainer">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
-        eType="#//PropertyModelNode" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RootModelNode" eSuperTypes="#//BoxingModelNode">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="declaredModel" lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//RegisteredPackage"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyModelNode" eSuperTypes="#//BoxingModelNode">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="declaredNodeProperty" lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//NodeProperty"/>
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Processor"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subGroups" upperBound="-1"
+        eType="#//Group" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModels" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
   </eClassifiers>
 </ecore:EPackage>

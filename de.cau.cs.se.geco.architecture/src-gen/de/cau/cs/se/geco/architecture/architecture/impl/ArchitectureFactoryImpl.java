@@ -70,7 +70,7 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.METAMODEL_SEQUENCE: return createMetamodelSequence();
       case ArchitecturePackage.METAMODEL: return createMetamodel();
       case ArchitecturePackage.REGISTERED_PACKAGE: return createRegisteredPackage();
-      case ArchitecturePackage.CONNECTION: return createConnection();
+      case ArchitecturePackage.PROCESSOR: return createProcessor();
       case ArchitecturePackage.WEAVER: return createWeaver();
       case ArchitecturePackage.ASPECT_MODEL: return createAspectModel();
       case ArchitecturePackage.GENERATOR: return createGenerator();
@@ -111,6 +111,8 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     switch (eDataType.getClassifierID())
     {
+      case ArchitecturePackage.METAMODEL_MODIFIER:
+        return createMetamodelModifierFromString(eDataType, initialValue);
       case ArchitecturePackage.LOGIC_OPERATOR:
         return createLogicOperatorFromString(eDataType, initialValue);
       case ArchitecturePackage.COMPARATOR:
@@ -130,6 +132,8 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     switch (eDataType.getClassifierID())
     {
+      case ArchitecturePackage.METAMODEL_MODIFIER:
+        return convertMetamodelModifierToString(eDataType, instanceValue);
       case ArchitecturePackage.LOGIC_OPERATOR:
         return convertLogicOperatorToString(eDataType, instanceValue);
       case ArchitecturePackage.COMPARATOR:
@@ -199,10 +203,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public Connection createConnection()
+  public Processor createProcessor()
   {
-    ConnectionImpl connection = new ConnectionImpl();
-    return connection;
+    ProcessorImpl processor = new ProcessorImpl();
+    return processor;
   }
 
   /**
@@ -478,6 +482,28 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
     return booleanLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MetamodelModifier createMetamodelModifierFromString(EDataType eDataType, String initialValue)
+  {
+    MetamodelModifier result = MetamodelModifier.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertMetamodelModifierToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Generator extends Connection, AspectModel
+public interface Generator extends Processor, AspectModel
 {
   /**
    * Returns the value of the '<em><b>Write Trace Model</b></em>' containment reference.

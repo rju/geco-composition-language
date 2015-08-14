@@ -20,7 +20,7 @@ import de.cau.cs.kieler.kiml.options.PortConstraints
 import de.cau.cs.kieler.kiml.options.PortSide
 import de.cau.cs.kieler.klighd.KlighdConstants
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
-import de.cau.cs.se.geco.architecture.architecture.Connection
+import de.cau.cs.se.geco.architecture.architecture.Processor
 import de.cau.cs.se.geco.architecture.architecture.Generator
 import de.cau.cs.se.geco.architecture.architecture.Metamodel
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
@@ -124,8 +124,8 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
             })
                         
 			model.metamodels.createNamedMetaModels(it)
-            model.connections.createAllToplevelGenerators(it)
-            model.connections.createAllWeavers(it)
+            model.processors.createAllToplevelGenerators(it)
+            model.processors.createAllWeavers(it)
             
             generatorNodes.forEach[generator, generatorNode | it.createEdgesForGenerator(generator, generatorNode)]
             weaverNodes.forEach[weaver, weaverNode | it.createEdgesForWeaver(weaver, weaverNode)]    	
@@ -211,8 +211,8 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	/**
 	 * Create all weaver nodes.
 	 */
-	def void createAllWeavers(EList<Connection> connections, KNode parent) {
-		connections.filter(Weaver).forEach[weaver |
+	def void createAllWeavers(EList<Processor> processors, KNode parent) {
+		processors.filter(Weaver).forEach[weaver |
         	val weaverNode = weaver.drawWeaver 
         	weaverNodes.put(weaver, weaverNode)
         	parent.children += weaverNode
@@ -262,8 +262,8 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	/**
 	 * Create all generators which are directly declared in the model.
 	 */
-	def void createAllToplevelGenerators(EList<Connection> connections, KNode parent) {
-		connections.filter(Generator).forEach[generator | 
+	def void createAllToplevelGenerators(EList<Processor> processors, KNode parent) {
+		processors.filter(Generator).forEach[generator | 
         	val generatorNode = generator.drawGenerator
         	generatorNodes.put(generator, generatorNode)
         	generator.handleTraceModel(parent)

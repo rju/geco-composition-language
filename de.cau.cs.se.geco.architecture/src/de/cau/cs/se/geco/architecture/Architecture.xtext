@@ -8,7 +8,7 @@ Model:
 	imports+=Import*
 	registeredPackages+=RegisteredPackage*
 	metamodels+=MetamodelSequence*	
-	connections+=Connection*
+	processors+=Processor*
 ;
 
 Import:
@@ -16,7 +16,13 @@ Import:
 ;
 
 MetamodelSequence:
-	'model' type=ModelNodeType metamodels+=Metamodel (',' metamodels+=Metamodel)*
+	'model' modifier=MetamodelModifier type=ModelNodeType metamodels+=Metamodel (',' metamodels+=Metamodel)*
+;
+
+enum MetamodelModifier:
+	INPUT = 'in' |
+	OUTPUT = 'out' |
+	INTERMEDIATE = 'io'
 ;
 
 Metamodel:
@@ -27,7 +33,7 @@ RegisteredPackage:
 	'register' name=ID (importedNamespace = [types::JvmType|QualifiedName] |(isText?='text' extension=STRING))
 ;
 
-Connection:
+Processor:
 	Generator | Weaver
 ;
 

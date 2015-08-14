@@ -31,31 +31,13 @@ public interface BoxingFactory extends EFactory {
 	BoxingModel createBoxingModel();
 
 	/**
-	 * Returns a new object of class '<em>Transformation</em>'.
+	 * Returns a new object of class '<em>Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Transformation</em>'.
+	 * @return a new object of class '<em>Group</em>'.
 	 * @generated
 	 */
-	Transformation createTransformation();
-
-	/**
-	 * Returns a new object of class '<em>Root Model Node</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Root Model Node</em>'.
-	 * @generated
-	 */
-	RootModelNode createRootModelNode();
-
-	/**
-	 * Returns a new object of class '<em>Property Model Node</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Property Model Node</em>'.
-	 * @generated
-	 */
-	PropertyModelNode createPropertyModelNode();
+	Group createGroup();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -13,7 +13,7 @@ import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
 import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.architecture.Model
 import java.util.Iterator
-import de.cau.cs.se.geco.architecture.architecture.Connection
+import de.cau.cs.se.geco.architecture.architecture.Processor
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
 import de.cau.cs.se.geco.architecture.architecture.Typeof
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
@@ -110,7 +110,7 @@ class ArchitectureTyping {
 	 * Returns the predecessing weaver of the given weaver or null on error.
 	 */
 	def static Weaver predecessingWeaver(Weaver weaver) {
-		val connections = (weaver.eContainer as Model).connections
+		val connections = (weaver.eContainer as Model).processors
 		val index = connections.lastIndexOf(weaver)
 		if (index > 0) {
 			var i = 1

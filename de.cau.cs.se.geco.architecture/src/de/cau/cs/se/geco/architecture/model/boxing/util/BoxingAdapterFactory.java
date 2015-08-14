@@ -72,24 +72,8 @@ public class BoxingAdapterFactory extends AdapterFactoryImpl {
 				return createBoxingModelAdapter();
 			}
 			@Override
-			public Adapter caseGeneratorContainer(GeneratorContainer object) {
-				return createGeneratorContainerAdapter();
-			}
-			@Override
-			public Adapter caseTransformation(Transformation object) {
-				return createTransformationAdapter();
-			}
-			@Override
-			public Adapter caseBoxingModelNode(BoxingModelNode object) {
-				return createBoxingModelNodeAdapter();
-			}
-			@Override
-			public Adapter caseRootModelNode(RootModelNode object) {
-				return createRootModelNodeAdapter();
-			}
-			@Override
-			public Adapter casePropertyModelNode(PropertyModelNode object) {
-				return createPropertyModelNodeAdapter();
+			public Adapter caseGroup(Group object) {
+				return createGroupAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -126,72 +110,16 @@ public class BoxingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.model.boxing.GeneratorContainer <em>Generator Container</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.model.boxing.Group <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.GeneratorContainer
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Group
 	 * @generated
 	 */
-	public Adapter createGeneratorContainerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.model.boxing.Transformation <em>Transformation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.Transformation
-	 * @generated
-	 */
-	public Adapter createTransformationAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModelNode <em>Model Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingModelNode
-	 * @generated
-	 */
-	public Adapter createBoxingModelNodeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.model.boxing.RootModelNode <em>Root Model Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.RootModelNode
-	 * @generated
-	 */
-	public Adapter createRootModelNodeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.model.boxing.PropertyModelNode <em>Property Model Node</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.PropertyModelNode
-	 * @generated
-	 */
-	public Adapter createPropertyModelNodeAdapter() {
+	public Adapter createGroupAdapter() {
 		return null;
 	}
 

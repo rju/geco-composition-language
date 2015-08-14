@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class WeaverImpl extends ConnectionImpl implements Weaver
+public class WeaverImpl extends ProcessorImpl implements Weaver
 {
   /**
    * The cached value of the '{@link #getAspectModel() <em>Aspect Model</em>}' containment reference.

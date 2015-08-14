@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getMetamodels <em>Metamodels</em>}</li>
  * </ul>
@@ -25,6 +26,35 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MetamodelSequence extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Modifier</b></em>' attribute.
+   * The literals are from the enumeration {@link de.cau.cs.se.geco.architecture.architecture.MetamodelModifier}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Modifier</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Modifier</em>' attribute.
+   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
+   * @see #setModifier(MetamodelModifier)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getMetamodelSequence_Modifier()
+   * @model
+   * @generated
+   */
+  MetamodelModifier getModifier();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getModifier <em>Modifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Modifier</em>' attribute.
+   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
+   * @see #getModifier()
+   * @generated
+   */
+  void setModifier(MetamodelModifier value);
+
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

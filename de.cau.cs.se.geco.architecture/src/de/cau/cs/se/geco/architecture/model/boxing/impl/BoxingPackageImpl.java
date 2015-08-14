@@ -3,22 +3,14 @@
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingFactory;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
-import de.cau.cs.se.geco.architecture.model.boxing.BoxingModelNode;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
-import de.cau.cs.se.geco.architecture.model.boxing.GeneratorContainer;
-import de.cau.cs.se.geco.architecture.model.boxing.PropertyModelNode;
-import de.cau.cs.se.geco.architecture.model.boxing.RootModelNode;
-
-import de.cau.cs.se.geco.architecture.model.boxing.Transformation;
+import de.cau.cs.se.geco.architecture.model.boxing.Group;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.xtext.common.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,35 +31,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass generatorContainerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass transformationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass boxingModelNodeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass rootModelNodeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass propertyModelNodeEClass = null;
+	private EClass groupEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -147,7 +111,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBoxingModel_SourceModels() {
+	public EReference getBoxingModel_Groups() {
 		return (EReference)boxingModelEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -156,7 +120,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBoxingModel_TargetModels() {
+	public EReference getBoxingModel_DerivedFrom() {
 		return (EReference)boxingModelEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -165,7 +129,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBoxingModel_DerivedFrom() {
+	public EReference getBoxingModel_AllProcessors() {
 		return (EReference)boxingModelEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -174,8 +138,8 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBoxingModel_Transformations() {
-		return (EReference)boxingModelEClass.getEStructuralFeatures().get(3);
+	public EClass getGroup() {
+		return groupEClass;
 	}
 
 	/**
@@ -183,8 +147,8 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getGeneratorContainer() {
-		return generatorContainerEClass;
+	public EReference getGroup_SourceModels() {
+		return (EReference)groupEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -192,8 +156,8 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGeneratorContainer_Invocations() {
-		return (EReference)generatorContainerEClass.getEStructuralFeatures().get(0);
+	public EReference getGroup_Transformations() {
+		return (EReference)groupEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -201,8 +165,8 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTransformation() {
-		return transformationEClass;
+	public EReference getGroup_SubGroups() {
+		return (EReference)groupEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -210,8 +174,8 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransformation_DerivedFrom() {
-		return (EReference)transformationEClass.getEStructuralFeatures().get(0);
+	public EReference getGroup_WriteTraceModels() {
+		return (EReference)groupEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -219,53 +183,8 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBoxingModelNode() {
-		return boxingModelNodeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getBoxingModelNode_Models() {
-		return (EReference)boxingModelNodeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getRootModelNode() {
-		return rootModelNodeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRootModelNode_DeclaredModel() {
-		return (EReference)rootModelNodeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPropertyModelNode() {
-		return propertyModelNodeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPropertyModelNode_DeclaredNodeProperty() {
-		return (EReference)propertyModelNodeEClass.getEStructuralFeatures().get(0);
+	public EReference getGroup_ReadTraceModels() {
+		return (EReference)groupEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -297,25 +216,16 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 
 		// Create classes and their features
 		boxingModelEClass = createEClass(BOXING_MODEL);
-		createEReference(boxingModelEClass, BOXING_MODEL__SOURCE_MODELS);
-		createEReference(boxingModelEClass, BOXING_MODEL__TARGET_MODELS);
+		createEReference(boxingModelEClass, BOXING_MODEL__GROUPS);
 		createEReference(boxingModelEClass, BOXING_MODEL__DERIVED_FROM);
-		createEReference(boxingModelEClass, BOXING_MODEL__TRANSFORMATIONS);
+		createEReference(boxingModelEClass, BOXING_MODEL__ALL_PROCESSORS);
 
-		generatorContainerEClass = createEClass(GENERATOR_CONTAINER);
-		createEReference(generatorContainerEClass, GENERATOR_CONTAINER__INVOCATIONS);
-
-		transformationEClass = createEClass(TRANSFORMATION);
-		createEReference(transformationEClass, TRANSFORMATION__DERIVED_FROM);
-
-		boxingModelNodeEClass = createEClass(BOXING_MODEL_NODE);
-		createEReference(boxingModelNodeEClass, BOXING_MODEL_NODE__MODELS);
-
-		rootModelNodeEClass = createEClass(ROOT_MODEL_NODE);
-		createEReference(rootModelNodeEClass, ROOT_MODEL_NODE__DECLARED_MODEL);
-
-		propertyModelNodeEClass = createEClass(PROPERTY_MODEL_NODE);
-		createEReference(propertyModelNodeEClass, PROPERTY_MODEL_NODE__DECLARED_NODE_PROPERTY);
+		groupEClass = createEClass(GROUP);
+		createEReference(groupEClass, GROUP__SOURCE_MODELS);
+		createEReference(groupEClass, GROUP__TRANSFORMATIONS);
+		createEReference(groupEClass, GROUP__SUB_GROUPS);
+		createEReference(groupEClass, GROUP__WRITE_TRACE_MODELS);
+		createEReference(groupEClass, GROUP__READ_TRACE_MODELS);
 	}
 
 	/**
@@ -343,39 +253,25 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 
 		// Obtain other dependent packages
 		ArchitecturePackage theArchitecturePackage = (ArchitecturePackage)EPackage.Registry.INSTANCE.getEPackage(ArchitecturePackage.eNS_URI);
-		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		boxingModelEClass.getESuperTypes().add(this.getGeneratorContainer());
-		boxingModelNodeEClass.getESuperTypes().add(this.getGeneratorContainer());
-		rootModelNodeEClass.getESuperTypes().add(this.getBoxingModelNode());
-		propertyModelNodeEClass.getESuperTypes().add(this.getBoxingModelNode());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(boxingModelEClass, BoxingModel.class, "BoxingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBoxingModel_SourceModels(), this.getRootModelNode(), null, "sourceModels", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBoxingModel_TargetModels(), this.getRootModelNode(), null, "targetModels", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBoxingModel_Groups(), this.getGroup(), null, "groups", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBoxingModel_DerivedFrom(), theArchitecturePackage.getModel(), null, "derivedFrom", null, 1, 1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBoxingModel_Transformations(), this.getTransformation(), null, "transformations", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBoxingModel_AllProcessors(), theArchitecturePackage.getProcessor(), null, "allProcessors", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(generatorContainerEClass, GeneratorContainer.class, "GeneratorContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGeneratorContainer_Invocations(), theArchitecturePackage.getGenerator(), null, "invocations", null, 0, -1, GeneratorContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransformation_DerivedFrom(), theTypesPackage.getJvmType(), null, "derivedFrom", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(boxingModelNodeEClass, BoxingModelNode.class, "BoxingModelNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBoxingModelNode_Models(), this.getPropertyModelNode(), null, "models", null, 0, -1, BoxingModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(rootModelNodeEClass, RootModelNode.class, "RootModelNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRootModelNode_DeclaredModel(), theArchitecturePackage.getRegisteredPackage(), null, "declaredModel", null, 1, 1, RootModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(propertyModelNodeEClass, PropertyModelNode.class, "PropertyModelNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPropertyModelNode_DeclaredNodeProperty(), theArchitecturePackage.getNodeProperty(), null, "declaredNodeProperty", null, 1, 1, PropertyModelNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGroup_SourceModels(), theArchitecturePackage.getSourceModelNodeSelector(), null, "sourceModels", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_Transformations(), theArchitecturePackage.getProcessor(), null, "transformations", null, 0, -1, Group.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_SubGroups(), this.getGroup(), null, "subGroups", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_WriteTraceModels(), theArchitecturePackage.getTraceModel(), null, "writeTraceModels", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_ReadTraceModels(), theArchitecturePackage.getTraceModel(), null, "readTraceModels", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

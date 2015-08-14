@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class GeneratorImpl extends ConnectionImpl implements Generator
+public class GeneratorImpl extends ProcessorImpl implements Generator
 {
   /**
    * The cached value of the '{@link #getWriteTraceModel() <em>Write Trace Model</em>}' containment reference.

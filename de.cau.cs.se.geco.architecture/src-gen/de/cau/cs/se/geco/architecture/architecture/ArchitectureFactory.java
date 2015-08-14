@@ -68,13 +68,13 @@ public interface ArchitectureFactory extends EFactory
   RegisteredPackage createRegisteredPackage();
 
   /**
-   * Returns a new object of class '<em>Connection</em>'.
+   * Returns a new object of class '<em>Processor</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Connection</em>'.
+   * @return a new object of class '<em>Processor</em>'.
    * @generated
    */
-  Connection createConnection();
+  Processor createProcessor();
 
   /**
    * Returns a new object of class '<em>Weaver</em>'.

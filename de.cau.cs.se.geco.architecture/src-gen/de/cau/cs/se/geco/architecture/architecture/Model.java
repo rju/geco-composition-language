@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getRegisteredPackages <em>Registered Packages</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getMetamodels <em>Metamodels</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getConnections <em>Connections</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Model#getProcessors <em>Processors</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,19 +103,19 @@ public interface Model extends EObject
   EList<MetamodelSequence> getMetamodels();
 
   /**
-   * Returns the value of the '<em><b>Connections</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Connection}.
+   * Returns the value of the '<em><b>Processors</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Processor}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Connections</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Processors</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Connections</em>' containment reference list.
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModel_Connections()
+   * @return the value of the '<em>Processors</em>' containment reference list.
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModel_Processors()
    * @model containment="true"
    * @generated
    */
-  EList<Connection> getConnections();
+  EList<Processor> getProcessors();
 
 } // Model

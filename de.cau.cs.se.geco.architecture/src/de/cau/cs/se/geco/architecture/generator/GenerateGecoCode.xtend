@@ -1,39 +1,32 @@
 package de.cau.cs.se.geco.architecture.generator
 
-import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel
-import de.cau.cs.se.geco.architecture.framework.IGenerator
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
-import org.eclipse.emf.common.util.EList
-import de.cau.cs.se.geco.architecture.model.boxing.RootModelNode
-import de.cau.cs.se.geco.architecture.model.boxing.PropertyModelNode
-import de.cau.cs.se.geco.architecture.architecture.Metamodel
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
-import de.cau.cs.se.geco.architecture.architecture.Import
-import de.cau.cs.se.geco.architecture.architecture.Connection
-import de.cau.cs.se.geco.architecture.architecture.Generator
-import de.cau.cs.se.geco.architecture.architecture.Weaver
-import org.eclipse.xtext.common.types.JvmGenericType
-import de.cau.cs.se.geco.architecture.architecture.AspectModel
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
-import de.cau.cs.se.geco.architecture.framework.AbstractRequireTraceModelGenerator
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
-import de.cau.cs.se.geco.architecture.architecture.Negation
-import de.cau.cs.se.geco.architecture.architecture.Literal
 import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral
+import de.cau.cs.se.geco.architecture.architecture.AspectModel
 import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral
-import de.cau.cs.se.geco.architecture.architecture.FloatLiteral
-import de.cau.cs.se.geco.architecture.architecture.IntLiteral
-import de.cau.cs.se.geco.architecture.architecture.StringLiteral
-import de.cau.cs.se.geco.architecture.architecture.NodeProperty
-import de.cau.cs.se.geco.architecture.architecture.Typeof
-import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
-import de.cau.cs.se.geco.architecture.architecture.LogicOperator
 import de.cau.cs.se.geco.architecture.architecture.CompareExpression
+import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
+import de.cau.cs.se.geco.architecture.architecture.FloatLiteral
+import de.cau.cs.se.geco.architecture.architecture.Generator
+import de.cau.cs.se.geco.architecture.architecture.Import
+import de.cau.cs.se.geco.architecture.architecture.IntLiteral
+import de.cau.cs.se.geco.architecture.architecture.Literal
+import de.cau.cs.se.geco.architecture.architecture.LogicOperator
+import de.cau.cs.se.geco.architecture.architecture.Metamodel
+import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.Negation
+import de.cau.cs.se.geco.architecture.architecture.NodeProperty
+import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+import de.cau.cs.se.geco.architecture.architecture.StringLiteral
+import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.Typeof
+import de.cau.cs.se.geco.architecture.architecture.Weaver
+import de.cau.cs.se.geco.architecture.framework.IGenerator
+import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel
+import org.eclipse.xtext.common.types.JvmType
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
-import org.eclipse.xtext.common.types.JvmType
-import de.cau.cs.se.geco.architecture.model.boxing.Transformation
+import de.cau.cs.se.geco.architecture.architecture.Processor
 
 class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	
@@ -57,18 +50,18 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 				
 		class «className» {
 		
-			«input.transformations.map[it.createField].join»
+			«input.allProcessors.map[it.createField].join»
 			
 			new(URI uri) {
 				this.uri = uri
 			}
 			
 			def void execute(Collection<EObject> models) {
-				«input.sourceModels.map[createRootModel].join('\n')»
+				
 			}
 		}
 	'''
-	
+	/*
 	private def CharSequence createRootModel(RootModelNode rootModel) '''
 		models.filter(«rootModel.declaredModel.importedNamespace.qualifiedName»).forEach[«rootModel.declaredModel.name.toFirstLower» |
 			«rootModel.models.map[it.createPropertyModel(rootModel.declaredModel.name.toFirstLower)].join('\n')»
@@ -96,15 +89,15 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	private def CharSequence createModelNodeType(ModelNodeType type) '''
 		models.filter(«type.target.importedNamespace.qualifiedName»)«if (type.property != null) '.'»
 	'''
-			
+	*/
 	private def CharSequence createImport(Import node) '''
 		import «node.importedNamespace.qualifiedName»
 	'''
 	
-	private def CharSequence createField(Transformation transformation) '''
-		val «transformation.derivedFrom.instanceName» = new «transformation.derivedFrom.simpleName»()
+	private def CharSequence createField(Processor processor) '''
+		val «processor.reference.instanceName» = new «processor.reference.simpleName»()
 	'''
-	
+
 	/* --------------------------------------------------- */
 	
 	private def dispatch CharSequence createExecution(Generator generator) {

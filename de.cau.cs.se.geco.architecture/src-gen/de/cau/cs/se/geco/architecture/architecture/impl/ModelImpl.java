@@ -3,10 +3,10 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.Connection;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.Processor;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 
 import java.util.Collection;
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getRegisteredPackages <em>Registered Packages</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getMetamodels <em>Metamodels</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getConnections <em>Connections</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl#getProcessors <em>Processors</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,14 +95,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EList<MetamodelSequence> metamodels;
 
   /**
-   * The cached value of the '{@link #getConnections() <em>Connections</em>}' containment reference list.
+   * The cached value of the '{@link #getProcessors() <em>Processors</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getConnections()
+   * @see #getProcessors()
    * @generated
    * @ordered
    */
-  protected EList<Connection> connections;
+  protected EList<Processor> processors;
 
   /**
    * <!-- begin-user-doc -->
@@ -195,13 +195,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Connection> getConnections()
+  public EList<Processor> getProcessors()
   {
-    if (connections == null)
+    if (processors == null)
     {
-      connections = new EObjectContainmentEList<Connection>(Connection.class, this, ArchitecturePackage.MODEL__CONNECTIONS);
+      processors = new EObjectContainmentEList<Processor>(Processor.class, this, ArchitecturePackage.MODEL__PROCESSORS);
     }
-    return connections;
+    return processors;
   }
 
   /**
@@ -220,8 +220,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getRegisteredPackages()).basicRemove(otherEnd, msgs);
       case ArchitecturePackage.MODEL__METAMODELS:
         return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
-      case ArchitecturePackage.MODEL__CONNECTIONS:
-        return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
+      case ArchitecturePackage.MODEL__PROCESSORS:
+        return ((InternalEList<?>)getProcessors()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -244,8 +244,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getRegisteredPackages();
       case ArchitecturePackage.MODEL__METAMODELS:
         return getMetamodels();
-      case ArchitecturePackage.MODEL__CONNECTIONS:
-        return getConnections();
+      case ArchitecturePackage.MODEL__PROCESSORS:
+        return getProcessors();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -276,9 +276,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getMetamodels().clear();
         getMetamodels().addAll((Collection<? extends MetamodelSequence>)newValue);
         return;
-      case ArchitecturePackage.MODEL__CONNECTIONS:
-        getConnections().clear();
-        getConnections().addAll((Collection<? extends Connection>)newValue);
+      case ArchitecturePackage.MODEL__PROCESSORS:
+        getProcessors().clear();
+        getProcessors().addAll((Collection<? extends Processor>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -306,8 +306,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ArchitecturePackage.MODEL__METAMODELS:
         getMetamodels().clear();
         return;
-      case ArchitecturePackage.MODEL__CONNECTIONS:
-        getConnections().clear();
+      case ArchitecturePackage.MODEL__PROCESSORS:
+        getProcessors().clear();
         return;
     }
     super.eUnset(featureID);
@@ -331,8 +331,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return registeredPackages != null && !registeredPackages.isEmpty();
       case ArchitecturePackage.MODEL__METAMODELS:
         return metamodels != null && !metamodels.isEmpty();
-      case ArchitecturePackage.MODEL__CONNECTIONS:
-        return connections != null && !connections.isEmpty();
+      case ArchitecturePackage.MODEL__PROCESSORS:
+        return processors != null && !processors.isEmpty();
     }
     return super.eIsSet(featureID);
   }

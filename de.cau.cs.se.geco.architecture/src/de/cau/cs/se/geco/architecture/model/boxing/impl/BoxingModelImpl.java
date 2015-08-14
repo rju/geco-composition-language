@@ -2,26 +2,19 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
-import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.Processor;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
-import de.cau.cs.se.geco.architecture.model.boxing.RootModelNode;
-
-import de.cau.cs.se.geco.architecture.model.boxing.Transformation;
+import de.cau.cs.se.geco.architecture.model.boxing.Group;
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -33,11 +26,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getInvocations <em>Invocations</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getSourceModels <em>Source Models</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getTargetModels <em>Target Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getGroups <em>Groups</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getDerivedFrom <em>Derived From</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getTransformations <em>Transformations</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getAllProcessors <em>All Processors</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,34 +36,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class BoxingModelImpl extends MinimalEObjectImpl.Container implements BoxingModel {
 	/**
-	 * The cached value of the '{@link #getInvocations() <em>Invocations</em>}' reference list.
+	 * The cached value of the '{@link #getGroups() <em>Groups</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvocations()
+	 * @see #getGroups()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Generator> invocations;
-
-	/**
-	 * The cached value of the '{@link #getSourceModels() <em>Source Models</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSourceModels()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<RootModelNode> sourceModels;
-
-	/**
-	 * The cached value of the '{@link #getTargetModels() <em>Target Models</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTargetModels()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<RootModelNode> targetModels;
+	protected EList<Group> groups;
 
 	/**
 	 * The cached value of the '{@link #getDerivedFrom() <em>Derived From</em>}' reference.
@@ -85,14 +56,14 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	protected Model derivedFrom;
 
 	/**
-	 * The cached value of the '{@link #getTransformations() <em>Transformations</em>}' containment reference list.
+	 * The cached value of the '{@link #getAllProcessors() <em>All Processors</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTransformations()
+	 * @see #getAllProcessors()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Transformation> transformations;
+	protected EList<Processor> allProcessors;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,35 +89,11 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Generator> getInvocations() {
-		if (invocations == null) {
-			invocations = new EObjectResolvingEList<Generator>(Generator.class, this, BoxingPackage.BOXING_MODEL__INVOCATIONS);
+	public EList<Group> getGroups() {
+		if (groups == null) {
+			groups = new EObjectContainmentEList<Group>(Group.class, this, BoxingPackage.BOXING_MODEL__GROUPS);
 		}
-		return invocations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<RootModelNode> getSourceModels() {
-		if (sourceModels == null) {
-			sourceModels = new EObjectContainmentEList<RootModelNode>(RootModelNode.class, this, BoxingPackage.BOXING_MODEL__SOURCE_MODELS);
-		}
-		return sourceModels;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<RootModelNode> getTargetModels() {
-		if (targetModels == null) {
-			targetModels = new EObjectContainmentEList<RootModelNode>(RootModelNode.class, this, BoxingPackage.BOXING_MODEL__TARGET_MODELS);
-		}
-		return targetModels;
+		return groups;
 	}
 
 	/**
@@ -192,11 +139,11 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Transformation> getTransformations() {
-		if (transformations == null) {
-			transformations = new EObjectContainmentEList<Transformation>(Transformation.class, this, BoxingPackage.BOXING_MODEL__TRANSFORMATIONS);
+	public EList<Processor> getAllProcessors() {
+		if (allProcessors == null) {
+			allProcessors = new EObjectResolvingEList<Processor>(Processor.class, this, BoxingPackage.BOXING_MODEL__ALL_PROCESSORS);
 		}
-		return transformations;
+		return allProcessors;
 	}
 
 	/**
@@ -207,12 +154,8 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case BoxingPackage.BOXING_MODEL__SOURCE_MODELS:
-				return ((InternalEList<?>)getSourceModels()).basicRemove(otherEnd, msgs);
-			case BoxingPackage.BOXING_MODEL__TARGET_MODELS:
-				return ((InternalEList<?>)getTargetModels()).basicRemove(otherEnd, msgs);
-			case BoxingPackage.BOXING_MODEL__TRANSFORMATIONS:
-				return ((InternalEList<?>)getTransformations()).basicRemove(otherEnd, msgs);
+			case BoxingPackage.BOXING_MODEL__GROUPS:
+				return ((InternalEList<?>)getGroups()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -225,17 +168,13 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case BoxingPackage.BOXING_MODEL__INVOCATIONS:
-				return getInvocations();
-			case BoxingPackage.BOXING_MODEL__SOURCE_MODELS:
-				return getSourceModels();
-			case BoxingPackage.BOXING_MODEL__TARGET_MODELS:
-				return getTargetModels();
+			case BoxingPackage.BOXING_MODEL__GROUPS:
+				return getGroups();
 			case BoxingPackage.BOXING_MODEL__DERIVED_FROM:
 				if (resolve) return getDerivedFrom();
 				return basicGetDerivedFrom();
-			case BoxingPackage.BOXING_MODEL__TRANSFORMATIONS:
-				return getTransformations();
+			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
+				return getAllProcessors();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -249,24 +188,16 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case BoxingPackage.BOXING_MODEL__INVOCATIONS:
-				getInvocations().clear();
-				getInvocations().addAll((Collection<? extends Generator>)newValue);
-				return;
-			case BoxingPackage.BOXING_MODEL__SOURCE_MODELS:
-				getSourceModels().clear();
-				getSourceModels().addAll((Collection<? extends RootModelNode>)newValue);
-				return;
-			case BoxingPackage.BOXING_MODEL__TARGET_MODELS:
-				getTargetModels().clear();
-				getTargetModels().addAll((Collection<? extends RootModelNode>)newValue);
+			case BoxingPackage.BOXING_MODEL__GROUPS:
+				getGroups().clear();
+				getGroups().addAll((Collection<? extends Group>)newValue);
 				return;
 			case BoxingPackage.BOXING_MODEL__DERIVED_FROM:
 				setDerivedFrom((Model)newValue);
 				return;
-			case BoxingPackage.BOXING_MODEL__TRANSFORMATIONS:
-				getTransformations().clear();
-				getTransformations().addAll((Collection<? extends Transformation>)newValue);
+			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
+				getAllProcessors().clear();
+				getAllProcessors().addAll((Collection<? extends Processor>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -280,20 +211,14 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case BoxingPackage.BOXING_MODEL__INVOCATIONS:
-				getInvocations().clear();
-				return;
-			case BoxingPackage.BOXING_MODEL__SOURCE_MODELS:
-				getSourceModels().clear();
-				return;
-			case BoxingPackage.BOXING_MODEL__TARGET_MODELS:
-				getTargetModels().clear();
+			case BoxingPackage.BOXING_MODEL__GROUPS:
+				getGroups().clear();
 				return;
 			case BoxingPackage.BOXING_MODEL__DERIVED_FROM:
 				setDerivedFrom((Model)null);
 				return;
-			case BoxingPackage.BOXING_MODEL__TRANSFORMATIONS:
-				getTransformations().clear();
+			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
+				getAllProcessors().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -307,16 +232,12 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case BoxingPackage.BOXING_MODEL__INVOCATIONS:
-				return invocations != null && !invocations.isEmpty();
-			case BoxingPackage.BOXING_MODEL__SOURCE_MODELS:
-				return sourceModels != null && !sourceModels.isEmpty();
-			case BoxingPackage.BOXING_MODEL__TARGET_MODELS:
-				return targetModels != null && !targetModels.isEmpty();
+			case BoxingPackage.BOXING_MODEL__GROUPS:
+				return groups != null && !groups.isEmpty();
 			case BoxingPackage.BOXING_MODEL__DERIVED_FROM:
 				return derivedFrom != null;
-			case BoxingPackage.BOXING_MODEL__TRANSFORMATIONS:
-				return transformations != null && !transformations.isEmpty();
+			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
+				return allProcessors != null && !allProcessors.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

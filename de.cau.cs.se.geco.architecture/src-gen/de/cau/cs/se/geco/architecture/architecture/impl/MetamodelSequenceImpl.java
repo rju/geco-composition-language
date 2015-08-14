@@ -4,6 +4,7 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
+import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl#getMetamodels <em>Metamodels</em>}</li>
  * </ul>
@@ -39,6 +41,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implements MetamodelSequence
 {
+  /**
+   * The default value of the '{@link #getModifier() <em>Modifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifier()
+   * @generated
+   * @ordered
+   */
+  protected static final MetamodelModifier MODIFIER_EDEFAULT = MetamodelModifier.INPUT;
+
+  /**
+   * The cached value of the '{@link #getModifier() <em>Modifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifier()
+   * @generated
+   * @ordered
+   */
+  protected MetamodelModifier modifier = MODIFIER_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -78,6 +100,29 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
   protected EClass eStaticClass()
   {
     return ArchitecturePackage.Literals.METAMODEL_SEQUENCE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MetamodelModifier getModifier()
+  {
+    return modifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setModifier(MetamodelModifier newModifier)
+  {
+    MetamodelModifier oldModifier = modifier;
+    modifier = newModifier == null ? MODIFIER_EDEFAULT : newModifier;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.METAMODEL_SEQUENCE__MODIFIER, oldModifier, modifier));
   }
 
   /**
@@ -170,6 +215,8 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case ArchitecturePackage.METAMODEL_SEQUENCE__MODIFIER:
+        return getModifier();
       case ArchitecturePackage.METAMODEL_SEQUENCE__TYPE:
         return getType();
       case ArchitecturePackage.METAMODEL_SEQUENCE__METAMODELS:
@@ -189,6 +236,9 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case ArchitecturePackage.METAMODEL_SEQUENCE__MODIFIER:
+        setModifier((MetamodelModifier)newValue);
+        return;
       case ArchitecturePackage.METAMODEL_SEQUENCE__TYPE:
         setType((ModelNodeType)newValue);
         return;
@@ -210,6 +260,9 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case ArchitecturePackage.METAMODEL_SEQUENCE__MODIFIER:
+        setModifier(MODIFIER_EDEFAULT);
+        return;
       case ArchitecturePackage.METAMODEL_SEQUENCE__TYPE:
         setType((ModelNodeType)null);
         return;
@@ -230,12 +283,31 @@ public class MetamodelSequenceImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
+      case ArchitecturePackage.METAMODEL_SEQUENCE__MODIFIER:
+        return modifier != MODIFIER_EDEFAULT;
       case ArchitecturePackage.METAMODEL_SEQUENCE__TYPE:
         return type != null;
       case ArchitecturePackage.METAMODEL_SEQUENCE__METAMODELS:
         return metamodels != null && !metamodels.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (modifier: ");
+    result.append(modifier);
+    result.append(')');
+    return result.toString();
   }
 
 } //MetamodelSequenceImpl

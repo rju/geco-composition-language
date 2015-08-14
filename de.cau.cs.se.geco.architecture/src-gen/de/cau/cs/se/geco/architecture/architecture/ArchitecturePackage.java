@@ -104,13 +104,13 @@ public interface ArchitecturePackage extends EPackage
   int MODEL__METAMODELS = 3;
 
   /**
-   * The feature id for the '<em><b>Connections</b></em>' containment reference list.
+   * The feature id for the '<em><b>Processors</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__CONNECTIONS = 4;
+  int MODEL__PROCESSORS = 4;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -160,13 +160,22 @@ public interface ArchitecturePackage extends EPackage
   int METAMODEL_SEQUENCE = 2;
 
   /**
+   * The feature id for the '<em><b>Modifier</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METAMODEL_SEQUENCE__MODIFIER = 0;
+
+  /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METAMODEL_SEQUENCE__TYPE = 0;
+  int METAMODEL_SEQUENCE__TYPE = 1;
 
   /**
    * The feature id for the '<em><b>Metamodels</b></em>' containment reference list.
@@ -175,7 +184,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int METAMODEL_SEQUENCE__METAMODELS = 1;
+  int METAMODEL_SEQUENCE__METAMODELS = 2;
 
   /**
    * The number of structural features of the '<em>Metamodel Sequence</em>' class.
@@ -184,7 +193,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int METAMODEL_SEQUENCE_FEATURE_COUNT = 2;
+  int METAMODEL_SEQUENCE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelImpl <em>Metamodel</em>}' class.
@@ -270,14 +279,14 @@ public interface ArchitecturePackage extends EPackage
   int REGISTERED_PACKAGE_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl <em>Connection</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl <em>Processor</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getConnection()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getProcessor()
    * @generated
    */
-  int CONNECTION = 5;
+  int PROCESSOR = 5;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -286,7 +295,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION__REFERENCE = 0;
+  int PROCESSOR__REFERENCE = 0;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -295,7 +304,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION__SOURCE_MODEL = 1;
+  int PROCESSOR__SOURCE_MODEL = 1;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -304,16 +313,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONNECTION__TARGET_MODEL = 2;
+  int PROCESSOR__TARGET_MODEL = 2;
 
   /**
-   * The number of structural features of the '<em>Connection</em>' class.
+   * The number of structural features of the '<em>Processor</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONNECTION_FEATURE_COUNT = 3;
+  int PROCESSOR_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl <em>Weaver</em>}' class.
@@ -332,7 +341,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER__REFERENCE = CONNECTION__REFERENCE;
+  int WEAVER__REFERENCE = PROCESSOR__REFERENCE;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -341,7 +350,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER__SOURCE_MODEL = CONNECTION__SOURCE_MODEL;
+  int WEAVER__SOURCE_MODEL = PROCESSOR__SOURCE_MODEL;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -350,7 +359,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER__TARGET_MODEL = CONNECTION__TARGET_MODEL;
+  int WEAVER__TARGET_MODEL = PROCESSOR__TARGET_MODEL;
 
   /**
    * The feature id for the '<em><b>Aspect Model</b></em>' containment reference.
@@ -359,7 +368,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER__ASPECT_MODEL = CONNECTION_FEATURE_COUNT + 0;
+  int WEAVER__ASPECT_MODEL = PROCESSOR_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Weaver</em>' class.
@@ -368,7 +377,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 1;
+  int WEAVER_FEATURE_COUNT = PROCESSOR_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AspectModelImpl <em>Aspect Model</em>}' class.
@@ -406,7 +415,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__REFERENCE = CONNECTION__REFERENCE;
+  int GENERATOR__REFERENCE = PROCESSOR__REFERENCE;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -415,7 +424,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__SOURCE_MODEL = CONNECTION__SOURCE_MODEL;
+  int GENERATOR__SOURCE_MODEL = PROCESSOR__SOURCE_MODEL;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -424,7 +433,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__TARGET_MODEL = CONNECTION__TARGET_MODEL;
+  int GENERATOR__TARGET_MODEL = PROCESSOR__TARGET_MODEL;
 
   /**
    * The feature id for the '<em><b>Write Trace Model</b></em>' containment reference.
@@ -433,7 +442,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__WRITE_TRACE_MODEL = CONNECTION_FEATURE_COUNT + 0;
+  int GENERATOR__WRITE_TRACE_MODEL = PROCESSOR_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Read Trace Models</b></em>' containment reference list.
@@ -442,7 +451,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__READ_TRACE_MODELS = CONNECTION_FEATURE_COUNT + 1;
+  int GENERATOR__READ_TRACE_MODELS = PROCESSOR_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Generator</em>' class.
@@ -451,7 +460,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR_FEATURE_COUNT = CONNECTION_FEATURE_COUNT + 2;
+  int GENERATOR_FEATURE_COUNT = PROCESSOR_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
@@ -1574,6 +1583,16 @@ public interface ArchitecturePackage extends EPackage
   int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelModifier <em>Metamodel Modifier</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelModifier()
+   * @generated
+   */
+  int METAMODEL_MODIFIER = 31;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1581,7 +1600,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 31;
+  int LOGIC_OPERATOR = 32;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}' enum.
@@ -1591,7 +1610,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getComparator()
    * @generated
    */
-  int COMPARATOR = 32;
+  int COMPARATOR = 33;
 
 
   /**
@@ -1649,15 +1668,15 @@ public interface ArchitecturePackage extends EPackage
   EReference getModel_Metamodels();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getConnections <em>Connections</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getProcessors <em>Processors</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Connections</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model#getConnections()
+   * @return the meta object for the containment reference list '<em>Processors</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Model#getProcessors()
    * @see #getModel()
    * @generated
    */
-  EReference getModel_Connections();
+  EReference getModel_Processors();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Import <em>Import</em>}'.
@@ -1689,6 +1708,17 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EClass getMetamodelSequence();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getModifier <em>Modifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Modifier</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getModifier()
+   * @see #getMetamodelSequence()
+   * @generated
+   */
+  EAttribute getMetamodelSequence_Modifier();
 
   /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getType <em>Type</em>}'.
@@ -1788,47 +1818,47 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getRegisteredPackage_Extension();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Connection <em>Connection</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Processor <em>Processor</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Connection</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection
+   * @return the meta object for class '<em>Processor</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Processor
    * @generated
    */
-  EClass getConnection();
+  EClass getProcessor();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getReference <em>Reference</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Processor#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Reference</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getReference()
-   * @see #getConnection()
+   * @see de.cau.cs.se.geco.architecture.architecture.Processor#getReference()
+   * @see #getProcessor()
    * @generated
    */
-  EReference getConnection_Reference();
+  EReference getProcessor_Reference();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getSourceModel <em>Source Model</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Processor#getSourceModel <em>Source Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Source Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getSourceModel()
-   * @see #getConnection()
+   * @see de.cau.cs.se.geco.architecture.architecture.Processor#getSourceModel()
+   * @see #getProcessor()
    * @generated
    */
-  EReference getConnection_SourceModel();
+  EReference getProcessor_SourceModel();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Connection#getTargetModel <em>Target Model</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Processor#getTargetModel <em>Target Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Target Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection#getTargetModel()
-   * @see #getConnection()
+   * @see de.cau.cs.se.geco.architecture.architecture.Processor#getTargetModel()
+   * @see #getProcessor()
    * @generated
    */
-  EReference getConnection_TargetModel();
+  EReference getProcessor_TargetModel();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Weaver <em>Weaver</em>}'.
@@ -2411,6 +2441,16 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getBooleanLiteral_Value();
 
   /**
+   * Returns the meta object for enum '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelModifier <em>Metamodel Modifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Metamodel Modifier</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
+   * @generated
+   */
+  EEnum getMetamodelModifier();
+
+  /**
    * Returns the meta object for enum '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2496,12 +2536,12 @@ public interface ArchitecturePackage extends EPackage
     EReference MODEL__METAMODELS = eINSTANCE.getModel_Metamodels();
 
     /**
-     * The meta object literal for the '<em><b>Connections</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Processors</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__CONNECTIONS = eINSTANCE.getModel_Connections();
+    EReference MODEL__PROCESSORS = eINSTANCE.getModel_Processors();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ImportImpl <em>Import</em>}' class.
@@ -2530,6 +2570,14 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EClass METAMODEL_SEQUENCE = eINSTANCE.getMetamodelSequence();
+
+    /**
+     * The meta object literal for the '<em><b>Modifier</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METAMODEL_SEQUENCE__MODIFIER = eINSTANCE.getMetamodelSequence_Modifier();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -2608,14 +2656,14 @@ public interface ArchitecturePackage extends EPackage
     EAttribute REGISTERED_PACKAGE__EXTENSION = eINSTANCE.getRegisteredPackage_Extension();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl <em>Connection</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl <em>Processor</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ConnectionImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getConnection()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getProcessor()
      * @generated
      */
-    EClass CONNECTION = eINSTANCE.getConnection();
+    EClass PROCESSOR = eINSTANCE.getProcessor();
 
     /**
      * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -2623,7 +2671,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONNECTION__REFERENCE = eINSTANCE.getConnection_Reference();
+    EReference PROCESSOR__REFERENCE = eINSTANCE.getProcessor_Reference();
 
     /**
      * The meta object literal for the '<em><b>Source Model</b></em>' containment reference feature.
@@ -2631,7 +2679,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONNECTION__SOURCE_MODEL = eINSTANCE.getConnection_SourceModel();
+    EReference PROCESSOR__SOURCE_MODEL = eINSTANCE.getProcessor_SourceModel();
 
     /**
      * The meta object literal for the '<em><b>Target Model</b></em>' containment reference feature.
@@ -2639,7 +2687,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CONNECTION__TARGET_MODEL = eINSTANCE.getConnection_TargetModel();
+    EReference PROCESSOR__TARGET_MODEL = eINSTANCE.getProcessor_TargetModel();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl <em>Weaver</em>}' class.
@@ -3130,6 +3178,16 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelModifier <em>Metamodel Modifier</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelModifier()
+     * @generated
+     */
+    EEnum METAMODEL_MODIFIER = eINSTANCE.getMetamodelModifier();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}' enum.

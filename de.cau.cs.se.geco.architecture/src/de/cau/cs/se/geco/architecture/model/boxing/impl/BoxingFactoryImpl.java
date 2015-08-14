@@ -57,9 +57,7 @@ public class BoxingFactoryImpl extends EFactoryImpl implements BoxingFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case BoxingPackage.BOXING_MODEL: return createBoxingModel();
-			case BoxingPackage.TRANSFORMATION: return createTransformation();
-			case BoxingPackage.ROOT_MODEL_NODE: return createRootModelNode();
-			case BoxingPackage.PROPERTY_MODEL_NODE: return createPropertyModelNode();
+			case BoxingPackage.GROUP: return createGroup();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,29 +78,9 @@ public class BoxingFactoryImpl extends EFactoryImpl implements BoxingFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Transformation createTransformation() {
-		TransformationImpl transformation = new TransformationImpl();
-		return transformation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RootModelNode createRootModelNode() {
-		RootModelNodeImpl rootModelNode = new RootModelNodeImpl();
-		return rootModelNode;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public PropertyModelNode createPropertyModelNode() {
-		PropertyModelNodeImpl propertyModelNode = new PropertyModelNodeImpl();
-		return propertyModelNode;
+	public Group createGroup() {
+		GroupImpl group = new GroupImpl();
+		return group;
 	}
 
 	/**

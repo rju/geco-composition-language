@@ -10,17 +10,23 @@
         eType="#//RegisteredPackage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
         eType="#//MetamodelSequence" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
-        eType="#//Connection" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processors" upperBound="-1"
+        eType="#//Processor" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
     <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetamodelSequence">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifier" eType="#//MetamodelModifier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ModelNodeType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
         eType="#//Metamodel" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MetamodelModifier">
+    <eLiterals name="INPUT" literal="in"/>
+    <eLiterals name="OUTPUT" value="1" literal="out"/>
+    <eLiterals name="INTERMEDIATE" value="2" literal="io"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Metamodel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -31,19 +37,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="extension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Connection">
+  <eClassifiers xsi:type="ecore:EClass" name="Processor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModel" eType="#//SourceModelNodeSelector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetModel" eType="#//TargetModelNodeType"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Weaver" eSuperTypes="#//Connection">
+  <eClassifiers xsi:type="ecore:EClass" name="Weaver" eSuperTypes="#//Processor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="aspectModel" eType="#//AspectModel"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AspectModel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Connection #//AspectModel">
+  <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Processor #//AspectModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModel" eType="#//WriteTraceModel"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" upperBound="-1"

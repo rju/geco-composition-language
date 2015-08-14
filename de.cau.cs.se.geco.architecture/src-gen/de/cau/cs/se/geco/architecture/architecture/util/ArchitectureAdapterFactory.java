@@ -100,9 +100,9 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createRegisteredPackageAdapter();
       }
       @Override
-      public Adapter caseConnection(Connection object)
+      public Adapter caseProcessor(Processor object)
       {
-        return createConnectionAdapter();
+        return createProcessorAdapter();
       }
       @Override
       public Adapter caseWeaver(Weaver object)
@@ -327,16 +327,16 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Connection <em>Connection</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Processor <em>Processor</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Connection
+   * @see de.cau.cs.se.geco.architecture.architecture.Processor
    * @generated
    */
-  public Adapter createConnectionAdapter()
+  public Adapter createProcessorAdapter()
   {
     return null;
   }
