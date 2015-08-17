@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.geco.architecture/src-gen" editDirectory="/de.cau.cs.se.geco.architecture.edit/src"
     editorDirectory="/de.cau.cs.se.geco.architecture.editor/src" modelPluginID="de.cau.cs.se.geco.architecture"
     forceOverwrite="true" modelName="Architecture" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    complianceLevel="6.0" copyrightFields="false" editPluginID="de.cau.cs.se.geco.architecture.edit"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.geco.architecture.edit"
     editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
   <genPackages prefix="Architecture" basePackage="de.cau.cs.se.geco.architecture"
       disposableProviderFactory="true" fileExtensions="geco" ecorePackage="Architecture.ecore#/">
