@@ -12,7 +12,6 @@ import de.cau.cs.se.geco.architecture.architecture.IntLiteral
 import de.cau.cs.se.geco.architecture.architecture.Literal
 import de.cau.cs.se.geco.architecture.architecture.LogicOperator
 import de.cau.cs.se.geco.architecture.architecture.Metamodel
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
 import de.cau.cs.se.geco.architecture.architecture.Negation
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
@@ -27,6 +26,14 @@ import org.eclipse.xtext.common.types.JvmType
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 import de.cau.cs.se.geco.architecture.architecture.Processor
+import de.cau.cs.se.geco.architecture.model.boxing.Group
+import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
+import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
+import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.common.types.JvmMember
+import org.eclipse.emf.common.util.EList
+import de.cau.cs.se.geco.architecture.model.boxing.Unit
+import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
 
 class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	
@@ -42,111 +49,253 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 		import java.util.ArrayList
 		import java.util.Collection
 		import java.util.List
+		
 		import org.eclipse.emf.common.util.URI
+		import org.eclipse.emf.ecore.EObject
+		
+		
 		
 		«input.derivedFrom.imports.map[it.createImport].join»
-		
-		val URI uri
-				
+						
 		class «className» {
+			
+			val URI uri
 		
+			/** instantiate all generators. */
 			«input.allProcessors.map[it.createField].join»
+			
+			/** define collections for models used as in put. */
+			«input.models.map[it.createCollectionForMetamodel].join»
 			
 			new(URI uri) {
 				this.uri = uri
 			}
 			
 			def void execute(Collection<EObject> models) {
+				/** separate input models in collections for specific source model types. */
+				«input.models.filter[it.modifier == MetamodelModifier.INPUT].map[it.createCollectionInitalization].join»
 				
+				/** main generation groups. */
+				«input.groups.indexed.map[createMainGroupCall(it.key)].join("\n")»
 			}
+			
+			«input.groups.indexed.map[it.value.createMainGroup(it.key)].join("\n")»
 		}
 	'''
-	/*
-	private def CharSequence createRootModel(RootModelNode rootModel) '''
-		models.filter(«rootModel.declaredModel.importedNamespace.qualifiedName»).forEach[«rootModel.declaredModel.name.toFirstLower» |
-			«rootModel.models.map[it.createPropertyModel(rootModel.declaredModel.name.toFirstLower)].join('\n')»
-		]
-	'''
-	
-	private def CharSequence createPropertyModel(PropertyModelNode propertyModel, String propertyName) '''
-		«propertyName».«propertyModel.deriveName».forEach[«propertyModel.deriveName» |
-			«propertyModel.models.map[it.createPropertyModel(propertyModel.deriveName)].join('\n')»
-		]
-	'''
-	
-	def String deriveName(PropertyModelNode propertyModel) {
-		propertyModel.declaredNodeProperty.property.simpleName
-	}
-	
-	private def CharSequence createMetamodels(MetamodelSequence sequence) '''
-		«sequence.metamodels.map[it.createMetamodel(sequence.type)].join('\n')»
-	'''
-	
-	private def CharSequence createMetamodel(Metamodel metamodel, ModelNodeType type) '''
-		val «type.resolveType.qualifiedName» «metamodel.name» = «type.createModelNodeType»
-	'''
-	
-	private def CharSequence createModelNodeType(ModelNodeType type) '''
-		models.filter(«type.target.importedNamespace.qualifiedName»)«if (type.property != null) '.'»
-	'''
-	*/
+			
+	/**
+	 * Create an import rule.
+	 */
 	private def CharSequence createImport(Import node) '''
 		import «node.importedNamespace.qualifiedName»
 	'''
 	
-	private def CharSequence createField(Processor processor) '''
-		val «processor.reference.instanceName» = new «processor.reference.simpleName»()
+	/**
+	 * Create a field for an generator and instantiate it.
+	 */
+	private def CharSequence createField(JvmType type) '''
+		val «type.instanceName» = new «type.simpleName»()
 	'''
-
-	/* --------------------------------------------------- */
 	
-	private def dispatch CharSequence createExecution(Generator generator) {
-		if (generator.sourceModel.reference == null) '''
-			val «generator.targetModel.reference.name» = «generator.reference.instanceName».generate(null)'''
-		else '''
-			«generator.sourceModel.createSourceModelQuery(generator.createGenerator)»
+	/**
+	 * Create collections for models declared with the metamodel expression in GECO.
+	 * These are used in the class property declaration area.
+	 */
+	private def createCollectionForMetamodel(ModelDeclaration declaration) {
+		if (declaration.isCollectionType) '''
+			val «declaration.metamodel.name» = new ArrayList<«declaration.selector.resolveBaseType.qualifiedName»>()
+		''' else '''
+			var «declaration.selector.resolveType.qualifiedName» «declaration.metamodel.name» = null
 		'''
+		
+	}
+	
+	/**
+	 * Create initialization for collections used to traverse the input models and fill the proper collections.
+	 */
+	private def createCollectionInitalization(ModelDeclaration declaration) '''
+		val «declaration.metamodel.collectionName» = models.filter(«declaration.selector.target.importedNamespace.qualifiedName»)
+		«declaration.metamodel.collectionName».forEach[«declaration.selector.createSelectorQuery(declaration.metamodel.name)»]
+	'''
+	
+	/**
+	 * Process a node type selector query. If no property is set only add an instance of type to the model list.
+	 * If the property has a list type iterate over the property (one more for each).
+	 * If the property has a flat type only add the single value.
+	 */
+	private def createSelectorQuery(ModelNodeType type, String modelName) {
+		if (type.property == null)
+			'''«modelName».add(it)'''
+		else if (type.property.property.resolveType.isListType) {
+			'''it.«type.property.property.simpleName»().forEach[«type.property.createPropertyQuery(modelName)»]'''			
+		} else { 
+			'''«modelName».add(it.«type.property.property.simpleName»)'''
+		}
+			
+	}
+		
+	/**
+	 * Check if the given property value instance has a sub property. If not,
+	 * just add the value, else create a for each loop for list properties or a single
+	 * value add for non list types.
+	 */
+	private def CharSequence createPropertyQuery(NodeProperty property, String modelName) {
+		if (property.subProperty == null)
+			'''«modelName».add(it)'''
+		else if (property.property.resolveType.isListType) {
+			'''it.«property.property.simpleName»().forEach[«property.subProperty.createPropertyQuery(modelName)»]'''
+		} else {
+			'''«modelName».add(it.«property.subProperty.property.simpleName»)'''
+		}
+	}
+	
+	/**
+	 * Create call to a group execution method.
+	 */
+	private def createMainGroupCall(int i) '''executeGroup«i»()'''
+		
+	/**
+	 * Create a group execution method.
+	 */
+	private def createMainGroup(Group group, int i) '''
+		/** 
+		 * 
+		 * «group.sourceModels.map['@param ' + it.name].join("\n")»
+		 */
+		private def executeGroup«i»() {
+			«group.units.map[it.createUnitExecution].join»
+		}
+	'''
+	
+	/**
+	 * Create code for a single execution unit.
+	 */
+	private def createUnitExecution(Unit unit) {
+		val processor = unit.processor
+		switch (processor) {
+			Generator: processor.createGeneratorExecution
+			Weaver case processor.aspectModel instanceof Generator: processor.createWeaverGeneratorExecution
+			Weaver case processor.aspectModel instanceof TargetModelNodeType: processor.createWeaverExecution
+		}
+	}
+	
+	/**
+	 * Create code for the execution of a generator which is not
+	 * directly connected to a weaver.
+	 */
+	private def createGeneratorExecution(Generator generator) '''
+		«generator.sourceAuxModels.createSourceAuxModels»
+		«generator.sourceModel.createSourceModelNesting(generator.createGeneratorCall)»
+	'''	
+				
+	// TODO Note the source model reference is rubbish. Semantics of weaver 
+	// must be improved and collection as input must be handled
+	private def createWeaverGeneratorExecution(Weaver weaver) '''
+		{
+			«(weaver.aspectModel as Generator).sourceAuxModels.createSourceAuxModels»
+			«(weaver.aspectModel as Generator).sourceModel.createSourceModelNesting(weaver.createWeaverCall)»
+		}
+	'''
+	
+	// TODO you cannot weave into a collection. Therefore, semantics for collection weaving must be determined
+	private def createWeaverCall(Weaver weaver) '''
+		«(weaver.aspectModel as Generator).createGeneratorCall»
+		«weaver.reference.instanceName».weave(«weaver.resolveWeaverSourceModel.valueReference»,aspectModel)'''
+	
+	private def valueReference(SourceModelNodeSelector selector) '''«selector.reference.name»«selector.property?.valueReference»'''
+	
+	// TODO this is insufficient for collections.
+	private def CharSequence valueReference(NodeProperty property) '''.«property.property.simpleName»«property.subProperty?.valueReference»'''
+	
+	
+	private def createWeaverExecution(Weaver weaver) '''
+	'''
+	
+	/**
+	 * Prepare collections for auxiliary input.
+	 */
+	private def createSourceAuxModels(EList<SourceModelNodeSelector> sourceAuxModels) '''
+		«sourceAuxModels.indexed.map[it.value.createSourceAuxModel(it.key)].join»
+	'''
+	
+	/**
+	 * Create an initialization section for an auxiliary model collection.
+	 */
+	private def createSourceAuxModel(SourceModelNodeSelector sourceAuxModel, int i) {
+		if (sourceAuxModel.property == null) {
+			'''val aux«i» = «sourceAuxModel.reference.name»«sourceAuxModel.constraint.createConstraintFilter»''' 
+		} else { 
+			'''
+				val aux«i» = new ArrayList<«sourceAuxModel.resolveType.qualifiedName»>()
+				«sourceAuxModel.reference.name».forEach[it.«sourceAuxModel.property.createPropertyQuery('''aux«i»''')»]
+			'''
+		}
+	}
+	
+	/**
+	 * Create nested loops for a generator call.
+	 */
+	private def createSourceModelNesting(SourceModelNodeSelector sourceModel, CharSequence generatorCall) {
+		if (sourceModel.reference == null) {
+			generatorCall
+		} else {
+			'''
+				«sourceModel.reference.name»«sourceModel.constraint.createConstraintFilter».forEach[
+					«sourceModel.property.createSourceModelNesting(generatorCall)»
+				]'''
+		}
 	}
 			
-	private def dispatch CharSequence createExecution(Weaver weaver) {
-		switch (weaver.aspectModel) {
-			Generator: weaver.createWeaverWithAspectGenerator
-			TargetModelNodeType: weaver.createWeaverWithAspectModel
-		}
+	/**
+	 * Create nested loops for a generator call.
+	 */
+	private def CharSequence createSourceModelNesting(NodeProperty node, CharSequence generatorCall) {
+		if (node == null)
+			'''«generatorCall»'''
+		else
+			'''
+				«node.property.simpleName»«node.constraint.createConstraintFilter».forEach[
+					«node.subProperty.createSourceModelNesting(generatorCall)»
+				]''' 
+	}
+
+	/**
+	 * Create a generator invocation.
+	 */
+	private def createGeneratorCall(Generator generator) {
+		val model = if (generator.sourceModel.reference == null) 'null' else 'it'
+		'''«generator.createTargetModel» «generator.reference.instanceName».generate(«model»)'''
+	}
+	
+	/**
+	 * Create reference to target model. += is for pre-existing collections and = for aspect models
+	 * which are automatically woven into a model.
+	 */
+	private def createTargetModel(Generator generator) {
+		if (generator.targetModel.reference != null) {
+			if (generator.targetModel.reference.isCollectionType) 
+				'''«generator.targetModel.reference.name» += '''
+			else
+				'''«generator.targetModel.reference.name» = ''' 
+		} else
+			'''val aspectModel = '''
 	}
 		
-	private def CharSequence createWeaverWithAspectModel(Weaver weaver) ''''''
+	/* --------------------------------------------------- */
 	
-	private def CharSequence createWeaverWithAspectGenerator(Weaver weaver) {
-		
+	/**
+	 * Create a constraint filter for a query if a filter is defined.
+	 */
+	private def createConstraintFilter(ConstraintExpression expression) {
+		if (expression == null)
+			''''''
+		else if (expression instanceof Typeof)
+			'''.filter(«expression.type.qualifiedName»)'''
+		else
+			'''.filter[«expression.createConstraint»]'''
 	}
 	
-	private def CharSequence createAspectModelReference(AspectModel model) {
-		switch (model) {
-			Generator: model.createAspectModelReferenceGenerator
-			TargetModelNodeType: model.createAspectModelReferenceTargetModel
-		}
-	}
-	
-	private def CharSequence createAspectModelReferenceTargetModel(TargetModelNodeType type) {
-		'''«type.reference.name»'''
-	}
-	
-	private def CharSequence createAspectModelReferenceGenerator(Generator generator) {
-		'''«generator.reference.instanceName».generate(SOURCE)'''
-	}
-	
-	private def CharSequence createSourceModelReference(Metamodel metamodel) {
-		'''«metamodel.name»'''
-	}
-	
-	
-	
-	
-	private def createSourceModelQuery(SourceModelNodeSelector selector, CharSequence generator) {
-		'''«selector.reference.name»«selector.constraint.createConstraint»'''
-	}
-	
+	/** constraint computation */
 	private def dispatch CharSequence createConstraint(Negation expression) '''!«expression.constraint»'''
 	
 	private def dispatch CharSequence createConstraint(Literal expression) {
@@ -179,13 +328,15 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 		'''(«expression.left.createConstraint» «expression.comparator.literal» «expression.right.createConstraint»)'''
 	}
 	
-	/**
-	 * Create the invocation of a generator. 
-	 */
-	private def createGenerator(Generator generator) '''«generator.reference.instanceName»(it)'''
+		
 	
 	private def getInstanceName(JvmType type) {
 		type.simpleName.toFirstLower
 	}
 	
+	/**
+	 * Name of internal collections for models for a specific metamodel.
+	 */
+	private def collectionName(Metamodel metamodel) '''«metamodel.name»BaseCollection'''
+		
 }

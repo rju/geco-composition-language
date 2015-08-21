@@ -2,11 +2,11 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
-import de.cau.cs.se.geco.architecture.architecture.Processor;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.Group;
+import de.cau.cs.se.geco.architecture.model.boxing.Unit;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -24,11 +24,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getSourceModels <em>Source Models</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getTransformations <em>Transformations</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getUnits <em>Units</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getSubGroups <em>Sub Groups</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getWriteTraceModels <em>Write Trace Models</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getReadTraceModels <em>Read Trace Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getSourceTraceModels <em>Source Trace Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getSourceModels <em>Source Models</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,24 +35,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	/**
-	 * The cached value of the '{@link #getSourceModels() <em>Source Models</em>}' containment reference list.
+	 * The cached value of the '{@link #getUnits() <em>Units</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSourceModels()
+	 * @see #getUnits()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<SourceModelNodeSelector> sourceModels;
-
-	/**
-	 * The cached value of the '{@link #getTransformations() <em>Transformations</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTransformations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Processor> transformations;
+	protected EList<Unit> units;
 
 	/**
 	 * The cached value of the '{@link #getSubGroups() <em>Sub Groups</em>}' containment reference list.
@@ -66,24 +55,24 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	protected EList<Group> subGroups;
 
 	/**
-	 * The cached value of the '{@link #getWriteTraceModels() <em>Write Trace Models</em>}' reference list.
+	 * The cached value of the '{@link #getSourceTraceModels() <em>Source Trace Models</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getWriteTraceModels()
+	 * @see #getSourceTraceModels()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TraceModel> writeTraceModels;
+	protected EList<TraceModel> sourceTraceModels;
 
 	/**
-	 * The cached value of the '{@link #getReadTraceModels() <em>Read Trace Models</em>}' reference list.
+	 * The cached value of the '{@link #getSourceModels() <em>Source Models</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReadTraceModels()
+	 * @see #getSourceModels()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TraceModel> readTraceModels;
+	protected EList<Metamodel> sourceModels;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,23 +98,11 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<SourceModelNodeSelector> getSourceModels() {
-		if (sourceModels == null) {
-			sourceModels = new EObjectContainmentEList<SourceModelNodeSelector>(SourceModelNodeSelector.class, this, BoxingPackage.GROUP__SOURCE_MODELS);
+	public EList<Unit> getUnits() {
+		if (units == null) {
+			units = new EObjectResolvingEList<Unit>(Unit.class, this, BoxingPackage.GROUP__UNITS);
 		}
-		return sourceModels;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Processor> getTransformations() {
-		if (transformations == null) {
-			transformations = new EObjectResolvingEList<Processor>(Processor.class, this, BoxingPackage.GROUP__TRANSFORMATIONS);
-		}
-		return transformations;
+		return units;
 	}
 
 	/**
@@ -145,11 +122,11 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TraceModel> getWriteTraceModels() {
-		if (writeTraceModels == null) {
-			writeTraceModels = new EObjectResolvingEList<TraceModel>(TraceModel.class, this, BoxingPackage.GROUP__WRITE_TRACE_MODELS);
+	public EList<TraceModel> getSourceTraceModels() {
+		if (sourceTraceModels == null) {
+			sourceTraceModels = new EObjectResolvingEList<TraceModel>(TraceModel.class, this, BoxingPackage.GROUP__SOURCE_TRACE_MODELS);
 		}
-		return writeTraceModels;
+		return sourceTraceModels;
 	}
 
 	/**
@@ -157,11 +134,11 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TraceModel> getReadTraceModels() {
-		if (readTraceModels == null) {
-			readTraceModels = new EObjectResolvingEList<TraceModel>(TraceModel.class, this, BoxingPackage.GROUP__READ_TRACE_MODELS);
+	public EList<Metamodel> getSourceModels() {
+		if (sourceModels == null) {
+			sourceModels = new EObjectResolvingEList<Metamodel>(Metamodel.class, this, BoxingPackage.GROUP__SOURCE_MODELS);
 		}
-		return readTraceModels;
+		return sourceModels;
 	}
 
 	/**
@@ -172,8 +149,6 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case BoxingPackage.GROUP__SOURCE_MODELS:
-				return ((InternalEList<?>)getSourceModels()).basicRemove(otherEnd, msgs);
 			case BoxingPackage.GROUP__SUB_GROUPS:
 				return ((InternalEList<?>)getSubGroups()).basicRemove(otherEnd, msgs);
 		}
@@ -188,16 +163,14 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case BoxingPackage.GROUP__SOURCE_MODELS:
-				return getSourceModels();
-			case BoxingPackage.GROUP__TRANSFORMATIONS:
-				return getTransformations();
+			case BoxingPackage.GROUP__UNITS:
+				return getUnits();
 			case BoxingPackage.GROUP__SUB_GROUPS:
 				return getSubGroups();
-			case BoxingPackage.GROUP__WRITE_TRACE_MODELS:
-				return getWriteTraceModels();
-			case BoxingPackage.GROUP__READ_TRACE_MODELS:
-				return getReadTraceModels();
+			case BoxingPackage.GROUP__SOURCE_TRACE_MODELS:
+				return getSourceTraceModels();
+			case BoxingPackage.GROUP__SOURCE_MODELS:
+				return getSourceModels();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -211,25 +184,21 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case BoxingPackage.GROUP__SOURCE_MODELS:
-				getSourceModels().clear();
-				getSourceModels().addAll((Collection<? extends SourceModelNodeSelector>)newValue);
-				return;
-			case BoxingPackage.GROUP__TRANSFORMATIONS:
-				getTransformations().clear();
-				getTransformations().addAll((Collection<? extends Processor>)newValue);
+			case BoxingPackage.GROUP__UNITS:
+				getUnits().clear();
+				getUnits().addAll((Collection<? extends Unit>)newValue);
 				return;
 			case BoxingPackage.GROUP__SUB_GROUPS:
 				getSubGroups().clear();
 				getSubGroups().addAll((Collection<? extends Group>)newValue);
 				return;
-			case BoxingPackage.GROUP__WRITE_TRACE_MODELS:
-				getWriteTraceModels().clear();
-				getWriteTraceModels().addAll((Collection<? extends TraceModel>)newValue);
+			case BoxingPackage.GROUP__SOURCE_TRACE_MODELS:
+				getSourceTraceModels().clear();
+				getSourceTraceModels().addAll((Collection<? extends TraceModel>)newValue);
 				return;
-			case BoxingPackage.GROUP__READ_TRACE_MODELS:
-				getReadTraceModels().clear();
-				getReadTraceModels().addAll((Collection<? extends TraceModel>)newValue);
+			case BoxingPackage.GROUP__SOURCE_MODELS:
+				getSourceModels().clear();
+				getSourceModels().addAll((Collection<? extends Metamodel>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -243,20 +212,17 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case BoxingPackage.GROUP__SOURCE_MODELS:
-				getSourceModels().clear();
-				return;
-			case BoxingPackage.GROUP__TRANSFORMATIONS:
-				getTransformations().clear();
+			case BoxingPackage.GROUP__UNITS:
+				getUnits().clear();
 				return;
 			case BoxingPackage.GROUP__SUB_GROUPS:
 				getSubGroups().clear();
 				return;
-			case BoxingPackage.GROUP__WRITE_TRACE_MODELS:
-				getWriteTraceModels().clear();
+			case BoxingPackage.GROUP__SOURCE_TRACE_MODELS:
+				getSourceTraceModels().clear();
 				return;
-			case BoxingPackage.GROUP__READ_TRACE_MODELS:
-				getReadTraceModels().clear();
+			case BoxingPackage.GROUP__SOURCE_MODELS:
+				getSourceModels().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -270,16 +236,14 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case BoxingPackage.GROUP__SOURCE_MODELS:
-				return sourceModels != null && !sourceModels.isEmpty();
-			case BoxingPackage.GROUP__TRANSFORMATIONS:
-				return transformations != null && !transformations.isEmpty();
+			case BoxingPackage.GROUP__UNITS:
+				return units != null && !units.isEmpty();
 			case BoxingPackage.GROUP__SUB_GROUPS:
 				return subGroups != null && !subGroups.isEmpty();
-			case BoxingPackage.GROUP__WRITE_TRACE_MODELS:
-				return writeTraceModels != null && !writeTraceModels.isEmpty();
-			case BoxingPackage.GROUP__READ_TRACE_MODELS:
-				return readTraceModels != null && !readTraceModels.isEmpty();
+			case BoxingPackage.GROUP__SOURCE_TRACE_MODELS:
+				return sourceTraceModels != null && !sourceTraceModels.isEmpty();
+			case BoxingPackage.GROUP__SOURCE_MODELS:
+				return sourceModels != null && !sourceModels.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

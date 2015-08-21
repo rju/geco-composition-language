@@ -203,13 +203,13 @@ public interface ArchitectureFactory extends EFactory
   Typeof createTypeof();
 
   /**
-   * Returns a new object of class '<em>Write Trace Model</em>'.
+   * Returns a new object of class '<em>Target Trace Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Write Trace Model</em>'.
+   * @return a new object of class '<em>Target Trace Model</em>'.
    * @generated
    */
-  WriteTraceModel createWriteTraceModel();
+  TargetTraceModel createTargetTraceModel();
 
   /**
    * Returns a new object of class '<em>Trace Model Reference</em>'.

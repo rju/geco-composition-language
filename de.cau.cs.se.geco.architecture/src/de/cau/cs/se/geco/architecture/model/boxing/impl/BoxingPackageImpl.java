@@ -7,10 +7,14 @@ import de.cau.cs.se.geco.architecture.model.boxing.BoxingFactory;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.Group;
+import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
+import de.cau.cs.se.geco.architecture.model.boxing.Unit;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.xtext.common.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +29,20 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * @generated
 	 */
 	private EClass boxingModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modelDeclarationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unitEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,6 +156,105 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getBoxingModel_Models() {
+		return (EReference)boxingModelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModelDeclaration() {
+		return modelDeclarationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelDeclaration_Selector() {
+		return (EReference)modelDeclarationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelDeclaration_Metamodel() {
+		return (EReference)modelDeclarationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModelDeclaration_Modifier() {
+		return (EAttribute)modelDeclarationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUnit() {
+		return unitEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnit_SourceTraceModels() {
+		return (EReference)unitEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnit_SourceModels() {
+		return (EReference)unitEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnit_Processor() {
+		return (EReference)unitEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnit_TargetModel() {
+		return (EReference)unitEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnit_TargetTraceModel() {
+		return (EReference)unitEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGroup() {
 		return groupEClass;
 	}
@@ -147,7 +264,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGroup_SourceModels() {
+	public EReference getGroup_Units() {
 		return (EReference)groupEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -156,7 +273,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGroup_Transformations() {
+	public EReference getGroup_SubGroups() {
 		return (EReference)groupEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -165,7 +282,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGroup_SubGroups() {
+	public EReference getGroup_SourceTraceModels() {
 		return (EReference)groupEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -174,17 +291,8 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGroup_WriteTraceModels() {
+	public EReference getGroup_SourceModels() {
 		return (EReference)groupEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getGroup_ReadTraceModels() {
-		return (EReference)groupEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -219,13 +327,25 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		createEReference(boxingModelEClass, BOXING_MODEL__GROUPS);
 		createEReference(boxingModelEClass, BOXING_MODEL__DERIVED_FROM);
 		createEReference(boxingModelEClass, BOXING_MODEL__ALL_PROCESSORS);
+		createEReference(boxingModelEClass, BOXING_MODEL__MODELS);
+
+		modelDeclarationEClass = createEClass(MODEL_DECLARATION);
+		createEReference(modelDeclarationEClass, MODEL_DECLARATION__SELECTOR);
+		createEReference(modelDeclarationEClass, MODEL_DECLARATION__METAMODEL);
+		createEAttribute(modelDeclarationEClass, MODEL_DECLARATION__MODIFIER);
+
+		unitEClass = createEClass(UNIT);
+		createEReference(unitEClass, UNIT__SOURCE_TRACE_MODELS);
+		createEReference(unitEClass, UNIT__SOURCE_MODELS);
+		createEReference(unitEClass, UNIT__PROCESSOR);
+		createEReference(unitEClass, UNIT__TARGET_MODEL);
+		createEReference(unitEClass, UNIT__TARGET_TRACE_MODEL);
 
 		groupEClass = createEClass(GROUP);
-		createEReference(groupEClass, GROUP__SOURCE_MODELS);
-		createEReference(groupEClass, GROUP__TRANSFORMATIONS);
+		createEReference(groupEClass, GROUP__UNITS);
 		createEReference(groupEClass, GROUP__SUB_GROUPS);
-		createEReference(groupEClass, GROUP__WRITE_TRACE_MODELS);
-		createEReference(groupEClass, GROUP__READ_TRACE_MODELS);
+		createEReference(groupEClass, GROUP__SOURCE_TRACE_MODELS);
+		createEReference(groupEClass, GROUP__SOURCE_MODELS);
 	}
 
 	/**
@@ -253,6 +373,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 
 		// Obtain other dependent packages
 		ArchitecturePackage theArchitecturePackage = (ArchitecturePackage)EPackage.Registry.INSTANCE.getEPackage(ArchitecturePackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -263,15 +384,27 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		// Initialize classes, features, and operations; add parameters
 		initEClass(boxingModelEClass, BoxingModel.class, "BoxingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBoxingModel_Groups(), this.getGroup(), null, "groups", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBoxingModel_DerivedFrom(), theArchitecturePackage.getModel(), null, "derivedFrom", null, 1, 1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBoxingModel_AllProcessors(), theArchitecturePackage.getProcessor(), null, "allProcessors", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getBoxingModel_DerivedFrom(), theArchitecturePackage.getModel(), null, "derivedFrom", null, 1, 1, BoxingModel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBoxingModel_AllProcessors(), theTypesPackage.getJvmType(), null, "allProcessors", null, 0, -1, BoxingModel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getBoxingModel_Models(), this.getModelDeclaration(), null, "models", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(modelDeclarationEClass, ModelDeclaration.class, "ModelDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelDeclaration_Selector(), theArchitecturePackage.getModelNodeType(), null, "selector", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelDeclaration_Metamodel(), theArchitecturePackage.getMetamodel(), null, "metamodel", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelDeclaration_Modifier(), theArchitecturePackage.getMetamodelModifier(), "modifier", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnit_SourceTraceModels(), theArchitecturePackage.getTraceModel(), null, "sourceTraceModels", null, 0, -1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_SourceModels(), theArchitecturePackage.getMetamodel(), null, "sourceModels", null, 1, -1, Unit.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_Processor(), theArchitecturePackage.getProcessor(), null, "processor", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_TargetModel(), theArchitecturePackage.getMetamodel(), null, "targetModel", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_TargetTraceModel(), theArchitecturePackage.getTraceModel(), null, "targetTraceModel", null, 0, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGroup_SourceModels(), theArchitecturePackage.getSourceModelNodeSelector(), null, "sourceModels", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGroup_Transformations(), theArchitecturePackage.getProcessor(), null, "transformations", null, 0, -1, Group.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_Units(), this.getUnit(), null, "units", null, 0, -1, Group.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGroup_SubGroups(), this.getGroup(), null, "subGroups", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGroup_WriteTraceModels(), theArchitecturePackage.getTraceModel(), null, "writeTraceModels", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGroup_ReadTraceModels(), theArchitecturePackage.getTraceModel(), null, "readTraceModels", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_SourceTraceModels(), theArchitecturePackage.getTraceModel(), null, "sourceTraceModels", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_SourceModels(), theArchitecturePackage.getMetamodel(), null, "sourceModels", null, 0, -1, Group.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

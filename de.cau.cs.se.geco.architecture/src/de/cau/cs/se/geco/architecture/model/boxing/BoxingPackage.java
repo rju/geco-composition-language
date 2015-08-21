@@ -2,6 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -93,13 +94,22 @@ public interface BoxingPackage extends EPackage {
 	int BOXING_MODEL__ALL_PROCESSORS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Models</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOXING_MODEL__MODELS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOXING_MODEL_FEATURE_COUNT = 3;
+	int BOXING_MODEL_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Model</em>' class.
@@ -111,6 +121,134 @@ public interface BoxingPackage extends EPackage {
 	int BOXING_MODEL_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl <em>Model Declaration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingPackageImpl#getModelDeclaration()
+	 * @generated
+	 */
+	int MODEL_DECLARATION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Selector</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_DECLARATION__SELECTOR = 0;
+
+	/**
+	 * The feature id for the '<em><b>Metamodel</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_DECLARATION__METAMODEL = 1;
+
+	/**
+	 * The feature id for the '<em><b>Modifier</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_DECLARATION__MODIFIER = 2;
+
+	/**
+	 * The number of structural features of the '<em>Model Declaration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_DECLARATION_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Model Declaration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_DECLARATION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl <em>Unit</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingPackageImpl#getUnit()
+	 * @generated
+	 */
+	int UNIT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Source Trace Models</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__SOURCE_TRACE_MODELS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Source Models</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__SOURCE_MODELS = 1;
+
+	/**
+	 * The feature id for the '<em><b>Processor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__PROCESSOR = 2;
+
+	/**
+	 * The feature id for the '<em><b>Target Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__TARGET_MODEL = 3;
+
+	/**
+	 * The feature id for the '<em><b>Target Trace Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__TARGET_TRACE_MODEL = 4;
+
+	/**
+	 * The number of structural features of the '<em>Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Unit</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl <em>Group</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -118,25 +256,16 @@ public interface BoxingPackage extends EPackage {
 	 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingPackageImpl#getGroup()
 	 * @generated
 	 */
-	int GROUP = 1;
+	int GROUP = 3;
 
 	/**
-	 * The feature id for the '<em><b>Source Models</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Units</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__SOURCE_MODELS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Transformations</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GROUP__TRANSFORMATIONS = 1;
+	int GROUP__UNITS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Sub Groups</b></em>' containment reference list.
@@ -145,25 +274,25 @@ public interface BoxingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__SUB_GROUPS = 2;
+	int GROUP__SUB_GROUPS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Write Trace Models</b></em>' reference list.
+	 * The feature id for the '<em><b>Source Trace Models</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__WRITE_TRACE_MODELS = 3;
+	int GROUP__SOURCE_TRACE_MODELS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Read Trace Models</b></em>' reference list.
+	 * The feature id for the '<em><b>Source Models</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP__READ_TRACE_MODELS = 4;
+	int GROUP__SOURCE_MODELS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Group</em>' class.
@@ -172,7 +301,7 @@ public interface BoxingPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GROUP_FEATURE_COUNT = 5;
+	int GROUP_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Group</em>' class.
@@ -227,6 +356,125 @@ public interface BoxingPackage extends EPackage {
 	EReference getBoxingModel_AllProcessors();
 
 	/**
+	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getModels <em>Models</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Models</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getModels()
+	 * @see #getBoxingModel()
+	 * @generated
+	 */
+	EReference getBoxingModel_Models();
+
+	/**
+	 * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration <em>Model Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Model Declaration</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
+	 * @generated
+	 */
+	EClass getModelDeclaration();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getSelector <em>Selector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Selector</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getSelector()
+	 * @see #getModelDeclaration()
+	 * @generated
+	 */
+	EReference getModelDeclaration_Selector();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getMetamodel <em>Metamodel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Metamodel</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getMetamodel()
+	 * @see #getModelDeclaration()
+	 * @generated
+	 */
+	EReference getModelDeclaration_Metamodel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getModifier <em>Modifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Modifier</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getModifier()
+	 * @see #getModelDeclaration()
+	 * @generated
+	 */
+	EAttribute getModelDeclaration_Modifier();
+
+	/**
+	 * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit <em>Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unit</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit
+	 * @generated
+	 */
+	EClass getUnit();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getSourceTraceModels <em>Source Trace Models</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Source Trace Models</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getSourceTraceModels()
+	 * @see #getUnit()
+	 * @generated
+	 */
+	EReference getUnit_SourceTraceModels();
+
+	/**
+	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getSourceModels <em>Source Models</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Source Models</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getSourceModels()
+	 * @see #getUnit()
+	 * @generated
+	 */
+	EReference getUnit_SourceModels();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getProcessor <em>Processor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Processor</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getProcessor()
+	 * @see #getUnit()
+	 * @generated
+	 */
+	EReference getUnit_Processor();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetModel <em>Target Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target Model</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetModel()
+	 * @see #getUnit()
+	 * @generated
+	 */
+	EReference getUnit_TargetModel();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetTraceModel <em>Target Trace Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target Trace Model</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetTraceModel()
+	 * @see #getUnit()
+	 * @generated
+	 */
+	EReference getUnit_TargetTraceModel();
+
+	/**
 	 * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.model.boxing.Group <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -237,26 +485,15 @@ public interface BoxingPackage extends EPackage {
 	EClass getGroup();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceModels <em>Source Models</em>}'.
+	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getUnits <em>Units</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Source Models</em>'.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceModels()
+	 * @return the meta object for the reference list '<em>Units</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Group#getUnits()
 	 * @see #getGroup()
 	 * @generated
 	 */
-	EReference getGroup_SourceModels();
-
-	/**
-	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getTransformations <em>Transformations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Transformations</em>'.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.Group#getTransformations()
-	 * @see #getGroup()
-	 * @generated
-	 */
-	EReference getGroup_Transformations();
+	EReference getGroup_Units();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSubGroups <em>Sub Groups</em>}'.
@@ -270,26 +507,26 @@ public interface BoxingPackage extends EPackage {
 	EReference getGroup_SubGroups();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getWriteTraceModels <em>Write Trace Models</em>}'.
+	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceTraceModels <em>Source Trace Models</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Write Trace Models</em>'.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.Group#getWriteTraceModels()
+	 * @return the meta object for the reference list '<em>Source Trace Models</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceTraceModels()
 	 * @see #getGroup()
 	 * @generated
 	 */
-	EReference getGroup_WriteTraceModels();
+	EReference getGroup_SourceTraceModels();
 
 	/**
-	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getReadTraceModels <em>Read Trace Models</em>}'.
+	 * Returns the meta object for the reference list '{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceModels <em>Source Models</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Read Trace Models</em>'.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.Group#getReadTraceModels()
+	 * @return the meta object for the reference list '<em>Source Models</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceModels()
 	 * @see #getGroup()
 	 * @generated
 	 */
-	EReference getGroup_ReadTraceModels();
+	EReference getGroup_SourceModels();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -349,6 +586,98 @@ public interface BoxingPackage extends EPackage {
 		EReference BOXING_MODEL__ALL_PROCESSORS = eINSTANCE.getBoxingModel_AllProcessors();
 
 		/**
+		 * The meta object literal for the '<em><b>Models</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOXING_MODEL__MODELS = eINSTANCE.getBoxingModel_Models();
+
+		/**
+		 * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl <em>Model Declaration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl
+		 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingPackageImpl#getModelDeclaration()
+		 * @generated
+		 */
+		EClass MODEL_DECLARATION = eINSTANCE.getModelDeclaration();
+
+		/**
+		 * The meta object literal for the '<em><b>Selector</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_DECLARATION__SELECTOR = eINSTANCE.getModelDeclaration_Selector();
+
+		/**
+		 * The meta object literal for the '<em><b>Metamodel</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_DECLARATION__METAMODEL = eINSTANCE.getModelDeclaration_Metamodel();
+
+		/**
+		 * The meta object literal for the '<em><b>Modifier</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_DECLARATION__MODIFIER = eINSTANCE.getModelDeclaration_Modifier();
+
+		/**
+		 * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl <em>Unit</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl
+		 * @see de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingPackageImpl#getUnit()
+		 * @generated
+		 */
+		EClass UNIT = eINSTANCE.getUnit();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Trace Models</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNIT__SOURCE_TRACE_MODELS = eINSTANCE.getUnit_SourceTraceModels();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Models</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNIT__SOURCE_MODELS = eINSTANCE.getUnit_SourceModels();
+
+		/**
+		 * The meta object literal for the '<em><b>Processor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNIT__PROCESSOR = eINSTANCE.getUnit_Processor();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Model</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNIT__TARGET_MODEL = eINSTANCE.getUnit_TargetModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Trace Model</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNIT__TARGET_TRACE_MODEL = eINSTANCE.getUnit_TargetTraceModel();
+
+		/**
 		 * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl <em>Group</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -359,20 +688,12 @@ public interface BoxingPackage extends EPackage {
 		EClass GROUP = eINSTANCE.getGroup();
 
 		/**
-		 * The meta object literal for the '<em><b>Source Models</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Units</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GROUP__SOURCE_MODELS = eINSTANCE.getGroup_SourceModels();
-
-		/**
-		 * The meta object literal for the '<em><b>Transformations</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GROUP__TRANSFORMATIONS = eINSTANCE.getGroup_Transformations();
+		EReference GROUP__UNITS = eINSTANCE.getGroup_Units();
 
 		/**
 		 * The meta object literal for the '<em><b>Sub Groups</b></em>' containment reference list feature.
@@ -383,20 +704,20 @@ public interface BoxingPackage extends EPackage {
 		EReference GROUP__SUB_GROUPS = eINSTANCE.getGroup_SubGroups();
 
 		/**
-		 * The meta object literal for the '<em><b>Write Trace Models</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Source Trace Models</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GROUP__WRITE_TRACE_MODELS = eINSTANCE.getGroup_WriteTraceModels();
+		EReference GROUP__SOURCE_TRACE_MODELS = eINSTANCE.getGroup_SourceTraceModels();
 
 		/**
-		 * The meta object literal for the '<em><b>Read Trace Models</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Source Models</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GROUP__READ_TRACE_MODELS = eINSTANCE.getGroup_ReadTraceModels();
+		EReference GROUP__SOURCE_MODELS = eINSTANCE.getGroup_SourceModels();
 
 	}
 

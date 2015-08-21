@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface TraceModel extends WriteTraceModel
+public interface TraceModel extends TargetTraceModel
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

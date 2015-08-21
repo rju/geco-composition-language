@@ -3,10 +3,10 @@
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.Group;
+import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getGroups <em>Groups</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getDerivedFrom <em>Derived From</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getAllProcessors <em>All Processors</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.BoxingModelImpl#getModels <em>Models</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,7 +65,17 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Processor> allProcessors;
+	protected EList<JvmType> allProcessors;
+
+	/**
+	 * The cached value of the '{@link #getModels() <em>Models</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModels()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ModelDeclaration> models;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,11 +151,23 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Processor> getAllProcessors() {
+	public EList<JvmType> getAllProcessors() {
 		if (allProcessors == null) {
-			allProcessors = new EObjectResolvingEList<Processor>(Processor.class, this, BoxingPackage.BOXING_MODEL__ALL_PROCESSORS);
+			allProcessors = new EObjectResolvingEList<JvmType>(JvmType.class, this, BoxingPackage.BOXING_MODEL__ALL_PROCESSORS);
 		}
 		return allProcessors;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ModelDeclaration> getModels() {
+		if (models == null) {
+			models = new EObjectResolvingEList<ModelDeclaration>(ModelDeclaration.class, this, BoxingPackage.BOXING_MODEL__MODELS);
+		}
+		return models;
 	}
 
 	/**
@@ -175,6 +199,8 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 				return basicGetDerivedFrom();
 			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
 				return getAllProcessors();
+			case BoxingPackage.BOXING_MODEL__MODELS:
+				return getModels();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,7 +223,11 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 				return;
 			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
 				getAllProcessors().clear();
-				getAllProcessors().addAll((Collection<? extends Processor>)newValue);
+				getAllProcessors().addAll((Collection<? extends JvmType>)newValue);
+				return;
+			case BoxingPackage.BOXING_MODEL__MODELS:
+				getModels().clear();
+				getModels().addAll((Collection<? extends ModelDeclaration>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -220,6 +250,9 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
 				getAllProcessors().clear();
 				return;
+			case BoxingPackage.BOXING_MODEL__MODELS:
+				getModels().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -238,6 +271,8 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 				return derivedFrom != null;
 			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
 				return allProcessors != null && !allProcessors.isEmpty();
+			case BoxingPackage.BOXING_MODEL__MODELS:
+				return models != null && !models.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

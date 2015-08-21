@@ -4,8 +4,9 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
-import de.cau.cs.se.geco.architecture.architecture.WriteTraceModel;
 
 import java.util.Collection;
 
@@ -29,8 +30,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl#getWriteTraceModel <em>Write Trace Model</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl#getReadTraceModels <em>Read Trace Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl#getSourceAuxModels <em>Source Aux Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl#getTargetTraceModel <em>Target Trace Model</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl#getSourceTraceModels <em>Source Trace Models</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,24 +41,34 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class GeneratorImpl extends ProcessorImpl implements Generator
 {
   /**
-   * The cached value of the '{@link #getWriteTraceModel() <em>Write Trace Model</em>}' containment reference.
+   * The cached value of the '{@link #getSourceAuxModels() <em>Source Aux Models</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWriteTraceModel()
+   * @see #getSourceAuxModels()
    * @generated
    * @ordered
    */
-  protected WriteTraceModel writeTraceModel;
+  protected EList<SourceModelNodeSelector> sourceAuxModels;
 
   /**
-   * The cached value of the '{@link #getReadTraceModels() <em>Read Trace Models</em>}' containment reference list.
+   * The cached value of the '{@link #getTargetTraceModel() <em>Target Trace Model</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReadTraceModels()
+   * @see #getTargetTraceModel()
    * @generated
    * @ordered
    */
-  protected EList<TraceModelReference> readTraceModels;
+  protected TargetTraceModel targetTraceModel;
+
+  /**
+   * The cached value of the '{@link #getSourceTraceModels() <em>Source Trace Models</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSourceTraceModels()
+   * @generated
+   * @ordered
+   */
+  protected EList<TraceModelReference> sourceTraceModels;
 
   /**
    * <!-- begin-user-doc -->
@@ -84,9 +96,13 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public WriteTraceModel getWriteTraceModel()
+  public EList<SourceModelNodeSelector> getSourceAuxModels()
   {
-    return writeTraceModel;
+    if (sourceAuxModels == null)
+    {
+      sourceAuxModels = new EObjectContainmentEList<SourceModelNodeSelector>(SourceModelNodeSelector.class, this, ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS);
+    }
+    return sourceAuxModels;
   }
 
   /**
@@ -94,13 +110,23 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetWriteTraceModel(WriteTraceModel newWriteTraceModel, NotificationChain msgs)
+  public TargetTraceModel getTargetTraceModel()
   {
-    WriteTraceModel oldWriteTraceModel = writeTraceModel;
-    writeTraceModel = newWriteTraceModel;
+    return targetTraceModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTargetTraceModel(TargetTraceModel newTargetTraceModel, NotificationChain msgs)
+  {
+    TargetTraceModel oldTargetTraceModel = targetTraceModel;
+    targetTraceModel = newTargetTraceModel;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL, oldWriteTraceModel, newWriteTraceModel);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL, oldTargetTraceModel, newTargetTraceModel);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -111,20 +137,20 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWriteTraceModel(WriteTraceModel newWriteTraceModel)
+  public void setTargetTraceModel(TargetTraceModel newTargetTraceModel)
   {
-    if (newWriteTraceModel != writeTraceModel)
+    if (newTargetTraceModel != targetTraceModel)
     {
       NotificationChain msgs = null;
-      if (writeTraceModel != null)
-        msgs = ((InternalEObject)writeTraceModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL, null, msgs);
-      if (newWriteTraceModel != null)
-        msgs = ((InternalEObject)newWriteTraceModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL, null, msgs);
-      msgs = basicSetWriteTraceModel(newWriteTraceModel, msgs);
+      if (targetTraceModel != null)
+        msgs = ((InternalEObject)targetTraceModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL, null, msgs);
+      if (newTargetTraceModel != null)
+        msgs = ((InternalEObject)newTargetTraceModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL, null, msgs);
+      msgs = basicSetTargetTraceModel(newTargetTraceModel, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL, newWriteTraceModel, newWriteTraceModel));
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL, newTargetTraceModel, newTargetTraceModel));
   }
 
   /**
@@ -132,13 +158,13 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<TraceModelReference> getReadTraceModels()
+  public EList<TraceModelReference> getSourceTraceModels()
   {
-    if (readTraceModels == null)
+    if (sourceTraceModels == null)
     {
-      readTraceModels = new EObjectContainmentEList<TraceModelReference>(TraceModelReference.class, this, ArchitecturePackage.GENERATOR__READ_TRACE_MODELS);
+      sourceTraceModels = new EObjectContainmentEList<TraceModelReference>(TraceModelReference.class, this, ArchitecturePackage.GENERATOR__SOURCE_TRACE_MODELS);
     }
-    return readTraceModels;
+    return sourceTraceModels;
   }
 
   /**
@@ -151,10 +177,12 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
-        return basicSetWriteTraceModel(null, msgs);
-      case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
-        return ((InternalEList<?>)getReadTraceModels()).basicRemove(otherEnd, msgs);
+      case ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS:
+        return ((InternalEList<?>)getSourceAuxModels()).basicRemove(otherEnd, msgs);
+      case ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL:
+        return basicSetTargetTraceModel(null, msgs);
+      case ArchitecturePackage.GENERATOR__SOURCE_TRACE_MODELS:
+        return ((InternalEList<?>)getSourceTraceModels()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -169,10 +197,12 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
-        return getWriteTraceModel();
-      case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
-        return getReadTraceModels();
+      case ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS:
+        return getSourceAuxModels();
+      case ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL:
+        return getTargetTraceModel();
+      case ArchitecturePackage.GENERATOR__SOURCE_TRACE_MODELS:
+        return getSourceTraceModels();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -188,12 +218,16 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
-        setWriteTraceModel((WriteTraceModel)newValue);
+      case ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS:
+        getSourceAuxModels().clear();
+        getSourceAuxModels().addAll((Collection<? extends SourceModelNodeSelector>)newValue);
         return;
-      case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
-        getReadTraceModels().clear();
-        getReadTraceModels().addAll((Collection<? extends TraceModelReference>)newValue);
+      case ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL:
+        setTargetTraceModel((TargetTraceModel)newValue);
+        return;
+      case ArchitecturePackage.GENERATOR__SOURCE_TRACE_MODELS:
+        getSourceTraceModels().clear();
+        getSourceTraceModels().addAll((Collection<? extends TraceModelReference>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -209,11 +243,14 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
-        setWriteTraceModel((WriteTraceModel)null);
+      case ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS:
+        getSourceAuxModels().clear();
         return;
-      case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
-        getReadTraceModels().clear();
+      case ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL:
+        setTargetTraceModel((TargetTraceModel)null);
+        return;
+      case ArchitecturePackage.GENERATOR__SOURCE_TRACE_MODELS:
+        getSourceTraceModels().clear();
         return;
     }
     super.eUnset(featureID);
@@ -229,10 +266,12 @@ public class GeneratorImpl extends ProcessorImpl implements Generator
   {
     switch (featureID)
     {
-      case ArchitecturePackage.GENERATOR__WRITE_TRACE_MODEL:
-        return writeTraceModel != null;
-      case ArchitecturePackage.GENERATOR__READ_TRACE_MODELS:
-        return readTraceModels != null && !readTraceModels.isEmpty();
+      case ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS:
+        return sourceAuxModels != null && !sourceAuxModels.isEmpty();
+      case ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL:
+        return targetTraceModel != null;
+      case ArchitecturePackage.GENERATOR__SOURCE_TRACE_MODELS:
+        return sourceTraceModels != null && !sourceTraceModels.isEmpty();
     }
     return super.eIsSet(featureID);
   }

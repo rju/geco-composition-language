@@ -34,6 +34,7 @@ import de.cau.cs.se.geco.architecture.architecture.Import
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
+import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
 
 class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelegatingScopeProvider {
 	
@@ -83,7 +84,16 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 		switch(container) {
 			ModelNodeType: container.target.importedNamespace.createJvmDeclaredTypeScope(reference)
 			NodeProperty: (container.property as JvmOperation).returnType.type.createJvmDeclaredTypeScope(reference)
-			SourceModelNodeSelector: container.resolveType.createJvmDeclaredTypeScope(reference)
+			SourceModelNodeSelector: {
+				val genericType = (container.reference.eContainer as MetamodelSequence).type.resolveBaseType
+				// TODO this must be converted into a typing method
+				if (container.constraint != null) {
+					if (container.constraint instanceof Typeof) {
+						return (container.constraint as Typeof).type.createJvmDeclaredTypeScope(reference)
+					}
+				}
+				return genericType.createJvmDeclaredTypeScope(reference)
+			}
 			default: IScope.NULLSCOPE
 		}
 	}
@@ -125,7 +135,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			if (generator.sourceModel.reference != null) {
 				/** source node type */
 				
-				return new JvmRegisterMetamodelImportScope(generator.sourceModel.reference.resolveType, 
+				return new JvmRegisterMetamodelImportScope(generator.sourceModel.reference.resolveBaseType, 
 					nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
 				)
 			} else /** this should not happen in a valid model. Provide solid fallback for incomplete model. */
@@ -135,7 +145,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 				if (generator.eContainer instanceof Weaver) {
 					val sourceModel = (generator.eContainer as Weaver).resolveWeaverSourceModel
 					if (sourceModel != null)
-						return new JvmRegisterMetamodelImportScope(sourceModel.resolveType,
+						return new JvmRegisterMetamodelImportScope(sourceModel.reference.resolveBaseType,
 							nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
 						)
 					else
@@ -143,7 +153,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 				} else /** this should not happen in a valid model. Provide solid fallback for incomplete model. */
 					IScope.NULLSCOPE
 			} else {
-				return new JvmRegisterMetamodelImportScope(generator.targetModel.reference.resolveType, 
+				return new JvmRegisterMetamodelImportScope(generator.targetModel.reference.resolveBaseType, 
 					nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
 				)
 			}
@@ -176,8 +186,8 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 	private def JvmType getMetaModelContextNode(EObject type) {
 		val container = type.eContainer
 		switch (container) {
-			NodeProperty: return container.property.resolveType
-			SourceModelNodeSelector: return container.reference.resolveType
+			NodeProperty: return container.property.resolveBaseType
+			SourceModelNodeSelector: return container.reference.resolveBaseType
 			case null : throw new Exception("Corrupted model: Cannot find NodeProperty or SourceModelNodeSelector context.")
 			default: type.eContainer.metaModelContextNode
 		}
@@ -199,17 +209,9 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 		val matchingType = typeProviderFactory.createTypeProvider(object.eResource.resourceSet).
 			findTypeByName(typeName)
 		switch(type) {
-			JvmGenericType: type.isSubtypeOf(matchingType)
+			JvmGenericType: type.isSubTypeOf(matchingType)
 			default: false
 		}
 	}
-	
-	def Boolean isSubtypeOf(JvmGenericType type, JvmType matchingType) {
-		if (type.superTypes.exists[it.type.equals(matchingType)]) {
-			return true
-		} else {
-			type.superTypes.exists[(it.type as JvmGenericType).isSubtypeOf(matchingType)]		
-		}
-	}
-	
+		
 }

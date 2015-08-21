@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#isCollection <em>Collection</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +52,26 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * @ordered
    */
   protected NodeProperty property;
+
+  /**
+   * The default value of the '{@link #isCollection() <em>Collection</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isCollection()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean COLLECTION_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isCollection() <em>Collection</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isCollection()
+   * @generated
+   * @ordered
+   */
+  protected boolean collection = COLLECTION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -169,6 +190,29 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isCollection()
+  {
+    return collection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCollection(boolean newCollection)
+  {
+    boolean oldCollection = collection;
+    collection = newCollection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MODEL_NODE_TYPE__COLLECTION, oldCollection, collection));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -195,6 +239,8 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
         return basicGetTarget();
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         return getProperty();
+      case ArchitecturePackage.MODEL_NODE_TYPE__COLLECTION:
+        return isCollection();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -214,6 +260,9 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
         return;
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         setProperty((NodeProperty)newValue);
+        return;
+      case ArchitecturePackage.MODEL_NODE_TYPE__COLLECTION:
+        setCollection((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -235,6 +284,9 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         setProperty((NodeProperty)null);
         return;
+      case ArchitecturePackage.MODEL_NODE_TYPE__COLLECTION:
+        setCollection(COLLECTION_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -253,8 +305,27 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
         return target != null;
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         return property != null;
+      case ArchitecturePackage.MODEL_NODE_TYPE__COLLECTION:
+        return collection != COLLECTION_EDEFAULT;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (collection: ");
+    result.append(collection);
+    result.append(')');
+    return result.toString();
   }
 
 } //ModelNodeTypeImpl

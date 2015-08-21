@@ -85,7 +85,7 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.PARENTHESIS_CONSTRAINT: return createParenthesisConstraint();
       case ArchitecturePackage.OPERAND: return createOperand();
       case ArchitecturePackage.TYPEOF: return createTypeof();
-      case ArchitecturePackage.WRITE_TRACE_MODEL: return createWriteTraceModel();
+      case ArchitecturePackage.TARGET_TRACE_MODEL: return createTargetTraceModel();
       case ArchitecturePackage.TRACE_MODEL_REFERENCE: return createTraceModelReference();
       case ArchitecturePackage.TRACE_MODEL: return createTraceModel();
       case ArchitecturePackage.NODE_SET_RELATION: return createNodeSetRelation();
@@ -368,10 +368,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public WriteTraceModel createWriteTraceModel()
+  public TargetTraceModel createTargetTraceModel()
   {
-    WriteTraceModelImpl writeTraceModel = new WriteTraceModelImpl();
-    return writeTraceModel;
+    TargetTraceModelImpl targetTraceModel = new TargetTraceModelImpl();
+    return targetTraceModel;
   }
 
   /**

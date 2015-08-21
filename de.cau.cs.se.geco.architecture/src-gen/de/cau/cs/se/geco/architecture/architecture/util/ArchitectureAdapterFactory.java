@@ -175,9 +175,9 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createTypeofAdapter();
       }
       @Override
-      public Adapter caseWriteTraceModel(WriteTraceModel object)
+      public Adapter caseTargetTraceModel(TargetTraceModel object)
       {
-        return createWriteTraceModelAdapter();
+        return createTargetTraceModelAdapter();
       }
       @Override
       public Adapter caseTraceModelReference(TraceModelReference object)
@@ -552,16 +552,16 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.WriteTraceModel <em>Write Trace Model</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.TargetTraceModel <em>Target Trace Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.WriteTraceModel
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetTraceModel
    * @generated
    */
-  public Adapter createWriteTraceModelAdapter()
+  public Adapter createTargetTraceModelAdapter()
   {
     return null;
   }

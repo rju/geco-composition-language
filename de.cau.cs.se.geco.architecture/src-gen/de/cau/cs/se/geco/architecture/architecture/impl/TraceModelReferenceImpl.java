@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class TraceModelReferenceImpl extends WriteTraceModelImpl implements TraceModelReference
+public class TraceModelReferenceImpl extends TargetTraceModelImpl implements TraceModelReference
 {
   /**
    * The cached value of the '{@link #getTraceModel() <em>Trace Model</em>}' reference.

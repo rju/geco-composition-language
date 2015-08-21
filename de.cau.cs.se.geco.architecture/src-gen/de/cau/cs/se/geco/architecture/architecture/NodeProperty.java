@@ -3,6 +3,7 @@
 package de.cau.cs.se.geco.architecture.architecture;
 
 import org.eclipse.xtext.common.types.JvmMember;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->

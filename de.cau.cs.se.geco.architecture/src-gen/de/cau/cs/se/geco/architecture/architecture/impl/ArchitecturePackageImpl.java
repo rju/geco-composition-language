@@ -33,11 +33,11 @@ import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
-import de.cau.cs.se.geco.architecture.architecture.WriteTraceModel;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -202,7 +202,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass writeTraceModelEClass = null;
+  private EClass targetTraceModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -636,7 +636,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGenerator_WriteTraceModel()
+  public EReference getGenerator_SourceAuxModels()
   {
     return (EReference)generatorEClass.getEStructuralFeatures().get(0);
   }
@@ -646,9 +646,19 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGenerator_ReadTraceModels()
+  public EReference getGenerator_TargetTraceModel()
   {
     return (EReference)generatorEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getGenerator_SourceTraceModels()
+  {
+    return (EReference)generatorEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -739,6 +749,16 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
   public EReference getModelNodeType_Property()
   {
     return (EReference)modelNodeTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModelNodeType_Collection()
+  {
+    return (EAttribute)modelNodeTypeEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -926,9 +946,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getWriteTraceModel()
+  public EClass getTargetTraceModel()
   {
-    return writeTraceModelEClass;
+    return targetTraceModelEClass;
   }
 
   /**
@@ -1236,8 +1256,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     aspectModelEClass = createEClass(ASPECT_MODEL);
 
     generatorEClass = createEClass(GENERATOR);
-    createEReference(generatorEClass, GENERATOR__WRITE_TRACE_MODEL);
-    createEReference(generatorEClass, GENERATOR__READ_TRACE_MODELS);
+    createEReference(generatorEClass, GENERATOR__SOURCE_AUX_MODELS);
+    createEReference(generatorEClass, GENERATOR__TARGET_TRACE_MODEL);
+    createEReference(generatorEClass, GENERATOR__SOURCE_TRACE_MODELS);
 
     sourceModelNodeSelectorEClass = createEClass(SOURCE_MODEL_NODE_SELECTOR);
     createEReference(sourceModelNodeSelectorEClass, SOURCE_MODEL_NODE_SELECTOR__REFERENCE);
@@ -1250,6 +1271,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     modelNodeTypeEClass = createEClass(MODEL_NODE_TYPE);
     createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__TARGET);
     createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__PROPERTY);
+    createEAttribute(modelNodeTypeEClass, MODEL_NODE_TYPE__COLLECTION);
 
     nodePropertyEClass = createEClass(NODE_PROPERTY);
     createEReference(nodePropertyEClass, NODE_PROPERTY__PROPERTY);
@@ -1277,7 +1299,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     typeofEClass = createEClass(TYPEOF);
     createEReference(typeofEClass, TYPEOF__TYPE);
 
-    writeTraceModelEClass = createEClass(WRITE_TRACE_MODEL);
+    targetTraceModelEClass = createEClass(TARGET_TRACE_MODEL);
 
     traceModelReferenceEClass = createEClass(TRACE_MODEL_REFERENCE);
     createEReference(traceModelReferenceEClass, TRACE_MODEL_REFERENCE__TRACE_MODEL);
@@ -1359,8 +1381,8 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     parenthesisConstraintEClass.getESuperTypes().add(this.getBasicConstraint());
     operandEClass.getESuperTypes().add(this.getBasicConstraint());
     typeofEClass.getESuperTypes().add(this.getOperand());
-    traceModelReferenceEClass.getESuperTypes().add(this.getWriteTraceModel());
-    traceModelEClass.getESuperTypes().add(this.getWriteTraceModel());
+    traceModelReferenceEClass.getESuperTypes().add(this.getTargetTraceModel());
+    traceModelEClass.getESuperTypes().add(this.getTargetTraceModel());
     literalEClass.getESuperTypes().add(this.getOperand());
     arrayLiteralEClass.getESuperTypes().add(this.getLiteral());
     stringLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -1404,8 +1426,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEClass(aspectModelEClass, AspectModel.class, "AspectModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(generatorEClass, Generator.class, "Generator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGenerator_WriteTraceModel(), this.getWriteTraceModel(), null, "writeTraceModel", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGenerator_ReadTraceModels(), this.getTraceModelReference(), null, "readTraceModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerator_SourceAuxModels(), this.getSourceModelNodeSelector(), null, "sourceAuxModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerator_TargetTraceModel(), this.getTargetTraceModel(), null, "targetTraceModel", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerator_SourceTraceModels(), this.getTraceModelReference(), null, "sourceTraceModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sourceModelNodeSelectorEClass, SourceModelNodeSelector.class, "SourceModelNodeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getSourceModelNodeSelector_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1418,6 +1441,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEClass(modelNodeTypeEClass, ModelNodeType.class, "ModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModelNodeType_Target(), this.getRegisteredPackage(), null, "target", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModelNodeType_Property(), this.getNodeProperty(), null, "property", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModelNodeType_Collection(), ecorePackage.getEBoolean(), "collection", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(nodePropertyEClass, NodeProperty.class, "NodeProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNodeProperty_Property(), theTypesPackage.getJvmMember(), null, "property", null, 0, 1, NodeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1445,7 +1469,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEClass(typeofEClass, Typeof.class, "Typeof", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypeof_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, Typeof.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(writeTraceModelEClass, WriteTraceModel.class, "WriteTraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(targetTraceModelEClass, TargetTraceModel.class, "TargetTraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(traceModelReferenceEClass, TraceModelReference.class, "TraceModelReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTraceModelReference_TraceModel(), this.getTraceModel(), null, "traceModel", null, 0, 1, TraceModelReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

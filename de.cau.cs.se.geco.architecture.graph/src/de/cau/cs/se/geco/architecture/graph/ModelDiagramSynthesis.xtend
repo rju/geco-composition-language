@@ -189,7 +189,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     		}
     	}
     	if (TRACE_MODEL_VISIBLE.objectValue.equals(TRACE_MODEL_VISIBLE_YES)) {
-	    	generator.readTraceModels.forEach[traceModel |
+	    	generator.sourceTraceModels.forEach[traceModel |
 	    		val traceModelNode = traceModelNodes.get(traceModel.traceModel)
 	    		drawConnectionWithArrow(traceModelNode, generatorNode, LineStyle.DASH) => [
 	    			sourcePort = traceModelNode.ports.get(TRACE_MODEL_OUT)
@@ -243,10 +243,10 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		generatorNodes.put(generator, generatorNode)
 		
 		/** create trace model and write edge. */
-		if (generator.writeTraceModel != null && TRACE_MODEL_VISIBLE.objectValue.equals(TRACE_MODEL_VISIBLE_YES)) {
-			val traceModelNode = switch(generator.writeTraceModel) {
-				TraceModel: (generator.writeTraceModel as TraceModel).createTraceModel(parent)
-				TraceModelReference: traceModelNodes.get((generator.writeTraceModel as TraceModelReference).traceModel)
+		if (generator.targetTraceModel != null && TRACE_MODEL_VISIBLE.objectValue.equals(TRACE_MODEL_VISIBLE_YES)) {
+			val traceModelNode = switch(generator.targetTraceModel) {
+				TraceModel: (generator.targetTraceModel as TraceModel).createTraceModel(parent)
+				TraceModelReference: traceModelNodes.get((generator.targetTraceModel as TraceModelReference).traceModel)
 			}
 			
 			drawConnectionWithArrow(generatorNode, traceModelNode , LineStyle.DASH) => [
@@ -276,9 +276,9 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	 * Create a tracemodel if one is required.
 	 */
 	def void handleTraceModel(Generator generator, KNode parent) {
-		if (generator.writeTraceModel != null) {
-			if (generator.writeTraceModel instanceof TraceModel) {
-				val traceModelNode = (generator.writeTraceModel as TraceModel).createTraceModel(parent)
+		if (generator.targetTraceModel != null) {
+			if (generator.targetTraceModel instanceof TraceModel) {
+				val traceModelNode = (generator.targetTraceModel as TraceModel).createTraceModel(parent)
 				
         		parent.children += traceModelNode
 			} 
@@ -344,14 +344,15 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	 * Create an anonymous source model for a weaver.
 	 */
 	private def dispatch KNode createAnonymousMetamodel(Weaver weaver) {
-		val instanceName = weaver.resolveWeaverSourceModel.name
+		val sourceModel = weaver.resolveWeaverSourceModel
+		val instanceName = sourceModel.reference.name
 		val className = if (weaver.targetModel != null)
 			if (weaver.targetModel.reference != null)
 				weaver.targetModel.reference.resolveType.simpleName
 			else
-				weaver.resolveWeaverSourceModel.resolveType.simpleName
+				sourceModel.resolveType.simpleName
 		else
-			weaver.resolveWeaverSourceModel.resolveType.simpleName
+			sourceModel.resolveType.simpleName
 		
 		drawMetamodelRectangle(createNode(), instanceName, className)
 	}

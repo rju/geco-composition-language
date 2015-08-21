@@ -49,11 +49,11 @@ AspectModel:
 ;
 	
 Generator:
-	'generate' reference=[types::JvmType|ID] 
+	'generate' reference=[types::JvmType|ID] ('(' sourceAuxModels+=SourceModelNodeSelector (',' sourceAuxModels+=SourceModelNodeSelector)* ')')?
 		sourceModel=SourceModelNodeSelector
 		targetModel=TargetModelNodeType
-		('->' writeTraceModel=WriteTraceModel)?
-		('<-' readTraceModels+=TraceModelReference (',' readTraceModels+=TraceModelReference)*)?
+		('->' targetTraceModel=TargetTraceModel)?
+		('<-' sourceTraceModels+=TraceModelReference (',' sourceTraceModels+=TraceModelReference)*)?
 ;
 
 
@@ -67,7 +67,7 @@ TargetModelNodeType: {TargetModelNodeType}
 ;
 
 ModelNodeType:
-	target=[RegisteredPackage|ID] ('/' property=NodeProperty)?
+	target=[RegisteredPackage|ID] ('/' property=NodeProperty)? (collection?='[]')?
 ;
 
 NodeProperty:
@@ -104,7 +104,7 @@ Typeof:
 	'typeof' type = [types::JvmType|ID] 	
 ;
 
-WriteTraceModel:
+TargetTraceModel:
 	TraceModel | 'use' TraceModelReference
 ;
 

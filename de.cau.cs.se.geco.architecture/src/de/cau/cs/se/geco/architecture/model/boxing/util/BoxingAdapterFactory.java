@@ -72,6 +72,14 @@ public class BoxingAdapterFactory extends AdapterFactoryImpl {
 				return createBoxingModelAdapter();
 			}
 			@Override
+			public Adapter caseModelDeclaration(ModelDeclaration object) {
+				return createModelDeclarationAdapter();
+			}
+			@Override
+			public Adapter caseUnit(Unit object) {
+				return createUnitAdapter();
+			}
+			@Override
 			public Adapter caseGroup(Group object) {
 				return createGroupAdapter();
 			}
@@ -106,6 +114,34 @@ public class BoxingAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBoxingModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration <em>Model Declaration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
+	 * @generated
+	 */
+	public Adapter createModelDeclarationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit <em>Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit
+	 * @generated
+	 */
+	public Adapter createUnitAdapter() {
 		return null;
 	}
 

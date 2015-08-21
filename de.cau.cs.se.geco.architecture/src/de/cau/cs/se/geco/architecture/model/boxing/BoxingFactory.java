@@ -31,6 +31,24 @@ public interface BoxingFactory extends EFactory {
 	BoxingModel createBoxingModel();
 
 	/**
+	 * Returns a new object of class '<em>Model Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model Declaration</em>'.
+	 * @generated
+	 */
+	ModelDeclaration createModelDeclaration();
+
+	/**
+	 * Returns a new object of class '<em>Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Unit</em>'.
+	 * @generated
+	 */
+	Unit createUnit();
+
+	/**
 	 * Returns a new object of class '<em>Group</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

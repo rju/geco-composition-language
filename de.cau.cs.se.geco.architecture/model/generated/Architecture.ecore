@@ -50,9 +50,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AspectModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Processor #//AspectModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModel" eType="#//WriteTraceModel"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceAuxModels" upperBound="-1"
+        eType="#//SourceModelNodeSelector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetTraceModel" eType="#//TargetTraceModel"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTraceModels" upperBound="-1"
         eType="#//TraceModelReference" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SourceModelNodeSelector">
@@ -69,6 +71,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//RegisteredPackage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//NodeProperty"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="collection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeProperty" eSuperTypes="#//Operand">
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
@@ -100,11 +103,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="Typeof" eSuperTypes="#//Operand">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WriteTraceModel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TraceModelReference" eSuperTypes="#//WriteTraceModel">
+  <eClassifiers xsi:type="ecore:EClass" name="TargetTraceModel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TraceModelReference" eSuperTypes="#//TargetTraceModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="traceModel" eType="#//TraceModel"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TraceModel" eSuperTypes="#//WriteTraceModel">
+  <eClassifiers xsi:type="ecore:EClass" name="TraceModel" eSuperTypes="#//TargetTraceModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeSetRelations" upperBound="-1"
         eType="#//NodeSetRelation" containment="true"/>

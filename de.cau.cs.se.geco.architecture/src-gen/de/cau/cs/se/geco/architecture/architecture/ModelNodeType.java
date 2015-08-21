@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget <em>Target</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty <em>Property</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#isCollection <em>Collection</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,5 +75,31 @@ public interface ModelNodeType extends EObject
    * @generated
    */
   void setProperty(NodeProperty value);
+
+  /**
+   * Returns the value of the '<em><b>Collection</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Collection</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Collection</em>' attribute.
+   * @see #setCollection(boolean)
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModelNodeType_Collection()
+   * @model
+   * @generated
+   */
+  boolean isCollection();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#isCollection <em>Collection</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Collection</em>' attribute.
+   * @see #isCollection()
+   * @generated
+   */
+  void setCollection(boolean value);
 
 } // ModelNodeType

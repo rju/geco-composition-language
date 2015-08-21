@@ -2,8 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing;
 
-import de.cau.cs.se.geco.architecture.architecture.Processor;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -16,11 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceModels <em>Source Models</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getTransformations <em>Transformations</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getUnits <em>Units</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSubGroups <em>Sub Groups</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getWriteTraceModels <em>Write Trace Models</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getReadTraceModels <em>Read Trace Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceTraceModels <em>Source Trace Models</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceModels <em>Source Models</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,36 +28,20 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Group extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Source Models</b></em>' containment reference list.
-	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector}.
+	 * Returns the value of the '<em><b>Units</b></em>' reference list.
+	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.model.boxing.Unit}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source Models</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Units</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Models</em>' containment reference list.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getGroup_SourceModels()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<SourceModelNodeSelector> getSourceModels();
-
-	/**
-	 * Returns the value of the '<em><b>Transformations</b></em>' reference list.
-	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Processor}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Transformations</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Transformations</em>' reference list.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getGroup_Transformations()
+	 * @return the value of the '<em>Units</em>' reference list.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getGroup_Units()
 	 * @model transient="true"
 	 * @generated
 	 */
-	EList<Processor> getTransformations();
+	EList<Unit> getUnits();
 
 	/**
 	 * Returns the value of the '<em><b>Sub Groups</b></em>' containment reference list.
@@ -78,35 +60,35 @@ public interface Group extends EObject {
 	EList<Group> getSubGroups();
 
 	/**
-	 * Returns the value of the '<em><b>Write Trace Models</b></em>' reference list.
+	 * Returns the value of the '<em><b>Source Trace Models</b></em>' reference list.
 	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.TraceModel}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Write Trace Models</em>' reference isn't clear,
+	 * If the meaning of the '<em>Source Trace Models</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Write Trace Models</em>' reference list.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getGroup_WriteTraceModels()
+	 * @return the value of the '<em>Source Trace Models</em>' reference list.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getGroup_SourceTraceModels()
 	 * @model
 	 * @generated
 	 */
-	EList<TraceModel> getWriteTraceModels();
+	EList<TraceModel> getSourceTraceModels();
 
 	/**
-	 * Returns the value of the '<em><b>Read Trace Models</b></em>' reference list.
-	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.TraceModel}.
+	 * Returns the value of the '<em><b>Source Models</b></em>' reference list.
+	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Metamodel}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Read Trace Models</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Source Models</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Read Trace Models</em>' reference list.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getGroup_ReadTraceModels()
-	 * @model
+	 * @return the value of the '<em>Source Models</em>' reference list.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getGroup_SourceModels()
+	 * @model transient="true"
 	 * @generated
 	 */
-	EList<TraceModel> getReadTraceModels();
+	EList<Metamodel> getSourceModels();
 
 } // Group

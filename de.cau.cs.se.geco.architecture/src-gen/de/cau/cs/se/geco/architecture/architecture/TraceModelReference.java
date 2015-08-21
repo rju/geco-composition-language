@@ -19,7 +19,7 @@ package de.cau.cs.se.geco.architecture.architecture;
  * @model
  * @generated
  */
-public interface TraceModelReference extends WriteTraceModel
+public interface TraceModelReference extends TargetTraceModel
 {
   /**
    * Returns the value of the '<em><b>Trace Model</b></em>' reference.

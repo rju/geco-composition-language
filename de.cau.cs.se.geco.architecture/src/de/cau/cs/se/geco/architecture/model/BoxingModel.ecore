@@ -6,23 +6,43 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
         eType="#//Group" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="derivedFrom" lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"/>
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"
+        transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="allProcessors" upperBound="-1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Processor"
-        derived="true"/>
+        eType="ecore:EClass ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"
+        transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
+        eType="#//ModelDeclaration"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelDeclaration">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" lowerBound="1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//ModelNodeType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" lowerBound="1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifier" lowerBound="1"
+        eType="ecore:EEnum ../../../../../../../../model/generated/Architecture.ecore#//MetamodelModifier"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Unit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTraceModels" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processor" lowerBound="1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Processor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetModel" lowerBound="1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetTraceModel" eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Group">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" upperBound="-1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//SourceModelNodeSelector"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transformations" upperBound="-1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Processor"
-        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" upperBound="-1"
+        eType="#//Unit" transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subGroups" upperBound="-1"
         eType="#//Group" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceModels" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTraceModels" upperBound="-1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="readTraceModels" upperBound="-1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"
+        transient="true"/>
   </eClassifiers>
 </ecore:EPackage>

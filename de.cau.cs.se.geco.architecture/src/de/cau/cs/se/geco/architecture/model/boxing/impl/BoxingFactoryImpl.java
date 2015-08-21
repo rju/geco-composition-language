@@ -57,6 +57,8 @@ public class BoxingFactoryImpl extends EFactoryImpl implements BoxingFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case BoxingPackage.BOXING_MODEL: return createBoxingModel();
+			case BoxingPackage.MODEL_DECLARATION: return createModelDeclaration();
+			case BoxingPackage.UNIT: return createUnit();
 			case BoxingPackage.GROUP: return createGroup();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -71,6 +73,26 @@ public class BoxingFactoryImpl extends EFactoryImpl implements BoxingFactory {
 	public BoxingModel createBoxingModel() {
 		BoxingModelImpl boxingModel = new BoxingModelImpl();
 		return boxingModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModelDeclaration createModelDeclaration() {
+		ModelDeclarationImpl modelDeclaration = new ModelDeclarationImpl();
+		return modelDeclaration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Unit createUnit() {
+		UnitImpl unit = new UnitImpl();
+		return unit;
 	}
 
 	/**

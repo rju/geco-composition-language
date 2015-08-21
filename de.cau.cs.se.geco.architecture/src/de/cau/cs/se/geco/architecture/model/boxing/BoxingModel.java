@@ -3,9 +3,9 @@
 package de.cau.cs.se.geco.architecture.model.boxing;
 
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getGroups <em>Groups</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getDerivedFrom <em>Derived From</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getAllProcessors <em>All Processors</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getModels <em>Models</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,7 +54,7 @@ public interface BoxingModel extends EObject {
 	 * @return the value of the '<em>Derived From</em>' reference.
 	 * @see #setDerivedFrom(Model)
 	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_DerivedFrom()
-	 * @model required="true"
+	 * @model required="true" transient="true"
 	 * @generated
 	 */
 	Model getDerivedFrom();
@@ -70,18 +71,34 @@ public interface BoxingModel extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>All Processors</b></em>' reference list.
-	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Processor}.
+	 * The list contents are of type {@link org.eclipse.xtext.common.types.JvmType}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>All Processors</em>' reference isn't clear,
+	 * If the meaning of the '<em>All Processors</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>All Processors</em>' reference list.
 	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_AllProcessors()
-	 * @model derived="true"
+	 * @model transient="true" derived="true"
 	 * @generated
 	 */
-	EList<Processor> getAllProcessors();
+	EList<JvmType> getAllProcessors();
+
+	/**
+	 * Returns the value of the '<em><b>Models</b></em>' reference list.
+	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Models</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Models</em>' reference list.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_Models()
+	 * @model
+	 * @generated
+	 */
+	EList<ModelDeclaration> getModels();
 
 } // BoxingModel

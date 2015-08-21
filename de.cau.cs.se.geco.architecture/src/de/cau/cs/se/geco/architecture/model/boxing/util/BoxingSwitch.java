@@ -72,6 +72,18 @@ public class BoxingSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case BoxingPackage.MODEL_DECLARATION: {
+				ModelDeclaration modelDeclaration = (ModelDeclaration)theEObject;
+				T result = caseModelDeclaration(modelDeclaration);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case BoxingPackage.UNIT: {
+				Unit unit = (Unit)theEObject;
+				T result = caseUnit(unit);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case BoxingPackage.GROUP: {
 				Group group = (Group)theEObject;
 				T result = caseGroup(group);
@@ -94,6 +106,36 @@ public class BoxingSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBoxingModel(BoxingModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Declaration</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Declaration</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelDeclaration(ModelDeclaration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unit</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unit</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnit(Unit object) {
 		return null;
 	}
 

@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class TraceModelImpl extends WriteTraceModelImpl implements TraceModel
+public class TraceModelImpl extends TargetTraceModelImpl implements TraceModel
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.geco.architecture/src-gen" editDirectory="/de.cau.cs.se.geco.architecture.edit/src"
     editorDirectory="/de.cau.cs.se.geco.architecture.editor/src" modelPluginID="de.cau.cs.se.geco.architecture"
     forceOverwrite="true" modelName="Architecture" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.geco.architecture.edit"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="de.cau.cs.se.geco.architecture.edit"
     editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
   <genPackages prefix="Architecture" basePackage="de.cau.cs.se.geco.architecture"
       disposableProviderFactory="true" fileExtensions="geco" ecorePackage="Architecture.ecore#/">
@@ -59,8 +59,9 @@
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//AspectModel"/>
     <genClasses ecoreClass="Architecture.ecore#//Generator">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/writeTraceModel"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/readTraceModels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/sourceAuxModels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/targetTraceModel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/sourceTraceModels"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//SourceModelNodeSelector">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelNodeSelector/reference"/>
@@ -73,6 +74,7 @@
     <genClasses ecoreClass="Architecture.ecore#//ModelNodeType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/property"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//ModelNodeType/collection"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//NodeProperty">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeProperty/property"/>
@@ -98,7 +100,7 @@
     <genClasses ecoreClass="Architecture.ecore#//Typeof">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Typeof/type"/>
     </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//WriteTraceModel"/>
+    <genClasses ecoreClass="Architecture.ecore#//TargetTraceModel"/>
     <genClasses ecoreClass="Architecture.ecore#//TraceModelReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//TraceModelReference/traceModel"/>
     </genClasses>

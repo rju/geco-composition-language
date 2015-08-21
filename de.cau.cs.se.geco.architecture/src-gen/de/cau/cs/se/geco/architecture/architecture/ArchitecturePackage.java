@@ -436,22 +436,31 @@ public interface ArchitecturePackage extends EPackage
   int GENERATOR__TARGET_MODEL = PROCESSOR__TARGET_MODEL;
 
   /**
-   * The feature id for the '<em><b>Write Trace Model</b></em>' containment reference.
+   * The feature id for the '<em><b>Source Aux Models</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GENERATOR__WRITE_TRACE_MODEL = PROCESSOR_FEATURE_COUNT + 0;
+  int GENERATOR__SOURCE_AUX_MODELS = PROCESSOR_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Read Trace Models</b></em>' containment reference list.
+   * The feature id for the '<em><b>Target Trace Model</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GENERATOR__READ_TRACE_MODELS = PROCESSOR_FEATURE_COUNT + 1;
+  int GENERATOR__TARGET_TRACE_MODEL = PROCESSOR_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Source Trace Models</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GENERATOR__SOURCE_TRACE_MODELS = PROCESSOR_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Generator</em>' class.
@@ -460,7 +469,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR_FEATURE_COUNT = PROCESSOR_FEATURE_COUNT + 2;
+  int GENERATOR_FEATURE_COUNT = PROCESSOR_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
@@ -565,13 +574,22 @@ public interface ArchitecturePackage extends EPackage
   int MODEL_NODE_TYPE__PROPERTY = 1;
 
   /**
+   * The feature id for the '<em><b>Collection</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_NODE_TYPE__COLLECTION = 2;
+
+  /**
    * The number of structural features of the '<em>Model Node Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_NODE_TYPE_FEATURE_COUNT = 2;
+  int MODEL_NODE_TYPE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl <em>Constraint Expression</em>}' class.
@@ -1059,23 +1077,23 @@ public interface ArchitecturePackage extends EPackage
   int TYPEOF_FEATURE_COUNT = OPERAND_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WriteTraceModelImpl <em>Write Trace Model</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetTraceModelImpl <em>Target Trace Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.WriteTraceModelImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getWriteTraceModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetTraceModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetTraceModel()
    * @generated
    */
-  int WRITE_TRACE_MODEL = 20;
+  int TARGET_TRACE_MODEL = 20;
 
   /**
-   * The number of structural features of the '<em>Write Trace Model</em>' class.
+   * The number of structural features of the '<em>Target Trace Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WRITE_TRACE_MODEL_FEATURE_COUNT = 0;
+  int TARGET_TRACE_MODEL_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelReferenceImpl <em>Trace Model Reference</em>}' class.
@@ -1094,7 +1112,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_MODEL_REFERENCE__TRACE_MODEL = WRITE_TRACE_MODEL_FEATURE_COUNT + 0;
+  int TRACE_MODEL_REFERENCE__TRACE_MODEL = TARGET_TRACE_MODEL_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Trace Model Reference</em>' class.
@@ -1103,7 +1121,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_MODEL_REFERENCE_FEATURE_COUNT = WRITE_TRACE_MODEL_FEATURE_COUNT + 1;
+  int TRACE_MODEL_REFERENCE_FEATURE_COUNT = TARGET_TRACE_MODEL_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelImpl <em>Trace Model</em>}' class.
@@ -1122,7 +1140,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_MODEL__NAME = WRITE_TRACE_MODEL_FEATURE_COUNT + 0;
+  int TRACE_MODEL__NAME = TARGET_TRACE_MODEL_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Node Set Relations</b></em>' containment reference list.
@@ -1131,7 +1149,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_MODEL__NODE_SET_RELATIONS = WRITE_TRACE_MODEL_FEATURE_COUNT + 1;
+  int TRACE_MODEL__NODE_SET_RELATIONS = TARGET_TRACE_MODEL_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Trace Model</em>' class.
@@ -1140,7 +1158,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TRACE_MODEL_FEATURE_COUNT = WRITE_TRACE_MODEL_FEATURE_COUNT + 2;
+  int TRACE_MODEL_FEATURE_COUNT = TARGET_TRACE_MODEL_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NodeSetRelationImpl <em>Node Set Relation</em>}' class.
@@ -1902,26 +1920,37 @@ public interface ArchitecturePackage extends EPackage
   EClass getGenerator();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getWriteTraceModel <em>Write Trace Model</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getSourceAuxModels <em>Source Aux Models</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Write Trace Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getWriteTraceModel()
+   * @return the meta object for the containment reference list '<em>Source Aux Models</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getSourceAuxModels()
    * @see #getGenerator()
    * @generated
    */
-  EReference getGenerator_WriteTraceModel();
+  EReference getGenerator_SourceAuxModels();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getReadTraceModels <em>Read Trace Models</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getTargetTraceModel <em>Target Trace Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Read Trace Models</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getReadTraceModels()
+   * @return the meta object for the containment reference '<em>Target Trace Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getTargetTraceModel()
    * @see #getGenerator()
    * @generated
    */
-  EReference getGenerator_ReadTraceModels();
+  EReference getGenerator_TargetTraceModel();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Generator#getSourceTraceModels <em>Source Trace Models</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Source Trace Models</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Generator#getSourceTraceModels()
+   * @see #getGenerator()
+   * @generated
+   */
+  EReference getGenerator_SourceTraceModels();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector <em>Source Model Node Selector</em>}'.
@@ -2018,6 +2047,17 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EReference getModelNodeType_Property();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#isCollection <em>Collection</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Collection</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType#isCollection()
+   * @see #getModelNodeType()
+   * @generated
+   */
+  EAttribute getModelNodeType_Collection();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty <em>Node Property</em>}'.
@@ -2210,14 +2250,14 @@ public interface ArchitecturePackage extends EPackage
   EReference getTypeof_Type();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.WriteTraceModel <em>Write Trace Model</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TargetTraceModel <em>Target Trace Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Write Trace Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.WriteTraceModel
+   * @return the meta object for class '<em>Target Trace Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetTraceModel
    * @generated
    */
-  EClass getWriteTraceModel();
+  EClass getTargetTraceModel();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TraceModelReference <em>Trace Model Reference</em>}'.
@@ -2728,20 +2768,28 @@ public interface ArchitecturePackage extends EPackage
     EClass GENERATOR = eINSTANCE.getGenerator();
 
     /**
-     * The meta object literal for the '<em><b>Write Trace Model</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Source Aux Models</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GENERATOR__WRITE_TRACE_MODEL = eINSTANCE.getGenerator_WriteTraceModel();
+    EReference GENERATOR__SOURCE_AUX_MODELS = eINSTANCE.getGenerator_SourceAuxModels();
 
     /**
-     * The meta object literal for the '<em><b>Read Trace Models</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Target Trace Model</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GENERATOR__READ_TRACE_MODELS = eINSTANCE.getGenerator_ReadTraceModels();
+    EReference GENERATOR__TARGET_TRACE_MODEL = eINSTANCE.getGenerator_TargetTraceModel();
+
+    /**
+     * The meta object literal for the '<em><b>Source Trace Models</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GENERATOR__SOURCE_TRACE_MODELS = eINSTANCE.getGenerator_SourceTraceModels();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
@@ -2820,6 +2868,14 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EReference MODEL_NODE_TYPE__PROPERTY = eINSTANCE.getModelNodeType_Property();
+
+    /**
+     * The meta object literal for the '<em><b>Collection</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODEL_NODE_TYPE__COLLECTION = eINSTANCE.getModelNodeType_Collection();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl <em>Node Property</em>}' class.
@@ -2982,14 +3038,14 @@ public interface ArchitecturePackage extends EPackage
     EReference TYPEOF__TYPE = eINSTANCE.getTypeof_Type();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WriteTraceModelImpl <em>Write Trace Model</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetTraceModelImpl <em>Target Trace Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.WriteTraceModelImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getWriteTraceModel()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetTraceModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetTraceModel()
      * @generated
      */
-    EClass WRITE_TRACE_MODEL = eINSTANCE.getWriteTraceModel();
+    EClass TARGET_TRACE_MODEL = eINSTANCE.getTargetTraceModel();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TraceModelReferenceImpl <em>Trace Model Reference</em>}' class.
