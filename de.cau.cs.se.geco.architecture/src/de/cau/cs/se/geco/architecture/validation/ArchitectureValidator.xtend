@@ -31,23 +31,25 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 
 	@Check
 	def checkWeaverSourceModelType(Weaver weaver) {
-		val match = (weaver.reference as JvmGenericType).superTypes.filter[it.type.simpleName.equals("IWeaver")]
-		if (match.size > 0) {
-			if (match.get(0) instanceof JvmParameterizedTypeReference) {
-				val iface = match.get(0) as JvmParameterizedTypeReference
-				val sourceReference = iface.arguments.get(0)
-				val aspectReference = iface.arguments.get(1)
-				val declaredSourceType = weaver.resolveWeaverSourceModel.resolveType
-				if (!(declaredSourceType as JvmGenericType).isSubTypeOf(sourceReference.type)) {
-					error('Wrong source model type ' + declaredSourceType.simpleName + ' for ' + 
-						weaver.reference.simpleName + ' expected ' + sourceReference.type.simpleName, 
-						ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL)
+		val weaverType = weaver.reference
+		switch(weaverType) {
+			JvmGenericType: {
+				val match = weaverType.superTypes.filter[it.type.simpleName.equals("IWeaver")]
+				if (match.size > 0) {
+					if (match.get(0) instanceof JvmParameterizedTypeReference) {
+						val iface = match.get(0) as JvmParameterizedTypeReference
+						val sourceReference = iface.arguments.get(0)
+						val aspectReference = iface.arguments.get(1)
+						val declaredSourceType = weaver.resolveWeaverSourceModel.resolveType
+						if (!(declaredSourceType as JvmGenericType).isSubTypeOf(sourceReference.type)) {
+							error('Wrong source model type ' + declaredSourceType.simpleName + ' for ' + 
+								weaver.reference.simpleName + ' expected ' + sourceReference.type.simpleName, 
+								ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL)
+						}
+					}
 				}
-		
 			}
-				
-		
-		}
-			
+		}		
 	}
+	
 }

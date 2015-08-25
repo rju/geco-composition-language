@@ -21,6 +21,7 @@ import de.cau.cs.se.geco.architecture.architecture.Negation
 import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmVoid
 
 class ArchitectureTyping {
 	
@@ -177,7 +178,14 @@ class ArchitectureTyping {
 		if (type.equals(matchingType))
 			return true
 		else {
-			type.superTypes.exists[(it.type as JvmGenericType).isSubTypeOf(matchingType)]		
+			type.superTypes.exists[
+				val superType = it.type
+				switch(superType) {
+					JvmGenericType: superType.isSubTypeOf(matchingType)
+					JvmVoid: false
+					default: false
+				}
+			]		
 		}
 	}
 			
@@ -186,8 +194,11 @@ class ArchitectureTyping {
 	 * Note: This is an ugly implementation based on name matches.
 	 */
 	def static boolean isListType(JvmType type) {
-		switch(type.qualifiedName) {
-			case "java.lang.List",
+		val c = type.qualifiedName
+		switch(c) {
+			case "java.util.Collection",
+			case "java.util.List",
+			case "java.util.ArrayList",
 			case "java.lang.Collection",
 			case "org.eclipse.emf.common.util.EList" : true
 			default: false

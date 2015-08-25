@@ -34,6 +34,7 @@ import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.geco.architecture.model.boxing.Unit
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import org.eclipse.xtext.common.types.JvmOperation
 
 class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	
@@ -200,7 +201,28 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	// TODO you cannot weave into a collection. Therefore, semantics for collection weaving must be determined
 	private def createWeaverCall(Weaver weaver) '''
 		«(weaver.aspectModel as Generator).createGeneratorCall»
-		«weaver.reference.instanceName».weave(«weaver.resolveWeaverSourceModel.valueReference»,aspectModel)'''
+		«weaver.createWeaverInvocation»'''
+	
+	private def createWeaverInvocation(Weaver weaver) {
+		val generator = (weaver.aspectModel as Generator)
+		val targetModel = generator.reference.determineTargetModel
+		if (targetModel.isListType) {
+			'''aspectModel.forEach[«weaver.reference.instanceName».weave(«weaver.resolveWeaverSourceModel.valueReference»,it)]'''
+		} else {
+			'''«weaver.reference.instanceName».weave(«weaver.resolveWeaverSourceModel.valueReference»,aspectModel)'''
+		}
+	}
+	
+	private def JvmType determineTargetModel(JvmType type) {
+		val member = (type as JvmGenericType).members.findFirst[member |
+			switch(member) {
+				JvmOperation: member.simpleName.equals("generate")
+				default: false
+			} 
+			
+		]
+		return (member as JvmOperation).returnType.type
+	}
 	
 	private def valueReference(SourceModelNodeSelector selector) '''«selector.reference.name»«selector.property?.valueReference»'''
 	
