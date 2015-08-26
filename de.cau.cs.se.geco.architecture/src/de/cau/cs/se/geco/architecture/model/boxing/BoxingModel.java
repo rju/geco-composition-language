@@ -14,13 +14,13 @@ import org.eclipse.xtext.common.types.JvmType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getGroups <em>Groups</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getDerivedFrom <em>Derived From</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getAllProcessors <em>All Processors</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getModels <em>Models</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel()
  * @model

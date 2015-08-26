@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl#getSelector <em>Selector</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl#getMetamodel <em>Metamodel</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl#getModifier <em>Modifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

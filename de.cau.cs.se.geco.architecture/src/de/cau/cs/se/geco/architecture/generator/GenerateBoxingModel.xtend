@@ -19,6 +19,10 @@ import de.cau.cs.se.geco.architecture.architecture.Metamodel
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping
 import org.eclipse.xtext.common.types.JvmType
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel
+import org.eclipse.xtext.common.types.JvmGenericType
+
+import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
+
 
 class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
 	
@@ -161,9 +165,17 @@ class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
 			result.targetTraceModel = generator.targetTraceModel.determineTraceModel
 		else
 			result.targetTraceModel = null
+				
+		if (generator.reference instanceof JvmGenericType) {
+			val type = generator.reference as JvmGenericType
+			result.inputTypeReference = type.determineGeneratorInputType
+			result.outputTypeReference = type.determineGeneratorOutputType
+			result.auxiliaryInputTypeMap = type.determineGeneratorAuxTypes
+		}
 		
 		return result
 	}
+	
 	
 	/**
 	 * create a unit node for a weaver-generator combination.
@@ -185,6 +197,13 @@ class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
 			result.targetTraceModel = generator.targetTraceModel.determineTraceModel
 		else
 			result.targetTraceModel = null
+			
+		if (generator.reference instanceof JvmGenericType) {
+			val type = generator.reference as JvmGenericType
+			result.inputTypeReference = type.determineGeneratorInputType
+			result.outputTypeReference = type.determineGeneratorOutputType
+			result.auxiliaryInputTypeMap = type.determineGeneratorAuxTypes
+		}
 		
 		return result
 	}

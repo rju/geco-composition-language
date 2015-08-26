@@ -11,6 +11,7 @@ import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
 import de.cau.cs.se.geco.architecture.model.boxing.Unit;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -255,6 +256,33 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getUnit_InputTypeReference() {
+		return (EReference)unitEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnit_OutputTypeReference() {
+		return (EReference)unitEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUnit_AuxiliaryInputTypeMap() {
+		return (EAttribute)unitEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGroup() {
 		return groupEClass;
 	}
@@ -340,6 +368,9 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		createEReference(unitEClass, UNIT__PROCESSOR);
 		createEReference(unitEClass, UNIT__TARGET_MODEL);
 		createEReference(unitEClass, UNIT__TARGET_TRACE_MODEL);
+		createEReference(unitEClass, UNIT__INPUT_TYPE_REFERENCE);
+		createEReference(unitEClass, UNIT__OUTPUT_TYPE_REFERENCE);
+		createEAttribute(unitEClass, UNIT__AUXILIARY_INPUT_TYPE_MAP);
 
 		groupEClass = createEClass(GROUP);
 		createEReference(groupEClass, GROUP__UNITS);
@@ -399,6 +430,14 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		initEReference(getUnit_Processor(), theArchitecturePackage.getProcessor(), null, "processor", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_TargetModel(), theArchitecturePackage.getMetamodel(), null, "targetModel", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_TargetTraceModel(), theArchitecturePackage.getTraceModel(), null, "targetTraceModel", null, 0, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_InputTypeReference(), theTypesPackage.getJvmTypeReference(), null, "inputTypeReference", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_OutputTypeReference(), theTypesPackage.getJvmTypeReference(), null, "outputTypeReference", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEString());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theTypesPackage.getJvmTypeReference());
+		g1.getETypeArguments().add(g2);
+		initEAttribute(getUnit_AuxiliaryInputTypeMap(), g1, "auxiliaryInputTypeMap", null, 1, 1, Unit.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGroup_Units(), this.getUnit(), null, "units", null, 0, -1, Group.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -408,6 +447,25 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// null
+		createNullAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>null</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createNullAnnotations() {
+		String source = null;	
+		addAnnotation
+		  (getUnit_AuxiliaryInputTypeMap(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 } //BoxingPackageImpl

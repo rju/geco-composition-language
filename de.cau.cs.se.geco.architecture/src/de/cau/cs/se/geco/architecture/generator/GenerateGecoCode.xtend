@@ -104,9 +104,9 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 */
 	private def createCollectionForMetamodel(ModelDeclaration declaration) {
 		if (declaration.isCollectionType) '''
-			val «declaration.metamodel.name» = new ArrayList<«declaration.selector.resolveBaseType.qualifiedName»>()
+			val «declaration.metamodel.name» = new ArrayList<«declaration.selector.resolveType.determineElementType.qualifiedName»>()
 		''' else '''
-			var «declaration.selector.resolveType.qualifiedName» «declaration.metamodel.name» = null
+			var «declaration.selector.resolveType.determineElementType.qualifiedName» «declaration.metamodel.name» = null
 		'''
 		
 	}
@@ -174,9 +174,9 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	private def createUnitExecution(Unit unit) {
 		val processor = unit.processor
 		switch (processor) {
-			Generator: processor.createGeneratorExecution
-			Weaver case processor.aspectModel instanceof Generator: processor.createWeaverGeneratorExecution
-			Weaver case processor.aspectModel instanceof TargetModelNodeType: processor.createWeaverExecution
+			Generator: processor.createGeneratorExecution(unit)
+			Weaver case processor.aspectModel instanceof Generator: processor.createWeaverGeneratorExecution(unit)
+			Weaver case processor.aspectModel instanceof TargetModelNodeType: processor.createWeaverExecution(unit)
 		}
 	}
 	
@@ -184,53 +184,73 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * Create code for the execution of a generator which is not
 	 * directly connected to a weaver.
 	 */
-	private def createGeneratorExecution(Generator generator) '''
+	private def createGeneratorExecution(Generator generator, Unit unit) '''
 		«generator.sourceAuxModels.createSourceAuxModels»
-		«generator.sourceModel.createSourceModelNesting(generator.createGeneratorCall)»
+		«generator.sourceModel.createSourceModelNesting(generator, unit)»
 	'''	
 				
 	// TODO Note the source model reference is rubbish. Semantics of weaver 
 	// must be improved and collection as input must be handled
-	private def createWeaverGeneratorExecution(Weaver weaver) '''
+	private def createWeaverGeneratorExecution(Weaver weaver, Unit unit) '''
 		{
 			«(weaver.aspectModel as Generator).sourceAuxModels.createSourceAuxModels»
-			«(weaver.aspectModel as Generator).sourceModel.createSourceModelNesting(weaver.createWeaverCall)»
+			«(weaver.aspectModel as Generator).sourceModel.createSourceModelNesting(weaver, unit)»
 		}
 	'''
 	
-	// TODO you cannot weave into a collection. Therefore, semantics for collection weaving must be determined
-	private def createWeaverCall(Weaver weaver) '''
-		«(weaver.aspectModel as Generator).createGeneratorCall»
-		«weaver.createWeaverInvocation»'''
+		/**
+	 * Create nested loops for a generator call.
+	 */
+	private def createSourceModelNesting(SourceModelNodeSelector sourceModel, Weaver weaver, Unit unit) {
+		if (sourceModel.reference == null) {
+			weaver.createWeaverCall(unit, 'null')
+		} else {
+			if (sourceModel.resolveType.isSubTypeOf(unit.inputTypeReference))
+				weaver.createWeaverCall(unit, sourceModel.reference.name)
+			else
+				'''
+				«sourceModel.reference.name»«sourceModel.constraint.createConstraintFilter».forEach[
+					«sourceModel.property.createSourceModelNesting(weaver, unit, 'it')»
+				]'''
+		}
+	}
 	
-	private def createWeaverInvocation(Weaver weaver) {
-		val generator = (weaver.aspectModel as Generator)
-		val targetModel = generator.reference.determineTargetModel
-		if (targetModel.isListType) {
+	/**
+	 * Create nested loops for a generator call.
+	 */
+	private def CharSequence createSourceModelNesting(NodeProperty node, Weaver weaver, Unit unit, String modelVarName) {
+		if (node == null)
+			weaver.createWeaverCall(unit, modelVarName)
+		else
+			if (node.resolveType.isSubTypeOf(unit.inputTypeReference))
+				weaver.createWeaverCall(unit, modelVarName)
+			else
+				'''
+				«node.property.simpleName»«node.constraint.createConstraintFilter».forEach[
+					«node.subProperty.createSourceModelNesting(weaver, unit, 'it')»
+				]''' 
+	}
+	
+	// TODO you cannot weave into a collection. Therefore, semantics for collection weaving must be determined
+	private def createWeaverCall(Weaver weaver, Unit unit, String varModelName) '''
+		«(weaver.aspectModel as Generator).createGeneratorCall(varModelName)»
+		«weaver.createWeaverInvocation(unit)»'''
+	
+	private def createWeaverInvocation(Weaver weaver, Unit unit) {
+		if (unit.inputTypeReference.isListType) {
 			'''aspectModel.forEach[«weaver.reference.instanceName».weave(«weaver.resolveWeaverSourceModel.valueReference»,it)]'''
 		} else {
 			'''«weaver.reference.instanceName».weave(«weaver.resolveWeaverSourceModel.valueReference»,aspectModel)'''
 		}
 	}
-	
-	private def JvmType determineTargetModel(JvmType type) {
-		val member = (type as JvmGenericType).members.findFirst[member |
-			switch(member) {
-				JvmOperation: member.simpleName.equals("generate")
-				default: false
-			} 
-			
-		]
-		return (member as JvmOperation).returnType.type
-	}
-	
+		
 	private def valueReference(SourceModelNodeSelector selector) '''«selector.reference.name»«selector.property?.valueReference»'''
 	
 	// TODO this is insufficient for collections.
 	private def CharSequence valueReference(NodeProperty property) '''.«property.property.simpleName»«property.subProperty?.valueReference»'''
 	
 	
-	private def createWeaverExecution(Weaver weaver) '''
+	private def createWeaverExecution(Weaver weaver, Unit unit) '''
 	'''
 	
 	/**
@@ -253,17 +273,20 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 			'''
 		}
 	}
-	
+		
 	/**
 	 * Create nested loops for a generator call.
 	 */
-	private def createSourceModelNesting(SourceModelNodeSelector sourceModel, CharSequence generatorCall) {
+	private def createSourceModelNesting(SourceModelNodeSelector sourceModel, Generator generator, Unit unit) {
 		if (sourceModel.reference == null) {
-			generatorCall
+			generator.createGeneratorCall('null')
 		} else {
-			'''
+			if (sourceModel.resolveType.isSubTypeOf(unit.inputTypeReference))
+				generator.createGeneratorCall(sourceModel.reference.name)
+			else
+				'''
 				«sourceModel.reference.name»«sourceModel.constraint.createConstraintFilter».forEach[
-					«sourceModel.property.createSourceModelNesting(generatorCall)»
+					«sourceModel.property.createSourceModelNesting(generator, unit, 'it')»
 				]'''
 		}
 	}
@@ -271,22 +294,24 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	/**
 	 * Create nested loops for a generator call.
 	 */
-	private def CharSequence createSourceModelNesting(NodeProperty node, CharSequence generatorCall) {
+	private def CharSequence createSourceModelNesting(NodeProperty node, Generator generator, Unit unit, String modelVarName) {
 		if (node == null)
-			'''«generatorCall»'''
+			generator.createGeneratorCall(modelVarName)
 		else
-			'''
+			if (node.resolveType.isSubTypeOf(unit.inputTypeReference))
+				generator.createGeneratorCall(modelVarName)
+			else
+				'''
 				«node.property.simpleName»«node.constraint.createConstraintFilter».forEach[
-					«node.subProperty.createSourceModelNesting(generatorCall)»
+					«node.subProperty.createSourceModelNesting(generator, unit, 'it')»
 				]''' 
 	}
 
 	/**
 	 * Create a generator invocation.
 	 */
-	private def createGeneratorCall(Generator generator) {
-		val model = if (generator.sourceModel.reference == null) 'null' else 'it'
-		'''«generator.createTargetModel» «generator.reference.instanceName».generate(«model»)'''
+	private def createGeneratorCall(Generator generator, String modelVarName) {
+		'''«generator.createTargetModel» «generator.reference.instanceName».generate(«modelVarName»)'''
 	}
 	
 	/**

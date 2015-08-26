@@ -10,6 +10,7 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage
+import de.cau.cs.se.geco.architecture.architecture.Generator
 
 /**
  * Custom validation rules. 
@@ -31,25 +32,70 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 
 	@Check
 	def checkWeaverSourceModelType(Weaver weaver) {
-		val weaverType = weaver.reference
-		switch(weaverType) {
+		val weaverJvmType = weaver.reference
+		switch(weaverJvmType) {
 			JvmGenericType: {
-				val match = weaverType.superTypes.filter[it.type.simpleName.equals("IWeaver")]
+				val match = weaverJvmType.superTypes.filter[it.type.simpleName.equals("IWeaver")]
 				if (match.size > 0) {
 					if (match.get(0) instanceof JvmParameterizedTypeReference) {
 						val iface = match.get(0) as JvmParameterizedTypeReference
-						val sourceReference = iface.arguments.get(0)
-						val aspectReference = iface.arguments.get(1)
-						val declaredSourceType = weaver.resolveWeaverSourceModel.resolveType
-						if (!(declaredSourceType as JvmGenericType).isSubTypeOf(sourceReference.type)) {
-							error('Wrong source model type ' + declaredSourceType.simpleName + ' for ' + 
-								weaver.reference.simpleName + ' expected ' + sourceReference.type.simpleName, 
-								ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL)
+						val baseTypeReference = iface.arguments.get(0)
+						val aspectTypeReference = iface.arguments.get(1)
+						val sourceModelTypeReference = weaver.resolveWeaverSourceModel.resolveType
+						if (!sourceModelTypeReference.isSubTypeOf(baseTypeReference)) {
+							if (!sourceModelTypeReference.determineElementType.resolveType.isSubTypeOf(baseTypeReference)) {
+								error('Source model type ' + sourceModelTypeReference.qualifiedName + 
+										' does not match weaver base type ' + baseTypeReference.qualifiedName, 
+										ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL)
+							}
+						}
+					}
+				} else {
+					error('Weaver expected, but ' + weaverJvmType.qualifiedName + ' found.', 
+								ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+				}
+			}
+			default: error('Weaver expected, but illegal type found. Please check for build failures.', 
+								ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+		}		
+	}
+	
+	@Check
+	def checkGeneratorSourceModelType(Generator generator) {
+		val generatorJvmType = generator.reference
+		switch(generatorJvmType) {
+			JvmGenericType: {
+				val match = generatorJvmType.superTypes.filter[it.type.simpleName.equals("IGenerator")]
+				if (match.size > 0) {
+					if (match.get(0) instanceof JvmParameterizedTypeReference) {
+						val inputTypeReference = generatorJvmType.determineGeneratorInputType
+						
+						val sourceModelTypeReference = generator.sourceModel.resolveType
+						/** check whether the sourceModel is equal or subtype to inputType */
+						if (sourceModelTypeReference != null) {
+							if (!sourceModelTypeReference.isSubTypeOf(inputTypeReference)) {
+								if (!sourceModelTypeReference.determineElementType.resolveType.isSubTypeOf(inputTypeReference)) {
+									error('Source model type ' + sourceModelTypeReference.determineElementType.qualifiedName + 
+										' does not match generator source type ' + inputTypeReference.qualifiedName, 
+									ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL)
+								}
+							}
+						}
+						
+						val outputTypeReference = generatorJvmType.determineGeneratorOutputType
+						if (generator.targetModel != null) {
+							val targetModelTypeReference = generator.targetModel.resolveType
+							if (!outputTypeReference.isSubTypeOf(targetModelTypeReference))
+								error('Target model type ' + sourceModelTypeReference.qualifiedName + 
+										' does not match generator target type ' + inputTypeReference.qualifiedName, 
+									ArchitecturePackage.Literals.PROCESSOR__TARGET_MODEL)
 						}
 					}
 				}
 			}
-		}		
+			default: error('Generator expected, but illegal type found. Please check for build failures.', 
+								ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+		}
 	}
 	
 }

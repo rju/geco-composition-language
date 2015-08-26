@@ -231,13 +231,40 @@ public interface BoxingPackage extends EPackage {
 	int UNIT__TARGET_TRACE_MODEL = 4;
 
 	/**
+	 * The feature id for the '<em><b>Input Type Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__INPUT_TYPE_REFERENCE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Output Type Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__OUTPUT_TYPE_REFERENCE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Auxiliary Input Type Map</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNIT__AUXILIARY_INPUT_TYPE_MAP = 7;
+
+	/**
 	 * The number of structural features of the '<em>Unit</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNIT_FEATURE_COUNT = 5;
+	int UNIT_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Unit</em>' class.
@@ -475,6 +502,39 @@ public interface BoxingPackage extends EPackage {
 	EReference getUnit_TargetTraceModel();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getInputTypeReference <em>Input Type Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Input Type Reference</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getInputTypeReference()
+	 * @see #getUnit()
+	 * @generated
+	 */
+	EReference getUnit_InputTypeReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getOutputTypeReference <em>Output Type Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Output Type Reference</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getOutputTypeReference()
+	 * @see #getUnit()
+	 * @generated
+	 */
+	EReference getUnit_OutputTypeReference();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getAuxiliaryInputTypeMap <em>Auxiliary Input Type Map</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Auxiliary Input Type Map</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getAuxiliaryInputTypeMap()
+	 * @see #getUnit()
+	 * @generated
+	 */
+	EAttribute getUnit_AuxiliaryInputTypeMap();
+
+	/**
 	 * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.model.boxing.Group <em>Group</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -676,6 +736,30 @@ public interface BoxingPackage extends EPackage {
 		 * @generated
 		 */
 		EReference UNIT__TARGET_TRACE_MODEL = eINSTANCE.getUnit_TargetTraceModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Type Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNIT__INPUT_TYPE_REFERENCE = eINSTANCE.getUnit_InputTypeReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Output Type Reference</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNIT__OUTPUT_TYPE_REFERENCE = eINSTANCE.getUnit_OutputTypeReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Auxiliary Input Type Map</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UNIT__AUXILIARY_INPUT_TYPE_MAP = eINSTANCE.getUnit_AuxiliaryInputTypeMap();
 
 		/**
 		 * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl <em>Group</em>}' class.

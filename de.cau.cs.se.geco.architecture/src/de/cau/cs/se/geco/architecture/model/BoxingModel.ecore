@@ -1,47 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="boxing" nsURI="http://www.cau.de/cs/se/geco/architecture/boxing"
+<ecore:EPackage
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    name="boxing"
+    nsURI="http://www.cau.de/cs/se/geco/architecture/boxing"
     nsPrefix="boxing">
-  <eClassifiers xsi:type="ecore:EClass" name="BoxingModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
-        eType="#//Group" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="derivedFrom" lowerBound="1"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="BoxingModel">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="groups"
+        upperBound="-1"
+        eType="#//Group"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="derivedFrom"
+        lowerBound="1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"
         transient="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allProcessors" upperBound="-1"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="allProcessors"
+        upperBound="-1"
         eType="ecore:EClass ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"
-        transient="true" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
+        transient="true"
+        derived="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="models"
+        upperBound="-1"
         eType="#//ModelDeclaration"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelDeclaration">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" lowerBound="1"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="ModelDeclaration">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="selector"
+        lowerBound="1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//ModelNodeType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" lowerBound="1"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="metamodel"
+        lowerBound="1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifier" lowerBound="1"
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="modifier"
+        lowerBound="1"
         eType="ecore:EEnum ../../../../../../../../model/generated/Architecture.ecore#//MetamodelModifier"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Unit">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTraceModels" upperBound="-1"
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Unit">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="sourceTraceModels"
+        upperBound="-1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" lowerBound="1"
-        upperBound="-1" eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="sourceModels"
+        lowerBound="1"
+        upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"
         transient="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="processor" lowerBound="1"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="processor"
+        lowerBound="1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Processor"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetModel" lowerBound="1"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="targetModel"
+        lowerBound="1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetTraceModel" eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Group">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="units" upperBound="-1"
-        eType="#//Unit" transient="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subGroups" upperBound="-1"
-        eType="#//Group" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTraceModels" upperBound="-1"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="targetTraceModel"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModels" upperBound="-1"
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="inputTypeReference"
+        lowerBound="1"
+        eType="ecore:EClass ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="outputTypeReference"
+        lowerBound="1"
+        eType="ecore:EClass ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="auxiliaryInputTypeMap"
+        lowerBound="1"
+        transient="true">
+      <eAnnotations/>
+      <eGenericType
+          eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EMap">
+        <eTypeArguments
+            eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eTypeArguments
+            eClassifier="ecore:EClass ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Group">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="units"
+        upperBound="-1"
+        eType="#//Unit"
+        transient="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="subGroups"
+        upperBound="-1"
+        eType="#//Group"
+        containment="true"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="sourceTraceModels"
+        upperBound="-1"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//TraceModel"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="sourceModels"
+        upperBound="-1"
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"
         transient="true"/>
   </eClassifiers>

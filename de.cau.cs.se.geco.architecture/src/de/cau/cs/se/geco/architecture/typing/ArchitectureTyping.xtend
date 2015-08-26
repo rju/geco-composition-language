@@ -22,66 +22,72 @@ import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.common.types.JvmVoid
+import java.util.HashMap
+import java.util.Map
+import org.eclipse.xtext.common.types.TypesFactory
+import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 
 class ArchitectureTyping {
 	
-	/**
-	 * Resolve the type of given meta model node.
-	 */
 	
-	def dispatch static JvmType resolveType(ModelNodeType type) {
+	def dispatch static JvmTypeReference resolveType(SourceModelNodeSelector selector) {
+		if (selector.property != null)
+			return selector.property.resolveType
+		else {
+			val genericTypeReference = selector.reference?.resolveType
+			if (selector.constraint != null) {
+				if (selector.constraint instanceof Typeof) {
+					if (genericTypeReference.isListType) {
+						val paramTypeReference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference
+						paramTypeReference.type = genericTypeReference.type
+						paramTypeReference.arguments.add((selector.constraint as Typeof).resolveType)
+						return paramTypeReference
+					} else
+						return (selector.constraint as Typeof).resolveType
+				} else
+					return genericTypeReference
+			} else
+				return genericTypeReference
+		}
+	}
+	
+	def dispatch static JvmTypeReference resolveType(Metamodel metamodel) {
+		(metamodel.eContainer as MetamodelSequence).type.resolveType
+	}
+	
+	def dispatch static JvmTypeReference resolveType(ModelNodeType type) {
 		if (type.property == null)
-			type.target.importedNamespace
+			type.target.importedNamespace.resolveType
 		else
 			type.property.resolveType
 	}
 	
-	def dispatch static JvmType resolveType(NodeProperty property) {
+	def dispatch static JvmTypeReference resolveType(JvmType type) {
+		val reference = TypesFactory.eINSTANCE.createJvmAnyTypeReference
+		reference.type = type
+		return reference
+	} 
+	
+	def dispatch static JvmTypeReference resolveType(NodeProperty property) {
 		if (property.subProperty == null) {
 			property.property.resolveType
 		} else
 			property.subProperty.resolveType
 	}
 	
-	def dispatch static JvmType resolveType(JvmAnnotationType annotationType) {
-		annotationType
+	def dispatch static JvmTypeReference resolveType(TargetModelNodeType type) {
+		type.reference?.resolveType
 	}
 	
-	def dispatch static JvmType resolveType(JvmOperation operation) {
-		operation.returnType.type
-	}
-		
-	def dispatch static JvmType resolveType(JvmTypeReference typeReference) {
-		typeReference.type
-	}
-		
-	// TODO add comment, fix run-time null pointer exception, appears when metamodel is renamed
-	def dispatch static JvmType resolveType(Metamodel metamodel) {
-		(metamodel.eContainer as MetamodelSequence).type.resolveType
+	def dispatch static JvmTypeReference resolveType(JvmOperation operation) {
+		operation.returnType
 	}
 	
-	/**
-	 * Resolve type of a source model node selector.
-	 */
-	def dispatch static JvmType resolveType(SourceModelNodeSelector selector) {
-		if (selector.property != null)
-			return selector.property.resolveType
-		else {
-			val genericType = selector.reference.resolveType
-			if (selector.constraint != null) {
-				if (selector.constraint instanceof Typeof) {
-					return (selector.constraint as Typeof).type
-				} else
-					return genericType
-			} else
-				return genericType
-		}
-	}
 	
 	/**
 	 * Evaluate type of an ConstraintExpression.
 	 */
-	def dispatch static JvmType resolveType(ConstraintExpression expression) {
+	def dispatch static JvmTypeReference resolveType(ConstraintExpression expression) {
 		val result = expression.left.resolveType
 		if (result == null)
 			if (expression.right != null)
@@ -95,82 +101,66 @@ class ArchitectureTyping {
 	/**
 	 * Evaluate type of an ParenthesisConstraint.
 	 */
-	def dispatch static JvmType resolveType(ParenthesisConstraint expression) {
+	def dispatch static JvmTypeReference resolveType(ParenthesisConstraint expression) {
 		expression.constraint.resolveType
 	}
 	
 	/**
 	 * Evaluate type of an Typeof.
 	 */
-	def dispatch static JvmType resolveType(Typeof expression) {
-		expression.type
+	def dispatch static JvmTypeReference resolveType(Typeof expression) {
+		expression.type.resolveType
 	}
 	
 	/**
 	 * Evaluate type of an Negation.
 	 */
-	def dispatch static JvmType resolveType(Negation expression) {
+	def dispatch static JvmTypeReference resolveType(Negation expression) {
 		expression.constraint.resolveType
 	}
 		
 	/**
 	 * Evaluate type of an BasicConstraint.
 	 */
-	def dispatch static JvmType resolveType(BasicConstraint expression) {
+	def dispatch static JvmTypeReference resolveType(BasicConstraint expression) {
 		throw new UnsupportedOperationException("BasicConstraint cannot be handled in resolveType")
 	}
+
+	def dispatch static JvmTypeReference resolveType(EObject operation) {
+		throw new UnsupportedOperationException("resolve type reference for " + operation.class.name + " not supported")
+	} 
 	
-	def dispatch static resolveType(EObject object) {
-		throw new UnsupportedOperationException(object.class + " cannot be handled in resolveType")
-	}
 	
-	/**
-	 * Determine the base type (in lists the element type, else the normal type).
-	 */
-	def static JvmType resolveBaseType(Metamodel metamodel) {
-		(metamodel.eContainer as MetamodelSequence).type.resolveBaseType
-	}
-	
-	def static JvmType resolveBaseType(ModelNodeType modelNodeType) {
-		if (modelNodeType.property != null)
-			modelNodeType.property.resolveBaseType
-		else
-			modelNodeType.target.importedNamespace
-	}
-	
-	def static JvmType resolveBaseType(NodeProperty property) {
-		if (property.subProperty == null) {
-			val genericType = property.property.resolveBaseType
-			if (property.constraint != null) {
-				if (property.constraint instanceof Typeof) {
-					return (property.constraint as Typeof).type
+	def static boolean isSubTypeOf(JvmTypeReference type, JvmTypeReference matchingType) {
+		if (type.type instanceof JvmGenericType && matchingType.type instanceof JvmGenericType) {
+			if (type.eIsProxy)
+				type.type.hashCode
+			val left = type.type as JvmGenericType
+			val right = matchingType.type as JvmGenericType
+			
+			if (left.isSubTypeOf(right)) {
+				if (type instanceof JvmParameterizedTypeReference && matchingType instanceof JvmParameterizedTypeReference) {
+					val leftArg = (type as JvmParameterizedTypeReference).arguments
+					val rightArg = (matchingType as JvmParameterizedTypeReference).arguments
+					if (leftArg.size == rightArg.size) {
+						var result = true
+						for(var i=0;i<leftArg.size;i++) {
+							if (!leftArg.get(i).isSubTypeOf(rightArg.get(i)))
+								result = false
+						}
+						
+						return result
+					}
 				} else
-					return genericType
-			} else
-				return genericType
+					return true
+			}
+			
+			return false
 		} else
-			property.subProperty.resolveBaseType
+			return false
+		
 	}
-	
-	def static JvmType resolveBaseType(JvmMember member) {
-		switch(member) {
-			JvmOperation: member.returnType.resolveBaseType
-			JvmAnnotationType: member
-			default:
-				throw new UnsupportedOperationException("Resolve type error. " + member.class + " is not supported.")
-		}
-	}
-	
-	/**
-	 * Determine the base type of a type reference.
-	 */
-	def static JvmType resolveBaseType(JvmTypeReference typeReference) {
-		switch (typeReference) {
-				JvmParameterizedTypeReference: typeReference.arguments.last.type
-				default: typeReference.type
-		}
-	}
-	
+
 	/**
 	 * Check if a type is equal to or a subtype of matchingType.
 	 */
@@ -193,9 +183,9 @@ class ArchitectureTyping {
 	 * find out if the given type is a list or collection type.
 	 * Note: This is an ugly implementation based on name matches.
 	 */
-	def static boolean isListType(JvmType type) {
-		val c = type.qualifiedName
-		switch(c) {
+	def static boolean isListType(JvmTypeReference type) {
+		val name = type.type.qualifiedName
+		switch(name) {
 			case "java.util.Collection",
 			case "java.util.List",
 			case "java.util.ArrayList",
@@ -204,6 +194,63 @@ class ArchitectureTyping {
 			default: false
 		}
 	}
+	
+	/**
+	 * Determine the base type of a reference. For any type this is the type
+	 * where the reference points to. Except for list types where the first type
+	 * argument defines the element type.
+	 */
+	def static JvmType determineElementType(JvmTypeReference reference) {
+		switch(reference) {
+			JvmParameterizedTypeReference: {
+				if (reference.arguments.size == 1)
+					reference.arguments.get(0).type
+				else if (reference.arguments.size == 2)
+					reference.arguments.get(1).type
+			}
+			default: reference.type
+		}
+	}
+	
+	/**
+	 * Determine the output type reference of a generator.
+	 */
+	def static JvmTypeReference determineGeneratorOutputType(JvmGenericType type) {
+		val member = type.members.filter(JvmOperation).findFirst[member |
+			member.simpleName.equals("generate")
+		]
+		return member.returnType
+	}
+	
+	/**
+	 * Determine the input type reference of a generator.
+	 */
+	def static JvmTypeReference determineGeneratorInputType(JvmGenericType type) {
+		val member = type.members.filter(JvmOperation).findFirst[member |
+			member.simpleName.equals("generate")
+		]
+		
+		if (member.parameters.size == 1)
+			return member.parameters.get(0).parameterType
+		else /** this indicates a malformed generator declaration. */
+			return null
+	}
+	
+	/**
+	 * Determine the input type reference of a generator.
+	 */
+	def static Map<String, JvmTypeReference> determineGeneratorAuxTypes(JvmGenericType type) {
+		val result = new HashMap<String, JvmTypeReference>
+		type.members.filter(JvmOperation).forEach[member |
+			 if (member.simpleName.startsWith("set")) {
+			 	if (member.parameters.size == 1)
+			 		result.put(member.simpleName.substring(3).toFirstLower, member.parameters.get(0).parameterType)
+			 }
+		]
+		return result
+	}
+	
+	
 	
 	/**
 	 * Check if the given model declaration is a simple or collection type.

@@ -8,6 +8,7 @@ import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.Unit;
 import java.util.Collection;
+import java.util.Map;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -15,6 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,14 +24,17 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getSourceTraceModels <em>Source Trace Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getSourceModels <em>Source Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getProcessor <em>Processor</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getTargetModel <em>Target Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getTargetTraceModel <em>Target Trace Model</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getInputTypeReference <em>Input Type Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getOutputTypeReference <em>Output Type Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getAuxiliaryInputTypeMap <em>Auxiliary Input Type Map</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -83,6 +88,36 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * @ordered
 	 */
 	protected TraceModel targetTraceModel;
+
+	/**
+	 * The cached value of the '{@link #getInputTypeReference() <em>Input Type Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputTypeReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference inputTypeReference;
+
+	/**
+	 * The cached value of the '{@link #getOutputTypeReference() <em>Output Type Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputTypeReference()
+	 * @generated
+	 * @ordered
+	 */
+	protected JvmTypeReference outputTypeReference;
+
+	/**
+	 * The cached value of the '{@link #getAuxiliaryInputTypeMap() <em>Auxiliary Input Type Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAuxiliaryInputTypeMap()
+	 * @generated
+	 * @ordered
+	 */
+	protected Map<String, JvmTypeReference> auxiliaryInputTypeMap;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -246,6 +281,103 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public JvmTypeReference getInputTypeReference() {
+		if (inputTypeReference != null && inputTypeReference.eIsProxy()) {
+			InternalEObject oldInputTypeReference = (InternalEObject)inputTypeReference;
+			inputTypeReference = (JvmTypeReference)eResolveProxy(oldInputTypeReference);
+			if (inputTypeReference != oldInputTypeReference) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.UNIT__INPUT_TYPE_REFERENCE, oldInputTypeReference, inputTypeReference));
+			}
+		}
+		return inputTypeReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JvmTypeReference basicGetInputTypeReference() {
+		return inputTypeReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInputTypeReference(JvmTypeReference newInputTypeReference) {
+		JvmTypeReference oldInputTypeReference = inputTypeReference;
+		inputTypeReference = newInputTypeReference;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.UNIT__INPUT_TYPE_REFERENCE, oldInputTypeReference, inputTypeReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JvmTypeReference getOutputTypeReference() {
+		if (outputTypeReference != null && outputTypeReference.eIsProxy()) {
+			InternalEObject oldOutputTypeReference = (InternalEObject)outputTypeReference;
+			outputTypeReference = (JvmTypeReference)eResolveProxy(oldOutputTypeReference);
+			if (outputTypeReference != oldOutputTypeReference) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.UNIT__OUTPUT_TYPE_REFERENCE, oldOutputTypeReference, outputTypeReference));
+			}
+		}
+		return outputTypeReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JvmTypeReference basicGetOutputTypeReference() {
+		return outputTypeReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutputTypeReference(JvmTypeReference newOutputTypeReference) {
+		JvmTypeReference oldOutputTypeReference = outputTypeReference;
+		outputTypeReference = newOutputTypeReference;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.UNIT__OUTPUT_TYPE_REFERENCE, oldOutputTypeReference, outputTypeReference));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Map<String, JvmTypeReference> getAuxiliaryInputTypeMap() {
+		return auxiliaryInputTypeMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAuxiliaryInputTypeMap(Map<String, JvmTypeReference> newAuxiliaryInputTypeMap) {
+		Map<String, JvmTypeReference> oldAuxiliaryInputTypeMap = auxiliaryInputTypeMap;
+		auxiliaryInputTypeMap = newAuxiliaryInputTypeMap;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.UNIT__AUXILIARY_INPUT_TYPE_MAP, oldAuxiliaryInputTypeMap, auxiliaryInputTypeMap));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -262,6 +394,14 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 			case BoxingPackage.UNIT__TARGET_TRACE_MODEL:
 				if (resolve) return getTargetTraceModel();
 				return basicGetTargetTraceModel();
+			case BoxingPackage.UNIT__INPUT_TYPE_REFERENCE:
+				if (resolve) return getInputTypeReference();
+				return basicGetInputTypeReference();
+			case BoxingPackage.UNIT__OUTPUT_TYPE_REFERENCE:
+				if (resolve) return getOutputTypeReference();
+				return basicGetOutputTypeReference();
+			case BoxingPackage.UNIT__AUXILIARY_INPUT_TYPE_MAP:
+				return getAuxiliaryInputTypeMap();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -292,6 +432,15 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 			case BoxingPackage.UNIT__TARGET_TRACE_MODEL:
 				setTargetTraceModel((TraceModel)newValue);
 				return;
+			case BoxingPackage.UNIT__INPUT_TYPE_REFERENCE:
+				setInputTypeReference((JvmTypeReference)newValue);
+				return;
+			case BoxingPackage.UNIT__OUTPUT_TYPE_REFERENCE:
+				setOutputTypeReference((JvmTypeReference)newValue);
+				return;
+			case BoxingPackage.UNIT__AUXILIARY_INPUT_TYPE_MAP:
+				setAuxiliaryInputTypeMap((Map<String, JvmTypeReference>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -319,6 +468,15 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 			case BoxingPackage.UNIT__TARGET_TRACE_MODEL:
 				setTargetTraceModel((TraceModel)null);
 				return;
+			case BoxingPackage.UNIT__INPUT_TYPE_REFERENCE:
+				setInputTypeReference((JvmTypeReference)null);
+				return;
+			case BoxingPackage.UNIT__OUTPUT_TYPE_REFERENCE:
+				setOutputTypeReference((JvmTypeReference)null);
+				return;
+			case BoxingPackage.UNIT__AUXILIARY_INPUT_TYPE_MAP:
+				setAuxiliaryInputTypeMap((Map<String, JvmTypeReference>)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -341,8 +499,30 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 				return targetModel != null;
 			case BoxingPackage.UNIT__TARGET_TRACE_MODEL:
 				return targetTraceModel != null;
+			case BoxingPackage.UNIT__INPUT_TYPE_REFERENCE:
+				return inputTypeReference != null;
+			case BoxingPackage.UNIT__OUTPUT_TYPE_REFERENCE:
+				return outputTypeReference != null;
+			case BoxingPackage.UNIT__AUXILIARY_INPUT_TYPE_MAP:
+				return auxiliaryInputTypeMap != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (auxiliaryInputTypeMap: ");
+		result.append(auxiliaryInputTypeMap);
+		result.append(')');
+		return result.toString();
 	}
 
 } //UnitImpl

@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getSelector <em>Selector</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getMetamodel <em>Metamodel</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getModifier <em>Modifier</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getModelDeclaration()
  * @model

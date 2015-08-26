@@ -5,8 +5,10 @@ package de.cau.cs.se.geco.architecture.model.boxing;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.Processor;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,14 +17,17 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getSourceTraceModels <em>Source Trace Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getSourceModels <em>Source Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getProcessor <em>Processor</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetModel <em>Target Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetTraceModel <em>Target Trace Model</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getInputTypeReference <em>Input Type Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getOutputTypeReference <em>Output Type Reference</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getAuxiliaryInputTypeMap <em>Auxiliary Input Type Map</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getUnit()
  * @model
@@ -138,5 +143,83 @@ public interface Unit extends EObject {
 	 * @generated
 	 */
 	void setTargetTraceModel(TraceModel value);
+
+	/**
+	 * Returns the value of the '<em><b>Input Type Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input Type Reference</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input Type Reference</em>' reference.
+	 * @see #setInputTypeReference(JvmTypeReference)
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getUnit_InputTypeReference()
+	 * @model required="true"
+	 * @generated
+	 */
+	JvmTypeReference getInputTypeReference();
+
+	/**
+	 * Sets the value of the '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getInputTypeReference <em>Input Type Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Input Type Reference</em>' reference.
+	 * @see #getInputTypeReference()
+	 * @generated
+	 */
+	void setInputTypeReference(JvmTypeReference value);
+
+	/**
+	 * Returns the value of the '<em><b>Output Type Reference</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Output Type Reference</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output Type Reference</em>' reference.
+	 * @see #setOutputTypeReference(JvmTypeReference)
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getUnit_OutputTypeReference()
+	 * @model required="true"
+	 * @generated
+	 */
+	JvmTypeReference getOutputTypeReference();
+
+	/**
+	 * Sets the value of the '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getOutputTypeReference <em>Output Type Reference</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Output Type Reference</em>' reference.
+	 * @see #getOutputTypeReference()
+	 * @generated
+	 */
+	void setOutputTypeReference(JvmTypeReference value);
+
+	/**
+	 * Returns the value of the '<em><b>Auxiliary Input Type Map</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Auxiliary Input Type Map</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Auxiliary Input Type Map</em>' attribute.
+	 * @see #setAuxiliaryInputTypeMap(Map)
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getUnit_AuxiliaryInputTypeMap()
+	 * @model required="true" transient="true"
+	 * @generated
+	 */
+	Map<String, JvmTypeReference> getAuxiliaryInputTypeMap();
+
+	/**
+	 * Sets the value of the '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getAuxiliaryInputTypeMap <em>Auxiliary Input Type Map</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Auxiliary Input Type Map</em>' attribute.
+	 * @see #getAuxiliaryInputTypeMap()
+	 * @generated
+	 */
+	void setAuxiliaryInputTypeMap(Map<String, JvmTypeReference> value);
 
 } // Unit

@@ -85,7 +85,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			ModelNodeType: container.target.importedNamespace.createJvmDeclaredTypeScope(reference)
 			NodeProperty: (container.property as JvmOperation).returnType.type.createJvmDeclaredTypeScope(reference)
 			SourceModelNodeSelector: {
-				val genericType = (container.reference.eContainer as MetamodelSequence).type.resolveBaseType
+				val genericType = (container.reference.eContainer as MetamodelSequence).type.resolveType.determineElementType
 				// TODO this must be converted into a typing method
 				if (container.constraint != null) {
 					if (container.constraint instanceof Typeof) {
@@ -135,7 +135,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			if (generator.sourceModel.reference != null) {
 				/** source node type */
 				
-				return new JvmRegisterMetamodelImportScope(generator.sourceModel.reference.resolveBaseType, 
+				return new JvmRegisterMetamodelImportScope(generator.sourceModel.reference.resolveType.determineElementType, 
 					nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
 				)
 			} else /** this should not happen in a valid model. Provide solid fallback for incomplete model. */
@@ -145,7 +145,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 				if (generator.eContainer instanceof Weaver) {
 					val sourceModel = (generator.eContainer as Weaver).resolveWeaverSourceModel
 					if (sourceModel != null)
-						return new JvmRegisterMetamodelImportScope(sourceModel.reference.resolveBaseType,
+						return new JvmRegisterMetamodelImportScope(sourceModel.reference.resolveType.determineElementType,
 							nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
 						)
 					else
@@ -153,7 +153,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 				} else /** this should not happen in a valid model. Provide solid fallback for incomplete model. */
 					IScope.NULLSCOPE
 			} else {
-				return new JvmRegisterMetamodelImportScope(generator.targetModel.reference.resolveBaseType, 
+				return new JvmRegisterMetamodelImportScope(generator.targetModel.reference.resolveType.determineElementType, 
 					nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
 				)
 			}
@@ -186,8 +186,8 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 	private def JvmType getMetaModelContextNode(EObject type) {
 		val container = type.eContainer
 		switch (container) {
-			NodeProperty: return container.property.resolveBaseType
-			SourceModelNodeSelector: return container.reference.resolveBaseType
+			NodeProperty: return container.property.resolveType.determineElementType
+			SourceModelNodeSelector: return container.reference.resolveType.determineElementType
 			case null : throw new Exception("Corrupted model: Cannot find NodeProperty or SourceModelNodeSelector context.")
 			default: type.eContainer.metaModelContextNode
 		}

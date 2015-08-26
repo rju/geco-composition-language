@@ -14,13 +14,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getUnits <em>Units</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSubGroups <em>Sub Groups</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceTraceModels <em>Source Trace Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Group#getSourceModels <em>Source Models</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getGroup()
  * @model

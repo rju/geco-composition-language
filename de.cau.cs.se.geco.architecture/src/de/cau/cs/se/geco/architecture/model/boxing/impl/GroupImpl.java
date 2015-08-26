@@ -23,13 +23,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getUnits <em>Units</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getSubGroups <em>Sub Groups</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getSourceTraceModels <em>Source Trace Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.GroupImpl#getSourceModels <em>Source Models</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
