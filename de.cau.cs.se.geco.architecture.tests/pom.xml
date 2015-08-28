@@ -8,7 +8,7 @@
 	<parent>
 		<relativePath>../de.cau.cs.se.geco.architecture.releng/pom.xml</relativePath>
 		<groupId>de.cau.cs.se.geco</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>de.cau.cs.se.geco.architecture.releng</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
@@ -16,13 +16,17 @@
 	<packaging>eclipse-test-plugin</packaging>
 
 	<name>GECO Generator Composition Language Tests</name>
+	
+	<properties>
+        <tycho.version>0.23.0</tycho.version>
+    </properties>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${tycho.version}</version>
 				<configuration>
 					<useUIHarness>false</useUIHarness>
 					<useUIThread>false</useUIThread>
