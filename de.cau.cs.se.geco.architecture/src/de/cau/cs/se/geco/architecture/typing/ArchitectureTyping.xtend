@@ -56,10 +56,22 @@ class ArchitectureTyping {
 	}
 	
 	def dispatch static JvmTypeReference resolveType(ModelNodeType type) {
-		if (type.property == null)
+		val result = if (type.property == null)
 			type.target.importedNamespace.resolveType
 		else
 			type.property.resolveType
+			
+		if (type.collection) {
+			val list = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference
+			val listType = TypesFactory.eINSTANCE.createJvmGenericType
+			listType.packageName = "java.lang"
+			listType.simpleName = "Collection"
+			
+			list.type = listType
+			list.arguments.add(result)
+			return list
+		} else
+			return result
 	}
 	
 	def dispatch static JvmTypeReference resolveType(JvmType type) {

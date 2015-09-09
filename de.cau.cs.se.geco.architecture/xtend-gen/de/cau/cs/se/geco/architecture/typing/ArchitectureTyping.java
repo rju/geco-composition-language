@@ -100,7 +100,20 @@ public class ArchitectureTyping {
       NodeProperty _property_1 = type.getProperty();
       _xifexpression = ArchitectureTyping.resolveType(_property_1);
     }
-    return _xifexpression;
+    final JvmTypeReference result = _xifexpression;
+    boolean _isCollection = type.isCollection();
+    if (_isCollection) {
+      final JvmParameterizedTypeReference list = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
+      final JvmGenericType listType = TypesFactory.eINSTANCE.createJvmGenericType();
+      listType.setPackageName("java.lang");
+      listType.setSimpleName("Collection");
+      list.setType(listType);
+      EList<JvmTypeReference> _arguments = list.getArguments();
+      _arguments.add(result);
+      return list;
+    } else {
+      return result;
+    }
   }
   
   protected static JvmTypeReference _resolveType(final JvmType type) {

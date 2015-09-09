@@ -90,11 +90,17 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 										' does not match generator target type ' + inputTypeReference.qualifiedName, 
 									ArchitecturePackage.Literals.PROCESSOR__TARGET_MODEL)
 						}
+					} else {
+						error('Generator expected, but illegal type found. Please check for build failures.', 
+								ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
 					}
+				} else {
+					error('Generator expected, but illegal type found. Please check for build failures.', 
+						ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
 				}
 			}
 			default: error('Generator expected, but illegal type found. Please check for build failures.', 
-								ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+						ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
 		}
 	}
 	

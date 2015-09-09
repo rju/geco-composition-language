@@ -152,7 +152,13 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
                   ArchitecturePackage.Literals.PROCESSOR__TARGET_MODEL);
               }
             }
+          } else {
+            this.error("Generator expected, but illegal type found. Please check for build failures.", 
+              ArchitecturePackage.Literals.PROCESSOR__REFERENCE);
           }
+        } else {
+          this.error("Generator expected, but illegal type found. Please check for build failures.", 
+            ArchitecturePackage.Literals.PROCESSOR__REFERENCE);
         }
       }
     }
