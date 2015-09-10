@@ -315,17 +315,50 @@ public class ArchitectureTyping {
       JvmType _type = type.getType();
       final String name = _type.getQualifiedName();
       boolean _switchResult = false;
-      switch (name) {
-        case "java.util.Collection":
-        case "java.util.List":
-        case "java.util.ArrayList":
-        case "java.lang.Collection":
-        case "org.eclipse.emf.common.util.EList":
+      boolean _matched = false;
+      if (!_matched) {
+        if (Objects.equal(name, null)) {
+          _matched=true;
+          boolean _xblockexpression_1 = false;
+          {
+            JvmType _type_1 = type.getType();
+            String _plus = ((("AnnotationType? " + type) + " -- ") + _type_1);
+            System.out.println(_plus);
+            _xblockexpression_1 = false;
+          }
+          _switchResult = _xblockexpression_1;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(name, "java.util.Collection")) {
+          _matched=true;
+        }
+        if (!_matched) {
+          if (Objects.equal(name, "java.util.List")) {
+            _matched=true;
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(name, "java.util.ArrayList")) {
+            _matched=true;
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(name, "java.lang.Collection")) {
+            _matched=true;
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(name, "org.eclipse.emf.common.util.EList")) {
+            _matched=true;
+          }
+        }
+        if (_matched) {
           _switchResult = true;
-          break;
-        default:
-          _switchResult = false;
-          break;
+        }
+      }
+      if (!_matched) {
+        _switchResult = false;
       }
       _xblockexpression = _switchResult;
     }

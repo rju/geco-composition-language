@@ -198,6 +198,10 @@ class ArchitectureTyping {
 	def static boolean isListType(JvmTypeReference type) {
 		val name = type.type.qualifiedName
 		switch(name) {
+			case null: {
+				System.out.println("AnnotationType? " + type + " -- " + type.type)
+				false
+			}
 			case "java.util.Collection",
 			case "java.util.List",
 			case "java.util.ArrayList",
