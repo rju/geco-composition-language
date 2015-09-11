@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/de.cau.cs.se.geco.architecture.sdk_1.0.0.qualifier.jar" id="de.cau.cs.se.geco.architecture.sdk" version="1.0.0.qualifier">
+      <category name="de.cau.cs.se.geco.architecture"/>
+   </feature>
+   <category-def name="de.cau.cs.se.geco.architecture" label="GECO Generator Composition Megamodel"/>
+</site>

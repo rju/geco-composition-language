@@ -2,4 +2,4 @@
 **/.launch/**
 **.*._trace
 **.xtendbin
-
+**/target/**
