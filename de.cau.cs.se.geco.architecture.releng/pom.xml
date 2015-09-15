@@ -25,7 +25,7 @@
         <module>../de.cau.cs.se.geco.architecture.framework</module>
         <module>../de.cau.cs.se.geco.architecture.graph</module>
         <module>../de.cau.cs.se.geco.architecture.sdk</module>
-        <!--  <module>../de.cau.cs.se.geco.architecture.tests</module> -->
+        <module>../de.cau.cs.se.geco.architecture.tests</module>
         <module>../de.cau.cs.se.geco.architecture.ui</module>
         <module>../de.cau.cs.se.geco.architecture.updatesite</module>
     </modules>
