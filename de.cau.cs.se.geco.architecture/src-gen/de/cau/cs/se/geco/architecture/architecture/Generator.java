@@ -11,12 +11,12 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Generator#getSourceAuxModels <em>Source Aux Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Generator#getTargetTraceModel <em>Target Trace Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Generator#getSourceTraceModels <em>Source Trace Models</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getGenerator()
  * @model

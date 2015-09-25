@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getReference <em>Reference</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getConstraint <em>Constraint</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl#getProperty <em>Property</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

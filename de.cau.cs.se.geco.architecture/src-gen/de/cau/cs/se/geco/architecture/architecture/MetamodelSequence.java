@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getMetamodels <em>Metamodels</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getMetamodelSequence()
  * @model

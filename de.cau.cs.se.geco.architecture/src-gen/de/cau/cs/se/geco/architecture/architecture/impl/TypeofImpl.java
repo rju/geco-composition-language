@@ -20,10 +20,10 @@ import org.eclipse.xtext.common.types.JvmType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.TypeofImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

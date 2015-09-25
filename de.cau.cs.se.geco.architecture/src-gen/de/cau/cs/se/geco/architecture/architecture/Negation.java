@@ -10,10 +10,10 @@ package de.cau.cs.se.geco.architecture.architecture;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Negation#getConstraint <em>Constraint</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getNegation()
  * @model

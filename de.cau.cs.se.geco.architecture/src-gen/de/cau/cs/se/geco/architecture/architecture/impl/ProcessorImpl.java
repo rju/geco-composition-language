@@ -24,12 +24,12 @@ import org.eclipse.xtext.common.types.JvmType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl#getReference <em>Reference</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl#getSourceModel <em>Source Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl#getTargetModel <em>Target Model</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

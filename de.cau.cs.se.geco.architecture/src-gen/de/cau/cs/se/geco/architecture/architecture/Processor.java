@@ -13,12 +13,12 @@ import org.eclipse.xtext.common.types.JvmType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Processor#getReference <em>Reference</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Processor#getSourceModel <em>Source Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.Processor#getTargetModel <em>Target Model</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getProcessor()
  * @model

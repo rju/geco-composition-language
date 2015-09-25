@@ -4,7 +4,7 @@
     editorDirectory="/de.cau.cs.se.geco.architecture.editor/src" modelPluginID="de.cau.cs.se.geco.architecture"
     forceOverwrite="true" modelName="Architecture" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="de.cau.cs.se.geco.architecture.edit"
-    editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
+    editorPluginID="de.cau.cs.se.geco.architecture.editor" runtimeVersion="2.11" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
   <genPackages prefix="Architecture" basePackage="de.cau.cs.se.geco.architecture"
       disposableProviderFactory="true" fileExtensions="geco" ecorePackage="Architecture.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Architecture.ecore#//MetamodelModifier">

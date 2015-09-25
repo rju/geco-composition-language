@@ -22,12 +22,12 @@ import org.eclipse.xtext.common.types.JvmMember;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl#getProperty <em>Property</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl#getConstraint <em>Constraint</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl#getSubProperty <em>Sub Property</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

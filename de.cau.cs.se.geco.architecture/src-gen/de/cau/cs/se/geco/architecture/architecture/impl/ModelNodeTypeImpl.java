@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#getProperty <em>Property</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl#isCollection <em>Collection</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl#getLeft <em>Left</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl#getOperator <em>Operator</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl#getRight <em>Right</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
