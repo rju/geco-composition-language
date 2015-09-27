@@ -318,23 +318,26 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 		val className = if (generator.targetModel.reference != null)
 			generator.targetModel.reference.resolveType.simpleName
 		else {
-			val superTypes = (generator.reference as JvmGenericType).superTypes
-			val interfaceType = superTypes.findFirst[it.simpleName.startsWith(IGenerator.simpleName + '<')]
-			if (interfaceType != null) {
-				switch (interfaceType) {
-					JvmParameterizedTypeReference: interfaceType.arguments.get(1).simpleName
-					default: 'ERROR'
-				}
-			} else {
-				val abstractType = superTypes.findFirst[it.simpleName.startsWith(AbstractRequireTraceModelGenerator.simpleName + '<')]
-				if (abstractType != null) {
-					switch(abstractType) {
-						JvmParameterizedTypeReference: abstractType.arguments.get(1).simpleName
+			if (generator.reference instanceof JvmGenericType) {
+				val superTypes = (generator.reference as JvmGenericType).superTypes
+				val interfaceType = superTypes.findFirst[it.simpleName.startsWith(IGenerator.simpleName + '<')]
+				if (interfaceType != null) {
+					switch (interfaceType) {
+						JvmParameterizedTypeReference: interfaceType.arguments.get(1).simpleName
 						default: 'ERROR'
 					}
+				} else {
+					val abstractType = superTypes.findFirst[it.simpleName.startsWith(AbstractRequireTraceModelGenerator.simpleName + '<')]
+					if (abstractType != null) {
+						switch(abstractType) {
+							JvmParameterizedTypeReference: abstractType.arguments.get(1).simpleName
+							default: 'ERROR'
+						}
+					}
 				}
-			}
-				
+			} else {
+				'JVM ERROR'
+			}	
 		} 
 			
 		drawMetamodelRectangle(createNode(), instanceName, className)
