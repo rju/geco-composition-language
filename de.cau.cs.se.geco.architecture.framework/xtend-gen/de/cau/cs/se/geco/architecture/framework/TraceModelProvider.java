@@ -1,5 +1,7 @@
 package de.cau.cs.se.geco.architecture.framework;
 
+import com.google.common.base.Objects;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +31,15 @@ public class TraceModelProvider<S extends Object, T extends Object> {
    * @param target node of the target model
    */
   public void add(final S source, final T target) {
-    throw new Error("Unresolved compilation problems:"
-      + "\n== cannot be resolved.");
+    final List<T> list = this.map.get(source);
+    boolean _equals = Objects.equal(list, null);
+    if (_equals) {
+      ArrayList<T> _arrayList = new ArrayList<T>();
+      this.map.put(source, _arrayList);
+      this.add(source, target);
+    } else {
+      list.add(target);
+    }
   }
   
   /**
