@@ -1,7 +1,10 @@
 package de.cau.cs.se.geco.architecture.framework;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +18,7 @@ import java.util.Map;
  * @param <T> node type of the target meta-model
  */
 @SuppressWarnings("all")
-public class TraceModelProvider<S extends Object, T extends Object> {
+public class TraceModelProvider<S extends Object, T extends Object> implements ITraceModelProvider<S, T> {
   private final Map<S, List<T>> map;
   
   public TraceModelProvider() {
@@ -30,6 +33,7 @@ public class TraceModelProvider<S extends Object, T extends Object> {
    * @param source node of the source model
    * @param target node of the target model
    */
+  @Override
   public void add(final S source, final T target) {
     final List<T> list = this.map.get(source);
     boolean _equals = Objects.equal(list, null);
@@ -49,7 +53,23 @@ public class TraceModelProvider<S extends Object, T extends Object> {
    * 
    * @return list of target nodes
    */
-  public List<T> lookup(final S source) {
+  @Override
+  public Collection<T> lookup(final S source) {
     return this.map.get(source);
+  }
+  
+  /**
+   * Get all target nodes connected to the given source node
+   * which conform to a type V.
+   * 
+   * @param source node of the source model
+   * @param clazz clazz type restriction
+   * 
+   * @return list of target nodes
+   */
+  @Override
+  public <V extends T> Iterable<V> lookup(final S source, final Class<V> clazz) {
+    List<T> _get = this.map.get(source);
+    return Iterables.<V>filter(_get, clazz);
   }
 }
