@@ -1,8 +1,8 @@
 package de.cau.cs.se.geco.architecture.framework
 
 /**
- * @param <B> base meta-model
- * @param <A> aspect meta-model
+ * @param <B> base metamodel root class
+ * @param <A> aspect metamodel root class
  */
 interface IWeaver<B,A> {
 	
