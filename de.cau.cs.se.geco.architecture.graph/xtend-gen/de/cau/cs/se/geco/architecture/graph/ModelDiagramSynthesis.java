@@ -46,7 +46,6 @@ import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
-import de.cau.cs.se.geco.architecture.framework.AbstractRequireTraceModelGenerator;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import java.util.Arrays;
@@ -617,39 +616,6 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
                 _switchResult = "ERROR";
               }
               _xifexpression_2 = _switchResult;
-            } else {
-              String _xblockexpression_2 = null;
-              {
-                final Function1<JvmTypeReference, Boolean> _function_1 = new Function1<JvmTypeReference, Boolean>() {
-                  public Boolean apply(final JvmTypeReference it) {
-                    String _simpleName = it.getSimpleName();
-                    String _simpleName_1 = AbstractRequireTraceModelGenerator.class.getSimpleName();
-                    String _plus = (_simpleName_1 + "<");
-                    return Boolean.valueOf(_simpleName.startsWith(_plus));
-                  }
-                };
-                final JvmTypeReference abstractType = IterableExtensions.<JvmTypeReference>findFirst(superTypes, _function_1);
-                String _xifexpression_3 = null;
-                boolean _notEquals_2 = (!Objects.equal(abstractType, null));
-                if (_notEquals_2) {
-                  String _switchResult_1 = null;
-                  boolean _matched_1 = false;
-                  if (!_matched_1) {
-                    if (abstractType instanceof JvmParameterizedTypeReference) {
-                      _matched_1=true;
-                      EList<JvmTypeReference> _arguments = ((JvmParameterizedTypeReference)abstractType).getArguments();
-                      JvmTypeReference _get = _arguments.get(1);
-                      _switchResult_1 = _get.getSimpleName();
-                    }
-                  }
-                  if (!_matched_1) {
-                    _switchResult_1 = "ERROR";
-                  }
-                  _xifexpression_3 = _switchResult_1;
-                }
-                _xblockexpression_2 = _xifexpression_3;
-              }
-              _xifexpression_2 = _xblockexpression_2;
             }
             _xblockexpression_1 = _xifexpression_2;
           }

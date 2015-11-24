@@ -29,7 +29,6 @@ import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import de.cau.cs.se.geco.architecture.architecture.TraceModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 import de.cau.cs.se.geco.architecture.architecture.Weaver
-import de.cau.cs.se.geco.architecture.framework.AbstractRequireTraceModelGenerator
 import de.cau.cs.se.geco.architecture.framework.IGenerator
 import java.util.HashMap
 import java.util.Map
@@ -325,14 +324,6 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 					switch (interfaceType) {
 						JvmParameterizedTypeReference: interfaceType.arguments.get(1).simpleName
 						default: 'ERROR'
-					}
-				} else {
-					val abstractType = superTypes.findFirst[it.simpleName.startsWith(AbstractRequireTraceModelGenerator.simpleName + '<')]
-					if (abstractType != null) {
-						switch(abstractType) {
-							JvmParameterizedTypeReference: abstractType.arguments.get(1).simpleName
-							default: 'ERROR'
-						}
 					}
 				}
 			} else {
