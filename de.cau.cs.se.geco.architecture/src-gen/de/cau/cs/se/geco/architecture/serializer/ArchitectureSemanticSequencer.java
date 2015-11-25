@@ -196,9 +196,8 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *         reference=[JvmType|ID] 
 	 *         (sourceAuxModels+=SourceModelNodeSelector sourceAuxModels+=SourceModelNodeSelector*)? 
 	 *         sourceModel=SourceModelNodeSelector 
-	 *         targetModel=TargetModelNodeType 
-	 *         targetTraceModel=TargetTraceModel? 
-	 *         (sourceTraceModels+=TraceModelReference sourceTraceModels+=TraceModelReference*)?
+	 *         targetModel=TargetModelNodeType? 
+	 *         (targetTraceModel=TargetTraceModel? (sourceTraceModels+=TraceModelReference sourceTraceModels+=TraceModelReference*)?)?
 	 *     )
 	 */
 	protected void sequence_Generator(EObject context, Generator semanticObject) {
@@ -355,10 +354,17 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (reference=[Metamodel|ID]?)
+	 *     reference=[Metamodel|ID]
 	 */
 	protected void sequence_TargetModelNodeType(EObject context, TargetModelNodeType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.TARGET_MODEL_NODE_TYPE__REFERENCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.TARGET_MODEL_NODE_TYPE__REFERENCE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getTargetModelNodeTypeAccess().getReferenceMetamodelIDTerminalRuleCall_1_0_1(), semanticObject.getReference());
+		feeder.finish();
 	}
 	
 	

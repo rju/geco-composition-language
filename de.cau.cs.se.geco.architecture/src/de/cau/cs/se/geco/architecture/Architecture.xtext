@@ -49,11 +49,14 @@ AspectModel:
 ;
 	
 Generator:
-	'generate' reference=[types::JvmType|ID] ('(' sourceAuxModels+=SourceModelNodeSelector (',' sourceAuxModels+=SourceModelNodeSelector)* ')')?
-		sourceModel=SourceModelNodeSelector
-		targetModel=TargetModelNodeType
-		('->' targetTraceModel=TargetTraceModel)?
-		('<-' sourceTraceModels+=TraceModelReference (',' sourceTraceModels+=TraceModelReference)*)?
+	'generate' reference=[types::JvmType|ID] 
+		('(' sourceAuxModels+=SourceModelNodeSelector (',' sourceAuxModels+=SourceModelNodeSelector)* ')')?
+		'source' sourceModel=SourceModelNodeSelector
+		('target' targetModel=TargetModelNodeType)?
+		('trace'
+			('out' targetTraceModel=TargetTraceModel)?
+			('in' sourceTraceModels+=TraceModelReference (',' sourceTraceModels+=TraceModelReference)*)?
+		)?
 ;
 
 
@@ -63,7 +66,7 @@ SourceModelNodeSelector:
 ;
 
 TargetModelNodeType: {TargetModelNodeType}
-	(reference = [Metamodel|ID])?
+	(reference = [Metamodel|ID])
 ;
 
 ModelNodeType:

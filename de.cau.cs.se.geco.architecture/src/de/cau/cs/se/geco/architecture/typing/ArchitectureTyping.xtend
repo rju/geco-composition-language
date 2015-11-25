@@ -2,8 +2,6 @@ package de.cau.cs.se.geco.architecture.typing
 
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
-import org.eclipse.xtext.common.types.JvmAnnotationType
-import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.JvmTypeReference

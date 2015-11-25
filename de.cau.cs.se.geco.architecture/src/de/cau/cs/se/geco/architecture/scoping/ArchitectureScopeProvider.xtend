@@ -141,7 +141,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			} else /** this should not happen in a valid model. Provide solid fallback for incomplete model. */
 				return IScope.NULLSCOPE
 		} else {
-			if (generator.targetModel.reference == null) {
+			if (generator.targetModel == null) {
 				if (generator.eContainer instanceof Weaver) {
 					val sourceModel = (generator.eContainer as Weaver).resolveWeaverSourceModel
 					if (sourceModel != null)

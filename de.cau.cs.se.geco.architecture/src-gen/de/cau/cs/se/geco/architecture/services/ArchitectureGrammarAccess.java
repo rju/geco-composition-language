@@ -370,34 +370,39 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cSourceAuxModelsAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
 		private final RuleCall cSourceAuxModelsSourceModelNodeSelectorParserRuleCall_2_2_1_0 = (RuleCall)cSourceAuxModelsAssignment_2_2_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
-		private final Assignment cSourceModelAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSourceModelSourceModelNodeSelectorParserRuleCall_3_0 = (RuleCall)cSourceModelAssignment_3.eContents().get(0);
-		private final Assignment cTargetModelAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cTargetModelTargetModelNodeTypeParserRuleCall_4_0 = (RuleCall)cTargetModelAssignment_4.eContents().get(0);
+		private final Keyword cSourceKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cSourceModelAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSourceModelSourceModelNodeSelectorParserRuleCall_4_0 = (RuleCall)cSourceModelAssignment_4.eContents().get(0);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cTargetTraceModelAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cTargetTraceModelTargetTraceModelParserRuleCall_5_1_0 = (RuleCall)cTargetTraceModelAssignment_5_1.eContents().get(0);
+		private final Keyword cTargetKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cTargetModelAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cTargetModelTargetModelNodeTypeParserRuleCall_5_1_0 = (RuleCall)cTargetModelAssignment_5_1.eContents().get(0);
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cLessThanSignHyphenMinusKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Assignment cSourceTraceModelsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final RuleCall cSourceTraceModelsTraceModelReferenceParserRuleCall_6_1_0 = (RuleCall)cSourceTraceModelsAssignment_6_1.eContents().get(0);
+		private final Keyword cTraceKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Group cGroup_6_1 = (Group)cGroup_6.eContents().get(1);
+		private final Keyword cOutKeyword_6_1_0 = (Keyword)cGroup_6_1.eContents().get(0);
+		private final Assignment cTargetTraceModelAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
+		private final RuleCall cTargetTraceModelTargetTraceModelParserRuleCall_6_1_1_0 = (RuleCall)cTargetTraceModelAssignment_6_1_1.eContents().get(0);
 		private final Group cGroup_6_2 = (Group)cGroup_6.eContents().get(2);
-		private final Keyword cCommaKeyword_6_2_0 = (Keyword)cGroup_6_2.eContents().get(0);
+		private final Keyword cInKeyword_6_2_0 = (Keyword)cGroup_6_2.eContents().get(0);
 		private final Assignment cSourceTraceModelsAssignment_6_2_1 = (Assignment)cGroup_6_2.eContents().get(1);
 		private final RuleCall cSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_1_0 = (RuleCall)cSourceTraceModelsAssignment_6_2_1.eContents().get(0);
+		private final Group cGroup_6_2_2 = (Group)cGroup_6_2.eContents().get(2);
+		private final Keyword cCommaKeyword_6_2_2_0 = (Keyword)cGroup_6_2_2.eContents().get(0);
+		private final Assignment cSourceTraceModelsAssignment_6_2_2_1 = (Assignment)cGroup_6_2_2.eContents().get(1);
+		private final RuleCall cSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_2_1_0 = (RuleCall)cSourceTraceModelsAssignment_6_2_2_1.eContents().get(0);
 		
 		//Generator:
 		//	"generate" reference=[types::JvmType] ("(" sourceAuxModels+=SourceModelNodeSelector (","
-		//	sourceAuxModels+=SourceModelNodeSelector)* ")")? sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType
-		//	("->" targetTraceModel=TargetTraceModel)? ("<-" sourceTraceModels+=TraceModelReference (","
-		//	sourceTraceModels+=TraceModelReference)*)?;
+		//	sourceAuxModels+=SourceModelNodeSelector)* ")")? "source" sourceModel=SourceModelNodeSelector ("target"
+		//	targetModel=TargetModelNodeType)? ("trace" ("out" targetTraceModel=TargetTraceModel)? ("in"
+		//	sourceTraceModels+=TraceModelReference ("," sourceTraceModels+=TraceModelReference)*)?)?;
 		@Override public ParserRule getRule() { return rule; }
 
 		//"generate" reference=[types::JvmType] ("(" sourceAuxModels+=SourceModelNodeSelector (","
-		//sourceAuxModels+=SourceModelNodeSelector)* ")")? sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType
-		//("->" targetTraceModel=TargetTraceModel)? ("<-" sourceTraceModels+=TraceModelReference (","
-		//sourceTraceModels+=TraceModelReference)*)?
+		//sourceAuxModels+=SourceModelNodeSelector)* ")")? "source" sourceModel=SourceModelNodeSelector ("target"
+		//targetModel=TargetModelNodeType)? ("trace" ("out" targetTraceModel=TargetTraceModel)? ("in"
+		//sourceTraceModels+=TraceModelReference ("," sourceTraceModels+=TraceModelReference)*)?)?
 		public Group getGroup() { return cGroup; }
 
 		//"generate"
@@ -439,53 +444,69 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//")"
 		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
 
+		//"source"
+		public Keyword getSourceKeyword_3() { return cSourceKeyword_3; }
+
 		//sourceModel=SourceModelNodeSelector
-		public Assignment getSourceModelAssignment_3() { return cSourceModelAssignment_3; }
+		public Assignment getSourceModelAssignment_4() { return cSourceModelAssignment_4; }
 
 		//SourceModelNodeSelector
-		public RuleCall getSourceModelSourceModelNodeSelectorParserRuleCall_3_0() { return cSourceModelSourceModelNodeSelectorParserRuleCall_3_0; }
+		public RuleCall getSourceModelSourceModelNodeSelectorParserRuleCall_4_0() { return cSourceModelSourceModelNodeSelectorParserRuleCall_4_0; }
 
-		//targetModel=TargetModelNodeType
-		public Assignment getTargetModelAssignment_4() { return cTargetModelAssignment_4; }
-
-		//TargetModelNodeType
-		public RuleCall getTargetModelTargetModelNodeTypeParserRuleCall_4_0() { return cTargetModelTargetModelNodeTypeParserRuleCall_4_0; }
-
-		//("->" targetTraceModel=TargetTraceModel)?
+		//("target" targetModel=TargetModelNodeType)?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"->"
-		public Keyword getHyphenMinusGreaterThanSignKeyword_5_0() { return cHyphenMinusGreaterThanSignKeyword_5_0; }
+		//"target"
+		public Keyword getTargetKeyword_5_0() { return cTargetKeyword_5_0; }
 
-		//targetTraceModel=TargetTraceModel
-		public Assignment getTargetTraceModelAssignment_5_1() { return cTargetTraceModelAssignment_5_1; }
+		//targetModel=TargetModelNodeType
+		public Assignment getTargetModelAssignment_5_1() { return cTargetModelAssignment_5_1; }
 
-		//TargetTraceModel
-		public RuleCall getTargetTraceModelTargetTraceModelParserRuleCall_5_1_0() { return cTargetTraceModelTargetTraceModelParserRuleCall_5_1_0; }
+		//TargetModelNodeType
+		public RuleCall getTargetModelTargetModelNodeTypeParserRuleCall_5_1_0() { return cTargetModelTargetModelNodeTypeParserRuleCall_5_1_0; }
 
-		//("<-" sourceTraceModels+=TraceModelReference ("," sourceTraceModels+=TraceModelReference)*)?
+		//("trace" ("out" targetTraceModel=TargetTraceModel)? ("in" sourceTraceModels+=TraceModelReference (","
+		//sourceTraceModels+=TraceModelReference)*)?)?
 		public Group getGroup_6() { return cGroup_6; }
 
-		//"<-"
-		public Keyword getLessThanSignHyphenMinusKeyword_6_0() { return cLessThanSignHyphenMinusKeyword_6_0; }
+		//"trace"
+		public Keyword getTraceKeyword_6_0() { return cTraceKeyword_6_0; }
 
-		//sourceTraceModels+=TraceModelReference
-		public Assignment getSourceTraceModelsAssignment_6_1() { return cSourceTraceModelsAssignment_6_1; }
+		//("out" targetTraceModel=TargetTraceModel)?
+		public Group getGroup_6_1() { return cGroup_6_1; }
 
-		//TraceModelReference
-		public RuleCall getSourceTraceModelsTraceModelReferenceParserRuleCall_6_1_0() { return cSourceTraceModelsTraceModelReferenceParserRuleCall_6_1_0; }
+		//"out"
+		public Keyword getOutKeyword_6_1_0() { return cOutKeyword_6_1_0; }
 
-		//("," sourceTraceModels+=TraceModelReference)*
+		//targetTraceModel=TargetTraceModel
+		public Assignment getTargetTraceModelAssignment_6_1_1() { return cTargetTraceModelAssignment_6_1_1; }
+
+		//TargetTraceModel
+		public RuleCall getTargetTraceModelTargetTraceModelParserRuleCall_6_1_1_0() { return cTargetTraceModelTargetTraceModelParserRuleCall_6_1_1_0; }
+
+		//("in" sourceTraceModels+=TraceModelReference ("," sourceTraceModels+=TraceModelReference)*)?
 		public Group getGroup_6_2() { return cGroup_6_2; }
 
-		//","
-		public Keyword getCommaKeyword_6_2_0() { return cCommaKeyword_6_2_0; }
+		//"in"
+		public Keyword getInKeyword_6_2_0() { return cInKeyword_6_2_0; }
 
 		//sourceTraceModels+=TraceModelReference
 		public Assignment getSourceTraceModelsAssignment_6_2_1() { return cSourceTraceModelsAssignment_6_2_1; }
 
 		//TraceModelReference
 		public RuleCall getSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_1_0() { return cSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_1_0; }
+
+		//("," sourceTraceModels+=TraceModelReference)*
+		public Group getGroup_6_2_2() { return cGroup_6_2_2; }
+
+		//","
+		public Keyword getCommaKeyword_6_2_2_0() { return cCommaKeyword_6_2_2_0; }
+
+		//sourceTraceModels+=TraceModelReference
+		public Assignment getSourceTraceModelsAssignment_6_2_2_1() { return cSourceTraceModelsAssignment_6_2_2_1; }
+
+		//TraceModelReference
+		public RuleCall getSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_2_1_0() { return cSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_2_1_0; }
 	}
 
 	public class SourceModelNodeSelectorElements extends AbstractParserRuleElementFinder {
@@ -575,16 +596,16 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cReferenceMetamodelIDTerminalRuleCall_1_0_1 = (RuleCall)cReferenceMetamodelCrossReference_1_0.eContents().get(1);
 		
 		//TargetModelNodeType:
-		//	{TargetModelNodeType} reference=[Metamodel]?;
+		//	{TargetModelNodeType} reference=[Metamodel];
 		@Override public ParserRule getRule() { return rule; }
 
-		//{TargetModelNodeType} reference=[Metamodel]?
+		//{TargetModelNodeType} reference=[Metamodel]
 		public Group getGroup() { return cGroup; }
 
 		//{TargetModelNodeType}
 		public Action getTargetModelNodeTypeAction_0() { return cTargetModelNodeTypeAction_0; }
 
-		//reference=[Metamodel]?
+		//reference=[Metamodel]
 		public Assignment getReferenceAssignment_1() { return cReferenceAssignment_1; }
 
 		//[Metamodel]
@@ -1646,9 +1667,9 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Generator:
 	//	"generate" reference=[types::JvmType] ("(" sourceAuxModels+=SourceModelNodeSelector (","
-	//	sourceAuxModels+=SourceModelNodeSelector)* ")")? sourceModel=SourceModelNodeSelector targetModel=TargetModelNodeType
-	//	("->" targetTraceModel=TargetTraceModel)? ("<-" sourceTraceModels+=TraceModelReference (","
-	//	sourceTraceModels+=TraceModelReference)*)?;
+	//	sourceAuxModels+=SourceModelNodeSelector)* ")")? "source" sourceModel=SourceModelNodeSelector ("target"
+	//	targetModel=TargetModelNodeType)? ("trace" ("out" targetTraceModel=TargetTraceModel)? ("in"
+	//	sourceTraceModels+=TraceModelReference ("," sourceTraceModels+=TraceModelReference)*)?)?;
 	public GeneratorElements getGeneratorAccess() {
 		return pGenerator;
 	}
@@ -1669,7 +1690,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TargetModelNodeType:
-	//	{TargetModelNodeType} reference=[Metamodel]?;
+	//	{TargetModelNodeType} reference=[Metamodel];
 	public TargetModelNodeTypeElements getTargetModelNodeTypeAccess() {
 		return pTargetModelNodeType;
 	}

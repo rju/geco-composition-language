@@ -715,109 +715,121 @@ ruleGenerator returns [EObject current=null]
     {
     	newLeafNode(otherlv_6, grammarAccess.getGeneratorAccess().getRightParenthesisKeyword_2_3());
     }
-)?(
+)?	otherlv_7='source' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getGeneratorAccess().getSourceKeyword_3());
+    }
+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceModelSourceModelNodeSelectorParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceModelSourceModelNodeSelectorParserRuleCall_4_0()); 
 	    }
-		lv_sourceModel_7_0=ruleSourceModelNodeSelector		{
+		lv_sourceModel_8_0=ruleSourceModelNodeSelector		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGeneratorRule());
 	        }
        		set(
        			$current, 
        			"sourceModel",
-        		lv_sourceModel_7_0, 
+        		lv_sourceModel_8_0, 
         		"SourceModelNodeSelector");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(
+)(	otherlv_9='target' 
+    {
+    	newLeafNode(otherlv_9, grammarAccess.getGeneratorAccess().getTargetKeyword_5_0());
+    }
+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGeneratorAccess().getTargetModelTargetModelNodeTypeParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getGeneratorAccess().getTargetModelTargetModelNodeTypeParserRuleCall_5_1_0()); 
 	    }
-		lv_targetModel_8_0=ruleTargetModelNodeType		{
+		lv_targetModel_10_0=ruleTargetModelNodeType		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGeneratorRule());
 	        }
        		set(
        			$current, 
        			"targetModel",
-        		lv_targetModel_8_0, 
+        		lv_targetModel_10_0, 
         		"TargetModelNodeType");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_9='->' 
+))?(	otherlv_11='trace' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getGeneratorAccess().getHyphenMinusGreaterThanSignKeyword_5_0());
+    	newLeafNode(otherlv_11, grammarAccess.getGeneratorAccess().getTraceKeyword_6_0());
+    }
+(	otherlv_12='out' 
+    {
+    	newLeafNode(otherlv_12, grammarAccess.getGeneratorAccess().getOutKeyword_6_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGeneratorAccess().getTargetTraceModelTargetTraceModelParserRuleCall_5_1_0()); 
+	        newCompositeNode(grammarAccess.getGeneratorAccess().getTargetTraceModelTargetTraceModelParserRuleCall_6_1_1_0()); 
 	    }
-		lv_targetTraceModel_10_0=ruleTargetTraceModel		{
+		lv_targetTraceModel_13_0=ruleTargetTraceModel		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGeneratorRule());
 	        }
        		set(
        			$current, 
        			"targetTraceModel",
-        		lv_targetTraceModel_10_0, 
+        		lv_targetTraceModel_13_0, 
         		"TargetTraceModel");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?(	otherlv_11='<-' 
+))?(	otherlv_14='in' 
     {
-    	newLeafNode(otherlv_11, grammarAccess.getGeneratorAccess().getLessThanSignHyphenMinusKeyword_6_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceTraceModelsTraceModelReferenceParserRuleCall_6_1_0()); 
-	    }
-		lv_sourceTraceModels_12_0=ruleTraceModelReference		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getGeneratorRule());
-	        }
-       		add(
-       			$current, 
-       			"sourceTraceModels",
-        		lv_sourceTraceModels_12_0, 
-        		"TraceModelReference");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(	otherlv_13=',' 
-    {
-    	newLeafNode(otherlv_13, grammarAccess.getGeneratorAccess().getCommaKeyword_6_2_0());
+    	newLeafNode(otherlv_14, grammarAccess.getGeneratorAccess().getInKeyword_6_2_0());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_1_0()); 
 	    }
-		lv_sourceTraceModels_14_0=ruleTraceModelReference		{
+		lv_sourceTraceModels_15_0=ruleTraceModelReference		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGeneratorRule());
 	        }
        		add(
        			$current, 
        			"sourceTraceModels",
-        		lv_sourceTraceModels_14_0, 
+        		lv_sourceTraceModels_15_0, 
         		"TraceModelReference");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*)?)
+)(	otherlv_16=',' 
+    {
+    	newLeafNode(otherlv_16, grammarAccess.getGeneratorAccess().getCommaKeyword_6_2_2_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_2_1_0()); 
+	    }
+		lv_sourceTraceModels_17_0=ruleTraceModelReference		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getGeneratorRule());
+	        }
+       		add(
+       			$current, 
+       			"sourceTraceModels",
+        		lv_sourceTraceModels_17_0, 
+        		"TraceModelReference");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))*)?)?)
 ;
 
 
@@ -950,7 +962,7 @@ ruleTargetModelNodeType returns [EObject current=null]
 	}
 
 )
-)?)
+))
 ;
 
 

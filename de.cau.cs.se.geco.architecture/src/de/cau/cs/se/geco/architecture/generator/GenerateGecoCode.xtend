@@ -319,7 +319,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * which are automatically woven into a model.
 	 */
 	private def createTargetModel(Generator generator) {
-		if (generator.targetModel.reference != null) {
+		if (generator.targetModel != null) {
 			if (generator.targetModel.reference.isCollectionType) 
 				'''«generator.targetModel.reference.name» += '''
 			else

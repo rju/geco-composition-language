@@ -296,8 +296,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       } else {
         IScope _xifexpression_1 = null;
         TargetModelNodeType _targetModel = generator.getTargetModel();
-        Metamodel _reference_2 = _targetModel.getReference();
-        boolean _equals = Objects.equal(_reference_2, null);
+        boolean _equals = Objects.equal(_targetModel, null);
         if (_equals) {
           IScope _xifexpression_2 = null;
           EObject _eContainer_1 = generator.eContainer();
@@ -306,8 +305,8 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
             final SourceModelNodeSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(((Weaver) _eContainer_2));
             boolean _notEquals_1 = (!Objects.equal(sourceModel, null));
             if (_notEquals_1) {
-              Metamodel _reference_3 = sourceModel.getReference();
-              JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(_reference_3);
+              Metamodel _reference_2 = sourceModel.getReference();
+              JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(_reference_2);
               JvmType _determineElementType_1 = ArchitectureTyping.determineElementType(_resolveType_1);
               Model _modelRoot_1 = this.getModelRoot(nodeType);
               Resource _eResource_1 = _modelRoot_1.eResource();
@@ -322,8 +321,8 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
           _xifexpression_1 = _xifexpression_2;
         } else {
           TargetModelNodeType _targetModel_1 = generator.getTargetModel();
-          Metamodel _reference_4 = _targetModel_1.getReference();
-          JvmTypeReference _resolveType_2 = ArchitectureTyping.resolveType(_reference_4);
+          Metamodel _reference_3 = _targetModel_1.getReference();
+          JvmTypeReference _resolveType_2 = ArchitectureTyping.resolveType(_reference_3);
           JvmType _determineElementType_2 = ArchitectureTyping.determineElementType(_resolveType_2);
           Model _modelRoot_2 = this.getModelRoot(nodeType);
           Resource _eResource_2 = _modelRoot_2.eResource();

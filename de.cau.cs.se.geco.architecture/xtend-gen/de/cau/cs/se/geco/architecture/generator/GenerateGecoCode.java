@@ -842,26 +842,25 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   private CharSequence createTargetModel(final Generator generator) {
     CharSequence _xifexpression = null;
     TargetModelNodeType _targetModel = generator.getTargetModel();
-    Metamodel _reference = _targetModel.getReference();
-    boolean _notEquals = (!Objects.equal(_reference, null));
+    boolean _notEquals = (!Objects.equal(_targetModel, null));
     if (_notEquals) {
       CharSequence _xifexpression_1 = null;
       TargetModelNodeType _targetModel_1 = generator.getTargetModel();
-      Metamodel _reference_1 = _targetModel_1.getReference();
-      boolean _isCollectionType = ArchitectureTyping.isCollectionType(_reference_1);
+      Metamodel _reference = _targetModel_1.getReference();
+      boolean _isCollectionType = ArchitectureTyping.isCollectionType(_reference);
       if (_isCollectionType) {
         StringConcatenation _builder = new StringConcatenation();
         TargetModelNodeType _targetModel_2 = generator.getTargetModel();
-        Metamodel _reference_2 = _targetModel_2.getReference();
-        String _name = _reference_2.getName();
+        Metamodel _reference_1 = _targetModel_2.getReference();
+        String _name = _reference_1.getName();
         _builder.append(_name, "");
         _builder.append(" += ");
         _xifexpression_1 = _builder;
       } else {
         StringConcatenation _builder_1 = new StringConcatenation();
         TargetModelNodeType _targetModel_3 = generator.getTargetModel();
-        Metamodel _reference_3 = _targetModel_3.getReference();
-        String _name_1 = _reference_3.getName();
+        Metamodel _reference_2 = _targetModel_3.getReference();
+        String _name_1 = _reference_2.getName();
         _builder_1.append(_name_1, "");
         _builder_1.append(" = ");
         _xifexpression_1 = _builder_1;
