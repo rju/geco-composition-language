@@ -63,4 +63,69 @@ class TraceModelProvider<S,T> implements ITraceModelProvider<S,T> {
 		map.get(source).filter(clazz)
 	}
 	
+	/**
+	 * Get all target nodes connected to source nodes of a specific type
+	 * which conform to a type V.
+	 * 
+	 * @param sourceClass class type restriction of the source class
+	 * @param targetClass class type restriction of the target class
+	 * 
+	 * @return list of target nodes
+	 */
+	override <SV extends S,TV extends T> Iterable<TV> lookup(Class<SV> sourceClass, Class<TV> targetClass) {
+		val result = new ArrayList<TV>()
+		map.keySet.filter(sourceClass).forEach[source |
+			result.addAll(map.get(source).filter(targetClass))
+		]
+		
+		return result
+	}
+	
+	/**
+	 * Get all source nodes of a specific type.
+	 * 
+	 * @param sourceClass class type restriction of the source class
+	 * 
+	 * @return list of source nodes of the given type.
+	 */
+	override <SV extends S> Iterable<SV> allSources(Class<SV> sourceClass) {
+		map.keySet.filter(sourceClass)
+	}
+	
+	/**
+	 * Get source node for a specific target node.
+	 * 
+	 * @param target target node 
+	 * 
+	 * @return source nodes
+	 */
+	override Iterable<S> reverseLookup(T target) {
+		val result = new ArrayList<S>()
+		map.forEach[key, value |
+			if (value.contains(target))
+				result.add(key)
+		]
+		
+		return result
+	}
+	
+	/**
+	 * Calculate a subset trace model based on source and target classes.
+	 * 
+	 * @param sourceClass class type restriction of the source class
+	 * @param targetClass class type restriction of the target class
+	 */
+	override <SV extends S,TV extends T> ITraceModelProvider<SV,TV> subset(Class<SV> sourceClass, Class<TV> targetClass) {
+		val resultMap = new TraceModelProvider<SV,TV>()
+		map.forEach[key, value |
+			if (key.class.equals(sourceClass)) {
+				val matchingValues = value.filter(targetClass)
+				if (!matchingValues.empty) {
+					matchingValues.forEach[resultMap.add(key as SV, it)]
+				}
+			}
+		]
+		return resultMap
+	 }
+	
 }

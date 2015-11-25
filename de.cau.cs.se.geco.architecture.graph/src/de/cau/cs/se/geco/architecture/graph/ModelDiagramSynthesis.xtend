@@ -178,7 +178,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     		root.children += anonymousMetamodelNode
     		anonymousMetamodelNode
     	}
-    	val targetModelNode = if (generator.targetModel.reference != null) {
+    	val targetModelNode = if (generator.targetModel != null) {
     		metamodelNodes.get(generator.targetModel.reference)
     	} else {
     		if (generator.eContainer instanceof Weaver) {
@@ -314,7 +314,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	 */
 	private def dispatch KNode createAnonymousMetamodel(Generator generator) {
 		val instanceName = "" 
-		val className = if (generator.targetModel.reference != null)
+		val className = if (generator.targetModel != null)
 			generator.targetModel.reference.resolveType.simpleName
 		else {
 			if (generator.reference instanceof JvmGenericType) {

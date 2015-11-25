@@ -35,7 +35,7 @@ class ArchitectureLabelProvider extends DefaultEObjectLabelProvider {
 	def text(Weaver weaver) {
 		"weaver " + weaver.reference.simpleName
 	}
-
+	
 //	def image(Greeting ele) {
 //		'Greeting.gif'
 //	}

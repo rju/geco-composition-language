@@ -340,12 +340,11 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
       final KNode sourceModelNode = _xifexpression;
       KNode _xifexpression_1 = null;
       TargetModelNodeType _targetModel = generator.getTargetModel();
-      Metamodel _reference_2 = _targetModel.getReference();
-      boolean _notEquals_1 = (!Objects.equal(_reference_2, null));
+      boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
       if (_notEquals_1) {
         TargetModelNodeType _targetModel_1 = generator.getTargetModel();
-        Metamodel _reference_3 = _targetModel_1.getReference();
-        _xifexpression_1 = this.metamodelNodes.get(_reference_3);
+        Metamodel _reference_2 = _targetModel_1.getReference();
+        _xifexpression_1 = this.metamodelNodes.get(_reference_2);
       } else {
         KNode _xifexpression_2 = null;
         EObject _eContainer = generator.eContainer();
@@ -575,21 +574,20 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
       final String instanceName = "";
       String _xifexpression = null;
       TargetModelNodeType _targetModel = generator.getTargetModel();
-      Metamodel _reference = _targetModel.getReference();
-      boolean _notEquals = (!Objects.equal(_reference, null));
+      boolean _notEquals = (!Objects.equal(_targetModel, null));
       if (_notEquals) {
         TargetModelNodeType _targetModel_1 = generator.getTargetModel();
-        Metamodel _reference_1 = _targetModel_1.getReference();
-        JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference_1);
+        Metamodel _reference = _targetModel_1.getReference();
+        JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference);
         _xifexpression = _resolveType.getSimpleName();
       } else {
         String _xifexpression_1 = null;
-        JvmType _reference_2 = generator.getReference();
-        if ((_reference_2 instanceof JvmGenericType)) {
+        JvmType _reference_1 = generator.getReference();
+        if ((_reference_1 instanceof JvmGenericType)) {
           String _xblockexpression_1 = null;
           {
-            JvmType _reference_3 = generator.getReference();
-            final EList<JvmTypeReference> superTypes = ((JvmGenericType) _reference_3).getSuperTypes();
+            JvmType _reference_2 = generator.getReference();
+            final EList<JvmTypeReference> superTypes = ((JvmGenericType) _reference_2).getSuperTypes();
             final Function1<JvmTypeReference, Boolean> _function = new Function1<JvmTypeReference, Boolean>() {
               public Boolean apply(final JvmTypeReference it) {
                 String _simpleName = it.getSimpleName();

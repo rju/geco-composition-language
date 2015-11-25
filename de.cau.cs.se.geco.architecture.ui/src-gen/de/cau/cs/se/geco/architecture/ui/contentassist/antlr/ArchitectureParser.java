@@ -63,7 +63,9 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGeneratorAccess().getGroup_2_2(), "rule__Generator__Group_2_2__0");
 					put(grammarAccess.getGeneratorAccess().getGroup_5(), "rule__Generator__Group_5__0");
 					put(grammarAccess.getGeneratorAccess().getGroup_6(), "rule__Generator__Group_6__0");
+					put(grammarAccess.getGeneratorAccess().getGroup_6_1(), "rule__Generator__Group_6_1__0");
 					put(grammarAccess.getGeneratorAccess().getGroup_6_2(), "rule__Generator__Group_6_2__0");
+					put(grammarAccess.getGeneratorAccess().getGroup_6_2_2(), "rule__Generator__Group_6_2_2__0");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getGroup_0(), "rule__SourceModelNodeSelector__Group_0__0");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getGroup_0_1(), "rule__SourceModelNodeSelector__Group_0_1__0");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getGroup_0_2(), "rule__SourceModelNodeSelector__Group_0_2__0");
@@ -118,11 +120,11 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGeneratorAccess().getReferenceAssignment_1(), "rule__Generator__ReferenceAssignment_1");
 					put(grammarAccess.getGeneratorAccess().getSourceAuxModelsAssignment_2_1(), "rule__Generator__SourceAuxModelsAssignment_2_1");
 					put(grammarAccess.getGeneratorAccess().getSourceAuxModelsAssignment_2_2_1(), "rule__Generator__SourceAuxModelsAssignment_2_2_1");
-					put(grammarAccess.getGeneratorAccess().getSourceModelAssignment_3(), "rule__Generator__SourceModelAssignment_3");
-					put(grammarAccess.getGeneratorAccess().getTargetModelAssignment_4(), "rule__Generator__TargetModelAssignment_4");
-					put(grammarAccess.getGeneratorAccess().getTargetTraceModelAssignment_5_1(), "rule__Generator__TargetTraceModelAssignment_5_1");
-					put(grammarAccess.getGeneratorAccess().getSourceTraceModelsAssignment_6_1(), "rule__Generator__SourceTraceModelsAssignment_6_1");
+					put(grammarAccess.getGeneratorAccess().getSourceModelAssignment_4(), "rule__Generator__SourceModelAssignment_4");
+					put(grammarAccess.getGeneratorAccess().getTargetModelAssignment_5_1(), "rule__Generator__TargetModelAssignment_5_1");
+					put(grammarAccess.getGeneratorAccess().getTargetTraceModelAssignment_6_1_1(), "rule__Generator__TargetTraceModelAssignment_6_1_1");
 					put(grammarAccess.getGeneratorAccess().getSourceTraceModelsAssignment_6_2_1(), "rule__Generator__SourceTraceModelsAssignment_6_2_1");
+					put(grammarAccess.getGeneratorAccess().getSourceTraceModelsAssignment_6_2_2_1(), "rule__Generator__SourceTraceModelsAssignment_6_2_2_1");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceAssignment_0_0(), "rule__SourceModelNodeSelector__ReferenceAssignment_0_0");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getConstraintAssignment_0_1_1(), "rule__SourceModelNodeSelector__ConstraintAssignment_0_1_1");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getPropertyAssignment_0_2_1(), "rule__SourceModelNodeSelector__PropertyAssignment_0_2_1");
