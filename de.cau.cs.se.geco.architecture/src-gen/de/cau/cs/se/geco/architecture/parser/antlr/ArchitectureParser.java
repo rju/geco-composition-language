@@ -25,7 +25,7 @@ public class ArchitectureParser extends org.eclipse.xtext.parser.antlr.AbstractA
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "GecoModel";
 	}
 	
 	public ArchitectureGrammarAccess getGrammarAccess() {

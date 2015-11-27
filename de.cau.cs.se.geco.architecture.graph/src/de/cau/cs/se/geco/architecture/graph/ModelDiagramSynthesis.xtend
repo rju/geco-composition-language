@@ -20,11 +20,11 @@ import de.cau.cs.kieler.kiml.options.PortConstraints
 import de.cau.cs.kieler.kiml.options.PortSide
 import de.cau.cs.kieler.klighd.KlighdConstants
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
-import de.cau.cs.se.geco.architecture.architecture.Processor
+import de.cau.cs.se.geco.architecture.architecture.Fragment
 import de.cau.cs.se.geco.architecture.architecture.Generator
 import de.cau.cs.se.geco.architecture.architecture.Metamodel
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
-import de.cau.cs.se.geco.architecture.architecture.Model
+import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import de.cau.cs.se.geco.architecture.architecture.TraceModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
@@ -41,8 +41,15 @@ import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping
 import de.cau.cs.kieler.klay.layered.properties.Properties
 import de.cau.cs.kieler.klighd.SynthesisOption
 import com.google.common.collect.ImmutableList
+import de.cau.cs.se.geco.architecture.architecture.AdviceModel
+import de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel
+import de.cau.cs.se.geco.architecture.architecture.AspectModel
+import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
+import de.cau.cs.kieler.kiml.options.NodeLabelPlacement
+import java.util.EnumSet
+import de.cau.cs.kieler.kiml.klayoutdata.KShapeLayout
 
-class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
+class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     
     @Inject extension KNodeExtensions
     @Inject extension KEdgeExtensions
@@ -86,6 +93,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     private static val WEAVER_IN = 0
     private static val WEAVER_OUT = 1
     private static val WEAVER_ASPECT = 2
+    private static val WEAVER_POINTCUT = 3
     
     private static val TRACE_MODEL_IN = 0
     private static val TRACE_MODEL_OUT = 1
@@ -109,7 +117,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         return ImmutableList::of(TRACE_MODEL_VISIBLE, ROUTING, SPACING)
     }
        
-    override KNode transform(Model model) {
+    override KNode transform(GecoModel model) {
         val root = model.createNode().associateWith(model);
         
         root => [
@@ -123,11 +131,11 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
             })
                         
 			model.metamodels.createNamedMetaModels(it)
-            model.processors.createAllToplevelGenerators(it)
-            model.processors.createAllWeavers(it)
+            model.fragments.createAllToplevelGenerators(it)
+            model.fragments.createAllWeavers(it)
             
             generatorNodes.forEach[generator, generatorNode | it.createEdgesForGenerator(generator, generatorNode)]
-            weaverNodes.forEach[weaver, weaverNode | it.createEdgesForWeaver(weaver, weaverNode)]    	
+            weaverNodes.forEach[weaver, weaverNode | createEdgesForWeaver(weaver, weaverNode)]    	
         ]
                 
         return root;
@@ -136,36 +144,84 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	/**
 	 * Create connection between models and weaver
 	 */
-	def void createEdgesForWeaver(KNode root, Weaver weaver, KNode weaverNode) {
+	private def void createEdgesForWeaver(Weaver weaver, KNode weaverNode) {
+		/** source base model node */
+		createSourceBaseModelEdgeForWeaver(weaver, weaverNode)
+    	
+ 		/** target base model node */
+ 		createTargetBaseModelEdgeForWeaver(weaver, weaverNode)
+    		
+    	/** advice/aspect model node */
+    	switch (weaver.aspectModel) {
+    		AdviceModel : createAdviceModelEdgeForWeaver(weaver.aspectModel as AdviceModel, weaverNode)
+    		SeparatePointcutAdviceModel : 
+    			createPointcutModelEdgeForWeaver(weaver.aspectModel as SeparatePointcutAdviceModel, weaverNode)
+    	}
+    	
+	}
+		
+	/**
+	 * edge to the source base model of the weaver.
+	 */
+	private def createSourceBaseModelEdgeForWeaver(Weaver weaver, KNode weaverNode) {
 		val sourceModelNode = if (weaver.sourceModel != null) {
     		metamodelNodes.get(weaver.sourceModel.reference)
     	} else {
     		targetWeaverModelNodes.get(weaver.predecessingWeaver)
     	}
-    	val targetModelNode = if (weaver.targetModel != null) {
-    		metamodelNodes.get(weaver.targetModel.reference)
-    	} else {
-    		targetWeaverModelNodes.get(weaver)
-    	}
-    	val aspectModelNode = if (weaver.aspectModel instanceof TargetModelNodeType) {
-    		metamodelNodes.get((weaver.aspectModel as TargetModelNodeType).reference)
-    	} else {
-    		targetGeneratorModelNodes.get((weaver.aspectModel as Generator))
-    	}
     	
     	drawConnectionNoArrow(sourceModelNode, weaverNode, LineStyle.SOLID) => [
     		it.sourcePort = sourceModelNode.ports.get(MODEL_OUT)
     		it.targetPort = weaverNode.ports.get(WEAVER_IN)
-    	]
+    	]	
+	}
+	
+	/**
+	 * edge to the source base model of the weaver.
+	 */
+	private def createTargetBaseModelEdgeForWeaver(Weaver weaver, KNode weaverNode) {
+		val targetModelNode = if (weaver.targetModel != null) {
+    		metamodelNodes.get(weaver.targetModel.reference)
+    	} else {
+    		targetWeaverModelNodes.get(weaver)
+    	}
+    	
     	drawConnectionWithArrow(weaverNode, targetModelNode, LineStyle.SOLID) => [
     		it.sourcePort = weaverNode.ports.get(WEAVER_OUT)
     		it.targetPort = targetModelNode.ports.get(MODEL_IN)
-    	]
+    	]    
+	}
+	
+	/**
+	 * create an edge between weaver and advice or aspect model.
+	 */
+	private def createAdviceModelEdgeForWeaver(AdviceModel adviceModel, KNode weaverNode) {
+    	val aspectModelNode = switch(adviceModel) {
+    		TargetModelNodeType : metamodelNodes.get((adviceModel as TargetModelNodeType).reference)
+    		Generator: targetGeneratorModelNodes.get((adviceModel as Generator))
+    	}
+    	    	
     	drawConnectionWithArrow(aspectModelNode, weaverNode, LineStyle.SOLID) => [
     		it.sourcePort = aspectModelNode.ports.get(MODEL_OUT)
     		it.targetPort = weaverNode.ports.get(WEAVER_ASPECT)
     	]
+    	
 	}
+	
+	/**
+	 * create an edge between weaver and advice or aspect model.
+	 */
+	private def createPointcutModelEdgeForWeaver(SeparatePointcutAdviceModel separatePointcutAdviceModel, KNode weaverNode) {
+   		val pointcutModelNode = metamodelNodes.get(separatePointcutAdviceModel.pointcut.reference)
+    	
+	    drawConnectionWithArrow(pointcutModelNode, weaverNode, LineStyle.SOLID) => [
+	    	it.sourcePort = pointcutModelNode.ports.get(MODEL_OUT)
+	    	it.targetPort = weaverNode.ports.get(WEAVER_POINTCUT)
+	    ]
+	    
+	    createAdviceModelEdgeForWeaver(separatePointcutAdviceModel.advice, weaverNode)
+	}
+	
 	
 	/**
 	 * Create edges between the generator and the models.
@@ -210,13 +266,12 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	/**
 	 * Create all weaver nodes.
 	 */
-	def void createAllWeavers(EList<Processor> processors, KNode parent) {
-		processors.filter(Weaver).forEach[weaver |
+	private def void createAllWeavers(EList<Fragment> fragments, KNode parent) {
+		fragments.filter(Weaver).forEach[weaver |
         	val weaverNode = weaver.drawWeaver 
         	weaverNodes.put(weaver, weaverNode)
         	parent.children += weaverNode
-        	if (weaver.aspectModel instanceof Generator) 
-        		(weaver.aspectModel as Generator).createSublevelGenerator(parent)
+        	weaver.aspectModel.createSublevelGenerator(parent)
         	if (weaver.targetModel == null) {
         		val anonymousMetamodelNode = weaver.createAnonymousMetamodel
         		targetWeaverModelNodes.put(weaver, anonymousMetamodelNode)
@@ -227,13 +282,23 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	}
 	
 	/**
+	 * Check if the aspect or advice model are in fact generators.
+	 */
+	private def void createSublevelGenerator(AspectModel aspectModel, KNode parent) {
+		switch (aspectModel) {
+			Generator: aspectModel.createSublevelGenerator(parent)
+			SeparatePointcutAdviceModel : aspectModel.advice.createSublevelGenerator(parent)
+		}        		
+	}
+	
+	/**
 	 * Create a sublevel generator which is used as privder of an
 	 * aspect model of a weaver.
 	 */
-	def void createSublevelGenerator(Generator generator, KNode parent) {
+	private def void createSublevelGenerator(Generator generator, KNode parent) {
 		/**
 		 * When a generator is declared as an aspect model source, its
-		 * target meta-model is not explicitly specified. Therefore,
+		 * target metamodel is not explicitly specified. Therefore,
 		 * an anonymous metamodel is placed in the graph instead
 		 */
 		val generatorNode = generator.drawGenerator
@@ -261,8 +326,8 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	/**
 	 * Create all generators which are directly declared in the model.
 	 */
-	def void createAllToplevelGenerators(EList<Processor> processors, KNode parent) {
-		processors.filter(Generator).forEach[generator | 
+	def void createAllToplevelGenerators(EList<Fragment> fragments, KNode parent) {
+		fragments.filter(Generator).forEach[generator | 
         	val generatorNode = generator.drawGenerator
         	generatorNodes.put(generator, generatorNode)
         	generator.handleTraceModel(parent)
@@ -288,11 +353,13 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
 	 * Create all explicit defined metamodels.
 	 */
 	def void createNamedMetaModels(EList<MetamodelSequence> metamodels, KNode parent) {
-		metamodels.forEach[seq | seq.metamodels.forEach[metamodel | 
-			val metaModelNode = metamodel.createMetamodel(seq)
-			metamodelNodes.put(metamodel, metaModelNode)
-			parent.children += metaModelNode
-		]]
+		metamodels.forEach[seq | 
+			seq.metamodels.forEach[metamodel | 
+				val metaModelNode = metamodel.createMetamodel(seq)
+				metamodelNodes.put(metamodel, metaModelNode)
+				parent.children += metaModelNode
+			]
+		]
 	}
 	
     /**
@@ -454,14 +521,41 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
-                it.addInsidePortLabel("aspect", 8, KlighdConstants.DEFAULT_FONT_NAME)
+                it.addInsidePortLabel(if (weaver.hasSeparatePointcut) "advice" else "aspect", 8, KlighdConstants.DEFAULT_FONT_NAME)
     		])
-			it.addText(weaver.name) => [
-               	it.fontBold = true
-            ]
-		]
+    		if (weaver.hasSeparatePointcut) {
+	    		it.ports.add(createPort() => [
+	    			it.setPortSize(2,2)
+	    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.SOUTH)
+	    			it.setLayoutOption(LayoutOptions.NODE_LABEL_PLACEMENT,  NodeLabelPlacement.insideBottomLeft)
+	    			
+	    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
+	                
+	                // last but not least add a label exhibiting the ports name
+	                it.addInsidePortLabel("pointcut", 8, KlighdConstants.DEFAULT_FONT_NAME)
+	    		])
+	    	}
+	    	it.addRoundedRectangle(5,5) => [
+				it.lineWidth = 0
+				it.setBackground("white".color)
+                it.shadow = "black".color
+                it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
+                it.addText(weaver.name) => [
+               		it.fontBold = true
+            	]
+			]		
+        ]
 
 		return weaverNode
+	}
+	
+	private def hasSeparatePointcut(Weaver weaver) {
+		if (weaver.reference instanceof JvmGenericType) {
+			(weaver.reference as JvmGenericType).superTypes.exists[
+				it.type.qualifiedName.equals(IWeaverSeparatePointcut.canonicalName)
+			]
+		} else
+			false
 	}
 	
 	/**
@@ -503,10 +597,16 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
                 // last but not least add a label exhibiting the ports name
                 it.addInsidePortLabel("tr out", 8, KlighdConstants.DEFAULT_FONT_NAME)
     		])
-			it.addText(generator.name) => [
-              	it.fontBold = true
-              	it.setAreaPlacementData.from(LEFT, 10, 0, TOP, 10, 0).to(RIGHT, 10, 0, BOTTOM, 10, 0)
-            ]
+    		
+            it.addRoundedRectangle(5,5) => [
+				it.lineWidth = 0
+				it.setBackground("lightgray".color)
+                it.shadow = "black".color
+                it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
+                it.addText(generator.name) => [
+               		it.fontBold = true
+            	]
+			]
 		]
 				
 		return generatorNode
@@ -556,10 +656,10 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     }
 	
 	private def String getName(Generator generator) {
-		return "G " + generator.reference.simpleName
+		return generator.reference.simpleName
 	}
     
     private def String getName(Weaver weaver) {
-		return "W " + weaver.reference.simpleName
+		return weaver.reference.simpleName
 	}
 }

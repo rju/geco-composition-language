@@ -11,6 +11,8 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage
 import de.cau.cs.se.geco.architecture.architecture.Generator
+import de.cau.cs.se.geco.architecture.framework.IWeaver
+import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
 
 /**
  * Custom validation rules. 
@@ -35,7 +37,10 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 		val weaverJvmType = weaver.reference
 		switch(weaverJvmType) {
 			JvmGenericType: {
-				val match = weaverJvmType.superTypes.filter[it.type.simpleName.equals("IWeaver")]
+				val match = weaverJvmType.superTypes.filter[
+					it.type.qualifiedName.equals(IWeaver.canonicalName) ||
+					it.type.qualifiedName.equals(IWeaverSeparatePointcut.canonicalName)
+				]
 				if (match.size > 0) {
 					if (match.get(0) instanceof JvmParameterizedTypeReference) {
 						val iface = match.get(0) as JvmParameterizedTypeReference
@@ -46,17 +51,17 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 							if (!sourceModelTypeReference.determineElementType.resolveType.isSubTypeOf(baseTypeReference)) {
 								error('Source model type ' + sourceModelTypeReference.qualifiedName + 
 										' does not match weaver base type ' + baseTypeReference.qualifiedName, 
-										ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL)
+										ArchitecturePackage.Literals.FRAGMENT__SOURCE_MODEL)
 							}
 						}
 					}
 				} else {
 					error('Weaver expected, but ' + weaverJvmType.qualifiedName + ' found.', 
-								ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+								ArchitecturePackage.Literals.FRAGMENT__REFERENCE)
 				}
 			}
 			default: error('Weaver expected, but illegal type found. Please check for build failures.', 
-								ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+								ArchitecturePackage.Literals.FRAGMENT__REFERENCE)
 		}		
 	}
 	
@@ -77,7 +82,7 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 								if (!sourceModelTypeReference.determineElementType.resolveType.isSubTypeOf(inputTypeReference)) {
 									error('Source model type ' + sourceModelTypeReference.determineElementType.qualifiedName + 
 										' does not match generator source type ' + inputTypeReference.qualifiedName, 
-									ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL)
+									ArchitecturePackage.Literals.FRAGMENT__SOURCE_MODEL)
 								}
 							}
 						}
@@ -88,19 +93,19 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 							if (!outputTypeReference.isSubTypeOf(targetModelTypeReference))
 								error('Target model type ' + sourceModelTypeReference.qualifiedName + 
 										' does not match generator target type ' + inputTypeReference.qualifiedName, 
-									ArchitecturePackage.Literals.PROCESSOR__TARGET_MODEL)
+									ArchitecturePackage.Literals.FRAGMENT__TARGET_MODEL)
 						}
 					} else {
 						error('Generator expected, but illegal type found. Please check for build failures.', 
-								ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+								ArchitecturePackage.Literals.FRAGMENT__REFERENCE)
 					}
 				} else {
 					error('Generator expected, but illegal type found. Please check for build failures.', 
-						ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+						ArchitecturePackage.Literals.FRAGMENT__REFERENCE)
 				}
 			}
 			default: error('Generator expected, but illegal type found. Please check for build failures.', 
-						ArchitecturePackage.Literals.PROCESSOR__REFERENCE)
+						ArchitecturePackage.Literals.FRAGMENT__REFERENCE)
 		}
 	}
 	

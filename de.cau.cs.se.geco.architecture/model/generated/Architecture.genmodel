@@ -25,15 +25,21 @@
       <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/LE"/>
       <genEnumLiterals ecoreEnumLiteral="Architecture.ecore#//Comparator/LIKE"/>
     </genEnums>
-    <genClasses ecoreClass="Architecture.ecore#//Model">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Model/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/registeredPackages"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/metamodels"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Model/processors"/>
+    <genClasses ecoreClass="Architecture.ecore#//GecoModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//GecoModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//GecoModel/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//GecoModel/registeredRootClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//GecoModel/metamodels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//GecoModel/fragments"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Import">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Import/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//RegisteredRootClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredRootClass/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//RegisteredRootClass/importedNamespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredRootClass/isText"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredRootClass/extension"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//MetamodelSequence">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//MetamodelSequence/modifier"/>
@@ -43,21 +49,20 @@
     <genClasses ecoreClass="Architecture.ecore#//Metamodel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//Metamodel/name"/>
     </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//RegisteredPackage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//RegisteredPackage/importedNamespace"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/isText"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//RegisteredPackage/extension"/>
-    </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//Processor">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Processor/reference"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Processor/sourceModel"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Processor/targetModel"/>
+    <genClasses ecoreClass="Architecture.ecore#//Fragment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//Fragment/reference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Fragment/sourceModel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Fragment/targetModel"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//Weaver">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Weaver/aspectModel"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//AspectModel"/>
+    <genClasses ecoreClass="Architecture.ecore#//SeparatePointcutAdviceModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SeparatePointcutAdviceModel/pointcut"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SeparatePointcutAdviceModel/advice"/>
+    </genClasses>
+    <genClasses ecoreClass="Architecture.ecore#//AdviceModel"/>
     <genClasses ecoreClass="Architecture.ecore#//Generator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/sourceAuxModels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/targetTraceModel"/>

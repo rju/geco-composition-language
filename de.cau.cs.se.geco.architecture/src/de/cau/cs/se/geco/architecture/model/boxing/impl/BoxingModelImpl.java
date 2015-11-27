@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
-import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.Group;
@@ -55,7 +55,7 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	 * @generated
 	 * @ordered
 	 */
-	protected Model derivedFrom;
+	protected GecoModel derivedFrom;
 
 	/**
 	 * The cached value of the '{@link #getAllProcessors() <em>All Processors</em>}' reference list.
@@ -113,10 +113,10 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Model getDerivedFrom() {
+	public GecoModel getDerivedFrom() {
 		if (derivedFrom != null && derivedFrom.eIsProxy()) {
 			InternalEObject oldDerivedFrom = (InternalEObject)derivedFrom;
-			derivedFrom = (Model)eResolveProxy(oldDerivedFrom);
+			derivedFrom = (GecoModel)eResolveProxy(oldDerivedFrom);
 			if (derivedFrom != oldDerivedFrom) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.BOXING_MODEL__DERIVED_FROM, oldDerivedFrom, derivedFrom));
@@ -130,7 +130,7 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Model basicGetDerivedFrom() {
+	public GecoModel basicGetDerivedFrom() {
 		return derivedFrom;
 	}
 
@@ -139,8 +139,8 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDerivedFrom(Model newDerivedFrom) {
-		Model oldDerivedFrom = derivedFrom;
+	public void setDerivedFrom(GecoModel newDerivedFrom) {
+		GecoModel oldDerivedFrom = derivedFrom;
 		derivedFrom = newDerivedFrom;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.BOXING_MODEL__DERIVED_FROM, oldDerivedFrom, derivedFrom));
@@ -219,7 +219,7 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 				getGroups().addAll((Collection<? extends Group>)newValue);
 				return;
 			case BoxingPackage.BOXING_MODEL__DERIVED_FROM:
-				setDerivedFrom((Model)newValue);
+				setDerivedFrom((GecoModel)newValue);
 				return;
 			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
 				getAllProcessors().clear();
@@ -245,7 +245,7 @@ public class BoxingModelImpl extends MinimalEObjectImpl.Container implements Box
 				getGroups().clear();
 				return;
 			case BoxingPackage.BOXING_MODEL__DERIVED_FROM:
-				setDerivedFrom((Model)null);
+				setDerivedFrom((GecoModel)null);
 				return;
 			case BoxingPackage.BOXING_MODEL__ALL_PROCESSORS:
 				getAllProcessors().clear();

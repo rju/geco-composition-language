@@ -3,7 +3,7 @@
  */
 package de.cau.cs.se.geco.architecture.generator
 
-import de.cau.cs.se.geco.architecture.architecture.Model
+import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import java.io.File
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
@@ -17,7 +17,7 @@ import org.eclipse.xtext.generator.IGenerator
 class ArchitectureGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		val model = resource.allContents.filter(Model).last
+		val model = resource.allContents.filter(GecoModel).last
 		val className = resource.URI.trimFileExtension.lastSegment
 		val path = model.name.replace('.', File.separator)
 		val generateBoxingModel = new GenerateBoxingModel()

@@ -9,6 +9,8 @@ import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
+import de.cau.cs.se.geco.architecture.framework.IWeaver;
+import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import de.cau.cs.se.geco.architecture.validation.AbstractArchitectureValidator;
 import org.eclipse.emf.common.util.EList;
@@ -37,9 +39,21 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
         _matched=true;
         EList<JvmTypeReference> _superTypes = ((JvmGenericType)weaverJvmType).getSuperTypes();
         final Function1<JvmTypeReference, Boolean> _function = (JvmTypeReference it) -> {
+          boolean _or = false;
           JvmType _type = it.getType();
-          String _simpleName = _type.getSimpleName();
-          return Boolean.valueOf(_simpleName.equals("IWeaver"));
+          String _qualifiedName = _type.getQualifiedName();
+          String _canonicalName = IWeaver.class.getCanonicalName();
+          boolean _equals = _qualifiedName.equals(_canonicalName);
+          if (_equals) {
+            _or = true;
+          } else {
+            JvmType _type_1 = it.getType();
+            String _qualifiedName_1 = _type_1.getQualifiedName();
+            String _canonicalName_1 = IWeaverSeparatePointcut.class.getCanonicalName();
+            boolean _equals_1 = _qualifiedName_1.equals(_canonicalName_1);
+            _or = _equals_1;
+          }
+          return Boolean.valueOf(_or);
         };
         final Iterable<JvmTypeReference> match = IterableExtensions.<JvmTypeReference>filter(_superTypes, _function);
         int _size = IterableExtensions.size(match);
@@ -70,7 +84,7 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
                 String _qualifiedName_1 = baseTypeReference.getQualifiedName();
                 String _plus_2 = (_plus_1 + _qualifiedName_1);
                 this.error(_plus_2, 
-                  ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL);
+                  ArchitecturePackage.Literals.FRAGMENT__SOURCE_MODEL);
               }
             }
           }
@@ -79,13 +93,13 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
           String _plus_3 = ("Weaver expected, but " + _qualifiedName_2);
           String _plus_4 = (_plus_3 + " found.");
           this.error(_plus_4, 
-            ArchitecturePackage.Literals.PROCESSOR__REFERENCE);
+            ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
         }
       }
     }
     if (!_matched) {
       this.error("Weaver expected, but illegal type found. Please check for build failures.", 
-        ArchitecturePackage.Literals.PROCESSOR__REFERENCE);
+        ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
     }
   }
   
@@ -129,7 +143,7 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
                   String _qualifiedName_1 = inputTypeReference.getQualifiedName();
                   String _plus_2 = (_plus_1 + _qualifiedName_1);
                   this.error(_plus_2, 
-                    ArchitecturePackage.Literals.PROCESSOR__SOURCE_MODEL);
+                    ArchitecturePackage.Literals.FRAGMENT__SOURCE_MODEL);
                 }
               }
             }
@@ -149,22 +163,22 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
                 String _qualifiedName_3 = inputTypeReference.getQualifiedName();
                 String _plus_5 = (_plus_4 + _qualifiedName_3);
                 this.error(_plus_5, 
-                  ArchitecturePackage.Literals.PROCESSOR__TARGET_MODEL);
+                  ArchitecturePackage.Literals.FRAGMENT__TARGET_MODEL);
               }
             }
           } else {
             this.error("Generator expected, but illegal type found. Please check for build failures.", 
-              ArchitecturePackage.Literals.PROCESSOR__REFERENCE);
+              ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
           }
         } else {
           this.error("Generator expected, but illegal type found. Please check for build failures.", 
-            ArchitecturePackage.Literals.PROCESSOR__REFERENCE);
+            ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
         }
       }
     }
     if (!_matched) {
       this.error("Generator expected, but illegal type found. Please check for build failures.", 
-        ArchitecturePackage.Literals.PROCESSOR__REFERENCE);
+        ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
     }
   }
 }

@@ -9,7 +9,7 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 import de.cau.cs.se.geco.architecture.architecture.Metamodel
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
 import de.cau.cs.se.geco.architecture.architecture.Weaver
-import de.cau.cs.se.geco.architecture.architecture.Model
+import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
 import de.cau.cs.se.geco.architecture.architecture.Typeof
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
@@ -293,7 +293,7 @@ class ArchitectureTyping {
 	 * Returns the predecessing weaver of the given weaver or null on error.
 	 */
 	def static Weaver predecessingWeaver(Weaver weaver) {
-		val connections = (weaver.eContainer as Model).processors
+		val connections = (weaver.eContainer as GecoModel).fragments
 		val index = connections.lastIndexOf(weaver)
 		if (index > 0) {
 			var i = 1

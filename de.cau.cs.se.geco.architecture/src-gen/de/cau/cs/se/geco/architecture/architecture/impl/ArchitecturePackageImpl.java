@@ -2,6 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
+import de.cau.cs.se.geco.architecture.architecture.AdviceModel;
 import de.cau.cs.se.geco.architecture.architecture.ArchitectureFactory;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral;
@@ -12,6 +13,8 @@ import de.cau.cs.se.geco.architecture.architecture.Comparator;
 import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.FloatLiteral;
+import de.cau.cs.se.geco.architecture.architecture.Fragment;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
@@ -20,7 +23,6 @@ import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
-import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
@@ -28,8 +30,8 @@ import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.Operand;
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
-import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
+import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
+import de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
@@ -62,7 +64,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelEClass = null;
+  private EClass gecoModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -70,6 +72,13 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * @generated
    */
   private EClass importEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass registeredRootClassEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -90,14 +99,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass registeredPackageEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass processorEClass = null;
+  private EClass fragmentEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -112,6 +114,20 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * @generated
    */
   private EClass aspectModelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass separatePointcutAdviceModelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass adviceModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -366,9 +382,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModel()
+  public EClass getGecoModel()
   {
-    return modelEClass;
+    return gecoModelEClass;
   }
 
   /**
@@ -376,9 +392,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getModel_Name()
+  public EAttribute getGecoModel_Name()
   {
-    return (EAttribute)modelEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)gecoModelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -386,9 +402,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Imports()
+  public EReference getGecoModel_Imports()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+    return (EReference)gecoModelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -396,9 +412,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_RegisteredPackages()
+  public EReference getGecoModel_RegisteredRootClass()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(2);
+    return (EReference)gecoModelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -406,9 +422,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Metamodels()
+  public EReference getGecoModel_Metamodels()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(3);
+    return (EReference)gecoModelEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -416,9 +432,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Processors()
+  public EReference getGecoModel_Fragments()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(4);
+    return (EReference)gecoModelEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -439,6 +455,56 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
   public EReference getImport_ImportedNamespace()
   {
     return (EReference)importEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRegisteredRootClass()
+  {
+    return registeredRootClassEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRegisteredRootClass_Name()
+  {
+    return (EAttribute)registeredRootClassEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRegisteredRootClass_ImportedNamespace()
+  {
+    return (EReference)registeredRootClassEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRegisteredRootClass_IsText()
+  {
+    return (EAttribute)registeredRootClassEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRegisteredRootClass_Extension()
+  {
+    return (EAttribute)registeredRootClassEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -506,9 +572,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRegisteredPackage()
+  public EClass getFragment()
   {
-    return registeredPackageEClass;
+    return fragmentEClass;
   }
 
   /**
@@ -516,9 +582,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRegisteredPackage_Name()
+  public EReference getFragment_Reference()
   {
-    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(0);
+    return (EReference)fragmentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -526,9 +592,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRegisteredPackage_ImportedNamespace()
+  public EReference getFragment_SourceModel()
   {
-    return (EReference)registeredPackageEClass.getEStructuralFeatures().get(1);
+    return (EReference)fragmentEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -536,59 +602,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRegisteredPackage_IsText()
+  public EReference getFragment_TargetModel()
   {
-    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRegisteredPackage_Extension()
-  {
-    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getProcessor()
-  {
-    return processorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessor_Reference()
-  {
-    return (EReference)processorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessor_SourceModel()
-  {
-    return (EReference)processorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getProcessor_TargetModel()
-  {
-    return (EReference)processorEClass.getEStructuralFeatures().get(2);
+    return (EReference)fragmentEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -619,6 +635,46 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
   public EClass getAspectModel()
   {
     return aspectModelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSeparatePointcutAdviceModel()
+  {
+    return separatePointcutAdviceModelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSeparatePointcutAdviceModel_Pointcut()
+  {
+    return (EReference)separatePointcutAdviceModelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSeparatePointcutAdviceModel_Advice()
+  {
+    return (EReference)separatePointcutAdviceModelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAdviceModel()
+  {
+    return adviceModelEClass;
   }
 
   /**
@@ -1221,15 +1277,21 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     isCreated = true;
 
     // Create classes and their features
-    modelEClass = createEClass(MODEL);
-    createEAttribute(modelEClass, MODEL__NAME);
-    createEReference(modelEClass, MODEL__IMPORTS);
-    createEReference(modelEClass, MODEL__REGISTERED_PACKAGES);
-    createEReference(modelEClass, MODEL__METAMODELS);
-    createEReference(modelEClass, MODEL__PROCESSORS);
+    gecoModelEClass = createEClass(GECO_MODEL);
+    createEAttribute(gecoModelEClass, GECO_MODEL__NAME);
+    createEReference(gecoModelEClass, GECO_MODEL__IMPORTS);
+    createEReference(gecoModelEClass, GECO_MODEL__REGISTERED_ROOT_CLASS);
+    createEReference(gecoModelEClass, GECO_MODEL__METAMODELS);
+    createEReference(gecoModelEClass, GECO_MODEL__FRAGMENTS);
 
     importEClass = createEClass(IMPORT);
     createEReference(importEClass, IMPORT__IMPORTED_NAMESPACE);
+
+    registeredRootClassEClass = createEClass(REGISTERED_ROOT_CLASS);
+    createEAttribute(registeredRootClassEClass, REGISTERED_ROOT_CLASS__NAME);
+    createEReference(registeredRootClassEClass, REGISTERED_ROOT_CLASS__IMPORTED_NAMESPACE);
+    createEAttribute(registeredRootClassEClass, REGISTERED_ROOT_CLASS__IS_TEXT);
+    createEAttribute(registeredRootClassEClass, REGISTERED_ROOT_CLASS__EXTENSION);
 
     metamodelSequenceEClass = createEClass(METAMODEL_SEQUENCE);
     createEAttribute(metamodelSequenceEClass, METAMODEL_SEQUENCE__MODIFIER);
@@ -1239,21 +1301,21 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     metamodelEClass = createEClass(METAMODEL);
     createEAttribute(metamodelEClass, METAMODEL__NAME);
 
-    registeredPackageEClass = createEClass(REGISTERED_PACKAGE);
-    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__NAME);
-    createEReference(registeredPackageEClass, REGISTERED_PACKAGE__IMPORTED_NAMESPACE);
-    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__IS_TEXT);
-    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__EXTENSION);
-
-    processorEClass = createEClass(PROCESSOR);
-    createEReference(processorEClass, PROCESSOR__REFERENCE);
-    createEReference(processorEClass, PROCESSOR__SOURCE_MODEL);
-    createEReference(processorEClass, PROCESSOR__TARGET_MODEL);
+    fragmentEClass = createEClass(FRAGMENT);
+    createEReference(fragmentEClass, FRAGMENT__REFERENCE);
+    createEReference(fragmentEClass, FRAGMENT__SOURCE_MODEL);
+    createEReference(fragmentEClass, FRAGMENT__TARGET_MODEL);
 
     weaverEClass = createEClass(WEAVER);
     createEReference(weaverEClass, WEAVER__ASPECT_MODEL);
 
     aspectModelEClass = createEClass(ASPECT_MODEL);
+
+    separatePointcutAdviceModelEClass = createEClass(SEPARATE_POINTCUT_ADVICE_MODEL);
+    createEReference(separatePointcutAdviceModelEClass, SEPARATE_POINTCUT_ADVICE_MODEL__POINTCUT);
+    createEReference(separatePointcutAdviceModelEClass, SEPARATE_POINTCUT_ADVICE_MODEL__ADVICE);
+
+    adviceModelEClass = createEClass(ADVICE_MODEL);
 
     generatorEClass = createEClass(GENERATOR);
     createEReference(generatorEClass, GENERATOR__SOURCE_AUX_MODELS);
@@ -1370,10 +1432,12 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    weaverEClass.getESuperTypes().add(this.getProcessor());
-    generatorEClass.getESuperTypes().add(this.getProcessor());
-    generatorEClass.getESuperTypes().add(this.getAspectModel());
-    targetModelNodeTypeEClass.getESuperTypes().add(this.getAspectModel());
+    weaverEClass.getESuperTypes().add(this.getFragment());
+    separatePointcutAdviceModelEClass.getESuperTypes().add(this.getAspectModel());
+    adviceModelEClass.getESuperTypes().add(this.getAspectModel());
+    generatorEClass.getESuperTypes().add(this.getFragment());
+    generatorEClass.getESuperTypes().add(this.getAdviceModel());
+    targetModelNodeTypeEClass.getESuperTypes().add(this.getAdviceModel());
     nodePropertyEClass.getESuperTypes().add(this.getOperand());
     compareExpressionEClass.getESuperTypes().add(this.getConstraintExpression());
     basicConstraintEClass.getESuperTypes().add(this.getCompareExpression());
@@ -1391,15 +1455,21 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_RegisteredPackages(), this.getRegisteredPackage(), null, "registeredPackages", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Metamodels(), this.getMetamodelSequence(), null, "metamodels", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Processors(), this.getProcessor(), null, "processors", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(gecoModelEClass, GecoModel.class, "GecoModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getGecoModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGecoModel_Imports(), this.getImport(), null, "imports", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGecoModel_RegisteredRootClass(), this.getRegisteredRootClass(), null, "registeredRootClass", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGecoModel_Metamodels(), this.getMetamodelSequence(), null, "metamodels", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGecoModel_Fragments(), this.getFragment(), null, "fragments", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getImport_ImportedNamespace(), theTypesPackage.getJvmType(), null, "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(registeredRootClassEClass, RegisteredRootClass.class, "RegisteredRootClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRegisteredRootClass_Name(), ecorePackage.getEString(), "name", null, 0, 1, RegisteredRootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRegisteredRootClass_ImportedNamespace(), theTypesPackage.getJvmType(), null, "importedNamespace", null, 0, 1, RegisteredRootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRegisteredRootClass_IsText(), ecorePackage.getEBoolean(), "isText", null, 0, 1, RegisteredRootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRegisteredRootClass_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, RegisteredRootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metamodelSequenceEClass, MetamodelSequence.class, "MetamodelSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMetamodelSequence_Modifier(), this.getMetamodelModifier(), "modifier", null, 0, 1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1409,21 +1479,21 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEClass(metamodelEClass, Metamodel.class, "Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMetamodel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(registeredPackageEClass, RegisteredPackage.class, "RegisteredPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRegisteredPackage_Name(), ecorePackage.getEString(), "name", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRegisteredPackage_ImportedNamespace(), theTypesPackage.getJvmType(), null, "importedNamespace", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRegisteredPackage_IsText(), ecorePackage.getEBoolean(), "isText", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRegisteredPackage_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(processorEClass, Processor.class, "Processor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProcessor_Reference(), theTypesPackage.getJvmType(), null, "reference", null, 0, 1, Processor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessor_SourceModel(), this.getSourceModelNodeSelector(), null, "sourceModel", null, 0, 1, Processor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProcessor_TargetModel(), this.getTargetModelNodeType(), null, "targetModel", null, 0, 1, Processor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(fragmentEClass, Fragment.class, "Fragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFragment_Reference(), theTypesPackage.getJvmType(), null, "reference", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFragment_SourceModel(), this.getSourceModelNodeSelector(), null, "sourceModel", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFragment_TargetModel(), this.getTargetModelNodeType(), null, "targetModel", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(weaverEClass, Weaver.class, "Weaver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWeaver_AspectModel(), this.getAspectModel(), null, "aspectModel", null, 0, 1, Weaver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aspectModelEClass, AspectModel.class, "AspectModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(separatePointcutAdviceModelEClass, SeparatePointcutAdviceModel.class, "SeparatePointcutAdviceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSeparatePointcutAdviceModel_Pointcut(), this.getTargetModelNodeType(), null, "pointcut", null, 0, 1, SeparatePointcutAdviceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSeparatePointcutAdviceModel_Advice(), this.getAdviceModel(), null, "advice", null, 0, 1, SeparatePointcutAdviceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(adviceModelEClass, AdviceModel.class, "AdviceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(generatorEClass, Generator.class, "Generator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getGenerator_SourceAuxModels(), this.getSourceModelNodeSelector(), null, "sourceAuxModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1439,7 +1509,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEReference(getTargetModelNodeType_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modelNodeTypeEClass, ModelNodeType.class, "ModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModelNodeType_Target(), this.getRegisteredPackage(), null, "target", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModelNodeType_Target(), this.getRegisteredRootClass(), null, "target", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModelNodeType_Property(), this.getNodeProperty(), null, "property", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getModelNodeType_Collection(), ecorePackage.getEBoolean(), "collection", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

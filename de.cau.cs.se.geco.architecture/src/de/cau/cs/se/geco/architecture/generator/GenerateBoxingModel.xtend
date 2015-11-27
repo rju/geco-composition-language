@@ -1,7 +1,7 @@
 package de.cau.cs.se.geco.architecture.generator
 
 import de.cau.cs.se.geco.architecture.architecture.Generator
-import de.cau.cs.se.geco.architecture.architecture.Model
+import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import de.cau.cs.se.geco.architecture.architecture.TraceModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
@@ -24,9 +24,9 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 
 
-class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
+class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 	
-	override generate(Model input) {
+	override generate(GecoModel input) {
 		val result = BoxingFactory.eINSTANCE.createBoxingModel
 		result.derivedFrom = input
 		
@@ -43,16 +43,16 @@ class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
 		
 		/** collect all processors. */
 		val units = new ArrayList<Unit>()
-		input.processors.forEach[processor | 
-			switch (processor) {
-				Generator : units.add(createGenerator(processor))
-				Weaver case (processor.aspectModel instanceof Generator): {
-					units.add(createGenerator(processor))
-					result.allProcessors.addUniqueType((processor.aspectModel as Generator).reference)
+		input.fragments.forEach[fragment | 
+			switch (fragment) {
+				Generator : units.add(createGenerator(fragment))
+				Weaver case (fragment.aspectModel instanceof Generator): {
+					units.add(createGenerator(fragment))
+					result.allProcessors.addUniqueType((fragment.aspectModel as Generator).reference)
 				}
-				Weaver case (processor.aspectModel == null): units.add(createWeaver(processor))
+				Weaver case (fragment.aspectModel == null): units.add(createWeaver(fragment))
 			}
-			result.allProcessors.addUniqueType(processor.reference)
+			result.allProcessors.addUniqueType(fragment.reference)
 		]
 
 		/** Define groups. */
@@ -92,7 +92,7 @@ class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
 	}
 	
 	private def void print(Unit unit) {
-		val processor = unit.processor
+		val processor = unit.fragment
 		switch(processor) {
 			Generator: {
 				System.out.print("\tG " + processor.reference.qualifiedName)
@@ -155,7 +155,7 @@ class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
 	private def Unit createGenerator(Generator generator) {
 		val result = BoxingFactory.eINSTANCE.createUnit
 		
-		result.processor = generator
+		result.fragment = generator
 		if (generator.sourceModel.reference != null)
 			result.sourceModels.add(generator.sourceModel.reference)
 		generator.sourceAuxModels.forEach[model | result.sourceModels.addUnique(model.reference)]
@@ -183,7 +183,7 @@ class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
 	private def Unit createGenerator(Weaver weaver) {
 		val result = BoxingFactory.eINSTANCE.createUnit
 		
-		result.processor = weaver
+		result.fragment = weaver
 		val generator = weaver.aspectModel as Generator
 		
 		result.sourceModels.add(generator.sourceModel.reference)
@@ -214,7 +214,7 @@ class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
 	private def Unit createWeaver(Weaver weaver) {
 		val result = BoxingFactory.eINSTANCE.createUnit
 		
-		result.processor = weaver
+		result.fragment = weaver
 		result.sourceModels.add(weaver.sourceModel.reference)
 		result.sourceModels.add((weaver.aspectModel as TargetModelNodeType).reference)
 		result.targetModel = ArchitectureTyping.resolveWeaverSourceModel(weaver).reference

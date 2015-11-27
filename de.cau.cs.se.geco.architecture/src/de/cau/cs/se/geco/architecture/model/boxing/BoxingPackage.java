@@ -204,13 +204,13 @@ public interface BoxingPackage extends EPackage {
 	int UNIT__SOURCE_MODELS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Processor</b></em>' reference.
+	 * The feature id for the '<em><b>Fragment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNIT__PROCESSOR = 2;
+	int UNIT__FRAGMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Target Model</b></em>' reference.
@@ -469,15 +469,15 @@ public interface BoxingPackage extends EPackage {
 	EReference getUnit_SourceModels();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getProcessor <em>Processor</em>}'.
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getFragment <em>Fragment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Processor</em>'.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getProcessor()
+	 * @return the meta object for the reference '<em>Fragment</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.Unit#getFragment()
 	 * @see #getUnit()
 	 * @generated
 	 */
-	EReference getUnit_Processor();
+	EReference getUnit_Fragment();
 
 	/**
 	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetModel <em>Target Model</em>}'.
@@ -714,12 +714,12 @@ public interface BoxingPackage extends EPackage {
 		EReference UNIT__SOURCE_MODELS = eINSTANCE.getUnit_SourceModels();
 
 		/**
-		 * The meta object literal for the '<em><b>Processor</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Fragment</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference UNIT__PROCESSOR = eINSTANCE.getUnit_Processor();
+		EReference UNIT__FRAGMENT = eINSTANCE.getUnit_Fragment();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Model</b></em>' reference feature.

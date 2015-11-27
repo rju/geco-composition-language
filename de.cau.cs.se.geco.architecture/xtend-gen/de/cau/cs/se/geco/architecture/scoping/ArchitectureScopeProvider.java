@@ -7,16 +7,16 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
-import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
-import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
+import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
@@ -24,6 +24,7 @@ import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import de.cau.cs.se.geco.architecture.framework.IWeaver;
+import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut;
 import de.cau.cs.se.geco.architecture.scoping.JvmImportTypeScope;
 import de.cau.cs.se.geco.architecture.scoping.JvmMemberTypeScope;
 import de.cau.cs.se.geco.architecture.scoping.JvmRegisterMetamodelImportScope;
@@ -57,10 +58,6 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
   @Inject
   @Named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)
   private IScopeProvider delegate;
-  
-  private final String WEAVER_INTERFACE = IWeaver.class.getName();
-  
-  private final String GENERATOR_INTERFACE = IGenerator.class.getName();
   
   @Override
   public IScope getScope(final EObject context, final EReference reference) {
@@ -133,7 +130,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         }
       }
       if (!_matched) {
-        if (context instanceof RegisteredPackage) {
+        if (context instanceof RegisteredRootClass) {
           _matched=true;
         }
       }
@@ -176,7 +173,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
     if (!_matched) {
       if (container instanceof ModelNodeType) {
         _matched=true;
-        RegisteredPackage _target = ((ModelNodeType)container).getTarget();
+        RegisteredRootClass _target = ((ModelNodeType)container).getTarget();
         JvmType _importedNamespace = _target.getImportedNamespace();
         _switchResult = this.createJvmDeclaredTypeScope(_importedNamespace, reference);
       }
@@ -239,11 +236,12 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
    * Scope for generators.
    */
   private IScope createGeneratorReferenceScope(final Generator context, final EReference reference) {
-    Model _modelRoot = this.getModelRoot(context);
+    GecoModel _modelRoot = this.getModelRoot(context);
     EList<Import> _imports = _modelRoot.getImports();
     final Function1<Import, Boolean> _function = (Import it) -> {
       JvmType _importedNamespace = it.getImportedNamespace();
-      return this.implementsInterface(_importedNamespace, context, this.GENERATOR_INTERFACE);
+      String _name = IGenerator.class.getName();
+      return this.implementsInterface(_importedNamespace, context, _name);
     };
     Iterable<Import> _filter = IterableExtensions.<Import>filter(_imports, _function);
     return new JvmImportTypeScope(_filter);
@@ -253,11 +251,22 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
    * Scope for weavers.
    */
   private IScope createWeaverReferenceScope(final Weaver context, final EReference reference) {
-    Model _modelRoot = this.getModelRoot(context);
+    GecoModel _modelRoot = this.getModelRoot(context);
     EList<Import> _imports = _modelRoot.getImports();
     final Function1<Import, Boolean> _function = (Import it) -> {
+      boolean _or = false;
       JvmType _importedNamespace = it.getImportedNamespace();
-      return this.implementsInterface(_importedNamespace, context, this.WEAVER_INTERFACE);
+      String _name = IWeaver.class.getName();
+      Boolean _implementsInterface = this.implementsInterface(_importedNamespace, context, _name);
+      if ((_implementsInterface).booleanValue()) {
+        _or = true;
+      } else {
+        JvmType _importedNamespace_1 = it.getImportedNamespace();
+        String _name_1 = IWeaverSeparatePointcut.class.getName();
+        Boolean _implementsInterface_1 = this.implementsInterface(_importedNamespace_1, context, _name_1);
+        _or = (_implementsInterface_1).booleanValue();
+      }
+      return Boolean.valueOf(_or);
     };
     Iterable<Import> _filter = IterableExtensions.<Import>filter(_imports, _function);
     return new JvmImportTypeScope(_filter);
@@ -286,7 +295,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
           Metamodel _reference_1 = _sourceModel_1.getReference();
           JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference_1);
           JvmType _determineElementType = ArchitectureTyping.determineElementType(_resolveType);
-          Model _modelRoot = this.getModelRoot(nodeType);
+          GecoModel _modelRoot = this.getModelRoot(nodeType);
           Resource _eResource = _modelRoot.eResource();
           ResourceSet _resourceSet = _eResource.getResourceSet();
           return new JvmRegisterMetamodelImportScope(_determineElementType, _resourceSet, this.typeProviderFactory);
@@ -308,7 +317,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
               Metamodel _reference_2 = sourceModel.getReference();
               JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(_reference_2);
               JvmType _determineElementType_1 = ArchitectureTyping.determineElementType(_resolveType_1);
-              Model _modelRoot_1 = this.getModelRoot(nodeType);
+              GecoModel _modelRoot_1 = this.getModelRoot(nodeType);
               Resource _eResource_1 = _modelRoot_1.eResource();
               ResourceSet _resourceSet_1 = _eResource_1.getResourceSet();
               return new JvmRegisterMetamodelImportScope(_determineElementType_1, _resourceSet_1, this.typeProviderFactory);
@@ -324,7 +333,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
           Metamodel _reference_3 = _targetModel_1.getReference();
           JvmTypeReference _resolveType_2 = ArchitectureTyping.resolveType(_reference_3);
           JvmType _determineElementType_2 = ArchitectureTyping.determineElementType(_resolveType_2);
-          Model _modelRoot_2 = this.getModelRoot(nodeType);
+          GecoModel _modelRoot_2 = this.getModelRoot(nodeType);
           Resource _eResource_2 = _modelRoot_2.eResource();
           ResourceSet _resourceSet_2 = _eResource_2.getResourceSet();
           return new JvmRegisterMetamodelImportScope(_determineElementType_2, _resourceSet_2, this.typeProviderFactory);
@@ -346,7 +355,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       IScope _xifexpression = null;
       boolean _notEquals = (!Objects.equal(context, null));
       if (_notEquals) {
-        Model _modelRoot = this.getModelRoot(type);
+        GecoModel _modelRoot = this.getModelRoot(type);
         Resource _eResource = _modelRoot.eResource();
         ResourceSet _resourceSet = _eResource.getResourceSet();
         return new JvmRegisterMetamodelImportScope(context, _resourceSet, 
@@ -359,17 +368,17 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
     return _xblockexpression;
   }
   
-  private Model getModelRoot(final EObject object) {
+  private GecoModel getModelRoot(final EObject object) {
     try {
-      Model _xblockexpression = null;
+      GecoModel _xblockexpression = null;
       {
         final EObject container = object.eContainer();
-        Model _switchResult = null;
+        GecoModel _switchResult = null;
         boolean _matched = false;
         if (!_matched) {
-          if (container instanceof Model) {
+          if (container instanceof GecoModel) {
             _matched=true;
-            return ((Model)container);
+            return ((GecoModel)container);
           }
         }
         if (!_matched) {

@@ -3,16 +3,20 @@ grammar de.cau.cs.se.geco.architecture.Architecture with org.eclipse.xtext.commo
 generate architecture "http://www.cau.de/cs/se/geco/architecture/Architecture"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
 
-Model:
+GecoModel:
 	'package' name=QualifiedName
 	imports+=Import*
-	registeredPackages+=RegisteredPackage*
+	registeredRootClass+=RegisteredRootClass*
 	metamodels+=MetamodelSequence*	
-	processors+=Processor*
+	fragments+=Fragment*
 ;
 
 Import:
 	'import' importedNamespace = [types::JvmType|QualifiedName]
+;
+
+RegisteredRootClass:
+	'register' name=ID (importedNamespace = [types::JvmType|QualifiedName] |(isText?='text' extension=STRING))
 ;
 
 MetamodelSequence:
@@ -29,11 +33,7 @@ Metamodel:
 	name=ID 
 ;
 
-RegisteredPackage:
-	'register' name=ID (importedNamespace = [types::JvmType|QualifiedName] |(isText?='text' extension=STRING))
-;
-
-Processor:
+Fragment:
 	Generator | Weaver
 ;
 
@@ -45,7 +45,16 @@ Weaver:
 ;
 
 AspectModel:
-	(':' TargetModelNodeType) | Generator
+	AdviceModel |
+	SeparatePointcutAdviceModel
+;
+
+SeparatePointcutAdviceModel:
+	'pointcut' pointcut=TargetModelNodeType 'advice' advice=AdviceModel
+;
+
+AdviceModel:
+	TargetModelNodeType | Generator 
 ;
 	
 Generator:
@@ -70,7 +79,7 @@ TargetModelNodeType: {TargetModelNodeType}
 ;
 
 ModelNodeType:
-	target=[RegisteredPackage|ID] ('/' property=NodeProperty)? (collection?='[]')?
+	target=[RegisteredRootClass|ID] ('/' property=NodeProperty)? (collection?='[]')?
 ;
 
 NodeProperty:

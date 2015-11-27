@@ -7,7 +7,7 @@ import org.eclipse.xtext.scoping.IScope
 import de.cau.cs.se.geco.architecture.architecture.Generator
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EObject
-import de.cau.cs.se.geco.architecture.architecture.Model
+import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import de.cau.cs.se.geco.architecture.framework.IWeaver
 import de.cau.cs.se.geco.architecture.framework.IGenerator
 import de.cau.cs.se.geco.architecture.architecture.Weaver
@@ -29,12 +29,13 @@ import de.cau.cs.se.geco.architecture.architecture.NodeType
 import de.cau.cs.se.geco.architecture.architecture.Typeof
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
-import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
+import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass
 import de.cau.cs.se.geco.architecture.architecture.Import
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
 
 class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelegatingScopeProvider {
 	
@@ -43,10 +44,6 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 	
 	@Inject @Named(AbstractDeclarativeScopeProvider.NAMED_DELEGATE)
 	IScopeProvider delegate
-
-	val String WEAVER_INTERFACE = IWeaver.name
-	
-	val String GENERATOR_INTERFACE = IGenerator.name
 
 	override getScope(EObject context, EReference reference) {
 		switch(context) {
@@ -61,7 +58,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			TraceModelReference,
 			Import,
 			ModelNodeType,
-			RegisteredPackage,
+			RegisteredRootClass,
 			SourceModelNodeSelector,
 			TargetModelNodeType: delegate.getScope(context, reference)
 			// default scope, prints out node type and reference. Should not be called.
@@ -113,7 +110,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 	 */
 	private def IScope createGeneratorReferenceScope(Generator context, EReference reference) {
 		return new JvmImportTypeScope(context.modelRoot.imports.
-			filter[it.importedNamespace.implementsInterface(context, GENERATOR_INTERFACE)]
+			filter[it.importedNamespace.implementsInterface(context, IGenerator.name)]
 		) 	 
 	}
 
@@ -122,7 +119,10 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 	 */
 	private def IScope createWeaverReferenceScope(Weaver context, EReference reference) {
 		return new JvmImportTypeScope(context.modelRoot.imports.
-			filter[it.importedNamespace.implementsInterface(context, WEAVER_INTERFACE)]
+			filter[
+				it.importedNamespace.implementsInterface(context, IWeaver.name) ||
+				it.importedNamespace.implementsInterface(context, IWeaverSeparatePointcut.name)
+			]
 		)
 	}
 	
@@ -174,10 +174,10 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			IScope.NULLSCOPE
 	}
 	
-	private def Model getModelRoot(EObject object) {
+	private def GecoModel getModelRoot(EObject object) {
 		val container = object.eContainer
 		switch (container) {
-			Model: return container
+			GecoModel: return container
 			case null: throw new Exception("Corrupted model: No Model node.")
 			default: container.modelRoot
 		}

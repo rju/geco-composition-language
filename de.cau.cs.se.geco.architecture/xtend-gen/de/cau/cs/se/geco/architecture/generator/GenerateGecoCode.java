@@ -8,6 +8,8 @@ import de.cau.cs.se.geco.architecture.architecture.Comparator;
 import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.FloatLiteral;
+import de.cau.cs.se.geco.architecture.architecture.Fragment;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
@@ -15,12 +17,10 @@ import de.cau.cs.se.geco.architecture.architecture.Literal;
 import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier;
-import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
-import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
+import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
@@ -57,7 +57,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   public CharSequence generate(final BoxingModel input) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
-    Model _derivedFrom = input.getDerivedFrom();
+    GecoModel _derivedFrom = input.getDerivedFrom();
     String _name = _derivedFrom.getName();
     _builder.append(_name, "");
     _builder.newLineIfNotEmpty();
@@ -76,7 +76,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     _builder.newLine();
     _builder.newLine();
     _builder.newLine();
-    Model _derivedFrom_1 = input.getDerivedFrom();
+    GecoModel _derivedFrom_1 = input.getDerivedFrom();
     EList<Import> _imports = _derivedFrom_1.getImports();
     final Function1<Import, CharSequence> _function = (Import it) -> {
       return this.createImport(it);
@@ -275,7 +275,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     _builder.append(_collectionName, "");
     _builder.append(" = models.filter(");
     ModelNodeType _selector = declaration.getSelector();
-    RegisteredPackage _target = _selector.getTarget();
+    RegisteredRootClass _target = _selector.getTarget();
     JvmType _importedNamespace = _target.getImportedNamespace();
     String _qualifiedName = _importedNamespace.getQualifiedName();
     _builder.append(_qualifiedName, "");
@@ -450,7 +450,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   private CharSequence createUnitExecution(final Unit unit) {
     CharSequence _xblockexpression = null;
     {
-      final Processor processor = unit.getProcessor();
+      final Fragment processor = unit.getFragment();
       CharSequence _switchResult = null;
       boolean _matched = false;
       if (!_matched) {

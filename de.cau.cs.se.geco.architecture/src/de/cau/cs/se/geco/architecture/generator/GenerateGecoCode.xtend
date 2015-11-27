@@ -25,7 +25,7 @@ import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel
 import org.eclipse.xtext.common.types.JvmType
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
-import de.cau.cs.se.geco.architecture.architecture.Processor
+import de.cau.cs.se.geco.architecture.architecture.Fragment
 import de.cau.cs.se.geco.architecture.model.boxing.Group
 import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
 import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
@@ -172,7 +172,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * Create code for a single execution unit.
 	 */
 	private def createUnitExecution(Unit unit) {
-		val processor = unit.processor
+		val processor = unit.fragment
 		switch (processor) {
 			Generator: processor.createGeneratorExecution(unit)
 			Weaver case processor.aspectModel instanceof Generator: processor.createWeaverGeneratorExecution(unit)

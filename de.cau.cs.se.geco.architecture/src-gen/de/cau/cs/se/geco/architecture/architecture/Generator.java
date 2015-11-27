@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Generator extends Processor, AspectModel
+public interface Generator extends Fragment, AdviceModel
 {
   /**
    * Returns the value of the '<em><b>Source Aux Models</b></em>' containment reference list.

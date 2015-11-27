@@ -20,7 +20,7 @@
         xsi:type="ecore:EReference"
         name="derivedFrom"
         lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//GecoModel"
         transient="true"/>
     <eStructuralFeatures
         xsi:type="ecore:EReference"
@@ -71,9 +71,9 @@
         transient="true"/>
     <eStructuralFeatures
         xsi:type="ecore:EReference"
-        name="processor"
+        name="fragment"
         lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Processor"/>
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Fragment"/>
     <eStructuralFeatures
         xsi:type="ecore:EReference"
         name="targetModel"

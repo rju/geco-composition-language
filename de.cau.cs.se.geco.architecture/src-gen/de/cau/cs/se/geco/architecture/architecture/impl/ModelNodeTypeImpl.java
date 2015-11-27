@@ -5,7 +5,7 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
-import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
+import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -41,7 +41,7 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * @generated
    * @ordered
    */
-  protected RegisteredPackage target;
+  protected RegisteredRootClass target;
 
   /**
    * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
@@ -99,12 +99,12 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public RegisteredPackage getTarget()
+  public RegisteredRootClass getTarget()
   {
     if (target != null && target.eIsProxy())
     {
       InternalEObject oldTarget = (InternalEObject)target;
-      target = (RegisteredPackage)eResolveProxy(oldTarget);
+      target = (RegisteredRootClass)eResolveProxy(oldTarget);
       if (target != oldTarget)
       {
         if (eNotificationRequired())
@@ -119,7 +119,7 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public RegisteredPackage basicGetTarget()
+  public RegisteredRootClass basicGetTarget()
   {
     return target;
   }
@@ -129,9 +129,9 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTarget(RegisteredPackage newTarget)
+  public void setTarget(RegisteredRootClass newTarget)
   {
-    RegisteredPackage oldTarget = target;
+    RegisteredRootClass oldTarget = target;
     target = newTarget;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.MODEL_NODE_TYPE__TARGET, oldTarget, target));
@@ -256,7 +256,7 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
     switch (featureID)
     {
       case ArchitecturePackage.MODEL_NODE_TYPE__TARGET:
-        setTarget((RegisteredPackage)newValue);
+        setTarget((RegisteredRootClass)newValue);
         return;
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         setProperty((NodeProperty)newValue);
@@ -279,7 +279,7 @@ public class ModelNodeTypeImpl extends MinimalEObjectImpl.Container implements M
     switch (featureID)
     {
       case ArchitecturePackage.MODEL_NODE_TYPE__TARGET:
-        setTarget((RegisteredPackage)null);
+        setTarget((RegisteredRootClass)null);
         return;
       case ArchitecturePackage.MODEL_NODE_TYPE__PROPERTY:
         setProperty((NodeProperty)null);

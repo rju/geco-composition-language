@@ -65,14 +65,16 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     switch (eClass.getClassifierID())
     {
-      case ArchitecturePackage.MODEL: return createModel();
+      case ArchitecturePackage.GECO_MODEL: return createGecoModel();
       case ArchitecturePackage.IMPORT: return createImport();
+      case ArchitecturePackage.REGISTERED_ROOT_CLASS: return createRegisteredRootClass();
       case ArchitecturePackage.METAMODEL_SEQUENCE: return createMetamodelSequence();
       case ArchitecturePackage.METAMODEL: return createMetamodel();
-      case ArchitecturePackage.REGISTERED_PACKAGE: return createRegisteredPackage();
-      case ArchitecturePackage.PROCESSOR: return createProcessor();
+      case ArchitecturePackage.FRAGMENT: return createFragment();
       case ArchitecturePackage.WEAVER: return createWeaver();
       case ArchitecturePackage.ASPECT_MODEL: return createAspectModel();
+      case ArchitecturePackage.SEPARATE_POINTCUT_ADVICE_MODEL: return createSeparatePointcutAdviceModel();
+      case ArchitecturePackage.ADVICE_MODEL: return createAdviceModel();
       case ArchitecturePackage.GENERATOR: return createGenerator();
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR: return createSourceModelNodeSelector();
       case ArchitecturePackage.TARGET_MODEL_NODE_TYPE: return createTargetModelNodeType();
@@ -148,10 +150,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public Model createModel()
+  public GecoModel createGecoModel()
   {
-    ModelImpl model = new ModelImpl();
-    return model;
+    GecoModelImpl gecoModel = new GecoModelImpl();
+    return gecoModel;
   }
 
   /**
@@ -163,6 +165,17 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     ImportImpl import_ = new ImportImpl();
     return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RegisteredRootClass createRegisteredRootClass()
+  {
+    RegisteredRootClassImpl registeredRootClass = new RegisteredRootClassImpl();
+    return registeredRootClass;
   }
 
   /**
@@ -192,21 +205,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public RegisteredPackage createRegisteredPackage()
+  public Fragment createFragment()
   {
-    RegisteredPackageImpl registeredPackage = new RegisteredPackageImpl();
-    return registeredPackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Processor createProcessor()
-  {
-    ProcessorImpl processor = new ProcessorImpl();
-    return processor;
+    FragmentImpl fragment = new FragmentImpl();
+    return fragment;
   }
 
   /**
@@ -229,6 +231,28 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     AspectModelImpl aspectModel = new AspectModelImpl();
     return aspectModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SeparatePointcutAdviceModel createSeparatePointcutAdviceModel()
+  {
+    SeparatePointcutAdviceModelImpl separatePointcutAdviceModel = new SeparatePointcutAdviceModelImpl();
+    return separatePointcutAdviceModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdviceModel createAdviceModel()
+  {
+    AdviceModelImpl adviceModel = new AdviceModelImpl();
+    return adviceModel;
   }
 
   /**

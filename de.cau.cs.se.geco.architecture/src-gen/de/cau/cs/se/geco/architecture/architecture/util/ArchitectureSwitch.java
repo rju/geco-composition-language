@@ -72,10 +72,10 @@ public class ArchitectureSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case ArchitecturePackage.MODEL:
+      case ArchitecturePackage.GECO_MODEL:
       {
-        Model model = (Model)theEObject;
-        T result = caseModel(model);
+        GecoModel gecoModel = (GecoModel)theEObject;
+        T result = caseGecoModel(gecoModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -83,6 +83,13 @@ public class ArchitectureSwitch<T> extends Switch<T>
       {
         Import import_ = (Import)theEObject;
         T result = caseImport(import_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.REGISTERED_ROOT_CLASS:
+      {
+        RegisteredRootClass registeredRootClass = (RegisteredRootClass)theEObject;
+        T result = caseRegisteredRootClass(registeredRootClass);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -100,17 +107,10 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.REGISTERED_PACKAGE:
+      case ArchitecturePackage.FRAGMENT:
       {
-        RegisteredPackage registeredPackage = (RegisteredPackage)theEObject;
-        T result = caseRegisteredPackage(registeredPackage);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ArchitecturePackage.PROCESSOR:
-      {
-        Processor processor = (Processor)theEObject;
-        T result = caseProcessor(processor);
+        Fragment fragment = (Fragment)theEObject;
+        T result = caseFragment(fragment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -118,7 +118,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
       {
         Weaver weaver = (Weaver)theEObject;
         T result = caseWeaver(weaver);
-        if (result == null) result = caseProcessor(weaver);
+        if (result == null) result = caseFragment(weaver);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -129,11 +129,28 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchitecturePackage.SEPARATE_POINTCUT_ADVICE_MODEL:
+      {
+        SeparatePointcutAdviceModel separatePointcutAdviceModel = (SeparatePointcutAdviceModel)theEObject;
+        T result = caseSeparatePointcutAdviceModel(separatePointcutAdviceModel);
+        if (result == null) result = caseAspectModel(separatePointcutAdviceModel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitecturePackage.ADVICE_MODEL:
+      {
+        AdviceModel adviceModel = (AdviceModel)theEObject;
+        T result = caseAdviceModel(adviceModel);
+        if (result == null) result = caseAspectModel(adviceModel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArchitecturePackage.GENERATOR:
       {
         Generator generator = (Generator)theEObject;
         T result = caseGenerator(generator);
-        if (result == null) result = caseProcessor(generator);
+        if (result == null) result = caseFragment(generator);
+        if (result == null) result = caseAdviceModel(generator);
         if (result == null) result = caseAspectModel(generator);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -149,6 +166,7 @@ public class ArchitectureSwitch<T> extends Switch<T>
       {
         TargetModelNodeType targetModelNodeType = (TargetModelNodeType)theEObject;
         T result = caseTargetModelNodeType(targetModelNodeType);
+        if (result == null) result = caseAdviceModel(targetModelNodeType);
         if (result == null) result = caseAspectModel(targetModelNodeType);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -349,17 +367,17 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Geco Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Geco Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModel(Model object)
+  public T caseGecoModel(GecoModel object)
   {
     return null;
   }
@@ -376,6 +394,22 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseImport(Import object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Registered Root Class</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Registered Root Class</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRegisteredRootClass(RegisteredRootClass object)
   {
     return null;
   }
@@ -413,33 +447,17 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Registered Package</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Fragment</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Registered Package</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Fragment</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRegisteredPackage(RegisteredPackage object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Processor</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Processor</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseProcessor(Processor object)
+  public T caseFragment(Fragment object)
   {
     return null;
   }
@@ -472,6 +490,38 @@ public class ArchitectureSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAspectModel(AspectModel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Separate Pointcut Advice Model</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Separate Pointcut Advice Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSeparatePointcutAdviceModel(SeparatePointcutAdviceModel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Advice Model</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Advice Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdviceModel(AdviceModel object)
   {
     return null;
   }

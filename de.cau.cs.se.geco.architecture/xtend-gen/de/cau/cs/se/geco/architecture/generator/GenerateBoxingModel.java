@@ -2,13 +2,13 @@ package de.cau.cs.se.geco.architecture.generator;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
+import de.cau.cs.se.geco.architecture.architecture.Fragment;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
-import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
@@ -35,9 +35,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
-public class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
+public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   @Override
-  public BoxingModel generate(final Model input) {
+  public BoxingModel generate(final GecoModel input) {
     final BoxingModel result = BoxingFactory.eINSTANCE.createBoxingModel();
     result.setDerivedFrom(input);
     EList<MetamodelSequence> _metamodels = input.getMetamodels();
@@ -57,46 +57,46 @@ public class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
     };
     _metamodels.forEach(_function);
     final ArrayList<Unit> units = new ArrayList<Unit>();
-    EList<Processor> _processors = input.getProcessors();
-    final Consumer<Processor> _function_1 = (Processor processor) -> {
+    EList<Fragment> _fragments = input.getFragments();
+    final Consumer<Fragment> _function_1 = (Fragment fragment) -> {
       boolean _matched = false;
       if (!_matched) {
-        if (processor instanceof Generator) {
+        if (fragment instanceof Generator) {
           _matched=true;
-          Unit _createGenerator = this.createGenerator(((Generator)processor));
+          Unit _createGenerator = this.createGenerator(((Generator)fragment));
           units.add(_createGenerator);
         }
       }
       if (!_matched) {
-        if (processor instanceof Weaver) {
-          AspectModel _aspectModel = ((Weaver)processor).getAspectModel();
+        if (fragment instanceof Weaver) {
+          AspectModel _aspectModel = ((Weaver)fragment).getAspectModel();
           if ((_aspectModel instanceof Generator)) {
             _matched=true;
-            Unit _createGenerator = this.createGenerator(((Weaver)processor));
+            Unit _createGenerator = this.createGenerator(((Weaver)fragment));
             units.add(_createGenerator);
             EList<JvmType> _allProcessors = result.getAllProcessors();
-            AspectModel _aspectModel_1 = ((Weaver)processor).getAspectModel();
+            AspectModel _aspectModel_1 = ((Weaver)fragment).getAspectModel();
             JvmType _reference = ((Generator) _aspectModel_1).getReference();
             this.addUniqueType(_allProcessors, _reference);
           }
         }
       }
       if (!_matched) {
-        if (processor instanceof Weaver) {
-          AspectModel _aspectModel = ((Weaver)processor).getAspectModel();
+        if (fragment instanceof Weaver) {
+          AspectModel _aspectModel = ((Weaver)fragment).getAspectModel();
           boolean _equals = Objects.equal(_aspectModel, null);
           if (_equals) {
             _matched=true;
-            Unit _createWeaver = this.createWeaver(((Weaver)processor));
+            Unit _createWeaver = this.createWeaver(((Weaver)fragment));
             units.add(_createWeaver);
           }
         }
       }
       EList<JvmType> _allProcessors = result.getAllProcessors();
-      JvmType _reference = processor.getReference();
+      JvmType _reference = fragment.getReference();
       this.addUniqueType(_allProcessors, _reference);
     };
-    _processors.forEach(_function_1);
+    _fragments.forEach(_function_1);
     EList<MetamodelSequence> _metamodels_1 = input.getMetamodels();
     Group group = this.createGroup(_metamodels_1);
     EList<Group> _groups = result.getGroups();
@@ -157,7 +157,7 @@ public class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
   }
   
   private void print(final Unit unit) {
-    final Processor processor = unit.getProcessor();
+    final Fragment processor = unit.getFragment();
     boolean _matched = false;
     if (!_matched) {
       if (processor instanceof Generator) {
@@ -287,7 +287,7 @@ public class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
    */
   private Unit createGenerator(final Generator generator) {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
-    result.setProcessor(generator);
+    result.setFragment(generator);
     SourceModelNodeSelector _sourceModel = generator.getSourceModel();
     Metamodel _reference = _sourceModel.getReference();
     boolean _notEquals = (!Objects.equal(_reference, null));
@@ -338,7 +338,7 @@ public class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
    */
   private Unit createGenerator(final Weaver weaver) {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
-    result.setProcessor(weaver);
+    result.setFragment(weaver);
     AspectModel _aspectModel = weaver.getAspectModel();
     final Generator generator = ((Generator) _aspectModel);
     EList<Metamodel> _sourceModels = result.getSourceModels();
@@ -389,7 +389,7 @@ public class GenerateBoxingModel implements IGenerator<Model, BoxingModel> {
    */
   private Unit createWeaver(final Weaver weaver) {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
-    result.setProcessor(weaver);
+    result.setFragment(weaver);
     EList<Metamodel> _sourceModels = result.getSourceModels();
     SourceModelNodeSelector _sourceModel = weaver.getSourceModel();
     Metamodel _reference = _sourceModel.getReference();

@@ -19,7 +19,7 @@ package de.cau.cs.se.geco.architecture.architecture;
  * @model
  * @generated
  */
-public interface TargetModelNodeType extends AspectModel
+public interface TargetModelNodeType extends AdviceModel
 {
   /**
    * Returns the value of the '<em><b>Reference</b></em>' reference.

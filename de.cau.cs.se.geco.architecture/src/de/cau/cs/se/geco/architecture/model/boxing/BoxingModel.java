@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing;
 
-import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmType;
@@ -52,12 +52,12 @@ public interface BoxingModel extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Derived From</em>' reference.
-	 * @see #setDerivedFrom(Model)
+	 * @see #setDerivedFrom(GecoModel)
 	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getBoxingModel_DerivedFrom()
 	 * @model required="true" transient="true"
 	 * @generated
 	 */
-	Model getDerivedFrom();
+	GecoModel getDerivedFrom();
 
 	/**
 	 * Sets the value of the '{@link de.cau.cs.se.geco.architecture.model.boxing.BoxingModel#getDerivedFrom <em>Derived From</em>}' reference.
@@ -67,7 +67,7 @@ public interface BoxingModel extends EObject {
 	 * @see #getDerivedFrom()
 	 * @generated
 	 */
-	void setDerivedFrom(Model value);
+	void setDerivedFrom(GecoModel value);
 
 	/**
 	 * Returns the value of the '<em><b>All Processors</b></em>' reference list.

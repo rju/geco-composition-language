@@ -2,8 +2,8 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing;
 
+import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
@@ -21,7 +21,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getSourceTraceModels <em>Source Trace Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getSourceModels <em>Source Models</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getProcessor <em>Processor</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getFragment <em>Fragment</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetModel <em>Target Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getTargetTraceModel <em>Target Trace Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getInputTypeReference <em>Input Type Reference</em>}</li>
@@ -67,30 +67,30 @@ public interface Unit extends EObject {
 	EList<Metamodel> getSourceModels();
 
 	/**
-	 * Returns the value of the '<em><b>Processor</b></em>' reference.
+	 * Returns the value of the '<em><b>Fragment</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Processor</em>' reference isn't clear,
+	 * If the meaning of the '<em>Fragment</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Processor</em>' reference.
-	 * @see #setProcessor(Processor)
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getUnit_Processor()
+	 * @return the value of the '<em>Fragment</em>' reference.
+	 * @see #setFragment(Fragment)
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getUnit_Fragment()
 	 * @model required="true"
 	 * @generated
 	 */
-	Processor getProcessor();
+	Fragment getFragment();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getProcessor <em>Processor</em>}' reference.
+	 * Sets the value of the '{@link de.cau.cs.se.geco.architecture.model.boxing.Unit#getFragment <em>Fragment</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Processor</em>' reference.
-	 * @see #getProcessor()
+	 * @param value the new value of the '<em>Fragment</em>' reference.
+	 * @see #getFragment()
 	 * @generated
 	 */
-	void setProcessor(Processor value);
+	void setFragment(Fragment value);
 
 	/**
 	 * Returns the value of the '<em><b>Target Model</b></em>' reference.

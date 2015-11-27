@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class TargetModelNodeTypeImpl extends AspectModelImpl implements TargetModelNodeType
+public class TargetModelNodeTypeImpl extends AdviceModelImpl implements TargetModelNodeType
 {
   /**
    * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.

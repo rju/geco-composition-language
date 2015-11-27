@@ -19,7 +19,7 @@ package de.cau.cs.se.geco.architecture.architecture;
  * @model
  * @generated
  */
-public interface Weaver extends Processor
+public interface Weaver extends Fragment
 {
   /**
    * Returns the value of the '<em><b>Aspect Model</b></em>' containment reference.

@@ -2,8 +2,8 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
+import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.Unit;
@@ -28,7 +28,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getSourceTraceModels <em>Source Trace Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getSourceModels <em>Source Models</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getProcessor <em>Processor</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getFragment <em>Fragment</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getTargetModel <em>Target Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getTargetTraceModel <em>Target Trace Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.UnitImpl#getInputTypeReference <em>Input Type Reference</em>}</li>
@@ -60,14 +60,14 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	protected EList<Metamodel> sourceModels;
 
 	/**
-	 * The cached value of the '{@link #getProcessor() <em>Processor</em>}' reference.
+	 * The cached value of the '{@link #getFragment() <em>Fragment</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProcessor()
+	 * @see #getFragment()
 	 * @generated
 	 * @ordered
 	 */
-	protected Processor processor;
+	protected Fragment fragment;
 
 	/**
 	 * The cached value of the '{@link #getTargetModel() <em>Target Model</em>}' reference.
@@ -167,16 +167,16 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Processor getProcessor() {
-		if (processor != null && processor.eIsProxy()) {
-			InternalEObject oldProcessor = (InternalEObject)processor;
-			processor = (Processor)eResolveProxy(oldProcessor);
-			if (processor != oldProcessor) {
+	public Fragment getFragment() {
+		if (fragment != null && fragment.eIsProxy()) {
+			InternalEObject oldFragment = (InternalEObject)fragment;
+			fragment = (Fragment)eResolveProxy(oldFragment);
+			if (fragment != oldFragment) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.UNIT__PROCESSOR, oldProcessor, processor));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.UNIT__FRAGMENT, oldFragment, fragment));
 			}
 		}
-		return processor;
+		return fragment;
 	}
 
 	/**
@@ -184,8 +184,8 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Processor basicGetProcessor() {
-		return processor;
+	public Fragment basicGetFragment() {
+		return fragment;
 	}
 
 	/**
@@ -193,11 +193,11 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProcessor(Processor newProcessor) {
-		Processor oldProcessor = processor;
-		processor = newProcessor;
+	public void setFragment(Fragment newFragment) {
+		Fragment oldFragment = fragment;
+		fragment = newFragment;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.UNIT__PROCESSOR, oldProcessor, processor));
+			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.UNIT__FRAGMENT, oldFragment, fragment));
 	}
 
 	/**
@@ -385,9 +385,9 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 				return getSourceTraceModels();
 			case BoxingPackage.UNIT__SOURCE_MODELS:
 				return getSourceModels();
-			case BoxingPackage.UNIT__PROCESSOR:
-				if (resolve) return getProcessor();
-				return basicGetProcessor();
+			case BoxingPackage.UNIT__FRAGMENT:
+				if (resolve) return getFragment();
+				return basicGetFragment();
 			case BoxingPackage.UNIT__TARGET_MODEL:
 				if (resolve) return getTargetModel();
 				return basicGetTargetModel();
@@ -423,8 +423,8 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 				getSourceModels().clear();
 				getSourceModels().addAll((Collection<? extends Metamodel>)newValue);
 				return;
-			case BoxingPackage.UNIT__PROCESSOR:
-				setProcessor((Processor)newValue);
+			case BoxingPackage.UNIT__FRAGMENT:
+				setFragment((Fragment)newValue);
 				return;
 			case BoxingPackage.UNIT__TARGET_MODEL:
 				setTargetModel((Metamodel)newValue);
@@ -459,8 +459,8 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 			case BoxingPackage.UNIT__SOURCE_MODELS:
 				getSourceModels().clear();
 				return;
-			case BoxingPackage.UNIT__PROCESSOR:
-				setProcessor((Processor)null);
+			case BoxingPackage.UNIT__FRAGMENT:
+				setFragment((Fragment)null);
 				return;
 			case BoxingPackage.UNIT__TARGET_MODEL:
 				setTargetModel((Metamodel)null);
@@ -493,8 +493,8 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 				return sourceTraceModels != null && !sourceTraceModels.isEmpty();
 			case BoxingPackage.UNIT__SOURCE_MODELS:
 				return sourceModels != null && !sourceModels.isEmpty();
-			case BoxingPackage.UNIT__PROCESSOR:
-				return processor != null;
+			case BoxingPackage.UNIT__FRAGMENT:
+				return fragment != null;
 			case BoxingPackage.UNIT__TARGET_MODEL:
 				return targetModel != null;
 			case BoxingPackage.UNIT__TARGET_TRACE_MODEL:

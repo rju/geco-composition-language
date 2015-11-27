@@ -23,13 +23,13 @@ public interface ArchitectureFactory extends EFactory
   ArchitectureFactory eINSTANCE = de.cau.cs.se.geco.architecture.architecture.impl.ArchitectureFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
+   * Returns a new object of class '<em>Geco Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
+   * @return a new object of class '<em>Geco Model</em>'.
    * @generated
    */
-  Model createModel();
+  GecoModel createGecoModel();
 
   /**
    * Returns a new object of class '<em>Import</em>'.
@@ -39,6 +39,15 @@ public interface ArchitectureFactory extends EFactory
    * @generated
    */
   Import createImport();
+
+  /**
+   * Returns a new object of class '<em>Registered Root Class</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Registered Root Class</em>'.
+   * @generated
+   */
+  RegisteredRootClass createRegisteredRootClass();
 
   /**
    * Returns a new object of class '<em>Metamodel Sequence</em>'.
@@ -59,22 +68,13 @@ public interface ArchitectureFactory extends EFactory
   Metamodel createMetamodel();
 
   /**
-   * Returns a new object of class '<em>Registered Package</em>'.
+   * Returns a new object of class '<em>Fragment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Registered Package</em>'.
+   * @return a new object of class '<em>Fragment</em>'.
    * @generated
    */
-  RegisteredPackage createRegisteredPackage();
-
-  /**
-   * Returns a new object of class '<em>Processor</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Processor</em>'.
-   * @generated
-   */
-  Processor createProcessor();
+  Fragment createFragment();
 
   /**
    * Returns a new object of class '<em>Weaver</em>'.
@@ -93,6 +93,24 @@ public interface ArchitectureFactory extends EFactory
    * @generated
    */
   AspectModel createAspectModel();
+
+  /**
+   * Returns a new object of class '<em>Separate Pointcut Advice Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Separate Pointcut Advice Model</em>'.
+   * @generated
+   */
+  SeparatePointcutAdviceModel createSeparatePointcutAdviceModel();
+
+  /**
+   * Returns a new object of class '<em>Advice Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Advice Model</em>'.
+   * @generated
+   */
+  AdviceModel createAdviceModel();
 
   /**
    * Returns a new object of class '<em>Generator</em>'.

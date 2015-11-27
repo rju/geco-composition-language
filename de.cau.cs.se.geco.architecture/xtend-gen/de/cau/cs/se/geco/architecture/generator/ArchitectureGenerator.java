@@ -4,7 +4,7 @@
 package de.cau.cs.se.geco.architecture.generator;
 
 import com.google.common.collect.Iterators;
-import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.generator.GenerateBoxingModel;
 import de.cau.cs.se.geco.architecture.generator.GenerateGecoCode;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
@@ -29,8 +29,8 @@ public class ArchitectureGenerator implements IGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterator<Model> _filter = Iterators.<Model>filter(_allContents, Model.class);
-    final Model model = IteratorExtensions.<Model>last(_filter);
+    Iterator<GecoModel> _filter = Iterators.<GecoModel>filter(_allContents, GecoModel.class);
+    final GecoModel model = IteratorExtensions.<GecoModel>last(_filter);
     URI _uRI = resource.getURI();
     URI _trimFileExtension = _uRI.trimFileExtension();
     final String className = _trimFileExtension.lastSegment();

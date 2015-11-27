@@ -2,19 +2,25 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="architecture" nsURI="http://www.cau.de/cs/se/geco/architecture/Architecture"
     nsPrefix="architecture">
-  <eClassifiers xsi:type="ecore:EClass" name="Model">
+  <eClassifiers xsi:type="ecore:EClass" name="GecoModel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="registeredPackages" upperBound="-1"
-        eType="#//RegisteredPackage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="registeredRootClass" upperBound="-1"
+        eType="#//RegisteredRootClass" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
         eType="#//MetamodelSequence" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="processors" upperBound="-1"
-        eType="#//Processor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fragments" upperBound="-1"
+        eType="#//Fragment" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Import">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RegisteredRootClass">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetamodelSequence">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifier" eType="#//MetamodelModifier"/>
@@ -31,25 +37,26 @@
   <eClassifiers xsi:type="ecore:EClass" name="Metamodel">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RegisteredPackage">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importedNamespace" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Processor">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Fragment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModel" eType="#//SourceModelNodeSelector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetModel" eType="#//TargetModelNodeType"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Weaver" eSuperTypes="#//Processor">
+  <eClassifiers xsi:type="ecore:EClass" name="Weaver" eSuperTypes="#//Fragment">
     <eStructuralFeatures xsi:type="ecore:EReference" name="aspectModel" eType="#//AspectModel"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AspectModel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Processor #//AspectModel">
+  <eClassifiers xsi:type="ecore:EClass" name="SeparatePointcutAdviceModel" eSuperTypes="#//AspectModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointcut" eType="#//TargetModelNodeType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advice" eType="#//AdviceModel"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdviceModel" eSuperTypes="#//AspectModel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Fragment #//AdviceModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceAuxModels" upperBound="-1"
         eType="#//SourceModelNodeSelector" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetTraceModel" eType="#//TargetTraceModel"
@@ -64,17 +71,17 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//NodeProperty"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TargetModelNodeType" eSuperTypes="#//AspectModel">
+  <eClassifiers xsi:type="ecore:EClass" name="TargetModelNodeType" eSuperTypes="#//AdviceModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Metamodel"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelNodeType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//RegisteredPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//RegisteredRootClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//NodeProperty"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="collection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeProperty" eSuperTypes="#//Operand">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmMember"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" eType="#//ConstraintExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subProperty" eType="#//NodeProperty"
@@ -101,7 +108,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operand" eSuperTypes="#//BasicConstraint"/>
   <eClassifiers xsi:type="ecore:EClass" name="Typeof" eSuperTypes="#//Operand">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TargetTraceModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="TraceModelReference" eSuperTypes="#//TargetTraceModel">
@@ -119,7 +126,7 @@
         eType="#//NodeType" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Operand"/>
   <eClassifiers xsi:type="ecore:EClass" name="ArrayLiteral" eSuperTypes="#//Literal">

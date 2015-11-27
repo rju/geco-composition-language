@@ -6,12 +6,12 @@ import com.google.common.collect.Iterables;
 import de.cau.cs.kieler.core.kgraph.KEdge;
 import de.cau.cs.kieler.core.kgraph.KNode;
 import de.cau.cs.kieler.core.kgraph.KPort;
-import de.cau.cs.kieler.core.krendering.KAreaPlacementData;
 import de.cau.cs.kieler.core.krendering.KColor;
 import de.cau.cs.kieler.core.krendering.KGridPlacement;
 import de.cau.cs.kieler.core.krendering.KPolyline;
 import de.cau.cs.kieler.core.krendering.KRectangle;
 import de.cau.cs.kieler.core.krendering.KRenderingFactory;
+import de.cau.cs.kieler.core.krendering.KRoundedRectangle;
 import de.cau.cs.kieler.core.krendering.KText;
 import de.cau.cs.kieler.core.krendering.LineJoin;
 import de.cau.cs.kieler.core.krendering.LineStyle;
@@ -26,20 +26,23 @@ import de.cau.cs.kieler.core.krendering.extensions.KRenderingExtensions;
 import de.cau.cs.kieler.kiml.options.Direction;
 import de.cau.cs.kieler.kiml.options.EdgeRouting;
 import de.cau.cs.kieler.kiml.options.LayoutOptions;
+import de.cau.cs.kieler.kiml.options.NodeLabelPlacement;
 import de.cau.cs.kieler.kiml.options.PortConstraints;
 import de.cau.cs.kieler.kiml.options.PortSide;
 import de.cau.cs.kieler.klighd.KlighdConstants;
 import de.cau.cs.kieler.klighd.SynthesisOption;
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis;
+import de.cau.cs.se.geco.architecture.architecture.AdviceModel;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
+import de.cau.cs.se.geco.architecture.architecture.Fragment;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
-import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
+import de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
@@ -47,8 +50,10 @@ import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
+import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +75,7 @@ import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
+public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   @Inject
   @Extension
   private KNodeExtensions _kNodeExtensions;
@@ -153,6 +158,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   
   private final static int WEAVER_ASPECT = 2;
   
+  private final static int WEAVER_POINTCUT = 3;
+  
   private final static int TRACE_MODEL_IN = 0;
   
   private final static int TRACE_MODEL_OUT = 1;
@@ -182,7 +189,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
     return ImmutableList.<SynthesisOption>of(ModelDiagramSynthesis.TRACE_MODEL_VISIBLE, ModelDiagramSynthesis.ROUTING, ModelDiagramSynthesis.SPACING);
   }
   
-  public KNode transform(final Model model) {
+  public KNode transform(final GecoModel model) {
     KNode _createNode = this._kNodeExtensions.createNode(model);
     final KNode root = this.<KNode>associateWith(_createNode, model);
     final Procedure1<KNode> _function = new Procedure1<KNode>() {
@@ -215,10 +222,10 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         ModelDiagramSynthesis.this.<KNode, EdgeRouting>setLayoutOption(it, LayoutOptions.EDGE_ROUTING, _switchResult);
         EList<MetamodelSequence> _metamodels = model.getMetamodels();
         ModelDiagramSynthesis.this.createNamedMetaModels(_metamodels, it);
-        EList<Processor> _processors = model.getProcessors();
-        ModelDiagramSynthesis.this.createAllToplevelGenerators(_processors, it);
-        EList<Processor> _processors_1 = model.getProcessors();
-        ModelDiagramSynthesis.this.createAllWeavers(_processors_1, it);
+        EList<Fragment> _fragments = model.getFragments();
+        ModelDiagramSynthesis.this.createAllToplevelGenerators(_fragments, it);
+        EList<Fragment> _fragments_1 = model.getFragments();
+        ModelDiagramSynthesis.this.createAllWeavers(_fragments_1, it);
         final BiConsumer<Generator, KNode> _function = new BiConsumer<Generator, KNode>() {
           public void accept(final Generator generator, final KNode generatorNode) {
             ModelDiagramSynthesis.this.createEdgesForGenerator(it, generator, generatorNode);
@@ -227,7 +234,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         ModelDiagramSynthesis.this.generatorNodes.forEach(_function);
         final BiConsumer<Weaver, KNode> _function_1 = new BiConsumer<Weaver, KNode>() {
           public void accept(final Weaver weaver, final KNode weaverNode) {
-            ModelDiagramSynthesis.this.createEdgesForWeaver(it, weaver, weaverNode);
+            ModelDiagramSynthesis.this.createEdgesForWeaver(weaver, weaverNode);
           }
         };
         ModelDiagramSynthesis.this.weaverNodes.forEach(_function_1);
@@ -240,77 +247,157 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   /**
    * Create connection between models and weaver
    */
-  public void createEdgesForWeaver(final KNode root, final Weaver weaver, final KNode weaverNode) {
-    KNode _xifexpression = null;
-    SourceModelNodeSelector _sourceModel = weaver.getSourceModel();
-    boolean _notEquals = (!Objects.equal(_sourceModel, null));
-    if (_notEquals) {
-      SourceModelNodeSelector _sourceModel_1 = weaver.getSourceModel();
-      Metamodel _reference = _sourceModel_1.getReference();
-      _xifexpression = this.metamodelNodes.get(_reference);
-    } else {
-      Weaver _predecessingWeaver = ArchitectureTyping.predecessingWeaver(weaver);
-      _xifexpression = this.targetWeaverModelNodes.get(_predecessingWeaver);
-    }
-    final KNode sourceModelNode = _xifexpression;
-    KNode _xifexpression_1 = null;
-    TargetModelNodeType _targetModel = weaver.getTargetModel();
-    boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
-    if (_notEquals_1) {
-      TargetModelNodeType _targetModel_1 = weaver.getTargetModel();
-      Metamodel _reference_1 = _targetModel_1.getReference();
-      _xifexpression_1 = this.metamodelNodes.get(_reference_1);
-    } else {
-      _xifexpression_1 = this.targetWeaverModelNodes.get(weaver);
-    }
-    final KNode targetModelNode = _xifexpression_1;
-    KNode _xifexpression_2 = null;
+  private void createEdgesForWeaver(final Weaver weaver, final KNode weaverNode) {
+    this.createSourceBaseModelEdgeForWeaver(weaver, weaverNode);
+    this.createTargetBaseModelEdgeForWeaver(weaver, weaverNode);
     AspectModel _aspectModel = weaver.getAspectModel();
-    if ((_aspectModel instanceof TargetModelNodeType)) {
-      AspectModel _aspectModel_1 = weaver.getAspectModel();
-      Metamodel _reference_2 = ((TargetModelNodeType) _aspectModel_1).getReference();
-      _xifexpression_2 = this.metamodelNodes.get(_reference_2);
-    } else {
-      AspectModel _aspectModel_2 = weaver.getAspectModel();
-      _xifexpression_2 = this.targetGeneratorModelNodes.get(((Generator) _aspectModel_2));
+    boolean _matched = false;
+    if (!_matched) {
+      if (_aspectModel instanceof AdviceModel) {
+        _matched=true;
+        AspectModel _aspectModel_1 = weaver.getAspectModel();
+        this.createAdviceModelEdgeForWeaver(((AdviceModel) _aspectModel_1), weaverNode);
+      }
     }
-    final KNode aspectModelNode = _xifexpression_2;
-    KEdge _drawConnectionNoArrow = this.drawConnectionNoArrow(sourceModelNode, weaverNode, LineStyle.SOLID);
-    final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
-      public void apply(final KEdge it) {
-        EList<KPort> _ports = sourceModelNode.getPorts();
-        KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
-        it.setSourcePort(_get);
-        EList<KPort> _ports_1 = weaverNode.getPorts();
-        KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.WEAVER_IN);
-        it.setTargetPort(_get_1);
+    if (!_matched) {
+      if (_aspectModel instanceof SeparatePointcutAdviceModel) {
+        _matched=true;
+        AspectModel _aspectModel_1 = weaver.getAspectModel();
+        this.createPointcutModelEdgeForWeaver(((SeparatePointcutAdviceModel) _aspectModel_1), weaverNode);
       }
-    };
-    ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionNoArrow, _function);
-    KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(weaverNode, targetModelNode, LineStyle.SOLID);
-    final Procedure1<KEdge> _function_1 = new Procedure1<KEdge>() {
-      public void apply(final KEdge it) {
-        EList<KPort> _ports = weaverNode.getPorts();
-        KPort _get = _ports.get(ModelDiagramSynthesis.WEAVER_OUT);
-        it.setSourcePort(_get);
-        EList<KPort> _ports_1 = targetModelNode.getPorts();
-        KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.MODEL_IN);
-        it.setTargetPort(_get_1);
+    }
+  }
+  
+  /**
+   * edge to the source base model of the weaver.
+   */
+  private KEdge createSourceBaseModelEdgeForWeaver(final Weaver weaver, final KNode weaverNode) {
+    KEdge _xblockexpression = null;
+    {
+      KNode _xifexpression = null;
+      SourceModelNodeSelector _sourceModel = weaver.getSourceModel();
+      boolean _notEquals = (!Objects.equal(_sourceModel, null));
+      if (_notEquals) {
+        SourceModelNodeSelector _sourceModel_1 = weaver.getSourceModel();
+        Metamodel _reference = _sourceModel_1.getReference();
+        _xifexpression = this.metamodelNodes.get(_reference);
+      } else {
+        Weaver _predecessingWeaver = ArchitectureTyping.predecessingWeaver(weaver);
+        _xifexpression = this.targetWeaverModelNodes.get(_predecessingWeaver);
       }
-    };
-    ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function_1);
-    KEdge _drawConnectionWithArrow_1 = this.drawConnectionWithArrow(aspectModelNode, weaverNode, LineStyle.SOLID);
-    final Procedure1<KEdge> _function_2 = new Procedure1<KEdge>() {
-      public void apply(final KEdge it) {
-        EList<KPort> _ports = aspectModelNode.getPorts();
-        KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
-        it.setSourcePort(_get);
-        EList<KPort> _ports_1 = weaverNode.getPorts();
-        KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.WEAVER_ASPECT);
-        it.setTargetPort(_get_1);
+      final KNode sourceModelNode = _xifexpression;
+      KEdge _drawConnectionNoArrow = this.drawConnectionNoArrow(sourceModelNode, weaverNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = sourceModelNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = weaverNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.WEAVER_IN);
+          it.setTargetPort(_get_1);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionNoArrow, _function);
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * edge to the source base model of the weaver.
+   */
+  private KEdge createTargetBaseModelEdgeForWeaver(final Weaver weaver, final KNode weaverNode) {
+    KEdge _xblockexpression = null;
+    {
+      KNode _xifexpression = null;
+      TargetModelNodeType _targetModel = weaver.getTargetModel();
+      boolean _notEquals = (!Objects.equal(_targetModel, null));
+      if (_notEquals) {
+        TargetModelNodeType _targetModel_1 = weaver.getTargetModel();
+        Metamodel _reference = _targetModel_1.getReference();
+        _xifexpression = this.metamodelNodes.get(_reference);
+      } else {
+        _xifexpression = this.targetWeaverModelNodes.get(weaver);
       }
-    };
-    ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow_1, _function_2);
+      final KNode targetModelNode = _xifexpression;
+      KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(weaverNode, targetModelNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = weaverNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.WEAVER_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = targetModelNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.MODEL_IN);
+          it.setTargetPort(_get_1);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * create an edge between weaver and advice or aspect model.
+   */
+  private KEdge createAdviceModelEdgeForWeaver(final AdviceModel adviceModel, final KNode weaverNode) {
+    KEdge _xblockexpression = null;
+    {
+      KNode _switchResult = null;
+      boolean _matched = false;
+      if (!_matched) {
+        if (adviceModel instanceof TargetModelNodeType) {
+          _matched=true;
+          Metamodel _reference = ((TargetModelNodeType) adviceModel).getReference();
+          _switchResult = this.metamodelNodes.get(_reference);
+        }
+      }
+      if (!_matched) {
+        if (adviceModel instanceof Generator) {
+          _matched=true;
+          _switchResult = this.targetGeneratorModelNodes.get(((Generator) adviceModel));
+        }
+      }
+      final KNode aspectModelNode = _switchResult;
+      KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(aspectModelNode, weaverNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = aspectModelNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = weaverNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.WEAVER_ASPECT);
+          it.setTargetPort(_get_1);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * create an edge between weaver and advice or aspect model.
+   */
+  private KEdge createPointcutModelEdgeForWeaver(final SeparatePointcutAdviceModel separatePointcutAdviceModel, final KNode weaverNode) {
+    KEdge _xblockexpression = null;
+    {
+      TargetModelNodeType _pointcut = separatePointcutAdviceModel.getPointcut();
+      Metamodel _reference = _pointcut.getReference();
+      final KNode pointcutModelNode = this.metamodelNodes.get(_reference);
+      KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(pointcutModelNode, weaverNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = pointcutModelNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = weaverNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.WEAVER_POINTCUT);
+          it.setTargetPort(_get_1);
+        }
+      };
+      ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
+      AdviceModel _advice = separatePointcutAdviceModel.getAdvice();
+      _xblockexpression = this.createAdviceModelEdgeForWeaver(_advice, weaverNode);
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -412,8 +499,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   /**
    * Create all weaver nodes.
    */
-  public void createAllWeavers(final EList<Processor> processors, final KNode parent) {
-    Iterable<Weaver> _filter = Iterables.<Weaver>filter(processors, Weaver.class);
+  private void createAllWeavers(final EList<Fragment> fragments, final KNode parent) {
+    Iterable<Weaver> _filter = Iterables.<Weaver>filter(fragments, Weaver.class);
     final Consumer<Weaver> _function = new Consumer<Weaver>() {
       public void accept(final Weaver weaver) {
         final KNode weaverNode = ModelDiagramSynthesis.this.drawWeaver(weaver);
@@ -421,10 +508,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         EList<KNode> _children = parent.getChildren();
         _children.add(weaverNode);
         AspectModel _aspectModel = weaver.getAspectModel();
-        if ((_aspectModel instanceof Generator)) {
-          AspectModel _aspectModel_1 = weaver.getAspectModel();
-          ModelDiagramSynthesis.this.createSublevelGenerator(((Generator) _aspectModel_1), parent);
-        }
+        ModelDiagramSynthesis.this.createSublevelGenerator(_aspectModel, parent);
         TargetModelNodeType _targetModel = weaver.getTargetModel();
         boolean _equals = Objects.equal(_targetModel, null);
         if (_equals) {
@@ -439,10 +523,30 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   }
   
   /**
+   * Check if the aspect or advice model are in fact generators.
+   */
+  private void createSublevelGenerator(final AspectModel aspectModel, final KNode parent) {
+    boolean _matched = false;
+    if (!_matched) {
+      if (aspectModel instanceof Generator) {
+        _matched=true;
+        this.createSublevelGenerator(((Generator)aspectModel), parent);
+      }
+    }
+    if (!_matched) {
+      if (aspectModel instanceof SeparatePointcutAdviceModel) {
+        _matched=true;
+        AdviceModel _advice = ((SeparatePointcutAdviceModel)aspectModel).getAdvice();
+        this.createSublevelGenerator(_advice, parent);
+      }
+    }
+  }
+  
+  /**
    * Create a sublevel generator which is used as privder of an
    * aspect model of a weaver.
    */
-  public void createSublevelGenerator(final Generator generator, final KNode parent) {
+  private void createSublevelGenerator(final Generator generator, final KNode parent) {
     final KNode generatorNode = this.drawGenerator(generator);
     final KNode anonymousMetamodelNode = this.createAnonymousMetamodel(generator);
     this.targetGeneratorModelNodes.put(generator, anonymousMetamodelNode);
@@ -499,8 +603,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   /**
    * Create all generators which are directly declared in the model.
    */
-  public void createAllToplevelGenerators(final EList<Processor> processors, final KNode parent) {
-    Iterable<Generator> _filter = Iterables.<Generator>filter(processors, Generator.class);
+  public void createAllToplevelGenerators(final EList<Fragment> fragments, final KNode parent) {
+    Iterable<Generator> _filter = Iterables.<Generator>filter(fragments, Generator.class);
     final Consumer<Generator> _function = new Consumer<Generator>() {
       public void accept(final Generator generator) {
         final KNode generatorNode = ModelDiagramSynthesis.this.drawGenerator(generator);
@@ -837,23 +941,85 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
             ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
-            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "aspect", 8, KlighdConstants.DEFAULT_FONT_NAME);
+            String _xifexpression = null;
+            boolean _hasSeparatePointcut = ModelDiagramSynthesis.this.hasSeparatePointcut(weaver);
+            if (_hasSeparatePointcut) {
+              _xifexpression = "advice";
+            } else {
+              _xifexpression = "aspect";
+            }
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, _xifexpression, 8, KlighdConstants.DEFAULT_FONT_NAME);
           }
         };
         KPort _doubleArrow_2 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_2, _function_2);
         _ports_2.add(_doubleArrow_2);
-        String _name = ModelDiagramSynthesis.this.getName(weaver);
-        KText _addText = ModelDiagramSynthesis.this._kRenderingExtensions.addText(it, _name);
-        final Procedure1<KText> _function_3 = new Procedure1<KText>() {
-          public void apply(final KText it) {
-            ModelDiagramSynthesis.this._kRenderingExtensions.setFontBold(it, true);
+        boolean _hasSeparatePointcut = ModelDiagramSynthesis.this.hasSeparatePointcut(weaver);
+        if (_hasSeparatePointcut) {
+          EList<KPort> _ports_3 = it.getPorts();
+          KPort _createPort_3 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+          final Procedure1<KPort> _function_3 = new Procedure1<KPort>() {
+            public void apply(final KPort it) {
+              ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+              EnumSet<NodeLabelPlacement> _insideBottomLeft = NodeLabelPlacement.insideBottomLeft();
+              ModelDiagramSynthesis.this.<KPort, EnumSet<NodeLabelPlacement>>setLayoutOption(it, LayoutOptions.NODE_LABEL_PLACEMENT, _insideBottomLeft);
+              KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+              KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+              KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+              ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+              ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "pointcut", 8, KlighdConstants.DEFAULT_FONT_NAME);
+            }
+          };
+          KPort _doubleArrow_3 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_3, _function_3);
+          _ports_3.add(_doubleArrow_3);
+        }
+        KRoundedRectangle _addRoundedRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRoundedRectangle(it, 5, 5);
+        final Procedure1<KRoundedRectangle> _function_4 = new Procedure1<KRoundedRectangle>() {
+          public void apply(final KRoundedRectangle it) {
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 0);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("white");
+            ModelDiagramSynthesis.this._kRenderingExtensions.<KRoundedRectangle>setBackground(it, _color);
+            KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_1);
+            KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 1);
+            KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 15, 0);
+            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 15, 0);
+            String _name = ModelDiagramSynthesis.this.getName(weaver);
+            KText _addText = ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, _name);
+            final Procedure1<KText> _function = new Procedure1<KText>() {
+              public void apply(final KText it) {
+                ModelDiagramSynthesis.this._kRenderingExtensions.setFontBold(it, true);
+              }
+            };
+            ObjectExtensions.<KText>operator_doubleArrow(_addText, _function);
           }
         };
-        ObjectExtensions.<KText>operator_doubleArrow(_addText, _function_3);
+        ObjectExtensions.<KRoundedRectangle>operator_doubleArrow(_addRoundedRectangle, _function_4);
       }
     };
     final KNode weaverNode = ObjectExtensions.<KNode>operator_doubleArrow(_associateWith, _function);
     return weaverNode;
+  }
+  
+  private boolean hasSeparatePointcut(final Weaver weaver) {
+    boolean _xifexpression = false;
+    JvmType _reference = weaver.getReference();
+    if ((_reference instanceof JvmGenericType)) {
+      JvmType _reference_1 = weaver.getReference();
+      EList<JvmTypeReference> _superTypes = ((JvmGenericType) _reference_1).getSuperTypes();
+      final Function1<JvmTypeReference, Boolean> _function = new Function1<JvmTypeReference, Boolean>() {
+        public Boolean apply(final JvmTypeReference it) {
+          JvmType _type = it.getType();
+          String _qualifiedName = _type.getQualifiedName();
+          String _canonicalName = IWeaverSeparatePointcut.class.getCanonicalName();
+          return Boolean.valueOf(_qualifiedName.equals(_canonicalName));
+        }
+      };
+      _xifexpression = IterableExtensions.<JvmTypeReference>exists(_superTypes, _function);
+    } else {
+      _xifexpression = false;
+    }
+    return _xifexpression;
   }
   
   /**
@@ -925,17 +1091,28 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
         };
         KPort _doubleArrow_3 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_3, _function_3);
         _ports_3.add(_doubleArrow_3);
-        String _name = ModelDiagramSynthesis.this.getName(generator);
-        KText _addText = ModelDiagramSynthesis.this._kRenderingExtensions.addText(it, _name);
-        final Procedure1<KText> _function_4 = new Procedure1<KText>() {
-          public void apply(final KText it) {
-            ModelDiagramSynthesis.this._kRenderingExtensions.setFontBold(it, true);
-            KAreaPlacementData _setAreaPlacementData = ModelDiagramSynthesis.this._kRenderingExtensions.setAreaPlacementData(it);
-            KAreaPlacementData _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setAreaPlacementData, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 10, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 10, 0);
-            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 10, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 10, 0);
+        KRoundedRectangle _addRoundedRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRoundedRectangle(it, 5, 5);
+        final Procedure1<KRoundedRectangle> _function_4 = new Procedure1<KRoundedRectangle>() {
+          public void apply(final KRoundedRectangle it) {
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 0);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("lightgray");
+            ModelDiagramSynthesis.this._kRenderingExtensions.<KRoundedRectangle>setBackground(it, _color);
+            KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_1);
+            KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 1);
+            KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 15, 0);
+            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 15, 0);
+            String _name = ModelDiagramSynthesis.this.getName(generator);
+            KText _addText = ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, _name);
+            final Procedure1<KText> _function = new Procedure1<KText>() {
+              public void apply(final KText it) {
+                ModelDiagramSynthesis.this._kRenderingExtensions.setFontBold(it, true);
+              }
+            };
+            ObjectExtensions.<KText>operator_doubleArrow(_addText, _function);
           }
         };
-        ObjectExtensions.<KText>operator_doubleArrow(_addText, _function_4);
+        ObjectExtensions.<KRoundedRectangle>operator_doubleArrow(_addRoundedRectangle, _function_4);
       }
     };
     final KNode generatorNode = ObjectExtensions.<KNode>operator_doubleArrow(_associateWith, _function);
@@ -1053,17 +1230,15 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<Model> {
   
   private String getName(final Generator generator) {
     JvmType _reference = generator.getReference();
-    String _simpleName = _reference.getSimpleName();
-    return ("G " + _simpleName);
+    return _reference.getSimpleName();
   }
   
   private String getName(final Weaver weaver) {
     JvmType _reference = weaver.getReference();
-    String _simpleName = _reference.getSimpleName();
-    return ("W " + _simpleName);
+    return _reference.getSimpleName();
   }
   
-  private KNode createAnonymousMetamodel(final Processor generator) {
+  private KNode createAnonymousMetamodel(final Fragment generator) {
     if (generator instanceof Generator) {
       return _createAnonymousMetamodel((Generator)generator);
     } else if (generator instanceof Weaver) {

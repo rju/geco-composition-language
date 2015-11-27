@@ -5,15 +5,15 @@ import com.google.common.collect.Iterables;
 import de.cau.cs.se.geco.architecture.architecture.BasicConstraint;
 import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
+import de.cau.cs.se.geco.architecture.architecture.Fragment;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Metamodel;
 import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
-import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
-import de.cau.cs.se.geco.architecture.architecture.Processor;
-import de.cau.cs.se.geco.architecture.architecture.RegisteredPackage;
+import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
@@ -93,7 +93,7 @@ public class ArchitectureTyping {
     NodeProperty _property = type.getProperty();
     boolean _equals = Objects.equal(_property, null);
     if (_equals) {
-      RegisteredPackage _target = type.getTarget();
+      RegisteredRootClass _target = type.getTarget();
       JvmType _importedNamespace = _target.getImportedNamespace();
       _xifexpression = ArchitectureTyping.resolveType(_importedNamespace);
     } else {
@@ -531,7 +531,7 @@ public class ArchitectureTyping {
    */
   public static Weaver predecessingWeaver(final Weaver weaver) {
     EObject _eContainer = weaver.eContainer();
-    final EList<Processor> connections = ((Model) _eContainer).getProcessors();
+    final EList<Fragment> connections = ((GecoModel) _eContainer).getFragments();
     final int index = connections.lastIndexOf(weaver);
     if ((index > 0)) {
       int i = 1;
@@ -539,7 +539,7 @@ public class ArchitectureTyping {
         i++;
       }
       if ((i <= index)) {
-        Processor _get = connections.get((index - i));
+        Fragment _get = connections.get((index - i));
         return ((Weaver) _get);
       } else {
         return null;

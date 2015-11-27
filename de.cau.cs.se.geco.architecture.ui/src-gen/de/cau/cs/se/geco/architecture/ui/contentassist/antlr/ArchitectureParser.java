@@ -37,10 +37,11 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getRegisteredPackageAccess().getAlternatives_2(), "rule__RegisteredPackage__Alternatives_2");
-					put(grammarAccess.getProcessorAccess().getAlternatives(), "rule__Processor__Alternatives");
+					put(grammarAccess.getRegisteredRootClassAccess().getAlternatives_2(), "rule__RegisteredRootClass__Alternatives_2");
+					put(grammarAccess.getFragmentAccess().getAlternatives(), "rule__Fragment__Alternatives");
 					put(grammarAccess.getWeaverAccess().getAlternatives_2(), "rule__Weaver__Alternatives_2");
 					put(grammarAccess.getAspectModelAccess().getAlternatives(), "rule__AspectModel__Alternatives");
+					put(grammarAccess.getAdviceModelAccess().getAlternatives(), "rule__AdviceModel__Alternatives");
 					put(grammarAccess.getSourceModelNodeSelectorAccess().getAlternatives(), "rule__SourceModelNodeSelector__Alternatives");
 					put(grammarAccess.getBasicConstraintAccess().getAlternatives(), "rule__BasicConstraint__Alternatives");
 					put(grammarAccess.getOperandAccess().getAlternatives(), "rule__Operand__Alternatives");
@@ -49,15 +50,15 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetamodelModifierAccess().getAlternatives(), "rule__MetamodelModifier__Alternatives");
 					put(grammarAccess.getLogicOperatorAccess().getAlternatives(), "rule__LogicOperator__Alternatives");
 					put(grammarAccess.getComparatorAccess().getAlternatives(), "rule__Comparator__Alternatives");
-					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
+					put(grammarAccess.getGecoModelAccess().getGroup(), "rule__GecoModel__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
+					put(grammarAccess.getRegisteredRootClassAccess().getGroup(), "rule__RegisteredRootClass__Group__0");
+					put(grammarAccess.getRegisteredRootClassAccess().getGroup_2_1(), "rule__RegisteredRootClass__Group_2_1__0");
 					put(grammarAccess.getMetamodelSequenceAccess().getGroup(), "rule__MetamodelSequence__Group__0");
 					put(grammarAccess.getMetamodelSequenceAccess().getGroup_4(), "rule__MetamodelSequence__Group_4__0");
-					put(grammarAccess.getRegisteredPackageAccess().getGroup(), "rule__RegisteredPackage__Group__0");
-					put(grammarAccess.getRegisteredPackageAccess().getGroup_2_1(), "rule__RegisteredPackage__Group_2_1__0");
 					put(grammarAccess.getWeaverAccess().getGroup(), "rule__Weaver__Group__0");
 					put(grammarAccess.getWeaverAccess().getGroup_4(), "rule__Weaver__Group_4__0");
-					put(grammarAccess.getAspectModelAccess().getGroup_0(), "rule__AspectModel__Group_0__0");
+					put(grammarAccess.getSeparatePointcutAdviceModelAccess().getGroup(), "rule__SeparatePointcutAdviceModel__Group__0");
 					put(grammarAccess.getGeneratorAccess().getGroup(), "rule__Generator__Group__0");
 					put(grammarAccess.getGeneratorAccess().getGroup_2(), "rule__Generator__Group_2__0");
 					put(grammarAccess.getGeneratorAccess().getGroup_2_2(), "rule__Generator__Group_2_2__0");
@@ -98,25 +99,27 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup_1(), "rule__QualifiedNameWithWildcard__Group_1__0");
-					put(grammarAccess.getModelAccess().getNameAssignment_1(), "rule__Model__NameAssignment_1");
-					put(grammarAccess.getModelAccess().getImportsAssignment_2(), "rule__Model__ImportsAssignment_2");
-					put(grammarAccess.getModelAccess().getRegisteredPackagesAssignment_3(), "rule__Model__RegisteredPackagesAssignment_3");
-					put(grammarAccess.getModelAccess().getMetamodelsAssignment_4(), "rule__Model__MetamodelsAssignment_4");
-					put(grammarAccess.getModelAccess().getProcessorsAssignment_5(), "rule__Model__ProcessorsAssignment_5");
+					put(grammarAccess.getGecoModelAccess().getNameAssignment_1(), "rule__GecoModel__NameAssignment_1");
+					put(grammarAccess.getGecoModelAccess().getImportsAssignment_2(), "rule__GecoModel__ImportsAssignment_2");
+					put(grammarAccess.getGecoModelAccess().getRegisteredRootClassAssignment_3(), "rule__GecoModel__RegisteredRootClassAssignment_3");
+					put(grammarAccess.getGecoModelAccess().getMetamodelsAssignment_4(), "rule__GecoModel__MetamodelsAssignment_4");
+					put(grammarAccess.getGecoModelAccess().getFragmentsAssignment_5(), "rule__GecoModel__FragmentsAssignment_5");
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
+					put(grammarAccess.getRegisteredRootClassAccess().getNameAssignment_1(), "rule__RegisteredRootClass__NameAssignment_1");
+					put(grammarAccess.getRegisteredRootClassAccess().getImportedNamespaceAssignment_2_0(), "rule__RegisteredRootClass__ImportedNamespaceAssignment_2_0");
+					put(grammarAccess.getRegisteredRootClassAccess().getIsTextAssignment_2_1_0(), "rule__RegisteredRootClass__IsTextAssignment_2_1_0");
+					put(grammarAccess.getRegisteredRootClassAccess().getExtensionAssignment_2_1_1(), "rule__RegisteredRootClass__ExtensionAssignment_2_1_1");
 					put(grammarAccess.getMetamodelSequenceAccess().getModifierAssignment_1(), "rule__MetamodelSequence__ModifierAssignment_1");
 					put(grammarAccess.getMetamodelSequenceAccess().getTypeAssignment_2(), "rule__MetamodelSequence__TypeAssignment_2");
 					put(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_3(), "rule__MetamodelSequence__MetamodelsAssignment_3");
 					put(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_4_1(), "rule__MetamodelSequence__MetamodelsAssignment_4_1");
 					put(grammarAccess.getMetamodelAccess().getNameAssignment(), "rule__Metamodel__NameAssignment");
-					put(grammarAccess.getRegisteredPackageAccess().getNameAssignment_1(), "rule__RegisteredPackage__NameAssignment_1");
-					put(grammarAccess.getRegisteredPackageAccess().getImportedNamespaceAssignment_2_0(), "rule__RegisteredPackage__ImportedNamespaceAssignment_2_0");
-					put(grammarAccess.getRegisteredPackageAccess().getIsTextAssignment_2_1_0(), "rule__RegisteredPackage__IsTextAssignment_2_1_0");
-					put(grammarAccess.getRegisteredPackageAccess().getExtensionAssignment_2_1_1(), "rule__RegisteredPackage__ExtensionAssignment_2_1_1");
 					put(grammarAccess.getWeaverAccess().getReferenceAssignment_1(), "rule__Weaver__ReferenceAssignment_1");
 					put(grammarAccess.getWeaverAccess().getSourceModelAssignment_2_0(), "rule__Weaver__SourceModelAssignment_2_0");
 					put(grammarAccess.getWeaverAccess().getAspectModelAssignment_3(), "rule__Weaver__AspectModelAssignment_3");
 					put(grammarAccess.getWeaverAccess().getTargetModelAssignment_4_1(), "rule__Weaver__TargetModelAssignment_4_1");
+					put(grammarAccess.getSeparatePointcutAdviceModelAccess().getPointcutAssignment_1(), "rule__SeparatePointcutAdviceModel__PointcutAssignment_1");
+					put(grammarAccess.getSeparatePointcutAdviceModelAccess().getAdviceAssignment_3(), "rule__SeparatePointcutAdviceModel__AdviceAssignment_3");
 					put(grammarAccess.getGeneratorAccess().getReferenceAssignment_1(), "rule__Generator__ReferenceAssignment_1");
 					put(grammarAccess.getGeneratorAccess().getSourceAuxModelsAssignment_2_1(), "rule__Generator__SourceAuxModelsAssignment_2_1");
 					put(grammarAccess.getGeneratorAccess().getSourceAuxModelsAssignment_2_2_1(), "rule__Generator__SourceAuxModelsAssignment_2_2_1");
@@ -166,7 +169,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			de.cau.cs.se.geco.architecture.ui.contentassist.antlr.internal.InternalArchitectureParser typedParser = (de.cau.cs.se.geco.architecture.ui.contentassist.antlr.internal.InternalArchitectureParser) parser;
-			typedParser.entryRuleModel();
+			typedParser.entryRuleGecoModel();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

@@ -75,14 +75,19 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
     new ArchitectureSwitch<Adapter>()
     {
       @Override
-      public Adapter caseModel(Model object)
+      public Adapter caseGecoModel(GecoModel object)
       {
-        return createModelAdapter();
+        return createGecoModelAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
       {
         return createImportAdapter();
+      }
+      @Override
+      public Adapter caseRegisteredRootClass(RegisteredRootClass object)
+      {
+        return createRegisteredRootClassAdapter();
       }
       @Override
       public Adapter caseMetamodelSequence(MetamodelSequence object)
@@ -95,14 +100,9 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createMetamodelAdapter();
       }
       @Override
-      public Adapter caseRegisteredPackage(RegisteredPackage object)
+      public Adapter caseFragment(Fragment object)
       {
-        return createRegisteredPackageAdapter();
-      }
-      @Override
-      public Adapter caseProcessor(Processor object)
-      {
-        return createProcessorAdapter();
+        return createFragmentAdapter();
       }
       @Override
       public Adapter caseWeaver(Weaver object)
@@ -113,6 +113,16 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
       public Adapter caseAspectModel(AspectModel object)
       {
         return createAspectModelAdapter();
+      }
+      @Override
+      public Adapter caseSeparatePointcutAdviceModel(SeparatePointcutAdviceModel object)
+      {
+        return createSeparatePointcutAdviceModelAdapter();
+      }
+      @Override
+      public Adapter caseAdviceModel(AdviceModel object)
+      {
+        return createAdviceModelAdapter();
       }
       @Override
       public Adapter caseGenerator(Generator object)
@@ -252,16 +262,16 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Model <em>Model</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel <em>Geco Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model
+   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel
    * @generated
    */
-  public Adapter createModelAdapter()
+  public Adapter createGecoModelAdapter()
   {
     return null;
   }
@@ -277,6 +287,21 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createImportAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass <em>Registered Root Class</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass
+   * @generated
+   */
+  public Adapter createRegisteredRootClassAdapter()
   {
     return null;
   }
@@ -312,31 +337,16 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage <em>Registered Package</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Fragment <em>Fragment</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
+   * @see de.cau.cs.se.geco.architecture.architecture.Fragment
    * @generated
    */
-  public Adapter createRegisteredPackageAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Processor <em>Processor</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Processor
-   * @generated
-   */
-  public Adapter createProcessorAdapter()
+  public Adapter createFragmentAdapter()
   {
     return null;
   }
@@ -367,6 +377,36 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAspectModelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel <em>Separate Pointcut Advice Model</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel
+   * @generated
+   */
+  public Adapter createSeparatePointcutAdviceModelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.AdviceModel <em>Advice Model</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.geco.architecture.architecture.AdviceModel
+   * @generated
+   */
+  public Adapter createAdviceModelAdapter()
   {
     return null;
   }

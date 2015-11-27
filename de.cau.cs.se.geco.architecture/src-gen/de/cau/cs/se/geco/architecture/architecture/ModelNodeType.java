@@ -33,12 +33,12 @@ public interface ModelNodeType extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Target</em>' reference.
-   * @see #setTarget(RegisteredPackage)
+   * @see #setTarget(RegisteredRootClass)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModelNodeType_Target()
    * @model
    * @generated
    */
-  RegisteredPackage getTarget();
+  RegisteredRootClass getTarget();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget <em>Target</em>}' reference.
@@ -48,7 +48,7 @@ public interface ModelNodeType extends EObject
    * @see #getTarget()
    * @generated
    */
-  void setTarget(RegisteredPackage value);
+  void setTarget(RegisteredRootClass value);
 
   /**
    * Returns the value of the '<em><b>Property</b></em>' containment reference.

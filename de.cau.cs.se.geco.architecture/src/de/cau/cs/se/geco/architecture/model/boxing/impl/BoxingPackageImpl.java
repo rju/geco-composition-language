@@ -229,7 +229,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getUnit_Processor() {
+	public EReference getUnit_Fragment() {
 		return (EReference)unitEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -365,7 +365,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		unitEClass = createEClass(UNIT);
 		createEReference(unitEClass, UNIT__SOURCE_TRACE_MODELS);
 		createEReference(unitEClass, UNIT__SOURCE_MODELS);
-		createEReference(unitEClass, UNIT__PROCESSOR);
+		createEReference(unitEClass, UNIT__FRAGMENT);
 		createEReference(unitEClass, UNIT__TARGET_MODEL);
 		createEReference(unitEClass, UNIT__TARGET_TRACE_MODEL);
 		createEReference(unitEClass, UNIT__INPUT_TYPE_REFERENCE);
@@ -415,7 +415,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		// Initialize classes, features, and operations; add parameters
 		initEClass(boxingModelEClass, BoxingModel.class, "BoxingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBoxingModel_Groups(), this.getGroup(), null, "groups", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBoxingModel_DerivedFrom(), theArchitecturePackage.getModel(), null, "derivedFrom", null, 1, 1, BoxingModel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBoxingModel_DerivedFrom(), theArchitecturePackage.getGecoModel(), null, "derivedFrom", null, 1, 1, BoxingModel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBoxingModel_AllProcessors(), theTypesPackage.getJvmType(), null, "allProcessors", null, 0, -1, BoxingModel.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getBoxingModel_Models(), this.getModelDeclaration(), null, "models", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -427,7 +427,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUnit_SourceTraceModels(), theArchitecturePackage.getTraceModel(), null, "sourceTraceModels", null, 0, -1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_SourceModels(), theArchitecturePackage.getMetamodel(), null, "sourceModels", null, 1, -1, Unit.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUnit_Processor(), theArchitecturePackage.getProcessor(), null, "processor", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_Fragment(), theArchitecturePackage.getFragment(), null, "fragment", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_TargetModel(), theArchitecturePackage.getMetamodel(), null, "targetModel", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_TargetTraceModel(), theArchitecturePackage.getTraceModel(), null, "targetTraceModel", null, 0, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_InputTypeReference(), theTypesPackage.getJvmTypeReference(), null, "inputTypeReference", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

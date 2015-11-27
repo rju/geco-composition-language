@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class GeneratorImpl extends ProcessorImpl implements Generator
+public class GeneratorImpl extends FragmentImpl implements Generator
 {
   /**
    * The cached value of the '{@link #getSourceAuxModels() <em>Source Aux Models</em>}' containment reference list.

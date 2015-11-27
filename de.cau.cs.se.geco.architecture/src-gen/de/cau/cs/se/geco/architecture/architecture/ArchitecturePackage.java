@@ -58,14 +58,14 @@ public interface ArchitecturePackage extends EPackage
   ArchitecturePackage eINSTANCE = de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl.init();
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl <em>Model</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl <em>Geco Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getGecoModel()
    * @generated
    */
-  int MODEL = 0;
+  int GECO_MODEL = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -74,7 +74,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__NAME = 0;
+  int GECO_MODEL__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -83,16 +83,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__IMPORTS = 1;
+  int GECO_MODEL__IMPORTS = 1;
 
   /**
-   * The feature id for the '<em><b>Registered Packages</b></em>' containment reference list.
+   * The feature id for the '<em><b>Registered Root Class</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__REGISTERED_PACKAGES = 2;
+  int GECO_MODEL__REGISTERED_ROOT_CLASS = 2;
 
   /**
    * The feature id for the '<em><b>Metamodels</b></em>' containment reference list.
@@ -101,25 +101,25 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__METAMODELS = 3;
+  int GECO_MODEL__METAMODELS = 3;
 
   /**
-   * The feature id for the '<em><b>Processors</b></em>' containment reference list.
+   * The feature id for the '<em><b>Fragments</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__PROCESSORS = 4;
+  int GECO_MODEL__FRAGMENTS = 4;
 
   /**
-   * The number of structural features of the '<em>Model</em>' class.
+   * The number of structural features of the '<em>Geco Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 5;
+  int GECO_MODEL_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ImportImpl <em>Import</em>}' class.
@@ -150,6 +150,61 @@ public interface ArchitecturePackage extends EPackage
   int IMPORT_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredRootClassImpl <em>Registered Root Class</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.RegisteredRootClassImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getRegisteredRootClass()
+   * @generated
+   */
+  int REGISTERED_ROOT_CLASS = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REGISTERED_ROOT_CLASS__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Imported Namespace</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REGISTERED_ROOT_CLASS__IMPORTED_NAMESPACE = 1;
+
+  /**
+   * The feature id for the '<em><b>Is Text</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REGISTERED_ROOT_CLASS__IS_TEXT = 2;
+
+  /**
+   * The feature id for the '<em><b>Extension</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REGISTERED_ROOT_CLASS__EXTENSION = 3;
+
+  /**
+   * The number of structural features of the '<em>Registered Root Class</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REGISTERED_ROOT_CLASS_FEATURE_COUNT = 4;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl <em>Metamodel Sequence</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -157,7 +212,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelSequence()
    * @generated
    */
-  int METAMODEL_SEQUENCE = 2;
+  int METAMODEL_SEQUENCE = 3;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' attribute.
@@ -203,7 +258,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodel()
    * @generated
    */
-  int METAMODEL = 3;
+  int METAMODEL = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -224,69 +279,14 @@ public interface ArchitecturePackage extends EPackage
   int METAMODEL_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl <em>Registered Package</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.FragmentImpl <em>Fragment</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getRegisteredPackage()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.FragmentImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getFragment()
    * @generated
    */
-  int REGISTERED_PACKAGE = 4;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REGISTERED_PACKAGE__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Imported Namespace</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REGISTERED_PACKAGE__IMPORTED_NAMESPACE = 1;
-
-  /**
-   * The feature id for the '<em><b>Is Text</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REGISTERED_PACKAGE__IS_TEXT = 2;
-
-  /**
-   * The feature id for the '<em><b>Extension</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REGISTERED_PACKAGE__EXTENSION = 3;
-
-  /**
-   * The number of structural features of the '<em>Registered Package</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REGISTERED_PACKAGE_FEATURE_COUNT = 4;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl <em>Processor</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getProcessor()
-   * @generated
-   */
-  int PROCESSOR = 5;
+  int FRAGMENT = 5;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -295,7 +295,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESSOR__REFERENCE = 0;
+  int FRAGMENT__REFERENCE = 0;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -304,7 +304,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESSOR__SOURCE_MODEL = 1;
+  int FRAGMENT__SOURCE_MODEL = 1;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -313,16 +313,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROCESSOR__TARGET_MODEL = 2;
+  int FRAGMENT__TARGET_MODEL = 2;
 
   /**
-   * The number of structural features of the '<em>Processor</em>' class.
+   * The number of structural features of the '<em>Fragment</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROCESSOR_FEATURE_COUNT = 3;
+  int FRAGMENT_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl <em>Weaver</em>}' class.
@@ -341,7 +341,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER__REFERENCE = PROCESSOR__REFERENCE;
+  int WEAVER__REFERENCE = FRAGMENT__REFERENCE;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -350,7 +350,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER__SOURCE_MODEL = PROCESSOR__SOURCE_MODEL;
+  int WEAVER__SOURCE_MODEL = FRAGMENT__SOURCE_MODEL;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -359,7 +359,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER__TARGET_MODEL = PROCESSOR__TARGET_MODEL;
+  int WEAVER__TARGET_MODEL = FRAGMENT__TARGET_MODEL;
 
   /**
    * The feature id for the '<em><b>Aspect Model</b></em>' containment reference.
@@ -368,7 +368,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER__ASPECT_MODEL = PROCESSOR_FEATURE_COUNT + 0;
+  int WEAVER__ASPECT_MODEL = FRAGMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Weaver</em>' class.
@@ -377,7 +377,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int WEAVER_FEATURE_COUNT = PROCESSOR_FEATURE_COUNT + 1;
+  int WEAVER_FEATURE_COUNT = FRAGMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AspectModelImpl <em>Aspect Model</em>}' class.
@@ -399,6 +399,62 @@ public interface ArchitecturePackage extends EPackage
   int ASPECT_MODEL_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SeparatePointcutAdviceModelImpl <em>Separate Pointcut Advice Model</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.SeparatePointcutAdviceModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSeparatePointcutAdviceModel()
+   * @generated
+   */
+  int SEPARATE_POINTCUT_ADVICE_MODEL = 8;
+
+  /**
+   * The feature id for the '<em><b>Pointcut</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEPARATE_POINTCUT_ADVICE_MODEL__POINTCUT = ASPECT_MODEL_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Advice</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEPARATE_POINTCUT_ADVICE_MODEL__ADVICE = ASPECT_MODEL_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Separate Pointcut Advice Model</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SEPARATE_POINTCUT_ADVICE_MODEL_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AdviceModelImpl <em>Advice Model</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.AdviceModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getAdviceModel()
+   * @generated
+   */
+  int ADVICE_MODEL = 9;
+
+  /**
+   * The number of structural features of the '<em>Advice Model</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADVICE_MODEL_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl <em>Generator</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -406,7 +462,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getGenerator()
    * @generated
    */
-  int GENERATOR = 8;
+  int GENERATOR = 10;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -415,7 +471,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__REFERENCE = PROCESSOR__REFERENCE;
+  int GENERATOR__REFERENCE = FRAGMENT__REFERENCE;
 
   /**
    * The feature id for the '<em><b>Source Model</b></em>' containment reference.
@@ -424,7 +480,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__SOURCE_MODEL = PROCESSOR__SOURCE_MODEL;
+  int GENERATOR__SOURCE_MODEL = FRAGMENT__SOURCE_MODEL;
 
   /**
    * The feature id for the '<em><b>Target Model</b></em>' containment reference.
@@ -433,7 +489,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__TARGET_MODEL = PROCESSOR__TARGET_MODEL;
+  int GENERATOR__TARGET_MODEL = FRAGMENT__TARGET_MODEL;
 
   /**
    * The feature id for the '<em><b>Source Aux Models</b></em>' containment reference list.
@@ -442,7 +498,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__SOURCE_AUX_MODELS = PROCESSOR_FEATURE_COUNT + 0;
+  int GENERATOR__SOURCE_AUX_MODELS = FRAGMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Target Trace Model</b></em>' containment reference.
@@ -451,7 +507,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__TARGET_TRACE_MODEL = PROCESSOR_FEATURE_COUNT + 1;
+  int GENERATOR__TARGET_TRACE_MODEL = FRAGMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Source Trace Models</b></em>' containment reference list.
@@ -460,7 +516,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR__SOURCE_TRACE_MODELS = PROCESSOR_FEATURE_COUNT + 2;
+  int GENERATOR__SOURCE_TRACE_MODELS = FRAGMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Generator</em>' class.
@@ -469,7 +525,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GENERATOR_FEATURE_COUNT = PROCESSOR_FEATURE_COUNT + 3;
+  int GENERATOR_FEATURE_COUNT = FRAGMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
@@ -479,7 +535,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceModelNodeSelector()
    * @generated
    */
-  int SOURCE_MODEL_NODE_SELECTOR = 9;
+  int SOURCE_MODEL_NODE_SELECTOR = 11;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -525,7 +581,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetModelNodeType()
    * @generated
    */
-  int TARGET_MODEL_NODE_TYPE = 10;
+  int TARGET_MODEL_NODE_TYPE = 12;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -534,7 +590,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_NODE_TYPE__REFERENCE = ASPECT_MODEL_FEATURE_COUNT + 0;
+  int TARGET_MODEL_NODE_TYPE__REFERENCE = ADVICE_MODEL_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Target Model Node Type</em>' class.
@@ -543,7 +599,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_NODE_TYPE_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 1;
+  int TARGET_MODEL_NODE_TYPE_FEATURE_COUNT = ADVICE_MODEL_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl <em>Model Node Type</em>}' class.
@@ -553,7 +609,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelNodeType()
    * @generated
    */
-  int MODEL_NODE_TYPE = 11;
+  int MODEL_NODE_TYPE = 13;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -599,7 +655,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getConstraintExpression()
    * @generated
    */
-  int CONSTRAINT_EXPRESSION = 13;
+  int CONSTRAINT_EXPRESSION = 15;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -645,7 +701,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getCompareExpression()
    * @generated
    */
-  int COMPARE_EXPRESSION = 14;
+  int COMPARE_EXPRESSION = 16;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -700,7 +756,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBasicConstraint()
    * @generated
    */
-  int BASIC_CONSTRAINT = 15;
+  int BASIC_CONSTRAINT = 17;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -755,7 +811,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getOperand()
    * @generated
    */
-  int OPERAND = 18;
+  int OPERAND = 20;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -810,7 +866,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeProperty()
    * @generated
    */
-  int NODE_PROPERTY = 12;
+  int NODE_PROPERTY = 14;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -892,7 +948,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNegation()
    * @generated
    */
-  int NEGATION = 16;
+  int NEGATION = 18;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -956,7 +1012,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getParenthesisConstraint()
    * @generated
    */
-  int PARENTHESIS_CONSTRAINT = 17;
+  int PARENTHESIS_CONSTRAINT = 19;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1020,7 +1076,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTypeof()
    * @generated
    */
-  int TYPEOF = 19;
+  int TYPEOF = 21;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1084,7 +1140,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetTraceModel()
    * @generated
    */
-  int TARGET_TRACE_MODEL = 20;
+  int TARGET_TRACE_MODEL = 22;
 
   /**
    * The number of structural features of the '<em>Target Trace Model</em>' class.
@@ -1103,7 +1159,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTraceModelReference()
    * @generated
    */
-  int TRACE_MODEL_REFERENCE = 21;
+  int TRACE_MODEL_REFERENCE = 23;
 
   /**
    * The feature id for the '<em><b>Trace Model</b></em>' reference.
@@ -1131,7 +1187,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTraceModel()
    * @generated
    */
-  int TRACE_MODEL = 22;
+  int TRACE_MODEL = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1168,7 +1224,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeSetRelation()
    * @generated
    */
-  int NODE_SET_RELATION = 23;
+  int NODE_SET_RELATION = 25;
 
   /**
    * The feature id for the '<em><b>Source Nodes</b></em>' containment reference list.
@@ -1205,7 +1261,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getNodeType()
    * @generated
    */
-  int NODE_TYPE = 24;
+  int NODE_TYPE = 26;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1233,7 +1289,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 25;
+  int LITERAL = 27;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1288,7 +1344,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getArrayLiteral()
    * @generated
    */
-  int ARRAY_LITERAL = 26;
+  int ARRAY_LITERAL = 28;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1352,7 +1408,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 27;
+  int STRING_LITERAL = 29;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1416,7 +1472,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 28;
+  int INT_LITERAL = 30;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1480,7 +1536,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 29;
+  int FLOAT_LITERAL = 31;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1544,7 +1600,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 30;
+  int BOOLEAN_LITERAL = 32;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1608,7 +1664,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelModifier()
    * @generated
    */
-  int METAMODEL_MODIFIER = 31;
+  int METAMODEL_MODIFIER = 33;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}' enum.
@@ -1618,7 +1674,7 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 32;
+  int LOGIC_OPERATOR = 34;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.Comparator <em>Comparator</em>}' enum.
@@ -1628,73 +1684,73 @@ public interface ArchitecturePackage extends EPackage
    * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getComparator()
    * @generated
    */
-  int COMPARATOR = 33;
+  int COMPARATOR = 35;
 
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Model <em>Model</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel <em>Geco Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model
+   * @return the meta object for class '<em>Geco Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel
    * @generated
    */
-  EClass getModel();
+  EClass getGecoModel();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Model#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model#getName()
-   * @see #getModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel#getName()
+   * @see #getGecoModel()
    * @generated
    */
-  EAttribute getModel_Name();
+  EAttribute getGecoModel_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getImports <em>Imports</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Imports</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model#getImports()
-   * @see #getModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel#getImports()
+   * @see #getGecoModel()
    * @generated
    */
-  EReference getModel_Imports();
+  EReference getGecoModel_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getRegisteredPackages <em>Registered Packages</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getRegisteredRootClass <em>Registered Root Class</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Registered Packages</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model#getRegisteredPackages()
-   * @see #getModel()
+   * @return the meta object for the containment reference list '<em>Registered Root Class</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel#getRegisteredRootClass()
+   * @see #getGecoModel()
    * @generated
    */
-  EReference getModel_RegisteredPackages();
+  EReference getGecoModel_RegisteredRootClass();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getMetamodels <em>Metamodels</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getMetamodels <em>Metamodels</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Metamodels</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model#getMetamodels()
-   * @see #getModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel#getMetamodels()
+   * @see #getGecoModel()
    * @generated
    */
-  EReference getModel_Metamodels();
+  EReference getGecoModel_Metamodels();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.Model#getProcessors <em>Processors</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getFragments <em>Fragments</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Processors</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Model#getProcessors()
-   * @see #getModel()
+   * @return the meta object for the containment reference list '<em>Fragments</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel#getFragments()
+   * @see #getGecoModel()
    * @generated
    */
-  EReference getModel_Processors();
+  EReference getGecoModel_Fragments();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Import <em>Import</em>}'.
@@ -1716,6 +1772,60 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EReference getImport_ImportedNamespace();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass <em>Registered Root Class</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Registered Root Class</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass
+   * @generated
+   */
+  EClass getRegisteredRootClass();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass#getName()
+   * @see #getRegisteredRootClass()
+   * @generated
+   */
+  EAttribute getRegisteredRootClass_Name();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass#getImportedNamespace <em>Imported Namespace</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Imported Namespace</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass#getImportedNamespace()
+   * @see #getRegisteredRootClass()
+   * @generated
+   */
+  EReference getRegisteredRootClass_ImportedNamespace();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass#isIsText <em>Is Text</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Text</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass#isIsText()
+   * @see #getRegisteredRootClass()
+   * @generated
+   */
+  EAttribute getRegisteredRootClass_IsText();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass#getExtension <em>Extension</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Extension</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass#getExtension()
+   * @see #getRegisteredRootClass()
+   * @generated
+   */
+  EAttribute getRegisteredRootClass_Extension();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence <em>Metamodel Sequence</em>}'.
@@ -1782,101 +1892,47 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getMetamodel_Name();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage <em>Registered Package</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Fragment <em>Fragment</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Registered Package</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage
+   * @return the meta object for class '<em>Fragment</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Fragment
    * @generated
    */
-  EClass getRegisteredPackage();
+  EClass getFragment();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getName()
-   * @see #getRegisteredPackage()
-   * @generated
-   */
-  EAttribute getRegisteredPackage_Name();
-
-  /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace <em>Imported Namespace</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Imported Namespace</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getImportedNamespace()
-   * @see #getRegisteredPackage()
-   * @generated
-   */
-  EReference getRegisteredPackage_ImportedNamespace();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#isIsText <em>Is Text</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Text</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#isIsText()
-   * @see #getRegisteredPackage()
-   * @generated
-   */
-  EAttribute getRegisteredPackage_IsText();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getExtension <em>Extension</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Extension</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.RegisteredPackage#getExtension()
-   * @see #getRegisteredPackage()
-   * @generated
-   */
-  EAttribute getRegisteredPackage_Extension();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Processor <em>Processor</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Processor</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Processor
-   * @generated
-   */
-  EClass getProcessor();
-
-  /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Processor#getReference <em>Reference</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Fragment#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Reference</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Processor#getReference()
-   * @see #getProcessor()
+   * @see de.cau.cs.se.geco.architecture.architecture.Fragment#getReference()
+   * @see #getFragment()
    * @generated
    */
-  EReference getProcessor_Reference();
+  EReference getFragment_Reference();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Processor#getSourceModel <em>Source Model</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Fragment#getSourceModel <em>Source Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Source Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Processor#getSourceModel()
-   * @see #getProcessor()
+   * @see de.cau.cs.se.geco.architecture.architecture.Fragment#getSourceModel()
+   * @see #getFragment()
    * @generated
    */
-  EReference getProcessor_SourceModel();
+  EReference getFragment_SourceModel();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Processor#getTargetModel <em>Target Model</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.Fragment#getTargetModel <em>Target Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Target Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Processor#getTargetModel()
-   * @see #getProcessor()
+   * @see de.cau.cs.se.geco.architecture.architecture.Fragment#getTargetModel()
+   * @see #getFragment()
    * @generated
    */
-  EReference getProcessor_TargetModel();
+  EReference getFragment_TargetModel();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Weaver <em>Weaver</em>}'.
@@ -1908,6 +1964,48 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    */
   EClass getAspectModel();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel <em>Separate Pointcut Advice Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Separate Pointcut Advice Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel
+   * @generated
+   */
+  EClass getSeparatePointcutAdviceModel();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel#getPointcut <em>Pointcut</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Pointcut</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel#getPointcut()
+   * @see #getSeparatePointcutAdviceModel()
+   * @generated
+   */
+  EReference getSeparatePointcutAdviceModel_Pointcut();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel#getAdvice <em>Advice</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Advice</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel#getAdvice()
+   * @see #getSeparatePointcutAdviceModel()
+   * @generated
+   */
+  EReference getSeparatePointcutAdviceModel_Advice();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.AdviceModel <em>Advice Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Advice Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.AdviceModel
+   * @generated
+   */
+  EClass getAdviceModel();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Generator <em>Generator</em>}'.
@@ -2534,14 +2632,14 @@ public interface ArchitecturePackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl <em>Model</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl <em>Geco Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModel()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getGecoModel()
      * @generated
      */
-    EClass MODEL = eINSTANCE.getModel();
+    EClass GECO_MODEL = eINSTANCE.getGecoModel();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2549,7 +2647,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODEL__NAME = eINSTANCE.getModel_Name();
+    EAttribute GECO_MODEL__NAME = eINSTANCE.getGecoModel_Name();
 
     /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
@@ -2557,15 +2655,15 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__IMPORTS = eINSTANCE.getModel_Imports();
+    EReference GECO_MODEL__IMPORTS = eINSTANCE.getGecoModel_Imports();
 
     /**
-     * The meta object literal for the '<em><b>Registered Packages</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Registered Root Class</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__REGISTERED_PACKAGES = eINSTANCE.getModel_RegisteredPackages();
+    EReference GECO_MODEL__REGISTERED_ROOT_CLASS = eINSTANCE.getGecoModel_RegisteredRootClass();
 
     /**
      * The meta object literal for the '<em><b>Metamodels</b></em>' containment reference list feature.
@@ -2573,15 +2671,15 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__METAMODELS = eINSTANCE.getModel_Metamodels();
+    EReference GECO_MODEL__METAMODELS = eINSTANCE.getGecoModel_Metamodels();
 
     /**
-     * The meta object literal for the '<em><b>Processors</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Fragments</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__PROCESSORS = eINSTANCE.getModel_Processors();
+    EReference GECO_MODEL__FRAGMENTS = eINSTANCE.getGecoModel_Fragments();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ImportImpl <em>Import</em>}' class.
@@ -2600,6 +2698,48 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EReference IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredRootClassImpl <em>Registered Root Class</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.RegisteredRootClassImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getRegisteredRootClass()
+     * @generated
+     */
+    EClass REGISTERED_ROOT_CLASS = eINSTANCE.getRegisteredRootClass();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REGISTERED_ROOT_CLASS__NAME = eINSTANCE.getRegisteredRootClass_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Imported Namespace</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REGISTERED_ROOT_CLASS__IMPORTED_NAMESPACE = eINSTANCE.getRegisteredRootClass_ImportedNamespace();
+
+    /**
+     * The meta object literal for the '<em><b>Is Text</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REGISTERED_ROOT_CLASS__IS_TEXT = eINSTANCE.getRegisteredRootClass_IsText();
+
+    /**
+     * The meta object literal for the '<em><b>Extension</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REGISTERED_ROOT_CLASS__EXTENSION = eINSTANCE.getRegisteredRootClass_Extension();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl <em>Metamodel Sequence</em>}' class.
@@ -2654,56 +2794,14 @@ public interface ArchitecturePackage extends EPackage
     EAttribute METAMODEL__NAME = eINSTANCE.getMetamodel_Name();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl <em>Registered Package</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.FragmentImpl <em>Fragment</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.RegisteredPackageImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getRegisteredPackage()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.FragmentImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getFragment()
      * @generated
      */
-    EClass REGISTERED_PACKAGE = eINSTANCE.getRegisteredPackage();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REGISTERED_PACKAGE__NAME = eINSTANCE.getRegisteredPackage_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Imported Namespace</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REGISTERED_PACKAGE__IMPORTED_NAMESPACE = eINSTANCE.getRegisteredPackage_ImportedNamespace();
-
-    /**
-     * The meta object literal for the '<em><b>Is Text</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REGISTERED_PACKAGE__IS_TEXT = eINSTANCE.getRegisteredPackage_IsText();
-
-    /**
-     * The meta object literal for the '<em><b>Extension</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute REGISTERED_PACKAGE__EXTENSION = eINSTANCE.getRegisteredPackage_Extension();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl <em>Processor</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ProcessorImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getProcessor()
-     * @generated
-     */
-    EClass PROCESSOR = eINSTANCE.getProcessor();
+    EClass FRAGMENT = eINSTANCE.getFragment();
 
     /**
      * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -2711,7 +2809,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROCESSOR__REFERENCE = eINSTANCE.getProcessor_Reference();
+    EReference FRAGMENT__REFERENCE = eINSTANCE.getFragment_Reference();
 
     /**
      * The meta object literal for the '<em><b>Source Model</b></em>' containment reference feature.
@@ -2719,7 +2817,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROCESSOR__SOURCE_MODEL = eINSTANCE.getProcessor_SourceModel();
+    EReference FRAGMENT__SOURCE_MODEL = eINSTANCE.getFragment_SourceModel();
 
     /**
      * The meta object literal for the '<em><b>Target Model</b></em>' containment reference feature.
@@ -2727,7 +2825,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROCESSOR__TARGET_MODEL = eINSTANCE.getProcessor_TargetModel();
+    EReference FRAGMENT__TARGET_MODEL = eINSTANCE.getFragment_TargetModel();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.WeaverImpl <em>Weaver</em>}' class.
@@ -2756,6 +2854,42 @@ public interface ArchitecturePackage extends EPackage
      * @generated
      */
     EClass ASPECT_MODEL = eINSTANCE.getAspectModel();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SeparatePointcutAdviceModelImpl <em>Separate Pointcut Advice Model</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.SeparatePointcutAdviceModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSeparatePointcutAdviceModel()
+     * @generated
+     */
+    EClass SEPARATE_POINTCUT_ADVICE_MODEL = eINSTANCE.getSeparatePointcutAdviceModel();
+
+    /**
+     * The meta object literal for the '<em><b>Pointcut</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SEPARATE_POINTCUT_ADVICE_MODEL__POINTCUT = eINSTANCE.getSeparatePointcutAdviceModel_Pointcut();
+
+    /**
+     * The meta object literal for the '<em><b>Advice</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SEPARATE_POINTCUT_ADVICE_MODEL__ADVICE = eINSTANCE.getSeparatePointcutAdviceModel_Advice();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AdviceModelImpl <em>Advice Model</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.AdviceModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getAdviceModel()
+     * @generated
+     */
+    EClass ADVICE_MODEL = eINSTANCE.getAdviceModel();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl <em>Generator</em>}' class.
