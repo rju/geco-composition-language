@@ -11,7 +11,7 @@ import de.cau.cs.se.geco.architecture.architecture.Import
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral
 import de.cau.cs.se.geco.architecture.architecture.Literal
 import de.cau.cs.se.geco.architecture.architecture.LogicOperator
-import de.cau.cs.se.geco.architecture.architecture.Metamodel
+import de.cau.cs.se.geco.architecture.architecture.Model
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
 import de.cau.cs.se.geco.architecture.architecture.Negation
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
@@ -28,12 +28,12 @@ import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping
 import de.cau.cs.se.geco.architecture.architecture.Fragment
 import de.cau.cs.se.geco.architecture.model.boxing.Group
 import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
-import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
+import de.cau.cs.se.geco.architecture.architecture.ModelModifier
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmMember
 import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.geco.architecture.model.boxing.Unit
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence
 import org.eclipse.xtext.common.types.JvmOperation
 
 class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
@@ -74,7 +74,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 			
 			def void execute(Collection<EObject> models) {
 				/** separate input models in collections for specific source model types. */
-				«input.models.filter[it.modifier == MetamodelModifier.INPUT].map[it.createCollectionInitalization].join»
+				«input.models.filter[it.modifier == ModelModifier.INPUT].map[it.createCollectionInitalization].join»
 				
 				/** main generation groups. */
 				«input.groups.indexed.map[createMainGroupCall(it.key)].join("\n")»
@@ -104,9 +104,9 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 */
 	private def createCollectionForMetamodel(ModelDeclaration declaration) {
 		if (declaration.isCollectionType) '''
-			val «declaration.metamodel.name» = new ArrayList<«declaration.selector.resolveType.determineElementType.qualifiedName»>()
+			val «declaration.model.name» = new ArrayList<«declaration.selector.resolveType.determineElementType.qualifiedName»>()
 		''' else '''
-			var «declaration.selector.resolveType.determineElementType.qualifiedName» «declaration.metamodel.name» = null
+			var «declaration.selector.resolveType.determineElementType.qualifiedName» «declaration.model.name» = null
 		'''
 		
 	}
@@ -115,8 +115,8 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * Create initialization for collections used to traverse the input models and fill the proper collections.
 	 */
 	private def createCollectionInitalization(ModelDeclaration declaration) '''
-		val «declaration.metamodel.collectionName» = models.filter(«declaration.selector.target.importedNamespace.qualifiedName»)
-		«declaration.metamodel.collectionName».forEach[«declaration.selector.createSelectorQuery(declaration.metamodel.name)»]
+		val «declaration.model.collectionName» = models.filter(«declaration.selector.target.importedNamespace.qualifiedName»)
+		«declaration.model.collectionName».forEach[«declaration.selector.createSelectorQuery(declaration.model.name)»]
 	'''
 	
 	/**
@@ -384,6 +384,6 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	/**
 	 * Name of internal collections for models for a specific metamodel.
 	 */
-	private def collectionName(Metamodel metamodel) '''«metamodel.name»BaseCollection'''
+	private def collectionName(Model model) '''«model.name»BaseCollection'''
 		
 }

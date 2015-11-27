@@ -370,25 +370,25 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     // $ANTLR end "ruleRegisteredRootClass"
 
 
-    // $ANTLR start "entryRuleMetamodelSequence"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:145:1: entryRuleMetamodelSequence : ruleMetamodelSequence EOF ;
-    public final void entryRuleMetamodelSequence() throws RecognitionException {
+    // $ANTLR start "entryRuleModelSequence"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:145:1: entryRuleModelSequence : ruleModelSequence EOF ;
+    public final void entryRuleModelSequence() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:146:1: ( ruleMetamodelSequence EOF )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:147:1: ruleMetamodelSequence EOF
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:146:1: ( ruleModelSequence EOF )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:147:1: ruleModelSequence EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceRule()); 
+               before(grammarAccess.getModelSequenceRule()); 
             }
-            pushFollow(FOLLOW_ruleMetamodelSequence_in_entryRuleMetamodelSequence247);
-            ruleMetamodelSequence();
+            pushFollow(FOLLOW_ruleModelSequence_in_entryRuleModelSequence247);
+            ruleModelSequence();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceRule()); 
+               after(grammarAccess.getModelSequenceRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMetamodelSequence254); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleModelSequence254); if (state.failed) return ;
 
             }
 
@@ -401,30 +401,30 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "entryRuleMetamodelSequence"
+    // $ANTLR end "entryRuleModelSequence"
 
 
-    // $ANTLR start "ruleMetamodelSequence"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:154:1: ruleMetamodelSequence : ( ( rule__MetamodelSequence__Group__0 ) ) ;
-    public final void ruleMetamodelSequence() throws RecognitionException {
+    // $ANTLR start "ruleModelSequence"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:154:1: ruleModelSequence : ( ( rule__ModelSequence__Group__0 ) ) ;
+    public final void ruleModelSequence() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:158:2: ( ( ( rule__MetamodelSequence__Group__0 ) ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:159:1: ( ( rule__MetamodelSequence__Group__0 ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:158:2: ( ( ( rule__ModelSequence__Group__0 ) ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:159:1: ( ( rule__ModelSequence__Group__0 ) )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:159:1: ( ( rule__MetamodelSequence__Group__0 ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:160:1: ( rule__MetamodelSequence__Group__0 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:159:1: ( ( rule__ModelSequence__Group__0 ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:160:1: ( rule__ModelSequence__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getGroup()); 
+               before(grammarAccess.getModelSequenceAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:161:1: ( rule__MetamodelSequence__Group__0 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:161:2: rule__MetamodelSequence__Group__0
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:161:1: ( rule__ModelSequence__Group__0 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:161:2: rule__ModelSequence__Group__0
             {
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__0_in_ruleMetamodelSequence280);
-            rule__MetamodelSequence__Group__0();
+            pushFollow(FOLLOW_rule__ModelSequence__Group__0_in_ruleModelSequence280);
+            rule__ModelSequence__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -432,7 +432,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getGroup()); 
+               after(grammarAccess.getModelSequenceAccess().getGroup()); 
             }
 
             }
@@ -452,28 +452,28 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "ruleMetamodelSequence"
+    // $ANTLR end "ruleModelSequence"
 
 
-    // $ANTLR start "entryRuleMetamodel"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:173:1: entryRuleMetamodel : ruleMetamodel EOF ;
-    public final void entryRuleMetamodel() throws RecognitionException {
+    // $ANTLR start "entryRuleModel"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:173:1: entryRuleModel : ruleModel EOF ;
+    public final void entryRuleModel() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:174:1: ( ruleMetamodel EOF )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:175:1: ruleMetamodel EOF
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:174:1: ( ruleModel EOF )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:175:1: ruleModel EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelRule()); 
+               before(grammarAccess.getModelRule()); 
             }
-            pushFollow(FOLLOW_ruleMetamodel_in_entryRuleMetamodel307);
-            ruleMetamodel();
+            pushFollow(FOLLOW_ruleModel_in_entryRuleModel307);
+            ruleModel();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelRule()); 
+               after(grammarAccess.getModelRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMetamodel314); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleModel314); if (state.failed) return ;
 
             }
 
@@ -486,30 +486,30 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "entryRuleMetamodel"
+    // $ANTLR end "entryRuleModel"
 
 
-    // $ANTLR start "ruleMetamodel"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:182:1: ruleMetamodel : ( ( rule__Metamodel__NameAssignment ) ) ;
-    public final void ruleMetamodel() throws RecognitionException {
+    // $ANTLR start "ruleModel"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:182:1: ruleModel : ( ( rule__Model__NameAssignment ) ) ;
+    public final void ruleModel() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:186:2: ( ( ( rule__Metamodel__NameAssignment ) ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:187:1: ( ( rule__Metamodel__NameAssignment ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:186:2: ( ( ( rule__Model__NameAssignment ) ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:187:1: ( ( rule__Model__NameAssignment ) )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:187:1: ( ( rule__Metamodel__NameAssignment ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:188:1: ( rule__Metamodel__NameAssignment )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:187:1: ( ( rule__Model__NameAssignment ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:188:1: ( rule__Model__NameAssignment )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelAccess().getNameAssignment()); 
+               before(grammarAccess.getModelAccess().getNameAssignment()); 
             }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:189:1: ( rule__Metamodel__NameAssignment )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:189:2: rule__Metamodel__NameAssignment
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:189:1: ( rule__Model__NameAssignment )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:189:2: rule__Model__NameAssignment
             {
-            pushFollow(FOLLOW_rule__Metamodel__NameAssignment_in_ruleMetamodel340);
-            rule__Metamodel__NameAssignment();
+            pushFollow(FOLLOW_rule__Model__NameAssignment_in_ruleModel340);
+            rule__Model__NameAssignment();
 
             state._fsp--;
             if (state.failed) return ;
@@ -517,7 +517,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelAccess().getNameAssignment()); 
+               after(grammarAccess.getModelAccess().getNameAssignment()); 
             }
 
             }
@@ -537,7 +537,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "ruleMetamodel"
+    // $ANTLR end "ruleModel"
 
 
     // $ANTLR start "entryRuleFragment"
@@ -3005,27 +3005,27 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     // $ANTLR end "ruleQualifiedName"
 
 
-    // $ANTLR start "ruleMetamodelModifier"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1016:1: ruleMetamodelModifier : ( ( rule__MetamodelModifier__Alternatives ) ) ;
-    public final void ruleMetamodelModifier() throws RecognitionException {
+    // $ANTLR start "ruleModelModifier"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1016:1: ruleModelModifier : ( ( rule__ModelModifier__Alternatives ) ) ;
+    public final void ruleModelModifier() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1020:1: ( ( ( rule__MetamodelModifier__Alternatives ) ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1021:1: ( ( rule__MetamodelModifier__Alternatives ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1020:1: ( ( ( rule__ModelModifier__Alternatives ) ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1021:1: ( ( rule__ModelModifier__Alternatives ) )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1021:1: ( ( rule__MetamodelModifier__Alternatives ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1022:1: ( rule__MetamodelModifier__Alternatives )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1021:1: ( ( rule__ModelModifier__Alternatives ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1022:1: ( rule__ModelModifier__Alternatives )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelModifierAccess().getAlternatives()); 
+               before(grammarAccess.getModelModifierAccess().getAlternatives()); 
             }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1023:1: ( rule__MetamodelModifier__Alternatives )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1023:2: rule__MetamodelModifier__Alternatives
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1023:1: ( rule__ModelModifier__Alternatives )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1023:2: rule__ModelModifier__Alternatives
             {
-            pushFollow(FOLLOW_rule__MetamodelModifier__Alternatives_in_ruleMetamodelModifier2119);
-            rule__MetamodelModifier__Alternatives();
+            pushFollow(FOLLOW_rule__ModelModifier__Alternatives_in_ruleModelModifier2119);
+            rule__ModelModifier__Alternatives();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3033,7 +3033,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelModifierAccess().getAlternatives()); 
+               after(grammarAccess.getModelModifierAccess().getAlternatives()); 
             }
 
             }
@@ -3053,7 +3053,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "ruleMetamodelModifier"
+    // $ANTLR end "ruleModelModifier"
 
 
     // $ANTLR start "ruleLogicOperator"
@@ -4232,9 +4232,9 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__Literal__Alternatives"
 
 
-    // $ANTLR start "rule__MetamodelModifier__Alternatives"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1324:1: rule__MetamodelModifier__Alternatives : ( ( ( 'in' ) ) | ( ( 'out' ) ) | ( ( 'io' ) ) );
-    public final void rule__MetamodelModifier__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__ModelModifier__Alternatives"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1324:1: rule__ModelModifier__Alternatives : ( ( ( 'in' ) ) | ( ( 'out' ) ) | ( ( 'io' ) ) );
+    public final void rule__ModelModifier__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4273,17 +4273,17 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1330:1: ( 'in' )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getMetamodelModifierAccess().getINPUTEnumLiteralDeclaration_0()); 
+                       before(grammarAccess.getModelModifierAccess().getINPUTEnumLiteralDeclaration_0()); 
                     }
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1331:1: ( 'in' )
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1331:3: 'in'
                     {
-                    match(input,15,FOLLOW_15_in_rule__MetamodelModifier__Alternatives2811); if (state.failed) return ;
+                    match(input,15,FOLLOW_15_in_rule__ModelModifier__Alternatives2811); if (state.failed) return ;
 
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getMetamodelModifierAccess().getINPUTEnumLiteralDeclaration_0()); 
+                       after(grammarAccess.getModelModifierAccess().getINPUTEnumLiteralDeclaration_0()); 
                     }
 
                     }
@@ -4298,17 +4298,17 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1337:1: ( 'out' )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getMetamodelModifierAccess().getOUTPUTEnumLiteralDeclaration_1()); 
+                       before(grammarAccess.getModelModifierAccess().getOUTPUTEnumLiteralDeclaration_1()); 
                     }
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1338:1: ( 'out' )
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1338:3: 'out'
                     {
-                    match(input,16,FOLLOW_16_in_rule__MetamodelModifier__Alternatives2832); if (state.failed) return ;
+                    match(input,16,FOLLOW_16_in_rule__ModelModifier__Alternatives2832); if (state.failed) return ;
 
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getMetamodelModifierAccess().getOUTPUTEnumLiteralDeclaration_1()); 
+                       after(grammarAccess.getModelModifierAccess().getOUTPUTEnumLiteralDeclaration_1()); 
                     }
 
                     }
@@ -4323,17 +4323,17 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1344:1: ( 'io' )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getMetamodelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2()); 
+                       before(grammarAccess.getModelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2()); 
                     }
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1345:1: ( 'io' )
                     // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1345:3: 'io'
                     {
-                    match(input,17,FOLLOW_17_in_rule__MetamodelModifier__Alternatives2853); if (state.failed) return ;
+                    match(input,17,FOLLOW_17_in_rule__ModelModifier__Alternatives2853); if (state.failed) return ;
 
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getMetamodelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2()); 
+                       after(grammarAccess.getModelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2()); 
                     }
 
                     }
@@ -4355,7 +4355,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelModifier__Alternatives"
+    // $ANTLR end "rule__ModelModifier__Alternatives"
 
 
     // $ANTLR start "rule__LogicOperator__Alternatives"
@@ -5117,22 +5117,22 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
 
 
     // $ANTLR start "rule__GecoModel__Group__4__Impl"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1570:1: rule__GecoModel__Group__4__Impl : ( ( rule__GecoModel__MetamodelsAssignment_4 )* ) ;
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1570:1: rule__GecoModel__Group__4__Impl : ( ( rule__GecoModel__ModelsAssignment_4 )* ) ;
     public final void rule__GecoModel__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1574:1: ( ( ( rule__GecoModel__MetamodelsAssignment_4 )* ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1575:1: ( ( rule__GecoModel__MetamodelsAssignment_4 )* )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1574:1: ( ( ( rule__GecoModel__ModelsAssignment_4 )* ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1575:1: ( ( rule__GecoModel__ModelsAssignment_4 )* )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1575:1: ( ( rule__GecoModel__MetamodelsAssignment_4 )* )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1576:1: ( rule__GecoModel__MetamodelsAssignment_4 )*
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1575:1: ( ( rule__GecoModel__ModelsAssignment_4 )* )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1576:1: ( rule__GecoModel__ModelsAssignment_4 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGecoModelAccess().getMetamodelsAssignment_4()); 
+               before(grammarAccess.getGecoModelAccess().getModelsAssignment_4()); 
             }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1577:1: ( rule__GecoModel__MetamodelsAssignment_4 )*
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1577:1: ( rule__GecoModel__ModelsAssignment_4 )*
             loop16:
             do {
                 int alt16=2;
@@ -5145,10 +5145,10 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
 
                 switch (alt16) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1577:2: rule__GecoModel__MetamodelsAssignment_4
+            	    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1577:2: rule__GecoModel__ModelsAssignment_4
             	    {
-            	    pushFollow(FOLLOW_rule__GecoModel__MetamodelsAssignment_4_in_rule__GecoModel__Group__4__Impl3379);
-            	    rule__GecoModel__MetamodelsAssignment_4();
+            	    pushFollow(FOLLOW_rule__GecoModel__ModelsAssignment_4_in_rule__GecoModel__Group__4__Impl3379);
+            	    rule__GecoModel__ModelsAssignment_4();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -5162,7 +5162,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGecoModelAccess().getMetamodelsAssignment_4()); 
+               after(grammarAccess.getGecoModelAccess().getModelsAssignment_4()); 
             }
 
             }
@@ -5875,23 +5875,23 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__RegisteredRootClass__Group_2_1__1__Impl"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group__0"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1845:1: rule__MetamodelSequence__Group__0 : rule__MetamodelSequence__Group__0__Impl rule__MetamodelSequence__Group__1 ;
-    public final void rule__MetamodelSequence__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group__0"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1845:1: rule__ModelSequence__Group__0 : rule__ModelSequence__Group__0__Impl rule__ModelSequence__Group__1 ;
+    public final void rule__ModelSequence__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1849:1: ( rule__MetamodelSequence__Group__0__Impl rule__MetamodelSequence__Group__1 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1850:2: rule__MetamodelSequence__Group__0__Impl rule__MetamodelSequence__Group__1
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1849:1: ( rule__ModelSequence__Group__0__Impl rule__ModelSequence__Group__1 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1850:2: rule__ModelSequence__Group__0__Impl rule__ModelSequence__Group__1
             {
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__0__Impl_in_rule__MetamodelSequence__Group__03909);
-            rule__MetamodelSequence__Group__0__Impl();
+            pushFollow(FOLLOW_rule__ModelSequence__Group__0__Impl_in_rule__ModelSequence__Group__03909);
+            rule__ModelSequence__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__1_in_rule__MetamodelSequence__Group__03912);
-            rule__MetamodelSequence__Group__1();
+            pushFollow(FOLLOW_rule__ModelSequence__Group__1_in_rule__ModelSequence__Group__03912);
+            rule__ModelSequence__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -5910,12 +5910,12 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group__0"
+    // $ANTLR end "rule__ModelSequence__Group__0"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group__0__Impl"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1857:1: rule__MetamodelSequence__Group__0__Impl : ( 'model' ) ;
-    public final void rule__MetamodelSequence__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group__0__Impl"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1857:1: rule__ModelSequence__Group__0__Impl : ( 'model' ) ;
+    public final void rule__ModelSequence__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -5927,11 +5927,11 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1863:1: 'model'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getModelKeyword_0()); 
+               before(grammarAccess.getModelSequenceAccess().getModelKeyword_0()); 
             }
-            match(input,30,FOLLOW_30_in_rule__MetamodelSequence__Group__0__Impl3940); if (state.failed) return ;
+            match(input,30,FOLLOW_30_in_rule__ModelSequence__Group__0__Impl3940); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getModelKeyword_0()); 
+               after(grammarAccess.getModelSequenceAccess().getModelKeyword_0()); 
             }
 
             }
@@ -5951,26 +5951,26 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group__0__Impl"
+    // $ANTLR end "rule__ModelSequence__Group__0__Impl"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group__1"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1876:1: rule__MetamodelSequence__Group__1 : rule__MetamodelSequence__Group__1__Impl rule__MetamodelSequence__Group__2 ;
-    public final void rule__MetamodelSequence__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group__1"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1876:1: rule__ModelSequence__Group__1 : rule__ModelSequence__Group__1__Impl rule__ModelSequence__Group__2 ;
+    public final void rule__ModelSequence__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1880:1: ( rule__MetamodelSequence__Group__1__Impl rule__MetamodelSequence__Group__2 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1881:2: rule__MetamodelSequence__Group__1__Impl rule__MetamodelSequence__Group__2
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1880:1: ( rule__ModelSequence__Group__1__Impl rule__ModelSequence__Group__2 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1881:2: rule__ModelSequence__Group__1__Impl rule__ModelSequence__Group__2
             {
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__1__Impl_in_rule__MetamodelSequence__Group__13971);
-            rule__MetamodelSequence__Group__1__Impl();
+            pushFollow(FOLLOW_rule__ModelSequence__Group__1__Impl_in_rule__ModelSequence__Group__13971);
+            rule__ModelSequence__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__2_in_rule__MetamodelSequence__Group__13974);
-            rule__MetamodelSequence__Group__2();
+            pushFollow(FOLLOW_rule__ModelSequence__Group__2_in_rule__ModelSequence__Group__13974);
+            rule__ModelSequence__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -5989,119 +5989,30 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group__1"
+    // $ANTLR end "rule__ModelSequence__Group__1"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group__1__Impl"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1888:1: rule__MetamodelSequence__Group__1__Impl : ( ( rule__MetamodelSequence__ModifierAssignment_1 ) ) ;
-    public final void rule__MetamodelSequence__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1892:1: ( ( ( rule__MetamodelSequence__ModifierAssignment_1 ) ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1893:1: ( ( rule__MetamodelSequence__ModifierAssignment_1 ) )
-            {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1893:1: ( ( rule__MetamodelSequence__ModifierAssignment_1 ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1894:1: ( rule__MetamodelSequence__ModifierAssignment_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getModifierAssignment_1()); 
-            }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1895:1: ( rule__MetamodelSequence__ModifierAssignment_1 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1895:2: rule__MetamodelSequence__ModifierAssignment_1
-            {
-            pushFollow(FOLLOW_rule__MetamodelSequence__ModifierAssignment_1_in_rule__MetamodelSequence__Group__1__Impl4001);
-            rule__MetamodelSequence__ModifierAssignment_1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getModifierAssignment_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__MetamodelSequence__Group__1__Impl"
-
-
-    // $ANTLR start "rule__MetamodelSequence__Group__2"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1905:1: rule__MetamodelSequence__Group__2 : rule__MetamodelSequence__Group__2__Impl rule__MetamodelSequence__Group__3 ;
-    public final void rule__MetamodelSequence__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group__1__Impl"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1888:1: rule__ModelSequence__Group__1__Impl : ( ( rule__ModelSequence__ModifierAssignment_1 ) ) ;
+    public final void rule__ModelSequence__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1909:1: ( rule__MetamodelSequence__Group__2__Impl rule__MetamodelSequence__Group__3 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1910:2: rule__MetamodelSequence__Group__2__Impl rule__MetamodelSequence__Group__3
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1892:1: ( ( ( rule__ModelSequence__ModifierAssignment_1 ) ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1893:1: ( ( rule__ModelSequence__ModifierAssignment_1 ) )
             {
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__2__Impl_in_rule__MetamodelSequence__Group__24031);
-            rule__MetamodelSequence__Group__2__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__3_in_rule__MetamodelSequence__Group__24034);
-            rule__MetamodelSequence__Group__3();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__MetamodelSequence__Group__2"
-
-
-    // $ANTLR start "rule__MetamodelSequence__Group__2__Impl"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1917:1: rule__MetamodelSequence__Group__2__Impl : ( ( rule__MetamodelSequence__TypeAssignment_2 ) ) ;
-    public final void rule__MetamodelSequence__Group__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1921:1: ( ( ( rule__MetamodelSequence__TypeAssignment_2 ) ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1922:1: ( ( rule__MetamodelSequence__TypeAssignment_2 ) )
-            {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1922:1: ( ( rule__MetamodelSequence__TypeAssignment_2 ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1923:1: ( rule__MetamodelSequence__TypeAssignment_2 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1893:1: ( ( rule__ModelSequence__ModifierAssignment_1 ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1894:1: ( rule__ModelSequence__ModifierAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getTypeAssignment_2()); 
+               before(grammarAccess.getModelSequenceAccess().getModifierAssignment_1()); 
             }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1924:1: ( rule__MetamodelSequence__TypeAssignment_2 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1924:2: rule__MetamodelSequence__TypeAssignment_2
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1895:1: ( rule__ModelSequence__ModifierAssignment_1 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1895:2: rule__ModelSequence__ModifierAssignment_1
             {
-            pushFollow(FOLLOW_rule__MetamodelSequence__TypeAssignment_2_in_rule__MetamodelSequence__Group__2__Impl4061);
-            rule__MetamodelSequence__TypeAssignment_2();
+            pushFollow(FOLLOW_rule__ModelSequence__ModifierAssignment_1_in_rule__ModelSequence__Group__1__Impl4001);
+            rule__ModelSequence__ModifierAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6109,7 +6020,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getTypeAssignment_2()); 
+               after(grammarAccess.getModelSequenceAccess().getModifierAssignment_1()); 
             }
 
             }
@@ -6129,110 +6040,26 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group__2__Impl"
+    // $ANTLR end "rule__ModelSequence__Group__1__Impl"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group__3"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1934:1: rule__MetamodelSequence__Group__3 : rule__MetamodelSequence__Group__3__Impl rule__MetamodelSequence__Group__4 ;
-    public final void rule__MetamodelSequence__Group__3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1938:1: ( rule__MetamodelSequence__Group__3__Impl rule__MetamodelSequence__Group__4 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1939:2: rule__MetamodelSequence__Group__3__Impl rule__MetamodelSequence__Group__4
-            {
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__3__Impl_in_rule__MetamodelSequence__Group__34091);
-            rule__MetamodelSequence__Group__3__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__4_in_rule__MetamodelSequence__Group__34094);
-            rule__MetamodelSequence__Group__4();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__MetamodelSequence__Group__3"
-
-
-    // $ANTLR start "rule__MetamodelSequence__Group__3__Impl"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1946:1: rule__MetamodelSequence__Group__3__Impl : ( ( rule__MetamodelSequence__MetamodelsAssignment_3 ) ) ;
-    public final void rule__MetamodelSequence__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group__2"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1905:1: rule__ModelSequence__Group__2 : rule__ModelSequence__Group__2__Impl rule__ModelSequence__Group__3 ;
+    public final void rule__ModelSequence__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1950:1: ( ( ( rule__MetamodelSequence__MetamodelsAssignment_3 ) ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1951:1: ( ( rule__MetamodelSequence__MetamodelsAssignment_3 ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1909:1: ( rule__ModelSequence__Group__2__Impl rule__ModelSequence__Group__3 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1910:2: rule__ModelSequence__Group__2__Impl rule__ModelSequence__Group__3
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1951:1: ( ( rule__MetamodelSequence__MetamodelsAssignment_3 ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1952:1: ( rule__MetamodelSequence__MetamodelsAssignment_3 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_3()); 
-            }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1953:1: ( rule__MetamodelSequence__MetamodelsAssignment_3 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1953:2: rule__MetamodelSequence__MetamodelsAssignment_3
-            {
-            pushFollow(FOLLOW_rule__MetamodelSequence__MetamodelsAssignment_3_in_rule__MetamodelSequence__Group__3__Impl4121);
-            rule__MetamodelSequence__MetamodelsAssignment_3();
+            pushFollow(FOLLOW_rule__ModelSequence__Group__2__Impl_in_rule__ModelSequence__Group__24031);
+            rule__ModelSequence__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_3()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__MetamodelSequence__Group__3__Impl"
-
-
-    // $ANTLR start "rule__MetamodelSequence__Group__4"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1963:1: rule__MetamodelSequence__Group__4 : rule__MetamodelSequence__Group__4__Impl ;
-    public final void rule__MetamodelSequence__Group__4() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1967:1: ( rule__MetamodelSequence__Group__4__Impl )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1968:2: rule__MetamodelSequence__Group__4__Impl
-            {
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group__4__Impl_in_rule__MetamodelSequence__Group__44151);
-            rule__MetamodelSequence__Group__4__Impl();
+            pushFollow(FOLLOW_rule__ModelSequence__Group__3_in_rule__ModelSequence__Group__24034);
+            rule__ModelSequence__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6251,26 +6078,199 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group__4"
+    // $ANTLR end "rule__ModelSequence__Group__2"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group__4__Impl"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1974:1: rule__MetamodelSequence__Group__4__Impl : ( ( rule__MetamodelSequence__Group_4__0 )* ) ;
-    public final void rule__MetamodelSequence__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group__2__Impl"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1917:1: rule__ModelSequence__Group__2__Impl : ( ( rule__ModelSequence__TypeAssignment_2 ) ) ;
+    public final void rule__ModelSequence__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1978:1: ( ( ( rule__MetamodelSequence__Group_4__0 )* ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1979:1: ( ( rule__MetamodelSequence__Group_4__0 )* )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1921:1: ( ( ( rule__ModelSequence__TypeAssignment_2 ) ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1922:1: ( ( rule__ModelSequence__TypeAssignment_2 ) )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1979:1: ( ( rule__MetamodelSequence__Group_4__0 )* )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1980:1: ( rule__MetamodelSequence__Group_4__0 )*
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1922:1: ( ( rule__ModelSequence__TypeAssignment_2 ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1923:1: ( rule__ModelSequence__TypeAssignment_2 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getGroup_4()); 
+               before(grammarAccess.getModelSequenceAccess().getTypeAssignment_2()); 
             }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1981:1: ( rule__MetamodelSequence__Group_4__0 )*
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1924:1: ( rule__ModelSequence__TypeAssignment_2 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1924:2: rule__ModelSequence__TypeAssignment_2
+            {
+            pushFollow(FOLLOW_rule__ModelSequence__TypeAssignment_2_in_rule__ModelSequence__Group__2__Impl4061);
+            rule__ModelSequence__TypeAssignment_2();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getModelSequenceAccess().getTypeAssignment_2()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__ModelSequence__Group__2__Impl"
+
+
+    // $ANTLR start "rule__ModelSequence__Group__3"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1934:1: rule__ModelSequence__Group__3 : rule__ModelSequence__Group__3__Impl rule__ModelSequence__Group__4 ;
+    public final void rule__ModelSequence__Group__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1938:1: ( rule__ModelSequence__Group__3__Impl rule__ModelSequence__Group__4 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1939:2: rule__ModelSequence__Group__3__Impl rule__ModelSequence__Group__4
+            {
+            pushFollow(FOLLOW_rule__ModelSequence__Group__3__Impl_in_rule__ModelSequence__Group__34091);
+            rule__ModelSequence__Group__3__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+            pushFollow(FOLLOW_rule__ModelSequence__Group__4_in_rule__ModelSequence__Group__34094);
+            rule__ModelSequence__Group__4();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__ModelSequence__Group__3"
+
+
+    // $ANTLR start "rule__ModelSequence__Group__3__Impl"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1946:1: rule__ModelSequence__Group__3__Impl : ( ( rule__ModelSequence__ModelsAssignment_3 ) ) ;
+    public final void rule__ModelSequence__Group__3__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1950:1: ( ( ( rule__ModelSequence__ModelsAssignment_3 ) ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1951:1: ( ( rule__ModelSequence__ModelsAssignment_3 ) )
+            {
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1951:1: ( ( rule__ModelSequence__ModelsAssignment_3 ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1952:1: ( rule__ModelSequence__ModelsAssignment_3 )
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getModelSequenceAccess().getModelsAssignment_3()); 
+            }
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1953:1: ( rule__ModelSequence__ModelsAssignment_3 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1953:2: rule__ModelSequence__ModelsAssignment_3
+            {
+            pushFollow(FOLLOW_rule__ModelSequence__ModelsAssignment_3_in_rule__ModelSequence__Group__3__Impl4121);
+            rule__ModelSequence__ModelsAssignment_3();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getModelSequenceAccess().getModelsAssignment_3()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__ModelSequence__Group__3__Impl"
+
+
+    // $ANTLR start "rule__ModelSequence__Group__4"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1963:1: rule__ModelSequence__Group__4 : rule__ModelSequence__Group__4__Impl ;
+    public final void rule__ModelSequence__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1967:1: ( rule__ModelSequence__Group__4__Impl )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1968:2: rule__ModelSequence__Group__4__Impl
+            {
+            pushFollow(FOLLOW_rule__ModelSequence__Group__4__Impl_in_rule__ModelSequence__Group__44151);
+            rule__ModelSequence__Group__4__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__ModelSequence__Group__4"
+
+
+    // $ANTLR start "rule__ModelSequence__Group__4__Impl"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1974:1: rule__ModelSequence__Group__4__Impl : ( ( rule__ModelSequence__Group_4__0 )* ) ;
+    public final void rule__ModelSequence__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1978:1: ( ( ( rule__ModelSequence__Group_4__0 )* ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1979:1: ( ( rule__ModelSequence__Group_4__0 )* )
+            {
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1979:1: ( ( rule__ModelSequence__Group_4__0 )* )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1980:1: ( rule__ModelSequence__Group_4__0 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getModelSequenceAccess().getGroup_4()); 
+            }
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1981:1: ( rule__ModelSequence__Group_4__0 )*
             loop18:
             do {
                 int alt18=2;
@@ -6283,10 +6283,10 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
 
                 switch (alt18) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1981:2: rule__MetamodelSequence__Group_4__0
+            	    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:1981:2: rule__ModelSequence__Group_4__0
             	    {
-            	    pushFollow(FOLLOW_rule__MetamodelSequence__Group_4__0_in_rule__MetamodelSequence__Group__4__Impl4178);
-            	    rule__MetamodelSequence__Group_4__0();
+            	    pushFollow(FOLLOW_rule__ModelSequence__Group_4__0_in_rule__ModelSequence__Group__4__Impl4178);
+            	    rule__ModelSequence__Group_4__0();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -6300,7 +6300,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getGroup_4()); 
+               after(grammarAccess.getModelSequenceAccess().getGroup_4()); 
             }
 
             }
@@ -6320,26 +6320,26 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group__4__Impl"
+    // $ANTLR end "rule__ModelSequence__Group__4__Impl"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group_4__0"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2001:1: rule__MetamodelSequence__Group_4__0 : rule__MetamodelSequence__Group_4__0__Impl rule__MetamodelSequence__Group_4__1 ;
-    public final void rule__MetamodelSequence__Group_4__0() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group_4__0"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2001:1: rule__ModelSequence__Group_4__0 : rule__ModelSequence__Group_4__0__Impl rule__ModelSequence__Group_4__1 ;
+    public final void rule__ModelSequence__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2005:1: ( rule__MetamodelSequence__Group_4__0__Impl rule__MetamodelSequence__Group_4__1 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2006:2: rule__MetamodelSequence__Group_4__0__Impl rule__MetamodelSequence__Group_4__1
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2005:1: ( rule__ModelSequence__Group_4__0__Impl rule__ModelSequence__Group_4__1 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2006:2: rule__ModelSequence__Group_4__0__Impl rule__ModelSequence__Group_4__1
             {
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group_4__0__Impl_in_rule__MetamodelSequence__Group_4__04219);
-            rule__MetamodelSequence__Group_4__0__Impl();
+            pushFollow(FOLLOW_rule__ModelSequence__Group_4__0__Impl_in_rule__ModelSequence__Group_4__04219);
+            rule__ModelSequence__Group_4__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group_4__1_in_rule__MetamodelSequence__Group_4__04222);
-            rule__MetamodelSequence__Group_4__1();
+            pushFollow(FOLLOW_rule__ModelSequence__Group_4__1_in_rule__ModelSequence__Group_4__04222);
+            rule__ModelSequence__Group_4__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6358,12 +6358,12 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group_4__0"
+    // $ANTLR end "rule__ModelSequence__Group_4__0"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group_4__0__Impl"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2013:1: rule__MetamodelSequence__Group_4__0__Impl : ( ',' ) ;
-    public final void rule__MetamodelSequence__Group_4__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group_4__0__Impl"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2013:1: rule__ModelSequence__Group_4__0__Impl : ( ',' ) ;
+    public final void rule__ModelSequence__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -6375,11 +6375,11 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2019:1: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getCommaKeyword_4_0()); 
+               before(grammarAccess.getModelSequenceAccess().getCommaKeyword_4_0()); 
             }
-            match(input,31,FOLLOW_31_in_rule__MetamodelSequence__Group_4__0__Impl4250); if (state.failed) return ;
+            match(input,31,FOLLOW_31_in_rule__ModelSequence__Group_4__0__Impl4250); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getCommaKeyword_4_0()); 
+               after(grammarAccess.getModelSequenceAccess().getCommaKeyword_4_0()); 
             }
 
             }
@@ -6399,21 +6399,21 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group_4__0__Impl"
+    // $ANTLR end "rule__ModelSequence__Group_4__0__Impl"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group_4__1"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2032:1: rule__MetamodelSequence__Group_4__1 : rule__MetamodelSequence__Group_4__1__Impl ;
-    public final void rule__MetamodelSequence__Group_4__1() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group_4__1"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2032:1: rule__ModelSequence__Group_4__1 : rule__ModelSequence__Group_4__1__Impl ;
+    public final void rule__ModelSequence__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2036:1: ( rule__MetamodelSequence__Group_4__1__Impl )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2037:2: rule__MetamodelSequence__Group_4__1__Impl
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2036:1: ( rule__ModelSequence__Group_4__1__Impl )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2037:2: rule__ModelSequence__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_rule__MetamodelSequence__Group_4__1__Impl_in_rule__MetamodelSequence__Group_4__14281);
-            rule__MetamodelSequence__Group_4__1__Impl();
+            pushFollow(FOLLOW_rule__ModelSequence__Group_4__1__Impl_in_rule__ModelSequence__Group_4__14281);
+            rule__ModelSequence__Group_4__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6432,30 +6432,30 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group_4__1"
+    // $ANTLR end "rule__ModelSequence__Group_4__1"
 
 
-    // $ANTLR start "rule__MetamodelSequence__Group_4__1__Impl"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2043:1: rule__MetamodelSequence__Group_4__1__Impl : ( ( rule__MetamodelSequence__MetamodelsAssignment_4_1 ) ) ;
-    public final void rule__MetamodelSequence__Group_4__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__Group_4__1__Impl"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2043:1: rule__ModelSequence__Group_4__1__Impl : ( ( rule__ModelSequence__ModelsAssignment_4_1 ) ) ;
+    public final void rule__ModelSequence__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2047:1: ( ( ( rule__MetamodelSequence__MetamodelsAssignment_4_1 ) ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2048:1: ( ( rule__MetamodelSequence__MetamodelsAssignment_4_1 ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2047:1: ( ( ( rule__ModelSequence__ModelsAssignment_4_1 ) ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2048:1: ( ( rule__ModelSequence__ModelsAssignment_4_1 ) )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2048:1: ( ( rule__MetamodelSequence__MetamodelsAssignment_4_1 ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2049:1: ( rule__MetamodelSequence__MetamodelsAssignment_4_1 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2048:1: ( ( rule__ModelSequence__ModelsAssignment_4_1 ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2049:1: ( rule__ModelSequence__ModelsAssignment_4_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_4_1()); 
+               before(grammarAccess.getModelSequenceAccess().getModelsAssignment_4_1()); 
             }
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2050:1: ( rule__MetamodelSequence__MetamodelsAssignment_4_1 )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2050:2: rule__MetamodelSequence__MetamodelsAssignment_4_1
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2050:1: ( rule__ModelSequence__ModelsAssignment_4_1 )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:2050:2: rule__ModelSequence__ModelsAssignment_4_1
             {
-            pushFollow(FOLLOW_rule__MetamodelSequence__MetamodelsAssignment_4_1_in_rule__MetamodelSequence__Group_4__1__Impl4308);
-            rule__MetamodelSequence__MetamodelsAssignment_4_1();
+            pushFollow(FOLLOW_rule__ModelSequence__ModelsAssignment_4_1_in_rule__ModelSequence__Group_4__1__Impl4308);
+            rule__ModelSequence__ModelsAssignment_4_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -6463,7 +6463,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getMetamodelsAssignment_4_1()); 
+               after(grammarAccess.getModelSequenceAccess().getModelsAssignment_4_1()); 
             }
 
             }
@@ -6483,7 +6483,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__Group_4__1__Impl"
+    // $ANTLR end "rule__ModelSequence__Group_4__1__Impl"
 
 
     // $ANTLR start "rule__Weaver__Group__0"
@@ -15981,29 +15981,29 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__GecoModel__RegisteredRootClassAssignment_3"
 
 
-    // $ANTLR start "rule__GecoModel__MetamodelsAssignment_4"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5541:1: rule__GecoModel__MetamodelsAssignment_4 : ( ruleMetamodelSequence ) ;
-    public final void rule__GecoModel__MetamodelsAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__GecoModel__ModelsAssignment_4"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5541:1: rule__GecoModel__ModelsAssignment_4 : ( ruleModelSequence ) ;
+    public final void rule__GecoModel__ModelsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5545:1: ( ( ruleMetamodelSequence ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5546:1: ( ruleMetamodelSequence )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5545:1: ( ( ruleModelSequence ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5546:1: ( ruleModelSequence )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5546:1: ( ruleMetamodelSequence )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5547:1: ruleMetamodelSequence
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5546:1: ( ruleModelSequence )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5547:1: ruleModelSequence
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getGecoModelAccess().getMetamodelsMetamodelSequenceParserRuleCall_4_0()); 
+               before(grammarAccess.getGecoModelAccess().getModelsModelSequenceParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleMetamodelSequence_in_rule__GecoModel__MetamodelsAssignment_411191);
-            ruleMetamodelSequence();
+            pushFollow(FOLLOW_ruleModelSequence_in_rule__GecoModel__ModelsAssignment_411191);
+            ruleModelSequence();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getGecoModelAccess().getMetamodelsMetamodelSequenceParserRuleCall_4_0()); 
+               after(grammarAccess.getGecoModelAccess().getModelsModelSequenceParserRuleCall_4_0()); 
             }
 
             }
@@ -16023,7 +16023,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__GecoModel__MetamodelsAssignment_4"
+    // $ANTLR end "rule__GecoModel__ModelsAssignment_4"
 
 
     // $ANTLR start "rule__GecoModel__FragmentsAssignment_5"
@@ -16320,29 +16320,29 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     // $ANTLR end "rule__RegisteredRootClass__ExtensionAssignment_2_1_1"
 
 
-    // $ANTLR start "rule__MetamodelSequence__ModifierAssignment_1"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5662:1: rule__MetamodelSequence__ModifierAssignment_1 : ( ruleMetamodelModifier ) ;
-    public final void rule__MetamodelSequence__ModifierAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__ModifierAssignment_1"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5662:1: rule__ModelSequence__ModifierAssignment_1 : ( ruleModelModifier ) ;
+    public final void rule__ModelSequence__ModifierAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5666:1: ( ( ruleMetamodelModifier ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5667:1: ( ruleMetamodelModifier )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5666:1: ( ( ruleModelModifier ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5667:1: ( ruleModelModifier )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5667:1: ( ruleMetamodelModifier )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5668:1: ruleMetamodelModifier
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5667:1: ( ruleModelModifier )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5668:1: ruleModelModifier
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getModifierMetamodelModifierEnumRuleCall_1_0()); 
+               before(grammarAccess.getModelSequenceAccess().getModifierModelModifierEnumRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleMetamodelModifier_in_rule__MetamodelSequence__ModifierAssignment_111437);
-            ruleMetamodelModifier();
+            pushFollow(FOLLOW_ruleModelModifier_in_rule__ModelSequence__ModifierAssignment_111437);
+            ruleModelModifier();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getModifierMetamodelModifierEnumRuleCall_1_0()); 
+               after(grammarAccess.getModelSequenceAccess().getModifierModelModifierEnumRuleCall_1_0()); 
             }
 
             }
@@ -16362,12 +16362,12 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__ModifierAssignment_1"
+    // $ANTLR end "rule__ModelSequence__ModifierAssignment_1"
 
 
-    // $ANTLR start "rule__MetamodelSequence__TypeAssignment_2"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5677:1: rule__MetamodelSequence__TypeAssignment_2 : ( ruleModelNodeType ) ;
-    public final void rule__MetamodelSequence__TypeAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__TypeAssignment_2"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5677:1: rule__ModelSequence__TypeAssignment_2 : ( ruleModelNodeType ) ;
+    public final void rule__ModelSequence__TypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16379,15 +16379,15 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5683:1: ruleModelNodeType
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getTypeModelNodeTypeParserRuleCall_2_0()); 
+               before(grammarAccess.getModelSequenceAccess().getTypeModelNodeTypeParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleModelNodeType_in_rule__MetamodelSequence__TypeAssignment_211468);
+            pushFollow(FOLLOW_ruleModelNodeType_in_rule__ModelSequence__TypeAssignment_211468);
             ruleModelNodeType();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getTypeModelNodeTypeParserRuleCall_2_0()); 
+               after(grammarAccess.getModelSequenceAccess().getTypeModelNodeTypeParserRuleCall_2_0()); 
             }
 
             }
@@ -16407,32 +16407,32 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__TypeAssignment_2"
+    // $ANTLR end "rule__ModelSequence__TypeAssignment_2"
 
 
-    // $ANTLR start "rule__MetamodelSequence__MetamodelsAssignment_3"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5692:1: rule__MetamodelSequence__MetamodelsAssignment_3 : ( ruleMetamodel ) ;
-    public final void rule__MetamodelSequence__MetamodelsAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__ModelsAssignment_3"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5692:1: rule__ModelSequence__ModelsAssignment_3 : ( ruleModel ) ;
+    public final void rule__ModelSequence__ModelsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5696:1: ( ( ruleMetamodel ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5697:1: ( ruleMetamodel )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5696:1: ( ( ruleModel ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5697:1: ( ruleModel )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5697:1: ( ruleMetamodel )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5698:1: ruleMetamodel
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5697:1: ( ruleModel )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5698:1: ruleModel
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getMetamodelsMetamodelParserRuleCall_3_0()); 
+               before(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleMetamodel_in_rule__MetamodelSequence__MetamodelsAssignment_311499);
-            ruleMetamodel();
+            pushFollow(FOLLOW_ruleModel_in_rule__ModelSequence__ModelsAssignment_311499);
+            ruleModel();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getMetamodelsMetamodelParserRuleCall_3_0()); 
+               after(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_3_0()); 
             }
 
             }
@@ -16452,32 +16452,32 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__MetamodelsAssignment_3"
+    // $ANTLR end "rule__ModelSequence__ModelsAssignment_3"
 
 
-    // $ANTLR start "rule__MetamodelSequence__MetamodelsAssignment_4_1"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5707:1: rule__MetamodelSequence__MetamodelsAssignment_4_1 : ( ruleMetamodel ) ;
-    public final void rule__MetamodelSequence__MetamodelsAssignment_4_1() throws RecognitionException {
+    // $ANTLR start "rule__ModelSequence__ModelsAssignment_4_1"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5707:1: rule__ModelSequence__ModelsAssignment_4_1 : ( ruleModel ) ;
+    public final void rule__ModelSequence__ModelsAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5711:1: ( ( ruleMetamodel ) )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5712:1: ( ruleMetamodel )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5711:1: ( ( ruleModel ) )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5712:1: ( ruleModel )
             {
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5712:1: ( ruleMetamodel )
-            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5713:1: ruleMetamodel
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5712:1: ( ruleModel )
+            // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5713:1: ruleModel
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelSequenceAccess().getMetamodelsMetamodelParserRuleCall_4_1_0()); 
+               before(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_4_1_0()); 
             }
-            pushFollow(FOLLOW_ruleMetamodel_in_rule__MetamodelSequence__MetamodelsAssignment_4_111530);
-            ruleMetamodel();
+            pushFollow(FOLLOW_ruleModel_in_rule__ModelSequence__ModelsAssignment_4_111530);
+            ruleModel();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelSequenceAccess().getMetamodelsMetamodelParserRuleCall_4_1_0()); 
+               after(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_4_1_0()); 
             }
 
             }
@@ -16497,12 +16497,12 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__MetamodelSequence__MetamodelsAssignment_4_1"
+    // $ANTLR end "rule__ModelSequence__ModelsAssignment_4_1"
 
 
-    // $ANTLR start "rule__Metamodel__NameAssignment"
-    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5722:1: rule__Metamodel__NameAssignment : ( RULE_ID ) ;
-    public final void rule__Metamodel__NameAssignment() throws RecognitionException {
+    // $ANTLR start "rule__Model__NameAssignment"
+    // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5722:1: rule__Model__NameAssignment : ( RULE_ID ) ;
+    public final void rule__Model__NameAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -16514,11 +16514,11 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5728:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMetamodelAccess().getNameIDTerminalRuleCall_0()); 
+               before(grammarAccess.getModelAccess().getNameIDTerminalRuleCall_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Metamodel__NameAssignment11561); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Model__NameAssignment11561); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMetamodelAccess().getNameIDTerminalRuleCall_0()); 
+               after(grammarAccess.getModelAccess().getNameIDTerminalRuleCall_0()); 
             }
 
             }
@@ -16538,7 +16538,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
         }
         return ;
     }
-    // $ANTLR end "rule__Metamodel__NameAssignment"
+    // $ANTLR end "rule__Model__NameAssignment"
 
 
     // $ANTLR start "rule__Weaver__ReferenceAssignment_1"
@@ -17201,23 +17201,23 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5961:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceMetamodelCrossReference_0_0_0()); 
+               before(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceModelCrossReference_0_0_0()); 
             }
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5962:1: ( RULE_ID )
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:5963:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceMetamodelIDTerminalRuleCall_0_0_0_1()); 
+               before(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceModelIDTerminalRuleCall_0_0_0_1()); 
             }
             match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__SourceModelNodeSelector__ReferenceAssignment_0_012046); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceMetamodelIDTerminalRuleCall_0_0_0_1()); 
+               after(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceModelIDTerminalRuleCall_0_0_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceMetamodelCrossReference_0_0_0()); 
+               after(grammarAccess.getSourceModelNodeSelectorAccess().getReferenceModelCrossReference_0_0_0()); 
             }
 
             }
@@ -17344,23 +17344,23 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:6010:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getTargetModelNodeTypeAccess().getReferenceMetamodelCrossReference_1_0()); 
+               before(grammarAccess.getTargetModelNodeTypeAccess().getReferenceModelCrossReference_1_0()); 
             }
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:6011:1: ( RULE_ID )
             // ../de.cau.cs.se.geco.architecture.ui/src-gen/de/cau/cs/se/geco/architecture/ui/contentassist/antlr/internal/InternalArchitecture.g:6012:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getTargetModelNodeTypeAccess().getReferenceMetamodelIDTerminalRuleCall_1_0_1()); 
+               before(grammarAccess.getTargetModelNodeTypeAccess().getReferenceModelIDTerminalRuleCall_1_0_1()); 
             }
             match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TargetModelNodeType__ReferenceAssignment_112147); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getTargetModelNodeTypeAccess().getReferenceMetamodelIDTerminalRuleCall_1_0_1()); 
+               after(grammarAccess.getTargetModelNodeTypeAccess().getReferenceModelIDTerminalRuleCall_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getTargetModelNodeTypeAccess().getReferenceMetamodelCrossReference_1_0()); 
+               after(grammarAccess.getTargetModelNodeTypeAccess().getReferenceModelCrossReference_1_0()); 
             }
 
             }
@@ -18873,12 +18873,12 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     public static final BitSet FOLLOW_ruleRegisteredRootClass_in_entryRuleRegisteredRootClass187 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleRegisteredRootClass194 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RegisteredRootClass__Group__0_in_ruleRegisteredRootClass220 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetamodelSequence_in_entryRuleMetamodelSequence247 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMetamodelSequence254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__0_in_ruleMetamodelSequence280 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetamodel_in_entryRuleMetamodel307 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMetamodel314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Metamodel__NameAssignment_in_ruleMetamodel340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModelSequence_in_entryRuleModelSequence247 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleModelSequence254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__0_in_ruleModelSequence280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModel_in_entryRuleModel307 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleModel314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Model__NameAssignment_in_ruleModel340 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFragment_in_entryRuleFragment367 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFragment374 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Fragment__Alternatives_in_ruleFragment400 = new BitSet(new long[]{0x0000000000000002L});
@@ -18966,7 +18966,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName2047 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName2054 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName2080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelModifier__Alternatives_in_ruleMetamodelModifier2119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelModifier__Alternatives_in_ruleModelModifier2119 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__LogicOperator__Alternatives_in_ruleLogicOperator2155 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Comparator__Alternatives_in_ruleComparator2191 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RegisteredRootClass__ImportedNamespaceAssignment_2_0_in_rule__RegisteredRootClass__Alternatives_22226 = new BitSet(new long[]{0x0000000000000002L});
@@ -18994,9 +18994,9 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     public static final BitSet FOLLOW_ruleFloatLiteral_in_rule__Literal__Alternatives2744 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBooleanLiteral_in_rule__Literal__Alternatives2761 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleArrayLiteral_in_rule__Literal__Alternatives2778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__MetamodelModifier__Alternatives2811 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__MetamodelModifier__Alternatives2832 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__MetamodelModifier__Alternatives2853 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__ModelModifier__Alternatives2811 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__ModelModifier__Alternatives2832 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__ModelModifier__Alternatives2853 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_rule__LogicOperator__Alternatives2889 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_19_in_rule__LogicOperator__Alternatives2910 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_20_in_rule__Comparator__Alternatives2946 = new BitSet(new long[]{0x0000000000000002L});
@@ -19020,7 +19020,7 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     public static final BitSet FOLLOW_rule__GecoModel__RegisteredRootClassAssignment_3_in_rule__GecoModel__Group__3__Impl3318 = new BitSet(new long[]{0x0000000020000002L});
     public static final BitSet FOLLOW_rule__GecoModel__Group__4__Impl_in_rule__GecoModel__Group__43349 = new BitSet(new long[]{0x0000001170000000L});
     public static final BitSet FOLLOW_rule__GecoModel__Group__5_in_rule__GecoModel__Group__43352 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__GecoModel__MetamodelsAssignment_4_in_rule__GecoModel__Group__4__Impl3379 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_rule__GecoModel__ModelsAssignment_4_in_rule__GecoModel__Group__4__Impl3379 = new BitSet(new long[]{0x0000000040000002L});
     public static final BitSet FOLLOW_rule__GecoModel__Group__5__Impl_in_rule__GecoModel__Group__53410 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__GecoModel__FragmentsAssignment_5_in_rule__GecoModel__Group__5__Impl3437 = new BitSet(new long[]{0x0000001100000002L});
     public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__03480 = new BitSet(new long[]{0x0000000000000010L});
@@ -19041,25 +19041,25 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     public static final BitSet FOLLOW_rule__RegisteredRootClass__IsTextAssignment_2_1_0_in_rule__RegisteredRootClass__Group_2_1__0__Impl3818 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RegisteredRootClass__Group_2_1__1__Impl_in_rule__RegisteredRootClass__Group_2_1__13848 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RegisteredRootClass__ExtensionAssignment_2_1_1_in_rule__RegisteredRootClass__Group_2_1__1__Impl3875 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__0__Impl_in_rule__MetamodelSequence__Group__03909 = new BitSet(new long[]{0x0000000000038000L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__1_in_rule__MetamodelSequence__Group__03912 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_rule__MetamodelSequence__Group__0__Impl3940 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__1__Impl_in_rule__MetamodelSequence__Group__13971 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__2_in_rule__MetamodelSequence__Group__13974 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__ModifierAssignment_1_in_rule__MetamodelSequence__Group__1__Impl4001 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__2__Impl_in_rule__MetamodelSequence__Group__24031 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__3_in_rule__MetamodelSequence__Group__24034 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__TypeAssignment_2_in_rule__MetamodelSequence__Group__2__Impl4061 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__3__Impl_in_rule__MetamodelSequence__Group__34091 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__4_in_rule__MetamodelSequence__Group__34094 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__MetamodelsAssignment_3_in_rule__MetamodelSequence__Group__3__Impl4121 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group__4__Impl_in_rule__MetamodelSequence__Group__44151 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group_4__0_in_rule__MetamodelSequence__Group__4__Impl4178 = new BitSet(new long[]{0x0000000080000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group_4__0__Impl_in_rule__MetamodelSequence__Group_4__04219 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group_4__1_in_rule__MetamodelSequence__Group_4__04222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rule__MetamodelSequence__Group_4__0__Impl4250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__Group_4__1__Impl_in_rule__MetamodelSequence__Group_4__14281 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__MetamodelSequence__MetamodelsAssignment_4_1_in_rule__MetamodelSequence__Group_4__1__Impl4308 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__0__Impl_in_rule__ModelSequence__Group__03909 = new BitSet(new long[]{0x0000000000038000L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__1_in_rule__ModelSequence__Group__03912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_rule__ModelSequence__Group__0__Impl3940 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__1__Impl_in_rule__ModelSequence__Group__13971 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__2_in_rule__ModelSequence__Group__13974 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__ModifierAssignment_1_in_rule__ModelSequence__Group__1__Impl4001 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__2__Impl_in_rule__ModelSequence__Group__24031 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__3_in_rule__ModelSequence__Group__24034 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__TypeAssignment_2_in_rule__ModelSequence__Group__2__Impl4061 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__3__Impl_in_rule__ModelSequence__Group__34091 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__4_in_rule__ModelSequence__Group__34094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__ModelsAssignment_3_in_rule__ModelSequence__Group__3__Impl4121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group__4__Impl_in_rule__ModelSequence__Group__44151 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group_4__0_in_rule__ModelSequence__Group__4__Impl4178 = new BitSet(new long[]{0x0000000080000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group_4__0__Impl_in_rule__ModelSequence__Group_4__04219 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group_4__1_in_rule__ModelSequence__Group_4__04222 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_rule__ModelSequence__Group_4__0__Impl4250 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__Group_4__1__Impl_in_rule__ModelSequence__Group_4__14281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__ModelSequence__ModelsAssignment_4_1_in_rule__ModelSequence__Group_4__1__Impl4308 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Weaver__Group__0__Impl_in_rule__Weaver__Group__04342 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_rule__Weaver__Group__1_in_rule__Weaver__Group__04345 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_32_in_rule__Weaver__Group__0__Impl4373 = new BitSet(new long[]{0x0000000000000002L});
@@ -19346,18 +19346,18 @@ public class InternalArchitectureParser extends AbstractInternalContentAssistPar
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__GecoModel__NameAssignment_111098 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleImport_in_rule__GecoModel__ImportsAssignment_211129 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRegisteredRootClass_in_rule__GecoModel__RegisteredRootClassAssignment_311160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetamodelSequence_in_rule__GecoModel__MetamodelsAssignment_411191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModelSequence_in_rule__GecoModel__ModelsAssignment_411191 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFragment_in_rule__GecoModel__FragmentsAssignment_511222 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Import__ImportedNamespaceAssignment_111257 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__RegisteredRootClass__NameAssignment_111292 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__RegisteredRootClass__ImportedNamespaceAssignment_2_011327 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_53_in_rule__RegisteredRootClass__IsTextAssignment_2_1_011367 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__RegisteredRootClass__ExtensionAssignment_2_1_111406 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetamodelModifier_in_rule__MetamodelSequence__ModifierAssignment_111437 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModelNodeType_in_rule__MetamodelSequence__TypeAssignment_211468 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetamodel_in_rule__MetamodelSequence__MetamodelsAssignment_311499 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetamodel_in_rule__MetamodelSequence__MetamodelsAssignment_4_111530 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Metamodel__NameAssignment11561 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModelModifier_in_rule__ModelSequence__ModifierAssignment_111437 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModelNodeType_in_rule__ModelSequence__TypeAssignment_211468 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModel_in_rule__ModelSequence__ModelsAssignment_311499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModel_in_rule__ModelSequence__ModelsAssignment_4_111530 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Model__NameAssignment11561 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__Weaver__ReferenceAssignment_111596 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleSourceModelNodeSelector_in_rule__Weaver__SourceModelAssignment_2_011631 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAspectModel_in_rule__Weaver__AspectModelAssignment_311662 = new BitSet(new long[]{0x0000000000000002L});

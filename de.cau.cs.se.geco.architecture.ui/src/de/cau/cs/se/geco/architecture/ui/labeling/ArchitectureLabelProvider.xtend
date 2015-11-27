@@ -4,7 +4,7 @@
 package de.cau.cs.se.geco.architecture.ui.labeling
 
 import com.google.inject.Inject
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 
@@ -24,7 +24,7 @@ class ArchitectureLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 
-	def text(MetamodelSequence sequence) {
+	def text(ModelSequence sequence) {
 		sequence.type.resolveType.simpleName
 	}
 	

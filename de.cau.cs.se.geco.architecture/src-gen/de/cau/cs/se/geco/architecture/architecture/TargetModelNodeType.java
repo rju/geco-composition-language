@@ -30,12 +30,12 @@ public interface TargetModelNodeType extends AdviceModel
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Reference</em>' reference.
-   * @see #setReference(Metamodel)
+   * @see #setReference(Model)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getTargetModelNodeType_Reference()
    * @model
    * @generated
    */
-  Metamodel getReference();
+  Model getReference();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getReference <em>Reference</em>}' reference.
@@ -45,6 +45,6 @@ public interface TargetModelNodeType extends AdviceModel
    * @see #getReference()
    * @generated
    */
-  void setReference(Metamodel value);
+  void setReference(Model value);
 
 } // TargetModelNodeType

@@ -2,8 +2,8 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier;
+import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl#getSelector <em>Selector</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl#getMetamodel <em>Metamodel</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl#getModel <em>Model</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.model.boxing.impl.ModelDeclarationImpl#getModifier <em>Modifier</em>}</li>
  * </ul>
  *
@@ -44,14 +44,14 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	protected ModelNodeType selector;
 
 	/**
-	 * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}' reference.
+	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMetamodel()
+	 * @see #getModel()
 	 * @generated
 	 * @ordered
 	 */
-	protected Metamodel metamodel;
+	protected Model model;
 
 	/**
 	 * The default value of the '{@link #getModifier() <em>Modifier</em>}' attribute.
@@ -61,7 +61,7 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected static final MetamodelModifier MODIFIER_EDEFAULT = MetamodelModifier.INPUT;
+	protected static final ModelModifier MODIFIER_EDEFAULT = ModelModifier.INPUT;
 
 	/**
 	 * The cached value of the '{@link #getModifier() <em>Modifier</em>}' attribute.
@@ -71,7 +71,7 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected MetamodelModifier modifier = MODIFIER_EDEFAULT;
+	protected ModelModifier modifier = MODIFIER_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,16 +135,16 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Metamodel getMetamodel() {
-		if (metamodel != null && metamodel.eIsProxy()) {
-			InternalEObject oldMetamodel = (InternalEObject)metamodel;
-			metamodel = (Metamodel)eResolveProxy(oldMetamodel);
-			if (metamodel != oldMetamodel) {
+	public Model getModel() {
+		if (model != null && model.eIsProxy()) {
+			InternalEObject oldModel = (InternalEObject)model;
+			model = (Model)eResolveProxy(oldModel);
+			if (model != oldModel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.MODEL_DECLARATION__METAMODEL, oldMetamodel, metamodel));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.MODEL_DECLARATION__MODEL, oldModel, model));
 			}
 		}
-		return metamodel;
+		return model;
 	}
 
 	/**
@@ -152,8 +152,8 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Metamodel basicGetMetamodel() {
-		return metamodel;
+	public Model basicGetModel() {
+		return model;
 	}
 
 	/**
@@ -161,11 +161,11 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMetamodel(Metamodel newMetamodel) {
-		Metamodel oldMetamodel = metamodel;
-		metamodel = newMetamodel;
+	public void setModel(Model newModel) {
+		Model oldModel = model;
+		model = newModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.MODEL_DECLARATION__METAMODEL, oldMetamodel, metamodel));
+			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.MODEL_DECLARATION__MODEL, oldModel, model));
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MetamodelModifier getModifier() {
+	public ModelModifier getModifier() {
 		return modifier;
 	}
 
@@ -182,8 +182,8 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setModifier(MetamodelModifier newModifier) {
-		MetamodelModifier oldModifier = modifier;
+	public void setModifier(ModelModifier newModifier) {
+		ModelModifier oldModifier = modifier;
 		modifier = newModifier == null ? MODIFIER_EDEFAULT : newModifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.MODEL_DECLARATION__MODIFIER, oldModifier, modifier));
@@ -200,9 +200,9 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 			case BoxingPackage.MODEL_DECLARATION__SELECTOR:
 				if (resolve) return getSelector();
 				return basicGetSelector();
-			case BoxingPackage.MODEL_DECLARATION__METAMODEL:
-				if (resolve) return getMetamodel();
-				return basicGetMetamodel();
+			case BoxingPackage.MODEL_DECLARATION__MODEL:
+				if (resolve) return getModel();
+				return basicGetModel();
 			case BoxingPackage.MODEL_DECLARATION__MODIFIER:
 				return getModifier();
 		}
@@ -220,11 +220,11 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 			case BoxingPackage.MODEL_DECLARATION__SELECTOR:
 				setSelector((ModelNodeType)newValue);
 				return;
-			case BoxingPackage.MODEL_DECLARATION__METAMODEL:
-				setMetamodel((Metamodel)newValue);
+			case BoxingPackage.MODEL_DECLARATION__MODEL:
+				setModel((Model)newValue);
 				return;
 			case BoxingPackage.MODEL_DECLARATION__MODIFIER:
-				setModifier((MetamodelModifier)newValue);
+				setModifier((ModelModifier)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -241,8 +241,8 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 			case BoxingPackage.MODEL_DECLARATION__SELECTOR:
 				setSelector((ModelNodeType)null);
 				return;
-			case BoxingPackage.MODEL_DECLARATION__METAMODEL:
-				setMetamodel((Metamodel)null);
+			case BoxingPackage.MODEL_DECLARATION__MODEL:
+				setModel((Model)null);
 				return;
 			case BoxingPackage.MODEL_DECLARATION__MODIFIER:
 				setModifier(MODIFIER_EDEFAULT);
@@ -261,8 +261,8 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 		switch (featureID) {
 			case BoxingPackage.MODEL_DECLARATION__SELECTOR:
 				return selector != null;
-			case BoxingPackage.MODEL_DECLARATION__METAMODEL:
-				return metamodel != null;
+			case BoxingPackage.MODEL_DECLARATION__MODEL:
+				return model != null;
 			case BoxingPackage.MODEL_DECLARATION__MODIFIER:
 				return modifier != MODIFIER_EDEFAULT;
 		}

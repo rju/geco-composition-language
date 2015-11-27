@@ -7,7 +7,7 @@ GecoModel:
 	'package' name=QualifiedName
 	imports+=Import*
 	registeredRootClass+=RegisteredRootClass*
-	metamodels+=MetamodelSequence*	
+	models+=ModelSequence*	
 	fragments+=Fragment*
 ;
 
@@ -19,17 +19,17 @@ RegisteredRootClass:
 	'register' name=ID (importedNamespace = [types::JvmType|QualifiedName] |(isText?='text' extension=STRING))
 ;
 
-MetamodelSequence:
-	'model' modifier=MetamodelModifier type=ModelNodeType metamodels+=Metamodel (',' metamodels+=Metamodel)*
+ModelSequence:
+	'model' modifier=ModelModifier type=ModelNodeType models+=Model (',' models+=Model)*
 ;
 
-enum MetamodelModifier:
+enum ModelModifier:
 	INPUT = 'in' |
 	OUTPUT = 'out' |
 	INTERMEDIATE = 'io'
 ;
 
-Metamodel:
+Model:
 	name=ID 
 ;
 
@@ -70,12 +70,12 @@ Generator:
 
 
 SourceModelNodeSelector: 
-	reference = [Metamodel|ID]  ('[' constraint=ConstraintExpression ']')? ('/' property=NodeProperty)? | 
+	reference = [Model|ID]  ('[' constraint=ConstraintExpression ']')? ('/' property=NodeProperty)? | 
 	{SourceModelNodeSelector} 'null' 
 ;
 
 TargetModelNodeType: {TargetModelNodeType}
-	(reference = [Metamodel|ID])
+	(reference = [Model|ID])
 ;
 
 ModelNodeType:

@@ -13,9 +13,9 @@ import de.cau.cs.se.geco.architecture.model.boxing.Group
 import de.cau.cs.se.geco.architecture.model.boxing.Unit
 import java.util.ArrayList
 import org.eclipse.emf.common.util.EList
-import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
-import de.cau.cs.se.geco.architecture.architecture.Metamodel
+import de.cau.cs.se.geco.architecture.architecture.ModelModifier
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence
+import de.cau.cs.se.geco.architecture.architecture.Model
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping
 import org.eclipse.xtext.common.types.JvmType
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel
@@ -31,13 +31,13 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 		result.derivedFrom = input
 		
 		/** collect all models. */
-		input.metamodels.forEach[sequence |
-			sequence.metamodels.forEach [metamodel |
-				val model = BoxingFactory.eINSTANCE.createModelDeclaration
-				model.selector = sequence.type
-				model.metamodel = metamodel
-				model.modifier = sequence.modifier
-				result.models.add(model)
+		input.models.forEach[sequence |
+			sequence.models.forEach [model |
+				val modeldeclaration = BoxingFactory.eINSTANCE.createModelDeclaration
+				modeldeclaration.selector = sequence.type
+				modeldeclaration.model = model
+				modeldeclaration.modifier = sequence.modifier
+				result.models.add(modeldeclaration)
 			]
 		]
 		
@@ -56,7 +56,7 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 		]
 
 		/** Define groups. */
-		var group = createGroup(input.metamodels)
+		var group = createGroup(input.models)
 		result.groups.add(group)
 		
 		/** loop for all processing units (generator, weaver, generator+weaver). */
@@ -122,12 +122,12 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 	/**
 	 * Create a new group based on a sequence of free metamodels.
 	 */
-	private def createGroup(EList<MetamodelSequence> metamodels) {
+	private def createGroup(EList<ModelSequence> metamodels) {
 		val group = BoxingFactory.eINSTANCE.createGroup
 		/** Determine all free inputs. */
 		metamodels.forEach[sequence |
-			if (sequence.modifier == MetamodelModifier.INPUT)
-				sequence.metamodels.forEach[metamodel | group.sourceModels.add(metamodel)]
+			if (sequence.modifier == ModelModifier.INPUT)
+				sequence.models.forEach[group.sourceModels.add(it)]
 		]
 		
 		return group
@@ -253,7 +253,7 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 	/**
 	 * Add a write trace model if it is not already in the list.
 	 */
-	private def void addUnique(EList<Metamodel> list, Metamodel model) {
+	private def void addUnique(EList<Model> list, Model model) {
 		if (!list.contains(model))
 			list.add(model)
 	}

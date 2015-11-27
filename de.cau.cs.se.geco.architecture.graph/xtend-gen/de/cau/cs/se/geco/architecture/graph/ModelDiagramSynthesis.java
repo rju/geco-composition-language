@@ -37,9 +37,9 @@ import de.cau.cs.se.geco.architecture.architecture.AspectModel;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel;
@@ -176,7 +176,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   
   private final Map<Generator, KNode> targetGeneratorModelNodes = new HashMap<Generator, KNode>();
   
-  private final Map<Metamodel, KNode> metamodelNodes = new HashMap<Metamodel, KNode>();
+  private final Map<Model, KNode> modelNodes = new HashMap<Model, KNode>();
   
   private final Map<TraceModel, KNode> traceModelNodes = new HashMap<TraceModel, KNode>();
   
@@ -220,8 +220,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
           }
         }
         ModelDiagramSynthesis.this.<KNode, EdgeRouting>setLayoutOption(it, LayoutOptions.EDGE_ROUTING, _switchResult);
-        EList<MetamodelSequence> _metamodels = model.getMetamodels();
-        ModelDiagramSynthesis.this.createNamedMetaModels(_metamodels, it);
+        EList<ModelSequence> _models = model.getModels();
+        ModelDiagramSynthesis.this.createNamedModels(_models, it);
         EList<Fragment> _fragments = model.getFragments();
         ModelDiagramSynthesis.this.createAllToplevelGenerators(_fragments, it);
         EList<Fragment> _fragments_1 = model.getFragments();
@@ -279,8 +279,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       boolean _notEquals = (!Objects.equal(_sourceModel, null));
       if (_notEquals) {
         SourceModelNodeSelector _sourceModel_1 = weaver.getSourceModel();
-        Metamodel _reference = _sourceModel_1.getReference();
-        _xifexpression = this.metamodelNodes.get(_reference);
+        Model _reference = _sourceModel_1.getReference();
+        _xifexpression = this.modelNodes.get(_reference);
       } else {
         Weaver _predecessingWeaver = ArchitectureTyping.predecessingWeaver(weaver);
         _xifexpression = this.targetWeaverModelNodes.get(_predecessingWeaver);
@@ -313,8 +313,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       boolean _notEquals = (!Objects.equal(_targetModel, null));
       if (_notEquals) {
         TargetModelNodeType _targetModel_1 = weaver.getTargetModel();
-        Metamodel _reference = _targetModel_1.getReference();
-        _xifexpression = this.metamodelNodes.get(_reference);
+        Model _reference = _targetModel_1.getReference();
+        _xifexpression = this.modelNodes.get(_reference);
       } else {
         _xifexpression = this.targetWeaverModelNodes.get(weaver);
       }
@@ -346,8 +346,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       if (!_matched) {
         if (adviceModel instanceof TargetModelNodeType) {
           _matched=true;
-          Metamodel _reference = ((TargetModelNodeType) adviceModel).getReference();
-          _switchResult = this.metamodelNodes.get(_reference);
+          Model _reference = ((TargetModelNodeType) adviceModel).getReference();
+          _switchResult = this.modelNodes.get(_reference);
         }
       }
       if (!_matched) {
@@ -380,8 +380,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     KEdge _xblockexpression = null;
     {
       TargetModelNodeType _pointcut = separatePointcutAdviceModel.getPointcut();
-      Metamodel _reference = _pointcut.getReference();
-      final KNode pointcutModelNode = this.metamodelNodes.get(_reference);
+      Model _reference = _pointcut.getReference();
+      final KNode pointcutModelNode = this.modelNodes.get(_reference);
       KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(pointcutModelNode, weaverNode, LineStyle.SOLID);
       final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
         public void apply(final KEdge it) {
@@ -407,20 +407,20 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     try {
       KNode _xifexpression = null;
       SourceModelNodeSelector _sourceModel = generator.getSourceModel();
-      Metamodel _reference = _sourceModel.getReference();
+      Model _reference = _sourceModel.getReference();
       boolean _notEquals = (!Objects.equal(_reference, null));
       if (_notEquals) {
         SourceModelNodeSelector _sourceModel_1 = generator.getSourceModel();
-        Metamodel _reference_1 = _sourceModel_1.getReference();
-        _xifexpression = this.metamodelNodes.get(_reference_1);
+        Model _reference_1 = _sourceModel_1.getReference();
+        _xifexpression = this.modelNodes.get(_reference_1);
       } else {
         KNode _xblockexpression = null;
         {
           KNode _createNode = this._kNodeExtensions.createNode();
-          final KNode anonymousMetamodelNode = this.drawMetamodelRectangle(_createNode, "", "empty");
+          final KNode anonymousModelNode = this.drawModelRectangle(_createNode, "", "empty");
           EList<KNode> _children = root.getChildren();
-          _children.add(anonymousMetamodelNode);
-          _xblockexpression = anonymousMetamodelNode;
+          _children.add(anonymousModelNode);
+          _xblockexpression = anonymousModelNode;
         }
         _xifexpression = _xblockexpression;
       }
@@ -430,8 +430,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
       if (_notEquals_1) {
         TargetModelNodeType _targetModel_1 = generator.getTargetModel();
-        Metamodel _reference_2 = _targetModel_1.getReference();
-        _xifexpression_1 = this.metamodelNodes.get(_reference_2);
+        Model _reference_2 = _targetModel_1.getReference();
+        _xifexpression_1 = this.modelNodes.get(_reference_2);
       } else {
         KNode _xifexpression_2 = null;
         EObject _eContainer = generator.eContainer();
@@ -512,10 +512,10 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         TargetModelNodeType _targetModel = weaver.getTargetModel();
         boolean _equals = Objects.equal(_targetModel, null);
         if (_equals) {
-          final KNode anonymousMetamodelNode = ModelDiagramSynthesis.this.createAnonymousMetamodel(weaver);
-          ModelDiagramSynthesis.this.targetWeaverModelNodes.put(weaver, anonymousMetamodelNode);
+          final KNode anonymousModelNode = ModelDiagramSynthesis.this.createAnonymousModel(weaver);
+          ModelDiagramSynthesis.this.targetWeaverModelNodes.put(weaver, anonymousModelNode);
           EList<KNode> _children_1 = parent.getChildren();
-          _children_1.add(anonymousMetamodelNode);
+          _children_1.add(anonymousModelNode);
         }
       }
     };
@@ -548,8 +548,8 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
    */
   private void createSublevelGenerator(final Generator generator, final KNode parent) {
     final KNode generatorNode = this.drawGenerator(generator);
-    final KNode anonymousMetamodelNode = this.createAnonymousMetamodel(generator);
-    this.targetGeneratorModelNodes.put(generator, anonymousMetamodelNode);
+    final KNode anonymousModelNode = this.createAnonymousModel(generator);
+    this.targetGeneratorModelNodes.put(generator, anonymousModelNode);
     this.generatorNodes.put(generator, generatorNode);
     boolean _and = false;
     TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
@@ -597,7 +597,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     EList<KNode> _children = parent.getChildren();
     _children.add(generatorNode);
     EList<KNode> _children_1 = parent.getChildren();
-    _children_1.add(anonymousMetamodelNode);
+    _children_1.add(anonymousModelNode);
   }
   
   /**
@@ -635,24 +635,24 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   }
   
   /**
-   * Create all explicit defined metamodels.
+   * Create all explicit defined models.
    */
-  public void createNamedMetaModels(final EList<MetamodelSequence> metamodels, final KNode parent) {
-    final Consumer<MetamodelSequence> _function = new Consumer<MetamodelSequence>() {
-      public void accept(final MetamodelSequence seq) {
-        EList<Metamodel> _metamodels = seq.getMetamodels();
-        final Consumer<Metamodel> _function = new Consumer<Metamodel>() {
-          public void accept(final Metamodel metamodel) {
-            final KNode metaModelNode = ModelDiagramSynthesis.this.createMetamodel(metamodel, seq);
-            ModelDiagramSynthesis.this.metamodelNodes.put(metamodel, metaModelNode);
+  public void createNamedModels(final EList<ModelSequence> models, final KNode parent) {
+    final Consumer<ModelSequence> _function = new Consumer<ModelSequence>() {
+      public void accept(final ModelSequence seq) {
+        EList<Model> _models = seq.getModels();
+        final Consumer<Model> _function = new Consumer<Model>() {
+          public void accept(final Model model) {
+            final KNode modelNode = ModelDiagramSynthesis.this.createModel(model, seq);
+            ModelDiagramSynthesis.this.modelNodes.put(model, modelNode);
             EList<KNode> _children = parent.getChildren();
-            _children.add(metaModelNode);
+            _children.add(modelNode);
           }
         };
-        _metamodels.forEach(_function);
+        _models.forEach(_function);
       }
     };
-    metamodels.forEach(_function);
+    models.forEach(_function);
   }
   
   /**
@@ -667,12 +667,12 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   }
   
   /**
-   * Create an anonymous target metamodel for a generator. This happens
+   * Create an anonymous target model for a generator. This happens
    * when the output is not specified and a weaver is used instead.
    * 
    * @param generator the generator.
    */
-  private KNode _createAnonymousMetamodel(final Generator generator) {
+  private KNode _createAnonymousModel(final Generator generator) {
     KNode _xblockexpression = null;
     {
       final String instanceName = "";
@@ -681,7 +681,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       boolean _notEquals = (!Objects.equal(_targetModel, null));
       if (_notEquals) {
         TargetModelNodeType _targetModel_1 = generator.getTargetModel();
-        Metamodel _reference = _targetModel_1.getReference();
+        Model _reference = _targetModel_1.getReference();
         JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference);
         _xifexpression = _resolveType.getSimpleName();
       } else {
@@ -729,7 +729,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       }
       final String className = _xifexpression;
       KNode _createNode = this._kNodeExtensions.createNode();
-      _xblockexpression = this.drawMetamodelRectangle(_createNode, instanceName, className);
+      _xblockexpression = this.drawModelRectangle(_createNode, instanceName, className);
     }
     return _xblockexpression;
   }
@@ -737,11 +737,11 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   /**
    * Create an anonymous source model for a weaver.
    */
-  private KNode _createAnonymousMetamodel(final Weaver weaver) {
+  private KNode _createAnonymousModel(final Weaver weaver) {
     KNode _xblockexpression = null;
     {
       final SourceModelNodeSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
-      Metamodel _reference = sourceModel.getReference();
+      Model _reference = sourceModel.getReference();
       final String instanceName = _reference.getName();
       String _xifexpression = null;
       TargetModelNodeType _targetModel = weaver.getTargetModel();
@@ -749,11 +749,11 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       if (_notEquals) {
         String _xifexpression_1 = null;
         TargetModelNodeType _targetModel_1 = weaver.getTargetModel();
-        Metamodel _reference_1 = _targetModel_1.getReference();
+        Model _reference_1 = _targetModel_1.getReference();
         boolean _notEquals_1 = (!Objects.equal(_reference_1, null));
         if (_notEquals_1) {
           TargetModelNodeType _targetModel_2 = weaver.getTargetModel();
-          Metamodel _reference_2 = _targetModel_2.getReference();
+          Model _reference_2 = _targetModel_2.getReference();
           JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference_2);
           _xifexpression_1 = _resolveType.getSimpleName();
         } else {
@@ -767,28 +767,28 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       }
       final String className = _xifexpression;
       KNode _createNode = this._kNodeExtensions.createNode();
-      _xblockexpression = this.drawMetamodelRectangle(_createNode, instanceName, className);
+      _xblockexpression = this.drawModelRectangle(_createNode, instanceName, className);
     }
     return _xblockexpression;
   }
   
   /**
-   * Create a metamodel node for a given metamodel and type.
+   * Create a model node for a given model and type.
    */
-  private KNode createMetamodel(final Metamodel metamodel, final MetamodelSequence sequence) {
-    KNode _createNode = this._kNodeExtensions.createNode(metamodel);
-    KNode _associateWith = this.<KNode>associateWith(_createNode, metamodel);
-    String _name = metamodel.getName();
+  private KNode createModel(final Model model, final ModelSequence sequence) {
+    KNode _createNode = this._kNodeExtensions.createNode(model);
+    KNode _associateWith = this.<KNode>associateWith(_createNode, model);
+    String _name = model.getName();
     ModelNodeType _type = sequence.getType();
     JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_type);
     String _simpleName = _resolveType.getSimpleName();
-    return this.drawMetamodelRectangle(_associateWith, _name, _simpleName);
+    return this.drawModelRectangle(_associateWith, _name, _simpleName);
   }
   
   /**
-   * Draw a metamodel
+   * Draw a model
    */
-  private KNode drawMetamodelRectangle(final KNode node, final String instanceName, final String className) {
+  private KNode drawModelRectangle(final KNode node, final String instanceName, final String className) {
     final Procedure1<KNode> _function = new Procedure1<KNode>() {
       public void apply(final KNode it) {
         ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
@@ -1238,11 +1238,11 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     return _reference.getSimpleName();
   }
   
-  private KNode createAnonymousMetamodel(final Fragment generator) {
+  private KNode createAnonymousModel(final Fragment generator) {
     if (generator instanceof Generator) {
-      return _createAnonymousMetamodel((Generator)generator);
+      return _createAnonymousModel((Generator)generator);
     } else if (generator instanceof Weaver) {
-      return _createAnonymousMetamodel((Weaver)generator);
+      return _createAnonymousModel((Weaver)generator);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(generator).toString());

@@ -15,9 +15,9 @@ import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
@@ -81,14 +81,14 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.INT_LITERAL:
 				sequence_IntLiteral(context, (IntLiteral) semanticObject); 
 				return; 
-			case ArchitecturePackage.METAMODEL:
-				sequence_Metamodel(context, (Metamodel) semanticObject); 
-				return; 
-			case ArchitecturePackage.METAMODEL_SEQUENCE:
-				sequence_MetamodelSequence(context, (MetamodelSequence) semanticObject); 
+			case ArchitecturePackage.MODEL:
+				sequence_Model(context, (Model) semanticObject); 
 				return; 
 			case ArchitecturePackage.MODEL_NODE_TYPE:
 				sequence_ModelNodeType(context, (ModelNodeType) semanticObject); 
+				return; 
+			case ArchitecturePackage.MODEL_SEQUENCE:
+				sequence_ModelSequence(context, (ModelSequence) semanticObject); 
 				return; 
 			case ArchitecturePackage.NEGATION:
 				sequence_Negation(context, (Negation) semanticObject); 
@@ -196,7 +196,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (name=QualifiedName imports+=Import* registeredRootClass+=RegisteredRootClass* metamodels+=MetamodelSequence* fragments+=Fragment*)
+	 *     (name=QualifiedName imports+=Import* registeredRootClass+=RegisteredRootClass* models+=ModelSequence* fragments+=Fragment*)
 	 */
 	protected void sequence_GecoModel(EObject context, GecoModel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -245,9 +245,18 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (modifier=MetamodelModifier type=ModelNodeType metamodels+=Metamodel metamodels+=Metamodel*)
+	 *     (target=[RegisteredRootClass|ID] property=NodeProperty? collection?='[]'?)
 	 */
-	protected void sequence_MetamodelSequence(EObject context, MetamodelSequence semanticObject) {
+	protected void sequence_ModelNodeType(EObject context, ModelNodeType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (modifier=ModelModifier type=ModelNodeType models+=Model models+=Model*)
+	 */
+	protected void sequence_ModelSequence(EObject context, ModelSequence semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -256,24 +265,15 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 * Constraint:
 	 *     name=ID
 	 */
-	protected void sequence_Metamodel(EObject context, Metamodel semanticObject) {
+	protected void sequence_Model(EObject context, Model semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.METAMODEL__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.METAMODEL__NAME));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.MODEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.MODEL__NAME));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMetamodelAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getModelAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (target=[RegisteredRootClass|ID] property=NodeProperty? collection?='[]'?)
-	 */
-	protected void sequence_ModelNodeType(EObject context, ModelNodeType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -377,7 +377,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     reference=[Metamodel|ID]
+	 *     reference=[Model|ID]
 	 */
 	protected void sequence_TargetModelNodeType(EObject context, TargetModelNodeType semanticObject) {
 		if(errorAcceptor != null) {
@@ -386,7 +386,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getTargetModelNodeTypeAccess().getReferenceMetamodelIDTerminalRuleCall_1_0_1(), semanticObject.getReference());
+		feeder.accept(grammarAccess.getTargetModelNodeTypeAccess().getReferenceModelIDTerminalRuleCall_1_0_1(), semanticObject.getReference());
 		feeder.finish();
 	}
 	

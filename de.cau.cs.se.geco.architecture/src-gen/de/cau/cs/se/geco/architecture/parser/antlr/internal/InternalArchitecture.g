@@ -139,17 +139,17 @@ ruleGecoModel returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGecoModelAccess().getMetamodelsMetamodelSequenceParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getGecoModelAccess().getModelsModelSequenceParserRuleCall_4_0()); 
 	    }
-		lv_metamodels_4_0=ruleMetamodelSequence		{
+		lv_models_4_0=ruleModelSequence		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGecoModelRule());
 	        }
        		add(
        			$current, 
-       			"metamodels",
-        		lv_metamodels_4_0, 
-        		"MetamodelSequence");
+       			"models",
+        		lv_models_4_0, 
+        		"ModelSequence");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -311,38 +311,38 @@ ruleRegisteredRootClass returns [EObject current=null]
 
 
 
-// Entry rule entryRuleMetamodelSequence
-entryRuleMetamodelSequence returns [EObject current=null] 
+// Entry rule entryRuleModelSequence
+entryRuleModelSequence returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getMetamodelSequenceRule()); }
-	 iv_ruleMetamodelSequence=ruleMetamodelSequence 
-	 { $current=$iv_ruleMetamodelSequence.current; } 
+	{ newCompositeNode(grammarAccess.getModelSequenceRule()); }
+	 iv_ruleModelSequence=ruleModelSequence 
+	 { $current=$iv_ruleModelSequence.current; } 
 	 EOF 
 ;
 
-// Rule MetamodelSequence
-ruleMetamodelSequence returns [EObject current=null] 
+// Rule ModelSequence
+ruleModelSequence returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (	otherlv_0='model' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getMetamodelSequenceAccess().getModelKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getModelSequenceAccess().getModelKeyword_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMetamodelSequenceAccess().getModifierMetamodelModifierEnumRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getModelSequenceAccess().getModifierModelModifierEnumRuleCall_1_0()); 
 	    }
-		lv_modifier_1_0=ruleMetamodelModifier		{
+		lv_modifier_1_0=ruleModelModifier		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMetamodelSequenceRule());
+	            $current = createModelElementForParent(grammarAccess.getModelSequenceRule());
 	        }
        		set(
        			$current, 
        			"modifier",
         		lv_modifier_1_0, 
-        		"MetamodelModifier");
+        		"ModelModifier");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -350,11 +350,11 @@ ruleMetamodelSequence returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMetamodelSequenceAccess().getTypeModelNodeTypeParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getModelSequenceAccess().getTypeModelNodeTypeParserRuleCall_2_0()); 
 	    }
 		lv_type_2_0=ruleModelNodeType		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMetamodelSequenceRule());
+	            $current = createModelElementForParent(grammarAccess.getModelSequenceRule());
 	        }
        		set(
        			$current, 
@@ -368,39 +368,39 @@ ruleMetamodelSequence returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMetamodelSequenceAccess().getMetamodelsMetamodelParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_3_0()); 
 	    }
-		lv_metamodels_3_0=ruleMetamodel		{
+		lv_models_3_0=ruleModel		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMetamodelSequenceRule());
+	            $current = createModelElementForParent(grammarAccess.getModelSequenceRule());
 	        }
        		add(
        			$current, 
-       			"metamodels",
-        		lv_metamodels_3_0, 
-        		"Metamodel");
+       			"models",
+        		lv_models_3_0, 
+        		"Model");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )(	otherlv_4=',' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getMetamodelSequenceAccess().getCommaKeyword_4_0());
+    	newLeafNode(otherlv_4, grammarAccess.getModelSequenceAccess().getCommaKeyword_4_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMetamodelSequenceAccess().getMetamodelsMetamodelParserRuleCall_4_1_0()); 
+	        newCompositeNode(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_4_1_0()); 
 	    }
-		lv_metamodels_5_0=ruleMetamodel		{
+		lv_models_5_0=ruleModel		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMetamodelSequenceRule());
+	            $current = createModelElementForParent(grammarAccess.getModelSequenceRule());
 	        }
        		add(
        			$current, 
-       			"metamodels",
-        		lv_metamodels_5_0, 
-        		"Metamodel");
+       			"models",
+        		lv_models_5_0, 
+        		"Model");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -412,17 +412,17 @@ ruleMetamodelSequence returns [EObject current=null]
 
 
 
-// Entry rule entryRuleMetamodel
-entryRuleMetamodel returns [EObject current=null] 
+// Entry rule entryRuleModel
+entryRuleModel returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getMetamodelRule()); }
-	 iv_ruleMetamodel=ruleMetamodel 
-	 { $current=$iv_ruleMetamodel.current; } 
+	{ newCompositeNode(grammarAccess.getModelRule()); }
+	 iv_ruleModel=ruleModel 
+	 { $current=$iv_ruleModel.current; } 
 	 EOF 
 ;
 
-// Rule Metamodel
-ruleMetamodel returns [EObject current=null] 
+// Rule Model
+ruleModel returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
@@ -430,11 +430,11 @@ ruleMetamodel returns [EObject current=null]
 (
 		lv_name_0_0=RULE_ID
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getMetamodelAccess().getNameIDTerminalRuleCall_0()); 
+			newLeafNode(lv_name_0_0, grammarAccess.getModelAccess().getNameIDTerminalRuleCall_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getMetamodelRule());
+	            $current = createModelElement(grammarAccess.getModelRule());
 	        }
        		setWithLastConsumed(
        			$current, 
@@ -960,7 +960,7 @@ ruleSourceModelNodeSelector returns [EObject current=null]
         }
 	otherlv_0=RULE_ID
 	{
-		newLeafNode(otherlv_0, grammarAccess.getSourceModelNodeSelectorAccess().getReferenceMetamodelCrossReference_0_0_0()); 
+		newLeafNode(otherlv_0, grammarAccess.getSourceModelNodeSelectorAccess().getReferenceModelCrossReference_0_0_0()); 
 	}
 
 )
@@ -1059,7 +1059,7 @@ ruleTargetModelNodeType returns [EObject current=null]
         }
 	otherlv_1=RULE_ID
 	{
-		newLeafNode(otherlv_1, grammarAccess.getTargetModelNodeTypeAccess().getReferenceMetamodelCrossReference_1_0()); 
+		newLeafNode(otherlv_1, grammarAccess.getTargetModelNodeTypeAccess().getReferenceModelCrossReference_1_0()); 
 	}
 
 )
@@ -2235,26 +2235,26 @@ ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 
 
 
-// Rule MetamodelModifier
-ruleMetamodelModifier returns [Enumerator current=null] 
+// Rule ModelModifier
+ruleModelModifier returns [Enumerator current=null] 
     @init { enterRule(); }
     @after { leaveRule(); }:
 ((	enumLiteral_0='in' 
 	{
-        $current = grammarAccess.getMetamodelModifierAccess().getINPUTEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_0, grammarAccess.getMetamodelModifierAccess().getINPUTEnumLiteralDeclaration_0()); 
+        $current = grammarAccess.getModelModifierAccess().getINPUTEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getModelModifierAccess().getINPUTEnumLiteralDeclaration_0()); 
     }
 )
     |(	enumLiteral_1='out' 
 	{
-        $current = grammarAccess.getMetamodelModifierAccess().getOUTPUTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_1, grammarAccess.getMetamodelModifierAccess().getOUTPUTEnumLiteralDeclaration_1()); 
+        $current = grammarAccess.getModelModifierAccess().getOUTPUTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getModelModifierAccess().getOUTPUTEnumLiteralDeclaration_1()); 
     }
 )
     |(	enumLiteral_2='io' 
 	{
-        $current = grammarAccess.getMetamodelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_2, grammarAccess.getMetamodelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2()); 
+        $current = grammarAccess.getModelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getModelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2()); 
     }
 ));
 

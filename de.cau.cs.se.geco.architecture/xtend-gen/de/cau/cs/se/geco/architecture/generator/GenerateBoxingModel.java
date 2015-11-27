@@ -5,10 +5,10 @@ import de.cau.cs.se.geco.architecture.architecture.AspectModel;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
+import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
@@ -40,22 +40,22 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   public BoxingModel generate(final GecoModel input) {
     final BoxingModel result = BoxingFactory.eINSTANCE.createBoxingModel();
     result.setDerivedFrom(input);
-    EList<MetamodelSequence> _metamodels = input.getMetamodels();
-    final Consumer<MetamodelSequence> _function = (MetamodelSequence sequence) -> {
-      EList<Metamodel> _metamodels_1 = sequence.getMetamodels();
-      final Consumer<Metamodel> _function_1 = (Metamodel metamodel) -> {
-        final ModelDeclaration model = BoxingFactory.eINSTANCE.createModelDeclaration();
+    EList<ModelSequence> _models = input.getModels();
+    final Consumer<ModelSequence> _function = (ModelSequence sequence) -> {
+      EList<Model> _models_1 = sequence.getModels();
+      final Consumer<Model> _function_1 = (Model model) -> {
+        final ModelDeclaration modeldeclaration = BoxingFactory.eINSTANCE.createModelDeclaration();
         ModelNodeType _type = sequence.getType();
-        model.setSelector(_type);
-        model.setMetamodel(metamodel);
-        MetamodelModifier _modifier = sequence.getModifier();
-        model.setModifier(_modifier);
-        EList<ModelDeclaration> _models = result.getModels();
-        _models.add(model);
+        modeldeclaration.setSelector(_type);
+        modeldeclaration.setModel(model);
+        ModelModifier _modifier = sequence.getModifier();
+        modeldeclaration.setModifier(_modifier);
+        EList<ModelDeclaration> _models_2 = result.getModels();
+        _models_2.add(modeldeclaration);
       };
-      _metamodels_1.forEach(_function_1);
+      _models_1.forEach(_function_1);
     };
-    _metamodels.forEach(_function);
+    _models.forEach(_function);
     final ArrayList<Unit> units = new ArrayList<Unit>();
     EList<Fragment> _fragments = input.getFragments();
     final Consumer<Fragment> _function_1 = (Fragment fragment) -> {
@@ -97,8 +97,8 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
       this.addUniqueType(_allProcessors, _reference);
     };
     _fragments.forEach(_function_1);
-    EList<MetamodelSequence> _metamodels_1 = input.getMetamodels();
-    Group group = this.createGroup(_metamodels_1);
+    EList<ModelSequence> _models_1 = input.getModels();
+    Group group = this.createGroup(_models_1);
     EList<Group> _groups = result.getGroups();
     _groups.add(group);
     while ((units.size() > 0)) {
@@ -207,15 +207,15 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
    */
   private boolean matchGroup(final Unit unit, final Group group) {
     boolean _and = false;
-    EList<Metamodel> _sourceModels = unit.getSourceModels();
-    final Function1<Metamodel, Boolean> _function = (Metamodel unitMM) -> {
-      EList<Metamodel> _sourceModels_1 = group.getSourceModels();
-      final Function1<Metamodel, Boolean> _function_1 = (Metamodel it) -> {
+    EList<Model> _sourceModels = unit.getSourceModels();
+    final Function1<Model, Boolean> _function = (Model unitMM) -> {
+      EList<Model> _sourceModels_1 = group.getSourceModels();
+      final Function1<Model, Boolean> _function_1 = (Model it) -> {
         return Boolean.valueOf(it.equals(unitMM));
       };
-      return Boolean.valueOf(IterableExtensions.<Metamodel>exists(_sourceModels_1, _function_1));
+      return Boolean.valueOf(IterableExtensions.<Model>exists(_sourceModels_1, _function_1));
     };
-    boolean _forall = IterableExtensions.<Metamodel>forall(_sourceModels, _function);
+    boolean _forall = IterableExtensions.<Model>forall(_sourceModels, _function);
     if (!_forall) {
       _and = false;
     } else {
@@ -236,18 +236,18 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   /**
    * Create a new group based on a sequence of free metamodels.
    */
-  private Group createGroup(final EList<MetamodelSequence> metamodels) {
+  private Group createGroup(final EList<ModelSequence> metamodels) {
     final Group group = BoxingFactory.eINSTANCE.createGroup();
-    final Consumer<MetamodelSequence> _function = (MetamodelSequence sequence) -> {
-      MetamodelModifier _modifier = sequence.getModifier();
-      boolean _equals = Objects.equal(_modifier, MetamodelModifier.INPUT);
+    final Consumer<ModelSequence> _function = (ModelSequence sequence) -> {
+      ModelModifier _modifier = sequence.getModifier();
+      boolean _equals = Objects.equal(_modifier, ModelModifier.INPUT);
       if (_equals) {
-        EList<Metamodel> _metamodels = sequence.getMetamodels();
-        final Consumer<Metamodel> _function_1 = (Metamodel metamodel) -> {
-          EList<Metamodel> _sourceModels = group.getSourceModels();
-          _sourceModels.add(metamodel);
+        EList<Model> _models = sequence.getModels();
+        final Consumer<Model> _function_1 = (Model it) -> {
+          EList<Model> _sourceModels = group.getSourceModels();
+          _sourceModels.add(it);
         };
-        _metamodels.forEach(_function_1);
+        _models.forEach(_function_1);
       }
     };
     metamodels.forEach(_function);
@@ -259,16 +259,16 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
    */
   private Group createGroup(final Group oldGroup) {
     final Group group = BoxingFactory.eINSTANCE.createGroup();
-    EList<Metamodel> _sourceModels = group.getSourceModels();
-    EList<Metamodel> _sourceModels_1 = oldGroup.getSourceModels();
+    EList<Model> _sourceModels = group.getSourceModels();
+    EList<Model> _sourceModels_1 = oldGroup.getSourceModels();
     _sourceModels.addAll(_sourceModels_1);
     EList<TraceModel> _sourceTraceModels = group.getSourceTraceModels();
     EList<TraceModel> _sourceTraceModels_1 = oldGroup.getSourceTraceModels();
     _sourceTraceModels.addAll(_sourceTraceModels_1);
     EList<Unit> _units = oldGroup.getUnits();
     final Consumer<Unit> _function = (Unit unit) -> {
-      EList<Metamodel> _sourceModels_2 = group.getSourceModels();
-      Metamodel _targetModel = unit.getTargetModel();
+      EList<Model> _sourceModels_2 = group.getSourceModels();
+      Model _targetModel = unit.getTargetModel();
       this.addUnique(_sourceModels_2, _targetModel);
       TraceModel _targetTraceModel = unit.getTargetTraceModel();
       boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
@@ -289,18 +289,18 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
     result.setFragment(generator);
     SourceModelNodeSelector _sourceModel = generator.getSourceModel();
-    Metamodel _reference = _sourceModel.getReference();
+    Model _reference = _sourceModel.getReference();
     boolean _notEquals = (!Objects.equal(_reference, null));
     if (_notEquals) {
-      EList<Metamodel> _sourceModels = result.getSourceModels();
+      EList<Model> _sourceModels = result.getSourceModels();
       SourceModelNodeSelector _sourceModel_1 = generator.getSourceModel();
-      Metamodel _reference_1 = _sourceModel_1.getReference();
+      Model _reference_1 = _sourceModel_1.getReference();
       _sourceModels.add(_reference_1);
     }
     EList<SourceModelNodeSelector> _sourceAuxModels = generator.getSourceAuxModels();
     final Consumer<SourceModelNodeSelector> _function = (SourceModelNodeSelector model) -> {
-      EList<Metamodel> _sourceModels_1 = result.getSourceModels();
-      Metamodel _reference_2 = model.getReference();
+      EList<Model> _sourceModels_1 = result.getSourceModels();
+      Model _reference_2 = model.getReference();
       this.addUnique(_sourceModels_1, _reference_2);
     };
     _sourceAuxModels.forEach(_function);
@@ -308,7 +308,7 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     EList<TraceModelReference> _sourceTraceModels_1 = generator.getSourceTraceModels();
     this.addAllUnique(_sourceTraceModels, _sourceTraceModels_1);
     TargetModelNodeType _targetModel = generator.getTargetModel();
-    Metamodel _reference_2 = _targetModel.getReference();
+    Model _reference_2 = _targetModel.getReference();
     result.setTargetModel(_reference_2);
     TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
     boolean _notEquals_1 = (!Objects.equal(_targetTraceModel, null));
@@ -341,14 +341,14 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     result.setFragment(weaver);
     AspectModel _aspectModel = weaver.getAspectModel();
     final Generator generator = ((Generator) _aspectModel);
-    EList<Metamodel> _sourceModels = result.getSourceModels();
+    EList<Model> _sourceModels = result.getSourceModels();
     SourceModelNodeSelector _sourceModel = generator.getSourceModel();
-    Metamodel _reference = _sourceModel.getReference();
+    Model _reference = _sourceModel.getReference();
     _sourceModels.add(_reference);
     EList<SourceModelNodeSelector> _sourceAuxModels = generator.getSourceAuxModels();
     final Consumer<SourceModelNodeSelector> _function = (SourceModelNodeSelector model) -> {
-      EList<Metamodel> _sourceModels_1 = result.getSourceModels();
-      Metamodel _reference_1 = model.getReference();
+      EList<Model> _sourceModels_1 = result.getSourceModels();
+      Model _reference_1 = model.getReference();
       this.addUnique(_sourceModels_1, _reference_1);
     };
     _sourceAuxModels.forEach(_function);
@@ -356,10 +356,10 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     EList<TraceModelReference> _sourceTraceModels_1 = generator.getSourceTraceModels();
     this.addAllUnique(_sourceTraceModels, _sourceTraceModels_1);
     SourceModelNodeSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
-    Metamodel _reference_1 = _resolveWeaverSourceModel.getReference();
+    Model _reference_1 = _resolveWeaverSourceModel.getReference();
     result.setTargetModel(_reference_1);
-    EList<Metamodel> _sourceModels_1 = result.getSourceModels();
-    Metamodel _targetModel = result.getTargetModel();
+    EList<Model> _sourceModels_1 = result.getSourceModels();
+    Model _targetModel = result.getTargetModel();
     this.addUnique(_sourceModels_1, _targetModel);
     TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
     boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
@@ -390,16 +390,16 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   private Unit createWeaver(final Weaver weaver) {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
     result.setFragment(weaver);
-    EList<Metamodel> _sourceModels = result.getSourceModels();
+    EList<Model> _sourceModels = result.getSourceModels();
     SourceModelNodeSelector _sourceModel = weaver.getSourceModel();
-    Metamodel _reference = _sourceModel.getReference();
+    Model _reference = _sourceModel.getReference();
     _sourceModels.add(_reference);
-    EList<Metamodel> _sourceModels_1 = result.getSourceModels();
+    EList<Model> _sourceModels_1 = result.getSourceModels();
     AspectModel _aspectModel = weaver.getAspectModel();
-    Metamodel _reference_1 = ((TargetModelNodeType) _aspectModel).getReference();
+    Model _reference_1 = ((TargetModelNodeType) _aspectModel).getReference();
     _sourceModels_1.add(_reference_1);
     SourceModelNodeSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
-    Metamodel _reference_2 = _resolveWeaverSourceModel.getReference();
+    Model _reference_2 = _resolveWeaverSourceModel.getReference();
     result.setTargetModel(_reference_2);
     result.setTargetTraceModel(null);
     return result;
@@ -455,7 +455,7 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   /**
    * Add a write trace model if it is not already in the list.
    */
-  private void addUnique(final EList<Metamodel> list, final Metamodel model) {
+  private void addUnique(final EList<Model> list, final Model model) {
     boolean _contains = list.contains(model);
     boolean _not = (!_contains);
     if (_not) {

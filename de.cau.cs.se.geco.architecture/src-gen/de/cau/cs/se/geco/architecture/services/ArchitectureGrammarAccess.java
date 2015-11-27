@@ -28,17 +28,17 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
 		private final Assignment cRegisteredRootClassAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cRegisteredRootClassRegisteredRootClassParserRuleCall_3_0 = (RuleCall)cRegisteredRootClassAssignment_3.eContents().get(0);
-		private final Assignment cMetamodelsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMetamodelsMetamodelSequenceParserRuleCall_4_0 = (RuleCall)cMetamodelsAssignment_4.eContents().get(0);
+		private final Assignment cModelsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cModelsModelSequenceParserRuleCall_4_0 = (RuleCall)cModelsAssignment_4.eContents().get(0);
 		private final Assignment cFragmentsAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cFragmentsFragmentParserRuleCall_5_0 = (RuleCall)cFragmentsAssignment_5.eContents().get(0);
 		
 		//GecoModel:
-		//	"package" name=QualifiedName imports+=Import* registeredRootClass+=RegisteredRootClass* metamodels+=MetamodelSequence*
+		//	"package" name=QualifiedName imports+=Import* registeredRootClass+=RegisteredRootClass* models+=ModelSequence*
 		//	fragments+=Fragment*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName imports+=Import* registeredRootClass+=RegisteredRootClass* metamodels+=MetamodelSequence*
+		//"package" name=QualifiedName imports+=Import* registeredRootClass+=RegisteredRootClass* models+=ModelSequence*
 		//fragments+=Fragment*
 		public Group getGroup() { return cGroup; }
 
@@ -63,11 +63,11 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//RegisteredRootClass
 		public RuleCall getRegisteredRootClassRegisteredRootClassParserRuleCall_3_0() { return cRegisteredRootClassRegisteredRootClassParserRuleCall_3_0; }
 
-		//metamodels+=MetamodelSequence*
-		public Assignment getMetamodelsAssignment_4() { return cMetamodelsAssignment_4; }
+		//models+=ModelSequence*
+		public Assignment getModelsAssignment_4() { return cModelsAssignment_4; }
 
-		//MetamodelSequence
-		public RuleCall getMetamodelsMetamodelSequenceParserRuleCall_4_0() { return cMetamodelsMetamodelSequenceParserRuleCall_4_0; }
+		//ModelSequence
+		public RuleCall getModelsModelSequenceParserRuleCall_4_0() { return cModelsModelSequenceParserRuleCall_4_0; }
 
 		//fragments+=Fragment*
 		public Assignment getFragmentsAssignment_5() { return cFragmentsAssignment_5; }
@@ -164,36 +164,36 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getExtensionSTRINGTerminalRuleCall_2_1_1_0() { return cExtensionSTRINGTerminalRuleCall_2_1_1_0; }
 	}
 
-	public class MetamodelSequenceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MetamodelSequence");
+	public class ModelSequenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ModelSequence");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cModelKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cModifierAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cModifierMetamodelModifierEnumRuleCall_1_0 = (RuleCall)cModifierAssignment_1.eContents().get(0);
+		private final RuleCall cModifierModelModifierEnumRuleCall_1_0 = (RuleCall)cModifierAssignment_1.eContents().get(0);
 		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cTypeModelNodeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
-		private final Assignment cMetamodelsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cMetamodelsMetamodelParserRuleCall_3_0 = (RuleCall)cMetamodelsAssignment_3.eContents().get(0);
+		private final Assignment cModelsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cModelsModelParserRuleCall_3_0 = (RuleCall)cModelsAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cMetamodelsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cMetamodelsMetamodelParserRuleCall_4_1_0 = (RuleCall)cMetamodelsAssignment_4_1.eContents().get(0);
+		private final Assignment cModelsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cModelsModelParserRuleCall_4_1_0 = (RuleCall)cModelsAssignment_4_1.eContents().get(0);
 		
-		//MetamodelSequence:
-		//	"model" modifier=MetamodelModifier type=ModelNodeType metamodels+=Metamodel ("," metamodels+=Metamodel)*;
+		//ModelSequence:
+		//	"model" modifier=ModelModifier type=ModelNodeType models+=Model ("," models+=Model)*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"model" modifier=MetamodelModifier type=ModelNodeType metamodels+=Metamodel ("," metamodels+=Metamodel)*
+		//"model" modifier=ModelModifier type=ModelNodeType models+=Model ("," models+=Model)*
 		public Group getGroup() { return cGroup; }
 
 		//"model"
 		public Keyword getModelKeyword_0() { return cModelKeyword_0; }
 
-		//modifier=MetamodelModifier
+		//modifier=ModelModifier
 		public Assignment getModifierAssignment_1() { return cModifierAssignment_1; }
 
-		//MetamodelModifier
-		public RuleCall getModifierMetamodelModifierEnumRuleCall_1_0() { return cModifierMetamodelModifierEnumRuleCall_1_0; }
+		//ModelModifier
+		public RuleCall getModifierModelModifierEnumRuleCall_1_0() { return cModifierModelModifierEnumRuleCall_1_0; }
 
 		//type=ModelNodeType
 		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
@@ -201,31 +201,31 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//ModelNodeType
 		public RuleCall getTypeModelNodeTypeParserRuleCall_2_0() { return cTypeModelNodeTypeParserRuleCall_2_0; }
 
-		//metamodels+=Metamodel
-		public Assignment getMetamodelsAssignment_3() { return cMetamodelsAssignment_3; }
+		//models+=Model
+		public Assignment getModelsAssignment_3() { return cModelsAssignment_3; }
 
-		//Metamodel
-		public RuleCall getMetamodelsMetamodelParserRuleCall_3_0() { return cMetamodelsMetamodelParserRuleCall_3_0; }
+		//Model
+		public RuleCall getModelsModelParserRuleCall_3_0() { return cModelsModelParserRuleCall_3_0; }
 
-		//("," metamodels+=Metamodel)*
+		//("," models+=Model)*
 		public Group getGroup_4() { return cGroup_4; }
 
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 
-		//metamodels+=Metamodel
-		public Assignment getMetamodelsAssignment_4_1() { return cMetamodelsAssignment_4_1; }
+		//models+=Model
+		public Assignment getModelsAssignment_4_1() { return cModelsAssignment_4_1; }
 
-		//Metamodel
-		public RuleCall getMetamodelsMetamodelParserRuleCall_4_1_0() { return cMetamodelsMetamodelParserRuleCall_4_1_0; }
+		//Model
+		public RuleCall getModelsModelParserRuleCall_4_1_0() { return cModelsModelParserRuleCall_4_1_0; }
 	}
 
-	public class MetamodelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Metamodel");
+	public class ModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Model");
 		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
 		
-		//Metamodel:
+		//Model:
 		//	name=ID;
 		@Override public ParserRule getRule() { return rule; }
 
@@ -562,8 +562,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Assignment cReferenceAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final CrossReference cReferenceMetamodelCrossReference_0_0_0 = (CrossReference)cReferenceAssignment_0_0.eContents().get(0);
-		private final RuleCall cReferenceMetamodelIDTerminalRuleCall_0_0_0_1 = (RuleCall)cReferenceMetamodelCrossReference_0_0_0.eContents().get(1);
+		private final CrossReference cReferenceModelCrossReference_0_0_0 = (CrossReference)cReferenceAssignment_0_0.eContents().get(0);
+		private final RuleCall cReferenceModelIDTerminalRuleCall_0_0_0_1 = (RuleCall)cReferenceModelCrossReference_0_0_0.eContents().get(1);
 		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
 		private final Keyword cLeftSquareBracketKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
 		private final Assignment cConstraintAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
@@ -578,25 +578,25 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNullKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
 		//SourceModelNodeSelector:
-		//	reference=[Metamodel] ("[" constraint=ConstraintExpression "]")? ("/" property=NodeProperty)? |
-		//	{SourceModelNodeSelector} "null";
+		//	reference=[Model] ("[" constraint=ConstraintExpression "]")? ("/" property=NodeProperty)? | {SourceModelNodeSelector}
+		//	"null";
 		@Override public ParserRule getRule() { return rule; }
 
-		//reference=[Metamodel] ("[" constraint=ConstraintExpression "]")? ("/" property=NodeProperty)? |
-		//{SourceModelNodeSelector} "null"
+		//reference=[Model] ("[" constraint=ConstraintExpression "]")? ("/" property=NodeProperty)? | {SourceModelNodeSelector}
+		//"null"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//reference=[Metamodel] ("[" constraint=ConstraintExpression "]")? ("/" property=NodeProperty)?
+		//reference=[Model] ("[" constraint=ConstraintExpression "]")? ("/" property=NodeProperty)?
 		public Group getGroup_0() { return cGroup_0; }
 
-		//reference=[Metamodel]
+		//reference=[Model]
 		public Assignment getReferenceAssignment_0_0() { return cReferenceAssignment_0_0; }
 
-		//[Metamodel]
-		public CrossReference getReferenceMetamodelCrossReference_0_0_0() { return cReferenceMetamodelCrossReference_0_0_0; }
+		//[Model]
+		public CrossReference getReferenceModelCrossReference_0_0_0() { return cReferenceModelCrossReference_0_0_0; }
 
 		//ID
-		public RuleCall getReferenceMetamodelIDTerminalRuleCall_0_0_0_1() { return cReferenceMetamodelIDTerminalRuleCall_0_0_0_1; }
+		public RuleCall getReferenceModelIDTerminalRuleCall_0_0_0_1() { return cReferenceModelIDTerminalRuleCall_0_0_0_1; }
 
 		//("[" constraint=ConstraintExpression "]")?
 		public Group getGroup_0_1() { return cGroup_0_1; }
@@ -640,27 +640,27 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cTargetModelNodeTypeAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cReferenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cReferenceMetamodelCrossReference_1_0 = (CrossReference)cReferenceAssignment_1.eContents().get(0);
-		private final RuleCall cReferenceMetamodelIDTerminalRuleCall_1_0_1 = (RuleCall)cReferenceMetamodelCrossReference_1_0.eContents().get(1);
+		private final CrossReference cReferenceModelCrossReference_1_0 = (CrossReference)cReferenceAssignment_1.eContents().get(0);
+		private final RuleCall cReferenceModelIDTerminalRuleCall_1_0_1 = (RuleCall)cReferenceModelCrossReference_1_0.eContents().get(1);
 		
 		//TargetModelNodeType:
-		//	{TargetModelNodeType} reference=[Metamodel];
+		//	{TargetModelNodeType} reference=[Model];
 		@Override public ParserRule getRule() { return rule; }
 
-		//{TargetModelNodeType} reference=[Metamodel]
+		//{TargetModelNodeType} reference=[Model]
 		public Group getGroup() { return cGroup; }
 
 		//{TargetModelNodeType}
 		public Action getTargetModelNodeTypeAction_0() { return cTargetModelNodeTypeAction_0; }
 
-		//reference=[Metamodel]
+		//reference=[Model]
 		public Assignment getReferenceAssignment_1() { return cReferenceAssignment_1; }
 
-		//[Metamodel]
-		public CrossReference getReferenceMetamodelCrossReference_1_0() { return cReferenceMetamodelCrossReference_1_0; }
+		//[Model]
+		public CrossReference getReferenceModelCrossReference_1_0() { return cReferenceModelCrossReference_1_0; }
 
 		//ID
-		public RuleCall getReferenceMetamodelIDTerminalRuleCall_1_0_1() { return cReferenceMetamodelIDTerminalRuleCall_1_0_1; }
+		public RuleCall getReferenceModelIDTerminalRuleCall_1_0_1() { return cReferenceModelIDTerminalRuleCall_1_0_1; }
 	}
 
 	public class ModelNodeTypeElements extends AbstractParserRuleElementFinder {
@@ -1370,8 +1370,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	public class MetamodelModifierElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MetamodelModifier");
+	public class ModelModifierElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ModelModifier");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cINPUTEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cINPUTInKeyword_0_0 = (Keyword)cINPUTEnumLiteralDeclaration_0.eContents().get(0);
@@ -1380,7 +1380,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final EnumLiteralDeclaration cINTERMEDIATEEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
 		private final Keyword cINTERMEDIATEIoKeyword_2_0 = (Keyword)cINTERMEDIATEEnumLiteralDeclaration_2.eContents().get(0);
 		
-		//enum MetamodelModifier:
+		//enum ModelModifier:
 		//	INPUT="in" | OUTPUT="out" | INTERMEDIATE="io";
 		public EnumRule getRule() { return rule; }
 
@@ -1507,9 +1507,9 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	private final GecoModelElements pGecoModel;
 	private final ImportElements pImport;
 	private final RegisteredRootClassElements pRegisteredRootClass;
-	private final MetamodelSequenceElements pMetamodelSequence;
-	private final MetamodelModifierElements unknownRuleMetamodelModifier;
-	private final MetamodelElements pMetamodel;
+	private final ModelSequenceElements pModelSequence;
+	private final ModelModifierElements unknownRuleModelModifier;
+	private final ModelElements pModel;
 	private final FragmentElements pFragment;
 	private final WeaverElements pWeaver;
 	private final AspectModelElements pAspectModel;
@@ -1558,9 +1558,9 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		this.pGecoModel = new GecoModelElements();
 		this.pImport = new ImportElements();
 		this.pRegisteredRootClass = new RegisteredRootClassElements();
-		this.pMetamodelSequence = new MetamodelSequenceElements();
-		this.unknownRuleMetamodelModifier = new MetamodelModifierElements();
-		this.pMetamodel = new MetamodelElements();
+		this.pModelSequence = new ModelSequenceElements();
+		this.unknownRuleModelModifier = new ModelModifierElements();
+		this.pModel = new ModelElements();
 		this.pFragment = new FragmentElements();
 		this.pWeaver = new WeaverElements();
 		this.pAspectModel = new AspectModelElements();
@@ -1626,7 +1626,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//GecoModel:
-	//	"package" name=QualifiedName imports+=Import* registeredRootClass+=RegisteredRootClass* metamodels+=MetamodelSequence*
+	//	"package" name=QualifiedName imports+=Import* registeredRootClass+=RegisteredRootClass* models+=ModelSequence*
 	//	fragments+=Fragment*;
 	public GecoModelElements getGecoModelAccess() {
 		return pGecoModel;
@@ -1656,34 +1656,34 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		return getRegisteredRootClassAccess().getRule();
 	}
 
-	//MetamodelSequence:
-	//	"model" modifier=MetamodelModifier type=ModelNodeType metamodels+=Metamodel ("," metamodels+=Metamodel)*;
-	public MetamodelSequenceElements getMetamodelSequenceAccess() {
-		return pMetamodelSequence;
+	//ModelSequence:
+	//	"model" modifier=ModelModifier type=ModelNodeType models+=Model ("," models+=Model)*;
+	public ModelSequenceElements getModelSequenceAccess() {
+		return pModelSequence;
 	}
 	
-	public ParserRule getMetamodelSequenceRule() {
-		return getMetamodelSequenceAccess().getRule();
+	public ParserRule getModelSequenceRule() {
+		return getModelSequenceAccess().getRule();
 	}
 
-	//enum MetamodelModifier:
+	//enum ModelModifier:
 	//	INPUT="in" | OUTPUT="out" | INTERMEDIATE="io";
-	public MetamodelModifierElements getMetamodelModifierAccess() {
-		return unknownRuleMetamodelModifier;
+	public ModelModifierElements getModelModifierAccess() {
+		return unknownRuleModelModifier;
 	}
 	
-	public EnumRule getMetamodelModifierRule() {
-		return getMetamodelModifierAccess().getRule();
+	public EnumRule getModelModifierRule() {
+		return getModelModifierAccess().getRule();
 	}
 
-	//Metamodel:
+	//Model:
 	//	name=ID;
-	public MetamodelElements getMetamodelAccess() {
-		return pMetamodel;
+	public ModelElements getModelAccess() {
+		return pModel;
 	}
 	
-	public ParserRule getMetamodelRule() {
-		return getMetamodelAccess().getRule();
+	public ParserRule getModelRule() {
+		return getModelAccess().getRule();
 	}
 
 	//Fragment:
@@ -1751,8 +1751,8 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SourceModelNodeSelector:
-	//	reference=[Metamodel] ("[" constraint=ConstraintExpression "]")? ("/" property=NodeProperty)? |
-	//	{SourceModelNodeSelector} "null";
+	//	reference=[Model] ("[" constraint=ConstraintExpression "]")? ("/" property=NodeProperty)? | {SourceModelNodeSelector}
+	//	"null";
 	public SourceModelNodeSelectorElements getSourceModelNodeSelectorAccess() {
 		return pSourceModelNodeSelector;
 	}
@@ -1762,7 +1762,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//TargetModelNodeType:
-	//	{TargetModelNodeType} reference=[Metamodel];
+	//	{TargetModelNodeType} reference=[Model];
 	public TargetModelNodeTypeElements getTargetModelNodeTypeAccess() {
 		return pTargetModelNodeType;
 	}

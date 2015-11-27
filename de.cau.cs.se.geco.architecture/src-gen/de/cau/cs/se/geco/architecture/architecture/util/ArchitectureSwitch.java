@@ -93,17 +93,17 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.METAMODEL_SEQUENCE:
+      case ArchitecturePackage.MODEL_SEQUENCE:
       {
-        MetamodelSequence metamodelSequence = (MetamodelSequence)theEObject;
-        T result = caseMetamodelSequence(metamodelSequence);
+        ModelSequence modelSequence = (ModelSequence)theEObject;
+        T result = caseModelSequence(modelSequence);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.METAMODEL:
+      case ArchitecturePackage.MODEL:
       {
-        Metamodel metamodel = (Metamodel)theEObject;
-        T result = caseMetamodel(metamodel);
+        Model model = (Model)theEObject;
+        T result = caseModel(model);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -415,33 +415,33 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Metamodel Sequence</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Model Sequence</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Metamodel Sequence</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Model Sequence</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMetamodelSequence(MetamodelSequence object)
+  public T caseModelSequence(ModelSequence object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Metamodel</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Metamodel</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMetamodel(Metamodel object)
+  public T caseModel(Model object)
   {
     return null;
   }

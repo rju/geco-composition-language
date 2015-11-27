@@ -7,9 +7,9 @@ import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
@@ -48,7 +48,7 @@ public class ArchitectureTyping {
       NodeProperty _property_1 = selector.getProperty();
       return ArchitectureTyping.resolveType(_property_1);
     } else {
-      Metamodel _reference = selector.getReference();
+      Model _reference = selector.getReference();
       JvmTypeReference _resolveType = null;
       if (_reference!=null) {
         _resolveType=ArchitectureTyping.resolveType(_reference);
@@ -82,9 +82,9 @@ public class ArchitectureTyping {
     }
   }
   
-  protected static JvmTypeReference _resolveType(final Metamodel metamodel) {
-    EObject _eContainer = metamodel.eContainer();
-    ModelNodeType _type = ((MetamodelSequence) _eContainer).getType();
+  protected static JvmTypeReference _resolveType(final Model model) {
+    EObject _eContainer = model.eContainer();
+    ModelNodeType _type = ((ModelSequence) _eContainer).getType();
     return ArchitectureTyping.resolveType(_type);
   }
   
@@ -137,7 +137,7 @@ public class ArchitectureTyping {
   }
   
   protected static JvmTypeReference _resolveType(final TargetModelNodeType type) {
-    Metamodel _reference = type.getReference();
+    Model _reference = type.getReference();
     JvmTypeReference _resolveType = null;
     if (_reference!=null) {
       _resolveType=ArchitectureTyping.resolveType(_reference);
@@ -482,18 +482,18 @@ public class ArchitectureTyping {
     if (_isListType) {
       _or = true;
     } else {
-      Metamodel _metamodel = declaration.getMetamodel();
-      EObject _eContainer = _metamodel.eContainer();
-      ModelNodeType _type = ((MetamodelSequence) _eContainer).getType();
+      Model _model = declaration.getModel();
+      EObject _eContainer = _model.eContainer();
+      ModelNodeType _type = ((ModelSequence) _eContainer).getType();
       boolean _isCollection = _type.isCollection();
       _or = _isCollection;
     }
     return _or;
   }
   
-  public static boolean isCollectionType(final Metamodel metamodel) {
-    EObject _eContainer = metamodel.eContainer();
-    final ModelNodeType nodeType = ((MetamodelSequence) _eContainer).getType();
+  public static boolean isCollectionType(final Model model) {
+    EObject _eContainer = model.eContainer();
+    final ModelNodeType nodeType = ((ModelSequence) _eContainer).getType();
     boolean _or = false;
     JvmTypeReference _resolveType = ArchitectureTyping.resolveType(nodeType);
     boolean _isListType = ArchitectureTyping.isListType(_resolveType);
@@ -568,8 +568,8 @@ public class ArchitectureTyping {
       return _resolveType((JvmType)operation);
     } else if (operation instanceof ConstraintExpression) {
       return _resolveType((ConstraintExpression)operation);
-    } else if (operation instanceof Metamodel) {
-      return _resolveType((Metamodel)operation);
+    } else if (operation instanceof Model) {
+      return _resolveType((Model)operation);
     } else if (operation instanceof ModelNodeType) {
       return _resolveType((ModelNodeType)operation);
     } else if (operation instanceof SourceModelNodeSelector) {

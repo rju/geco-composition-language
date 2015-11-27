@@ -140,13 +140,13 @@ public interface BoxingPackage extends EPackage {
 	int MODEL_DECLARATION__SELECTOR = 0;
 
 	/**
-	 * The feature id for the '<em><b>Metamodel</b></em>' reference.
+	 * The feature id for the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_DECLARATION__METAMODEL = 1;
+	int MODEL_DECLARATION__MODEL = 1;
 
 	/**
 	 * The feature id for the '<em><b>Modifier</b></em>' attribute.
@@ -415,15 +415,15 @@ public interface BoxingPackage extends EPackage {
 	EReference getModelDeclaration_Selector();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getMetamodel <em>Metamodel</em>}'.
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Metamodel</em>'.
-	 * @see de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getMetamodel()
+	 * @return the meta object for the reference '<em>Model</em>'.
+	 * @see de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getModel()
 	 * @see #getModelDeclaration()
 	 * @generated
 	 */
-	EReference getModelDeclaration_Metamodel();
+	EReference getModelDeclaration_Model();
 
 	/**
 	 * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getModifier <em>Modifier</em>}'.
@@ -672,12 +672,12 @@ public interface BoxingPackage extends EPackage {
 		EReference MODEL_DECLARATION__SELECTOR = eINSTANCE.getModelDeclaration_Selector();
 
 		/**
-		 * The meta object literal for the '<em><b>Metamodel</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Model</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL_DECLARATION__METAMODEL = eINSTANCE.getModelDeclaration_Metamodel();
+		EReference MODEL_DECLARATION__MODEL = eINSTANCE.getModelDeclaration_Model();
 
 		/**
 		 * The meta object literal for the '<em><b>Modifier</b></em>' attribute feature.

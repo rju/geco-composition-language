@@ -5,8 +5,8 @@ package de.cau.cs.se.geco.architecture.ui.labeling;
 
 import com.google.inject.Inject;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -26,7 +26,7 @@ public class ArchitectureLabelProvider extends DefaultEObjectLabelProvider {
     super(delegate);
   }
   
-  public String text(final MetamodelSequence sequence) {
+  public String text(final ModelSequence sequence) {
     ModelNodeType _type = sequence.getType();
     JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_type);
     return _resolveType.getSimpleName();

@@ -6,7 +6,7 @@ import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Import;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 
 import java.util.Collection;
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl#getRegisteredRootClass <em>Registered Root Class</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl#getMetamodels <em>Metamodels</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl#getModels <em>Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.impl.GecoModelImpl#getFragments <em>Fragments</em>}</li>
  * </ul>
  *
@@ -85,14 +85,14 @@ public class GecoModelImpl extends MinimalEObjectImpl.Container implements GecoM
   protected EList<RegisteredRootClass> registeredRootClass;
 
   /**
-   * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
+   * The cached value of the '{@link #getModels() <em>Models</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMetamodels()
+   * @see #getModels()
    * @generated
    * @ordered
    */
-  protected EList<MetamodelSequence> metamodels;
+  protected EList<ModelSequence> models;
 
   /**
    * The cached value of the '{@link #getFragments() <em>Fragments</em>}' containment reference list.
@@ -181,13 +181,13 @@ public class GecoModelImpl extends MinimalEObjectImpl.Container implements GecoM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<MetamodelSequence> getMetamodels()
+  public EList<ModelSequence> getModels()
   {
-    if (metamodels == null)
+    if (models == null)
     {
-      metamodels = new EObjectContainmentEList<MetamodelSequence>(MetamodelSequence.class, this, ArchitecturePackage.GECO_MODEL__METAMODELS);
+      models = new EObjectContainmentEList<ModelSequence>(ModelSequence.class, this, ArchitecturePackage.GECO_MODEL__MODELS);
     }
-    return metamodels;
+    return models;
   }
 
   /**
@@ -218,8 +218,8 @@ public class GecoModelImpl extends MinimalEObjectImpl.Container implements GecoM
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case ArchitecturePackage.GECO_MODEL__REGISTERED_ROOT_CLASS:
         return ((InternalEList<?>)getRegisteredRootClass()).basicRemove(otherEnd, msgs);
-      case ArchitecturePackage.GECO_MODEL__METAMODELS:
-        return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
+      case ArchitecturePackage.GECO_MODEL__MODELS:
+        return ((InternalEList<?>)getModels()).basicRemove(otherEnd, msgs);
       case ArchitecturePackage.GECO_MODEL__FRAGMENTS:
         return ((InternalEList<?>)getFragments()).basicRemove(otherEnd, msgs);
     }
@@ -242,8 +242,8 @@ public class GecoModelImpl extends MinimalEObjectImpl.Container implements GecoM
         return getImports();
       case ArchitecturePackage.GECO_MODEL__REGISTERED_ROOT_CLASS:
         return getRegisteredRootClass();
-      case ArchitecturePackage.GECO_MODEL__METAMODELS:
-        return getMetamodels();
+      case ArchitecturePackage.GECO_MODEL__MODELS:
+        return getModels();
       case ArchitecturePackage.GECO_MODEL__FRAGMENTS:
         return getFragments();
     }
@@ -272,9 +272,9 @@ public class GecoModelImpl extends MinimalEObjectImpl.Container implements GecoM
         getRegisteredRootClass().clear();
         getRegisteredRootClass().addAll((Collection<? extends RegisteredRootClass>)newValue);
         return;
-      case ArchitecturePackage.GECO_MODEL__METAMODELS:
-        getMetamodels().clear();
-        getMetamodels().addAll((Collection<? extends MetamodelSequence>)newValue);
+      case ArchitecturePackage.GECO_MODEL__MODELS:
+        getModels().clear();
+        getModels().addAll((Collection<? extends ModelSequence>)newValue);
         return;
       case ArchitecturePackage.GECO_MODEL__FRAGMENTS:
         getFragments().clear();
@@ -303,8 +303,8 @@ public class GecoModelImpl extends MinimalEObjectImpl.Container implements GecoM
       case ArchitecturePackage.GECO_MODEL__REGISTERED_ROOT_CLASS:
         getRegisteredRootClass().clear();
         return;
-      case ArchitecturePackage.GECO_MODEL__METAMODELS:
-        getMetamodels().clear();
+      case ArchitecturePackage.GECO_MODEL__MODELS:
+        getModels().clear();
         return;
       case ArchitecturePackage.GECO_MODEL__FRAGMENTS:
         getFragments().clear();
@@ -329,8 +329,8 @@ public class GecoModelImpl extends MinimalEObjectImpl.Container implements GecoM
         return imports != null && !imports.isEmpty();
       case ArchitecturePackage.GECO_MODEL__REGISTERED_ROOT_CLASS:
         return registeredRootClass != null && !registeredRootClass.isEmpty();
-      case ArchitecturePackage.GECO_MODEL__METAMODELS:
-        return metamodels != null && !metamodels.isEmpty();
+      case ArchitecturePackage.GECO_MODEL__MODELS:
+        return models != null && !models.isEmpty();
       case ArchitecturePackage.GECO_MODEL__FRAGMENTS:
         return fragments != null && !fragments.isEmpty();
     }

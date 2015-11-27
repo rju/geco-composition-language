@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.Group;
@@ -72,7 +72,7 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Metamodel> sourceModels;
+	protected EList<Model> sourceModels;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -134,9 +134,9 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Metamodel> getSourceModels() {
+	public EList<Model> getSourceModels() {
 		if (sourceModels == null) {
-			sourceModels = new EObjectResolvingEList<Metamodel>(Metamodel.class, this, BoxingPackage.GROUP__SOURCE_MODELS);
+			sourceModels = new EObjectResolvingEList<Model>(Model.class, this, BoxingPackage.GROUP__SOURCE_MODELS);
 		}
 		return sourceModels;
 	}
@@ -198,7 +198,7 @@ public class GroupImpl extends MinimalEObjectImpl.Container implements Group {
 				return;
 			case BoxingPackage.GROUP__SOURCE_MODELS:
 				getSourceModels().clear();
-				getSourceModels().addAll((Collection<? extends Metamodel>)newValue);
+				getSourceModels().addAll((Collection<? extends Model>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

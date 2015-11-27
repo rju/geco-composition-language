@@ -4,7 +4,7 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
 
@@ -42,7 +42,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * @generated
    * @ordered
    */
-  protected Metamodel reference;
+  protected Model reference;
 
   /**
    * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' containment reference.
@@ -90,12 +90,12 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel getReference()
+  public Model getReference()
   {
     if (reference != null && reference.eIsProxy())
     {
       InternalEObject oldReference = (InternalEObject)reference;
-      reference = (Metamodel)eResolveProxy(oldReference);
+      reference = (Model)eResolveProxy(oldReference);
       if (reference != oldReference)
       {
         if (eNotificationRequired())
@@ -110,7 +110,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel basicGetReference()
+  public Model basicGetReference()
   {
     return reference;
   }
@@ -120,9 +120,9 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReference(Metamodel newReference)
+  public void setReference(Model newReference)
   {
-    Metamodel oldReference = reference;
+    Model oldReference = reference;
     reference = newReference;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE, oldReference, reference));
@@ -274,7 +274,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
     switch (featureID)
     {
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
-        setReference((Metamodel)newValue);
+        setReference((Model)newValue);
         return;
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT:
         setConstraint((ConstraintExpression)newValue);
@@ -297,7 +297,7 @@ public class SourceModelNodeSelectorImpl extends MinimalEObjectImpl.Container im
     switch (featureID)
     {
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__REFERENCE:
-        setReference((Metamodel)null);
+        setReference((Model)null);
         return;
       case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT:
         setConstraint((ConstraintExpression)null);

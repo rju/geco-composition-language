@@ -95,13 +95,13 @@ public interface ArchitecturePackage extends EPackage
   int GECO_MODEL__REGISTERED_ROOT_CLASS = 2;
 
   /**
-   * The feature id for the '<em><b>Metamodels</b></em>' containment reference list.
+   * The feature id for the '<em><b>Models</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GECO_MODEL__METAMODELS = 3;
+  int GECO_MODEL__MODELS = 3;
 
   /**
    * The feature id for the '<em><b>Fragments</b></em>' containment reference list.
@@ -205,14 +205,14 @@ public interface ArchitecturePackage extends EPackage
   int REGISTERED_ROOT_CLASS_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl <em>Metamodel Sequence</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelSequenceImpl <em>Model Sequence</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelSequence()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelSequenceImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelSequence()
    * @generated
    */
-  int METAMODEL_SEQUENCE = 3;
+  int MODEL_SEQUENCE = 3;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' attribute.
@@ -221,7 +221,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int METAMODEL_SEQUENCE__MODIFIER = 0;
+  int MODEL_SEQUENCE__MODIFIER = 0;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -230,35 +230,35 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int METAMODEL_SEQUENCE__TYPE = 1;
+  int MODEL_SEQUENCE__TYPE = 1;
 
   /**
-   * The feature id for the '<em><b>Metamodels</b></em>' containment reference list.
+   * The feature id for the '<em><b>Models</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METAMODEL_SEQUENCE__METAMODELS = 2;
+  int MODEL_SEQUENCE__MODELS = 2;
 
   /**
-   * The number of structural features of the '<em>Metamodel Sequence</em>' class.
+   * The number of structural features of the '<em>Model Sequence</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METAMODEL_SEQUENCE_FEATURE_COUNT = 3;
+  int MODEL_SEQUENCE_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelImpl <em>Metamodel</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl <em>Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.MetamodelImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodel()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModel()
    * @generated
    */
-  int METAMODEL = 4;
+  int MODEL = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -267,16 +267,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int METAMODEL__NAME = 0;
+  int MODEL__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Metamodel</em>' class.
+   * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METAMODEL_FEATURE_COUNT = 1;
+  int MODEL_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.FragmentImpl <em>Fragment</em>}' class.
@@ -1657,14 +1657,14 @@ public interface ArchitecturePackage extends EPackage
   int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelModifier <em>Metamodel Modifier</em>}' enum.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.ModelModifier <em>Model Modifier</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelModifier()
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelModifier
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelModifier()
    * @generated
    */
-  int METAMODEL_MODIFIER = 33;
+  int MODEL_MODIFIER = 33;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}' enum.
@@ -1731,15 +1731,15 @@ public interface ArchitecturePackage extends EPackage
   EReference getGecoModel_RegisteredRootClass();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getMetamodels <em>Metamodels</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getModels <em>Models</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Metamodels</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel#getMetamodels()
+   * @return the meta object for the containment reference list '<em>Models</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.GecoModel#getModels()
    * @see #getGecoModel()
    * @generated
    */
-  EReference getGecoModel_Metamodels();
+  EReference getGecoModel_Models();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getFragments <em>Fragments</em>}'.
@@ -1828,68 +1828,68 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getRegisteredRootClass_Extension();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence <em>Metamodel Sequence</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.ModelSequence <em>Model Sequence</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Metamodel Sequence</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+   * @return the meta object for class '<em>Model Sequence</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelSequence
    * @generated
    */
-  EClass getMetamodelSequence();
+  EClass getModelSequence();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getModifier <em>Modifier</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.ModelSequence#getModifier <em>Modifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Modifier</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getModifier()
-   * @see #getMetamodelSequence()
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelSequence#getModifier()
+   * @see #getModelSequence()
    * @generated
    */
-  EAttribute getMetamodelSequence_Modifier();
+  EAttribute getModelSequence_Modifier();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelSequence#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getType()
-   * @see #getMetamodelSequence()
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelSequence#getType()
+   * @see #getModelSequence()
    * @generated
    */
-  EReference getMetamodelSequence_Type();
+  EReference getModelSequence_Type();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getMetamodels <em>Metamodels</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.geco.architecture.architecture.ModelSequence#getModels <em>Models</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Metamodels</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence#getMetamodels()
-   * @see #getMetamodelSequence()
+   * @return the meta object for the containment reference list '<em>Models</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelSequence#getModels()
+   * @see #getModelSequence()
    * @generated
    */
-  EReference getMetamodelSequence_Metamodels();
+  EReference getModelSequence_Models();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel <em>Metamodel</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Model <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Metamodel</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel
+   * @return the meta object for class '<em>Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.Model
    * @generated
    */
-  EClass getMetamodel();
+  EClass getModel();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.Model#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel#getName()
-   * @see #getMetamodel()
+   * @see de.cau.cs.se.geco.architecture.architecture.Model#getName()
+   * @see #getModel()
    * @generated
    */
-  EAttribute getMetamodel_Name();
+  EAttribute getModel_Name();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Fragment <em>Fragment</em>}'.
@@ -2579,14 +2579,14 @@ public interface ArchitecturePackage extends EPackage
   EAttribute getBooleanLiteral_Value();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelModifier <em>Metamodel Modifier</em>}'.
+   * Returns the meta object for enum '{@link de.cau.cs.se.geco.architecture.architecture.ModelModifier <em>Model Modifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Metamodel Modifier</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
+   * @return the meta object for enum '<em>Model Modifier</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelModifier
    * @generated
    */
-  EEnum getMetamodelModifier();
+  EEnum getModelModifier();
 
   /**
    * Returns the meta object for enum '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}'.
@@ -2666,12 +2666,12 @@ public interface ArchitecturePackage extends EPackage
     EReference GECO_MODEL__REGISTERED_ROOT_CLASS = eINSTANCE.getGecoModel_RegisteredRootClass();
 
     /**
-     * The meta object literal for the '<em><b>Metamodels</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Models</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference GECO_MODEL__METAMODELS = eINSTANCE.getGecoModel_Metamodels();
+    EReference GECO_MODEL__MODELS = eINSTANCE.getGecoModel_Models();
 
     /**
      * The meta object literal for the '<em><b>Fragments</b></em>' containment reference list feature.
@@ -2742,14 +2742,14 @@ public interface ArchitecturePackage extends EPackage
     EAttribute REGISTERED_ROOT_CLASS__EXTENSION = eINSTANCE.getRegisteredRootClass_Extension();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl <em>Metamodel Sequence</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelSequenceImpl <em>Model Sequence</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.MetamodelSequenceImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelSequence()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelSequenceImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelSequence()
      * @generated
      */
-    EClass METAMODEL_SEQUENCE = eINSTANCE.getMetamodelSequence();
+    EClass MODEL_SEQUENCE = eINSTANCE.getModelSequence();
 
     /**
      * The meta object literal for the '<em><b>Modifier</b></em>' attribute feature.
@@ -2757,7 +2757,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute METAMODEL_SEQUENCE__MODIFIER = eINSTANCE.getMetamodelSequence_Modifier();
+    EAttribute MODEL_SEQUENCE__MODIFIER = eINSTANCE.getModelSequence_Modifier();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -2765,25 +2765,25 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference METAMODEL_SEQUENCE__TYPE = eINSTANCE.getMetamodelSequence_Type();
+    EReference MODEL_SEQUENCE__TYPE = eINSTANCE.getModelSequence_Type();
 
     /**
-     * The meta object literal for the '<em><b>Metamodels</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Models</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference METAMODEL_SEQUENCE__METAMODELS = eINSTANCE.getMetamodelSequence_Metamodels();
+    EReference MODEL_SEQUENCE__MODELS = eINSTANCE.getModelSequence_Models();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.MetamodelImpl <em>Metamodel</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl <em>Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.MetamodelImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodel()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModel()
      * @generated
      */
-    EClass METAMODEL = eINSTANCE.getMetamodel();
+    EClass MODEL = eINSTANCE.getModel();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2791,7 +2791,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute METAMODEL__NAME = eINSTANCE.getMetamodel_Name();
+    EAttribute MODEL__NAME = eINSTANCE.getModel_Name();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.FragmentImpl <em>Fragment</em>}' class.
@@ -3370,14 +3370,14 @@ public interface ArchitecturePackage extends EPackage
     EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelModifier <em>Metamodel Modifier</em>}' enum.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.ModelModifier <em>Model Modifier</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.MetamodelModifier
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getMetamodelModifier()
+     * @see de.cau.cs.se.geco.architecture.architecture.ModelModifier
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelModifier()
      * @generated
      */
-    EEnum METAMODEL_MODIFIER = eINSTANCE.getMetamodelModifier();
+    EEnum MODEL_MODIFIER = eINSTANCE.getModelModifier();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.LogicOperator <em>Logic Operator</em>}' enum.

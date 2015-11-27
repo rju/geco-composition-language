@@ -33,12 +33,12 @@ public interface SourceModelNodeSelector extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Reference</em>' reference.
-   * @see #setReference(Metamodel)
+   * @see #setReference(Model)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getSourceModelNodeSelector_Reference()
    * @model
    * @generated
    */
-  Metamodel getReference();
+  Model getReference();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getReference <em>Reference</em>}' reference.
@@ -48,7 +48,7 @@ public interface SourceModelNodeSelector extends EObject
    * @see #getReference()
    * @generated
    */
-  void setReference(Metamodel value);
+  void setReference(Model value);
 
   /**
    * Returns the value of the '<em><b>Constraint</b></em>' containment reference.

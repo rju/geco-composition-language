@@ -6,8 +6,8 @@ import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
-import de.cau.cs.se.geco.architecture.architecture.Metamodel
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import de.cau.cs.se.geco.architecture.architecture.Model
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence
 import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
@@ -49,8 +49,8 @@ class ArchitectureTyping {
 		}
 	}
 	
-	def dispatch static JvmTypeReference resolveType(Metamodel metamodel) {
-		(metamodel.eContainer as MetamodelSequence).type.resolveType
+	def dispatch static JvmTypeReference resolveType(Model model) {
+		(model.eContainer as ModelSequence).type.resolveType
 	}
 	
 	def dispatch static JvmTypeReference resolveType(ModelNodeType type) {
@@ -271,11 +271,11 @@ class ArchitectureTyping {
 	 */
 	def static boolean isCollectionType(ModelDeclaration declaration) {
 		return declaration.selector.resolveType.isListType || 
-			(declaration.metamodel.eContainer as MetamodelSequence).type.collection
+			(declaration.model.eContainer as ModelSequence).type.collection
 	}
 	
-	def static boolean isCollectionType(Metamodel metamodel) {
-		val nodeType = (metamodel.eContainer as MetamodelSequence).type
+	def static boolean isCollectionType(Model model) {
+		val nodeType = (model.eContainer as ModelSequence).type
 		return nodeType.resolveType.isListType || nodeType.collection
 	}
 	

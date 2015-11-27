@@ -10,9 +10,9 @@ import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
@@ -190,9 +190,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
     if (!_matched) {
       if (container instanceof SourceModelNodeSelector) {
         _matched=true;
-        Metamodel _reference = ((SourceModelNodeSelector)container).getReference();
+        Model _reference = ((SourceModelNodeSelector)container).getReference();
         EObject _eContainer = _reference.eContainer();
-        ModelNodeType _type = ((MetamodelSequence) _eContainer).getType();
+        ModelNodeType _type = ((ModelSequence) _eContainer).getType();
         JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_type);
         final JvmType genericType = ArchitectureTyping.determineElementType(_resolveType);
         ConstraintExpression _constraint = ((SourceModelNodeSelector)container).getConstraint();
@@ -288,11 +288,11 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       boolean _exists = IterableExtensions.<NodeType>exists(_sourceNodes, _function);
       if (_exists) {
         SourceModelNodeSelector _sourceModel = generator.getSourceModel();
-        Metamodel _reference = _sourceModel.getReference();
+        Model _reference = _sourceModel.getReference();
         boolean _notEquals = (!Objects.equal(_reference, null));
         if (_notEquals) {
           SourceModelNodeSelector _sourceModel_1 = generator.getSourceModel();
-          Metamodel _reference_1 = _sourceModel_1.getReference();
+          Model _reference_1 = _sourceModel_1.getReference();
           JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference_1);
           JvmType _determineElementType = ArchitectureTyping.determineElementType(_resolveType);
           GecoModel _modelRoot = this.getModelRoot(nodeType);
@@ -314,7 +314,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
             final SourceModelNodeSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(((Weaver) _eContainer_2));
             boolean _notEquals_1 = (!Objects.equal(sourceModel, null));
             if (_notEquals_1) {
-              Metamodel _reference_2 = sourceModel.getReference();
+              Model _reference_2 = sourceModel.getReference();
               JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(_reference_2);
               JvmType _determineElementType_1 = ArchitectureTyping.determineElementType(_resolveType_1);
               GecoModel _modelRoot_1 = this.getModelRoot(nodeType);
@@ -330,7 +330,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
           _xifexpression_1 = _xifexpression_2;
         } else {
           TargetModelNodeType _targetModel_1 = generator.getTargetModel();
-          Metamodel _reference_3 = _targetModel_1.getReference();
+          Model _reference_3 = _targetModel_1.getReference();
           JvmTypeReference _resolveType_2 = ArchitectureTyping.resolveType(_reference_3);
           JvmType _determineElementType_2 = ArchitectureTyping.determineElementType(_resolveType_2);
           GecoModel _modelRoot_2 = this.getModelRoot(nodeType);
@@ -416,7 +416,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         if (!_matched) {
           if (container instanceof SourceModelNodeSelector) {
             _matched=true;
-            Metamodel _reference = ((SourceModelNodeSelector)container).getReference();
+            Model _reference = ((SourceModelNodeSelector)container).getReference();
             JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference);
             return ArchitectureTyping.determineElementType(_resolveType);
           }

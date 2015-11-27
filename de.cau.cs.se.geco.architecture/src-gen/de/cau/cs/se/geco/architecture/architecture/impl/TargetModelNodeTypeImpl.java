@@ -3,7 +3,7 @@
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -36,7 +36,7 @@ public class TargetModelNodeTypeImpl extends AdviceModelImpl implements TargetMo
    * @generated
    * @ordered
    */
-  protected Metamodel reference;
+  protected Model reference;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,12 +64,12 @@ public class TargetModelNodeTypeImpl extends AdviceModelImpl implements TargetMo
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel getReference()
+  public Model getReference()
   {
     if (reference != null && reference.eIsProxy())
     {
       InternalEObject oldReference = (InternalEObject)reference;
-      reference = (Metamodel)eResolveProxy(oldReference);
+      reference = (Model)eResolveProxy(oldReference);
       if (reference != oldReference)
       {
         if (eNotificationRequired())
@@ -84,7 +84,7 @@ public class TargetModelNodeTypeImpl extends AdviceModelImpl implements TargetMo
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel basicGetReference()
+  public Model basicGetReference()
   {
     return reference;
   }
@@ -94,9 +94,9 @@ public class TargetModelNodeTypeImpl extends AdviceModelImpl implements TargetMo
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReference(Metamodel newReference)
+  public void setReference(Model newReference)
   {
-    Metamodel oldReference = reference;
+    Model oldReference = reference;
     reference = newReference;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE, oldReference, reference));
@@ -130,7 +130,7 @@ public class TargetModelNodeTypeImpl extends AdviceModelImpl implements TargetMo
     switch (featureID)
     {
       case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
-        setReference((Metamodel)newValue);
+        setReference((Model)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,7 +147,7 @@ public class TargetModelNodeTypeImpl extends AdviceModelImpl implements TargetMo
     switch (featureID)
     {
       case ArchitecturePackage.TARGET_MODEL_NODE_TYPE__REFERENCE:
-        setReference((Metamodel)null);
+        setReference((Model)null);
         return;
     }
     super.eUnset(featureID);

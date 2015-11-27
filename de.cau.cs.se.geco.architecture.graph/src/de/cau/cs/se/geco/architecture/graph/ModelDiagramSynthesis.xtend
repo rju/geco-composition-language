@@ -22,8 +22,8 @@ import de.cau.cs.kieler.klighd.KlighdConstants
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
 import de.cau.cs.se.geco.architecture.architecture.Fragment
 import de.cau.cs.se.geco.architecture.architecture.Generator
-import de.cau.cs.se.geco.architecture.architecture.Metamodel
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import de.cau.cs.se.geco.architecture.architecture.Model
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence
 import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import de.cau.cs.se.geco.architecture.architecture.TraceModel
@@ -105,7 +105,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     val Map<Generator,KNode> generatorNodes = new HashMap<Generator,KNode>()
     val Map<Weaver,KNode> targetWeaverModelNodes = new HashMap<Weaver,KNode>()
     val Map<Generator,KNode> targetGeneratorModelNodes = new HashMap<Generator,KNode>()
-    val Map<Metamodel,KNode> metamodelNodes = new HashMap<Metamodel,KNode>()
+    val Map<Model,KNode> modelNodes = new HashMap<Model,KNode>()
 	val Map<TraceModel,KNode> traceModelNodes = new HashMap<TraceModel,KNode>()
 	
 	/**
@@ -130,7 +130,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
             	case ROUTING_SPLINES: EdgeRouting::SPLINES
             })
                         
-			model.metamodels.createNamedMetaModels(it)
+			model.models.createNamedModels(it)
             model.fragments.createAllToplevelGenerators(it)
             model.fragments.createAllWeavers(it)
             
@@ -165,7 +165,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 */
 	private def createSourceBaseModelEdgeForWeaver(Weaver weaver, KNode weaverNode) {
 		val sourceModelNode = if (weaver.sourceModel != null) {
-    		metamodelNodes.get(weaver.sourceModel.reference)
+    		modelNodes.get(weaver.sourceModel.reference)
     	} else {
     		targetWeaverModelNodes.get(weaver.predecessingWeaver)
     	}
@@ -181,7 +181,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 */
 	private def createTargetBaseModelEdgeForWeaver(Weaver weaver, KNode weaverNode) {
 		val targetModelNode = if (weaver.targetModel != null) {
-    		metamodelNodes.get(weaver.targetModel.reference)
+    		modelNodes.get(weaver.targetModel.reference)
     	} else {
     		targetWeaverModelNodes.get(weaver)
     	}
@@ -197,7 +197,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 */
 	private def createAdviceModelEdgeForWeaver(AdviceModel adviceModel, KNode weaverNode) {
     	val aspectModelNode = switch(adviceModel) {
-    		TargetModelNodeType : metamodelNodes.get((adviceModel as TargetModelNodeType).reference)
+    		TargetModelNodeType : modelNodes.get((adviceModel as TargetModelNodeType).reference)
     		Generator: targetGeneratorModelNodes.get((adviceModel as Generator))
     	}
     	    	
@@ -212,7 +212,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 * create an edge between weaver and advice or aspect model.
 	 */
 	private def createPointcutModelEdgeForWeaver(SeparatePointcutAdviceModel separatePointcutAdviceModel, KNode weaverNode) {
-   		val pointcutModelNode = metamodelNodes.get(separatePointcutAdviceModel.pointcut.reference)
+   		val pointcutModelNode = modelNodes.get(separatePointcutAdviceModel.pointcut.reference)
     	
 	    drawConnectionWithArrow(pointcutModelNode, weaverNode, LineStyle.SOLID) => [
 	    	it.sourcePort = pointcutModelNode.ports.get(MODEL_OUT)
@@ -228,14 +228,14 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 */
 	private def void createEdgesForGenerator(KNode root, Generator generator, KNode generatorNode) {
     	val sourceModelNode = if (generator.sourceModel.reference !=null) {
-    		metamodelNodes.get(generator.sourceModel.reference)
+    		modelNodes.get(generator.sourceModel.reference)
     	} else {
-    		val anonymousMetamodelNode = drawMetamodelRectangle(createNode(), "", "empty")
-    		root.children += anonymousMetamodelNode
-    		anonymousMetamodelNode
+    		val anonymousModelNode = drawModelRectangle(createNode(), "", "empty")
+    		root.children += anonymousModelNode
+    		anonymousModelNode
     	}
     	val targetModelNode = if (generator.targetModel != null) {
-    		metamodelNodes.get(generator.targetModel.reference)
+    		modelNodes.get(generator.targetModel.reference)
     	} else {
     		if (generator.eContainer instanceof Weaver) {
     			targetGeneratorModelNodes.get(generator)
@@ -273,9 +273,9 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         	parent.children += weaverNode
         	weaver.aspectModel.createSublevelGenerator(parent)
         	if (weaver.targetModel == null) {
-        		val anonymousMetamodelNode = weaver.createAnonymousMetamodel
-        		targetWeaverModelNodes.put(weaver, anonymousMetamodelNode)
-        		parent.children += anonymousMetamodelNode
+        		val anonymousModelNode = weaver.createAnonymousModel
+        		targetWeaverModelNodes.put(weaver, anonymousModelNode)
+        		parent.children += anonymousModelNode
         	}
         		
         ]
@@ -298,12 +298,12 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	private def void createSublevelGenerator(Generator generator, KNode parent) {
 		/**
 		 * When a generator is declared as an aspect model source, its
-		 * target metamodel is not explicitly specified. Therefore,
-		 * an anonymous metamodel is placed in the graph instead
+		 * target model is not explicitly specified. Therefore,
+		 * an anonymous model is placed in the graph instead
 		 */
 		val generatorNode = generator.drawGenerator
-		val anonymousMetamodelNode = generator.createAnonymousMetamodel
-		targetGeneratorModelNodes.put(generator, anonymousMetamodelNode)
+		val anonymousModelNode = generator.createAnonymousModel
+		targetGeneratorModelNodes.put(generator, anonymousModelNode)
 		generatorNodes.put(generator, generatorNode)
 		
 		/** create trace model and write edge. */
@@ -320,7 +320,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 		}
 		
 		parent.children += generatorNode
-		parent.children += anonymousMetamodelNode
+		parent.children += anonymousModelNode
 	}
 	
 	/**
@@ -350,14 +350,14 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	}
 	
 	/**
-	 * Create all explicit defined metamodels.
+	 * Create all explicit defined models.
 	 */
-	def void createNamedMetaModels(EList<MetamodelSequence> metamodels, KNode parent) {
-		metamodels.forEach[seq | 
-			seq.metamodels.forEach[metamodel | 
-				val metaModelNode = metamodel.createMetamodel(seq)
-				metamodelNodes.put(metamodel, metaModelNode)
-				parent.children += metaModelNode
+	def void createNamedModels(EList<ModelSequence> models, KNode parent) {
+		models.forEach[seq | 
+			seq.models.forEach[model | 
+				val modelNode = model.createModel(seq)
+				modelNodes.put(model, modelNode)
+				parent.children += modelNode
 			]
 		]
 	}
@@ -374,12 +374,12 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     }
     	
 	/**
-	 * Create an anonymous target metamodel for a generator. This happens
+	 * Create an anonymous target model for a generator. This happens
 	 * when the output is not specified and a weaver is used instead.
 	 * 
 	 * @param generator the generator.
 	 */
-	private def dispatch KNode createAnonymousMetamodel(Generator generator) {
+	private def dispatch KNode createAnonymousModel(Generator generator) {
 		val instanceName = "" 
 		val className = if (generator.targetModel != null)
 			generator.targetModel.reference.resolveType.simpleName
@@ -398,13 +398,13 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 			}	
 		} 
 			
-		drawMetamodelRectangle(createNode(), instanceName, className)
+		drawModelRectangle(createNode(), instanceName, className)
 	}
 	
 	/**
 	 * Create an anonymous source model for a weaver.
 	 */
-	private def dispatch KNode createAnonymousMetamodel(Weaver weaver) {
+	private def dispatch KNode createAnonymousModel(Weaver weaver) {
 		val sourceModel = weaver.resolveWeaverSourceModel
 		val instanceName = sourceModel.reference.name
 		val className = if (weaver.targetModel != null)
@@ -415,22 +415,22 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 		else
 			sourceModel.resolveType.simpleName
 		
-		drawMetamodelRectangle(createNode(), instanceName, className)
+		drawModelRectangle(createNode(), instanceName, className)
 	}
 	
 	/**
-	 * Create a metamodel node for a given metamodel and type.
+	 * Create a model node for a given model and type.
 	 */
-	private def KNode createMetamodel(Metamodel metamodel, MetamodelSequence sequence) {
-		drawMetamodelRectangle(metamodel.createNode().associateWith(metamodel), 
-			metamodel.name, sequence.type.resolveType.simpleName
+	private def KNode createModel(Model model, ModelSequence sequence) {
+		drawModelRectangle(model.createNode().associateWith(model), 
+			model.name, sequence.type.resolveType.simpleName
 		) 
 	}
 	
 	/**
-	 * Draw a metamodel
+	 * Draw a model
 	 */
-	private def KNode drawMetamodelRectangle(KNode node, String instanceName, String className) {
+	private def KNode drawModelRectangle(KNode node, String instanceName, String className) {
 		node => [
 			it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
 			

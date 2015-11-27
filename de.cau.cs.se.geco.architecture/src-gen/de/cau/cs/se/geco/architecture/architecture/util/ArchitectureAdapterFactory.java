@@ -90,14 +90,14 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createRegisteredRootClassAdapter();
       }
       @Override
-      public Adapter caseMetamodelSequence(MetamodelSequence object)
+      public Adapter caseModelSequence(ModelSequence object)
       {
-        return createMetamodelSequenceAdapter();
+        return createModelSequenceAdapter();
       }
       @Override
-      public Adapter caseMetamodel(Metamodel object)
+      public Adapter caseModel(Model object)
       {
-        return createMetamodelAdapter();
+        return createModelAdapter();
       }
       @Override
       public Adapter caseFragment(Fragment object)
@@ -307,31 +307,31 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence <em>Metamodel Sequence</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.ModelSequence <em>Model Sequence</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelSequence
    * @generated
    */
-  public Adapter createMetamodelSequenceAdapter()
+  public Adapter createModelSequenceAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Metamodel <em>Metamodel</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Model <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Metamodel
+   * @see de.cau.cs.se.geco.architecture.architecture.Model
    * @generated
    */
-  public Adapter createMetamodelAdapter()
+  public Adapter createModelAdapter()
   {
     return null;
   }

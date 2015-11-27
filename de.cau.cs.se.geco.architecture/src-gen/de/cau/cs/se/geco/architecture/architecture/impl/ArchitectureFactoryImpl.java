@@ -68,8 +68,8 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.GECO_MODEL: return createGecoModel();
       case ArchitecturePackage.IMPORT: return createImport();
       case ArchitecturePackage.REGISTERED_ROOT_CLASS: return createRegisteredRootClass();
-      case ArchitecturePackage.METAMODEL_SEQUENCE: return createMetamodelSequence();
-      case ArchitecturePackage.METAMODEL: return createMetamodel();
+      case ArchitecturePackage.MODEL_SEQUENCE: return createModelSequence();
+      case ArchitecturePackage.MODEL: return createModel();
       case ArchitecturePackage.FRAGMENT: return createFragment();
       case ArchitecturePackage.WEAVER: return createWeaver();
       case ArchitecturePackage.ASPECT_MODEL: return createAspectModel();
@@ -113,8 +113,8 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     switch (eDataType.getClassifierID())
     {
-      case ArchitecturePackage.METAMODEL_MODIFIER:
-        return createMetamodelModifierFromString(eDataType, initialValue);
+      case ArchitecturePackage.MODEL_MODIFIER:
+        return createModelModifierFromString(eDataType, initialValue);
       case ArchitecturePackage.LOGIC_OPERATOR:
         return createLogicOperatorFromString(eDataType, initialValue);
       case ArchitecturePackage.COMPARATOR:
@@ -134,8 +134,8 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
   {
     switch (eDataType.getClassifierID())
     {
-      case ArchitecturePackage.METAMODEL_MODIFIER:
-        return convertMetamodelModifierToString(eDataType, instanceValue);
+      case ArchitecturePackage.MODEL_MODIFIER:
+        return convertModelModifierToString(eDataType, instanceValue);
       case ArchitecturePackage.LOGIC_OPERATOR:
         return convertLogicOperatorToString(eDataType, instanceValue);
       case ArchitecturePackage.COMPARATOR:
@@ -183,10 +183,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public MetamodelSequence createMetamodelSequence()
+  public ModelSequence createModelSequence()
   {
-    MetamodelSequenceImpl metamodelSequence = new MetamodelSequenceImpl();
-    return metamodelSequence;
+    ModelSequenceImpl modelSequence = new ModelSequenceImpl();
+    return modelSequence;
   }
 
   /**
@@ -194,10 +194,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public Metamodel createMetamodel()
+  public Model createModel()
   {
-    MetamodelImpl metamodel = new MetamodelImpl();
-    return metamodel;
+    ModelImpl model = new ModelImpl();
+    return model;
   }
 
   /**
@@ -513,9 +513,9 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public MetamodelModifier createMetamodelModifierFromString(EDataType eDataType, String initialValue)
+  public ModelModifier createModelModifierFromString(EDataType eDataType, String initialValue)
   {
-    MetamodelModifier result = MetamodelModifier.get(initialValue);
+    ModelModifier result = ModelModifier.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -525,7 +525,7 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertMetamodelModifierToString(EDataType eDataType, Object instanceValue)
+  public String convertModelModifierToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

@@ -20,10 +20,10 @@ import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Literal;
 import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelModifier;
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence;
+import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
 import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
@@ -85,14 +85,14 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass metamodelSequenceEClass = null;
+  private EClass modelSequenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass metamodelEClass = null;
+  private EClass modelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -295,7 +295,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EEnum metamodelModifierEEnum = null;
+  private EEnum modelModifierEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -422,7 +422,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGecoModel_Metamodels()
+  public EReference getGecoModel_Models()
   {
     return (EReference)gecoModelEClass.getEStructuralFeatures().get(3);
   }
@@ -512,9 +512,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMetamodelSequence()
+  public EClass getModelSequence()
   {
-    return metamodelSequenceEClass;
+    return modelSequenceEClass;
   }
 
   /**
@@ -522,9 +522,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMetamodelSequence_Modifier()
+  public EAttribute getModelSequence_Modifier()
   {
-    return (EAttribute)metamodelSequenceEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)modelSequenceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -532,9 +532,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMetamodelSequence_Type()
+  public EReference getModelSequence_Type()
   {
-    return (EReference)metamodelSequenceEClass.getEStructuralFeatures().get(1);
+    return (EReference)modelSequenceEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -542,9 +542,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMetamodelSequence_Metamodels()
+  public EReference getModelSequence_Models()
   {
-    return (EReference)metamodelSequenceEClass.getEStructuralFeatures().get(2);
+    return (EReference)modelSequenceEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -552,9 +552,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMetamodel()
+  public EClass getModel()
   {
-    return metamodelEClass;
+    return modelEClass;
   }
 
   /**
@@ -562,9 +562,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMetamodel_Name()
+  public EAttribute getModel_Name()
   {
-    return (EAttribute)metamodelEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)modelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1222,9 +1222,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EEnum getMetamodelModifier()
+  public EEnum getModelModifier()
   {
-    return metamodelModifierEEnum;
+    return modelModifierEEnum;
   }
 
   /**
@@ -1281,7 +1281,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEAttribute(gecoModelEClass, GECO_MODEL__NAME);
     createEReference(gecoModelEClass, GECO_MODEL__IMPORTS);
     createEReference(gecoModelEClass, GECO_MODEL__REGISTERED_ROOT_CLASS);
-    createEReference(gecoModelEClass, GECO_MODEL__METAMODELS);
+    createEReference(gecoModelEClass, GECO_MODEL__MODELS);
     createEReference(gecoModelEClass, GECO_MODEL__FRAGMENTS);
 
     importEClass = createEClass(IMPORT);
@@ -1293,13 +1293,13 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEAttribute(registeredRootClassEClass, REGISTERED_ROOT_CLASS__IS_TEXT);
     createEAttribute(registeredRootClassEClass, REGISTERED_ROOT_CLASS__EXTENSION);
 
-    metamodelSequenceEClass = createEClass(METAMODEL_SEQUENCE);
-    createEAttribute(metamodelSequenceEClass, METAMODEL_SEQUENCE__MODIFIER);
-    createEReference(metamodelSequenceEClass, METAMODEL_SEQUENCE__TYPE);
-    createEReference(metamodelSequenceEClass, METAMODEL_SEQUENCE__METAMODELS);
+    modelSequenceEClass = createEClass(MODEL_SEQUENCE);
+    createEAttribute(modelSequenceEClass, MODEL_SEQUENCE__MODIFIER);
+    createEReference(modelSequenceEClass, MODEL_SEQUENCE__TYPE);
+    createEReference(modelSequenceEClass, MODEL_SEQUENCE__MODELS);
 
-    metamodelEClass = createEClass(METAMODEL);
-    createEAttribute(metamodelEClass, METAMODEL__NAME);
+    modelEClass = createEClass(MODEL);
+    createEAttribute(modelEClass, MODEL__NAME);
 
     fragmentEClass = createEClass(FRAGMENT);
     createEReference(fragmentEClass, FRAGMENT__REFERENCE);
@@ -1395,7 +1395,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
 
     // Create enums
-    metamodelModifierEEnum = createEEnum(METAMODEL_MODIFIER);
+    modelModifierEEnum = createEEnum(MODEL_MODIFIER);
     logicOperatorEEnum = createEEnum(LOGIC_OPERATOR);
     comparatorEEnum = createEEnum(COMPARATOR);
   }
@@ -1459,7 +1459,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEAttribute(getGecoModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGecoModel_Imports(), this.getImport(), null, "imports", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGecoModel_RegisteredRootClass(), this.getRegisteredRootClass(), null, "registeredRootClass", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getGecoModel_Metamodels(), this.getMetamodelSequence(), null, "metamodels", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGecoModel_Models(), this.getModelSequence(), null, "models", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGecoModel_Fragments(), this.getFragment(), null, "fragments", null, 0, -1, GecoModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1471,13 +1471,13 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEAttribute(getRegisteredRootClass_IsText(), ecorePackage.getEBoolean(), "isText", null, 0, 1, RegisteredRootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRegisteredRootClass_Extension(), ecorePackage.getEString(), "extension", null, 0, 1, RegisteredRootClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(metamodelSequenceEClass, MetamodelSequence.class, "MetamodelSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMetamodelSequence_Modifier(), this.getMetamodelModifier(), "modifier", null, 0, 1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetamodelSequence_Type(), this.getModelNodeType(), null, "type", null, 0, 1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetamodelSequence_Metamodels(), this.getMetamodel(), null, "metamodels", null, 0, -1, MetamodelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(modelSequenceEClass, ModelSequence.class, "ModelSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModelSequence_Modifier(), this.getModelModifier(), "modifier", null, 0, 1, ModelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModelSequence_Type(), this.getModelNodeType(), null, "type", null, 0, 1, ModelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModelSequence_Models(), this.getModel(), null, "models", null, 0, -1, ModelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(metamodelEClass, Metamodel.class, "Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMetamodel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fragmentEClass, Fragment.class, "Fragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFragment_Reference(), theTypesPackage.getJvmType(), null, "reference", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1501,12 +1501,12 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEReference(getGenerator_SourceTraceModels(), this.getTraceModelReference(), null, "sourceTraceModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sourceModelNodeSelectorEClass, SourceModelNodeSelector.class, "SourceModelNodeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSourceModelNodeSelector_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSourceModelNodeSelector_Reference(), this.getModel(), null, "reference", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSourceModelNodeSelector_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSourceModelNodeSelector_Property(), this.getNodeProperty(), null, "property", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(targetModelNodeTypeEClass, TargetModelNodeType.class, "TargetModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTargetModelNodeType_Reference(), this.getMetamodel(), null, "reference", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTargetModelNodeType_Reference(), this.getModel(), null, "reference", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modelNodeTypeEClass, ModelNodeType.class, "ModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getModelNodeType_Target(), this.getRegisteredRootClass(), null, "target", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1573,10 +1573,10 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
-    initEEnum(metamodelModifierEEnum, MetamodelModifier.class, "MetamodelModifier");
-    addEEnumLiteral(metamodelModifierEEnum, MetamodelModifier.INPUT);
-    addEEnumLiteral(metamodelModifierEEnum, MetamodelModifier.OUTPUT);
-    addEEnumLiteral(metamodelModifierEEnum, MetamodelModifier.INTERMEDIATE);
+    initEEnum(modelModifierEEnum, ModelModifier.class, "ModelModifier");
+    addEEnumLiteral(modelModifierEEnum, ModelModifier.INPUT);
+    addEEnumLiteral(modelModifierEEnum, ModelModifier.OUTPUT);
+    addEEnumLiteral(modelModifierEEnum, ModelModifier.INTERMEDIATE);
 
     initEEnum(logicOperatorEEnum, LogicOperator.class, "LogicOperator");
     addEEnumLiteral(logicOperatorEEnum, LogicOperator.AND);

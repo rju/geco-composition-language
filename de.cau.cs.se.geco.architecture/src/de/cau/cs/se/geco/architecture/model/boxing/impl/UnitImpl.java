@@ -3,7 +3,7 @@
 package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.Unit;
@@ -57,7 +57,7 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Metamodel> sourceModels;
+	protected EList<Model> sourceModels;
 
 	/**
 	 * The cached value of the '{@link #getFragment() <em>Fragment</em>}' reference.
@@ -77,7 +77,7 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * @generated
 	 * @ordered
 	 */
-	protected Metamodel targetModel;
+	protected Model targetModel;
 
 	/**
 	 * The cached value of the '{@link #getTargetTraceModel() <em>Target Trace Model</em>}' reference.
@@ -155,9 +155,9 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Metamodel> getSourceModels() {
+	public EList<Model> getSourceModels() {
 		if (sourceModels == null) {
-			sourceModels = new EObjectResolvingEList<Metamodel>(Metamodel.class, this, BoxingPackage.UNIT__SOURCE_MODELS);
+			sourceModels = new EObjectResolvingEList<Model>(Model.class, this, BoxingPackage.UNIT__SOURCE_MODELS);
 		}
 		return sourceModels;
 	}
@@ -205,10 +205,10 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Metamodel getTargetModel() {
+	public Model getTargetModel() {
 		if (targetModel != null && targetModel.eIsProxy()) {
 			InternalEObject oldTargetModel = (InternalEObject)targetModel;
-			targetModel = (Metamodel)eResolveProxy(oldTargetModel);
+			targetModel = (Model)eResolveProxy(oldTargetModel);
 			if (targetModel != oldTargetModel) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.UNIT__TARGET_MODEL, oldTargetModel, targetModel));
@@ -222,7 +222,7 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Metamodel basicGetTargetModel() {
+	public Model basicGetTargetModel() {
 		return targetModel;
 	}
 
@@ -231,8 +231,8 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTargetModel(Metamodel newTargetModel) {
-		Metamodel oldTargetModel = targetModel;
+	public void setTargetModel(Model newTargetModel) {
+		Model oldTargetModel = targetModel;
 		targetModel = newTargetModel;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.UNIT__TARGET_MODEL, oldTargetModel, targetModel));
@@ -421,13 +421,13 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 				return;
 			case BoxingPackage.UNIT__SOURCE_MODELS:
 				getSourceModels().clear();
-				getSourceModels().addAll((Collection<? extends Metamodel>)newValue);
+				getSourceModels().addAll((Collection<? extends Model>)newValue);
 				return;
 			case BoxingPackage.UNIT__FRAGMENT:
 				setFragment((Fragment)newValue);
 				return;
 			case BoxingPackage.UNIT__TARGET_MODEL:
-				setTargetModel((Metamodel)newValue);
+				setTargetModel((Model)newValue);
 				return;
 			case BoxingPackage.UNIT__TARGET_TRACE_MODEL:
 				setTargetTraceModel((TraceModel)newValue);
@@ -463,7 +463,7 @@ public class UnitImpl extends MinimalEObjectImpl.Container implements Unit {
 				setFragment((Fragment)null);
 				return;
 			case BoxingPackage.UNIT__TARGET_MODEL:
-				setTargetModel((Metamodel)null);
+				setTargetModel((Model)null);
 				return;
 			case BoxingPackage.UNIT__TARGET_TRACE_MODEL:
 				setTargetTraceModel((TraceModel)null);

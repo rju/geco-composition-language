@@ -50,22 +50,22 @@ public interface ArchitectureFactory extends EFactory
   RegisteredRootClass createRegisteredRootClass();
 
   /**
-   * Returns a new object of class '<em>Metamodel Sequence</em>'.
+   * Returns a new object of class '<em>Model Sequence</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Metamodel Sequence</em>'.
+   * @return a new object of class '<em>Model Sequence</em>'.
    * @generated
    */
-  MetamodelSequence createMetamodelSequence();
+  ModelSequence createModelSequence();
 
   /**
-   * Returns a new object of class '<em>Metamodel</em>'.
+   * Returns a new object of class '<em>Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Metamodel</em>'.
+   * @return a new object of class '<em>Model</em>'.
    * @generated
    */
-  Metamodel createMetamodel();
+  Model createModel();
 
   /**
    * Returns a new object of class '<em>Fragment</em>'.

@@ -45,14 +45,14 @@
         eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//ModelNodeType"/>
     <eStructuralFeatures
         xsi:type="ecore:EReference"
-        name="metamodel"
+        name="model"
         lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"/>
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"/>
     <eStructuralFeatures
         xsi:type="ecore:EAttribute"
         name="modifier"
         lowerBound="1"
-        eType="ecore:EEnum ../../../../../../../../model/generated/Architecture.ecore#//MetamodelModifier"/>
+        eType="ecore:EEnum ../../../../../../../../model/generated/Architecture.ecore#//ModelModifier"/>
   </eClassifiers>
   <eClassifiers
       xsi:type="ecore:EClass"
@@ -67,7 +67,7 @@
         name="sourceModels"
         lowerBound="1"
         upperBound="-1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"
         transient="true"/>
     <eStructuralFeatures
         xsi:type="ecore:EReference"
@@ -78,7 +78,7 @@
         xsi:type="ecore:EReference"
         name="targetModel"
         lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"/>
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"/>
     <eStructuralFeatures
         xsi:type="ecore:EReference"
         name="targetTraceModel"
@@ -132,7 +132,7 @@
         xsi:type="ecore:EReference"
         name="sourceModels"
         upperBound="-1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Metamodel"
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//Model"
         transient="true"/>
   </eClassifiers>
 </ecore:EPackage>

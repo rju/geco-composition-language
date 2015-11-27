@@ -184,7 +184,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModelDeclaration_Metamodel() {
+	public EReference getModelDeclaration_Model() {
 		return (EReference)modelDeclarationEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -359,7 +359,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 
 		modelDeclarationEClass = createEClass(MODEL_DECLARATION);
 		createEReference(modelDeclarationEClass, MODEL_DECLARATION__SELECTOR);
-		createEReference(modelDeclarationEClass, MODEL_DECLARATION__METAMODEL);
+		createEReference(modelDeclarationEClass, MODEL_DECLARATION__MODEL);
 		createEAttribute(modelDeclarationEClass, MODEL_DECLARATION__MODIFIER);
 
 		unitEClass = createEClass(UNIT);
@@ -421,14 +421,14 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 
 		initEClass(modelDeclarationEClass, ModelDeclaration.class, "ModelDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelDeclaration_Selector(), theArchitecturePackage.getModelNodeType(), null, "selector", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelDeclaration_Metamodel(), theArchitecturePackage.getMetamodel(), null, "metamodel", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModelDeclaration_Modifier(), theArchitecturePackage.getMetamodelModifier(), "modifier", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelDeclaration_Model(), theArchitecturePackage.getModel(), null, "model", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModelDeclaration_Modifier(), theArchitecturePackage.getModelModifier(), "modifier", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unitEClass, Unit.class, "Unit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUnit_SourceTraceModels(), theArchitecturePackage.getTraceModel(), null, "sourceTraceModels", null, 0, -1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUnit_SourceModels(), theArchitecturePackage.getMetamodel(), null, "sourceModels", null, 1, -1, Unit.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_SourceModels(), theArchitecturePackage.getModel(), null, "sourceModels", null, 1, -1, Unit.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_Fragment(), theArchitecturePackage.getFragment(), null, "fragment", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUnit_TargetModel(), theArchitecturePackage.getMetamodel(), null, "targetModel", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUnit_TargetModel(), theArchitecturePackage.getModel(), null, "targetModel", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_TargetTraceModel(), theArchitecturePackage.getTraceModel(), null, "targetTraceModel", null, 0, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_InputTypeReference(), theTypesPackage.getJvmTypeReference(), null, "inputTypeReference", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUnit_OutputTypeReference(), theTypesPackage.getJvmTypeReference(), null, "outputTypeReference", null, 1, 1, Unit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -443,7 +443,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		initEReference(getGroup_Units(), this.getUnit(), null, "units", null, 0, -1, Group.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGroup_SubGroups(), this.getGroup(), null, "subGroups", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGroup_SourceTraceModels(), theArchitecturePackage.getTraceModel(), null, "sourceTraceModels", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGroup_SourceModels(), theArchitecturePackage.getMetamodel(), null, "sourceModels", null, 0, -1, Group.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGroup_SourceModels(), theArchitecturePackage.getModel(), null, "sourceModels", null, 0, -1, Group.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.geco.architecture.model.boxing;
 
-import de.cau.cs.se.geco.architecture.architecture.Metamodel;
+import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -77,7 +77,7 @@ public interface Group extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Source Models</b></em>' reference list.
-	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Metamodel}.
+	 * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.Model}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source Models</em>' reference list isn't clear,
@@ -89,6 +89,6 @@ public interface Group extends EObject {
 	 * @model transient="true"
 	 * @generated
 	 */
-	EList<Metamodel> getSourceModels();
+	EList<Model> getSourceModels();
 
 } // Group

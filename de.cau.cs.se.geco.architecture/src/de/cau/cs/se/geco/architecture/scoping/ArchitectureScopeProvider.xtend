@@ -34,7 +34,7 @@ import de.cau.cs.se.geco.architecture.architecture.Import
 import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
-import de.cau.cs.se.geco.architecture.architecture.MetamodelSequence
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence
 import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
 
 class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelegatingScopeProvider {
@@ -82,7 +82,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			ModelNodeType: container.target.importedNamespace.createJvmDeclaredTypeScope(reference)
 			NodeProperty: (container.property as JvmOperation).returnType.type.createJvmDeclaredTypeScope(reference)
 			SourceModelNodeSelector: {
-				val genericType = (container.reference.eContainer as MetamodelSequence).type.resolveType.determineElementType
+				val genericType = (container.reference.eContainer as ModelSequence).type.resolveType.determineElementType
 				// TODO this must be converted into a typing method
 				if (container.constraint != null) {
 					if (container.constraint instanceof Typeof) {

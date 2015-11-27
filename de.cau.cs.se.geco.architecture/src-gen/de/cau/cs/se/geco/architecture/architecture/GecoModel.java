@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getRegisteredRootClass <em>Registered Root Class</em>}</li>
- *   <li>{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getMetamodels <em>Metamodels</em>}</li>
+ *   <li>{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getModels <em>Models</em>}</li>
  *   <li>{@link de.cau.cs.se.geco.architecture.architecture.GecoModel#getFragments <em>Fragments</em>}</li>
  * </ul>
  *
@@ -87,20 +87,20 @@ public interface GecoModel extends EObject
   EList<RegisteredRootClass> getRegisteredRootClass();
 
   /**
-   * Returns the value of the '<em><b>Metamodels</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.MetamodelSequence}.
+   * Returns the value of the '<em><b>Models</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.ModelSequence}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Metamodels</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Models</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Metamodels</em>' containment reference list.
-   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getGecoModel_Metamodels()
+   * @return the value of the '<em>Models</em>' containment reference list.
+   * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getGecoModel_Models()
    * @model containment="true"
    * @generated
    */
-  EList<MetamodelSequence> getMetamodels();
+  EList<ModelSequence> getModels();
 
   /**
    * Returns the value of the '<em><b>Fragments</b></em>' containment reference list.
