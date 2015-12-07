@@ -24,7 +24,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelSequence">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifier" eType="#//ModelModifier"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ModelNodeType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ModelType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
         eType="#//Model" containment="true"/>
@@ -39,9 +39,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Fragment">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../../../org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModel" eType="#//SourceModelNodeSelector"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceModel" eType="#//SourceModelSelector"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetModel" eType="#//TargetModelNodeType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetModel" eType="#//TargetModel"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Weaver" eSuperTypes="#//Fragment">
@@ -49,32 +49,32 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AspectModel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SeparatePointcutAdviceModel" eSuperTypes="#//AspectModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pointcut" eType="#//TargetModelNodeType"
+  <eClassifiers xsi:type="ecore:EClass" name="SeparateModels" eSuperTypes="#//AspectModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointcut" eType="#//TargetModel"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="advice" eType="#//AdviceModel"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advice" eType="#//CombinedModel"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AdviceModel" eSuperTypes="#//AspectModel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Fragment #//AdviceModel">
+  <eClassifiers xsi:type="ecore:EClass" name="CombinedModel" eSuperTypes="#//AspectModel"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//Fragment #//CombinedModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceAuxModels" upperBound="-1"
-        eType="#//SourceModelNodeSelector" containment="true"/>
+        eType="#//SourceModelSelector" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetTraceModel" eType="#//TargetTraceModel"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTraceModels" upperBound="-1"
         eType="#//TraceModelReference" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SourceModelNodeSelector">
+  <eClassifiers xsi:type="ecore:EClass" name="SourceModelSelector">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Model"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" eType="#//ConstraintExpression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//NodeProperty"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TargetModelNodeType" eSuperTypes="#//AdviceModel">
+  <eClassifiers xsi:type="ecore:EClass" name="TargetModel" eSuperTypes="#//CombinedModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Model"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ModelNodeType">
+  <eClassifiers xsi:type="ecore:EClass" name="ModelType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//RegisteredRootClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//NodeProperty"
         containment="true"/>

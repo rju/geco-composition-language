@@ -95,22 +95,22 @@ public interface ArchitectureFactory extends EFactory
   AspectModel createAspectModel();
 
   /**
-   * Returns a new object of class '<em>Separate Pointcut Advice Model</em>'.
+   * Returns a new object of class '<em>Separate Models</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Separate Pointcut Advice Model</em>'.
+   * @return a new object of class '<em>Separate Models</em>'.
    * @generated
    */
-  SeparatePointcutAdviceModel createSeparatePointcutAdviceModel();
+  SeparateModels createSeparateModels();
 
   /**
-   * Returns a new object of class '<em>Advice Model</em>'.
+   * Returns a new object of class '<em>Combined Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Advice Model</em>'.
+   * @return a new object of class '<em>Combined Model</em>'.
    * @generated
    */
-  AdviceModel createAdviceModel();
+  CombinedModel createCombinedModel();
 
   /**
    * Returns a new object of class '<em>Generator</em>'.
@@ -122,31 +122,31 @@ public interface ArchitectureFactory extends EFactory
   Generator createGenerator();
 
   /**
-   * Returns a new object of class '<em>Source Model Node Selector</em>'.
+   * Returns a new object of class '<em>Source Model Selector</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Source Model Node Selector</em>'.
+   * @return a new object of class '<em>Source Model Selector</em>'.
    * @generated
    */
-  SourceModelNodeSelector createSourceModelNodeSelector();
+  SourceModelSelector createSourceModelSelector();
 
   /**
-   * Returns a new object of class '<em>Target Model Node Type</em>'.
+   * Returns a new object of class '<em>Target Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Target Model Node Type</em>'.
+   * @return a new object of class '<em>Target Model</em>'.
    * @generated
    */
-  TargetModelNodeType createTargetModelNodeType();
+  TargetModel createTargetModel();
 
   /**
-   * Returns a new object of class '<em>Model Node Type</em>'.
+   * Returns a new object of class '<em>Model Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model Node Type</em>'.
+   * @return a new object of class '<em>Model Type</em>'.
    * @generated
    */
-  ModelNodeType createModelNodeType();
+  ModelType createModelType();
 
   /**
    * Returns a new object of class '<em>Node Property</em>'.

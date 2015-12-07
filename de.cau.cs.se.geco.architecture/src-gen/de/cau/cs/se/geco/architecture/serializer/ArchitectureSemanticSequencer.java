@@ -16,18 +16,18 @@ import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
-import de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.SeparateModels;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
@@ -84,11 +84,11 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
-			case ArchitecturePackage.MODEL_NODE_TYPE:
-				sequence_ModelNodeType(context, (ModelNodeType) semanticObject); 
-				return; 
 			case ArchitecturePackage.MODEL_SEQUENCE:
 				sequence_ModelSequence(context, (ModelSequence) semanticObject); 
+				return; 
+			case ArchitecturePackage.MODEL_TYPE:
+				sequence_ModelType(context, (ModelType) semanticObject); 
 				return; 
 			case ArchitecturePackage.NEGATION:
 				sequence_Negation(context, (Negation) semanticObject); 
@@ -108,17 +108,17 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 			case ArchitecturePackage.REGISTERED_ROOT_CLASS:
 				sequence_RegisteredRootClass(context, (RegisteredRootClass) semanticObject); 
 				return; 
-			case ArchitecturePackage.SEPARATE_POINTCUT_ADVICE_MODEL:
-				sequence_SeparatePointcutAdviceModel(context, (SeparatePointcutAdviceModel) semanticObject); 
+			case ArchitecturePackage.SEPARATE_MODELS:
+				sequence_SeparateModels(context, (SeparateModels) semanticObject); 
 				return; 
-			case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR:
-				sequence_SourceModelNodeSelector(context, (SourceModelNodeSelector) semanticObject); 
+			case ArchitecturePackage.SOURCE_MODEL_SELECTOR:
+				sequence_SourceModelSelector(context, (SourceModelSelector) semanticObject); 
 				return; 
 			case ArchitecturePackage.STRING_LITERAL:
 				sequence_StringLiteral(context, (StringLiteral) semanticObject); 
 				return; 
-			case ArchitecturePackage.TARGET_MODEL_NODE_TYPE:
-				sequence_TargetModelNodeType(context, (TargetModelNodeType) semanticObject); 
+			case ArchitecturePackage.TARGET_MODEL:
+				sequence_TargetModel(context, (TargetModel) semanticObject); 
 				return; 
 			case ArchitecturePackage.TRACE_MODEL:
 				sequence_TraceModel(context, (TraceModel) semanticObject); 
@@ -207,9 +207,9 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 * Constraint:
 	 *     (
 	 *         reference=[JvmType|ID] 
-	 *         (sourceAuxModels+=SourceModelNodeSelector sourceAuxModels+=SourceModelNodeSelector*)? 
-	 *         sourceModel=SourceModelNodeSelector 
-	 *         targetModel=TargetModelNodeType? 
+	 *         (sourceAuxModels+=SourceModelSelector sourceAuxModels+=SourceModelSelector*)? 
+	 *         sourceModel=SourceModelSelector 
+	 *         targetModel=TargetModel? 
 	 *         (targetTraceModel=TargetTraceModel? (sourceTraceModels+=TraceModelReference sourceTraceModels+=TraceModelReference*)?)?
 	 *     )
 	 */
@@ -245,18 +245,18 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (target=[RegisteredRootClass|ID] property=NodeProperty? collection?='[]'?)
+	 *     (modifier=ModelModifier type=ModelType models+=Model models+=Model*)
 	 */
-	protected void sequence_ModelNodeType(EObject context, ModelNodeType semanticObject) {
+	protected void sequence_ModelSequence(EObject context, ModelSequence semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (modifier=ModelModifier type=ModelNodeType models+=Model models+=Model*)
+	 *     (target=[RegisteredRootClass|ID] property=NodeProperty? collection?='[]'?)
 	 */
-	protected void sequence_ModelSequence(EObject context, ModelSequence semanticObject) {
+	protected void sequence_ModelType(EObject context, ModelType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -340,28 +340,28 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (pointcut=TargetModelNodeType advice=AdviceModel)
+	 *     (pointcut=TargetModel advice=CombinedModel)
 	 */
-	protected void sequence_SeparatePointcutAdviceModel(EObject context, SeparatePointcutAdviceModel semanticObject) {
+	protected void sequence_SeparateModels(EObject context, SeparateModels semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.SEPARATE_POINTCUT_ADVICE_MODEL__POINTCUT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.SEPARATE_POINTCUT_ADVICE_MODEL__POINTCUT));
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.SEPARATE_POINTCUT_ADVICE_MODEL__ADVICE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.SEPARATE_POINTCUT_ADVICE_MODEL__ADVICE));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.SEPARATE_MODELS__POINTCUT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.SEPARATE_MODELS__POINTCUT));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.SEPARATE_MODELS__ADVICE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.SEPARATE_MODELS__ADVICE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSeparatePointcutAdviceModelAccess().getPointcutTargetModelNodeTypeParserRuleCall_1_0(), semanticObject.getPointcut());
-		feeder.accept(grammarAccess.getSeparatePointcutAdviceModelAccess().getAdviceAdviceModelParserRuleCall_3_0(), semanticObject.getAdvice());
+		feeder.accept(grammarAccess.getSeparateModelsAccess().getPointcutTargetModelParserRuleCall_1_0(), semanticObject.getPointcut());
+		feeder.accept(grammarAccess.getSeparateModelsAccess().getAdviceCombinedModelParserRuleCall_3_0(), semanticObject.getAdvice());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     {SourceModelNodeSelector}
+	 *     {SourceModelSelector}
 	 */
-	protected void sequence_SourceModelNodeSelector(EObject context, SourceModelNodeSelector semanticObject) {
+	protected void sequence_SourceModelSelector(EObject context, SourceModelSelector semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -379,14 +379,14 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 * Constraint:
 	 *     reference=[Model|ID]
 	 */
-	protected void sequence_TargetModelNodeType(EObject context, TargetModelNodeType semanticObject) {
+	protected void sequence_TargetModel(EObject context, TargetModel semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.TARGET_MODEL_NODE_TYPE__REFERENCE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.TARGET_MODEL_NODE_TYPE__REFERENCE));
+			if(transientValues.isValueTransient(semanticObject, ArchitecturePackage.Literals.TARGET_MODEL__REFERENCE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitecturePackage.Literals.TARGET_MODEL__REFERENCE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getTargetModelNodeTypeAccess().getReferenceModelIDTerminalRuleCall_1_0_1(), semanticObject.getReference());
+		feeder.accept(grammarAccess.getTargetModelAccess().getReferenceModelIDTerminalRuleCall_1_0_1(), semanticObject.getReference());
 		feeder.finish();
 	}
 	
@@ -427,7 +427,7 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	
 	/**
 	 * Constraint:
-	 *     (reference=[JvmType|ID] sourceModel=SourceModelNodeSelector? aspectModel=AspectModel targetModel=TargetModelNodeType?)
+	 *     (reference=[JvmType|ID] sourceModel=SourceModelSelector? aspectModel=AspectModel targetModel=TargetModel?)
 	 */
 	protected void sequence_Weaver(EObject context, Weaver semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

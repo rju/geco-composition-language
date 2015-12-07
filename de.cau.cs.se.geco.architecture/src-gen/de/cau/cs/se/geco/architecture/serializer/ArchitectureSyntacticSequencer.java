@@ -51,8 +51,8 @@ public class ArchitectureSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'trace'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     sourceModel=SourceModelNodeSelector (ambiguity) (rule end)
-	 *     targetModel=TargetModelNodeType (ambiguity) (rule end)
+	 *     sourceModel=SourceModelSelector (ambiguity) (rule end)
+	 *     targetModel=TargetModel (ambiguity) (rule end)
 	 */
 	protected void emit_Generator_TraceKeyword_6_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

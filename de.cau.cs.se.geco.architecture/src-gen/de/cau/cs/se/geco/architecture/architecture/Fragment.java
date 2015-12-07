@@ -61,12 +61,12 @@ public interface Fragment extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Source Model</em>' containment reference.
-   * @see #setSourceModel(SourceModelNodeSelector)
+   * @see #setSourceModel(SourceModelSelector)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getFragment_SourceModel()
    * @model containment="true"
    * @generated
    */
-  SourceModelNodeSelector getSourceModel();
+  SourceModelSelector getSourceModel();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Fragment#getSourceModel <em>Source Model</em>}' containment reference.
@@ -76,7 +76,7 @@ public interface Fragment extends EObject
    * @see #getSourceModel()
    * @generated
    */
-  void setSourceModel(SourceModelNodeSelector value);
+  void setSourceModel(SourceModelSelector value);
 
   /**
    * Returns the value of the '<em><b>Target Model</b></em>' containment reference.
@@ -87,12 +87,12 @@ public interface Fragment extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Target Model</em>' containment reference.
-   * @see #setTargetModel(TargetModelNodeType)
+   * @see #setTargetModel(TargetModel)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getFragment_TargetModel()
    * @model containment="true"
    * @generated
    */
-  TargetModelNodeType getTargetModel();
+  TargetModel getTargetModel();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.Fragment#getTargetModel <em>Target Model</em>}' containment reference.
@@ -102,6 +102,6 @@ public interface Fragment extends EObject
    * @see #getTargetModel()
    * @generated
    */
-  void setTargetModel(TargetModelNodeType value);
+  void setTargetModel(TargetModel value);
 
 } // Fragment

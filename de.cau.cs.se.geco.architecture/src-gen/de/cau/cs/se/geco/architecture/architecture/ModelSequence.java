@@ -64,12 +64,12 @@ public interface ModelSequence extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(ModelNodeType)
+   * @see #setType(ModelType)
    * @see de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage#getModelSequence_Type()
    * @model containment="true"
    * @generated
    */
-  ModelNodeType getType();
+  ModelType getType();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.geco.architecture.architecture.ModelSequence#getType <em>Type</em>}' containment reference.
@@ -79,7 +79,7 @@ public interface ModelSequence extends EObject
    * @see #getType()
    * @generated
    */
-  void setType(ModelNodeType value);
+  void setType(ModelType value);
 
   /**
    * Returns the value of the '<em><b>Models</b></em>' containment reference list.

@@ -22,11 +22,11 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Generator extends Fragment, AdviceModel
+public interface Generator extends Fragment, CombinedModel
 {
   /**
    * Returns the value of the '<em><b>Source Aux Models</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector}.
+   * The list contents are of type {@link de.cau.cs.se.geco.architecture.architecture.SourceModelSelector}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Source Aux Models</em>' containment reference list isn't clear,
@@ -38,7 +38,7 @@ public interface Generator extends Fragment, AdviceModel
    * @model containment="true"
    * @generated
    */
-  EList<SourceModelNodeSelector> getSourceAuxModels();
+  EList<SourceModelSelector> getSourceAuxModels();
 
   /**
    * Returns the value of the '<em><b>Target Trace Model</b></em>' containment reference.

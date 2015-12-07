@@ -32,19 +32,19 @@ import de.cau.cs.kieler.kiml.options.PortSide;
 import de.cau.cs.kieler.klighd.KlighdConstants;
 import de.cau.cs.kieler.klighd.SynthesisOption;
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis;
-import de.cau.cs.se.geco.architecture.architecture.AdviceModel;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
+import de.cau.cs.se.geco.architecture.architecture.CombinedModel;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
-import de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.SeparateModels;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
@@ -253,17 +253,17 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     AspectModel _aspectModel = weaver.getAspectModel();
     boolean _matched = false;
     if (!_matched) {
-      if (_aspectModel instanceof AdviceModel) {
+      if (_aspectModel instanceof CombinedModel) {
         _matched=true;
         AspectModel _aspectModel_1 = weaver.getAspectModel();
-        this.createAdviceModelEdgeForWeaver(((AdviceModel) _aspectModel_1), weaverNode);
+        this.createAdviceModelEdgeForWeaver(((CombinedModel) _aspectModel_1), weaverNode);
       }
     }
     if (!_matched) {
-      if (_aspectModel instanceof SeparatePointcutAdviceModel) {
+      if (_aspectModel instanceof SeparateModels) {
         _matched=true;
         AspectModel _aspectModel_1 = weaver.getAspectModel();
-        this.createPointcutModelEdgeForWeaver(((SeparatePointcutAdviceModel) _aspectModel_1), weaverNode);
+        this.createPointcutModelEdgeForWeaver(((SeparateModels) _aspectModel_1), weaverNode);
       }
     }
   }
@@ -275,10 +275,10 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     KEdge _xblockexpression = null;
     {
       KNode _xifexpression = null;
-      SourceModelNodeSelector _sourceModel = weaver.getSourceModel();
+      SourceModelSelector _sourceModel = weaver.getSourceModel();
       boolean _notEquals = (!Objects.equal(_sourceModel, null));
       if (_notEquals) {
-        SourceModelNodeSelector _sourceModel_1 = weaver.getSourceModel();
+        SourceModelSelector _sourceModel_1 = weaver.getSourceModel();
         Model _reference = _sourceModel_1.getReference();
         _xifexpression = this.modelNodes.get(_reference);
       } else {
@@ -309,10 +309,10 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     KEdge _xblockexpression = null;
     {
       KNode _xifexpression = null;
-      TargetModelNodeType _targetModel = weaver.getTargetModel();
+      TargetModel _targetModel = weaver.getTargetModel();
       boolean _notEquals = (!Objects.equal(_targetModel, null));
       if (_notEquals) {
-        TargetModelNodeType _targetModel_1 = weaver.getTargetModel();
+        TargetModel _targetModel_1 = weaver.getTargetModel();
         Model _reference = _targetModel_1.getReference();
         _xifexpression = this.modelNodes.get(_reference);
       } else {
@@ -338,22 +338,22 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   /**
    * create an edge between weaver and advice or aspect model.
    */
-  private KEdge createAdviceModelEdgeForWeaver(final AdviceModel adviceModel, final KNode weaverNode) {
+  private KEdge createAdviceModelEdgeForWeaver(final CombinedModel adviceModel, final KNode weaverNode) {
     KEdge _xblockexpression = null;
     {
       KNode _switchResult = null;
       boolean _matched = false;
       if (!_matched) {
-        if (adviceModel instanceof TargetModelNodeType) {
+        if (adviceModel instanceof TargetModel) {
           _matched=true;
-          Model _reference = ((TargetModelNodeType) adviceModel).getReference();
+          Model _reference = ((TargetModel)adviceModel).getReference();
           _switchResult = this.modelNodes.get(_reference);
         }
       }
       if (!_matched) {
         if (adviceModel instanceof Generator) {
           _matched=true;
-          _switchResult = this.targetGeneratorModelNodes.get(((Generator) adviceModel));
+          _switchResult = this.targetGeneratorModelNodes.get(adviceModel);
         }
       }
       final KNode aspectModelNode = _switchResult;
@@ -376,10 +376,10 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   /**
    * create an edge between weaver and advice or aspect model.
    */
-  private KEdge createPointcutModelEdgeForWeaver(final SeparatePointcutAdviceModel separatePointcutAdviceModel, final KNode weaverNode) {
+  private KEdge createPointcutModelEdgeForWeaver(final SeparateModels separatePointcutAdviceModel, final KNode weaverNode) {
     KEdge _xblockexpression = null;
     {
-      TargetModelNodeType _pointcut = separatePointcutAdviceModel.getPointcut();
+      TargetModel _pointcut = separatePointcutAdviceModel.getPointcut();
       Model _reference = _pointcut.getReference();
       final KNode pointcutModelNode = this.modelNodes.get(_reference);
       KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(pointcutModelNode, weaverNode, LineStyle.SOLID);
@@ -394,7 +394,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         }
       };
       ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
-      AdviceModel _advice = separatePointcutAdviceModel.getAdvice();
+      CombinedModel _advice = separatePointcutAdviceModel.getAdvice();
       _xblockexpression = this.createAdviceModelEdgeForWeaver(_advice, weaverNode);
     }
     return _xblockexpression;
@@ -406,11 +406,11 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   private void createEdgesForGenerator(final KNode root, final Generator generator, final KNode generatorNode) {
     try {
       KNode _xifexpression = null;
-      SourceModelNodeSelector _sourceModel = generator.getSourceModel();
+      SourceModelSelector _sourceModel = generator.getSourceModel();
       Model _reference = _sourceModel.getReference();
       boolean _notEquals = (!Objects.equal(_reference, null));
       if (_notEquals) {
-        SourceModelNodeSelector _sourceModel_1 = generator.getSourceModel();
+        SourceModelSelector _sourceModel_1 = generator.getSourceModel();
         Model _reference_1 = _sourceModel_1.getReference();
         _xifexpression = this.modelNodes.get(_reference_1);
       } else {
@@ -426,10 +426,10 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       }
       final KNode sourceModelNode = _xifexpression;
       KNode _xifexpression_1 = null;
-      TargetModelNodeType _targetModel = generator.getTargetModel();
+      TargetModel _targetModel = generator.getTargetModel();
       boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
       if (_notEquals_1) {
-        TargetModelNodeType _targetModel_1 = generator.getTargetModel();
+        TargetModel _targetModel_1 = generator.getTargetModel();
         Model _reference_2 = _targetModel_1.getReference();
         _xifexpression_1 = this.modelNodes.get(_reference_2);
       } else {
@@ -509,7 +509,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         _children.add(weaverNode);
         AspectModel _aspectModel = weaver.getAspectModel();
         ModelDiagramSynthesis.this.createSublevelGenerator(_aspectModel, parent);
-        TargetModelNodeType _targetModel = weaver.getTargetModel();
+        TargetModel _targetModel = weaver.getTargetModel();
         boolean _equals = Objects.equal(_targetModel, null);
         if (_equals) {
           final KNode anonymousModelNode = ModelDiagramSynthesis.this.createAnonymousModel(weaver);
@@ -534,9 +534,9 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       }
     }
     if (!_matched) {
-      if (aspectModel instanceof SeparatePointcutAdviceModel) {
+      if (aspectModel instanceof SeparateModels) {
         _matched=true;
-        AdviceModel _advice = ((SeparatePointcutAdviceModel)aspectModel).getAdvice();
+        CombinedModel _advice = ((SeparateModels)aspectModel).getAdvice();
         this.createSublevelGenerator(_advice, parent);
       }
     }
@@ -677,10 +677,10 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     {
       final String instanceName = "";
       String _xifexpression = null;
-      TargetModelNodeType _targetModel = generator.getTargetModel();
+      TargetModel _targetModel = generator.getTargetModel();
       boolean _notEquals = (!Objects.equal(_targetModel, null));
       if (_notEquals) {
-        TargetModelNodeType _targetModel_1 = generator.getTargetModel();
+        TargetModel _targetModel_1 = generator.getTargetModel();
         Model _reference = _targetModel_1.getReference();
         JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference);
         _xifexpression = _resolveType.getSimpleName();
@@ -740,19 +740,19 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   private KNode _createAnonymousModel(final Weaver weaver) {
     KNode _xblockexpression = null;
     {
-      final SourceModelNodeSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+      final SourceModelSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
       Model _reference = sourceModel.getReference();
       final String instanceName = _reference.getName();
       String _xifexpression = null;
-      TargetModelNodeType _targetModel = weaver.getTargetModel();
+      TargetModel _targetModel = weaver.getTargetModel();
       boolean _notEquals = (!Objects.equal(_targetModel, null));
       if (_notEquals) {
         String _xifexpression_1 = null;
-        TargetModelNodeType _targetModel_1 = weaver.getTargetModel();
+        TargetModel _targetModel_1 = weaver.getTargetModel();
         Model _reference_1 = _targetModel_1.getReference();
         boolean _notEquals_1 = (!Objects.equal(_reference_1, null));
         if (_notEquals_1) {
-          TargetModelNodeType _targetModel_2 = weaver.getTargetModel();
+          TargetModel _targetModel_2 = weaver.getTargetModel();
           Model _reference_2 = _targetModel_2.getReference();
           JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference_2);
           _xifexpression_1 = _resolveType.getSimpleName();
@@ -779,7 +779,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     KNode _createNode = this._kNodeExtensions.createNode(model);
     KNode _associateWith = this.<KNode>associateWith(_createNode, model);
     String _name = model.getName();
-    ModelNodeType _type = sequence.getType();
+    ModelType _type = sequence.getType();
     JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_type);
     String _simpleName = _resolveType.getSimpleName();
     return this.drawModelRectangle(_associateWith, _name, _simpleName);

@@ -129,19 +129,19 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.SEPARATE_POINTCUT_ADVICE_MODEL:
+      case ArchitecturePackage.SEPARATE_MODELS:
       {
-        SeparatePointcutAdviceModel separatePointcutAdviceModel = (SeparatePointcutAdviceModel)theEObject;
-        T result = caseSeparatePointcutAdviceModel(separatePointcutAdviceModel);
-        if (result == null) result = caseAspectModel(separatePointcutAdviceModel);
+        SeparateModels separateModels = (SeparateModels)theEObject;
+        T result = caseSeparateModels(separateModels);
+        if (result == null) result = caseAspectModel(separateModels);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.ADVICE_MODEL:
+      case ArchitecturePackage.COMBINED_MODEL:
       {
-        AdviceModel adviceModel = (AdviceModel)theEObject;
-        T result = caseAdviceModel(adviceModel);
-        if (result == null) result = caseAspectModel(adviceModel);
+        CombinedModel combinedModel = (CombinedModel)theEObject;
+        T result = caseCombinedModel(combinedModel);
+        if (result == null) result = caseAspectModel(combinedModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -150,31 +150,31 @@ public class ArchitectureSwitch<T> extends Switch<T>
         Generator generator = (Generator)theEObject;
         T result = caseGenerator(generator);
         if (result == null) result = caseFragment(generator);
-        if (result == null) result = caseAdviceModel(generator);
+        if (result == null) result = caseCombinedModel(generator);
         if (result == null) result = caseAspectModel(generator);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR:
+      case ArchitecturePackage.SOURCE_MODEL_SELECTOR:
       {
-        SourceModelNodeSelector sourceModelNodeSelector = (SourceModelNodeSelector)theEObject;
-        T result = caseSourceModelNodeSelector(sourceModelNodeSelector);
+        SourceModelSelector sourceModelSelector = (SourceModelSelector)theEObject;
+        T result = caseSourceModelSelector(sourceModelSelector);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE:
+      case ArchitecturePackage.TARGET_MODEL:
       {
-        TargetModelNodeType targetModelNodeType = (TargetModelNodeType)theEObject;
-        T result = caseTargetModelNodeType(targetModelNodeType);
-        if (result == null) result = caseAdviceModel(targetModelNodeType);
-        if (result == null) result = caseAspectModel(targetModelNodeType);
+        TargetModel targetModel = (TargetModel)theEObject;
+        T result = caseTargetModel(targetModel);
+        if (result == null) result = caseCombinedModel(targetModel);
+        if (result == null) result = caseAspectModel(targetModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.MODEL_NODE_TYPE:
+      case ArchitecturePackage.MODEL_TYPE:
       {
-        ModelNodeType modelNodeType = (ModelNodeType)theEObject;
-        T result = caseModelNodeType(modelNodeType);
+        ModelType modelType = (ModelType)theEObject;
+        T result = caseModelType(modelType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -495,33 +495,33 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Separate Pointcut Advice Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Separate Models</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Separate Pointcut Advice Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Separate Models</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSeparatePointcutAdviceModel(SeparatePointcutAdviceModel object)
+  public T caseSeparateModels(SeparateModels object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Advice Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Combined Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Advice Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Combined Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAdviceModel(AdviceModel object)
+  public T caseCombinedModel(CombinedModel object)
   {
     return null;
   }
@@ -543,49 +543,49 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Source Model Node Selector</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Source Model Selector</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Source Model Node Selector</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Source Model Selector</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSourceModelNodeSelector(SourceModelNodeSelector object)
+  public T caseSourceModelSelector(SourceModelSelector object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Target Model Node Type</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Target Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Target Model Node Type</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Target Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTargetModelNodeType(TargetModelNodeType object)
+  public T caseTargetModel(TargetModel object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model Node Type</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Model Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model Node Type</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Model Type</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModelNodeType(ModelNodeType object)
+  public T caseModelType(ModelType object)
   {
     return null;
   }

@@ -17,13 +17,13 @@ import de.cau.cs.se.geco.architecture.architecture.Literal;
 import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
@@ -237,7 +237,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
       String _name = _model.getName();
       _builder.append(_name, "");
       _builder.append(" = new ArrayList<");
-      ModelNodeType _selector = declaration.getSelector();
+      ModelType _selector = declaration.getSelector();
       JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_selector);
       JvmType _determineElementType = ArchitectureTyping.determineElementType(_resolveType);
       String _qualifiedName = _determineElementType.getQualifiedName();
@@ -248,7 +248,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("var ");
-      ModelNodeType _selector_1 = declaration.getSelector();
+      ModelType _selector_1 = declaration.getSelector();
       JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(_selector_1);
       JvmType _determineElementType_1 = ArchitectureTyping.determineElementType(_resolveType_1);
       String _qualifiedName_1 = _determineElementType_1.getQualifiedName();
@@ -274,7 +274,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     CharSequence _collectionName = this.collectionName(_model);
     _builder.append(_collectionName, "");
     _builder.append(" = models.filter(");
-    ModelNodeType _selector = declaration.getSelector();
+    ModelType _selector = declaration.getSelector();
     RegisteredRootClass _target = _selector.getTarget();
     JvmType _importedNamespace = _target.getImportedNamespace();
     String _qualifiedName = _importedNamespace.getQualifiedName();
@@ -285,7 +285,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     CharSequence _collectionName_1 = this.collectionName(_model_1);
     _builder.append(_collectionName_1, "");
     _builder.append(".forEach[");
-    ModelNodeType _selector_1 = declaration.getSelector();
+    ModelType _selector_1 = declaration.getSelector();
     Model _model_2 = declaration.getModel();
     String _name = _model_2.getName();
     CharSequence _createSelectorQuery = this.createSelectorQuery(_selector_1, _name);
@@ -300,7 +300,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
    * If the property has a list type iterate over the property (one more for each).
    * If the property has a flat type only add the single value.
    */
-  private CharSequence createSelectorQuery(final ModelNodeType type, final String modelName) {
+  private CharSequence createSelectorQuery(final ModelType type, final String modelName) {
     CharSequence _xifexpression = null;
     NodeProperty _property = type.getProperty();
     boolean _equals = Objects.equal(_property, null);
@@ -471,7 +471,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
       if (!_matched) {
         if (processor instanceof Weaver) {
           AspectModel _aspectModel = ((Weaver)processor).getAspectModel();
-          if ((_aspectModel instanceof TargetModelNodeType)) {
+          if ((_aspectModel instanceof TargetModel)) {
             _matched=true;
             _switchResult = this.createWeaverExecution(((Weaver)processor), unit);
           }
@@ -488,11 +488,11 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
    */
   private CharSequence createGeneratorExecution(final Generator generator, final Unit unit) {
     StringConcatenation _builder = new StringConcatenation();
-    EList<SourceModelNodeSelector> _sourceAuxModels = generator.getSourceAuxModels();
+    EList<SourceModelSelector> _sourceAuxModels = generator.getSourceAuxModels();
     CharSequence _createSourceAuxModels = this.createSourceAuxModels(_sourceAuxModels);
     _builder.append(_createSourceAuxModels, "");
     _builder.newLineIfNotEmpty();
-    SourceModelNodeSelector _sourceModel = generator.getSourceModel();
+    SourceModelSelector _sourceModel = generator.getSourceModel();
     CharSequence _createSourceModelNesting = this.createSourceModelNesting(_sourceModel, generator, unit);
     _builder.append(_createSourceModelNesting, "");
     _builder.newLineIfNotEmpty();
@@ -505,13 +505,13 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     _builder.newLine();
     _builder.append("\t");
     AspectModel _aspectModel = weaver.getAspectModel();
-    EList<SourceModelNodeSelector> _sourceAuxModels = ((Generator) _aspectModel).getSourceAuxModels();
+    EList<SourceModelSelector> _sourceAuxModels = ((Generator) _aspectModel).getSourceAuxModels();
     CharSequence _createSourceAuxModels = this.createSourceAuxModels(_sourceAuxModels);
     _builder.append(_createSourceAuxModels, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     AspectModel _aspectModel_1 = weaver.getAspectModel();
-    SourceModelNodeSelector _sourceModel = ((Generator) _aspectModel_1).getSourceModel();
+    SourceModelSelector _sourceModel = ((Generator) _aspectModel_1).getSourceModel();
     CharSequence _createSourceModelNesting = this.createSourceModelNesting(_sourceModel, weaver, unit);
     _builder.append(_createSourceModelNesting, "\t");
     _builder.newLineIfNotEmpty();
@@ -523,7 +523,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   /**
    * Create nested loops for a generator call.
    */
-  private CharSequence createSourceModelNesting(final SourceModelNodeSelector sourceModel, final Weaver weaver, final Unit unit) {
+  private CharSequence createSourceModelNesting(final SourceModelSelector sourceModel, final Weaver weaver, final Unit unit) {
     CharSequence _xifexpression = null;
     Model _reference = sourceModel.getReference();
     boolean _equals = Objects.equal(_reference, null);
@@ -621,7 +621,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
       String _instanceName = this.getInstanceName(_reference);
       _builder.append(_instanceName, "");
       _builder.append(".weave(");
-      SourceModelNodeSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+      SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
       CharSequence _valueReference = this.valueReference(_resolveWeaverSourceModel);
       _builder.append(_valueReference, "");
       _builder.append(",it)]");
@@ -632,7 +632,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
       String _instanceName_1 = this.getInstanceName(_reference_1);
       _builder_1.append(_instanceName_1, "");
       _builder_1.append(".weave(");
-      SourceModelNodeSelector _resolveWeaverSourceModel_1 = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+      SourceModelSelector _resolveWeaverSourceModel_1 = ArchitectureTyping.resolveWeaverSourceModel(weaver);
       CharSequence _valueReference_1 = this.valueReference(_resolveWeaverSourceModel_1);
       _builder_1.append(_valueReference_1, "");
       _builder_1.append(",aspectModel)");
@@ -641,7 +641,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     return _xifexpression;
   }
   
-  private CharSequence valueReference(final SourceModelNodeSelector selector) {
+  private CharSequence valueReference(final SourceModelSelector selector) {
     StringConcatenation _builder = new StringConcatenation();
     Model _reference = selector.getReference();
     String _name = _reference.getName();
@@ -678,15 +678,15 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   /**
    * Prepare collections for auxiliary input.
    */
-  private CharSequence createSourceAuxModels(final EList<SourceModelNodeSelector> sourceAuxModels) {
+  private CharSequence createSourceAuxModels(final EList<SourceModelSelector> sourceAuxModels) {
     StringConcatenation _builder = new StringConcatenation();
-    Iterable<Pair<Integer, SourceModelNodeSelector>> _indexed = IterableExtensions.<SourceModelNodeSelector>indexed(sourceAuxModels);
-    final Function1<Pair<Integer, SourceModelNodeSelector>, CharSequence> _function = (Pair<Integer, SourceModelNodeSelector> it) -> {
-      SourceModelNodeSelector _value = it.getValue();
+    Iterable<Pair<Integer, SourceModelSelector>> _indexed = IterableExtensions.<SourceModelSelector>indexed(sourceAuxModels);
+    final Function1<Pair<Integer, SourceModelSelector>, CharSequence> _function = (Pair<Integer, SourceModelSelector> it) -> {
+      SourceModelSelector _value = it.getValue();
       Integer _key = it.getKey();
       return this.createSourceAuxModel(_value, (_key).intValue());
     };
-    Iterable<CharSequence> _map = IterableExtensions.<Pair<Integer, SourceModelNodeSelector>, CharSequence>map(_indexed, _function);
+    Iterable<CharSequence> _map = IterableExtensions.<Pair<Integer, SourceModelSelector>, CharSequence>map(_indexed, _function);
     String _join = IterableExtensions.join(_map);
     _builder.append(_join, "");
     _builder.newLineIfNotEmpty();
@@ -696,7 +696,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   /**
    * Create an initialization section for an auxiliary model collection.
    */
-  private CharSequence createSourceAuxModel(final SourceModelNodeSelector sourceAuxModel, final int i) {
+  private CharSequence createSourceAuxModel(final SourceModelSelector sourceAuxModel, final int i) {
     CharSequence _xifexpression = null;
     NodeProperty _property = sourceAuxModel.getProperty();
     boolean _equals = Objects.equal(_property, null);
@@ -742,7 +742,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   /**
    * Create nested loops for a generator call.
    */
-  private CharSequence createSourceModelNesting(final SourceModelNodeSelector sourceModel, final Generator generator, final Unit unit) {
+  private CharSequence createSourceModelNesting(final SourceModelSelector sourceModel, final Generator generator, final Unit unit) {
     CharSequence _xifexpression = null;
     Model _reference = sourceModel.getReference();
     boolean _equals = Objects.equal(_reference, null);
@@ -841,16 +841,16 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
    */
   private CharSequence createTargetModel(final Generator generator) {
     CharSequence _xifexpression = null;
-    TargetModelNodeType _targetModel = generator.getTargetModel();
+    TargetModel _targetModel = generator.getTargetModel();
     boolean _notEquals = (!Objects.equal(_targetModel, null));
     if (_notEquals) {
       CharSequence _xifexpression_1 = null;
-      TargetModelNodeType _targetModel_1 = generator.getTargetModel();
+      TargetModel _targetModel_1 = generator.getTargetModel();
       Model _reference = _targetModel_1.getReference();
       boolean _isCollectionType = ArchitectureTyping.isCollectionType(_reference);
       if (_isCollectionType) {
         StringConcatenation _builder = new StringConcatenation();
-        TargetModelNodeType _targetModel_2 = generator.getTargetModel();
+        TargetModel _targetModel_2 = generator.getTargetModel();
         Model _reference_1 = _targetModel_2.getReference();
         String _name = _reference_1.getName();
         _builder.append(_name, "");
@@ -858,7 +858,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
         _xifexpression_1 = _builder;
       } else {
         StringConcatenation _builder_1 = new StringConcatenation();
-        TargetModelNodeType _targetModel_3 = generator.getTargetModel();
+        TargetModel _targetModel_3 = generator.getTargetModel();
         Model _reference_2 = _targetModel_3.getReference();
         String _name_1 = _reference_2.getName();
         _builder_1.append(_name_1, "");

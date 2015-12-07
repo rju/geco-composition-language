@@ -4,7 +4,7 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 
@@ -48,7 +48,7 @@ public class GeneratorImpl extends FragmentImpl implements Generator
    * @generated
    * @ordered
    */
-  protected EList<SourceModelNodeSelector> sourceAuxModels;
+  protected EList<SourceModelSelector> sourceAuxModels;
 
   /**
    * The cached value of the '{@link #getTargetTraceModel() <em>Target Trace Model</em>}' containment reference.
@@ -96,11 +96,11 @@ public class GeneratorImpl extends FragmentImpl implements Generator
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<SourceModelNodeSelector> getSourceAuxModels()
+  public EList<SourceModelSelector> getSourceAuxModels()
   {
     if (sourceAuxModels == null)
     {
-      sourceAuxModels = new EObjectContainmentEList<SourceModelNodeSelector>(SourceModelNodeSelector.class, this, ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS);
+      sourceAuxModels = new EObjectContainmentEList<SourceModelSelector>(SourceModelSelector.class, this, ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS);
     }
     return sourceAuxModels;
   }
@@ -220,7 +220,7 @@ public class GeneratorImpl extends FragmentImpl implements Generator
     {
       case ArchitecturePackage.GENERATOR__SOURCE_AUX_MODELS:
         getSourceAuxModels().clear();
-        getSourceAuxModels().addAll((Collection<? extends SourceModelNodeSelector>)newValue);
+        getSourceAuxModels().addAll((Collection<? extends SourceModelSelector>)newValue);
         return;
       case ArchitecturePackage.GENERATOR__TARGET_TRACE_MODEL:
         setTargetTraceModel((TargetTraceModel)newValue);

@@ -42,7 +42,7 @@
         xsi:type="ecore:EReference"
         name="selector"
         lowerBound="1"
-        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//ModelNodeType"/>
+        eType="ecore:EClass ../../../../../../../../model/generated/Architecture.ecore#//ModelType"/>
     <eStructuralFeatures
         xsi:type="ecore:EReference"
         name="model"

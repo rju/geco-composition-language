@@ -12,12 +12,12 @@ import de.cau.cs.se.geco.architecture.architecture.IntLiteral
 import de.cau.cs.se.geco.architecture.architecture.Literal
 import de.cau.cs.se.geco.architecture.architecture.LogicOperator
 import de.cau.cs.se.geco.architecture.architecture.Model
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.ModelType
 import de.cau.cs.se.geco.architecture.architecture.Negation
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.TargetModel
 import de.cau.cs.se.geco.architecture.architecture.Typeof
 import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.framework.IGenerator
@@ -124,7 +124,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * If the property has a list type iterate over the property (one more for each).
 	 * If the property has a flat type only add the single value.
 	 */
-	private def createSelectorQuery(ModelNodeType type, String modelName) {
+	private def createSelectorQuery(ModelType type, String modelName) {
 		if (type.property == null)
 			'''«modelName».add(it)'''
 		else if (type.property.property.resolveType.isListType) {
@@ -176,7 +176,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 		switch (processor) {
 			Generator: processor.createGeneratorExecution(unit)
 			Weaver case processor.aspectModel instanceof Generator: processor.createWeaverGeneratorExecution(unit)
-			Weaver case processor.aspectModel instanceof TargetModelNodeType: processor.createWeaverExecution(unit)
+			Weaver case processor.aspectModel instanceof TargetModel: processor.createWeaverExecution(unit)
 		}
 	}
 	
@@ -201,7 +201,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 		/**
 	 * Create nested loops for a generator call.
 	 */
-	private def createSourceModelNesting(SourceModelNodeSelector sourceModel, Weaver weaver, Unit unit) {
+	private def createSourceModelNesting(SourceModelSelector sourceModel, Weaver weaver, Unit unit) {
 		if (sourceModel.reference == null) {
 			weaver.createWeaverCall(unit, 'null')
 		} else {
@@ -244,7 +244,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 		}
 	}
 		
-	private def valueReference(SourceModelNodeSelector selector) '''«selector.reference.name»«selector.property?.valueReference»'''
+	private def valueReference(SourceModelSelector selector) '''«selector.reference.name»«selector.property?.valueReference»'''
 	
 	// TODO this is insufficient for collections.
 	private def CharSequence valueReference(NodeProperty property) '''.«property.property.simpleName»«property.subProperty?.valueReference»'''
@@ -256,14 +256,14 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	/**
 	 * Prepare collections for auxiliary input.
 	 */
-	private def createSourceAuxModels(EList<SourceModelNodeSelector> sourceAuxModels) '''
+	private def createSourceAuxModels(EList<SourceModelSelector> sourceAuxModels) '''
 		«sourceAuxModels.indexed.map[it.value.createSourceAuxModel(it.key)].join»
 	'''
 	
 	/**
 	 * Create an initialization section for an auxiliary model collection.
 	 */
-	private def createSourceAuxModel(SourceModelNodeSelector sourceAuxModel, int i) {
+	private def createSourceAuxModel(SourceModelSelector sourceAuxModel, int i) {
 		if (sourceAuxModel.property == null) {
 			'''val aux«i» = «sourceAuxModel.reference.name»«sourceAuxModel.constraint.createConstraintFilter»''' 
 		} else { 
@@ -277,7 +277,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	/**
 	 * Create nested loops for a generator call.
 	 */
-	private def createSourceModelNesting(SourceModelNodeSelector sourceModel, Generator generator, Unit unit) {
+	private def createSourceModelNesting(SourceModelSelector sourceModel, Generator generator, Unit unit) {
 		if (sourceModel.reference == null) {
 			generator.createGeneratorCall('null')
 		} else {

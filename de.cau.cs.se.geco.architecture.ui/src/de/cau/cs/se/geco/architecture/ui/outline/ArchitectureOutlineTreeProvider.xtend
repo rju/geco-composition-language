@@ -3,7 +3,7 @@
 */
 package de.cau.cs.se.geco.architecture.ui.outline
 
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.ModelType
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
@@ -17,7 +17,7 @@ class ArchitectureOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
 	override protected createNode(IOutlineNode parent, EObject modelElement) {
 		switch(modelElement) {
-			ModelNodeType: {}
+			ModelType: {}
 			default: super.createNode(parent, modelElement)
 		}
 		

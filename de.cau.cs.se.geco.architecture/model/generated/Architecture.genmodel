@@ -58,28 +58,28 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Weaver/aspectModel"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//AspectModel"/>
-    <genClasses ecoreClass="Architecture.ecore#//SeparatePointcutAdviceModel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SeparatePointcutAdviceModel/pointcut"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SeparatePointcutAdviceModel/advice"/>
+    <genClasses ecoreClass="Architecture.ecore#//SeparateModels">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SeparateModels/pointcut"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SeparateModels/advice"/>
     </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//AdviceModel"/>
+    <genClasses ecoreClass="Architecture.ecore#//CombinedModel"/>
     <genClasses ecoreClass="Architecture.ecore#//Generator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/sourceAuxModels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/targetTraceModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//Generator/sourceTraceModels"/>
     </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//SourceModelNodeSelector">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelNodeSelector/reference"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelNodeSelector/constraint"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelNodeSelector/property"/>
+    <genClasses ecoreClass="Architecture.ecore#//SourceModelSelector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelSelector/reference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelSelector/constraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//SourceModelSelector/property"/>
     </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//TargetModelNodeType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//TargetModelNodeType/reference"/>
+    <genClasses ecoreClass="Architecture.ecore#//TargetModel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//TargetModel/reference"/>
     </genClasses>
-    <genClasses ecoreClass="Architecture.ecore#//ModelNodeType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelNodeType/property"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//ModelNodeType/collection"/>
+    <genClasses ecoreClass="Architecture.ecore#//ModelType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelType/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Architecture.ecore#//ModelType/property"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Architecture.ecore#//ModelType/collection"/>
     </genClasses>
     <genClasses ecoreClass="Architecture.ecore#//NodeProperty">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Architecture.ecore#//NodeProperty/property"/>

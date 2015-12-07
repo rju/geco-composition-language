@@ -7,10 +7,10 @@ import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
@@ -45,7 +45,7 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
       EList<Model> _models_1 = sequence.getModels();
       final Consumer<Model> _function_1 = (Model model) -> {
         final ModelDeclaration modeldeclaration = BoxingFactory.eINSTANCE.createModelDeclaration();
-        ModelNodeType _type = sequence.getType();
+        ModelType _type = sequence.getType();
         modeldeclaration.setSelector(_type);
         modeldeclaration.setModel(model);
         ModelModifier _modifier = sequence.getModifier();
@@ -288,17 +288,17 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   private Unit createGenerator(final Generator generator) {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
     result.setFragment(generator);
-    SourceModelNodeSelector _sourceModel = generator.getSourceModel();
+    SourceModelSelector _sourceModel = generator.getSourceModel();
     Model _reference = _sourceModel.getReference();
     boolean _notEquals = (!Objects.equal(_reference, null));
     if (_notEquals) {
       EList<Model> _sourceModels = result.getSourceModels();
-      SourceModelNodeSelector _sourceModel_1 = generator.getSourceModel();
+      SourceModelSelector _sourceModel_1 = generator.getSourceModel();
       Model _reference_1 = _sourceModel_1.getReference();
       _sourceModels.add(_reference_1);
     }
-    EList<SourceModelNodeSelector> _sourceAuxModels = generator.getSourceAuxModels();
-    final Consumer<SourceModelNodeSelector> _function = (SourceModelNodeSelector model) -> {
+    EList<SourceModelSelector> _sourceAuxModels = generator.getSourceAuxModels();
+    final Consumer<SourceModelSelector> _function = (SourceModelSelector model) -> {
       EList<Model> _sourceModels_1 = result.getSourceModels();
       Model _reference_2 = model.getReference();
       this.addUnique(_sourceModels_1, _reference_2);
@@ -307,7 +307,7 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     EList<TraceModel> _sourceTraceModels = result.getSourceTraceModels();
     EList<TraceModelReference> _sourceTraceModels_1 = generator.getSourceTraceModels();
     this.addAllUnique(_sourceTraceModels, _sourceTraceModels_1);
-    TargetModelNodeType _targetModel = generator.getTargetModel();
+    TargetModel _targetModel = generator.getTargetModel();
     Model _reference_2 = _targetModel.getReference();
     result.setTargetModel(_reference_2);
     TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
@@ -342,11 +342,11 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     AspectModel _aspectModel = weaver.getAspectModel();
     final Generator generator = ((Generator) _aspectModel);
     EList<Model> _sourceModels = result.getSourceModels();
-    SourceModelNodeSelector _sourceModel = generator.getSourceModel();
+    SourceModelSelector _sourceModel = generator.getSourceModel();
     Model _reference = _sourceModel.getReference();
     _sourceModels.add(_reference);
-    EList<SourceModelNodeSelector> _sourceAuxModels = generator.getSourceAuxModels();
-    final Consumer<SourceModelNodeSelector> _function = (SourceModelNodeSelector model) -> {
+    EList<SourceModelSelector> _sourceAuxModels = generator.getSourceAuxModels();
+    final Consumer<SourceModelSelector> _function = (SourceModelSelector model) -> {
       EList<Model> _sourceModels_1 = result.getSourceModels();
       Model _reference_1 = model.getReference();
       this.addUnique(_sourceModels_1, _reference_1);
@@ -355,7 +355,7 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     EList<TraceModel> _sourceTraceModels = result.getSourceTraceModels();
     EList<TraceModelReference> _sourceTraceModels_1 = generator.getSourceTraceModels();
     this.addAllUnique(_sourceTraceModels, _sourceTraceModels_1);
-    SourceModelNodeSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+    SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
     Model _reference_1 = _resolveWeaverSourceModel.getReference();
     result.setTargetModel(_reference_1);
     EList<Model> _sourceModels_1 = result.getSourceModels();
@@ -391,14 +391,14 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
     result.setFragment(weaver);
     EList<Model> _sourceModels = result.getSourceModels();
-    SourceModelNodeSelector _sourceModel = weaver.getSourceModel();
+    SourceModelSelector _sourceModel = weaver.getSourceModel();
     Model _reference = _sourceModel.getReference();
     _sourceModels.add(_reference);
     EList<Model> _sourceModels_1 = result.getSourceModels();
     AspectModel _aspectModel = weaver.getAspectModel();
-    Model _reference_1 = ((TargetModelNodeType) _aspectModel).getReference();
+    Model _reference_1 = ((TargetModel) _aspectModel).getReference();
     _sourceModels_1.add(_reference_1);
-    SourceModelNodeSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+    SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
     Model _reference_2 = _resolveWeaverSourceModel.getReference();
     result.setTargetModel(_reference_2);
     result.setTargetTraceModel(null);

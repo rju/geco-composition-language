@@ -23,15 +23,15 @@ import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.ModelType
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import de.cau.cs.se.geco.architecture.architecture.NodeType
 import de.cau.cs.se.geco.architecture.architecture.Typeof
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass
 import de.cau.cs.se.geco.architecture.architecture.Import
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.TargetModel
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence
@@ -57,10 +57,10 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			Generator case reference.name.equals("readTraceModels"),
 			TraceModelReference,
 			Import,
-			ModelNodeType,
+			ModelType,
 			RegisteredRootClass,
-			SourceModelNodeSelector,
-			TargetModelNodeType: delegate.getScope(context, reference)
+			SourceModelSelector,
+			TargetModel: delegate.getScope(context, reference)
 			// default scope, prints out node type and reference. Should not be called.
 			// Development and debugging helper
 			default: {
@@ -79,9 +79,9 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 	 */
 	private def IScope createPropertyScope(EObject container, EReference reference) {
 		switch(container) {
-			ModelNodeType: container.target.importedNamespace.createJvmDeclaredTypeScope(reference)
+			ModelType: container.target.importedNamespace.createJvmDeclaredTypeScope(reference)
 			NodeProperty: (container.property as JvmOperation).returnType.type.createJvmDeclaredTypeScope(reference)
-			SourceModelNodeSelector: {
+			SourceModelSelector: {
 				val genericType = (container.reference.eContainer as ModelSequence).type.resolveType.determineElementType
 				// TODO this must be converted into a typing method
 				if (container.constraint != null) {
@@ -187,7 +187,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 		val container = type.eContainer
 		switch (container) {
 			NodeProperty: return container.property.resolveType.determineElementType
-			SourceModelNodeSelector: return container.reference.resolveType.determineElementType
+			SourceModelSelector: return container.reference.resolveType.determineElementType
 			case null : throw new Exception("Corrupted model: Cannot find NodeProperty or SourceModelNodeSelector context.")
 			default: type.eContainer.metaModelContextNode
 		}

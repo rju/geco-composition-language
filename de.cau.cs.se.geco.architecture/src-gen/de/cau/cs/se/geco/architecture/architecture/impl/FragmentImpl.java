@@ -4,8 +4,8 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -53,7 +53,7 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
    * @generated
    * @ordered
    */
-  protected SourceModelNodeSelector sourceModel;
+  protected SourceModelSelector sourceModel;
 
   /**
    * The cached value of the '{@link #getTargetModel() <em>Target Model</em>}' containment reference.
@@ -63,7 +63,7 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
    * @generated
    * @ordered
    */
-  protected TargetModelNodeType targetModel;
+  protected TargetModel targetModel;
 
   /**
    * <!-- begin-user-doc -->
@@ -134,7 +134,7 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
    * <!-- end-user-doc -->
    * @generated
    */
-  public SourceModelNodeSelector getSourceModel()
+  public SourceModelSelector getSourceModel()
   {
     return sourceModel;
   }
@@ -144,9 +144,9 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetSourceModel(SourceModelNodeSelector newSourceModel, NotificationChain msgs)
+  public NotificationChain basicSetSourceModel(SourceModelSelector newSourceModel, NotificationChain msgs)
   {
-    SourceModelNodeSelector oldSourceModel = sourceModel;
+    SourceModelSelector oldSourceModel = sourceModel;
     sourceModel = newSourceModel;
     if (eNotificationRequired())
     {
@@ -161,7 +161,7 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSourceModel(SourceModelNodeSelector newSourceModel)
+  public void setSourceModel(SourceModelSelector newSourceModel)
   {
     if (newSourceModel != sourceModel)
     {
@@ -182,7 +182,7 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
    * <!-- end-user-doc -->
    * @generated
    */
-  public TargetModelNodeType getTargetModel()
+  public TargetModel getTargetModel()
   {
     return targetModel;
   }
@@ -192,9 +192,9 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetTargetModel(TargetModelNodeType newTargetModel, NotificationChain msgs)
+  public NotificationChain basicSetTargetModel(TargetModel newTargetModel, NotificationChain msgs)
   {
-    TargetModelNodeType oldTargetModel = targetModel;
+    TargetModel oldTargetModel = targetModel;
     targetModel = newTargetModel;
     if (eNotificationRequired())
     {
@@ -209,7 +209,7 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTargetModel(TargetModelNodeType newTargetModel)
+  public void setTargetModel(TargetModel newTargetModel)
   {
     if (newTargetModel != targetModel)
     {
@@ -278,10 +278,10 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
         setReference((JvmType)newValue);
         return;
       case ArchitecturePackage.FRAGMENT__SOURCE_MODEL:
-        setSourceModel((SourceModelNodeSelector)newValue);
+        setSourceModel((SourceModelSelector)newValue);
         return;
       case ArchitecturePackage.FRAGMENT__TARGET_MODEL:
-        setTargetModel((TargetModelNodeType)newValue);
+        setTargetModel((TargetModel)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -301,10 +301,10 @@ public class FragmentImpl extends MinimalEObjectImpl.Container implements Fragme
         setReference((JvmType)null);
         return;
       case ArchitecturePackage.FRAGMENT__SOURCE_MODEL:
-        setSourceModel((SourceModelNodeSelector)null);
+        setSourceModel((SourceModelSelector)null);
         return;
       case ArchitecturePackage.FRAGMENT__TARGET_MODEL:
-        setTargetModel((TargetModelNodeType)null);
+        setTargetModel((TargetModel)null);
         return;
     }
     super.eUnset(featureID);

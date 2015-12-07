@@ -11,14 +11,14 @@ import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
 import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
@@ -125,7 +125,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         }
       }
       if (!_matched) {
-        if (context instanceof ModelNodeType) {
+        if (context instanceof ModelType) {
           _matched=true;
         }
       }
@@ -135,12 +135,12 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         }
       }
       if (!_matched) {
-        if (context instanceof SourceModelNodeSelector) {
+        if (context instanceof SourceModelSelector) {
           _matched=true;
         }
       }
       if (!_matched) {
-        if (context instanceof TargetModelNodeType) {
+        if (context instanceof TargetModel) {
           _matched=true;
         }
       }
@@ -171,9 +171,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
     IScope _switchResult = null;
     boolean _matched = false;
     if (!_matched) {
-      if (container instanceof ModelNodeType) {
+      if (container instanceof ModelType) {
         _matched=true;
-        RegisteredRootClass _target = ((ModelNodeType)container).getTarget();
+        RegisteredRootClass _target = ((ModelType)container).getTarget();
         JvmType _importedNamespace = _target.getImportedNamespace();
         _switchResult = this.createJvmDeclaredTypeScope(_importedNamespace, reference);
       }
@@ -188,19 +188,19 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       }
     }
     if (!_matched) {
-      if (container instanceof SourceModelNodeSelector) {
+      if (container instanceof SourceModelSelector) {
         _matched=true;
-        Model _reference = ((SourceModelNodeSelector)container).getReference();
+        Model _reference = ((SourceModelSelector)container).getReference();
         EObject _eContainer = _reference.eContainer();
-        ModelNodeType _type = ((ModelSequence) _eContainer).getType();
+        ModelType _type = ((ModelSequence) _eContainer).getType();
         JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_type);
         final JvmType genericType = ArchitectureTyping.determineElementType(_resolveType);
-        ConstraintExpression _constraint = ((SourceModelNodeSelector)container).getConstraint();
+        ConstraintExpression _constraint = ((SourceModelSelector)container).getConstraint();
         boolean _notEquals = (!Objects.equal(_constraint, null));
         if (_notEquals) {
-          ConstraintExpression _constraint_1 = ((SourceModelNodeSelector)container).getConstraint();
+          ConstraintExpression _constraint_1 = ((SourceModelSelector)container).getConstraint();
           if ((_constraint_1 instanceof Typeof)) {
-            ConstraintExpression _constraint_2 = ((SourceModelNodeSelector)container).getConstraint();
+            ConstraintExpression _constraint_2 = ((SourceModelSelector)container).getConstraint();
             JvmType _type_1 = ((Typeof) _constraint_2).getType();
             return this.createJvmDeclaredTypeScope(_type_1, reference);
           }
@@ -287,11 +287,11 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       };
       boolean _exists = IterableExtensions.<NodeType>exists(_sourceNodes, _function);
       if (_exists) {
-        SourceModelNodeSelector _sourceModel = generator.getSourceModel();
+        SourceModelSelector _sourceModel = generator.getSourceModel();
         Model _reference = _sourceModel.getReference();
         boolean _notEquals = (!Objects.equal(_reference, null));
         if (_notEquals) {
-          SourceModelNodeSelector _sourceModel_1 = generator.getSourceModel();
+          SourceModelSelector _sourceModel_1 = generator.getSourceModel();
           Model _reference_1 = _sourceModel_1.getReference();
           JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference_1);
           JvmType _determineElementType = ArchitectureTyping.determineElementType(_resolveType);
@@ -304,14 +304,14 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         }
       } else {
         IScope _xifexpression_1 = null;
-        TargetModelNodeType _targetModel = generator.getTargetModel();
+        TargetModel _targetModel = generator.getTargetModel();
         boolean _equals = Objects.equal(_targetModel, null);
         if (_equals) {
           IScope _xifexpression_2 = null;
           EObject _eContainer_1 = generator.eContainer();
           if ((_eContainer_1 instanceof Weaver)) {
             EObject _eContainer_2 = generator.eContainer();
-            final SourceModelNodeSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(((Weaver) _eContainer_2));
+            final SourceModelSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(((Weaver) _eContainer_2));
             boolean _notEquals_1 = (!Objects.equal(sourceModel, null));
             if (_notEquals_1) {
               Model _reference_2 = sourceModel.getReference();
@@ -329,7 +329,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
           }
           _xifexpression_1 = _xifexpression_2;
         } else {
-          TargetModelNodeType _targetModel_1 = generator.getTargetModel();
+          TargetModel _targetModel_1 = generator.getTargetModel();
           Model _reference_3 = _targetModel_1.getReference();
           JvmTypeReference _resolveType_2 = ArchitectureTyping.resolveType(_reference_3);
           JvmType _determineElementType_2 = ArchitectureTyping.determineElementType(_resolveType_2);
@@ -414,9 +414,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
           }
         }
         if (!_matched) {
-          if (container instanceof SourceModelNodeSelector) {
+          if (container instanceof SourceModelSelector) {
             _matched=true;
-            Model _reference = ((SourceModelNodeSelector)container).getReference();
+            Model _reference = ((SourceModelSelector)container).getReference();
             JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference);
             return ArchitectureTyping.determineElementType(_resolveType);
           }

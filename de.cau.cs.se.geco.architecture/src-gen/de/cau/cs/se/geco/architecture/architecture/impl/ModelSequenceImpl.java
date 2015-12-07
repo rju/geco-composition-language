@@ -5,8 +5,8 @@ package de.cau.cs.se.geco.architecture.architecture.impl;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 
 import java.util.Collection;
 
@@ -69,7 +69,7 @@ public class ModelSequenceImpl extends MinimalEObjectImpl.Container implements M
    * @generated
    * @ordered
    */
-  protected ModelNodeType type;
+  protected ModelType type;
 
   /**
    * The cached value of the '{@link #getModels() <em>Models</em>}' containment reference list.
@@ -130,7 +130,7 @@ public class ModelSequenceImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelNodeType getType()
+  public ModelType getType()
   {
     return type;
   }
@@ -140,9 +140,9 @@ public class ModelSequenceImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(ModelNodeType newType, NotificationChain msgs)
+  public NotificationChain basicSetType(ModelType newType, NotificationChain msgs)
   {
-    ModelNodeType oldType = type;
+    ModelType oldType = type;
     type = newType;
     if (eNotificationRequired())
     {
@@ -157,7 +157,7 @@ public class ModelSequenceImpl extends MinimalEObjectImpl.Container implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(ModelNodeType newType)
+  public void setType(ModelType newType)
   {
     if (newType != type)
     {
@@ -240,7 +240,7 @@ public class ModelSequenceImpl extends MinimalEObjectImpl.Container implements M
         setModifier((ModelModifier)newValue);
         return;
       case ArchitecturePackage.MODEL_SEQUENCE__TYPE:
-        setType((ModelNodeType)newValue);
+        setType((ModelType)newValue);
         return;
       case ArchitecturePackage.MODEL_SEQUENCE__MODELS:
         getModels().clear();
@@ -264,7 +264,7 @@ public class ModelSequenceImpl extends MinimalEObjectImpl.Container implements M
         setModifier(MODIFIER_EDEFAULT);
         return;
       case ArchitecturePackage.MODEL_SEQUENCE__TYPE:
-        setType((ModelNodeType)null);
+        setType((ModelType)null);
         return;
       case ArchitecturePackage.MODEL_SEQUENCE__MODELS:
         getModels().clear();

@@ -4,8 +4,7 @@ package de.cau.cs.se.geco.architecture.model.boxing;
 
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
-
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -36,12 +35,12 @@ public interface ModelDeclaration extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Selector</em>' reference.
-	 * @see #setSelector(ModelNodeType)
+	 * @see #setSelector(ModelType)
 	 * @see de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage#getModelDeclaration_Selector()
 	 * @model required="true"
 	 * @generated
 	 */
-	ModelNodeType getSelector();
+	ModelType getSelector();
 
 	/**
 	 * Sets the value of the '{@link de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration#getSelector <em>Selector</em>}' reference.
@@ -51,7 +50,7 @@ public interface ModelDeclaration extends EObject {
 	 * @see #getSelector()
 	 * @generated
 	 */
-	void setSelector(ModelNodeType value);
+	void setSelector(ModelType value);
 
 	/**
 	 * Returns the value of the '<em><b>Model</b></em>' reference.

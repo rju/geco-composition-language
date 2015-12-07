@@ -25,7 +25,7 @@ import de.cau.cs.se.geco.architecture.architecture.Generator
 import de.cau.cs.se.geco.architecture.architecture.Model
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence
 import de.cau.cs.se.geco.architecture.architecture.GecoModel
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.TargetModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 import de.cau.cs.se.geco.architecture.architecture.Weaver
@@ -41,8 +41,8 @@ import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping
 import de.cau.cs.kieler.klay.layered.properties.Properties
 import de.cau.cs.kieler.klighd.SynthesisOption
 import com.google.common.collect.ImmutableList
-import de.cau.cs.se.geco.architecture.architecture.AdviceModel
-import de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel
+import de.cau.cs.se.geco.architecture.architecture.CombinedModel
+import de.cau.cs.se.geco.architecture.architecture.SeparateModels
 import de.cau.cs.se.geco.architecture.architecture.AspectModel
 import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
 import de.cau.cs.kieler.kiml.options.NodeLabelPlacement
@@ -153,9 +153,9 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		
     	/** advice/aspect model node */
     	switch (weaver.aspectModel) {
-    		AdviceModel : createAdviceModelEdgeForWeaver(weaver.aspectModel as AdviceModel, weaverNode)
-    		SeparatePointcutAdviceModel : 
-    			createPointcutModelEdgeForWeaver(weaver.aspectModel as SeparatePointcutAdviceModel, weaverNode)
+    		CombinedModel : createAdviceModelEdgeForWeaver(weaver.aspectModel as CombinedModel, weaverNode)
+    		SeparateModels : 
+    			createPointcutModelEdgeForWeaver(weaver.aspectModel as SeparateModels, weaverNode)
     	}
     	
 	}
@@ -195,10 +195,10 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	/**
 	 * create an edge between weaver and advice or aspect model.
 	 */
-	private def createAdviceModelEdgeForWeaver(AdviceModel adviceModel, KNode weaverNode) {
+	private def createAdviceModelEdgeForWeaver(CombinedModel adviceModel, KNode weaverNode) {
     	val aspectModelNode = switch(adviceModel) {
-    		TargetModelNodeType : modelNodes.get((adviceModel as TargetModelNodeType).reference)
-    		Generator: targetGeneratorModelNodes.get((adviceModel as Generator))
+    		TargetModel : modelNodes.get(adviceModel.reference)
+    		Generator: targetGeneratorModelNodes.get(adviceModel)
     	}
     	    	
     	drawConnectionWithArrow(aspectModelNode, weaverNode, LineStyle.SOLID) => [
@@ -211,7 +211,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	/**
 	 * create an edge between weaver and advice or aspect model.
 	 */
-	private def createPointcutModelEdgeForWeaver(SeparatePointcutAdviceModel separatePointcutAdviceModel, KNode weaverNode) {
+	private def createPointcutModelEdgeForWeaver(SeparateModels separatePointcutAdviceModel, KNode weaverNode) {
    		val pointcutModelNode = modelNodes.get(separatePointcutAdviceModel.pointcut.reference)
     	
 	    drawConnectionWithArrow(pointcutModelNode, weaverNode, LineStyle.SOLID) => [
@@ -287,7 +287,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	private def void createSublevelGenerator(AspectModel aspectModel, KNode parent) {
 		switch (aspectModel) {
 			Generator: aspectModel.createSublevelGenerator(parent)
-			SeparatePointcutAdviceModel : aspectModel.advice.createSublevelGenerator(parent)
+			SeparateModels : aspectModel.advice.createSublevelGenerator(parent)
 		}        		
 	}
 	

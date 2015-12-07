@@ -1,6 +1,6 @@
 package de.cau.cs.se.geco.architecture.typing
 
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.ModelType
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.common.types.JvmType
@@ -10,7 +10,7 @@ import de.cau.cs.se.geco.architecture.architecture.Model
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence
 import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.architecture.GecoModel
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector
 import de.cau.cs.se.geco.architecture.architecture.Typeof
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint
@@ -23,12 +23,12 @@ import org.eclipse.xtext.common.types.JvmVoid
 import java.util.HashMap
 import java.util.Map
 import org.eclipse.xtext.common.types.TypesFactory
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.TargetModel
 
 class ArchitectureTyping {
 	
 	
-	def dispatch static JvmTypeReference resolveType(SourceModelNodeSelector selector) {
+	def dispatch static JvmTypeReference resolveType(SourceModelSelector selector) {
 		if (selector.property != null)
 			return selector.property.resolveType
 		else {
@@ -53,7 +53,7 @@ class ArchitectureTyping {
 		(model.eContainer as ModelSequence).type.resolveType
 	}
 	
-	def dispatch static JvmTypeReference resolveType(ModelNodeType type) {
+	def dispatch static JvmTypeReference resolveType(ModelType type) {
 		val result = if (type.property == null)
 			type.target.importedNamespace.resolveType
 		else
@@ -85,8 +85,8 @@ class ArchitectureTyping {
 			property.subProperty.resolveType
 	}
 	
-	def dispatch static JvmTypeReference resolveType(TargetModelNodeType type) {
-		type.reference?.resolveType
+	def dispatch static JvmTypeReference resolveType(TargetModel model) {
+		model.reference?.resolveType
 	}
 	
 	def dispatch static JvmTypeReference resolveType(JvmOperation operation) {
@@ -282,7 +282,7 @@ class ArchitectureTyping {
 	/**
 	 * Resolve the source model reference of the weaver instance.
 	 */
-	def static SourceModelNodeSelector resolveWeaverSourceModel(Weaver weaver) {
+	def static SourceModelSelector resolveWeaverSourceModel(Weaver weaver) {
 		if (weaver.sourceModel != null)
 			weaver.sourceModel
 		else 

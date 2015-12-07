@@ -115,14 +115,14 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createAspectModelAdapter();
       }
       @Override
-      public Adapter caseSeparatePointcutAdviceModel(SeparatePointcutAdviceModel object)
+      public Adapter caseSeparateModels(SeparateModels object)
       {
-        return createSeparatePointcutAdviceModelAdapter();
+        return createSeparateModelsAdapter();
       }
       @Override
-      public Adapter caseAdviceModel(AdviceModel object)
+      public Adapter caseCombinedModel(CombinedModel object)
       {
-        return createAdviceModelAdapter();
+        return createCombinedModelAdapter();
       }
       @Override
       public Adapter caseGenerator(Generator object)
@@ -130,19 +130,19 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createGeneratorAdapter();
       }
       @Override
-      public Adapter caseSourceModelNodeSelector(SourceModelNodeSelector object)
+      public Adapter caseSourceModelSelector(SourceModelSelector object)
       {
-        return createSourceModelNodeSelectorAdapter();
+        return createSourceModelSelectorAdapter();
       }
       @Override
-      public Adapter caseTargetModelNodeType(TargetModelNodeType object)
+      public Adapter caseTargetModel(TargetModel object)
       {
-        return createTargetModelNodeTypeAdapter();
+        return createTargetModelAdapter();
       }
       @Override
-      public Adapter caseModelNodeType(ModelNodeType object)
+      public Adapter caseModelType(ModelType object)
       {
-        return createModelNodeTypeAdapter();
+        return createModelTypeAdapter();
       }
       @Override
       public Adapter caseNodeProperty(NodeProperty object)
@@ -382,31 +382,31 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel <em>Separate Pointcut Advice Model</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.SeparateModels <em>Separate Models</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel
+   * @see de.cau.cs.se.geco.architecture.architecture.SeparateModels
    * @generated
    */
-  public Adapter createSeparatePointcutAdviceModelAdapter()
+  public Adapter createSeparateModelsAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.AdviceModel <em>Advice Model</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.CombinedModel <em>Combined Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.AdviceModel
+   * @see de.cau.cs.se.geco.architecture.architecture.CombinedModel
    * @generated
    */
-  public Adapter createAdviceModelAdapter()
+  public Adapter createCombinedModelAdapter()
   {
     return null;
   }
@@ -427,46 +427,46 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector <em>Source Model Node Selector</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelSelector <em>Source Model Selector</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelSelector
    * @generated
    */
-  public Adapter createSourceModelNodeSelectorAdapter()
+  public Adapter createSourceModelSelectorAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType <em>Target Model Node Type</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.TargetModel <em>Target Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetModel
    * @generated
    */
-  public Adapter createTargetModelNodeTypeAdapter()
+  public Adapter createTargetModelAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType <em>Model Node Type</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.ModelType <em>Model Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelType
    * @generated
    */
-  public Adapter createModelNodeTypeAdapter()
+  public Adapter createModelTypeAdapter()
   {
     return null;
   }

@@ -399,14 +399,14 @@ public interface ArchitecturePackage extends EPackage
   int ASPECT_MODEL_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SeparatePointcutAdviceModelImpl <em>Separate Pointcut Advice Model</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SeparateModelsImpl <em>Separate Models</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.SeparatePointcutAdviceModelImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSeparatePointcutAdviceModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.SeparateModelsImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSeparateModels()
    * @generated
    */
-  int SEPARATE_POINTCUT_ADVICE_MODEL = 8;
+  int SEPARATE_MODELS = 8;
 
   /**
    * The feature id for the '<em><b>Pointcut</b></em>' containment reference.
@@ -415,7 +415,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int SEPARATE_POINTCUT_ADVICE_MODEL__POINTCUT = ASPECT_MODEL_FEATURE_COUNT + 0;
+  int SEPARATE_MODELS__POINTCUT = ASPECT_MODEL_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Advice</b></em>' containment reference.
@@ -424,35 +424,35 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int SEPARATE_POINTCUT_ADVICE_MODEL__ADVICE = ASPECT_MODEL_FEATURE_COUNT + 1;
+  int SEPARATE_MODELS__ADVICE = ASPECT_MODEL_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Separate Pointcut Advice Model</em>' class.
+   * The number of structural features of the '<em>Separate Models</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SEPARATE_POINTCUT_ADVICE_MODEL_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 2;
+  int SEPARATE_MODELS_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AdviceModelImpl <em>Advice Model</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.CombinedModelImpl <em>Combined Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.AdviceModelImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getAdviceModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.CombinedModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getCombinedModel()
    * @generated
    */
-  int ADVICE_MODEL = 9;
+  int COMBINED_MODEL = 9;
 
   /**
-   * The number of structural features of the '<em>Advice Model</em>' class.
+   * The number of structural features of the '<em>Combined Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADVICE_MODEL_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 0;
+  int COMBINED_MODEL_FEATURE_COUNT = ASPECT_MODEL_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl <em>Generator</em>}' class.
@@ -528,14 +528,14 @@ public interface ArchitecturePackage extends EPackage
   int GENERATOR_FEATURE_COUNT = FRAGMENT_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelSelectorImpl <em>Source Model Selector</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceModelNodeSelector()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceModelSelectorImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceModelSelector()
    * @generated
    */
-  int SOURCE_MODEL_NODE_SELECTOR = 11;
+  int SOURCE_MODEL_SELECTOR = 11;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -544,7 +544,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int SOURCE_MODEL_NODE_SELECTOR__REFERENCE = 0;
+  int SOURCE_MODEL_SELECTOR__REFERENCE = 0;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -553,7 +553,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT = 1;
+  int SOURCE_MODEL_SELECTOR__CONSTRAINT = 1;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' containment reference.
@@ -562,26 +562,26 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int SOURCE_MODEL_NODE_SELECTOR__PROPERTY = 2;
+  int SOURCE_MODEL_SELECTOR__PROPERTY = 2;
 
   /**
-   * The number of structural features of the '<em>Source Model Node Selector</em>' class.
+   * The number of structural features of the '<em>Source Model Selector</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SOURCE_MODEL_NODE_SELECTOR_FEATURE_COUNT = 3;
+  int SOURCE_MODEL_SELECTOR_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl <em>Target Model Node Type</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelImpl <em>Target Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetModelNodeType()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetModelImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetModel()
    * @generated
    */
-  int TARGET_MODEL_NODE_TYPE = 12;
+  int TARGET_MODEL = 12;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -590,26 +590,26 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_NODE_TYPE__REFERENCE = ADVICE_MODEL_FEATURE_COUNT + 0;
+  int TARGET_MODEL__REFERENCE = COMBINED_MODEL_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Target Model Node Type</em>' class.
+   * The number of structural features of the '<em>Target Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TARGET_MODEL_NODE_TYPE_FEATURE_COUNT = ADVICE_MODEL_FEATURE_COUNT + 1;
+  int TARGET_MODEL_FEATURE_COUNT = COMBINED_MODEL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl <em>Model Node Type</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelTypeImpl <em>Model Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelNodeType()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelTypeImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelType()
    * @generated
    */
-  int MODEL_NODE_TYPE = 13;
+  int MODEL_TYPE = 13;
 
   /**
    * The feature id for the '<em><b>Target</b></em>' reference.
@@ -618,7 +618,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_NODE_TYPE__TARGET = 0;
+  int MODEL_TYPE__TARGET = 0;
 
   /**
    * The feature id for the '<em><b>Property</b></em>' containment reference.
@@ -627,7 +627,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_NODE_TYPE__PROPERTY = 1;
+  int MODEL_TYPE__PROPERTY = 1;
 
   /**
    * The feature id for the '<em><b>Collection</b></em>' attribute.
@@ -636,16 +636,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_NODE_TYPE__COLLECTION = 2;
+  int MODEL_TYPE__COLLECTION = 2;
 
   /**
-   * The number of structural features of the '<em>Model Node Type</em>' class.
+   * The number of structural features of the '<em>Model Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_NODE_TYPE_FEATURE_COUNT = 3;
+  int MODEL_TYPE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ConstraintExpressionImpl <em>Constraint Expression</em>}' class.
@@ -1966,46 +1966,46 @@ public interface ArchitecturePackage extends EPackage
   EClass getAspectModel();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel <em>Separate Pointcut Advice Model</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.SeparateModels <em>Separate Models</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Separate Pointcut Advice Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel
+   * @return the meta object for class '<em>Separate Models</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SeparateModels
    * @generated
    */
-  EClass getSeparatePointcutAdviceModel();
+  EClass getSeparateModels();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel#getPointcut <em>Pointcut</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SeparateModels#getPointcut <em>Pointcut</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Pointcut</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel#getPointcut()
-   * @see #getSeparatePointcutAdviceModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.SeparateModels#getPointcut()
+   * @see #getSeparateModels()
    * @generated
    */
-  EReference getSeparatePointcutAdviceModel_Pointcut();
+  EReference getSeparateModels_Pointcut();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel#getAdvice <em>Advice</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SeparateModels#getAdvice <em>Advice</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Advice</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel#getAdvice()
-   * @see #getSeparatePointcutAdviceModel()
+   * @see de.cau.cs.se.geco.architecture.architecture.SeparateModels#getAdvice()
+   * @see #getSeparateModels()
    * @generated
    */
-  EReference getSeparatePointcutAdviceModel_Advice();
+  EReference getSeparateModels_Advice();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.AdviceModel <em>Advice Model</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.CombinedModel <em>Combined Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Advice Model</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.AdviceModel
+   * @return the meta object for class '<em>Combined Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.CombinedModel
    * @generated
    */
-  EClass getAdviceModel();
+  EClass getCombinedModel();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Generator <em>Generator</em>}'.
@@ -2051,111 +2051,111 @@ public interface ArchitecturePackage extends EPackage
   EReference getGenerator_SourceTraceModels();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector <em>Source Model Node Selector</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelSelector <em>Source Model Selector</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Source Model Node Selector</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector
+   * @return the meta object for class '<em>Source Model Selector</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelSelector
    * @generated
    */
-  EClass getSourceModelNodeSelector();
+  EClass getSourceModelSelector();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getReference <em>Reference</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelSelector#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Reference</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getReference()
-   * @see #getSourceModelNodeSelector()
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelSelector#getReference()
+   * @see #getSourceModelSelector()
    * @generated
    */
-  EReference getSourceModelNodeSelector_Reference();
+  EReference getSourceModelSelector_Reference();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getConstraint <em>Constraint</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelSelector#getConstraint <em>Constraint</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Constraint</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getConstraint()
-   * @see #getSourceModelNodeSelector()
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelSelector#getConstraint()
+   * @see #getSourceModelSelector()
    * @generated
    */
-  EReference getSourceModelNodeSelector_Constraint();
+  EReference getSourceModelSelector_Constraint();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getProperty <em>Property</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.SourceModelSelector#getProperty <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Property</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector#getProperty()
-   * @see #getSourceModelNodeSelector()
+   * @see de.cau.cs.se.geco.architecture.architecture.SourceModelSelector#getProperty()
+   * @see #getSourceModelSelector()
    * @generated
    */
-  EReference getSourceModelNodeSelector_Property();
+  EReference getSourceModelSelector_Property();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType <em>Target Model Node Type</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TargetModel <em>Target Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Target Model Node Type</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+   * @return the meta object for class '<em>Target Model</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetModel
    * @generated
    */
-  EClass getTargetModelNodeType();
+  EClass getTargetModel();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getReference <em>Reference</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.TargetModel#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Reference</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType#getReference()
-   * @see #getTargetModelNodeType()
+   * @see de.cau.cs.se.geco.architecture.architecture.TargetModel#getReference()
+   * @see #getTargetModel()
    * @generated
    */
-  EReference getTargetModelNodeType_Reference();
+  EReference getTargetModel_Reference();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType <em>Model Node Type</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.ModelType <em>Model Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model Node Type</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType
+   * @return the meta object for class '<em>Model Type</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelType
    * @generated
    */
-  EClass getModelNodeType();
+  EClass getModelType();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget <em>Target</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelType#getTarget <em>Target</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Target</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getTarget()
-   * @see #getModelNodeType()
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelType#getTarget()
+   * @see #getModelType()
    * @generated
    */
-  EReference getModelNodeType_Target();
+  EReference getModelType_Target();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty <em>Property</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.geco.architecture.architecture.ModelType#getProperty <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Property</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType#getProperty()
-   * @see #getModelNodeType()
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelType#getProperty()
+   * @see #getModelType()
    * @generated
    */
-  EReference getModelNodeType_Property();
+  EReference getModelType_Property();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.ModelNodeType#isCollection <em>Collection</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.geco.architecture.architecture.ModelType#isCollection <em>Collection</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Collection</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.ModelNodeType#isCollection()
-   * @see #getModelNodeType()
+   * @see de.cau.cs.se.geco.architecture.architecture.ModelType#isCollection()
+   * @see #getModelType()
    * @generated
    */
-  EAttribute getModelNodeType_Collection();
+  EAttribute getModelType_Collection();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.NodeProperty <em>Node Property</em>}'.
@@ -2856,14 +2856,14 @@ public interface ArchitecturePackage extends EPackage
     EClass ASPECT_MODEL = eINSTANCE.getAspectModel();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SeparatePointcutAdviceModelImpl <em>Separate Pointcut Advice Model</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SeparateModelsImpl <em>Separate Models</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.SeparatePointcutAdviceModelImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSeparatePointcutAdviceModel()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.SeparateModelsImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSeparateModels()
      * @generated
      */
-    EClass SEPARATE_POINTCUT_ADVICE_MODEL = eINSTANCE.getSeparatePointcutAdviceModel();
+    EClass SEPARATE_MODELS = eINSTANCE.getSeparateModels();
 
     /**
      * The meta object literal for the '<em><b>Pointcut</b></em>' containment reference feature.
@@ -2871,7 +2871,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SEPARATE_POINTCUT_ADVICE_MODEL__POINTCUT = eINSTANCE.getSeparatePointcutAdviceModel_Pointcut();
+    EReference SEPARATE_MODELS__POINTCUT = eINSTANCE.getSeparateModels_Pointcut();
 
     /**
      * The meta object literal for the '<em><b>Advice</b></em>' containment reference feature.
@@ -2879,17 +2879,17 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SEPARATE_POINTCUT_ADVICE_MODEL__ADVICE = eINSTANCE.getSeparatePointcutAdviceModel_Advice();
+    EReference SEPARATE_MODELS__ADVICE = eINSTANCE.getSeparateModels_Advice();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.AdviceModelImpl <em>Advice Model</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.CombinedModelImpl <em>Combined Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.AdviceModelImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getAdviceModel()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.CombinedModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getCombinedModel()
      * @generated
      */
-    EClass ADVICE_MODEL = eINSTANCE.getAdviceModel();
+    EClass COMBINED_MODEL = eINSTANCE.getCombinedModel();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.GeneratorImpl <em>Generator</em>}' class.
@@ -2926,14 +2926,14 @@ public interface ArchitecturePackage extends EPackage
     EReference GENERATOR__SOURCE_TRACE_MODELS = eINSTANCE.getGenerator_SourceTraceModels();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl <em>Source Model Node Selector</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.SourceModelSelectorImpl <em>Source Model Selector</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceModelNodeSelectorImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceModelNodeSelector()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.SourceModelSelectorImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getSourceModelSelector()
      * @generated
      */
-    EClass SOURCE_MODEL_NODE_SELECTOR = eINSTANCE.getSourceModelNodeSelector();
+    EClass SOURCE_MODEL_SELECTOR = eINSTANCE.getSourceModelSelector();
 
     /**
      * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -2941,7 +2941,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SOURCE_MODEL_NODE_SELECTOR__REFERENCE = eINSTANCE.getSourceModelNodeSelector_Reference();
+    EReference SOURCE_MODEL_SELECTOR__REFERENCE = eINSTANCE.getSourceModelSelector_Reference();
 
     /**
      * The meta object literal for the '<em><b>Constraint</b></em>' containment reference feature.
@@ -2949,7 +2949,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT = eINSTANCE.getSourceModelNodeSelector_Constraint();
+    EReference SOURCE_MODEL_SELECTOR__CONSTRAINT = eINSTANCE.getSourceModelSelector_Constraint();
 
     /**
      * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
@@ -2957,17 +2957,17 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference SOURCE_MODEL_NODE_SELECTOR__PROPERTY = eINSTANCE.getSourceModelNodeSelector_Property();
+    EReference SOURCE_MODEL_SELECTOR__PROPERTY = eINSTANCE.getSourceModelSelector_Property();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl <em>Target Model Node Type</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetModelImpl <em>Target Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetModelNodeTypeImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetModelNodeType()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.TargetModelImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTargetModel()
      * @generated
      */
-    EClass TARGET_MODEL_NODE_TYPE = eINSTANCE.getTargetModelNodeType();
+    EClass TARGET_MODEL = eINSTANCE.getTargetModel();
 
     /**
      * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
@@ -2975,17 +2975,17 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TARGET_MODEL_NODE_TYPE__REFERENCE = eINSTANCE.getTargetModelNodeType_Reference();
+    EReference TARGET_MODEL__REFERENCE = eINSTANCE.getTargetModel_Reference();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl <em>Model Node Type</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.ModelTypeImpl <em>Model Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelNodeTypeImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelNodeType()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ModelTypeImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getModelType()
      * @generated
      */
-    EClass MODEL_NODE_TYPE = eINSTANCE.getModelNodeType();
+    EClass MODEL_TYPE = eINSTANCE.getModelType();
 
     /**
      * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -2993,7 +2993,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL_NODE_TYPE__TARGET = eINSTANCE.getModelNodeType_Target();
+    EReference MODEL_TYPE__TARGET = eINSTANCE.getModelType_Target();
 
     /**
      * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
@@ -3001,7 +3001,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL_NODE_TYPE__PROPERTY = eINSTANCE.getModelNodeType_Property();
+    EReference MODEL_TYPE__PROPERTY = eINSTANCE.getModelType_Property();
 
     /**
      * The meta object literal for the '<em><b>Collection</b></em>' attribute feature.
@@ -3009,7 +3009,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODEL_NODE_TYPE__COLLECTION = eINSTANCE.getModelNodeType_Collection();
+    EAttribute MODEL_TYPE__COLLECTION = eINSTANCE.getModelType_Collection();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.NodePropertyImpl <em>Node Property</em>}' class.

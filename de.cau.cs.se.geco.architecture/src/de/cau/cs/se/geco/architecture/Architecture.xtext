@@ -20,7 +20,7 @@ RegisteredRootClass:
 ;
 
 ModelSequence:
-	'model' modifier=ModelModifier type=ModelNodeType models+=Model (',' models+=Model)*
+	'model' modifier=ModelModifier type=ModelType models+=Model (',' models+=Model)*
 ;
 
 enum ModelModifier:
@@ -39,29 +39,29 @@ Fragment:
 
 Weaver:
 	'weave' reference=[types::JvmType|ID]  
-		(sourceModel=SourceModelNodeSelector|'link')
+		(sourceModel=SourceModelSelector|'link')
 		aspectModel=AspectModel
-		('=>' targetModel=TargetModelNodeType)?
+		('=>' targetModel=TargetModel)?
 ;
 
 AspectModel:
-	AdviceModel |
-	SeparatePointcutAdviceModel
+	CombinedModel |
+	SeparateModels
 ;
 
-SeparatePointcutAdviceModel:
-	'pointcut' pointcut=TargetModelNodeType 'advice' advice=AdviceModel
+SeparateModels:
+	'pointcut' pointcut=TargetModel 'advice' advice=CombinedModel
 ;
 
-AdviceModel:
-	TargetModelNodeType | Generator 
+CombinedModel:
+	TargetModel | Generator 
 ;
 	
 Generator:
 	'generate' reference=[types::JvmType|ID] 
-		('(' sourceAuxModels+=SourceModelNodeSelector (',' sourceAuxModels+=SourceModelNodeSelector)* ')')?
-		'source' sourceModel=SourceModelNodeSelector
-		('target' targetModel=TargetModelNodeType)?
+		('(' sourceAuxModels+=SourceModelSelector (',' sourceAuxModels+=SourceModelSelector)* ')')?
+		'source' sourceModel=SourceModelSelector
+		('target' targetModel=TargetModel)?
 		('trace'
 			('out' targetTraceModel=TargetTraceModel)?
 			('in' sourceTraceModels+=TraceModelReference (',' sourceTraceModels+=TraceModelReference)*)?
@@ -69,16 +69,16 @@ Generator:
 ;
 
 
-SourceModelNodeSelector: 
+SourceModelSelector: 
 	reference = [Model|ID]  ('[' constraint=ConstraintExpression ']')? ('/' property=NodeProperty)? | 
-	{SourceModelNodeSelector} 'null' 
+	{SourceModelSelector} 'null' 
 ;
 
-TargetModelNodeType: {TargetModelNodeType}
+TargetModel: {TargetModel}
 	(reference = [Model|ID])
 ;
 
-ModelNodeType:
+ModelType:
 	target=[RegisteredRootClass|ID] ('/' property=NodeProperty)? (collection?='[]')?
 ;
 

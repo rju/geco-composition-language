@@ -2,7 +2,7 @@ package de.cau.cs.se.geco.architecture.generator
 
 import de.cau.cs.se.geco.architecture.architecture.Generator
 import de.cau.cs.se.geco.architecture.architecture.GecoModel
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType
+import de.cau.cs.se.geco.architecture.architecture.TargetModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 import de.cau.cs.se.geco.architecture.architecture.Weaver
@@ -216,7 +216,7 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 		
 		result.fragment = weaver
 		result.sourceModels.add(weaver.sourceModel.reference)
-		result.sourceModels.add((weaver.aspectModel as TargetModelNodeType).reference)
+		result.sourceModels.add((weaver.aspectModel as TargetModel).reference)
 		result.targetModel = ArchitectureTyping.resolveWeaverSourceModel(weaver).reference
 		result.targetTraceModel = null
 		

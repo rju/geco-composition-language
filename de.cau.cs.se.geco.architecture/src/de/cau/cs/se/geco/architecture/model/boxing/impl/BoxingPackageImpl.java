@@ -420,7 +420,7 @@ public class BoxingPackageImpl extends EPackageImpl implements BoxingPackage {
 		initEReference(getBoxingModel_Models(), this.getModelDeclaration(), null, "models", null, 0, -1, BoxingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelDeclarationEClass, ModelDeclaration.class, "ModelDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModelDeclaration_Selector(), theArchitecturePackage.getModelNodeType(), null, "selector", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelDeclaration_Selector(), theArchitecturePackage.getModelType(), null, "selector", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModelDeclaration_Model(), theArchitecturePackage.getModel(), null, "model", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelDeclaration_Modifier(), theArchitecturePackage.getModelModifier(), "modifier", null, 1, 1, ModelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

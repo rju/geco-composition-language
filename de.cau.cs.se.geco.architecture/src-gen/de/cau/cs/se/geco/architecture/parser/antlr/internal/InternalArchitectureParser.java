@@ -862,7 +862,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModelSequence"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:324:1: ruleModelSequence returns [EObject current=null] : (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelNodeType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* ) ;
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:324:1: ruleModelSequence returns [EObject current=null] : (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* ) ;
     public final EObject ruleModelSequence() throws RecognitionException {
         EObject current = null;
 
@@ -880,11 +880,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:327:28: ( (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelNodeType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:1: (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelNodeType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:327:28: ( (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:1: (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:1: (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelNodeType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:3: otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelNodeType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )*
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:1: (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:3: otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )*
             {
             otherlv_0=(Token)match(input,18,FOLLOW_18_in_ruleModelSequence611); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -927,19 +927,19 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:350:2: ( (lv_type_2_0= ruleModelNodeType ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:351:1: (lv_type_2_0= ruleModelNodeType )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:350:2: ( (lv_type_2_0= ruleModelType ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:351:1: (lv_type_2_0= ruleModelType )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:351:1: (lv_type_2_0= ruleModelNodeType )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:352:3: lv_type_2_0= ruleModelNodeType
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:351:1: (lv_type_2_0= ruleModelType )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:352:3: lv_type_2_0= ruleModelType
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getModelSequenceAccess().getTypeModelNodeTypeParserRuleCall_2_0()); 
+              	        newCompositeNode(grammarAccess.getModelSequenceAccess().getTypeModelTypeParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleModelNodeType_in_ruleModelSequence653);
-            lv_type_2_0=ruleModelNodeType();
+            pushFollow(FOLLOW_ruleModelType_in_ruleModelSequence653);
+            lv_type_2_0=ruleModelType();
 
             state._fsp--;
             if (state.failed) return current;
@@ -952,7 +952,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"type",
                       		lv_type_2_0, 
-                      		"ModelNodeType");
+                      		"ModelType");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -1367,7 +1367,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWeaver"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:504:1: ruleWeaver returns [EObject current=null] : (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelNodeSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModelNodeType ) ) )? ) ;
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:504:1: ruleWeaver returns [EObject current=null] : (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? ) ;
     public final EObject ruleWeaver() throws RecognitionException {
         EObject current = null;
 
@@ -1385,11 +1385,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:507:28: ( (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelNodeSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModelNodeType ) ) )? ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:1: (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelNodeSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModelNodeType ) ) )? )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:507:28: ( (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:1: (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:1: (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelNodeSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModelNodeType ) ) )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:3: otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelNodeSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModelNodeType ) ) )?
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:1: (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:3: otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )?
             {
             otherlv_0=(Token)match(input,20,FOLLOW_20_in_ruleWeaver1003); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -1422,7 +1422,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:2: ( ( (lv_sourceModel_2_0= ruleSourceModelNodeSelector ) ) | otherlv_3= 'link' )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:2: ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1441,21 +1441,21 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt8) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:3: ( (lv_sourceModel_2_0= ruleSourceModelNodeSelector ) )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:3: ( (lv_sourceModel_2_0= ruleSourceModelSelector ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:3: ( (lv_sourceModel_2_0= ruleSourceModelNodeSelector ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:526:1: (lv_sourceModel_2_0= ruleSourceModelNodeSelector )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:3: ( (lv_sourceModel_2_0= ruleSourceModelSelector ) )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:526:1: (lv_sourceModel_2_0= ruleSourceModelSelector )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:526:1: (lv_sourceModel_2_0= ruleSourceModelNodeSelector )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:527:3: lv_sourceModel_2_0= ruleSourceModelNodeSelector
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:526:1: (lv_sourceModel_2_0= ruleSourceModelSelector )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:527:3: lv_sourceModel_2_0= ruleSourceModelSelector
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getWeaverAccess().getSourceModelSourceModelNodeSelectorParserRuleCall_2_0_0()); 
+                      	        newCompositeNode(grammarAccess.getWeaverAccess().getSourceModelSourceModelSelectorParserRuleCall_2_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleSourceModelNodeSelector_in_ruleWeaver1045);
-                    lv_sourceModel_2_0=ruleSourceModelNodeSelector();
+                    pushFollow(FOLLOW_ruleSourceModelSelector_in_ruleWeaver1045);
+                    lv_sourceModel_2_0=ruleSourceModelSelector();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -1468,7 +1468,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"sourceModel",
                               		lv_sourceModel_2_0, 
-                              		"SourceModelNodeSelector");
+                              		"SourceModelSelector");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -1531,7 +1531,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:566:2: (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModelNodeType ) ) )?
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:566:2: (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1540,7 +1540,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:566:4: otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModelNodeType ) )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:566:4: otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) )
                     {
                     otherlv_5=(Token)match(input,22,FOLLOW_22_in_ruleWeaver1098); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -1548,19 +1548,19 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                           	newLeafNode(otherlv_5, grammarAccess.getWeaverAccess().getEqualsSignGreaterThanSignKeyword_4_0());
                           
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:570:1: ( (lv_targetModel_6_0= ruleTargetModelNodeType ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:571:1: (lv_targetModel_6_0= ruleTargetModelNodeType )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:570:1: ( (lv_targetModel_6_0= ruleTargetModel ) )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:571:1: (lv_targetModel_6_0= ruleTargetModel )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:571:1: (lv_targetModel_6_0= ruleTargetModelNodeType )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:572:3: lv_targetModel_6_0= ruleTargetModelNodeType
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:571:1: (lv_targetModel_6_0= ruleTargetModel )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:572:3: lv_targetModel_6_0= ruleTargetModel
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getWeaverAccess().getTargetModelTargetModelNodeTypeParserRuleCall_4_1_0()); 
+                      	        newCompositeNode(grammarAccess.getWeaverAccess().getTargetModelTargetModelParserRuleCall_4_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTargetModelNodeType_in_ruleWeaver1119);
-                    lv_targetModel_6_0=ruleTargetModelNodeType();
+                    pushFollow(FOLLOW_ruleTargetModel_in_ruleWeaver1119);
+                    lv_targetModel_6_0=ruleTargetModel();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -1573,7 +1573,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"targetModel",
                               		lv_targetModel_6_0, 
-                              		"TargetModelNodeType");
+                              		"TargetModel");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -1652,22 +1652,22 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAspectModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:605:1: ruleAspectModel returns [EObject current=null] : (this_AdviceModel_0= ruleAdviceModel | this_SeparatePointcutAdviceModel_1= ruleSeparatePointcutAdviceModel ) ;
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:605:1: ruleAspectModel returns [EObject current=null] : (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels ) ;
     public final EObject ruleAspectModel() throws RecognitionException {
         EObject current = null;
 
-        EObject this_AdviceModel_0 = null;
+        EObject this_CombinedModel_0 = null;
 
-        EObject this_SeparatePointcutAdviceModel_1 = null;
+        EObject this_SeparateModels_1 = null;
 
 
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:608:28: ( (this_AdviceModel_0= ruleAdviceModel | this_SeparatePointcutAdviceModel_1= ruleSeparatePointcutAdviceModel ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:609:1: (this_AdviceModel_0= ruleAdviceModel | this_SeparatePointcutAdviceModel_1= ruleSeparatePointcutAdviceModel )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:608:28: ( (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:609:1: (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:609:1: (this_AdviceModel_0= ruleAdviceModel | this_SeparatePointcutAdviceModel_1= ruleSeparatePointcutAdviceModel )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:609:1: (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1686,21 +1686,21 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt10) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:610:5: this_AdviceModel_0= ruleAdviceModel
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:610:5: this_CombinedModel_0= ruleCombinedModel
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getAspectModelAccess().getAdviceModelParserRuleCall_0()); 
+                              newCompositeNode(grammarAccess.getAspectModelAccess().getCombinedModelParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleAdviceModel_in_ruleAspectModel1214);
-                    this_AdviceModel_0=ruleAdviceModel();
+                    pushFollow(FOLLOW_ruleCombinedModel_in_ruleAspectModel1214);
+                    this_CombinedModel_0=ruleCombinedModel();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
                        
-                              current = this_AdviceModel_0; 
+                              current = this_CombinedModel_0; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -1708,21 +1708,21 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:620:5: this_SeparatePointcutAdviceModel_1= ruleSeparatePointcutAdviceModel
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:620:5: this_SeparateModels_1= ruleSeparateModels
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getAspectModelAccess().getSeparatePointcutAdviceModelParserRuleCall_1()); 
+                              newCompositeNode(grammarAccess.getAspectModelAccess().getSeparateModelsParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleSeparatePointcutAdviceModel_in_ruleAspectModel1241);
-                    this_SeparatePointcutAdviceModel_1=ruleSeparatePointcutAdviceModel();
+                    pushFollow(FOLLOW_ruleSeparateModels_in_ruleAspectModel1241);
+                    this_SeparateModels_1=ruleSeparateModels();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
                        
-                              current = this_SeparatePointcutAdviceModel_1; 
+                              current = this_SeparateModels_1; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -1751,30 +1751,30 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleAspectModel"
 
 
-    // $ANTLR start "entryRuleSeparatePointcutAdviceModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:636:1: entryRuleSeparatePointcutAdviceModel returns [EObject current=null] : iv_ruleSeparatePointcutAdviceModel= ruleSeparatePointcutAdviceModel EOF ;
-    public final EObject entryRuleSeparatePointcutAdviceModel() throws RecognitionException {
+    // $ANTLR start "entryRuleSeparateModels"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:636:1: entryRuleSeparateModels returns [EObject current=null] : iv_ruleSeparateModels= ruleSeparateModels EOF ;
+    public final EObject entryRuleSeparateModels() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleSeparatePointcutAdviceModel = null;
+        EObject iv_ruleSeparateModels = null;
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:637:2: (iv_ruleSeparatePointcutAdviceModel= ruleSeparatePointcutAdviceModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:638:2: iv_ruleSeparatePointcutAdviceModel= ruleSeparatePointcutAdviceModel EOF
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:637:2: (iv_ruleSeparateModels= ruleSeparateModels EOF )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:638:2: iv_ruleSeparateModels= ruleSeparateModels EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getSeparatePointcutAdviceModelRule()); 
+               newCompositeNode(grammarAccess.getSeparateModelsRule()); 
             }
-            pushFollow(FOLLOW_ruleSeparatePointcutAdviceModel_in_entryRuleSeparatePointcutAdviceModel1276);
-            iv_ruleSeparatePointcutAdviceModel=ruleSeparatePointcutAdviceModel();
+            pushFollow(FOLLOW_ruleSeparateModels_in_entryRuleSeparateModels1276);
+            iv_ruleSeparateModels=ruleSeparateModels();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleSeparatePointcutAdviceModel; 
+               current =iv_ruleSeparateModels; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSeparatePointcutAdviceModel1286); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSeparateModels1286); if (state.failed) return current;
 
             }
 
@@ -1788,12 +1788,12 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleSeparatePointcutAdviceModel"
+    // $ANTLR end "entryRuleSeparateModels"
 
 
-    // $ANTLR start "ruleSeparatePointcutAdviceModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:645:1: ruleSeparatePointcutAdviceModel returns [EObject current=null] : (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModelNodeType ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleAdviceModel ) ) ) ;
-    public final EObject ruleSeparatePointcutAdviceModel() throws RecognitionException {
+    // $ANTLR start "ruleSeparateModels"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:645:1: ruleSeparateModels returns [EObject current=null] : (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) ) ;
+    public final EObject ruleSeparateModels() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -1806,44 +1806,44 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:648:28: ( (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModelNodeType ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleAdviceModel ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:1: (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModelNodeType ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleAdviceModel ) ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:648:28: ( (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:1: (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:1: (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModelNodeType ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleAdviceModel ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:3: otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModelNodeType ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleAdviceModel ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:1: (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:3: otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) )
             {
-            otherlv_0=(Token)match(input,23,FOLLOW_23_in_ruleSeparatePointcutAdviceModel1323); if (state.failed) return current;
+            otherlv_0=(Token)match(input,23,FOLLOW_23_in_ruleSeparateModels1323); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getSeparatePointcutAdviceModelAccess().getPointcutKeyword_0());
+                  	newLeafNode(otherlv_0, grammarAccess.getSeparateModelsAccess().getPointcutKeyword_0());
                   
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:653:1: ( (lv_pointcut_1_0= ruleTargetModelNodeType ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:654:1: (lv_pointcut_1_0= ruleTargetModelNodeType )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:653:1: ( (lv_pointcut_1_0= ruleTargetModel ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:654:1: (lv_pointcut_1_0= ruleTargetModel )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:654:1: (lv_pointcut_1_0= ruleTargetModelNodeType )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:655:3: lv_pointcut_1_0= ruleTargetModelNodeType
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:654:1: (lv_pointcut_1_0= ruleTargetModel )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:655:3: lv_pointcut_1_0= ruleTargetModel
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getSeparatePointcutAdviceModelAccess().getPointcutTargetModelNodeTypeParserRuleCall_1_0()); 
+              	        newCompositeNode(grammarAccess.getSeparateModelsAccess().getPointcutTargetModelParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTargetModelNodeType_in_ruleSeparatePointcutAdviceModel1344);
-            lv_pointcut_1_0=ruleTargetModelNodeType();
+            pushFollow(FOLLOW_ruleTargetModel_in_ruleSeparateModels1344);
+            lv_pointcut_1_0=ruleTargetModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getSeparatePointcutAdviceModelRule());
+              	            current = createModelElementForParent(grammarAccess.getSeparateModelsRule());
               	        }
                      		set(
                      			current, 
                      			"pointcut",
                       		lv_pointcut_1_0, 
-                      		"TargetModelNodeType");
+                      		"TargetModel");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -1853,38 +1853,38 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_24_in_ruleSeparatePointcutAdviceModel1356); if (state.failed) return current;
+            otherlv_2=(Token)match(input,24,FOLLOW_24_in_ruleSeparateModels1356); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_2, grammarAccess.getSeparatePointcutAdviceModelAccess().getAdviceKeyword_2());
+                  	newLeafNode(otherlv_2, grammarAccess.getSeparateModelsAccess().getAdviceKeyword_2());
                   
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:675:1: ( (lv_advice_3_0= ruleAdviceModel ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:676:1: (lv_advice_3_0= ruleAdviceModel )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:675:1: ( (lv_advice_3_0= ruleCombinedModel ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:676:1: (lv_advice_3_0= ruleCombinedModel )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:676:1: (lv_advice_3_0= ruleAdviceModel )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:677:3: lv_advice_3_0= ruleAdviceModel
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:676:1: (lv_advice_3_0= ruleCombinedModel )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:677:3: lv_advice_3_0= ruleCombinedModel
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getSeparatePointcutAdviceModelAccess().getAdviceAdviceModelParserRuleCall_3_0()); 
+              	        newCompositeNode(grammarAccess.getSeparateModelsAccess().getAdviceCombinedModelParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleAdviceModel_in_ruleSeparatePointcutAdviceModel1377);
-            lv_advice_3_0=ruleAdviceModel();
+            pushFollow(FOLLOW_ruleCombinedModel_in_ruleSeparateModels1377);
+            lv_advice_3_0=ruleCombinedModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getSeparatePointcutAdviceModelRule());
+              	            current = createModelElementForParent(grammarAccess.getSeparateModelsRule());
               	        }
                      		set(
                      			current, 
                      			"advice",
                       		lv_advice_3_0, 
-                      		"AdviceModel");
+                      		"CombinedModel");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -1913,33 +1913,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleSeparatePointcutAdviceModel"
+    // $ANTLR end "ruleSeparateModels"
 
 
-    // $ANTLR start "entryRuleAdviceModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:701:1: entryRuleAdviceModel returns [EObject current=null] : iv_ruleAdviceModel= ruleAdviceModel EOF ;
-    public final EObject entryRuleAdviceModel() throws RecognitionException {
+    // $ANTLR start "entryRuleCombinedModel"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:701:1: entryRuleCombinedModel returns [EObject current=null] : iv_ruleCombinedModel= ruleCombinedModel EOF ;
+    public final EObject entryRuleCombinedModel() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleAdviceModel = null;
+        EObject iv_ruleCombinedModel = null;
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:702:2: (iv_ruleAdviceModel= ruleAdviceModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:703:2: iv_ruleAdviceModel= ruleAdviceModel EOF
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:702:2: (iv_ruleCombinedModel= ruleCombinedModel EOF )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:703:2: iv_ruleCombinedModel= ruleCombinedModel EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getAdviceModelRule()); 
+               newCompositeNode(grammarAccess.getCombinedModelRule()); 
             }
-            pushFollow(FOLLOW_ruleAdviceModel_in_entryRuleAdviceModel1413);
-            iv_ruleAdviceModel=ruleAdviceModel();
+            pushFollow(FOLLOW_ruleCombinedModel_in_entryRuleCombinedModel1413);
+            iv_ruleCombinedModel=ruleCombinedModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleAdviceModel; 
+               current =iv_ruleCombinedModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAdviceModel1423); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCombinedModel1423); if (state.failed) return current;
 
             }
 
@@ -1953,15 +1953,15 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleAdviceModel"
+    // $ANTLR end "entryRuleCombinedModel"
 
 
-    // $ANTLR start "ruleAdviceModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:710:1: ruleAdviceModel returns [EObject current=null] : (this_TargetModelNodeType_0= ruleTargetModelNodeType | this_Generator_1= ruleGenerator ) ;
-    public final EObject ruleAdviceModel() throws RecognitionException {
+    // $ANTLR start "ruleCombinedModel"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:710:1: ruleCombinedModel returns [EObject current=null] : (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator ) ;
+    public final EObject ruleCombinedModel() throws RecognitionException {
         EObject current = null;
 
-        EObject this_TargetModelNodeType_0 = null;
+        EObject this_TargetModel_0 = null;
 
         EObject this_Generator_1 = null;
 
@@ -1969,10 +1969,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:713:28: ( (this_TargetModelNodeType_0= ruleTargetModelNodeType | this_Generator_1= ruleGenerator ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:714:1: (this_TargetModelNodeType_0= ruleTargetModelNodeType | this_Generator_1= ruleGenerator )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:713:28: ( (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:714:1: (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:714:1: (this_TargetModelNodeType_0= ruleTargetModelNodeType | this_Generator_1= ruleGenerator )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:714:1: (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1991,21 +1991,21 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt11) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:715:5: this_TargetModelNodeType_0= ruleTargetModelNodeType
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:715:5: this_TargetModel_0= ruleTargetModel
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getAdviceModelAccess().getTargetModelNodeTypeParserRuleCall_0()); 
+                              newCompositeNode(grammarAccess.getCombinedModelAccess().getTargetModelParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleTargetModelNodeType_in_ruleAdviceModel1470);
-                    this_TargetModelNodeType_0=ruleTargetModelNodeType();
+                    pushFollow(FOLLOW_ruleTargetModel_in_ruleCombinedModel1470);
+                    this_TargetModel_0=ruleTargetModel();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
                        
-                              current = this_TargetModelNodeType_0; 
+                              current = this_TargetModel_0; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -2017,10 +2017,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getAdviceModelAccess().getGeneratorParserRuleCall_1()); 
+                              newCompositeNode(grammarAccess.getCombinedModelAccess().getGeneratorParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleGenerator_in_ruleAdviceModel1497);
+                    pushFollow(FOLLOW_ruleGenerator_in_ruleCombinedModel1497);
                     this_Generator_1=ruleGenerator();
 
                     state._fsp--;
@@ -2053,7 +2053,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleAdviceModel"
+    // $ANTLR end "ruleCombinedModel"
 
 
     // $ANTLR start "entryRuleGenerator"
@@ -2097,7 +2097,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGenerator"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:750:1: ruleGenerator returns [EObject current=null] : (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelNodeSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModelNodeType ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? ) ;
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:750:1: ruleGenerator returns [EObject current=null] : (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? ) ;
     public final EObject ruleGenerator() throws RecognitionException {
         EObject current = null;
 
@@ -2130,11 +2130,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:753:28: ( (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelNodeSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModelNodeType ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:1: (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelNodeSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModelNodeType ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:753:28: ( (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:1: (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:1: (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelNodeSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModelNodeType ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:3: otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelNodeSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModelNodeType ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )?
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:1: (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:3: otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )?
             {
             otherlv_0=(Token)match(input,25,FOLLOW_25_in_ruleGenerator1579); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -2167,7 +2167,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:771:2: (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) ) )* otherlv_6= ')' )?
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:771:2: (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2176,7 +2176,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt13) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:771:4: otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) ) )* otherlv_6= ')'
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:771:4: otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')'
                     {
                     otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleGenerator1612); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -2184,19 +2184,19 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                           	newLeafNode(otherlv_2, grammarAccess.getGeneratorAccess().getLeftParenthesisKeyword_2_0());
                           
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:775:1: ( (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:776:1: (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:775:1: ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:776:1: (lv_sourceAuxModels_3_0= ruleSourceModelSelector )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:776:1: (lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:777:3: lv_sourceAuxModels_3_0= ruleSourceModelNodeSelector
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:776:1: (lv_sourceAuxModels_3_0= ruleSourceModelSelector )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:777:3: lv_sourceAuxModels_3_0= ruleSourceModelSelector
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceAuxModelsSourceModelNodeSelectorParserRuleCall_2_1_0()); 
+                      	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceAuxModelsSourceModelSelectorParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleSourceModelNodeSelector_in_ruleGenerator1633);
-                    lv_sourceAuxModels_3_0=ruleSourceModelNodeSelector();
+                    pushFollow(FOLLOW_ruleSourceModelSelector_in_ruleGenerator1633);
+                    lv_sourceAuxModels_3_0=ruleSourceModelSelector();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -2209,7 +2209,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"sourceAuxModels",
                               		lv_sourceAuxModels_3_0, 
-                              		"SourceModelNodeSelector");
+                              		"SourceModelSelector");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -2219,7 +2219,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:793:2: (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) ) )*
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:793:2: (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )*
                     loop12:
                     do {
                         int alt12=2;
@@ -2232,7 +2232,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:793:4: otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) )
+                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:793:4: otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) )
                     	    {
                     	    otherlv_4=(Token)match(input,19,FOLLOW_19_in_ruleGenerator1646); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
@@ -2240,19 +2240,19 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     	          	newLeafNode(otherlv_4, grammarAccess.getGeneratorAccess().getCommaKeyword_2_2_0());
                     	          
                     	    }
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:797:1: ( (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector ) )
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:798:1: (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector )
+                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:797:1: ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) )
+                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:798:1: (lv_sourceAuxModels_5_0= ruleSourceModelSelector )
                     	    {
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:798:1: (lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector )
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:799:3: lv_sourceAuxModels_5_0= ruleSourceModelNodeSelector
+                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:798:1: (lv_sourceAuxModels_5_0= ruleSourceModelSelector )
+                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:799:3: lv_sourceAuxModels_5_0= ruleSourceModelSelector
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
-                    	      	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceAuxModelsSourceModelNodeSelectorParserRuleCall_2_2_1_0()); 
+                    	      	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceAuxModelsSourceModelSelectorParserRuleCall_2_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleSourceModelNodeSelector_in_ruleGenerator1667);
-                    	    lv_sourceAuxModels_5_0=ruleSourceModelNodeSelector();
+                    	    pushFollow(FOLLOW_ruleSourceModelSelector_in_ruleGenerator1667);
+                    	    lv_sourceAuxModels_5_0=ruleSourceModelSelector();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
@@ -2265,7 +2265,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     	             			current, 
                     	             			"sourceAuxModels",
                     	              		lv_sourceAuxModels_5_0, 
-                    	              		"SourceModelNodeSelector");
+                    	              		"SourceModelSelector");
                     	      	        afterParserOrEnumRuleCall();
                     	      	    
                     	    }
@@ -2302,19 +2302,19 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                   	newLeafNode(otherlv_7, grammarAccess.getGeneratorAccess().getSourceKeyword_3());
                   
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:823:1: ( (lv_sourceModel_8_0= ruleSourceModelNodeSelector ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:824:1: (lv_sourceModel_8_0= ruleSourceModelNodeSelector )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:823:1: ( (lv_sourceModel_8_0= ruleSourceModelSelector ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:824:1: (lv_sourceModel_8_0= ruleSourceModelSelector )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:824:1: (lv_sourceModel_8_0= ruleSourceModelNodeSelector )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:825:3: lv_sourceModel_8_0= ruleSourceModelNodeSelector
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:824:1: (lv_sourceModel_8_0= ruleSourceModelSelector )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:825:3: lv_sourceModel_8_0= ruleSourceModelSelector
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceModelSourceModelNodeSelectorParserRuleCall_4_0()); 
+              	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceModelSourceModelSelectorParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleSourceModelNodeSelector_in_ruleGenerator1716);
-            lv_sourceModel_8_0=ruleSourceModelNodeSelector();
+            pushFollow(FOLLOW_ruleSourceModelSelector_in_ruleGenerator1716);
+            lv_sourceModel_8_0=ruleSourceModelSelector();
 
             state._fsp--;
             if (state.failed) return current;
@@ -2327,7 +2327,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"sourceModel",
                       		lv_sourceModel_8_0, 
-                      		"SourceModelNodeSelector");
+                      		"SourceModelSelector");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -2337,7 +2337,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:841:2: (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModelNodeType ) ) )?
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:841:2: (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -2346,7 +2346,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt14) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:841:4: otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModelNodeType ) )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:841:4: otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) )
                     {
                     otherlv_9=(Token)match(input,29,FOLLOW_29_in_ruleGenerator1729); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -2354,19 +2354,19 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                           	newLeafNode(otherlv_9, grammarAccess.getGeneratorAccess().getTargetKeyword_5_0());
                           
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:845:1: ( (lv_targetModel_10_0= ruleTargetModelNodeType ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:846:1: (lv_targetModel_10_0= ruleTargetModelNodeType )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:845:1: ( (lv_targetModel_10_0= ruleTargetModel ) )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:846:1: (lv_targetModel_10_0= ruleTargetModel )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:846:1: (lv_targetModel_10_0= ruleTargetModelNodeType )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:847:3: lv_targetModel_10_0= ruleTargetModelNodeType
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:846:1: (lv_targetModel_10_0= ruleTargetModel )
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:847:3: lv_targetModel_10_0= ruleTargetModel
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getGeneratorAccess().getTargetModelTargetModelNodeTypeParserRuleCall_5_1_0()); 
+                      	        newCompositeNode(grammarAccess.getGeneratorAccess().getTargetModelTargetModelParserRuleCall_5_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTargetModelNodeType_in_ruleGenerator1750);
-                    lv_targetModel_10_0=ruleTargetModelNodeType();
+                    pushFollow(FOLLOW_ruleTargetModel_in_ruleGenerator1750);
+                    lv_targetModel_10_0=ruleTargetModel();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -2379,7 +2379,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"targetModel",
                               		lv_targetModel_10_0, 
-                              		"TargetModelNodeType");
+                              		"TargetModel");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -2621,30 +2621,30 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleGenerator"
 
 
-    // $ANTLR start "entryRuleSourceModelNodeSelector"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:941:1: entryRuleSourceModelNodeSelector returns [EObject current=null] : iv_ruleSourceModelNodeSelector= ruleSourceModelNodeSelector EOF ;
-    public final EObject entryRuleSourceModelNodeSelector() throws RecognitionException {
+    // $ANTLR start "entryRuleSourceModelSelector"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:941:1: entryRuleSourceModelSelector returns [EObject current=null] : iv_ruleSourceModelSelector= ruleSourceModelSelector EOF ;
+    public final EObject entryRuleSourceModelSelector() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleSourceModelNodeSelector = null;
+        EObject iv_ruleSourceModelSelector = null;
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:942:2: (iv_ruleSourceModelNodeSelector= ruleSourceModelNodeSelector EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:943:2: iv_ruleSourceModelNodeSelector= ruleSourceModelNodeSelector EOF
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:942:2: (iv_ruleSourceModelSelector= ruleSourceModelSelector EOF )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:943:2: iv_ruleSourceModelSelector= ruleSourceModelSelector EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getSourceModelNodeSelectorRule()); 
+               newCompositeNode(grammarAccess.getSourceModelSelectorRule()); 
             }
-            pushFollow(FOLLOW_ruleSourceModelNodeSelector_in_entryRuleSourceModelNodeSelector1911);
-            iv_ruleSourceModelNodeSelector=ruleSourceModelNodeSelector();
+            pushFollow(FOLLOW_ruleSourceModelSelector_in_entryRuleSourceModelSelector1911);
+            iv_ruleSourceModelSelector=ruleSourceModelSelector();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleSourceModelNodeSelector; 
+               current =iv_ruleSourceModelSelector; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSourceModelNodeSelector1921); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSourceModelSelector1921); if (state.failed) return current;
 
             }
 
@@ -2658,12 +2658,12 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleSourceModelNodeSelector"
+    // $ANTLR end "entryRuleSourceModelSelector"
 
 
-    // $ANTLR start "ruleSourceModelNodeSelector"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:950:1: ruleSourceModelNodeSelector returns [EObject current=null] : ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) ) ;
-    public final EObject ruleSourceModelNodeSelector() throws RecognitionException {
+    // $ANTLR start "ruleSourceModelSelector"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:950:1: ruleSourceModelSelector returns [EObject current=null] : ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) ) ;
+    public final EObject ruleSourceModelSelector() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -2715,14 +2715,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                       			if (current==null) {
-                      	            current = createModelElement(grammarAccess.getSourceModelNodeSelectorRule());
+                      	            current = createModelElement(grammarAccess.getSourceModelSelectorRule());
                       	        }
                               
                     }
-                    otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSourceModelNodeSelector1967); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSourceModelSelector1967); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      		newLeafNode(otherlv_0, grammarAccess.getSourceModelNodeSelectorAccess().getReferenceModelCrossReference_0_0_0()); 
+                      		newLeafNode(otherlv_0, grammarAccess.getSourceModelSelectorAccess().getReferenceModelCrossReference_0_0_0()); 
                       	
                     }
 
@@ -2742,10 +2742,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:967:4: otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']'
                             {
-                            otherlv_1=(Token)match(input,33,FOLLOW_33_in_ruleSourceModelNodeSelector1980); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,33,FOLLOW_33_in_ruleSourceModelSelector1980); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_1, grammarAccess.getSourceModelNodeSelectorAccess().getLeftSquareBracketKeyword_0_1_0());
+                                  	newLeafNode(otherlv_1, grammarAccess.getSourceModelSelectorAccess().getLeftSquareBracketKeyword_0_1_0());
                                   
                             }
                             // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:971:1: ( (lv_constraint_2_0= ruleConstraintExpression ) )
@@ -2756,10 +2756,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                             {
                             if ( state.backtracking==0 ) {
                                
-                              	        newCompositeNode(grammarAccess.getSourceModelNodeSelectorAccess().getConstraintConstraintExpressionParserRuleCall_0_1_1_0()); 
+                              	        newCompositeNode(grammarAccess.getSourceModelSelectorAccess().getConstraintConstraintExpressionParserRuleCall_0_1_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleConstraintExpression_in_ruleSourceModelNodeSelector2001);
+                            pushFollow(FOLLOW_ruleConstraintExpression_in_ruleSourceModelSelector2001);
                             lv_constraint_2_0=ruleConstraintExpression();
 
                             state._fsp--;
@@ -2767,7 +2767,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                             if ( state.backtracking==0 ) {
 
                               	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getSourceModelNodeSelectorRule());
+                              	            current = createModelElementForParent(grammarAccess.getSourceModelSelectorRule());
                               	        }
                                      		set(
                                      			current, 
@@ -2783,10 +2783,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleSourceModelNodeSelector2013); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleSourceModelSelector2013); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_3, grammarAccess.getSourceModelNodeSelectorAccess().getRightSquareBracketKeyword_0_1_2());
+                                  	newLeafNode(otherlv_3, grammarAccess.getSourceModelSelectorAccess().getRightSquareBracketKeyword_0_1_2());
                                   
                             }
 
@@ -2806,10 +2806,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:993:5: otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) )
                             {
-                            otherlv_4=(Token)match(input,35,FOLLOW_35_in_ruleSourceModelNodeSelector2028); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,35,FOLLOW_35_in_ruleSourceModelSelector2028); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_4, grammarAccess.getSourceModelNodeSelectorAccess().getSolidusKeyword_0_2_0());
+                                  	newLeafNode(otherlv_4, grammarAccess.getSourceModelSelectorAccess().getSolidusKeyword_0_2_0());
                                   
                             }
                             // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:997:1: ( (lv_property_5_0= ruleNodeProperty ) )
@@ -2820,10 +2820,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                             {
                             if ( state.backtracking==0 ) {
                                
-                              	        newCompositeNode(grammarAccess.getSourceModelNodeSelectorAccess().getPropertyNodePropertyParserRuleCall_0_2_1_0()); 
+                              	        newCompositeNode(grammarAccess.getSourceModelSelectorAccess().getPropertyNodePropertyParserRuleCall_0_2_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleNodeProperty_in_ruleSourceModelNodeSelector2049);
+                            pushFollow(FOLLOW_ruleNodeProperty_in_ruleSourceModelSelector2049);
                             lv_property_5_0=ruleNodeProperty();
 
                             state._fsp--;
@@ -2831,7 +2831,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                             if ( state.backtracking==0 ) {
 
                               	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getSourceModelNodeSelectorRule());
+                              	            current = createModelElementForParent(grammarAccess.getSourceModelSelectorRule());
                               	        }
                                      		set(
                                      			current, 
@@ -2871,17 +2871,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                               current = forceCreateModelElement(
-                                  grammarAccess.getSourceModelNodeSelectorAccess().getSourceModelNodeSelectorAction_1_0(),
+                                  grammarAccess.getSourceModelSelectorAccess().getSourceModelSelectorAction_1_0(),
                                   current);
                           
                     }
 
                     }
 
-                    otherlv_7=(Token)match(input,36,FOLLOW_36_in_ruleSourceModelNodeSelector2080); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,36,FOLLOW_36_in_ruleSourceModelSelector2080); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_7, grammarAccess.getSourceModelNodeSelectorAccess().getNullKeyword_1_1());
+                          	newLeafNode(otherlv_7, grammarAccess.getSourceModelSelectorAccess().getNullKeyword_1_1());
                           
                     }
 
@@ -2909,33 +2909,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleSourceModelNodeSelector"
+    // $ANTLR end "ruleSourceModelSelector"
 
 
-    // $ANTLR start "entryRuleTargetModelNodeType"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1034:1: entryRuleTargetModelNodeType returns [EObject current=null] : iv_ruleTargetModelNodeType= ruleTargetModelNodeType EOF ;
-    public final EObject entryRuleTargetModelNodeType() throws RecognitionException {
+    // $ANTLR start "entryRuleTargetModel"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1034:1: entryRuleTargetModel returns [EObject current=null] : iv_ruleTargetModel= ruleTargetModel EOF ;
+    public final EObject entryRuleTargetModel() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleTargetModelNodeType = null;
+        EObject iv_ruleTargetModel = null;
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1035:2: (iv_ruleTargetModelNodeType= ruleTargetModelNodeType EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1036:2: iv_ruleTargetModelNodeType= ruleTargetModelNodeType EOF
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1035:2: (iv_ruleTargetModel= ruleTargetModel EOF )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1036:2: iv_ruleTargetModel= ruleTargetModel EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getTargetModelNodeTypeRule()); 
+               newCompositeNode(grammarAccess.getTargetModelRule()); 
             }
-            pushFollow(FOLLOW_ruleTargetModelNodeType_in_entryRuleTargetModelNodeType2117);
-            iv_ruleTargetModelNodeType=ruleTargetModelNodeType();
+            pushFollow(FOLLOW_ruleTargetModel_in_entryRuleTargetModel2117);
+            iv_ruleTargetModel=ruleTargetModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleTargetModelNodeType; 
+               current =iv_ruleTargetModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTargetModelNodeType2127); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTargetModel2127); if (state.failed) return current;
 
             }
 
@@ -2949,12 +2949,12 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleTargetModelNodeType"
+    // $ANTLR end "entryRuleTargetModel"
 
 
-    // $ANTLR start "ruleTargetModelNodeType"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1043:1: ruleTargetModelNodeType returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) ) ;
-    public final EObject ruleTargetModelNodeType() throws RecognitionException {
+    // $ANTLR start "ruleTargetModel"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1043:1: ruleTargetModel returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) ) ;
+    public final EObject ruleTargetModel() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
@@ -2974,7 +2974,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
                       current = forceCreateModelElement(
-                          grammarAccess.getTargetModelNodeTypeAccess().getTargetModelNodeTypeAction_0(),
+                          grammarAccess.getTargetModelAccess().getTargetModelAction_0(),
                           current);
                   
             }
@@ -2990,14 +2990,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               			if (current==null) {
-              	            current = createModelElement(grammarAccess.getTargetModelNodeTypeRule());
+              	            current = createModelElement(grammarAccess.getTargetModelRule());
               	        }
                       
             }
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTargetModelNodeType2181); if (state.failed) return current;
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTargetModel2181); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_1, grammarAccess.getTargetModelNodeTypeAccess().getReferenceModelCrossReference_1_0()); 
+              		newLeafNode(otherlv_1, grammarAccess.getTargetModelAccess().getReferenceModelCrossReference_1_0()); 
               	
             }
 
@@ -3025,33 +3025,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleTargetModelNodeType"
+    // $ANTLR end "ruleTargetModel"
 
 
-    // $ANTLR start "entryRuleModelNodeType"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1074:1: entryRuleModelNodeType returns [EObject current=null] : iv_ruleModelNodeType= ruleModelNodeType EOF ;
-    public final EObject entryRuleModelNodeType() throws RecognitionException {
+    // $ANTLR start "entryRuleModelType"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1074:1: entryRuleModelType returns [EObject current=null] : iv_ruleModelType= ruleModelType EOF ;
+    public final EObject entryRuleModelType() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleModelNodeType = null;
+        EObject iv_ruleModelType = null;
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1075:2: (iv_ruleModelNodeType= ruleModelNodeType EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1076:2: iv_ruleModelNodeType= ruleModelNodeType EOF
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1075:2: (iv_ruleModelType= ruleModelType EOF )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1076:2: iv_ruleModelType= ruleModelType EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getModelNodeTypeRule()); 
+               newCompositeNode(grammarAccess.getModelTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleModelNodeType_in_entryRuleModelNodeType2217);
-            iv_ruleModelNodeType=ruleModelNodeType();
+            pushFollow(FOLLOW_ruleModelType_in_entryRuleModelType2217);
+            iv_ruleModelType=ruleModelType();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleModelNodeType; 
+               current =iv_ruleModelType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleModelNodeType2227); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleModelType2227); if (state.failed) return current;
 
             }
 
@@ -3065,12 +3065,12 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleModelNodeType"
+    // $ANTLR end "entryRuleModelType"
 
 
-    // $ANTLR start "ruleModelNodeType"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1083:1: ruleModelNodeType returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? ) ;
-    public final EObject ruleModelNodeType() throws RecognitionException {
+    // $ANTLR start "ruleModelType"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1083:1: ruleModelType returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? ) ;
+    public final EObject ruleModelType() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -3097,14 +3097,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               			if (current==null) {
-              	            current = createModelElement(grammarAccess.getModelNodeTypeRule());
+              	            current = createModelElement(grammarAccess.getModelTypeRule());
               	        }
                       
             }
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleModelNodeType2272); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleModelType2272); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_0, grammarAccess.getModelNodeTypeAccess().getTargetRegisteredRootClassCrossReference_0_0()); 
+              		newLeafNode(otherlv_0, grammarAccess.getModelTypeAccess().getTargetRegisteredRootClassCrossReference_0_0()); 
               	
             }
 
@@ -3124,10 +3124,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1100:4: otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) )
                     {
-                    otherlv_1=(Token)match(input,35,FOLLOW_35_in_ruleModelNodeType2285); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_35_in_ruleModelType2285); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_1, grammarAccess.getModelNodeTypeAccess().getSolidusKeyword_1_0());
+                          	newLeafNode(otherlv_1, grammarAccess.getModelTypeAccess().getSolidusKeyword_1_0());
                           
                     }
                     // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1104:1: ( (lv_property_2_0= ruleNodeProperty ) )
@@ -3138,10 +3138,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getModelNodeTypeAccess().getPropertyNodePropertyParserRuleCall_1_1_0()); 
+                      	        newCompositeNode(grammarAccess.getModelTypeAccess().getPropertyNodePropertyParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleNodeProperty_in_ruleModelNodeType2306);
+                    pushFollow(FOLLOW_ruleNodeProperty_in_ruleModelType2306);
                     lv_property_2_0=ruleNodeProperty();
 
                     state._fsp--;
@@ -3149,7 +3149,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getModelNodeTypeRule());
+                      	            current = createModelElementForParent(grammarAccess.getModelTypeRule());
                       	        }
                              		set(
                              			current, 
@@ -3185,16 +3185,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1123:1: (lv_collection_3_0= '[]' )
                     // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1124:3: lv_collection_3_0= '[]'
                     {
-                    lv_collection_3_0=(Token)match(input,37,FOLLOW_37_in_ruleModelNodeType2326); if (state.failed) return current;
+                    lv_collection_3_0=(Token)match(input,37,FOLLOW_37_in_ruleModelType2326); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              newLeafNode(lv_collection_3_0, grammarAccess.getModelNodeTypeAccess().getCollectionLeftSquareBracketRightSquareBracketKeyword_2_0());
+                              newLeafNode(lv_collection_3_0, grammarAccess.getModelTypeAccess().getCollectionLeftSquareBracketRightSquareBracketKeyword_2_0());
                           
                     }
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getModelNodeTypeRule());
+                      	            current = createModelElement(grammarAccess.getModelTypeRule());
                       	        }
                              		setWithLastConsumed(current, "collection", true, "[]");
                       	    
@@ -3227,7 +3227,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleModelNodeType"
+    // $ANTLR end "ruleModelType"
 
 
     // $ANTLR start "entryRuleNodeProperty"
@@ -7181,7 +7181,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleModelSequence574 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_18_in_ruleModelSequence611 = new BitSet(new long[]{0x0000800180000000L});
     public static final BitSet FOLLOW_ruleModelModifier_in_ruleModelSequence632 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleModelNodeType_in_ruleModelSequence653 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleModelType_in_ruleModelSequence653 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleModel_in_ruleModelSequence674 = new BitSet(new long[]{0x0000000000080002L});
     public static final BitSet FOLLOW_19_in_ruleModelSequence687 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleModel_in_ruleModelSequence708 = new BitSet(new long[]{0x0000000000080002L});
@@ -7196,38 +7196,38 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleWeaver966 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_20_in_ruleWeaver1003 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleWeaver1023 = new BitSet(new long[]{0x0000001000200010L});
-    public static final BitSet FOLLOW_ruleSourceModelNodeSelector_in_ruleWeaver1045 = new BitSet(new long[]{0x0000000002800010L});
+    public static final BitSet FOLLOW_ruleSourceModelSelector_in_ruleWeaver1045 = new BitSet(new long[]{0x0000000002800010L});
     public static final BitSet FOLLOW_21_in_ruleWeaver1063 = new BitSet(new long[]{0x0000000002800010L});
     public static final BitSet FOLLOW_ruleAspectModel_in_ruleWeaver1085 = new BitSet(new long[]{0x0000000000400002L});
     public static final BitSet FOLLOW_22_in_ruleWeaver1098 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTargetModelNodeType_in_ruleWeaver1119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTargetModel_in_ruleWeaver1119 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAspectModel_in_entryRuleAspectModel1157 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAspectModel1167 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAdviceModel_in_ruleAspectModel1214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSeparatePointcutAdviceModel_in_ruleAspectModel1241 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSeparatePointcutAdviceModel_in_entryRuleSeparatePointcutAdviceModel1276 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSeparatePointcutAdviceModel1286 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ruleSeparatePointcutAdviceModel1323 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTargetModelNodeType_in_ruleSeparatePointcutAdviceModel1344 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleSeparatePointcutAdviceModel1356 = new BitSet(new long[]{0x0000000002000010L});
-    public static final BitSet FOLLOW_ruleAdviceModel_in_ruleSeparatePointcutAdviceModel1377 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAdviceModel_in_entryRuleAdviceModel1413 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAdviceModel1423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTargetModelNodeType_in_ruleAdviceModel1470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGenerator_in_ruleAdviceModel1497 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCombinedModel_in_ruleAspectModel1214 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSeparateModels_in_ruleAspectModel1241 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSeparateModels_in_entryRuleSeparateModels1276 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSeparateModels1286 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_ruleSeparateModels1323 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleTargetModel_in_ruleSeparateModels1344 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleSeparateModels1356 = new BitSet(new long[]{0x0000000002000010L});
+    public static final BitSet FOLLOW_ruleCombinedModel_in_ruleSeparateModels1377 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCombinedModel_in_entryRuleCombinedModel1413 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCombinedModel1423 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTargetModel_in_ruleCombinedModel1470 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGenerator_in_ruleCombinedModel1497 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGenerator_in_entryRuleGenerator1532 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleGenerator1542 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_25_in_ruleGenerator1579 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleGenerator1599 = new BitSet(new long[]{0x0000000014000000L});
     public static final BitSet FOLLOW_26_in_ruleGenerator1612 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_ruleSourceModelNodeSelector_in_ruleGenerator1633 = new BitSet(new long[]{0x0000000008080000L});
+    public static final BitSet FOLLOW_ruleSourceModelSelector_in_ruleGenerator1633 = new BitSet(new long[]{0x0000000008080000L});
     public static final BitSet FOLLOW_19_in_ruleGenerator1646 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_ruleSourceModelNodeSelector_in_ruleGenerator1667 = new BitSet(new long[]{0x0000000008080000L});
+    public static final BitSet FOLLOW_ruleSourceModelSelector_in_ruleGenerator1667 = new BitSet(new long[]{0x0000000008080000L});
     public static final BitSet FOLLOW_27_in_ruleGenerator1681 = new BitSet(new long[]{0x0000000010000000L});
     public static final BitSet FOLLOW_28_in_ruleGenerator1695 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_ruleSourceModelNodeSelector_in_ruleGenerator1716 = new BitSet(new long[]{0x0000000060000002L});
+    public static final BitSet FOLLOW_ruleSourceModelSelector_in_ruleGenerator1716 = new BitSet(new long[]{0x0000000060000002L});
     public static final BitSet FOLLOW_29_in_ruleGenerator1729 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTargetModelNodeType_in_ruleGenerator1750 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_ruleTargetModel_in_ruleGenerator1750 = new BitSet(new long[]{0x0000000040000002L});
     public static final BitSet FOLLOW_30_in_ruleGenerator1765 = new BitSet(new long[]{0x0000000180000002L});
     public static final BitSet FOLLOW_31_in_ruleGenerator1778 = new BitSet(new long[]{0x0000010000000010L});
     public static final BitSet FOLLOW_ruleTargetTraceModel_in_ruleGenerator1799 = new BitSet(new long[]{0x0000000100000002L});
@@ -7235,24 +7235,24 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleTraceModelReference_in_ruleGenerator1835 = new BitSet(new long[]{0x0000000000080002L});
     public static final BitSet FOLLOW_19_in_ruleGenerator1848 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleTraceModelReference_in_ruleGenerator1869 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_ruleSourceModelNodeSelector_in_entryRuleSourceModelNodeSelector1911 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSourceModelNodeSelector1921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSourceModelNodeSelector1967 = new BitSet(new long[]{0x0000000A00000002L});
-    public static final BitSet FOLLOW_33_in_ruleSourceModelNodeSelector1980 = new BitSet(new long[]{0x000010C0040001F0L});
-    public static final BitSet FOLLOW_ruleConstraintExpression_in_ruleSourceModelNodeSelector2001 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleSourceModelNodeSelector2013 = new BitSet(new long[]{0x0000000800000002L});
-    public static final BitSet FOLLOW_35_in_ruleSourceModelNodeSelector2028 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeProperty_in_ruleSourceModelNodeSelector2049 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_ruleSourceModelNodeSelector2080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTargetModelNodeType_in_entryRuleTargetModelNodeType2117 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTargetModelNodeType2127 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleTargetModelNodeType2181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModelNodeType_in_entryRuleModelNodeType2217 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleModelNodeType2227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleModelNodeType2272 = new BitSet(new long[]{0x0000002800000002L});
-    public static final BitSet FOLLOW_35_in_ruleModelNodeType2285 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeProperty_in_ruleModelNodeType2306 = new BitSet(new long[]{0x0000002000000002L});
-    public static final BitSet FOLLOW_37_in_ruleModelNodeType2326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSourceModelSelector_in_entryRuleSourceModelSelector1911 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSourceModelSelector1921 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleSourceModelSelector1967 = new BitSet(new long[]{0x0000000A00000002L});
+    public static final BitSet FOLLOW_33_in_ruleSourceModelSelector1980 = new BitSet(new long[]{0x000010C0040001F0L});
+    public static final BitSet FOLLOW_ruleConstraintExpression_in_ruleSourceModelSelector2001 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleSourceModelSelector2013 = new BitSet(new long[]{0x0000000800000002L});
+    public static final BitSet FOLLOW_35_in_ruleSourceModelSelector2028 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleNodeProperty_in_ruleSourceModelSelector2049 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_ruleSourceModelSelector2080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTargetModel_in_entryRuleTargetModel2117 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTargetModel2127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleTargetModel2181 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleModelType_in_entryRuleModelType2217 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleModelType2227 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleModelType2272 = new BitSet(new long[]{0x0000002800000002L});
+    public static final BitSet FOLLOW_35_in_ruleModelType2285 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleNodeProperty_in_ruleModelType2306 = new BitSet(new long[]{0x0000002000000002L});
+    public static final BitSet FOLLOW_37_in_ruleModelType2326 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNodeProperty_in_entryRuleNodeProperty2376 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleNodeProperty2386 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleNodeProperty2431 = new BitSet(new long[]{0x0000000A00000002L});

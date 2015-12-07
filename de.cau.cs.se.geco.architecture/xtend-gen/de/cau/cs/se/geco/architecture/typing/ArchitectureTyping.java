@@ -8,14 +8,14 @@ import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
@@ -41,7 +41,7 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class ArchitectureTyping {
-  protected static JvmTypeReference _resolveType(final SourceModelNodeSelector selector) {
+  protected static JvmTypeReference _resolveType(final SourceModelSelector selector) {
     NodeProperty _property = selector.getProperty();
     boolean _notEquals = (!Objects.equal(_property, null));
     if (_notEquals) {
@@ -84,11 +84,11 @@ public class ArchitectureTyping {
   
   protected static JvmTypeReference _resolveType(final Model model) {
     EObject _eContainer = model.eContainer();
-    ModelNodeType _type = ((ModelSequence) _eContainer).getType();
+    ModelType _type = ((ModelSequence) _eContainer).getType();
     return ArchitectureTyping.resolveType(_type);
   }
   
-  protected static JvmTypeReference _resolveType(final ModelNodeType type) {
+  protected static JvmTypeReference _resolveType(final ModelType type) {
     JvmTypeReference _xifexpression = null;
     NodeProperty _property = type.getProperty();
     boolean _equals = Objects.equal(_property, null);
@@ -136,8 +136,8 @@ public class ArchitectureTyping {
     return _xifexpression;
   }
   
-  protected static JvmTypeReference _resolveType(final TargetModelNodeType type) {
-    Model _reference = type.getReference();
+  protected static JvmTypeReference _resolveType(final TargetModel model) {
+    Model _reference = model.getReference();
     JvmTypeReference _resolveType = null;
     if (_reference!=null) {
       _resolveType=ArchitectureTyping.resolveType(_reference);
@@ -476,7 +476,7 @@ public class ArchitectureTyping {
    */
   public static boolean isCollectionType(final ModelDeclaration declaration) {
     boolean _or = false;
-    ModelNodeType _selector = declaration.getSelector();
+    ModelType _selector = declaration.getSelector();
     JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_selector);
     boolean _isListType = ArchitectureTyping.isListType(_resolveType);
     if (_isListType) {
@@ -484,7 +484,7 @@ public class ArchitectureTyping {
     } else {
       Model _model = declaration.getModel();
       EObject _eContainer = _model.eContainer();
-      ModelNodeType _type = ((ModelSequence) _eContainer).getType();
+      ModelType _type = ((ModelSequence) _eContainer).getType();
       boolean _isCollection = _type.isCollection();
       _or = _isCollection;
     }
@@ -493,7 +493,7 @@ public class ArchitectureTyping {
   
   public static boolean isCollectionType(final Model model) {
     EObject _eContainer = model.eContainer();
-    final ModelNodeType nodeType = ((ModelSequence) _eContainer).getType();
+    final ModelType nodeType = ((ModelSequence) _eContainer).getType();
     boolean _or = false;
     JvmTypeReference _resolveType = ArchitectureTyping.resolveType(nodeType);
     boolean _isListType = ArchitectureTyping.isListType(_resolveType);
@@ -509,15 +509,15 @@ public class ArchitectureTyping {
   /**
    * Resolve the source model reference of the weaver instance.
    */
-  public static SourceModelNodeSelector resolveWeaverSourceModel(final Weaver weaver) {
-    SourceModelNodeSelector _xifexpression = null;
-    SourceModelNodeSelector _sourceModel = weaver.getSourceModel();
+  public static SourceModelSelector resolveWeaverSourceModel(final Weaver weaver) {
+    SourceModelSelector _xifexpression = null;
+    SourceModelSelector _sourceModel = weaver.getSourceModel();
     boolean _notEquals = (!Objects.equal(_sourceModel, null));
     if (_notEquals) {
       _xifexpression = weaver.getSourceModel();
     } else {
       Weaver _predecessingWeaver = ArchitectureTyping.predecessingWeaver(weaver);
-      SourceModelNodeSelector _resolveWeaverSourceModel = null;
+      SourceModelSelector _resolveWeaverSourceModel = null;
       if (_predecessingWeaver!=null) {
         _resolveWeaverSourceModel=ArchitectureTyping.resolveWeaverSourceModel(_predecessingWeaver);
       }
@@ -562,18 +562,18 @@ public class ArchitectureTyping {
       return _resolveType((ParenthesisConstraint)operation);
     } else if (operation instanceof BasicConstraint) {
       return _resolveType((BasicConstraint)operation);
-    } else if (operation instanceof TargetModelNodeType) {
-      return _resolveType((TargetModelNodeType)operation);
+    } else if (operation instanceof TargetModel) {
+      return _resolveType((TargetModel)operation);
     } else if (operation instanceof JvmType) {
       return _resolveType((JvmType)operation);
     } else if (operation instanceof ConstraintExpression) {
       return _resolveType((ConstraintExpression)operation);
     } else if (operation instanceof Model) {
       return _resolveType((Model)operation);
-    } else if (operation instanceof ModelNodeType) {
-      return _resolveType((ModelNodeType)operation);
-    } else if (operation instanceof SourceModelNodeSelector) {
-      return _resolveType((SourceModelNodeSelector)operation);
+    } else if (operation instanceof ModelType) {
+      return _resolveType((ModelType)operation);
+    } else if (operation instanceof SourceModelSelector) {
+      return _resolveType((SourceModelSelector)operation);
     } else if (operation != null) {
       return _resolveType(operation);
     } else {

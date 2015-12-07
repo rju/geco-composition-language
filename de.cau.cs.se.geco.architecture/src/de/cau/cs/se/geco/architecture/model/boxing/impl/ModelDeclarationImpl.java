@@ -4,8 +4,7 @@ package de.cau.cs.se.geco.architecture.model.boxing.impl;
 
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
-
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage;
 import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
 
@@ -41,7 +40,7 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected ModelNodeType selector;
+	protected ModelType selector;
 
 	/**
 	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
@@ -97,10 +96,10 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModelNodeType getSelector() {
+	public ModelType getSelector() {
 		if (selector != null && selector.eIsProxy()) {
 			InternalEObject oldSelector = (InternalEObject)selector;
-			selector = (ModelNodeType)eResolveProxy(oldSelector);
+			selector = (ModelType)eResolveProxy(oldSelector);
 			if (selector != oldSelector) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BoxingPackage.MODEL_DECLARATION__SELECTOR, oldSelector, selector));
@@ -114,7 +113,7 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModelNodeType basicGetSelector() {
+	public ModelType basicGetSelector() {
 		return selector;
 	}
 
@@ -123,8 +122,8 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSelector(ModelNodeType newSelector) {
-		ModelNodeType oldSelector = selector;
+	public void setSelector(ModelType newSelector) {
+		ModelType oldSelector = selector;
 		selector = newSelector;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BoxingPackage.MODEL_DECLARATION__SELECTOR, oldSelector, selector));
@@ -218,7 +217,7 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case BoxingPackage.MODEL_DECLARATION__SELECTOR:
-				setSelector((ModelNodeType)newValue);
+				setSelector((ModelType)newValue);
 				return;
 			case BoxingPackage.MODEL_DECLARATION__MODEL:
 				setModel((Model)newValue);
@@ -239,7 +238,7 @@ public class ModelDeclarationImpl extends MinimalEObjectImpl.Container implement
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case BoxingPackage.MODEL_DECLARATION__SELECTOR:
-				setSelector((ModelNodeType)null);
+				setSelector((ModelType)null);
 				return;
 			case BoxingPackage.MODEL_DECLARATION__MODEL:
 				setModel((Model)null);

@@ -6,8 +6,8 @@ package de.cau.cs.se.geco.architecture.validation;
 import com.google.common.base.Objects;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.framework.IWeaver;
 import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut;
@@ -67,7 +67,7 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
             final JvmTypeReference baseTypeReference = _arguments.get(0);
             EList<JvmTypeReference> _arguments_1 = iface.getArguments();
             final JvmTypeReference aspectTypeReference = _arguments_1.get(1);
-            SourceModelNodeSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+            SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
             final JvmTypeReference sourceModelTypeReference = ArchitectureTyping.resolveType(_resolveWeaverSourceModel);
             boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(sourceModelTypeReference, baseTypeReference);
             boolean _not = (!_isSubTypeOf);
@@ -123,7 +123,7 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
           Object _get = ((Object[])Conversions.unwrapArray(match, Object.class))[0];
           if ((_get instanceof JvmParameterizedTypeReference)) {
             final JvmTypeReference inputTypeReference = ArchitectureTyping.determineGeneratorInputType(((JvmGenericType)generatorJvmType));
-            SourceModelNodeSelector _sourceModel = generator.getSourceModel();
+            SourceModelSelector _sourceModel = generator.getSourceModel();
             final JvmTypeReference sourceModelTypeReference = ArchitectureTyping.resolveType(_sourceModel);
             boolean _notEquals = (!Objects.equal(sourceModelTypeReference, null));
             if (_notEquals) {
@@ -148,10 +148,10 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
               }
             }
             final JvmTypeReference outputTypeReference = ArchitectureTyping.determineGeneratorOutputType(((JvmGenericType)generatorJvmType));
-            TargetModelNodeType _targetModel = generator.getTargetModel();
+            TargetModel _targetModel = generator.getTargetModel();
             boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
             if (_notEquals_1) {
-              TargetModelNodeType _targetModel_1 = generator.getTargetModel();
+              TargetModel _targetModel_1 = generator.getTargetModel();
               final JvmTypeReference targetModelTypeReference = ArchitectureTyping.resolveType(_targetModel_1);
               boolean _isSubTypeOf_2 = ArchitectureTyping.isSubTypeOf(outputTypeReference, targetModelTypeReference);
               boolean _not_2 = (!_isSubTypeOf_2);

@@ -73,12 +73,12 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.FRAGMENT: return createFragment();
       case ArchitecturePackage.WEAVER: return createWeaver();
       case ArchitecturePackage.ASPECT_MODEL: return createAspectModel();
-      case ArchitecturePackage.SEPARATE_POINTCUT_ADVICE_MODEL: return createSeparatePointcutAdviceModel();
-      case ArchitecturePackage.ADVICE_MODEL: return createAdviceModel();
+      case ArchitecturePackage.SEPARATE_MODELS: return createSeparateModels();
+      case ArchitecturePackage.COMBINED_MODEL: return createCombinedModel();
       case ArchitecturePackage.GENERATOR: return createGenerator();
-      case ArchitecturePackage.SOURCE_MODEL_NODE_SELECTOR: return createSourceModelNodeSelector();
-      case ArchitecturePackage.TARGET_MODEL_NODE_TYPE: return createTargetModelNodeType();
-      case ArchitecturePackage.MODEL_NODE_TYPE: return createModelNodeType();
+      case ArchitecturePackage.SOURCE_MODEL_SELECTOR: return createSourceModelSelector();
+      case ArchitecturePackage.TARGET_MODEL: return createTargetModel();
+      case ArchitecturePackage.MODEL_TYPE: return createModelType();
       case ArchitecturePackage.NODE_PROPERTY: return createNodeProperty();
       case ArchitecturePackage.CONSTRAINT_EXPRESSION: return createConstraintExpression();
       case ArchitecturePackage.COMPARE_EXPRESSION: return createCompareExpression();
@@ -238,10 +238,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public SeparatePointcutAdviceModel createSeparatePointcutAdviceModel()
+  public SeparateModels createSeparateModels()
   {
-    SeparatePointcutAdviceModelImpl separatePointcutAdviceModel = new SeparatePointcutAdviceModelImpl();
-    return separatePointcutAdviceModel;
+    SeparateModelsImpl separateModels = new SeparateModelsImpl();
+    return separateModels;
   }
 
   /**
@@ -249,10 +249,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public AdviceModel createAdviceModel()
+  public CombinedModel createCombinedModel()
   {
-    AdviceModelImpl adviceModel = new AdviceModelImpl();
-    return adviceModel;
+    CombinedModelImpl combinedModel = new CombinedModelImpl();
+    return combinedModel;
   }
 
   /**
@@ -271,10 +271,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public SourceModelNodeSelector createSourceModelNodeSelector()
+  public SourceModelSelector createSourceModelSelector()
   {
-    SourceModelNodeSelectorImpl sourceModelNodeSelector = new SourceModelNodeSelectorImpl();
-    return sourceModelNodeSelector;
+    SourceModelSelectorImpl sourceModelSelector = new SourceModelSelectorImpl();
+    return sourceModelSelector;
   }
 
   /**
@@ -282,10 +282,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public TargetModelNodeType createTargetModelNodeType()
+  public TargetModel createTargetModel()
   {
-    TargetModelNodeTypeImpl targetModelNodeType = new TargetModelNodeTypeImpl();
-    return targetModelNodeType;
+    TargetModelImpl targetModel = new TargetModelImpl();
+    return targetModel;
   }
 
   /**
@@ -293,10 +293,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public ModelNodeType createModelNodeType()
+  public ModelType createModelType()
   {
-    ModelNodeTypeImpl modelNodeType = new ModelNodeTypeImpl();
-    return modelNodeType;
+    ModelTypeImpl modelType = new ModelTypeImpl();
+    return modelType;
   }
 
   /**

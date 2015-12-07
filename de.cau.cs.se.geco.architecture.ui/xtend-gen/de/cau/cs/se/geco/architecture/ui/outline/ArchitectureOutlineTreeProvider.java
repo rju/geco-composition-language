@@ -3,7 +3,7 @@
  */
 package de.cau.cs.se.geco.architecture.ui.outline;
 
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
@@ -19,7 +19,7 @@ public class ArchitectureOutlineTreeProvider extends DefaultOutlineTreeProvider 
   protected void createNode(final IOutlineNode parent, final EObject modelElement) {
     boolean _matched = false;
     if (!_matched) {
-      if (modelElement instanceof ModelNodeType) {
+      if (modelElement instanceof ModelType) {
         _matched=true;
       }
     }

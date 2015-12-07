@@ -2,13 +2,13 @@
  */
 package de.cau.cs.se.geco.architecture.architecture.impl;
 
-import de.cau.cs.se.geco.architecture.architecture.AdviceModel;
 import de.cau.cs.se.geco.architecture.architecture.ArchitectureFactory;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
 import de.cau.cs.se.geco.architecture.architecture.BasicConstraint;
 import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral;
+import de.cau.cs.se.geco.architecture.architecture.CombinedModel;
 import de.cau.cs.se.geco.architecture.architecture.Comparator;
 import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
@@ -22,8 +22,8 @@ import de.cau.cs.se.geco.architecture.architecture.Literal;
 import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
-import de.cau.cs.se.geco.architecture.architecture.ModelNodeType;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
@@ -31,10 +31,10 @@ import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.Operand;
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
-import de.cau.cs.se.geco.architecture.architecture.SeparatePointcutAdviceModel;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelNodeSelector;
+import de.cau.cs.se.geco.architecture.architecture.SeparateModels;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
 import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
-import de.cau.cs.se.geco.architecture.architecture.TargetModelNodeType;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
@@ -120,14 +120,14 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass separatePointcutAdviceModelEClass = null;
+  private EClass separateModelsEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass adviceModelEClass = null;
+  private EClass combinedModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -141,21 +141,21 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass sourceModelNodeSelectorEClass = null;
+  private EClass sourceModelSelectorEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass targetModelNodeTypeEClass = null;
+  private EClass targetModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass modelNodeTypeEClass = null;
+  private EClass modelTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -642,9 +642,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSeparatePointcutAdviceModel()
+  public EClass getSeparateModels()
   {
-    return separatePointcutAdviceModelEClass;
+    return separateModelsEClass;
   }
 
   /**
@@ -652,9 +652,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSeparatePointcutAdviceModel_Pointcut()
+  public EReference getSeparateModels_Pointcut()
   {
-    return (EReference)separatePointcutAdviceModelEClass.getEStructuralFeatures().get(0);
+    return (EReference)separateModelsEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -662,9 +662,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSeparatePointcutAdviceModel_Advice()
+  public EReference getSeparateModels_Advice()
   {
-    return (EReference)separatePointcutAdviceModelEClass.getEStructuralFeatures().get(1);
+    return (EReference)separateModelsEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -672,9 +672,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAdviceModel()
+  public EClass getCombinedModel()
   {
-    return adviceModelEClass;
+    return combinedModelEClass;
   }
 
   /**
@@ -722,9 +722,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getSourceModelNodeSelector()
+  public EClass getSourceModelSelector()
   {
-    return sourceModelNodeSelectorEClass;
+    return sourceModelSelectorEClass;
   }
 
   /**
@@ -732,9 +732,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSourceModelNodeSelector_Reference()
+  public EReference getSourceModelSelector_Reference()
   {
-    return (EReference)sourceModelNodeSelectorEClass.getEStructuralFeatures().get(0);
+    return (EReference)sourceModelSelectorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -742,9 +742,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSourceModelNodeSelector_Constraint()
+  public EReference getSourceModelSelector_Constraint()
   {
-    return (EReference)sourceModelNodeSelectorEClass.getEStructuralFeatures().get(1);
+    return (EReference)sourceModelSelectorEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -752,9 +752,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getSourceModelNodeSelector_Property()
+  public EReference getSourceModelSelector_Property()
   {
-    return (EReference)sourceModelNodeSelectorEClass.getEStructuralFeatures().get(2);
+    return (EReference)sourceModelSelectorEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -762,9 +762,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getTargetModelNodeType()
+  public EClass getTargetModel()
   {
-    return targetModelNodeTypeEClass;
+    return targetModelEClass;
   }
 
   /**
@@ -772,9 +772,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTargetModelNodeType_Reference()
+  public EReference getTargetModel_Reference()
   {
-    return (EReference)targetModelNodeTypeEClass.getEStructuralFeatures().get(0);
+    return (EReference)targetModelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -782,9 +782,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getModelNodeType()
+  public EClass getModelType()
   {
-    return modelNodeTypeEClass;
+    return modelTypeEClass;
   }
 
   /**
@@ -792,9 +792,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModelNodeType_Target()
+  public EReference getModelType_Target()
   {
-    return (EReference)modelNodeTypeEClass.getEStructuralFeatures().get(0);
+    return (EReference)modelTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -802,9 +802,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModelNodeType_Property()
+  public EReference getModelType_Property()
   {
-    return (EReference)modelNodeTypeEClass.getEStructuralFeatures().get(1);
+    return (EReference)modelTypeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -812,9 +812,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getModelNodeType_Collection()
+  public EAttribute getModelType_Collection()
   {
-    return (EAttribute)modelNodeTypeEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)modelTypeEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1311,29 +1311,29 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     aspectModelEClass = createEClass(ASPECT_MODEL);
 
-    separatePointcutAdviceModelEClass = createEClass(SEPARATE_POINTCUT_ADVICE_MODEL);
-    createEReference(separatePointcutAdviceModelEClass, SEPARATE_POINTCUT_ADVICE_MODEL__POINTCUT);
-    createEReference(separatePointcutAdviceModelEClass, SEPARATE_POINTCUT_ADVICE_MODEL__ADVICE);
+    separateModelsEClass = createEClass(SEPARATE_MODELS);
+    createEReference(separateModelsEClass, SEPARATE_MODELS__POINTCUT);
+    createEReference(separateModelsEClass, SEPARATE_MODELS__ADVICE);
 
-    adviceModelEClass = createEClass(ADVICE_MODEL);
+    combinedModelEClass = createEClass(COMBINED_MODEL);
 
     generatorEClass = createEClass(GENERATOR);
     createEReference(generatorEClass, GENERATOR__SOURCE_AUX_MODELS);
     createEReference(generatorEClass, GENERATOR__TARGET_TRACE_MODEL);
     createEReference(generatorEClass, GENERATOR__SOURCE_TRACE_MODELS);
 
-    sourceModelNodeSelectorEClass = createEClass(SOURCE_MODEL_NODE_SELECTOR);
-    createEReference(sourceModelNodeSelectorEClass, SOURCE_MODEL_NODE_SELECTOR__REFERENCE);
-    createEReference(sourceModelNodeSelectorEClass, SOURCE_MODEL_NODE_SELECTOR__CONSTRAINT);
-    createEReference(sourceModelNodeSelectorEClass, SOURCE_MODEL_NODE_SELECTOR__PROPERTY);
+    sourceModelSelectorEClass = createEClass(SOURCE_MODEL_SELECTOR);
+    createEReference(sourceModelSelectorEClass, SOURCE_MODEL_SELECTOR__REFERENCE);
+    createEReference(sourceModelSelectorEClass, SOURCE_MODEL_SELECTOR__CONSTRAINT);
+    createEReference(sourceModelSelectorEClass, SOURCE_MODEL_SELECTOR__PROPERTY);
 
-    targetModelNodeTypeEClass = createEClass(TARGET_MODEL_NODE_TYPE);
-    createEReference(targetModelNodeTypeEClass, TARGET_MODEL_NODE_TYPE__REFERENCE);
+    targetModelEClass = createEClass(TARGET_MODEL);
+    createEReference(targetModelEClass, TARGET_MODEL__REFERENCE);
 
-    modelNodeTypeEClass = createEClass(MODEL_NODE_TYPE);
-    createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__TARGET);
-    createEReference(modelNodeTypeEClass, MODEL_NODE_TYPE__PROPERTY);
-    createEAttribute(modelNodeTypeEClass, MODEL_NODE_TYPE__COLLECTION);
+    modelTypeEClass = createEClass(MODEL_TYPE);
+    createEReference(modelTypeEClass, MODEL_TYPE__TARGET);
+    createEReference(modelTypeEClass, MODEL_TYPE__PROPERTY);
+    createEAttribute(modelTypeEClass, MODEL_TYPE__COLLECTION);
 
     nodePropertyEClass = createEClass(NODE_PROPERTY);
     createEReference(nodePropertyEClass, NODE_PROPERTY__PROPERTY);
@@ -1433,11 +1433,11 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     // Add supertypes to classes
     weaverEClass.getESuperTypes().add(this.getFragment());
-    separatePointcutAdviceModelEClass.getESuperTypes().add(this.getAspectModel());
-    adviceModelEClass.getESuperTypes().add(this.getAspectModel());
+    separateModelsEClass.getESuperTypes().add(this.getAspectModel());
+    combinedModelEClass.getESuperTypes().add(this.getAspectModel());
     generatorEClass.getESuperTypes().add(this.getFragment());
-    generatorEClass.getESuperTypes().add(this.getAdviceModel());
-    targetModelNodeTypeEClass.getESuperTypes().add(this.getAdviceModel());
+    generatorEClass.getESuperTypes().add(this.getCombinedModel());
+    targetModelEClass.getESuperTypes().add(this.getCombinedModel());
     nodePropertyEClass.getESuperTypes().add(this.getOperand());
     compareExpressionEClass.getESuperTypes().add(this.getConstraintExpression());
     basicConstraintEClass.getESuperTypes().add(this.getCompareExpression());
@@ -1473,7 +1473,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(modelSequenceEClass, ModelSequence.class, "ModelSequence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModelSequence_Modifier(), this.getModelModifier(), "modifier", null, 0, 1, ModelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModelSequence_Type(), this.getModelNodeType(), null, "type", null, 0, 1, ModelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModelSequence_Type(), this.getModelType(), null, "type", null, 0, 1, ModelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModelSequence_Models(), this.getModel(), null, "models", null, 0, -1, ModelSequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1481,37 +1481,37 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(fragmentEClass, Fragment.class, "Fragment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFragment_Reference(), theTypesPackage.getJvmType(), null, "reference", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFragment_SourceModel(), this.getSourceModelNodeSelector(), null, "sourceModel", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFragment_TargetModel(), this.getTargetModelNodeType(), null, "targetModel", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFragment_SourceModel(), this.getSourceModelSelector(), null, "sourceModel", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFragment_TargetModel(), this.getTargetModel(), null, "targetModel", null, 0, 1, Fragment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(weaverEClass, Weaver.class, "Weaver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getWeaver_AspectModel(), this.getAspectModel(), null, "aspectModel", null, 0, 1, Weaver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aspectModelEClass, AspectModel.class, "AspectModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(separatePointcutAdviceModelEClass, SeparatePointcutAdviceModel.class, "SeparatePointcutAdviceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSeparatePointcutAdviceModel_Pointcut(), this.getTargetModelNodeType(), null, "pointcut", null, 0, 1, SeparatePointcutAdviceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSeparatePointcutAdviceModel_Advice(), this.getAdviceModel(), null, "advice", null, 0, 1, SeparatePointcutAdviceModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(separateModelsEClass, SeparateModels.class, "SeparateModels", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSeparateModels_Pointcut(), this.getTargetModel(), null, "pointcut", null, 0, 1, SeparateModels.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSeparateModels_Advice(), this.getCombinedModel(), null, "advice", null, 0, 1, SeparateModels.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(adviceModelEClass, AdviceModel.class, "AdviceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(combinedModelEClass, CombinedModel.class, "CombinedModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(generatorEClass, Generator.class, "Generator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGenerator_SourceAuxModels(), this.getSourceModelNodeSelector(), null, "sourceAuxModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerator_SourceAuxModels(), this.getSourceModelSelector(), null, "sourceAuxModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGenerator_TargetTraceModel(), this.getTargetTraceModel(), null, "targetTraceModel", null, 0, 1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGenerator_SourceTraceModels(), this.getTraceModelReference(), null, "sourceTraceModels", null, 0, -1, Generator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(sourceModelNodeSelectorEClass, SourceModelNodeSelector.class, "SourceModelNodeSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSourceModelNodeSelector_Reference(), this.getModel(), null, "reference", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSourceModelNodeSelector_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getSourceModelNodeSelector_Property(), this.getNodeProperty(), null, "property", null, 0, 1, SourceModelNodeSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(sourceModelSelectorEClass, SourceModelSelector.class, "SourceModelSelector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSourceModelSelector_Reference(), this.getModel(), null, "reference", null, 0, 1, SourceModelSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSourceModelSelector_Constraint(), this.getConstraintExpression(), null, "constraint", null, 0, 1, SourceModelSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSourceModelSelector_Property(), this.getNodeProperty(), null, "property", null, 0, 1, SourceModelSelector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(targetModelNodeTypeEClass, TargetModelNodeType.class, "TargetModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTargetModelNodeType_Reference(), this.getModel(), null, "reference", null, 0, 1, TargetModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(targetModelEClass, TargetModel.class, "TargetModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTargetModel_Reference(), this.getModel(), null, "reference", null, 0, 1, TargetModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(modelNodeTypeEClass, ModelNodeType.class, "ModelNodeType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModelNodeType_Target(), this.getRegisteredRootClass(), null, "target", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModelNodeType_Property(), this.getNodeProperty(), null, "property", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getModelNodeType_Collection(), ecorePackage.getEBoolean(), "collection", null, 0, 1, ModelNodeType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(modelTypeEClass, ModelType.class, "ModelType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getModelType_Target(), this.getRegisteredRootClass(), null, "target", null, 0, 1, ModelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModelType_Property(), this.getNodeProperty(), null, "property", null, 0, 1, ModelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getModelType_Collection(), ecorePackage.getEBoolean(), "collection", null, 0, 1, ModelType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(nodePropertyEClass, NodeProperty.class, "NodeProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNodeProperty_Property(), theTypesPackage.getJvmMember(), null, "property", null, 0, 1, NodeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
