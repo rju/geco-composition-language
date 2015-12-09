@@ -645,25 +645,25 @@ finally {
 
 
 
-// Entry rule entryRuleTypeof
-entryRuleTypeof 
+// Entry rule entryRuleInstanceOf
+entryRuleInstanceOf 
 :
-{ before(grammarAccess.getTypeofRule()); }
-	 ruleTypeof
-{ after(grammarAccess.getTypeofRule()); } 
+{ before(grammarAccess.getInstanceOfRule()); }
+	 ruleInstanceOf
+{ after(grammarAccess.getInstanceOfRule()); } 
 	 EOF 
 ;
 
-// Rule Typeof
-ruleTypeof
+// Rule InstanceOf
+ruleInstanceOf
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getTypeofAccess().getGroup()); }
-(rule__Typeof__Group__0)
-{ after(grammarAccess.getTypeofAccess().getGroup()); }
+{ before(grammarAccess.getInstanceOfAccess().getGroup()); }
+(rule__InstanceOf__Group__0)
+{ after(grammarAccess.getInstanceOfAccess().getGroup()); }
 )
 
 ;
@@ -1249,9 +1249,9 @@ rule__Operand__Alternatives
 )
 
     |(
-{ before(grammarAccess.getOperandAccess().getTypeofParserRuleCall_2()); }
-	ruleTypeof
-{ after(grammarAccess.getOperandAccess().getTypeofParserRuleCall_2()); }
+{ before(grammarAccess.getOperandAccess().getInstanceOfParserRuleCall_2()); }
+	ruleInstanceOf
+{ after(grammarAccess.getOperandAccess().getInstanceOfParserRuleCall_2()); }
 )
 
 ;
@@ -4568,29 +4568,29 @@ finally {
 
 
 
-rule__Typeof__Group__0
+rule__InstanceOf__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Typeof__Group__0__Impl
-	rule__Typeof__Group__1
+	rule__InstanceOf__Group__0__Impl
+	rule__InstanceOf__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Typeof__Group__0__Impl
+rule__InstanceOf__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTypeofAccess().getTypeofKeyword_0()); }
+{ before(grammarAccess.getInstanceOfAccess().getIsKeyword_0()); }
 
-	'typeof' 
+	'is' 
 
-{ after(grammarAccess.getTypeofAccess().getTypeofKeyword_0()); }
+{ after(grammarAccess.getInstanceOfAccess().getIsKeyword_0()); }
 )
 
 ;
@@ -4599,26 +4599,26 @@ finally {
 }
 
 
-rule__Typeof__Group__1
+rule__InstanceOf__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Typeof__Group__1__Impl
+	rule__InstanceOf__Group__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Typeof__Group__1__Impl
+rule__InstanceOf__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTypeofAccess().getTypeAssignment_1()); }
-(rule__Typeof__TypeAssignment_1)
-{ after(grammarAccess.getTypeofAccess().getTypeAssignment_1()); }
+{ before(grammarAccess.getInstanceOfAccess().getTypeAssignment_1()); }
+(rule__InstanceOf__TypeAssignment_1)
+{ after(grammarAccess.getInstanceOfAccess().getTypeAssignment_1()); }
 )
 
 ;
@@ -6216,18 +6216,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Typeof__TypeAssignment_1
+rule__InstanceOf__TypeAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTypeofAccess().getTypeJvmTypeCrossReference_1_0()); }
+{ before(grammarAccess.getInstanceOfAccess().getTypeJvmTypeCrossReference_1_0()); }
 (
-{ before(grammarAccess.getTypeofAccess().getTypeJvmTypeIDTerminalRuleCall_1_0_1()); }
-	RULE_ID{ after(grammarAccess.getTypeofAccess().getTypeJvmTypeIDTerminalRuleCall_1_0_1()); }
+{ before(grammarAccess.getInstanceOfAccess().getTypeJvmTypeIDTerminalRuleCall_1_0_1()); }
+	RULE_ID{ after(grammarAccess.getInstanceOfAccess().getTypeJvmTypeIDTerminalRuleCall_1_0_1()); }
 )
-{ after(grammarAccess.getTypeofAccess().getTypeJvmTypeCrossReference_1_0()); }
+{ after(grammarAccess.getInstanceOfAccess().getTypeJvmTypeCrossReference_1_0()); }
 )
 
 ;

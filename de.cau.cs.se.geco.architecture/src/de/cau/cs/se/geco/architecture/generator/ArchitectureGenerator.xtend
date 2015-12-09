@@ -8,6 +8,8 @@ import java.io.File
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
+import de.cau.cs.se.geco.architecture.generator.boxing.GenerateBoxingModel
+import de.cau.cs.se.geco.architecture.generator.code.GenerateGecoCode
 
 /**
  * Generates code from your model files on save.

@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_FLOAT", "RULE_BOOLEAN", "RULE_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'register'", "'text'", "'model'", "','", "'weave'", "'link'", "'=>'", "'pointcut'", "'advice'", "'generate'", "'('", "')'", "'source'", "'target'", "'trace'", "'out'", "'in'", "'['", "']'", "'/'", "'null'", "'[]'", "'!'", "'typeof'", "'use'", "'<'", "'>'", "':'", "'{'", "'}'", "'.'", "'io'", "'&'", "'|'", "'=='", "'!='", "'>='", "'<='", "'~'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_FLOAT", "RULE_BOOLEAN", "RULE_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'register'", "'text'", "'model'", "','", "'weave'", "'link'", "'=>'", "'pointcut'", "'advice'", "'generate'", "'('", "')'", "'source'", "'target'", "'trace'", "'out'", "'in'", "'['", "']'", "'/'", "'null'", "'[]'", "'!'", "'is'", "'use'", "'<'", "'>'", "':'", "'{'", "'}'", "'.'", "'io'", "'&'", "'|'", "'=='", "'!='", "'>='", "'<='", "'~'"
     };
     public static final int T__50=50;
     public static final int RULE_BOOLEAN=8;
@@ -4360,7 +4360,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOperand"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1530:1: ruleOperand returns [EObject current=null] : (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_Typeof_2= ruleTypeof ) ;
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1530:1: ruleOperand returns [EObject current=null] : (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf ) ;
     public final EObject ruleOperand() throws RecognitionException {
         EObject current = null;
 
@@ -4368,16 +4368,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
         EObject this_NodeProperty_1 = null;
 
-        EObject this_Typeof_2 = null;
+        EObject this_InstanceOf_2 = null;
 
 
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1533:28: ( (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_Typeof_2= ruleTypeof ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1534:1: (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_Typeof_2= ruleTypeof )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1533:28: ( (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1534:1: (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1534:1: (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_Typeof_2= ruleTypeof )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1534:1: (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf )
             int alt29=3;
             switch ( input.LA(1) ) {
             case RULE_STRING:
@@ -4453,21 +4453,21 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1555:5: this_Typeof_2= ruleTypeof
+                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1555:5: this_InstanceOf_2= ruleInstanceOf
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getOperandAccess().getTypeofParserRuleCall_2()); 
+                              newCompositeNode(grammarAccess.getOperandAccess().getInstanceOfParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleTypeof_in_ruleOperand3362);
-                    this_Typeof_2=ruleTypeof();
+                    pushFollow(FOLLOW_ruleInstanceOf_in_ruleOperand3362);
+                    this_InstanceOf_2=ruleInstanceOf();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
                        
-                              current = this_Typeof_2; 
+                              current = this_InstanceOf_2; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -4496,30 +4496,30 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleOperand"
 
 
-    // $ANTLR start "entryRuleTypeof"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1571:1: entryRuleTypeof returns [EObject current=null] : iv_ruleTypeof= ruleTypeof EOF ;
-    public final EObject entryRuleTypeof() throws RecognitionException {
+    // $ANTLR start "entryRuleInstanceOf"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1571:1: entryRuleInstanceOf returns [EObject current=null] : iv_ruleInstanceOf= ruleInstanceOf EOF ;
+    public final EObject entryRuleInstanceOf() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleTypeof = null;
+        EObject iv_ruleInstanceOf = null;
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1572:2: (iv_ruleTypeof= ruleTypeof EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1573:2: iv_ruleTypeof= ruleTypeof EOF
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1572:2: (iv_ruleInstanceOf= ruleInstanceOf EOF )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1573:2: iv_ruleInstanceOf= ruleInstanceOf EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getTypeofRule()); 
+               newCompositeNode(grammarAccess.getInstanceOfRule()); 
             }
-            pushFollow(FOLLOW_ruleTypeof_in_entryRuleTypeof3397);
-            iv_ruleTypeof=ruleTypeof();
+            pushFollow(FOLLOW_ruleInstanceOf_in_entryRuleInstanceOf3397);
+            iv_ruleInstanceOf=ruleInstanceOf();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleTypeof; 
+               current =iv_ruleInstanceOf; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTypeof3407); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstanceOf3407); if (state.failed) return current;
 
             }
 
@@ -4533,12 +4533,12 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleTypeof"
+    // $ANTLR end "entryRuleInstanceOf"
 
 
-    // $ANTLR start "ruleTypeof"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1580:1: ruleTypeof returns [EObject current=null] : (otherlv_0= 'typeof' ( (otherlv_1= RULE_ID ) ) ) ;
-    public final EObject ruleTypeof() throws RecognitionException {
+    // $ANTLR start "ruleInstanceOf"
+    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1580:1: ruleInstanceOf returns [EObject current=null] : (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) ) ;
+    public final EObject ruleInstanceOf() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -4547,16 +4547,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1583:28: ( (otherlv_0= 'typeof' ( (otherlv_1= RULE_ID ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:1: (otherlv_0= 'typeof' ( (otherlv_1= RULE_ID ) ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1583:28: ( (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:1: (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:1: (otherlv_0= 'typeof' ( (otherlv_1= RULE_ID ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:3: otherlv_0= 'typeof' ( (otherlv_1= RULE_ID ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:1: (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) )
+            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:3: otherlv_0= 'is' ( (otherlv_1= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,39,FOLLOW_39_in_ruleTypeof3444); if (state.failed) return current;
+            otherlv_0=(Token)match(input,39,FOLLOW_39_in_ruleInstanceOf3444); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getTypeofAccess().getTypeofKeyword_0());
+                  	newLeafNode(otherlv_0, grammarAccess.getInstanceOfAccess().getIsKeyword_0());
                   
             }
             // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1588:1: ( (otherlv_1= RULE_ID ) )
@@ -4568,14 +4568,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               			if (current==null) {
-              	            current = createModelElement(grammarAccess.getTypeofRule());
+              	            current = createModelElement(grammarAccess.getInstanceOfRule());
               	        }
                       
             }
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTypeof3464); if (state.failed) return current;
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInstanceOf3464); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_1, grammarAccess.getTypeofAccess().getTypeJvmTypeCrossReference_1_0()); 
+              		newLeafNode(otherlv_1, grammarAccess.getInstanceOfAccess().getTypeJvmTypeCrossReference_1_0()); 
               	
             }
 
@@ -4603,7 +4603,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleTypeof"
+    // $ANTLR end "ruleInstanceOf"
 
 
     // $ANTLR start "entryRuleTargetTraceModel"
@@ -7289,11 +7289,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleOperand3261 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleLiteral_in_ruleOperand3308 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleNodeProperty_in_ruleOperand3335 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypeof_in_ruleOperand3362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypeof_in_entryRuleTypeof3397 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTypeof3407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_ruleTypeof3444 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleTypeof3464 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstanceOf_in_ruleOperand3362 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstanceOf_in_entryRuleInstanceOf3397 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstanceOf3407 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_ruleInstanceOf3444 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleInstanceOf3464 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTargetTraceModel_in_entryRuleTargetTraceModel3500 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleTargetTraceModel3510 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleTraceModel_in_ruleTargetTraceModel3557 = new BitSet(new long[]{0x0000000000000002L});

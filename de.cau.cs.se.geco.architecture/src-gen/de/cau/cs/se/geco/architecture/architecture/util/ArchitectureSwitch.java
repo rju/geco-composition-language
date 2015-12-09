@@ -243,14 +243,14 @@ public class ArchitectureSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ArchitecturePackage.TYPEOF:
+      case ArchitecturePackage.INSTANCE_OF:
       {
-        Typeof typeof = (Typeof)theEObject;
-        T result = caseTypeof(typeof);
-        if (result == null) result = caseOperand(typeof);
-        if (result == null) result = caseBasicConstraint(typeof);
-        if (result == null) result = caseCompareExpression(typeof);
-        if (result == null) result = caseConstraintExpression(typeof);
+        InstanceOf instanceOf = (InstanceOf)theEObject;
+        T result = caseInstanceOf(instanceOf);
+        if (result == null) result = caseOperand(instanceOf);
+        if (result == null) result = caseBasicConstraint(instanceOf);
+        if (result == null) result = caseCompareExpression(instanceOf);
+        if (result == null) result = caseConstraintExpression(instanceOf);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -703,17 +703,17 @@ public class ArchitectureSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Typeof</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Instance Of</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Typeof</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Instance Of</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTypeof(Typeof object)
+  public T caseInstanceOf(InstanceOf object)
   {
     return null;
   }

@@ -1069,14 +1069,14 @@ public interface ArchitecturePackage extends EPackage
   int PARENTHESIS_CONSTRAINT_FEATURE_COUNT = BASIC_CONSTRAINT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TypeofImpl <em>Typeof</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.InstanceOfImpl <em>Instance Of</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.TypeofImpl
-   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTypeof()
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.InstanceOfImpl
+   * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getInstanceOf()
    * @generated
    */
-  int TYPEOF = 21;
+  int INSTANCE_OF = 21;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1085,7 +1085,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPEOF__LEFT = OPERAND__LEFT;
+  int INSTANCE_OF__LEFT = OPERAND__LEFT;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -1094,7 +1094,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPEOF__OPERATOR = OPERAND__OPERATOR;
+  int INSTANCE_OF__OPERATOR = OPERAND__OPERATOR;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1103,7 +1103,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPEOF__RIGHT = OPERAND__RIGHT;
+  int INSTANCE_OF__RIGHT = OPERAND__RIGHT;
 
   /**
    * The feature id for the '<em><b>Comparator</b></em>' attribute.
@@ -1112,7 +1112,7 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPEOF__COMPARATOR = OPERAND__COMPARATOR;
+  int INSTANCE_OF__COMPARATOR = OPERAND__COMPARATOR;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1121,16 +1121,16 @@ public interface ArchitecturePackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPEOF__TYPE = OPERAND_FEATURE_COUNT + 0;
+  int INSTANCE_OF__TYPE = OPERAND_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Typeof</em>' class.
+   * The number of structural features of the '<em>Instance Of</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPEOF_FEATURE_COUNT = OPERAND_FEATURE_COUNT + 1;
+  int INSTANCE_OF_FEATURE_COUNT = OPERAND_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetTraceModelImpl <em>Target Trace Model</em>}' class.
@@ -2327,25 +2327,25 @@ public interface ArchitecturePackage extends EPackage
   EClass getOperand();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.Typeof <em>Typeof</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.InstanceOf <em>Instance Of</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Typeof</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Typeof
+   * @return the meta object for class '<em>Instance Of</em>'.
+   * @see de.cau.cs.se.geco.architecture.architecture.InstanceOf
    * @generated
    */
-  EClass getTypeof();
+  EClass getInstanceOf();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.Typeof#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.geco.architecture.architecture.InstanceOf#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Type</em>'.
-   * @see de.cau.cs.se.geco.architecture.architecture.Typeof#getType()
-   * @see #getTypeof()
+   * @see de.cau.cs.se.geco.architecture.architecture.InstanceOf#getType()
+   * @see #getInstanceOf()
    * @generated
    */
-  EReference getTypeof_Type();
+  EReference getInstanceOf_Type();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.geco.architecture.architecture.TargetTraceModel <em>Target Trace Model</em>}'.
@@ -3154,14 +3154,14 @@ public interface ArchitecturePackage extends EPackage
     EClass OPERAND = eINSTANCE.getOperand();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TypeofImpl <em>Typeof</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.InstanceOfImpl <em>Instance Of</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.TypeofImpl
-     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getTypeof()
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.InstanceOfImpl
+     * @see de.cau.cs.se.geco.architecture.architecture.impl.ArchitecturePackageImpl#getInstanceOf()
      * @generated
      */
-    EClass TYPEOF = eINSTANCE.getTypeof();
+    EClass INSTANCE_OF = eINSTANCE.getInstanceOf();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' reference feature.
@@ -3169,7 +3169,7 @@ public interface ArchitecturePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPEOF__TYPE = eINSTANCE.getTypeof_Type();
+    EReference INSTANCE_OF__TYPE = eINSTANCE.getInstanceOf_Type();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.geco.architecture.architecture.impl.TargetTraceModelImpl <em>Target Trace Model</em>}' class.

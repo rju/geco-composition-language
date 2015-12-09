@@ -26,7 +26,7 @@ import de.cau.cs.se.geco.architecture.architecture.NodeProperty
 import de.cau.cs.se.geco.architecture.architecture.ModelType
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import de.cau.cs.se.geco.architecture.architecture.NodeType
-import de.cau.cs.se.geco.architecture.architecture.Typeof
+import de.cau.cs.se.geco.architecture.architecture.InstanceOf
 import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation
 import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass
@@ -52,7 +52,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 			Generator case reference.name.equals("reference"): createGeneratorReferenceScope(context, reference)
 			Weaver case reference.name.equals("reference"): createWeaverReferenceScope(context, reference)
 			NodeType: createNodeTypeScope(context, reference)
-			Typeof: createTypeofScope(context, reference)
+			InstanceOf: createInstanceOfScope(context, reference)
 			// delegation scope
 			Generator case reference.name.equals("readTraceModels"),
 			TraceModelReference,
@@ -85,8 +85,8 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 				val genericType = (container.reference.eContainer as ModelSequence).type.resolveType.determineElementType
 				// TODO this must be converted into a typing method
 				if (container.constraint != null) {
-					if (container.constraint instanceof Typeof) {
-						return (container.constraint as Typeof).type.createJvmDeclaredTypeScope(reference)
+					if (container.constraint instanceof InstanceOf) {
+						return (container.constraint as InstanceOf).type.createJvmDeclaredTypeScope(reference)
 					}
 				}
 				return genericType.createJvmDeclaredTypeScope(reference)
@@ -163,7 +163,7 @@ class ArchitectureScopeProvider extends AbstractScopeProvider implements IDelega
 	/**
 	 * Scope for the type of call.
 	 */
-	private def IScope createTypeofScope(Typeof type, EReference reference) {
+	private def IScope createInstanceOfScope(InstanceOf type, EReference reference) {
 		val context = type.metaModelContextNode
 		if (context != null) {
 			return new JvmRegisterMetamodelImportScope(context, 

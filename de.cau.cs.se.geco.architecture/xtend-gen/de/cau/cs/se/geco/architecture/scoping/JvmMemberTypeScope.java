@@ -2,6 +2,7 @@ package de.cau.cs.se.geco.architecture.scoping;
 
 import com.google.common.collect.Iterables;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
@@ -30,32 +31,29 @@ public class JvmMemberTypeScope implements IScope {
   
   public JvmMemberTypeScope(final JvmDeclaredType type) {
     EList<JvmMember> _members = type.getMembers();
-    Iterable<JvmOperation> _filter = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
+    this.findMembers(_members, "get");
+    EList<JvmMember> _members_1 = type.getMembers();
+    this.findMembers(_members_1, "is");
+  }
+  
+  private void findMembers(final List<JvmMember> members, final String prefix) {
+    Iterable<JvmOperation> _filter = Iterables.<JvmOperation>filter(members, JvmOperation.class);
     final Function1<JvmOperation, Boolean> _function = (JvmOperation it) -> {
-      boolean _or = false;
       String _simpleName = it.getSimpleName();
-      boolean _startsWith = _simpleName.startsWith("get");
-      if (_startsWith) {
-        _or = true;
-      } else {
-        String _simpleName_1 = it.getSimpleName();
-        boolean _startsWith_1 = _simpleName_1.startsWith("is");
-        _or = _startsWith_1;
-      }
-      return Boolean.valueOf(_or);
+      return Boolean.valueOf(_simpleName.startsWith(prefix));
     };
     Iterable<JvmOperation> _filter_1 = IterableExtensions.<JvmOperation>filter(_filter, _function);
     final Consumer<JvmOperation> _function_1 = (JvmOperation it) -> {
-      String _createName = this.createName(it);
+      String _createName = this.createName(it, prefix);
       IEObjectDescription _create = EObjectDescription.create(_createName, it);
       this.fields.put(it, _create);
     };
     _filter_1.forEach(_function_1);
   }
   
-  private String createName(final JvmOperation operation) {
+  private String createName(final JvmOperation operation, final String prefix) {
     String _simpleName = operation.getSimpleName();
-    String _replaceFirst = _simpleName.replaceFirst("get", "");
+    String _replaceFirst = _simpleName.replaceFirst(prefix, "");
     return StringExtensions.toFirstLower(_replaceFirst);
   }
   
@@ -67,9 +65,19 @@ public class JvmMemberTypeScope implements IScope {
   @Override
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
     final Function2<JvmOperation, IEObjectDescription, Boolean> _function = (JvmOperation object, IEObjectDescription description) -> {
-      String _createName = this.createName(object);
+      boolean _or = false;
+      String _createName = this.createName(object, "get");
       String _string = name.toString();
-      return Boolean.valueOf(_createName.equals(_string));
+      boolean _equals = _createName.equals(_string);
+      if (_equals) {
+        _or = true;
+      } else {
+        String _createName_1 = this.createName(object, "is");
+        String _string_1 = name.toString();
+        boolean _equals_1 = _createName_1.equals(_string_1);
+        _or = _equals_1;
+      }
+      return Boolean.valueOf(_or);
     };
     Map<JvmOperation, IEObjectDescription> _filter = MapExtensions.<JvmOperation, IEObjectDescription>filter(this.fields, _function);
     return _filter.values();

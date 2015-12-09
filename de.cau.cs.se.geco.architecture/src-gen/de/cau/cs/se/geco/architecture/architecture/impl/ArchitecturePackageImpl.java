@@ -17,6 +17,7 @@ import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
+import de.cau.cs.se.geco.architecture.architecture.InstanceOf;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Literal;
 import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
@@ -38,7 +39,6 @@ import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
-import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -211,7 +211,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass typeofEClass = null;
+  private EClass instanceOfEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -982,9 +982,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getTypeof()
+  public EClass getInstanceOf()
   {
-    return typeofEClass;
+    return instanceOfEClass;
   }
 
   /**
@@ -992,9 +992,9 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTypeof_Type()
+  public EReference getInstanceOf_Type()
   {
-    return (EReference)typeofEClass.getEStructuralFeatures().get(0);
+    return (EReference)instanceOfEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1358,8 +1358,8 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     operandEClass = createEClass(OPERAND);
 
-    typeofEClass = createEClass(TYPEOF);
-    createEReference(typeofEClass, TYPEOF__TYPE);
+    instanceOfEClass = createEClass(INSTANCE_OF);
+    createEReference(instanceOfEClass, INSTANCE_OF__TYPE);
 
     targetTraceModelEClass = createEClass(TARGET_TRACE_MODEL);
 
@@ -1444,7 +1444,7 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
     negationEClass.getESuperTypes().add(this.getBasicConstraint());
     parenthesisConstraintEClass.getESuperTypes().add(this.getBasicConstraint());
     operandEClass.getESuperTypes().add(this.getBasicConstraint());
-    typeofEClass.getESuperTypes().add(this.getOperand());
+    instanceOfEClass.getESuperTypes().add(this.getOperand());
     traceModelReferenceEClass.getESuperTypes().add(this.getTargetTraceModel());
     traceModelEClass.getESuperTypes().add(this.getTargetTraceModel());
     literalEClass.getESuperTypes().add(this.getOperand());
@@ -1536,8 +1536,8 @@ public class ArchitecturePackageImpl extends EPackageImpl implements Architectur
 
     initEClass(operandEClass, Operand.class, "Operand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(typeofEClass, Typeof.class, "Typeof", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTypeof_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, Typeof.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(instanceOfEClass, InstanceOf.class, "InstanceOf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInstanceOf_Type(), theTypesPackage.getJvmType(), null, "type", null, 0, 1, InstanceOf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(targetTraceModelEClass, TargetTraceModel.class, "TargetTraceModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

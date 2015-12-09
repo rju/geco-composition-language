@@ -70,12 +70,12 @@ Generator:
 
 
 SourceModelSelector: 
-	reference = [Model|ID]  ('[' constraint=ConstraintExpression ']')? ('/' property=NodeProperty)? | 
+	reference=[Model|ID]  ('[' constraint=ConstraintExpression ']')? ('/' property=NodeProperty)? | 
 	{SourceModelSelector} 'null' 
 ;
 
 TargetModel: {TargetModel}
-	(reference = [Model|ID])
+	(reference=[Model|ID])
 ;
 
 ModelType:
@@ -109,11 +109,11 @@ ParenthesisConstraint:
 ;
 
 Operand:
-	Literal | NodeProperty | Typeof
+	Literal | NodeProperty | InstanceOf
 ;
 
-Typeof:
-	'typeof' type = [types::JvmType|ID] 	
+InstanceOf:
+	'is' type = [types::JvmType|ID] 	
 ;
 
 TargetTraceModel:

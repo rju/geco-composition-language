@@ -11,7 +11,7 @@ import de.cau.cs.se.geco.architecture.architecture.ModelSequence
 import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector
-import de.cau.cs.se.geco.architecture.architecture.Typeof
+import de.cau.cs.se.geco.architecture.architecture.InstanceOf
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint
 import de.cau.cs.se.geco.architecture.architecture.BasicConstraint
@@ -34,14 +34,14 @@ class ArchitectureTyping {
 		else {
 			val genericTypeReference = selector.reference?.resolveType
 			if (selector.constraint != null) {
-				if (selector.constraint instanceof Typeof) {
+				if (selector.constraint instanceof InstanceOf) {
 					if (genericTypeReference.isListType) {
 						val paramTypeReference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference
 						paramTypeReference.type = genericTypeReference.type
-						paramTypeReference.arguments.add((selector.constraint as Typeof).resolveType)
+						paramTypeReference.arguments.add((selector.constraint as InstanceOf).resolveType)
 						return paramTypeReference
 					} else
-						return (selector.constraint as Typeof).resolveType
+						return (selector.constraint as InstanceOf).resolveType
 				} else
 					return genericTypeReference
 			} else
@@ -118,7 +118,7 @@ class ArchitectureTyping {
 	/**
 	 * Evaluate type of an Typeof.
 	 */
-	def dispatch static JvmTypeReference resolveType(Typeof expression) {
+	def dispatch static JvmTypeReference resolveType(InstanceOf expression) {
 		expression.type.resolveType
 	}
 	

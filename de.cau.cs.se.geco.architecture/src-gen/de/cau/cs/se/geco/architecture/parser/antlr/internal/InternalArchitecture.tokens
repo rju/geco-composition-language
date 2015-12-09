@@ -21,6 +21,7 @@
 'import'=15
 'in'=32
 'io'=47
+'is'=39
 'link'=21
 'model'=18
 'null'=36
@@ -32,7 +33,6 @@
 'target'=29
 'text'=17
 'trace'=30
-'typeof'=39
 'use'=40
 'weave'=20
 '{'=44

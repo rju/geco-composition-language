@@ -1,42 +1,27 @@
-package de.cau.cs.se.geco.architecture.generator
+package de.cau.cs.se.geco.architecture.generator.code
 
-import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral
-import de.cau.cs.se.geco.architecture.architecture.AspectModel
-import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral
-import de.cau.cs.se.geco.architecture.architecture.CompareExpression
-import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression
-import de.cau.cs.se.geco.architecture.architecture.FloatLiteral
 import de.cau.cs.se.geco.architecture.architecture.Generator
 import de.cau.cs.se.geco.architecture.architecture.Import
-import de.cau.cs.se.geco.architecture.architecture.IntLiteral
-import de.cau.cs.se.geco.architecture.architecture.Literal
-import de.cau.cs.se.geco.architecture.architecture.LogicOperator
-import de.cau.cs.se.geco.architecture.architecture.Model
-import de.cau.cs.se.geco.architecture.architecture.ModelType
-import de.cau.cs.se.geco.architecture.architecture.Negation
+import de.cau.cs.se.geco.architecture.architecture.ModelModifier
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty
 import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector
-import de.cau.cs.se.geco.architecture.architecture.StringLiteral
 import de.cau.cs.se.geco.architecture.architecture.TargetModel
-import de.cau.cs.se.geco.architecture.architecture.Typeof
 import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.framework.IGenerator
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel
+import de.cau.cs.se.geco.architecture.model.boxing.Group
+import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
+import de.cau.cs.se.geco.architecture.model.boxing.Unit
+import javax.inject.Inject
+import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.common.types.JvmType
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
-import de.cau.cs.se.geco.architecture.architecture.Fragment
-import de.cau.cs.se.geco.architecture.model.boxing.Group
-import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration
-import de.cau.cs.se.geco.architecture.architecture.ModelModifier
-import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmMember
-import org.eclipse.emf.common.util.EList
-import de.cau.cs.se.geco.architecture.model.boxing.Unit
-import de.cau.cs.se.geco.architecture.architecture.ModelSequence
-import org.eclipse.xtext.common.types.JvmOperation
 
 class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
+	
+	@Inject extension SelectorQuery
+	@Inject extension NameResolver
 	
 	String className
 	
@@ -119,36 +104,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 		«declaration.model.collectionName».forEach[«declaration.selector.createSelectorQuery(declaration.model.name)»]
 	'''
 	
-	/**
-	 * Process a node type selector query. If no property is set only add an instance of type to the model list.
-	 * If the property has a list type iterate over the property (one more for each).
-	 * If the property has a flat type only add the single value.
-	 */
-	private def createSelectorQuery(ModelType type, String modelName) {
-		if (type.property == null)
-			'''«modelName».add(it)'''
-		else if (type.property.property.resolveType.isListType) {
-			'''it.«type.property.property.simpleName»().forEach[«type.property.createPropertyQuery(modelName)»]'''			
-		} else { 
-			'''«modelName».add(it.«type.property.property.simpleName»)'''
-		}
-			
-	}
-		
-	/**
-	 * Check if the given property value instance has a sub property. If not,
-	 * just add the value, else create a for each loop for list properties or a single
-	 * value add for non list types.
-	 */
-	private def CharSequence createPropertyQuery(NodeProperty property, String modelName) {
-		if (property.subProperty == null)
-			'''«modelName».add(it)'''
-		else if (property.property.resolveType.isListType) {
-			'''it.«property.property.simpleName»().forEach[«property.subProperty.createPropertyQuery(modelName)»]'''
-		} else {
-			'''«modelName».add(it.«property.subProperty.property.simpleName»)'''
-		}
-	}
+
 	
 	/**
 	 * Create call to a group execution method.
@@ -198,7 +154,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 		}
 	'''
 	
-		/**
+	/**
 	 * Create nested loops for a generator call.
 	 */
 	private def createSourceModelNesting(SourceModelSelector sourceModel, Weaver weaver, Unit unit) {
@@ -259,19 +215,28 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	private def createSourceAuxModels(EList<SourceModelSelector> sourceAuxModels) '''
 		«sourceAuxModels.indexed.map[it.value.createSourceAuxModel(it.key)].join»
 	'''
+			
+	
+
+	/**
+	 * Create a generator invocation.
+	 */
+	private def createGeneratorCall(Generator generator, String modelVarName) {
+		'''«generator.createTargetModel» «generator.reference.instanceName».generate(«modelVarName»)'''
+	}
 	
 	/**
-	 * Create an initialization section for an auxiliary model collection.
+	 * Create reference to target model. += is for pre-existing collections and = for aspect models
+	 * which are automatically woven into a model.
 	 */
-	private def createSourceAuxModel(SourceModelSelector sourceAuxModel, int i) {
-		if (sourceAuxModel.property == null) {
-			'''val aux«i» = «sourceAuxModel.reference.name»«sourceAuxModel.constraint.createConstraintFilter»''' 
-		} else { 
-			'''
-				val aux«i» = new ArrayList<«sourceAuxModel.resolveType.qualifiedName»>()
-				«sourceAuxModel.reference.name».forEach[it.«sourceAuxModel.property.createPropertyQuery('''aux«i»''')»]
-			'''
-		}
+	private def createTargetModel(Generator generator) {
+		if (generator.targetModel != null) {
+			if (generator.targetModel.reference.isCollectionType) 
+				'''«generator.targetModel.reference.name» += '''
+			else
+				'''«generator.targetModel.reference.name» = ''' 
+		} else
+			'''val aspectModel = '''
 	}
 		
 	/**
@@ -307,83 +272,5 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 				]''' 
 	}
 
-	/**
-	 * Create a generator invocation.
-	 */
-	private def createGeneratorCall(Generator generator, String modelVarName) {
-		'''«generator.createTargetModel» «generator.reference.instanceName».generate(«modelVarName»)'''
-	}
-	
-	/**
-	 * Create reference to target model. += is for pre-existing collections and = for aspect models
-	 * which are automatically woven into a model.
-	 */
-	private def createTargetModel(Generator generator) {
-		if (generator.targetModel != null) {
-			if (generator.targetModel.reference.isCollectionType) 
-				'''«generator.targetModel.reference.name» += '''
-			else
-				'''«generator.targetModel.reference.name» = ''' 
-		} else
-			'''val aspectModel = '''
-	}
-		
-	/* --------------------------------------------------- */
-	
-	/**
-	 * Create a constraint filter for a query if a filter is defined.
-	 */
-	private def createConstraintFilter(ConstraintExpression expression) {
-		if (expression == null)
-			''''''
-		else if (expression instanceof Typeof)
-			'''.filter(«expression.type.qualifiedName»)'''
-		else
-			'''.filter[«expression.createConstraint»]'''
-	}
-	
-	/** constraint computation */
-	private def dispatch CharSequence createConstraint(Negation expression) '''!«expression.constraint»'''
-	
-	private def dispatch CharSequence createConstraint(Literal expression) {
-		switch(expression) {
-			ArrayLiteral: '{' + expression.literals.map[it.createConstraint] + '}'
-			BooleanLiteral: expression.value
-			FloatLiteral: expression.value
-			IntLiteral: expression.value.toString
-			StringLiteral: '"' + expression + '"'
-		}
-	}
-	
-	private def dispatch CharSequence createConstraint(NodeProperty expression) '''«expression.property.simpleName»'''
-	
-	private def dispatch CharSequence createConstraint(Typeof expression) 
-		'''it instanceof «expression.type.qualifiedName»'''
-	
-	private def dispatch CharSequence createConstraint(ConstraintExpression expression) {
-		'''(«expression.left.createConstraint» «expression.operator.createOperator» «expression.right.createConstraint»)'''
-	}
-	
-	private def createOperator(LogicOperator operator) {
-		switch(operator) {
-			case AND: '&&'
-			case OR: '||'
-		}
-	}
-	
-	private def dispatch CharSequence createConstraint(CompareExpression expression) {
-		'''(«expression.left.createConstraint» «expression.comparator.literal» «expression.right.createConstraint»)'''
-	}
-	
-		
-	
-	private def getInstanceName(JvmType type) {
-		type.simpleName.toFirstLower
-	}
-	
-	/**
-	 * Name of internal collections for models for a specific metamodel.
-	 */
-	private def collectionName(Model model) '''«model.name»BaseCollection'''
 		
 }

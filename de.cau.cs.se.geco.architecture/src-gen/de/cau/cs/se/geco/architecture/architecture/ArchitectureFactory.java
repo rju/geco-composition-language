@@ -212,13 +212,13 @@ public interface ArchitectureFactory extends EFactory
   Operand createOperand();
 
   /**
-   * Returns a new object of class '<em>Typeof</em>'.
+   * Returns a new object of class '<em>Instance Of</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Typeof</em>'.
+   * @return a new object of class '<em>Instance Of</em>'.
    * @generated
    */
-  Typeof createTypeof();
+  InstanceOf createInstanceOf();
 
   /**
    * Returns a new object of class '<em>Target Trace Model</em>'.

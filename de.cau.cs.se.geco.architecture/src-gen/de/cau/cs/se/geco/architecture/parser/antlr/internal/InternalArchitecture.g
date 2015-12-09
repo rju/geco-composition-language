@@ -1553,11 +1553,11 @@ ruleOperand returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getOperandAccess().getTypeofParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getOperandAccess().getInstanceOfParserRuleCall_2()); 
     }
-    this_Typeof_2=ruleTypeof
+    this_InstanceOf_2=ruleInstanceOf
     { 
-        $current = $this_Typeof_2.current; 
+        $current = $this_InstanceOf_2.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -1567,34 +1567,34 @@ ruleOperand returns [EObject current=null]
 
 
 
-// Entry rule entryRuleTypeof
-entryRuleTypeof returns [EObject current=null] 
+// Entry rule entryRuleInstanceOf
+entryRuleInstanceOf returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getTypeofRule()); }
-	 iv_ruleTypeof=ruleTypeof 
-	 { $current=$iv_ruleTypeof.current; } 
+	{ newCompositeNode(grammarAccess.getInstanceOfRule()); }
+	 iv_ruleInstanceOf=ruleInstanceOf 
+	 { $current=$iv_ruleInstanceOf.current; } 
 	 EOF 
 ;
 
-// Rule Typeof
-ruleTypeof returns [EObject current=null] 
+// Rule InstanceOf
+ruleInstanceOf returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='typeof' 
+(	otherlv_0='is' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getTypeofAccess().getTypeofKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getInstanceOfAccess().getIsKeyword_0());
     }
 (
 (
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getTypeofRule());
+	            $current = createModelElement(grammarAccess.getInstanceOfRule());
 	        }
         }
 	otherlv_1=RULE_ID
 	{
-		newLeafNode(otherlv_1, grammarAccess.getTypeofAccess().getTypeJvmTypeCrossReference_1_0()); 
+		newLeafNode(otherlv_1, grammarAccess.getInstanceOfAccess().getTypeJvmTypeCrossReference_1_0()); 
 	}
 
 )

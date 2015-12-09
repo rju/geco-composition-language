@@ -1,4 +1,4 @@
-package de.cau.cs.se.geco.architecture.generator
+package de.cau.cs.se.geco.architecture.generator.boxing
 
 import de.cau.cs.se.geco.architecture.architecture.Generator
 import de.cau.cs.se.geco.architecture.architecture.GecoModel

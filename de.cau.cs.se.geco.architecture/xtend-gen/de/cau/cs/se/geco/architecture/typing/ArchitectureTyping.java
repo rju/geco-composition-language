@@ -7,6 +7,7 @@ import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
+import de.cau.cs.se.geco.architecture.architecture.InstanceOf;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.ModelType;
@@ -16,7 +17,6 @@ import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModel;
-import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
 import java.util.Arrays;
@@ -58,7 +58,7 @@ public class ArchitectureTyping {
       boolean _notEquals_1 = (!Objects.equal(_constraint, null));
       if (_notEquals_1) {
         ConstraintExpression _constraint_1 = selector.getConstraint();
-        if ((_constraint_1 instanceof Typeof)) {
+        if ((_constraint_1 instanceof InstanceOf)) {
           boolean _isListType = ArchitectureTyping.isListType(genericTypeReference);
           if (_isListType) {
             final JvmParameterizedTypeReference paramTypeReference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
@@ -66,12 +66,12 @@ public class ArchitectureTyping {
             paramTypeReference.setType(_type);
             EList<JvmTypeReference> _arguments = paramTypeReference.getArguments();
             ConstraintExpression _constraint_2 = selector.getConstraint();
-            JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(((Typeof) _constraint_2));
+            JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(((InstanceOf) _constraint_2));
             _arguments.add(_resolveType_1);
             return paramTypeReference;
           } else {
             ConstraintExpression _constraint_3 = selector.getConstraint();
-            return ArchitectureTyping.resolveType(((Typeof) _constraint_3));
+            return ArchitectureTyping.resolveType(((InstanceOf) _constraint_3));
           }
         } else {
           return genericTypeReference;
@@ -181,7 +181,7 @@ public class ArchitectureTyping {
   /**
    * Evaluate type of an Typeof.
    */
-  protected static JvmTypeReference _resolveType(final Typeof expression) {
+  protected static JvmTypeReference _resolveType(final InstanceOf expression) {
     JvmType _type = expression.getType();
     return ArchitectureTyping.resolveType(_type);
   }
@@ -552,10 +552,10 @@ public class ArchitectureTyping {
   public static JvmTypeReference resolveType(final EObject operation) {
     if (operation instanceof JvmOperation) {
       return _resolveType((JvmOperation)operation);
+    } else if (operation instanceof InstanceOf) {
+      return _resolveType((InstanceOf)operation);
     } else if (operation instanceof NodeProperty) {
       return _resolveType((NodeProperty)operation);
-    } else if (operation instanceof Typeof) {
-      return _resolveType((Typeof)operation);
     } else if (operation instanceof Negation) {
       return _resolveType((Negation)operation);
     } else if (operation instanceof ParenthesisConstraint) {

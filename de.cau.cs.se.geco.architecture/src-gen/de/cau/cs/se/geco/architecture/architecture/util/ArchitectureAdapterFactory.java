@@ -180,9 +180,9 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
         return createOperandAdapter();
       }
       @Override
-      public Adapter caseTypeof(Typeof object)
+      public Adapter caseInstanceOf(InstanceOf object)
       {
-        return createTypeofAdapter();
+        return createInstanceOfAdapter();
       }
       @Override
       public Adapter caseTargetTraceModel(TargetTraceModel object)
@@ -577,16 +577,16 @@ public class ArchitectureAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.Typeof <em>Typeof</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.geco.architecture.architecture.InstanceOf <em>Instance Of</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.geco.architecture.architecture.Typeof
+   * @see de.cau.cs.se.geco.architecture.architecture.InstanceOf
    * @generated
    */
-  public Adapter createTypeofAdapter()
+  public Adapter createInstanceOfAdapter()
   {
     return null;
   }

@@ -5,8 +5,8 @@ package de.cau.cs.se.geco.architecture.generator;
 
 import com.google.common.collect.Iterators;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
-import de.cau.cs.se.geco.architecture.generator.GenerateBoxingModel;
-import de.cau.cs.se.geco.architecture.generator.GenerateGecoCode;
+import de.cau.cs.se.geco.architecture.generator.boxing.GenerateBoxingModel;
+import de.cau.cs.se.geco.architecture.generator.code.GenerateGecoCode;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
 import java.io.File;
 import java.util.Iterator;

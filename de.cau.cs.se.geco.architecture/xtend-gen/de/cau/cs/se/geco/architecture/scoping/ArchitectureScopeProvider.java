@@ -10,6 +10,7 @@ import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
+import de.cau.cs.se.geco.architecture.architecture.InstanceOf;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
 import de.cau.cs.se.geco.architecture.architecture.ModelType;
@@ -20,7 +21,6 @@ import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
-import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import de.cau.cs.se.geco.architecture.framework.IWeaver;
@@ -101,9 +101,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       }
     }
     if (!_matched) {
-      if (context instanceof Typeof) {
+      if (context instanceof InstanceOf) {
         _matched=true;
-        _switchResult = this.createTypeofScope(((Typeof)context), reference);
+        _switchResult = this.createInstanceOfScope(((InstanceOf)context), reference);
       }
     }
     if (!_matched) {
@@ -199,9 +199,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         boolean _notEquals = (!Objects.equal(_constraint, null));
         if (_notEquals) {
           ConstraintExpression _constraint_1 = ((SourceModelSelector)container).getConstraint();
-          if ((_constraint_1 instanceof Typeof)) {
+          if ((_constraint_1 instanceof InstanceOf)) {
             ConstraintExpression _constraint_2 = ((SourceModelSelector)container).getConstraint();
-            JvmType _type_1 = ((Typeof) _constraint_2).getType();
+            JvmType _type_1 = ((InstanceOf) _constraint_2).getType();
             return this.createJvmDeclaredTypeScope(_type_1, reference);
           }
         }
@@ -348,7 +348,7 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
   /**
    * Scope for the type of call.
    */
-  private IScope createTypeofScope(final Typeof type, final EReference reference) {
+  private IScope createInstanceOfScope(final InstanceOf type, final EReference reference) {
     IScope _xblockexpression = null;
     {
       final JvmType context = this.getMetaModelContextNode(type);

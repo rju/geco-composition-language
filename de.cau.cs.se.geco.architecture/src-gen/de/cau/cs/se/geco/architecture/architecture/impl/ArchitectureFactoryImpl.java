@@ -86,7 +86,7 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
       case ArchitecturePackage.NEGATION: return createNegation();
       case ArchitecturePackage.PARENTHESIS_CONSTRAINT: return createParenthesisConstraint();
       case ArchitecturePackage.OPERAND: return createOperand();
-      case ArchitecturePackage.TYPEOF: return createTypeof();
+      case ArchitecturePackage.INSTANCE_OF: return createInstanceOf();
       case ArchitecturePackage.TARGET_TRACE_MODEL: return createTargetTraceModel();
       case ArchitecturePackage.TRACE_MODEL_REFERENCE: return createTraceModelReference();
       case ArchitecturePackage.TRACE_MODEL: return createTraceModel();
@@ -381,10 +381,10 @@ public class ArchitectureFactoryImpl extends EFactoryImpl implements Architectur
    * <!-- end-user-doc -->
    * @generated
    */
-  public Typeof createTypeof()
+  public InstanceOf createInstanceOf()
   {
-    TypeofImpl typeof = new TypeofImpl();
-    return typeof;
+    InstanceOfImpl instanceOf = new InstanceOfImpl();
+    return instanceOf;
   }
 
   /**

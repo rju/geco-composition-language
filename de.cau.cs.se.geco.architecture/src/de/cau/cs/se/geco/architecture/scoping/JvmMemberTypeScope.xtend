@@ -9,6 +9,8 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import java.util.Map
 import java.util.HashMap
 import org.eclipse.xtext.resource.EObjectDescription
+import java.util.List
+import org.eclipse.xtext.common.types.JvmMember
 
 /**
  * This scope comprises of a set of feature names of an EObject descendant,
@@ -20,16 +22,20 @@ class JvmMemberTypeScope implements IScope {
 	val Map<JvmOperation, IEObjectDescription> fields = new HashMap<JvmOperation, IEObjectDescription>
 	
 	new(JvmDeclaredType type) {
-		type.members.filter(JvmOperation).filter[
-			it.simpleName.startsWith("get") ||
-			it.simpleName.startsWith("is")
+		type.members.findMembers("get")
+		type.members.findMembers("is")
+	}
+	
+	private def void findMembers(List<JvmMember> members, String prefix) {
+		members.filter(JvmOperation).filter[
+			it.simpleName.startsWith(prefix)
 		].forEach[
-			fields.put(it, EObjectDescription.create(it.createName, it))
+			fields.put(it, EObjectDescription.create(it.createName(prefix), it))
 		]
 	}
 	
-	private def String createName(JvmOperation operation) {
-		operation.simpleName.replaceFirst("get", "").toFirstLower
+	private def String createName(JvmOperation operation, String prefix) {
+		operation.simpleName.replaceFirst(prefix, "").toFirstLower
 	}
 	
 	override getAllElements() {
@@ -37,7 +43,10 @@ class JvmMemberTypeScope implements IScope {
 	}
 	
 	override getElements(QualifiedName name) {
-		fields.filter[object, description | object.createName.equals(name.toString)].values
+		fields.filter[object, description | 
+			object.createName("get").equals(name.toString) ||
+			object.createName("is").equals(name.toString)
+		].values
 	}
 	
 	override getElements(EObject object) {

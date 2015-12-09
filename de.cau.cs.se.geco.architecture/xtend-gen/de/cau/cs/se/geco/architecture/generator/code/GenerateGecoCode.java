@@ -1,52 +1,51 @@
-package de.cau.cs.se.geco.architecture.generator;
+package de.cau.cs.se.geco.architecture.generator.code;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
-import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral;
-import de.cau.cs.se.geco.architecture.architecture.Comparator;
-import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
-import de.cau.cs.se.geco.architecture.architecture.FloatLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
-import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
-import de.cau.cs.se.geco.architecture.architecture.Literal;
-import de.cau.cs.se.geco.architecture.architecture.LogicOperator;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
 import de.cau.cs.se.geco.architecture.architecture.ModelType;
-import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
-import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModel;
-import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
+import de.cau.cs.se.geco.architecture.generator.code.NameResolver;
+import de.cau.cs.se.geco.architecture.generator.code.SelectorQuery;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
 import de.cau.cs.se.geco.architecture.model.boxing.Group;
 import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
 import de.cau.cs.se.geco.architecture.model.boxing.Unit;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
-import java.util.Arrays;
 import java.util.List;
+import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
+  @Inject
+  @Extension
+  private SelectorQuery _selectorQuery;
+  
+  @Inject
+  @Extension
+  private NameResolver _nameResolver;
+  
   private String className;
   
   public GenerateGecoCode(final String className) {
@@ -213,7 +212,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   private CharSequence createField(final JvmType type) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("val ");
-    String _instanceName = this.getInstanceName(type);
+    String _instanceName = this._nameResolver.getInstanceName(type);
     _builder.append(_instanceName, "");
     _builder.append(" = new ");
     String _simpleName = type.getSimpleName();
@@ -271,7 +270,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("val ");
     Model _model = declaration.getModel();
-    CharSequence _collectionName = this.collectionName(_model);
+    CharSequence _collectionName = this._nameResolver.collectionName(_model);
     _builder.append(_collectionName, "");
     _builder.append(" = models.filter(");
     ModelType _selector = declaration.getSelector();
@@ -282,113 +281,17 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     _builder.append(")");
     _builder.newLineIfNotEmpty();
     Model _model_1 = declaration.getModel();
-    CharSequence _collectionName_1 = this.collectionName(_model_1);
+    CharSequence _collectionName_1 = this._nameResolver.collectionName(_model_1);
     _builder.append(_collectionName_1, "");
     _builder.append(".forEach[");
     ModelType _selector_1 = declaration.getSelector();
     Model _model_2 = declaration.getModel();
     String _name = _model_2.getName();
-    CharSequence _createSelectorQuery = this.createSelectorQuery(_selector_1, _name);
+    CharSequence _createSelectorQuery = this._selectorQuery.createSelectorQuery(_selector_1, _name);
     _builder.append(_createSelectorQuery, "");
     _builder.append("]");
     _builder.newLineIfNotEmpty();
     return _builder;
-  }
-  
-  /**
-   * Process a node type selector query. If no property is set only add an instance of type to the model list.
-   * If the property has a list type iterate over the property (one more for each).
-   * If the property has a flat type only add the single value.
-   */
-  private CharSequence createSelectorQuery(final ModelType type, final String modelName) {
-    CharSequence _xifexpression = null;
-    NodeProperty _property = type.getProperty();
-    boolean _equals = Objects.equal(_property, null);
-    if (_equals) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(modelName, "");
-      _builder.append(".add(it)");
-      _xifexpression = _builder;
-    } else {
-      CharSequence _xifexpression_1 = null;
-      NodeProperty _property_1 = type.getProperty();
-      JvmMember _property_2 = _property_1.getProperty();
-      JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_property_2);
-      boolean _isListType = ArchitectureTyping.isListType(_resolveType);
-      if (_isListType) {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("it.");
-        NodeProperty _property_3 = type.getProperty();
-        JvmMember _property_4 = _property_3.getProperty();
-        String _simpleName = _property_4.getSimpleName();
-        _builder_1.append(_simpleName, "");
-        _builder_1.append("().forEach[");
-        NodeProperty _property_5 = type.getProperty();
-        CharSequence _createPropertyQuery = this.createPropertyQuery(_property_5, modelName);
-        _builder_1.append(_createPropertyQuery, "");
-        _builder_1.append("]");
-        _xifexpression_1 = _builder_1;
-      } else {
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append(modelName, "");
-        _builder_2.append(".add(it.");
-        NodeProperty _property_6 = type.getProperty();
-        JvmMember _property_7 = _property_6.getProperty();
-        String _simpleName_1 = _property_7.getSimpleName();
-        _builder_2.append(_simpleName_1, "");
-        _builder_2.append(")");
-        _xifexpression_1 = _builder_2;
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    return _xifexpression;
-  }
-  
-  /**
-   * Check if the given property value instance has a sub property. If not,
-   * just add the value, else create a for each loop for list properties or a single
-   * value add for non list types.
-   */
-  private CharSequence createPropertyQuery(final NodeProperty property, final String modelName) {
-    CharSequence _xifexpression = null;
-    NodeProperty _subProperty = property.getSubProperty();
-    boolean _equals = Objects.equal(_subProperty, null);
-    if (_equals) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(modelName, "");
-      _builder.append(".add(it)");
-      _xifexpression = _builder;
-    } else {
-      CharSequence _xifexpression_1 = null;
-      JvmMember _property = property.getProperty();
-      JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_property);
-      boolean _isListType = ArchitectureTyping.isListType(_resolveType);
-      if (_isListType) {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("it.");
-        JvmMember _property_1 = property.getProperty();
-        String _simpleName = _property_1.getSimpleName();
-        _builder_1.append(_simpleName, "");
-        _builder_1.append("().forEach[");
-        NodeProperty _subProperty_1 = property.getSubProperty();
-        CharSequence _createPropertyQuery = this.createPropertyQuery(_subProperty_1, modelName);
-        _builder_1.append(_createPropertyQuery, "");
-        _builder_1.append("]");
-        _xifexpression_1 = _builder_1;
-      } else {
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append(modelName, "");
-        _builder_2.append(".add(it.");
-        NodeProperty _subProperty_2 = property.getSubProperty();
-        JvmMember _property_2 = _subProperty_2.getProperty();
-        String _simpleName_1 = _property_2.getSimpleName();
-        _builder_2.append(_simpleName_1, "");
-        _builder_2.append(")");
-        _xifexpression_1 = _builder_2;
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    return _xifexpression;
   }
   
   /**
@@ -544,7 +447,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
         String _name_1 = _reference_2.getName();
         _builder.append(_name_1, "");
         ConstraintExpression _constraint = sourceModel.getConstraint();
-        CharSequence _createConstraintFilter = this.createConstraintFilter(_constraint);
+        CharSequence _createConstraintFilter = this._selectorQuery.createConstraintFilter(_constraint);
         _builder.append(_createConstraintFilter, "");
         _builder.append(".forEach[");
         _builder.newLineIfNotEmpty();
@@ -582,7 +485,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
         String _simpleName = _property.getSimpleName();
         _builder.append(_simpleName, "");
         ConstraintExpression _constraint = node.getConstraint();
-        CharSequence _createConstraintFilter = this.createConstraintFilter(_constraint);
+        CharSequence _createConstraintFilter = this._selectorQuery.createConstraintFilter(_constraint);
         _builder.append(_createConstraintFilter, "");
         _builder.append(".forEach[");
         _builder.newLineIfNotEmpty();
@@ -618,7 +521,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("aspectModel.forEach[");
       JvmType _reference = weaver.getReference();
-      String _instanceName = this.getInstanceName(_reference);
+      String _instanceName = this._nameResolver.getInstanceName(_reference);
       _builder.append(_instanceName, "");
       _builder.append(".weave(");
       SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
@@ -629,7 +532,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     } else {
       StringConcatenation _builder_1 = new StringConcatenation();
       JvmType _reference_1 = weaver.getReference();
-      String _instanceName_1 = this.getInstanceName(_reference_1);
+      String _instanceName_1 = this._nameResolver.getInstanceName(_reference_1);
       _builder_1.append(_instanceName_1, "");
       _builder_1.append(".weave(");
       SourceModelSelector _resolveWeaverSourceModel_1 = ArchitectureTyping.resolveWeaverSourceModel(weaver);
@@ -684,138 +587,13 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     final Function1<Pair<Integer, SourceModelSelector>, CharSequence> _function = (Pair<Integer, SourceModelSelector> it) -> {
       SourceModelSelector _value = it.getValue();
       Integer _key = it.getKey();
-      return this.createSourceAuxModel(_value, (_key).intValue());
+      return this._selectorQuery.createSourceAuxModel(_value, (_key).intValue());
     };
     Iterable<CharSequence> _map = IterableExtensions.<Pair<Integer, SourceModelSelector>, CharSequence>map(_indexed, _function);
     String _join = IterableExtensions.join(_map);
     _builder.append(_join, "");
     _builder.newLineIfNotEmpty();
     return _builder;
-  }
-  
-  /**
-   * Create an initialization section for an auxiliary model collection.
-   */
-  private CharSequence createSourceAuxModel(final SourceModelSelector sourceAuxModel, final int i) {
-    CharSequence _xifexpression = null;
-    NodeProperty _property = sourceAuxModel.getProperty();
-    boolean _equals = Objects.equal(_property, null);
-    if (_equals) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("val aux");
-      _builder.append(i, "");
-      _builder.append(" = ");
-      Model _reference = sourceAuxModel.getReference();
-      String _name = _reference.getName();
-      _builder.append(_name, "");
-      ConstraintExpression _constraint = sourceAuxModel.getConstraint();
-      CharSequence _createConstraintFilter = this.createConstraintFilter(_constraint);
-      _builder.append(_createConstraintFilter, "");
-      _xifexpression = _builder;
-    } else {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("val aux");
-      _builder_1.append(i, "");
-      _builder_1.append(" = new ArrayList<");
-      JvmTypeReference _resolveType = ArchitectureTyping.resolveType(sourceAuxModel);
-      String _qualifiedName = _resolveType.getQualifiedName();
-      _builder_1.append(_qualifiedName, "");
-      _builder_1.append(">()");
-      _builder_1.newLineIfNotEmpty();
-      Model _reference_1 = sourceAuxModel.getReference();
-      String _name_1 = _reference_1.getName();
-      _builder_1.append(_name_1, "");
-      _builder_1.append(".forEach[it.");
-      NodeProperty _property_1 = sourceAuxModel.getProperty();
-      StringConcatenation _builder_2 = new StringConcatenation();
-      _builder_2.append("aux");
-      _builder_2.append(i, "");
-      CharSequence _createPropertyQuery = this.createPropertyQuery(_property_1, _builder_2.toString());
-      _builder_1.append(_createPropertyQuery, "");
-      _builder_1.append("]");
-      _builder_1.newLineIfNotEmpty();
-      _xifexpression = _builder_1;
-    }
-    return _xifexpression;
-  }
-  
-  /**
-   * Create nested loops for a generator call.
-   */
-  private CharSequence createSourceModelNesting(final SourceModelSelector sourceModel, final Generator generator, final Unit unit) {
-    CharSequence _xifexpression = null;
-    Model _reference = sourceModel.getReference();
-    boolean _equals = Objects.equal(_reference, null);
-    if (_equals) {
-      _xifexpression = this.createGeneratorCall(generator, "null");
-    } else {
-      CharSequence _xifexpression_1 = null;
-      JvmTypeReference _resolveType = ArchitectureTyping.resolveType(sourceModel);
-      JvmTypeReference _inputTypeReference = unit.getInputTypeReference();
-      boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(_resolveType, _inputTypeReference);
-      if (_isSubTypeOf) {
-        Model _reference_1 = sourceModel.getReference();
-        String _name = _reference_1.getName();
-        _xifexpression_1 = this.createGeneratorCall(generator, _name);
-      } else {
-        StringConcatenation _builder = new StringConcatenation();
-        Model _reference_2 = sourceModel.getReference();
-        String _name_1 = _reference_2.getName();
-        _builder.append(_name_1, "");
-        ConstraintExpression _constraint = sourceModel.getConstraint();
-        CharSequence _createConstraintFilter = this.createConstraintFilter(_constraint);
-        _builder.append(_createConstraintFilter, "");
-        _builder.append(".forEach[");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        NodeProperty _property = sourceModel.getProperty();
-        CharSequence _createSourceModelNesting = this.createSourceModelNesting(_property, generator, unit, "it");
-        _builder.append(_createSourceModelNesting, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("]");
-        _xifexpression_1 = _builder;
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    return _xifexpression;
-  }
-  
-  /**
-   * Create nested loops for a generator call.
-   */
-  private CharSequence createSourceModelNesting(final NodeProperty node, final Generator generator, final Unit unit, final String modelVarName) {
-    CharSequence _xifexpression = null;
-    boolean _equals = Objects.equal(node, null);
-    if (_equals) {
-      _xifexpression = this.createGeneratorCall(generator, modelVarName);
-    } else {
-      CharSequence _xifexpression_1 = null;
-      JvmTypeReference _resolveType = ArchitectureTyping.resolveType(node);
-      JvmTypeReference _inputTypeReference = unit.getInputTypeReference();
-      boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(_resolveType, _inputTypeReference);
-      if (_isSubTypeOf) {
-        _xifexpression_1 = this.createGeneratorCall(generator, modelVarName);
-      } else {
-        StringConcatenation _builder = new StringConcatenation();
-        JvmMember _property = node.getProperty();
-        String _simpleName = _property.getSimpleName();
-        _builder.append(_simpleName, "");
-        ConstraintExpression _constraint = node.getConstraint();
-        CharSequence _createConstraintFilter = this.createConstraintFilter(_constraint);
-        _builder.append(_createConstraintFilter, "");
-        _builder.append(".forEach[");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        NodeProperty _subProperty = node.getSubProperty();
-        CharSequence _createSourceModelNesting = this.createSourceModelNesting(_subProperty, generator, unit, "it");
-        _builder.append(_createSourceModelNesting, "\t");
-        _builder.newLineIfNotEmpty();
-        _builder.append("]");
-        _xifexpression_1 = _builder;
-      }
-      _xifexpression = _xifexpression_1;
-    }
-    return _xifexpression;
   }
   
   /**
@@ -827,7 +605,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     _builder.append(_createTargetModel, "");
     _builder.append(" ");
     JvmType _reference = generator.getReference();
-    String _instanceName = this.getInstanceName(_reference);
+    String _instanceName = this._nameResolver.getInstanceName(_reference);
     _builder.append(_instanceName, "");
     _builder.append(".generate(");
     _builder.append(modelVarName, "");
@@ -875,31 +653,40 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   }
   
   /**
-   * Create a constraint filter for a query if a filter is defined.
+   * Create nested loops for a generator call.
    */
-  private CharSequence createConstraintFilter(final ConstraintExpression expression) {
+  private CharSequence createSourceModelNesting(final SourceModelSelector sourceModel, final Generator generator, final Unit unit) {
     CharSequence _xifexpression = null;
-    boolean _equals = Objects.equal(expression, null);
+    Model _reference = sourceModel.getReference();
+    boolean _equals = Objects.equal(_reference, null);
     if (_equals) {
-      StringConcatenation _builder = new StringConcatenation();
-      _xifexpression = _builder;
+      _xifexpression = this.createGeneratorCall(generator, "null");
     } else {
       CharSequence _xifexpression_1 = null;
-      if ((expression instanceof Typeof)) {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append(".filter(");
-        JvmType _type = ((Typeof)expression).getType();
-        String _qualifiedName = _type.getQualifiedName();
-        _builder_1.append(_qualifiedName, "");
-        _builder_1.append(")");
-        _xifexpression_1 = _builder_1;
+      JvmTypeReference _resolveType = ArchitectureTyping.resolveType(sourceModel);
+      JvmTypeReference _inputTypeReference = unit.getInputTypeReference();
+      boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(_resolveType, _inputTypeReference);
+      if (_isSubTypeOf) {
+        Model _reference_1 = sourceModel.getReference();
+        String _name = _reference_1.getName();
+        _xifexpression_1 = this.createGeneratorCall(generator, _name);
       } else {
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append(".filter[");
-        CharSequence _createConstraint = this.createConstraint(expression);
-        _builder_2.append(_createConstraint, "");
-        _builder_2.append("]");
-        _xifexpression_1 = _builder_2;
+        StringConcatenation _builder = new StringConcatenation();
+        Model _reference_2 = sourceModel.getReference();
+        String _name_1 = _reference_2.getName();
+        _builder.append(_name_1, "");
+        ConstraintExpression _constraint = sourceModel.getConstraint();
+        CharSequence _createConstraintFilter = this._selectorQuery.createConstraintFilter(_constraint);
+        _builder.append(_createConstraintFilter, "");
+        _builder.append(".forEach[");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        NodeProperty _property = sourceModel.getProperty();
+        CharSequence _createSourceModelNesting = this.createSourceModelNesting(_property, generator, unit, "it");
+        _builder.append(_createSourceModelNesting, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("]");
+        _xifexpression_1 = _builder;
       }
       _xifexpression = _xifexpression_1;
     }
@@ -907,161 +694,40 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   }
   
   /**
-   * constraint computation
+   * Create nested loops for a generator call.
    */
-  private CharSequence _createConstraint(final Negation expression) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("!");
-    ConstraintExpression _constraint = expression.getConstraint();
-    _builder.append(_constraint, "");
-    return _builder;
-  }
-  
-  private CharSequence _createConstraint(final Literal expression) {
-    String _switchResult = null;
-    boolean _matched = false;
-    if (!_matched) {
-      if (expression instanceof ArrayLiteral) {
-        _matched=true;
-        EList<Literal> _literals = ((ArrayLiteral)expression).getLiterals();
-        final Function1<Literal, CharSequence> _function = (Literal it) -> {
-          return this.createConstraint(it);
-        };
-        List<CharSequence> _map = ListExtensions.<Literal, CharSequence>map(_literals, _function);
-        String _plus = ("{" + _map);
-        _switchResult = (_plus + "}");
-      }
-    }
-    if (!_matched) {
-      if (expression instanceof BooleanLiteral) {
-        _matched=true;
-        _switchResult = ((BooleanLiteral)expression).getValue();
-      }
-    }
-    if (!_matched) {
-      if (expression instanceof FloatLiteral) {
-        _matched=true;
-        _switchResult = ((FloatLiteral)expression).getValue();
-      }
-    }
-    if (!_matched) {
-      if (expression instanceof IntLiteral) {
-        _matched=true;
-        int _value = ((IntLiteral)expression).getValue();
-        _switchResult = Integer.valueOf(_value).toString();
-      }
-    }
-    if (!_matched) {
-      if (expression instanceof StringLiteral) {
-        _matched=true;
-        _switchResult = (("\"" + expression) + "\"");
-      }
-    }
-    return _switchResult;
-  }
-  
-  private CharSequence _createConstraint(final NodeProperty expression) {
-    StringConcatenation _builder = new StringConcatenation();
-    JvmMember _property = expression.getProperty();
-    String _simpleName = _property.getSimpleName();
-    _builder.append(_simpleName, "");
-    return _builder;
-  }
-  
-  private CharSequence _createConstraint(final Typeof expression) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("it instanceof ");
-    JvmType _type = expression.getType();
-    String _qualifiedName = _type.getQualifiedName();
-    _builder.append(_qualifiedName, "");
-    return _builder;
-  }
-  
-  private CharSequence _createConstraint(final ConstraintExpression expression) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(");
-    CompareExpression _left = expression.getLeft();
-    CharSequence _createConstraint = this.createConstraint(_left);
-    _builder.append(_createConstraint, "");
-    _builder.append(" ");
-    LogicOperator _operator = expression.getOperator();
-    String _createOperator = this.createOperator(_operator);
-    _builder.append(_createOperator, "");
-    _builder.append(" ");
-    ConstraintExpression _right = expression.getRight();
-    CharSequence _createConstraint_1 = this.createConstraint(_right);
-    _builder.append(_createConstraint_1, "");
-    _builder.append(")");
-    return _builder;
-  }
-  
-  private String createOperator(final LogicOperator operator) {
-    String _switchResult = null;
-    if (operator != null) {
-      switch (operator) {
-        case AND:
-          _switchResult = "&&";
-          break;
-        case OR:
-          _switchResult = "||";
-          break;
-        default:
-          break;
-      }
-    }
-    return _switchResult;
-  }
-  
-  private CharSequence _createConstraint(final CompareExpression expression) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("(");
-    CompareExpression _left = expression.getLeft();
-    CharSequence _createConstraint = this.createConstraint(_left);
-    _builder.append(_createConstraint, "");
-    _builder.append(" ");
-    Comparator _comparator = expression.getComparator();
-    String _literal = _comparator.getLiteral();
-    _builder.append(_literal, "");
-    _builder.append(" ");
-    ConstraintExpression _right = expression.getRight();
-    CharSequence _createConstraint_1 = this.createConstraint(_right);
-    _builder.append(_createConstraint_1, "");
-    _builder.append(")");
-    return _builder;
-  }
-  
-  private String getInstanceName(final JvmType type) {
-    String _simpleName = type.getSimpleName();
-    return StringExtensions.toFirstLower(_simpleName);
-  }
-  
-  /**
-   * Name of internal collections for models for a specific metamodel.
-   */
-  private CharSequence collectionName(final Model model) {
-    StringConcatenation _builder = new StringConcatenation();
-    String _name = model.getName();
-    _builder.append(_name, "");
-    _builder.append("BaseCollection");
-    return _builder;
-  }
-  
-  private CharSequence createConstraint(final ConstraintExpression expression) {
-    if (expression instanceof Literal) {
-      return _createConstraint((Literal)expression);
-    } else if (expression instanceof NodeProperty) {
-      return _createConstraint((NodeProperty)expression);
-    } else if (expression instanceof Typeof) {
-      return _createConstraint((Typeof)expression);
-    } else if (expression instanceof Negation) {
-      return _createConstraint((Negation)expression);
-    } else if (expression instanceof CompareExpression) {
-      return _createConstraint((CompareExpression)expression);
-    } else if (expression != null) {
-      return _createConstraint(expression);
+  private CharSequence createSourceModelNesting(final NodeProperty node, final Generator generator, final Unit unit, final String modelVarName) {
+    CharSequence _xifexpression = null;
+    boolean _equals = Objects.equal(node, null);
+    if (_equals) {
+      _xifexpression = this.createGeneratorCall(generator, modelVarName);
     } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(expression).toString());
+      CharSequence _xifexpression_1 = null;
+      JvmTypeReference _resolveType = ArchitectureTyping.resolveType(node);
+      JvmTypeReference _inputTypeReference = unit.getInputTypeReference();
+      boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(_resolveType, _inputTypeReference);
+      if (_isSubTypeOf) {
+        _xifexpression_1 = this.createGeneratorCall(generator, modelVarName);
+      } else {
+        StringConcatenation _builder = new StringConcatenation();
+        JvmMember _property = node.getProperty();
+        String _simpleName = _property.getSimpleName();
+        _builder.append(_simpleName, "");
+        ConstraintExpression _constraint = node.getConstraint();
+        CharSequence _createConstraintFilter = this._selectorQuery.createConstraintFilter(_constraint);
+        _builder.append(_createConstraintFilter, "");
+        _builder.append(".forEach[");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        NodeProperty _subProperty = node.getSubProperty();
+        CharSequence _createSourceModelNesting = this.createSourceModelNesting(_subProperty, generator, unit, "it");
+        _builder.append(_createSourceModelNesting, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("]");
+        _xifexpression_1 = _builder;
+      }
+      _xifexpression = _xifexpression_1;
     }
+    return _xifexpression;
   }
 }

@@ -14,6 +14,7 @@ import de.cau.cs.se.geco.architecture.architecture.FloatLiteral;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Import;
+import de.cau.cs.se.geco.architecture.architecture.InstanceOf;
 import de.cau.cs.se.geco.architecture.architecture.IntLiteral;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
@@ -30,7 +31,6 @@ import de.cau.cs.se.geco.architecture.architecture.StringLiteral;
 import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
-import de.cau.cs.se.geco.architecture.architecture.Typeof;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.services.ArchitectureGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -77,6 +77,9 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 				return; 
 			case ArchitecturePackage.IMPORT:
 				sequence_Import(context, (Import) semanticObject); 
+				return; 
+			case ArchitecturePackage.INSTANCE_OF:
+				sequence_InstanceOf(context, (InstanceOf) semanticObject); 
 				return; 
 			case ArchitecturePackage.INT_LITERAL:
 				sequence_IntLiteral(context, (IntLiteral) semanticObject); 
@@ -125,9 +128,6 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 				return; 
 			case ArchitecturePackage.TRACE_MODEL_REFERENCE:
 				sequence_TraceModelReference(context, (TraceModelReference) semanticObject); 
-				return; 
-			case ArchitecturePackage.TYPEOF:
-				sequence_Typeof(context, (Typeof) semanticObject); 
 				return; 
 			case ArchitecturePackage.WEAVER:
 				sequence_Weaver(context, (Weaver) semanticObject); 
@@ -231,6 +231,15 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceJvmTypeQualifiedNameParserRuleCall_1_0_1(), semanticObject.getImportedNamespace());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     type=[JvmType|ID]
+	 */
+	protected void sequence_InstanceOf(EObject context, InstanceOf semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -412,15 +421,6 @@ public class ArchitectureSemanticSequencer extends AbstractDelegatingSemanticSeq
 	 *     (name=ID nodeSetRelations+=NodeSetRelation+)
 	 */
 	protected void sequence_TraceModel(EObject context, TraceModel semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     type=[JvmType|ID]
-	 */
-	protected void sequence_Typeof(EObject context, Typeof semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

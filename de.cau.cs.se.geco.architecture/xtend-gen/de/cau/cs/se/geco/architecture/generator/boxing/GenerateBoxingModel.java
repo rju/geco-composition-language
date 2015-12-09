@@ -1,4 +1,4 @@
-package de.cau.cs.se.geco.architecture.generator;
+package de.cau.cs.se.geco.architecture.generator.boxing;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;

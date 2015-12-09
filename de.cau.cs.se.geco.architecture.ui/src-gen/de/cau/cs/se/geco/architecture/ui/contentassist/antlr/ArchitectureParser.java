@@ -87,7 +87,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCompareExpressionAccess().getGroup_1_0_0(), "rule__CompareExpression__Group_1_0_0__0");
 					put(grammarAccess.getNegationAccess().getGroup(), "rule__Negation__Group__0");
 					put(grammarAccess.getParenthesisConstraintAccess().getGroup(), "rule__ParenthesisConstraint__Group__0");
-					put(grammarAccess.getTypeofAccess().getGroup(), "rule__Typeof__Group__0");
+					put(grammarAccess.getInstanceOfAccess().getGroup(), "rule__InstanceOf__Group__0");
 					put(grammarAccess.getTargetTraceModelAccess().getGroup_1(), "rule__TargetTraceModel__Group_1__0");
 					put(grammarAccess.getTraceModelAccess().getGroup(), "rule__TraceModel__Group__0");
 					put(grammarAccess.getNodeSetRelationAccess().getGroup(), "rule__NodeSetRelation__Group__0");
@@ -144,7 +144,7 @@ public class ArchitectureParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCompareExpressionAccess().getRightAssignment_1_1(), "rule__CompareExpression__RightAssignment_1_1");
 					put(grammarAccess.getNegationAccess().getConstraintAssignment_1(), "rule__Negation__ConstraintAssignment_1");
 					put(grammarAccess.getParenthesisConstraintAccess().getConstraintAssignment_1(), "rule__ParenthesisConstraint__ConstraintAssignment_1");
-					put(grammarAccess.getTypeofAccess().getTypeAssignment_1(), "rule__Typeof__TypeAssignment_1");
+					put(grammarAccess.getInstanceOfAccess().getTypeAssignment_1(), "rule__InstanceOf__TypeAssignment_1");
 					put(grammarAccess.getTraceModelReferenceAccess().getTraceModelAssignment(), "rule__TraceModelReference__TraceModelAssignment");
 					put(grammarAccess.getTraceModelAccess().getNameAssignment_0(), "rule__TraceModel__NameAssignment_0");
 					put(grammarAccess.getTraceModelAccess().getNodeSetRelationsAssignment_2(), "rule__TraceModel__NodeSetRelationsAssignment_2");

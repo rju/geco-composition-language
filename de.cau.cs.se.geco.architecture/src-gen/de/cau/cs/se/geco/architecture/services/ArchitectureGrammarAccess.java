@@ -947,13 +947,13 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cNodePropertyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cTypeofParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cInstanceOfParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//Operand:
-		//	Literal | NodeProperty | Typeof;
+		//	Literal | NodeProperty | InstanceOf;
 		@Override public ParserRule getRule() { return rule; }
 
-		//Literal | NodeProperty | Typeof
+		//Literal | NodeProperty | InstanceOf
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Literal
@@ -962,27 +962,27 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		//NodeProperty
 		public RuleCall getNodePropertyParserRuleCall_1() { return cNodePropertyParserRuleCall_1; }
 
-		//Typeof
-		public RuleCall getTypeofParserRuleCall_2() { return cTypeofParserRuleCall_2; }
+		//InstanceOf
+		public RuleCall getInstanceOfParserRuleCall_2() { return cInstanceOfParserRuleCall_2; }
 	}
 
-	public class TypeofElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Typeof");
+	public class InstanceOfElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "InstanceOf");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTypeofKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cIsKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cTypeJvmTypeCrossReference_1_0 = (CrossReference)cTypeAssignment_1.eContents().get(0);
 		private final RuleCall cTypeJvmTypeIDTerminalRuleCall_1_0_1 = (RuleCall)cTypeJvmTypeCrossReference_1_0.eContents().get(1);
 		
-		//Typeof:
-		//	"typeof" type=[types::JvmType];
+		//InstanceOf:
+		//	"is" type=[types::JvmType];
 		@Override public ParserRule getRule() { return rule; }
 
-		//"typeof" type=[types::JvmType]
+		//"is" type=[types::JvmType]
 		public Group getGroup() { return cGroup; }
 
-		//"typeof"
-		public Keyword getTypeofKeyword_0() { return cTypeofKeyword_0; }
+		//"is"
+		public Keyword getIsKeyword_0() { return cIsKeyword_0; }
 
 		//type=[types::JvmType]
 		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
@@ -1525,7 +1525,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	private final NegationElements pNegation;
 	private final ParenthesisConstraintElements pParenthesisConstraint;
 	private final OperandElements pOperand;
-	private final TypeofElements pTypeof;
+	private final InstanceOfElements pInstanceOf;
 	private final TargetTraceModelElements pTargetTraceModel;
 	private final TraceModelReferenceElements pTraceModelReference;
 	private final TraceModelElements pTraceModel;
@@ -1576,7 +1576,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		this.pNegation = new NegationElements();
 		this.pParenthesisConstraint = new ParenthesisConstraintElements();
 		this.pOperand = new OperandElements();
-		this.pTypeof = new TypeofElements();
+		this.pInstanceOf = new InstanceOfElements();
 		this.pTargetTraceModel = new TargetTraceModelElements();
 		this.pTraceModelReference = new TraceModelReferenceElements();
 		this.pTraceModel = new TraceModelElements();
@@ -1841,7 +1841,7 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Operand:
-	//	Literal | NodeProperty | Typeof;
+	//	Literal | NodeProperty | InstanceOf;
 	public OperandElements getOperandAccess() {
 		return pOperand;
 	}
@@ -1850,14 +1850,14 @@ public class ArchitectureGrammarAccess extends AbstractGrammarElementFinder {
 		return getOperandAccess().getRule();
 	}
 
-	//Typeof:
-	//	"typeof" type=[types::JvmType];
-	public TypeofElements getTypeofAccess() {
-		return pTypeof;
+	//InstanceOf:
+	//	"is" type=[types::JvmType];
+	public InstanceOfElements getInstanceOfAccess() {
+		return pInstanceOf;
 	}
 	
-	public ParserRule getTypeofRule() {
-		return getTypeofAccess().getRule();
+	public ParserRule getInstanceOfRule() {
+		return getInstanceOfAccess().getRule();
 	}
 
 	//TargetTraceModel:
