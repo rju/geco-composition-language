@@ -1,6 +1,37 @@
 package de.cau.cs.se.geco.architecture.graph;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterables;
+import de.cau.cs.kieler.core.kgraph.KEdge;
+import de.cau.cs.kieler.core.kgraph.KNode;
+import de.cau.cs.kieler.core.kgraph.KPort;
+import de.cau.cs.kieler.core.krendering.KColor;
+import de.cau.cs.kieler.core.krendering.KGridPlacement;
+import de.cau.cs.kieler.core.krendering.KPolyline;
+import de.cau.cs.kieler.core.krendering.KRectangle;
+import de.cau.cs.kieler.core.krendering.KRenderingFactory;
+import de.cau.cs.kieler.core.krendering.KRoundedRectangle;
+import de.cau.cs.kieler.core.krendering.KText;
+import de.cau.cs.kieler.core.krendering.LineJoin;
+import de.cau.cs.kieler.core.krendering.LineStyle;
+import de.cau.cs.kieler.core.krendering.extensions.KColorExtensions;
+import de.cau.cs.kieler.core.krendering.extensions.KContainerRenderingExtensions;
+import de.cau.cs.kieler.core.krendering.extensions.KEdgeExtensions;
+import de.cau.cs.kieler.core.krendering.extensions.KLabelExtensions;
+import de.cau.cs.kieler.core.krendering.extensions.KNodeExtensions;
+import de.cau.cs.kieler.core.krendering.extensions.KPolylineExtensions;
+import de.cau.cs.kieler.core.krendering.extensions.KPortExtensions;
+import de.cau.cs.kieler.core.krendering.extensions.KRenderingExtensions;
+import de.cau.cs.kieler.kiml.options.Direction;
+import de.cau.cs.kieler.kiml.options.EdgeRouting;
+import de.cau.cs.kieler.kiml.options.LayoutOptions;
+import de.cau.cs.kieler.kiml.options.NodeLabelPlacement;
+import de.cau.cs.kieler.kiml.options.PortConstraints;
+import de.cau.cs.kieler.kiml.options.PortSide;
+import de.cau.cs.kieler.klighd.KlighdConstants;
+import de.cau.cs.kieler.klighd.SynthesisOption;
+import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
 import de.cau.cs.se.geco.architecture.architecture.CombinedModel;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
@@ -8,57 +39,77 @@ import de.cau.cs.se.geco.architecture.architecture.GecoModel;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
+import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
+import de.cau.cs.se.geco.architecture.architecture.NodeType;
 import de.cau.cs.se.geco.architecture.architecture.SeparateModels;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
+import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
 import de.cau.cs.se.geco.architecture.architecture.TraceModel;
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
+import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut;
+import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
-public class ModelDiagramSynthesis /* implements AbstractDiagramSynthesis<GecoModel>  */{
+public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   @Inject
   @Extension
-  private /* KNodeExtensions */Object _kNodeExtensions;
+  private KNodeExtensions _kNodeExtensions;
   
   @Inject
   @Extension
-  private /* KEdgeExtensions */Object _kEdgeExtensions;
+  private KEdgeExtensions _kEdgeExtensions;
   
   @Inject
   @Extension
-  private /* KPortExtensions */Object _kPortExtensions;
+  private KPortExtensions _kPortExtensions;
   
   @Inject
   @Extension
-  private /* KLabelExtensions */Object _kLabelExtensions;
+  private KLabelExtensions _kLabelExtensions;
   
   @Inject
   @Extension
-  private /* KRenderingExtensions */Object _kRenderingExtensions;
+  private KRenderingExtensions _kRenderingExtensions;
   
   @Inject
   @Extension
-  private /* KContainerRenderingExtensions */Object _kContainerRenderingExtensions;
+  private KContainerRenderingExtensions _kContainerRenderingExtensions;
   
   @Inject
   @Extension
-  private /* KPolylineExtensions */Object _kPolylineExtensions;
+  private KPolylineExtensions _kPolylineExtensions;
   
   @Inject
   @Extension
-  private /* KColorExtensions */Object _kColorExtensions;
+  private KColorExtensions _kColorExtensions;
   
   @Extension
-  private /* KRenderingFactory */Object _kRenderingFactory /* Skipped initializer because of errors */;
+  private KRenderingFactory _kRenderingFactory = KRenderingFactory.eINSTANCE;
   
   /**
    * changes in visualization
@@ -85,11 +136,13 @@ public class ModelDiagramSynthesis /* implements AbstractDiagramSynthesis<GecoMo
   /**
    * The filter option definition that allows users to customize the constructed class diagrams.
    */
-  private final static /* SynthesisOption */Object TRACE_MODEL_VISIBLE /* Skipped initializer because of errors */;
+  private final static SynthesisOption TRACE_MODEL_VISIBLE = SynthesisOption.createChoiceOption(ModelDiagramSynthesis.TRACE_MODEL_VISIBLE_NAME, 
+    ImmutableList.<String>of(ModelDiagramSynthesis.TRACE_MODEL_VISIBLE_YES, ModelDiagramSynthesis.TRACE_MODEL_VISIBLE_NO), ModelDiagramSynthesis.TRACE_MODEL_VISIBLE_YES);
   
-  private final static /* SynthesisOption */Object ROUTING /* Skipped initializer because of errors */;
+  private final static SynthesisOption ROUTING = SynthesisOption.createChoiceOption(ModelDiagramSynthesis.ROUTING_NAME, 
+    ImmutableList.<String>of(ModelDiagramSynthesis.ROUTING_POLYLINE, ModelDiagramSynthesis.ROUTING_ORTHOGONAL, ModelDiagramSynthesis.ROUTING_SPLINES), ModelDiagramSynthesis.ROUTING_POLYLINE);
   
-  private final static /* SynthesisOption */Object SPACING /* Skipped initializer because of errors */;
+  private final static SynthesisOption SPACING = SynthesisOption.<Float>createRangeOption(ModelDiagramSynthesis.SPACING_NAME, Float.valueOf(5f), Float.valueOf(200f), Float.valueOf(50f));
   
   private final static int GENERATOR_IN = 0;
   
@@ -115,60 +168,86 @@ public class ModelDiagramSynthesis /* implements AbstractDiagramSynthesis<GecoMo
   
   private final static int MODEL_OUT = 1;
   
-  private final /* Map<Weaver, KNode> */Object weaverNodes /* Skipped initializer because of errors */;
+  private final Map<Weaver, KNode> weaverNodes = new HashMap<Weaver, KNode>();
   
-  private final /* Map<Generator, KNode> */Object generatorNodes /* Skipped initializer because of errors */;
+  private final Map<Generator, KNode> generatorNodes = new HashMap<Generator, KNode>();
   
-  private final /* Map<Weaver, KNode> */Object targetWeaverModelNodes /* Skipped initializer because of errors */;
+  private final Map<Weaver, KNode> targetWeaverModelNodes = new HashMap<Weaver, KNode>();
   
-  private final /* Map<Generator, KNode> */Object targetGeneratorModelNodes /* Skipped initializer because of errors */;
+  private final Map<Generator, KNode> targetGeneratorModelNodes = new HashMap<Generator, KNode>();
   
-  private final /* Map<Model, KNode> */Object modelNodes /* Skipped initializer because of errors */;
+  private final Map<Model, KNode> modelNodes = new HashMap<Model, KNode>();
   
-  private final /* Map<TraceModel, KNode> */Object traceModelNodes /* Skipped initializer because of errors */;
+  private final Map<TraceModel, KNode> traceModelNodes = new HashMap<TraceModel, KNode>();
   
   /**
    * {@inheritDoc}<br>
    * <br>
    * Registers the diagram filter option declared above, which allow users to tailor the constructed diagrams.
    */
-  public /* ImmutableList<SynthesisOption> */Object getDisplayedSynthesisOptions() {
+  public List<SynthesisOption> getDisplayedSynthesisOptions() {
     return ImmutableList.<SynthesisOption>of(ModelDiagramSynthesis.TRACE_MODEL_VISIBLE, ModelDiagramSynthesis.ROUTING, ModelDiagramSynthesis.SPACING);
   }
   
-  public /* KNode */Object transform(final GecoModel model) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createNode() is undefined for the type GecoModel"
-      + "\nThe method addLayoutParam(Object, String) is undefined for the type Object"
-      + "\nLayoutOptions cannot be resolved to a type."
-      + "\nThe method setLayoutOption(Object, Float) is undefined for the type Object"
-      + "\nLayoutOptions cannot be resolved to a type."
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nLayoutOptions cannot be resolved to a type."
-      + "\nDirection cannot be resolved to a type."
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nLayoutOptions cannot be resolved to a type."
-      + "\nEdgeRouting cannot be resolved to a type."
-      + "\nEdgeRouting cannot be resolved to a type."
-      + "\nEdgeRouting cannot be resolved to a type."
-      + "\nassociateWith cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nALGORITHM cannot be resolved"
-      + "\nSPACING cannot be resolved"
-      + "\nobjectValue cannot be resolved"
-      + "\nDIRECTION cannot be resolved"
-      + "\nRIGHT cannot be resolved"
-      + "\nEDGE_ROUTING cannot be resolved"
-      + "\nobjectValue cannot be resolved"
-      + "\nPOLYLINE cannot be resolved"
-      + "\nORTHOGONAL cannot be resolved"
-      + "\nSPLINES cannot be resolved");
+  public KNode transform(final GecoModel model) {
+    KNode _createNode = this._kNodeExtensions.createNode(model);
+    final KNode root = this.<KNode>associateWith(_createNode, model);
+    final Procedure1<KNode> _function = new Procedure1<KNode>() {
+      public void apply(final KNode it) {
+        ModelDiagramSynthesis.this._kNodeExtensions.<String>addLayoutParam(it, LayoutOptions.ALGORITHM, "de.cau.cs.kieler.klay.layered");
+        Object _objectValue = ModelDiagramSynthesis.this.getObjectValue(ModelDiagramSynthesis.SPACING);
+        ModelDiagramSynthesis.this.<KNode, Float>setLayoutOption(it, LayoutOptions.SPACING, ((Float) _objectValue));
+        ModelDiagramSynthesis.this.<KNode, Direction>setLayoutOption(it, LayoutOptions.DIRECTION, Direction.RIGHT);
+        EdgeRouting _switchResult = null;
+        Object _objectValue_1 = ModelDiagramSynthesis.this.getObjectValue(ModelDiagramSynthesis.ROUTING);
+        boolean _matched = false;
+        if (!_matched) {
+          if (Objects.equal(_objectValue_1, ModelDiagramSynthesis.ROUTING_POLYLINE)) {
+            _matched=true;
+            _switchResult = EdgeRouting.POLYLINE;
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(_objectValue_1, ModelDiagramSynthesis.ROUTING_ORTHOGONAL)) {
+            _matched=true;
+            _switchResult = EdgeRouting.ORTHOGONAL;
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(_objectValue_1, ModelDiagramSynthesis.ROUTING_SPLINES)) {
+            _matched=true;
+            _switchResult = EdgeRouting.SPLINES;
+          }
+        }
+        ModelDiagramSynthesis.this.<KNode, EdgeRouting>setLayoutOption(it, LayoutOptions.EDGE_ROUTING, _switchResult);
+        EList<ModelSequence> _models = model.getModels();
+        ModelDiagramSynthesis.this.createNamedModels(_models, it);
+        EList<Fragment> _fragments = model.getFragments();
+        ModelDiagramSynthesis.this.createAllToplevelGenerators(_fragments, it);
+        EList<Fragment> _fragments_1 = model.getFragments();
+        ModelDiagramSynthesis.this.createAllWeavers(_fragments_1, it);
+        final BiConsumer<Generator, KNode> _function = new BiConsumer<Generator, KNode>() {
+          public void accept(final Generator generator, final KNode generatorNode) {
+            ModelDiagramSynthesis.this.createEdgesForGenerator(it, generator, generatorNode);
+          }
+        };
+        ModelDiagramSynthesis.this.generatorNodes.forEach(_function);
+        final BiConsumer<Weaver, KNode> _function_1 = new BiConsumer<Weaver, KNode>() {
+          public void accept(final Weaver weaver, final KNode weaverNode) {
+            ModelDiagramSynthesis.this.createEdgesForWeaver(weaver, weaverNode);
+          }
+        };
+        ModelDiagramSynthesis.this.weaverNodes.forEach(_function_1);
+      }
+    };
+    ObjectExtensions.<KNode>operator_doubleArrow(root, _function);
+    return root;
   }
   
   /**
    * Create connection between models and weaver
    */
-  private void createEdgesForWeaver(final Weaver weaver, final /* KNode */Object weaverNode) {
+  private void createEdgesForWeaver(final Weaver weaver, final KNode weaverNode) {
     this.createSourceBaseModelEdgeForWeaver(weaver, weaverNode);
     this.createTargetBaseModelEdgeForWeaver(weaver, weaverNode);
     AspectModel _aspectModel = weaver.getAspectModel();
@@ -192,126 +271,266 @@ public class ModelDiagramSynthesis /* implements AbstractDiagramSynthesis<GecoMo
   /**
    * edge to the source base model of the weaver.
    */
-  private Object createSourceBaseModelEdgeForWeaver(final Weaver weaver, final /* KNode */Object weaverNode) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method sourcePort(Object) is undefined for the type Object"
-      + "\nThe method targetPort(Object) is undefined for the type Object"
-      + "\nSOLID cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved");
+  private KEdge createSourceBaseModelEdgeForWeaver(final Weaver weaver, final KNode weaverNode) {
+    KEdge _xblockexpression = null;
+    {
+      KNode _xifexpression = null;
+      SourceModelSelector _sourceModel = weaver.getSourceModel();
+      boolean _notEquals = (!Objects.equal(_sourceModel, null));
+      if (_notEquals) {
+        SourceModelSelector _sourceModel_1 = weaver.getSourceModel();
+        Model _reference = _sourceModel_1.getReference();
+        _xifexpression = this.modelNodes.get(_reference);
+      } else {
+        Weaver _predecessingWeaver = ArchitectureTyping.predecessingWeaver(weaver);
+        _xifexpression = this.targetWeaverModelNodes.get(_predecessingWeaver);
+      }
+      final KNode sourceModelNode = _xifexpression;
+      KEdge _drawConnectionNoArrow = this.drawConnectionNoArrow(sourceModelNode, weaverNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = sourceModelNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = weaverNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.WEAVER_IN);
+          it.setTargetPort(_get_1);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionNoArrow, _function);
+    }
+    return _xblockexpression;
   }
   
   /**
    * edge to the source base model of the weaver.
    */
-  private Object createTargetBaseModelEdgeForWeaver(final Weaver weaver, final /* KNode */Object weaverNode) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method sourcePort(Object) is undefined for the type Object"
-      + "\nThe method targetPort(Object) is undefined for the type Object"
-      + "\nSOLID cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved");
+  private KEdge createTargetBaseModelEdgeForWeaver(final Weaver weaver, final KNode weaverNode) {
+    KEdge _xblockexpression = null;
+    {
+      KNode _xifexpression = null;
+      TargetModel _targetModel = weaver.getTargetModel();
+      boolean _notEquals = (!Objects.equal(_targetModel, null));
+      if (_notEquals) {
+        TargetModel _targetModel_1 = weaver.getTargetModel();
+        Model _reference = _targetModel_1.getReference();
+        _xifexpression = this.modelNodes.get(_reference);
+      } else {
+        _xifexpression = this.targetWeaverModelNodes.get(weaver);
+      }
+      final KNode targetModelNode = _xifexpression;
+      KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(weaverNode, targetModelNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = weaverNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.WEAVER_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = targetModelNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.MODEL_IN);
+          it.setTargetPort(_get_1);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
+    }
+    return _xblockexpression;
   }
   
   /**
    * create an edge between weaver and advice or aspect model.
    */
-  private Object createAdviceModelEdgeForWeaver(final CombinedModel adviceModel, final /* KNode */Object weaverNode) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method sourcePort(Object) is undefined for the type Object"
-      + "\nThe method targetPort(Object) is undefined for the type Object"
-      + "\nSOLID cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved");
+  private KEdge createAdviceModelEdgeForWeaver(final CombinedModel adviceModel, final KNode weaverNode) {
+    KEdge _xblockexpression = null;
+    {
+      KNode _switchResult = null;
+      boolean _matched = false;
+      if (!_matched) {
+        if (adviceModel instanceof TargetModel) {
+          _matched=true;
+          Model _reference = ((TargetModel)adviceModel).getReference();
+          _switchResult = this.modelNodes.get(_reference);
+        }
+      }
+      if (!_matched) {
+        if (adviceModel instanceof Generator) {
+          _matched=true;
+          _switchResult = this.targetGeneratorModelNodes.get(adviceModel);
+        }
+      }
+      final KNode aspectModelNode = _switchResult;
+      KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(aspectModelNode, weaverNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = aspectModelNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = weaverNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.WEAVER_ASPECT);
+          it.setTargetPort(_get_1);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
+    }
+    return _xblockexpression;
   }
   
   /**
    * create an edge between weaver and advice or aspect model.
    */
-  private Object createPointcutModelEdgeForWeaver(final SeparateModels separatePointcutAdviceModel, final /* KNode */Object weaverNode) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method sourcePort(Object) is undefined for the type Object"
-      + "\nThe method targetPort(Object) is undefined for the type Object"
-      + "\nSOLID cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved");
+  private KEdge createPointcutModelEdgeForWeaver(final SeparateModels separatePointcutAdviceModel, final KNode weaverNode) {
+    KEdge _xblockexpression = null;
+    {
+      TargetModel _pointcut = separatePointcutAdviceModel.getPointcut();
+      Model _reference = _pointcut.getReference();
+      final KNode pointcutModelNode = this.modelNodes.get(_reference);
+      KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(pointcutModelNode, weaverNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = pointcutModelNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = weaverNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.WEAVER_POINTCUT);
+          it.setTargetPort(_get_1);
+        }
+      };
+      ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
+      CombinedModel _advice = separatePointcutAdviceModel.getAdvice();
+      _xblockexpression = this.createAdviceModelEdgeForWeaver(_advice, weaverNode);
+    }
+    return _xblockexpression;
   }
   
   /**
    * Create edges between the generator and the models.
    */
-  private void createEdgesForGenerator(final /* KNode */Object root, final Generator generator, final /* KNode */Object generatorNode) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createNode() is undefined"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method sourcePort(Object) is undefined"
-      + "\nThe method targetPort(Object) is undefined"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method sourcePort(Object) is undefined for the type Object"
-      + "\nThe method targetPort(Object) is undefined for the type Object"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method sourcePort(Object) is undefined for the type Object"
-      + "\nThe method targetPort(Object) is undefined for the type Object"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved"
-      + "\nobjectValue cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\nDASH cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nSOLID cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nSOLID cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved");
+  private void createEdgesForGenerator(final KNode root, final Generator generator, final KNode generatorNode) {
+    try {
+      KNode _xifexpression = null;
+      SourceModelSelector _sourceModel = generator.getSourceModel();
+      Model _reference = _sourceModel.getReference();
+      boolean _notEquals = (!Objects.equal(_reference, null));
+      if (_notEquals) {
+        SourceModelSelector _sourceModel_1 = generator.getSourceModel();
+        Model _reference_1 = _sourceModel_1.getReference();
+        _xifexpression = this.modelNodes.get(_reference_1);
+      } else {
+        KNode _xblockexpression = null;
+        {
+          KNode _createNode = this._kNodeExtensions.createNode();
+          final KNode anonymousModelNode = this.drawModelRectangle(_createNode, "", "empty");
+          EList<KNode> _children = root.getChildren();
+          _children.add(anonymousModelNode);
+          _xblockexpression = anonymousModelNode;
+        }
+        _xifexpression = _xblockexpression;
+      }
+      final KNode sourceModelNode = _xifexpression;
+      KNode _xifexpression_1 = null;
+      TargetModel _targetModel = generator.getTargetModel();
+      boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
+      if (_notEquals_1) {
+        TargetModel _targetModel_1 = generator.getTargetModel();
+        Model _reference_2 = _targetModel_1.getReference();
+        _xifexpression_1 = this.modelNodes.get(_reference_2);
+      } else {
+        KNode _xifexpression_2 = null;
+        EObject _eContainer = generator.eContainer();
+        if ((_eContainer instanceof Weaver)) {
+          _xifexpression_2 = this.targetGeneratorModelNodes.get(generator);
+        } else {
+          throw new Exception("Broken model.");
+        }
+        _xifexpression_1 = _xifexpression_2;
+      }
+      final KNode targetModelNode = _xifexpression_1;
+      Object _objectValue = this.getObjectValue(ModelDiagramSynthesis.TRACE_MODEL_VISIBLE);
+      boolean _equals = _objectValue.equals(ModelDiagramSynthesis.TRACE_MODEL_VISIBLE_YES);
+      if (_equals) {
+        EList<TraceModelReference> _sourceTraceModels = generator.getSourceTraceModels();
+        final Consumer<TraceModelReference> _function = new Consumer<TraceModelReference>() {
+          public void accept(final TraceModelReference traceModel) {
+            TraceModel _traceModel = traceModel.getTraceModel();
+            final KNode traceModelNode = ModelDiagramSynthesis.this.traceModelNodes.get(_traceModel);
+            KEdge _drawConnectionWithArrow = ModelDiagramSynthesis.this.drawConnectionWithArrow(traceModelNode, generatorNode, LineStyle.DASH);
+            final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+              public void apply(final KEdge it) {
+                EList<KPort> _ports = traceModelNode.getPorts();
+                KPort _get = _ports.get(ModelDiagramSynthesis.TRACE_MODEL_OUT);
+                it.setSourcePort(_get);
+                EList<KPort> _ports_1 = generatorNode.getPorts();
+                KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.GENERATOR_TR_IN);
+                it.setTargetPort(_get_1);
+              }
+            };
+            ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
+          }
+        };
+        _sourceTraceModels.forEach(_function);
+      }
+      KEdge _drawConnectionNoArrow = this.drawConnectionNoArrow(sourceModelNode, generatorNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function_1 = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = sourceModelNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.MODEL_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = generatorNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.GENERATOR_IN);
+          it.setTargetPort(_get_1);
+        }
+      };
+      ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionNoArrow, _function_1);
+      KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(generatorNode, targetModelNode, LineStyle.SOLID);
+      final Procedure1<KEdge> _function_2 = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = generatorNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.GENERATOR_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = targetModelNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.MODEL_IN);
+          it.setTargetPort(_get_1);
+        }
+      };
+      ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function_2);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   /**
    * Create all weaver nodes.
    */
-  private void createAllWeavers(final EList<Fragment> fragments, final /* KNode */Object parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved");
+  private void createAllWeavers(final EList<Fragment> fragments, final KNode parent) {
+    Iterable<Weaver> _filter = Iterables.<Weaver>filter(fragments, Weaver.class);
+    final Consumer<Weaver> _function = new Consumer<Weaver>() {
+      public void accept(final Weaver weaver) {
+        final KNode weaverNode = ModelDiagramSynthesis.this.drawWeaver(weaver);
+        ModelDiagramSynthesis.this.weaverNodes.put(weaver, weaverNode);
+        EList<KNode> _children = parent.getChildren();
+        _children.add(weaverNode);
+        AspectModel _aspectModel = weaver.getAspectModel();
+        ModelDiagramSynthesis.this.createSublevelGenerator(_aspectModel, parent);
+        TargetModel _targetModel = weaver.getTargetModel();
+        boolean _equals = Objects.equal(_targetModel, null);
+        if (_equals) {
+          final KNode anonymousModelNode = ModelDiagramSynthesis.this.createAnonymousModel(weaver);
+          ModelDiagramSynthesis.this.targetWeaverModelNodes.put(weaver, anonymousModelNode);
+          EList<KNode> _children_1 = parent.getChildren();
+          _children_1.add(anonymousModelNode);
+        }
+      }
+    };
+    _filter.forEach(_function);
   }
   
   /**
    * Check if the aspect or advice model are in fact generators.
    */
-  private void createSublevelGenerator(final AspectModel aspectModel, final /* KNode */Object parent) {
+  private void createSublevelGenerator(final AspectModel aspectModel, final KNode parent) {
     boolean _matched = false;
     if (!_matched) {
       if (aspectModel instanceof Generator) {
         _matched=true;
-        this.createSublevelGenerator(aspectModel, parent);
+        this.createSublevelGenerator(((Generator)aspectModel), parent);
       }
     }
     if (!_matched) {
@@ -327,59 +546,124 @@ public class ModelDiagramSynthesis /* implements AbstractDiagramSynthesis<GecoMo
    * Create a sublevel generator which is used as privder of an
    * aspect model of a weaver.
    */
-  private void createSublevelGenerator(final Generator generator, final /* KNode */Object parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method sourcePort(Object) is undefined for the type Object"
-      + "\nThe method targetPort(Object) is undefined for the type Object"
-      + "\nobjectValue cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\nDASH cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nports cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved");
+  private void createSublevelGenerator(final Generator generator, final KNode parent) {
+    final KNode generatorNode = this.drawGenerator(generator);
+    final KNode anonymousModelNode = this.createAnonymousModel(generator);
+    this.targetGeneratorModelNodes.put(generator, anonymousModelNode);
+    this.generatorNodes.put(generator, generatorNode);
+    boolean _and = false;
+    TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
+    boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      Object _objectValue = this.getObjectValue(ModelDiagramSynthesis.TRACE_MODEL_VISIBLE);
+      boolean _equals = _objectValue.equals(ModelDiagramSynthesis.TRACE_MODEL_VISIBLE_YES);
+      _and = _equals;
+    }
+    if (_and) {
+      KNode _switchResult = null;
+      TargetTraceModel _targetTraceModel_1 = generator.getTargetTraceModel();
+      boolean _matched = false;
+      if (!_matched) {
+        if (_targetTraceModel_1 instanceof TraceModel) {
+          _matched=true;
+          TargetTraceModel _targetTraceModel_2 = generator.getTargetTraceModel();
+          _switchResult = this.createTraceModel(((TraceModel) _targetTraceModel_2), parent);
+        }
+      }
+      if (!_matched) {
+        if (_targetTraceModel_1 instanceof TraceModelReference) {
+          _matched=true;
+          TargetTraceModel _targetTraceModel_2 = generator.getTargetTraceModel();
+          TraceModel _traceModel = ((TraceModelReference) _targetTraceModel_2).getTraceModel();
+          _switchResult = this.traceModelNodes.get(_traceModel);
+        }
+      }
+      final KNode traceModelNode = _switchResult;
+      KEdge _drawConnectionWithArrow = this.drawConnectionWithArrow(generatorNode, traceModelNode, LineStyle.DASH);
+      final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+        public void apply(final KEdge it) {
+          EList<KPort> _ports = generatorNode.getPorts();
+          KPort _get = _ports.get(ModelDiagramSynthesis.GENERATOR_TR_OUT);
+          it.setSourcePort(_get);
+          EList<KPort> _ports_1 = traceModelNode.getPorts();
+          KPort _get_1 = _ports_1.get(ModelDiagramSynthesis.TRACE_MODEL_IN);
+          it.setTargetPort(_get_1);
+        }
+      };
+      ObjectExtensions.<KEdge>operator_doubleArrow(_drawConnectionWithArrow, _function);
+    }
+    EList<KNode> _children = parent.getChildren();
+    _children.add(generatorNode);
+    EList<KNode> _children_1 = parent.getChildren();
+    _children_1.add(anonymousModelNode);
   }
   
   /**
    * Create all generators which are directly declared in the model.
    */
-  public void createAllToplevelGenerators(final EList<Fragment> fragments, final /* KNode */Object parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved");
+  public void createAllToplevelGenerators(final EList<Fragment> fragments, final KNode parent) {
+    Iterable<Generator> _filter = Iterables.<Generator>filter(fragments, Generator.class);
+    final Consumer<Generator> _function = new Consumer<Generator>() {
+      public void accept(final Generator generator) {
+        final KNode generatorNode = ModelDiagramSynthesis.this.drawGenerator(generator);
+        ModelDiagramSynthesis.this.generatorNodes.put(generator, generatorNode);
+        ModelDiagramSynthesis.this.handleTraceModel(generator, parent);
+        EList<KNode> _children = parent.getChildren();
+        _children.add(generatorNode);
+      }
+    };
+    _filter.forEach(_function);
   }
   
   /**
    * Create a tracemodel if one is required.
    */
-  public void handleTraceModel(final Generator generator, final /* KNode */Object parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved");
+  public void handleTraceModel(final Generator generator, final KNode parent) {
+    TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
+    boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
+    if (_notEquals) {
+      TargetTraceModel _targetTraceModel_1 = generator.getTargetTraceModel();
+      if ((_targetTraceModel_1 instanceof TraceModel)) {
+        TargetTraceModel _targetTraceModel_2 = generator.getTargetTraceModel();
+        final KNode traceModelNode = this.createTraceModel(((TraceModel) _targetTraceModel_2), parent);
+        EList<KNode> _children = parent.getChildren();
+        _children.add(traceModelNode);
+      }
+    }
   }
   
   /**
    * Create all explicit defined models.
    */
-  public void createNamedModels(final EList<ModelSequence> models, final /* KNode */Object parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved");
+  public void createNamedModels(final EList<ModelSequence> models, final KNode parent) {
+    final Consumer<ModelSequence> _function = new Consumer<ModelSequence>() {
+      public void accept(final ModelSequence seq) {
+        EList<Model> _models = seq.getModels();
+        final Consumer<Model> _function = new Consumer<Model>() {
+          public void accept(final Model model) {
+            final KNode modelNode = ModelDiagramSynthesis.this.createModel(model, seq);
+            ModelDiagramSynthesis.this.modelNodes.put(model, modelNode);
+            EList<KNode> _children = parent.getChildren();
+            _children.add(modelNode);
+          }
+        };
+        _models.forEach(_function);
+      }
+    };
+    models.forEach(_function);
   }
   
   /**
    * Create trace model node.
    */
-  private /* KNode */Object createTraceModel(final TraceModel traceModel, final /* KNode */Object parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nchildren cannot be resolved"
-      + "\n+= cannot be resolved");
+  private KNode createTraceModel(final TraceModel traceModel, final KNode parent) {
+    final KNode traceModelNode = this.drawTraceModel(traceModel);
+    EList<KNode> _children = parent.getChildren();
+    _children.add(traceModelNode);
+    this.traceModelNodes.put(traceModel, traceModelNode);
+    return traceModelNode;
   }
   
   /**
@@ -388,237 +672,333 @@ public class ModelDiagramSynthesis /* implements AbstractDiagramSynthesis<GecoMo
    * 
    * @param generator the generator.
    */
-  private /* KNode */Object _createAnonymousModel(final Generator generator) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createNode() is undefined");
+  private KNode _createAnonymousModel(final Generator generator) {
+    KNode _xblockexpression = null;
+    {
+      final String instanceName = "";
+      String _xifexpression = null;
+      TargetModel _targetModel = generator.getTargetModel();
+      boolean _notEquals = (!Objects.equal(_targetModel, null));
+      if (_notEquals) {
+        TargetModel _targetModel_1 = generator.getTargetModel();
+        Model _reference = _targetModel_1.getReference();
+        JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference);
+        _xifexpression = _resolveType.getSimpleName();
+      } else {
+        String _xifexpression_1 = null;
+        JvmType _reference_1 = generator.getReference();
+        if ((_reference_1 instanceof JvmGenericType)) {
+          String _xblockexpression_1 = null;
+          {
+            JvmType _reference_2 = generator.getReference();
+            final EList<JvmTypeReference> superTypes = ((JvmGenericType) _reference_2).getSuperTypes();
+            final Function1<JvmTypeReference, Boolean> _function = new Function1<JvmTypeReference, Boolean>() {
+              public Boolean apply(final JvmTypeReference it) {
+                String _simpleName = it.getSimpleName();
+                String _simpleName_1 = IGenerator.class.getSimpleName();
+                String _plus = (_simpleName_1 + "<");
+                return Boolean.valueOf(_simpleName.startsWith(_plus));
+              }
+            };
+            final JvmTypeReference interfaceType = IterableExtensions.<JvmTypeReference>findFirst(superTypes, _function);
+            String _xifexpression_2 = null;
+            boolean _notEquals_1 = (!Objects.equal(interfaceType, null));
+            if (_notEquals_1) {
+              String _switchResult = null;
+              boolean _matched = false;
+              if (!_matched) {
+                if (interfaceType instanceof JvmParameterizedTypeReference) {
+                  _matched=true;
+                  EList<JvmTypeReference> _arguments = ((JvmParameterizedTypeReference)interfaceType).getArguments();
+                  JvmTypeReference _get = _arguments.get(1);
+                  _switchResult = _get.getSimpleName();
+                }
+              }
+              if (!_matched) {
+                _switchResult = "ERROR";
+              }
+              _xifexpression_2 = _switchResult;
+            }
+            _xblockexpression_1 = _xifexpression_2;
+          }
+          _xifexpression_1 = _xblockexpression_1;
+        } else {
+          _xifexpression_1 = "JVM ERROR";
+        }
+        _xifexpression = _xifexpression_1;
+      }
+      final String className = _xifexpression;
+      KNode _createNode = this._kNodeExtensions.createNode();
+      _xblockexpression = this.drawModelRectangle(_createNode, instanceName, className);
+    }
+    return _xblockexpression;
   }
   
   /**
    * Create an anonymous source model for a weaver.
    */
-  private /* KNode */Object _createAnonymousModel(final Weaver weaver) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createNode() is undefined");
+  private KNode _createAnonymousModel(final Weaver weaver) {
+    KNode _xblockexpression = null;
+    {
+      final SourceModelSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+      Model _reference = sourceModel.getReference();
+      final String instanceName = _reference.getName();
+      String _xifexpression = null;
+      TargetModel _targetModel = weaver.getTargetModel();
+      boolean _notEquals = (!Objects.equal(_targetModel, null));
+      if (_notEquals) {
+        String _xifexpression_1 = null;
+        TargetModel _targetModel_1 = weaver.getTargetModel();
+        Model _reference_1 = _targetModel_1.getReference();
+        boolean _notEquals_1 = (!Objects.equal(_reference_1, null));
+        if (_notEquals_1) {
+          TargetModel _targetModel_2 = weaver.getTargetModel();
+          Model _reference_2 = _targetModel_2.getReference();
+          JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference_2);
+          _xifexpression_1 = _resolveType.getSimpleName();
+        } else {
+          JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(sourceModel);
+          _xifexpression_1 = _resolveType_1.getSimpleName();
+        }
+        _xifexpression = _xifexpression_1;
+      } else {
+        JvmTypeReference _resolveType_2 = ArchitectureTyping.resolveType(sourceModel);
+        _xifexpression = _resolveType_2.getSimpleName();
+      }
+      final String className = _xifexpression;
+      KNode _createNode = this._kNodeExtensions.createNode();
+      _xblockexpression = this.drawModelRectangle(_createNode, instanceName, className);
+    }
+    return _xblockexpression;
   }
   
   /**
    * Create a model node for a given model and type.
    */
-  private /* KNode */Object createModel(final Model model, final ModelSequence sequence) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createNode() is undefined for the type Model"
-      + "\nassociateWith cannot be resolved");
+  private KNode createModel(final Model model, final ModelSequence sequence) {
+    KNode _createNode = this._kNodeExtensions.createNode(model);
+    KNode _associateWith = this.<KNode>associateWith(_createNode, model);
+    String _name = model.getName();
+    ModelType _type = sequence.getType();
+    JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_type);
+    String _simpleName = _resolveType.getSimpleName();
+    return this.drawModelRectangle(_associateWith, _name, _simpleName);
   }
   
   /**
    * Draw a model
    */
-  private /* KNode */Object drawModelRectangle(final /* KNode */Object node, final String instanceName, final String className) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortConstraints is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method lineWidth(int) is undefined for the type Object"
-      + "\nThe method setBackgroundGradient(Object, Object, int) is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method shadow(Object) is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method setGridPlacement(int) is undefined for the type Object"
-      + "\nThe method or field LEFT is undefined"
-      + "\nThe method or field TOP is undefined"
-      + "\nThe method or field RIGHT is undefined"
-      + "\nThe method or field BOTTOM is undefined"
-      + "\nThe method addText(String) is undefined for the type Object"
-      + "\nThe method fontBold(boolean) is undefined for the type Object"
-      + "\n=> cannot be resolved"
-      + "\nPORT_CONSTRAINTS cannot be resolved"
-      + "\nFIXED_SIDE cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nWEST cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nEAST cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nfrom cannot be resolved"
-      + "\nto cannot be resolved"
-      + "\n=> cannot be resolved");
+  private KNode drawModelRectangle(final KNode node, final String instanceName, final String className) {
+    final Procedure1<KNode> _function = new Procedure1<KNode>() {
+      public void apply(final KNode it) {
+        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+        EList<KPort> _ports = it.getPorts();
+        KPort _createPort = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.WEST);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "in", 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow = ObjectExtensions.<KPort>operator_doubleArrow(_createPort, _function);
+        _ports.add(_doubleArrow);
+        EList<KPort> _ports_1 = it.getPorts();
+        KPort _createPort_1 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function_1 = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.EAST);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "out", 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow_1 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_1, _function_1);
+        _ports_1.add(_doubleArrow_1);
+        KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+        final Procedure1<KRectangle> _function_2 = new Procedure1<KRectangle>() {
+          public void apply(final KRectangle it) {
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 2);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("white");
+            KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("LemonChiffon");
+            ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackgroundGradient(it, _color, _color_1, 0);
+            KColor _color_2 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_2);
+            KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 1);
+            KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 15, 0);
+            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 15, 0);
+            KText _addText = ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, ((instanceName + " : ") + className));
+            final Procedure1<KText> _function = new Procedure1<KText>() {
+              public void apply(final KText it) {
+                ModelDiagramSynthesis.this._kRenderingExtensions.setFontBold(it, true);
+              }
+            };
+            ObjectExtensions.<KText>operator_doubleArrow(_addText, _function);
+          }
+        };
+        ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle, _function_2);
+      }
+    };
+    return ObjectExtensions.<KNode>operator_doubleArrow(node, _function);
   }
   
   /**
    * Create an edge between a model and a generator or weaver.
    */
-  private /* KEdge */Object drawConnectionWithArrow(final /* KNode */Object source, final /* KNode */Object target, final /* LineStyle */Object lineStyle) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createEdge() is undefined"
-      + "\nThe method source(KNode) is undefined for the type Object"
-      + "\nThe method target(KNode) is undefined for the type Object"
-      + "\nThe method or field addPolyline is undefined for the type Object"
-      + "\nThe method or field addHeadArrowDecorator is undefined for the type Object"
-      + "\nThe method lineWidth(int) is undefined for the type Object"
-      + "\nThe method lineStyle(LineStyle) is undefined for the type Object"
-      + "\n=> cannot be resolved"
-      + "\n=> cannot be resolved");
+  private KEdge drawConnectionWithArrow(final KNode source, final KNode target, final LineStyle lineStyle) {
+    KEdge _createEdge = this._kEdgeExtensions.createEdge();
+    final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+      public void apply(final KEdge it) {
+        it.setSource(source);
+        it.setTarget(target);
+        KPolyline _addPolyline = ModelDiagramSynthesis.this._kEdgeExtensions.addPolyline(it);
+        final Procedure1<KPolyline> _function = new Procedure1<KPolyline>() {
+          public void apply(final KPolyline it) {
+            ModelDiagramSynthesis.this._kPolylineExtensions.addHeadArrowDecorator(it);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 2);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineStyle(it, lineStyle);
+          }
+        };
+        ObjectExtensions.<KPolyline>operator_doubleArrow(_addPolyline, _function);
+      }
+    };
+    return ObjectExtensions.<KEdge>operator_doubleArrow(_createEdge, _function);
   }
   
   /**
    * Create an edge between a model and the weaver or generator.
    * Input only for main model.
    */
-  private /* KEdge */Object drawConnectionNoArrow(final /* KNode */Object source, final /* KNode */Object target, final /* LineStyle */Object lineStyle) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createEdge() is undefined"
-      + "\nThe method source(KNode) is undefined for the type Object"
-      + "\nThe method target(KNode) is undefined for the type Object"
-      + "\nThe method or field addPolyline is undefined for the type Object"
-      + "\nThe method lineWidth(int) is undefined for the type Object"
-      + "\nThe method lineStyle(LineStyle) is undefined for the type Object"
-      + "\n=> cannot be resolved"
-      + "\n=> cannot be resolved");
+  private KEdge drawConnectionNoArrow(final KNode source, final KNode target, final LineStyle lineStyle) {
+    KEdge _createEdge = this._kEdgeExtensions.createEdge();
+    final Procedure1<KEdge> _function = new Procedure1<KEdge>() {
+      public void apply(final KEdge it) {
+        it.setSource(source);
+        it.setTarget(target);
+        KPolyline _addPolyline = ModelDiagramSynthesis.this._kEdgeExtensions.addPolyline(it);
+        final Procedure1<KPolyline> _function = new Procedure1<KPolyline>() {
+          public void apply(final KPolyline it) {
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 2);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineStyle(it, lineStyle);
+          }
+        };
+        ObjectExtensions.<KPolyline>operator_doubleArrow(_addPolyline, _function);
+      }
+    };
+    return ObjectExtensions.<KEdge>operator_doubleArrow(_createEdge, _function);
   }
   
-  private /* KNode */Object drawWeaver(final Weaver weaver) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createNode() is undefined for the type Weaver"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortConstraints is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field NodeLabelPlacement is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method addRoundedRectangle(int, int) is undefined for the type Object"
-      + "\nThe method lineWidth(int) is undefined for the type Object"
-      + "\nThe method setBackground(Object) is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method shadow(Object) is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method setGridPlacement(int) is undefined for the type Object"
-      + "\nThe method or field LEFT is undefined"
-      + "\nThe method or field TOP is undefined"
-      + "\nThe method or field RIGHT is undefined"
-      + "\nThe method or field BOTTOM is undefined"
-      + "\nThe method addText(String) is undefined for the type Object"
-      + "\nThe method fontBold(boolean) is undefined for the type Object"
-      + "\nassociateWith cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_CONSTRAINTS cannot be resolved"
-      + "\nFIXED_SIDE cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nWEST cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nEAST cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nSOUTH cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nSOUTH cannot be resolved"
-      + "\nNODE_LABEL_PLACEMENT cannot be resolved"
-      + "\ninsideBottomLeft cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nfrom cannot be resolved"
-      + "\nto cannot be resolved"
-      + "\n=> cannot be resolved");
+  private KNode drawWeaver(final Weaver weaver) {
+    KNode _createNode = this._kNodeExtensions.createNode(weaver);
+    KNode _associateWith = this.<KNode>associateWith(_createNode, weaver);
+    final Procedure1<KNode> _function = new Procedure1<KNode>() {
+      public void apply(final KNode it) {
+        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+        EList<KPort> _ports = it.getPorts();
+        KPort _createPort = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.WEST);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "in", 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow = ObjectExtensions.<KPort>operator_doubleArrow(_createPort, _function);
+        _ports.add(_doubleArrow);
+        EList<KPort> _ports_1 = it.getPorts();
+        KPort _createPort_1 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function_1 = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.EAST);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "out", 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow_1 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_1, _function_1);
+        _ports_1.add(_doubleArrow_1);
+        EList<KPort> _ports_2 = it.getPorts();
+        KPort _createPort_2 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function_2 = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            String _xifexpression = null;
+            boolean _hasSeparatePointcut = ModelDiagramSynthesis.this.hasSeparatePointcut(weaver);
+            if (_hasSeparatePointcut) {
+              _xifexpression = "advice";
+            } else {
+              _xifexpression = "aspect";
+            }
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, _xifexpression, 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow_2 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_2, _function_2);
+        _ports_2.add(_doubleArrow_2);
+        boolean _hasSeparatePointcut = ModelDiagramSynthesis.this.hasSeparatePointcut(weaver);
+        if (_hasSeparatePointcut) {
+          EList<KPort> _ports_3 = it.getPorts();
+          KPort _createPort_3 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+          final Procedure1<KPort> _function_3 = new Procedure1<KPort>() {
+            public void apply(final KPort it) {
+              ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+              EnumSet<NodeLabelPlacement> _insideBottomLeft = NodeLabelPlacement.insideBottomLeft();
+              ModelDiagramSynthesis.this.<KPort, EnumSet<NodeLabelPlacement>>setLayoutOption(it, LayoutOptions.NODE_LABEL_PLACEMENT, _insideBottomLeft);
+              KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+              KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+              KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+              ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+              ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "pointcut", 8, KlighdConstants.DEFAULT_FONT_NAME);
+            }
+          };
+          KPort _doubleArrow_3 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_3, _function_3);
+          _ports_3.add(_doubleArrow_3);
+        }
+        KRoundedRectangle _addRoundedRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRoundedRectangle(it, 5, 5);
+        final Procedure1<KRoundedRectangle> _function_4 = new Procedure1<KRoundedRectangle>() {
+          public void apply(final KRoundedRectangle it) {
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 0);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("white");
+            ModelDiagramSynthesis.this._kRenderingExtensions.<KRoundedRectangle>setBackground(it, _color);
+            KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_1);
+            KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 1);
+            KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 15, 0);
+            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 15, 0);
+            String _name = ModelDiagramSynthesis.this.getName(weaver);
+            KText _addText = ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, _name);
+            final Procedure1<KText> _function = new Procedure1<KText>() {
+              public void apply(final KText it) {
+                ModelDiagramSynthesis.this._kRenderingExtensions.setFontBold(it, true);
+              }
+            };
+            ObjectExtensions.<KText>operator_doubleArrow(_addText, _function);
+          }
+        };
+        ObjectExtensions.<KRoundedRectangle>operator_doubleArrow(_addRoundedRectangle, _function_4);
+      }
+    };
+    final KNode weaverNode = ObjectExtensions.<KNode>operator_doubleArrow(_associateWith, _function);
+    return weaverNode;
   }
   
   private boolean hasSeparatePointcut(final Weaver weaver) {
@@ -645,187 +1025,207 @@ public class ModelDiagramSynthesis /* implements AbstractDiagramSynthesis<GecoMo
   /**
    * Create generator node and its connections.
    */
-  private /* KNode */Object drawGenerator(final Generator generator) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createNode() is undefined for the type Generator"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortConstraints is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method addRoundedRectangle(int, int) is undefined for the type Object"
-      + "\nThe method lineWidth(int) is undefined for the type Object"
-      + "\nThe method setBackground(Object) is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method shadow(Object) is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method setGridPlacement(int) is undefined for the type Object"
-      + "\nThe method or field LEFT is undefined"
-      + "\nThe method or field TOP is undefined"
-      + "\nThe method or field RIGHT is undefined"
-      + "\nThe method or field BOTTOM is undefined"
-      + "\nThe method addText(String) is undefined for the type Object"
-      + "\nThe method fontBold(boolean) is undefined for the type Object"
-      + "\nassociateWith cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_CONSTRAINTS cannot be resolved"
-      + "\nFIXED_SIDE cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nWEST cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nEAST cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nSOUTH cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nNORTH cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nfrom cannot be resolved"
-      + "\nto cannot be resolved"
-      + "\n=> cannot be resolved");
+  private KNode drawGenerator(final Generator generator) {
+    KNode _createNode = this._kNodeExtensions.createNode(generator);
+    KNode _associateWith = this.<KNode>associateWith(_createNode, generator);
+    final Procedure1<KNode> _function = new Procedure1<KNode>() {
+      public void apply(final KNode it) {
+        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+        EList<KPort> _ports = it.getPorts();
+        KPort _createPort = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.WEST);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "in", 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow = ObjectExtensions.<KPort>operator_doubleArrow(_createPort, _function);
+        _ports.add(_doubleArrow);
+        EList<KPort> _ports_1 = it.getPorts();
+        KPort _createPort_1 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function_1 = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.EAST);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "out", 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow_1 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_1, _function_1);
+        _ports_1.add(_doubleArrow_1);
+        EList<KPort> _ports_2 = it.getPorts();
+        KPort _createPort_2 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function_2 = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "tr in", 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow_2 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_2, _function_2);
+        _ports_2.add(_doubleArrow_2);
+        EList<KPort> _ports_3 = it.getPorts();
+        KPort _createPort_3 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+        final Procedure1<KPort> _function_3 = new Procedure1<KPort>() {
+          public void apply(final KPort it) {
+            ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.NORTH);
+            KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+            ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "tr out", 8, KlighdConstants.DEFAULT_FONT_NAME);
+          }
+        };
+        KPort _doubleArrow_3 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_3, _function_3);
+        _ports_3.add(_doubleArrow_3);
+        KRoundedRectangle _addRoundedRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRoundedRectangle(it, 5, 5);
+        final Procedure1<KRoundedRectangle> _function_4 = new Procedure1<KRoundedRectangle>() {
+          public void apply(final KRoundedRectangle it) {
+            ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 0);
+            KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("lightgray");
+            ModelDiagramSynthesis.this._kRenderingExtensions.<KRoundedRectangle>setBackground(it, _color);
+            KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+            ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_1);
+            KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 1);
+            KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 15, 0);
+            ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 15, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 15, 0);
+            String _name = ModelDiagramSynthesis.this.getName(generator);
+            KText _addText = ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, _name);
+            final Procedure1<KText> _function = new Procedure1<KText>() {
+              public void apply(final KText it) {
+                ModelDiagramSynthesis.this._kRenderingExtensions.setFontBold(it, true);
+              }
+            };
+            ObjectExtensions.<KText>operator_doubleArrow(_addText, _function);
+          }
+        };
+        ObjectExtensions.<KRoundedRectangle>operator_doubleArrow(_addRoundedRectangle, _function_4);
+      }
+    };
+    final KNode generatorNode = ObjectExtensions.<KNode>operator_doubleArrow(_associateWith, _function);
+    return generatorNode;
   }
   
   /**
    * Draw a trace model
    */
-  private /* KNode */Object drawTraceModel(final TraceModel traceModel) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createNode() is undefined for the type TraceModel"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortConstraints is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field ports is undefined for the type Object"
-      + "\nThe method createPort() is undefined"
-      + "\nThe method setPortSize(int, int) is undefined for the type Object"
-      + "\nThe method setLayoutOption(Object, Object) is undefined for the type Object"
-      + "\nThe method or field LayoutOptions is undefined"
-      + "\nThe method or field PortSide is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field LineJoin is undefined"
-      + "\nThe method addInsidePortLabel(String, int, Object) is undefined for the type Object"
-      + "\nThe method or field KlighdConstants is undefined"
-      + "\nThe method or field addRectangle is undefined for the type Object"
-      + "\nThe method lineWidth(int) is undefined for the type Object"
-      + "\nThe method setBackgroundGradient(Object, Object, int) is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method shadow(Object) is undefined for the type Object"
-      + "\nThe method or field color is undefined for the type String"
-      + "\nThe method setGridPlacement(int) is undefined for the type Object"
-      + "\nThe method or field LEFT is undefined"
-      + "\nThe method or field TOP is undefined"
-      + "\nThe method or field RIGHT is undefined"
-      + "\nThe method or field BOTTOM is undefined"
-      + "\nThe method addText(String) is undefined for the type Object"
-      + "\nThe method fontBold(boolean) is undefined for the type Object"
-      + "\nThe method addHorizontalLine(int) is undefined for the type Object"
-      + "\nThe method lineStyle(Object) is undefined for the type Object"
-      + "\nThe method or field LineStyle is undefined"
-      + "\nThe method lineWidth(int) is undefined for the type Object"
-      + "\nThe method addText(String) is undefined for the type Object"
-      + "\nassociateWith cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_CONSTRAINTS cannot be resolved"
-      + "\nFIXED_SIDE cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nSOUTH cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nPORT_SIDE cannot be resolved"
-      + "\nNORTH cannot be resolved"
-      + "\nsetBackground cannot be resolved"
-      + "\nlineJoin cannot be resolved"
-      + "\nJOIN_ROUND cannot be resolved"
-      + "\nDEFAULT_FONT_NAME cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nfrom cannot be resolved"
-      + "\nto cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\n=> cannot be resolved"
-      + "\nDASH cannot be resolved");
+  private KNode drawTraceModel(final TraceModel traceModel) {
+    KNode _xblockexpression = null;
+    {
+      EList<NodeSetRelation> _nodeSetRelations = traceModel.getNodeSetRelations();
+      final Function1<NodeSetRelation, String> _function = new Function1<NodeSetRelation, String>() {
+        public String apply(final NodeSetRelation it) {
+          EList<NodeType> _sourceNodes = it.getSourceNodes();
+          final Function1<NodeType, String> _function = new Function1<NodeType, String>() {
+            public String apply(final NodeType it) {
+              JvmType _type = it.getType();
+              return _type.getSimpleName();
+            }
+          };
+          List<String> _map = ListExtensions.<NodeType, String>map(_sourceNodes, _function);
+          String _join = IterableExtensions.join(_map, ",");
+          String _plus = ("(" + _join);
+          String _plus_1 = (_plus + ":");
+          EList<NodeType> _targetNodes = it.getTargetNodes();
+          final Function1<NodeType, String> _function_1 = new Function1<NodeType, String>() {
+            public String apply(final NodeType it) {
+              JvmType _type = it.getType();
+              return _type.getSimpleName();
+            }
+          };
+          List<String> _map_1 = ListExtensions.<NodeType, String>map(_targetNodes, _function_1);
+          String _join_1 = IterableExtensions.join(_map_1, ",");
+          String _plus_2 = (_plus_1 + _join_1);
+          return (_plus_2 + ")");
+        }
+      };
+      List<String> _map = ListExtensions.<NodeSetRelation, String>map(_nodeSetRelations, _function);
+      final String contentLabel = IterableExtensions.join(_map, " ");
+      KNode _createNode = this._kNodeExtensions.createNode(traceModel);
+      KNode _associateWith = this.<KNode>associateWith(_createNode, traceModel);
+      final Procedure1<KNode> _function_1 = new Procedure1<KNode>() {
+        public void apply(final KNode it) {
+          ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+          EList<KPort> _ports = it.getPorts();
+          KPort _createPort = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+          final Procedure1<KPort> _function = new Procedure1<KPort>() {
+            public void apply(final KPort it) {
+              ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+              KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+              KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+              KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+              ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+              ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "in", 8, KlighdConstants.DEFAULT_FONT_NAME);
+            }
+          };
+          KPort _doubleArrow = ObjectExtensions.<KPort>operator_doubleArrow(_createPort, _function);
+          _ports.add(_doubleArrow);
+          EList<KPort> _ports_1 = it.getPorts();
+          KPort _createPort_1 = ModelDiagramSynthesis.this._kPortExtensions.createPort();
+          final Procedure1<KPort> _function_1 = new Procedure1<KPort>() {
+            public void apply(final KPort it) {
+              ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
+              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.NORTH);
+              KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+              KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+              KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
+              ModelDiagramSynthesis.this._kRenderingExtensions.setLineJoin(_setBackground, LineJoin.JOIN_ROUND);
+              ModelDiagramSynthesis.this._kLabelExtensions.addInsidePortLabel(it, "out", 8, KlighdConstants.DEFAULT_FONT_NAME);
+            }
+          };
+          KPort _doubleArrow_1 = ObjectExtensions.<KPort>operator_doubleArrow(_createPort_1, _function_1);
+          _ports_1.add(_doubleArrow_1);
+          KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
+          final Procedure1<KRectangle> _function_2 = new Procedure1<KRectangle>() {
+            public void apply(final KRectangle it) {
+              ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 2);
+              KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("lightblue");
+              KColor _color_1 = ModelDiagramSynthesis.this._kColorExtensions.getColor("white");
+              ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackgroundGradient(it, _color, _color_1, 0);
+              KColor _color_2 = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
+              ModelDiagramSynthesis.this._kRenderingExtensions.setShadow(it, _color_2);
+              KGridPlacement _setGridPlacement = ModelDiagramSynthesis.this._kContainerRenderingExtensions.setGridPlacement(it, 1);
+              KGridPlacement _from = ModelDiagramSynthesis.this._kRenderingExtensions.from(_setGridPlacement, ModelDiagramSynthesis.this._kRenderingExtensions.LEFT, 10, 0, ModelDiagramSynthesis.this._kRenderingExtensions.TOP, 10, 0);
+              ModelDiagramSynthesis.this._kRenderingExtensions.to(_from, ModelDiagramSynthesis.this._kRenderingExtensions.RIGHT, 10, 0, ModelDiagramSynthesis.this._kRenderingExtensions.BOTTOM, 10, 0);
+              String _name = traceModel.getName();
+              KText _addText = ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, _name);
+              final Procedure1<KText> _function = new Procedure1<KText>() {
+                public void apply(final KText it) {
+                  ModelDiagramSynthesis.this._kRenderingExtensions.setFontBold(it, true);
+                }
+              };
+              ObjectExtensions.<KText>operator_doubleArrow(_addText, _function);
+              KPolyline _addHorizontalLine = ModelDiagramSynthesis.this._kContainerRenderingExtensions.addHorizontalLine(it, 3);
+              final Procedure1<KPolyline> _function_1 = new Procedure1<KPolyline>() {
+                public void apply(final KPolyline it) {
+                  ModelDiagramSynthesis.this._kRenderingExtensions.setLineStyle(it, LineStyle.DASH);
+                  ModelDiagramSynthesis.this._kRenderingExtensions.setLineWidth(it, 1);
+                }
+              };
+              ObjectExtensions.<KPolyline>operator_doubleArrow(_addHorizontalLine, _function_1);
+              ModelDiagramSynthesis.this._kContainerRenderingExtensions.addText(it, contentLabel);
+            }
+          };
+          ObjectExtensions.<KRectangle>operator_doubleArrow(_addRectangle, _function_2);
+        }
+      };
+      _xblockexpression = ObjectExtensions.<KNode>operator_doubleArrow(_associateWith, _function_1);
+    }
+    return _xblockexpression;
   }
   
   private String getName(final Generator generator) {
