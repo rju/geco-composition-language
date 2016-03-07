@@ -1,0 +1,10 @@
+/AbstractATLTransformation.java
+/AbstractQVTTransformation.java
+/Auxiliary.java
+/IGenerator.java
+/ITraceModelProvider.java
+/IWeaver.java
+/IWeaverSeparatePointcut.java
+/TraceModel.java
+/TraceModelProvider.java
+/ITraceModelOutput.java
