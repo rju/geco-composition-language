@@ -80,7 +80,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * Create a field for an generator and instantiate it.
 	 */
 	private def CharSequence createField(JvmType type) '''
-		val «type.instanceName» = new «type.simpleName»()
+		val «type.instanceName» = new «type?.simpleName»()
 	'''
 	
 	/**

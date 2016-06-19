@@ -215,7 +215,10 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
     String _instanceName = this._nameResolver.getInstanceName(type);
     _builder.append(_instanceName, "");
     _builder.append(" = new ");
-    String _simpleName = type.getSimpleName();
+    String _simpleName = null;
+    if (type!=null) {
+      _simpleName=type.getSimpleName();
+    }
     _builder.append(_simpleName, "");
     _builder.append("()");
     _builder.newLineIfNotEmpty();
