@@ -63,15 +63,13 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
   public IScope getScope(final EObject context, final EReference reference) {
     IScope _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (context instanceof NodeProperty) {
-        String _name = reference.getName();
-        boolean _equals = _name.equals("property");
-        if (_equals) {
-          _matched=true;
-          EObject _eContainer = ((NodeProperty)context).eContainer();
-          _switchResult = this.createPropertyScope(_eContainer, reference);
-        }
+    if (context instanceof NodeProperty) {
+      String _name = reference.getName();
+      boolean _equals = _name.equals("property");
+      if (_equals) {
+        _matched=true;
+        EObject _eContainer = ((NodeProperty)context).eContainer();
+        _switchResult = this.createPropertyScope(_eContainer, reference);
       }
     }
     if (!_matched) {
@@ -170,13 +168,11 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
   private IScope createPropertyScope(final EObject container, final EReference reference) {
     IScope _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (container instanceof ModelType) {
-        _matched=true;
-        RegisteredRootClass _target = ((ModelType)container).getTarget();
-        JvmType _importedNamespace = _target.getImportedNamespace();
-        _switchResult = this.createJvmDeclaredTypeScope(_importedNamespace, reference);
-      }
+    if (container instanceof ModelType) {
+      _matched=true;
+      RegisteredRootClass _target = ((ModelType)container).getTarget();
+      JvmType _importedNamespace = _target.getImportedNamespace();
+      _switchResult = this.createJvmDeclaredTypeScope(_importedNamespace, reference);
     }
     if (!_matched) {
       if (container instanceof NodeProperty) {
@@ -220,11 +216,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
   private IScope createJvmDeclaredTypeScope(final JvmType type, final EReference reference) {
     IScope _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (type instanceof JvmDeclaredType) {
-        _matched=true;
-        _switchResult = new JvmMemberTypeScope(((JvmDeclaredType)type));
-      }
+    if (type instanceof JvmDeclaredType) {
+      _matched=true;
+      _switchResult = new JvmMemberTypeScope(((JvmDeclaredType)type));
     }
     if (!_matched) {
       _switchResult = IScope.NULLSCOPE;
@@ -254,19 +248,8 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
     GecoModel _modelRoot = this.getModelRoot(context);
     EList<Import> _imports = _modelRoot.getImports();
     final Function1<Import, Boolean> _function = (Import it) -> {
-      boolean _or = false;
-      JvmType _importedNamespace = it.getImportedNamespace();
-      String _name = IWeaver.class.getName();
-      Boolean _implementsInterface = this.implementsInterface(_importedNamespace, context, _name);
-      if ((_implementsInterface).booleanValue()) {
-        _or = true;
-      } else {
-        JvmType _importedNamespace_1 = it.getImportedNamespace();
-        String _name_1 = IWeaverSeparatePointcut.class.getName();
-        Boolean _implementsInterface_1 = this.implementsInterface(_importedNamespace_1, context, _name_1);
-        _or = (_implementsInterface_1).booleanValue();
-      }
-      return Boolean.valueOf(_or);
+      return Boolean.valueOf(((this.implementsInterface(it.getImportedNamespace(), context, IWeaver.class.getName())).booleanValue() || 
+        (this.implementsInterface(it.getImportedNamespace(), context, IWeaverSeparatePointcut.class.getName())).booleanValue()));
     };
     Iterable<Import> _filter = IterableExtensions.<Import>filter(_imports, _function);
     return new JvmImportTypeScope(_filter);
@@ -375,11 +358,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         final EObject container = object.eContainer();
         GecoModel _switchResult = null;
         boolean _matched = false;
-        if (!_matched) {
-          if (container instanceof GecoModel) {
-            _matched=true;
-            return ((GecoModel)container);
-          }
+        if (container instanceof GecoModel) {
+          _matched=true;
+          return ((GecoModel)container);
         }
         if (!_matched) {
           if (Objects.equal(container, null)) {
@@ -405,13 +386,11 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         final EObject container = type.eContainer();
         JvmType _switchResult = null;
         boolean _matched = false;
-        if (!_matched) {
-          if (container instanceof NodeProperty) {
-            _matched=true;
-            JvmMember _property = ((NodeProperty)container).getProperty();
-            JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_property);
-            return ArchitectureTyping.determineElementType(_resolveType);
-          }
+        if (container instanceof NodeProperty) {
+          _matched=true;
+          JvmMember _property = ((NodeProperty)container).getProperty();
+          JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_property);
+          return ArchitectureTyping.determineElementType(_resolveType);
         }
         if (!_matched) {
           if (container instanceof SourceModelSelector) {
@@ -446,11 +425,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
         final EObject container = type.eContainer();
         Generator _switchResult = null;
         boolean _matched = false;
-        if (!_matched) {
-          if (container instanceof Generator) {
-            _matched=true;
-            return ((Generator)container);
-          }
+        if (container instanceof Generator) {
+          _matched=true;
+          return ((Generator)container);
         }
         if (!_matched) {
           if (Objects.equal(container, null)) {
@@ -482,11 +459,9 @@ public class ArchitectureScopeProvider extends AbstractScopeProvider implements 
       final JvmType matchingType = _createTypeProvider.findTypeByName(typeName);
       boolean _switchResult = false;
       boolean _matched = false;
-      if (!_matched) {
-        if (type instanceof JvmGenericType) {
-          _matched=true;
-          _switchResult = ArchitectureTyping.isSubTypeOf(((JvmGenericType)type), matchingType);
-        }
+      if (type instanceof JvmGenericType) {
+        _matched=true;
+        _switchResult = ArchitectureTyping.isSubTypeOf(((JvmGenericType)type), matchingType);
       }
       if (!_matched) {
         _switchResult = false;

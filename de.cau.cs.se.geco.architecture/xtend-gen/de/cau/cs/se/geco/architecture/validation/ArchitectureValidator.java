@@ -34,67 +34,52 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
   public void checkWeaverSourceModelType(final Weaver weaver) {
     final JvmType weaverJvmType = weaver.getReference();
     boolean _matched = false;
-    if (!_matched) {
-      if (weaverJvmType instanceof JvmGenericType) {
-        _matched=true;
-        EList<JvmTypeReference> _superTypes = ((JvmGenericType)weaverJvmType).getSuperTypes();
-        final Function1<JvmTypeReference, Boolean> _function = (JvmTypeReference it) -> {
-          boolean _or = false;
-          JvmType _type = it.getType();
-          String _qualifiedName = _type.getQualifiedName();
-          String _canonicalName = IWeaver.class.getCanonicalName();
-          boolean _equals = _qualifiedName.equals(_canonicalName);
-          if (_equals) {
-            _or = true;
-          } else {
-            JvmType _type_1 = it.getType();
-            String _qualifiedName_1 = _type_1.getQualifiedName();
-            String _canonicalName_1 = IWeaverSeparatePointcut.class.getCanonicalName();
-            boolean _equals_1 = _qualifiedName_1.equals(_canonicalName_1);
-            _or = _equals_1;
-          }
-          return Boolean.valueOf(_or);
-        };
-        final Iterable<JvmTypeReference> match = IterableExtensions.<JvmTypeReference>filter(_superTypes, _function);
-        int _size = IterableExtensions.size(match);
-        boolean _greaterThan = (_size > 0);
-        if (_greaterThan) {
-          Object _get = ((Object[])Conversions.unwrapArray(match, Object.class))[0];
-          if ((_get instanceof JvmParameterizedTypeReference)) {
-            JvmTypeReference _get_1 = ((JvmTypeReference[])Conversions.unwrapArray(match, JvmTypeReference.class))[0];
-            final JvmParameterizedTypeReference iface = ((JvmParameterizedTypeReference) _get_1);
-            EList<JvmTypeReference> _arguments = iface.getArguments();
-            final JvmTypeReference baseTypeReference = _arguments.get(0);
-            EList<JvmTypeReference> _arguments_1 = iface.getArguments();
-            final JvmTypeReference aspectTypeReference = _arguments_1.get(1);
-            SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
-            final JvmTypeReference sourceModelTypeReference = ArchitectureTyping.resolveType(_resolveWeaverSourceModel);
-            boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(sourceModelTypeReference, baseTypeReference);
-            boolean _not = (!_isSubTypeOf);
-            if (_not) {
-              JvmType _determineElementType = ArchitectureTyping.determineElementType(sourceModelTypeReference);
-              JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_determineElementType);
-              boolean _isSubTypeOf_1 = ArchitectureTyping.isSubTypeOf(_resolveType, baseTypeReference);
-              boolean _not_1 = (!_isSubTypeOf_1);
-              if (_not_1) {
-                String _qualifiedName = sourceModelTypeReference.getQualifiedName();
-                String _plus = ("Source model type " + _qualifiedName);
-                String _plus_1 = (_plus + 
-                  " does not match weaver base type ");
-                String _qualifiedName_1 = baseTypeReference.getQualifiedName();
-                String _plus_2 = (_plus_1 + _qualifiedName_1);
-                this.error(_plus_2, 
-                  ArchitecturePackage.Literals.FRAGMENT__SOURCE_MODEL);
-              }
+    if (weaverJvmType instanceof JvmGenericType) {
+      _matched=true;
+      EList<JvmTypeReference> _superTypes = ((JvmGenericType)weaverJvmType).getSuperTypes();
+      final Function1<JvmTypeReference, Boolean> _function = (JvmTypeReference it) -> {
+        return Boolean.valueOf((it.getType().getQualifiedName().equals(IWeaver.class.getCanonicalName()) || 
+          it.getType().getQualifiedName().equals(IWeaverSeparatePointcut.class.getCanonicalName())));
+      };
+      final Iterable<JvmTypeReference> match = IterableExtensions.<JvmTypeReference>filter(_superTypes, _function);
+      int _size = IterableExtensions.size(match);
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
+        Object _get = ((Object[])Conversions.unwrapArray(match, Object.class))[0];
+        if ((_get instanceof JvmParameterizedTypeReference)) {
+          JvmTypeReference _get_1 = ((JvmTypeReference[])Conversions.unwrapArray(match, JvmTypeReference.class))[0];
+          final JvmParameterizedTypeReference iface = ((JvmParameterizedTypeReference) _get_1);
+          EList<JvmTypeReference> _arguments = iface.getArguments();
+          final JvmTypeReference baseTypeReference = _arguments.get(0);
+          EList<JvmTypeReference> _arguments_1 = iface.getArguments();
+          final JvmTypeReference aspectTypeReference = _arguments_1.get(1);
+          SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+          final JvmTypeReference sourceModelTypeReference = ArchitectureTyping.resolveType(_resolveWeaverSourceModel);
+          boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(sourceModelTypeReference, baseTypeReference);
+          boolean _not = (!_isSubTypeOf);
+          if (_not) {
+            JvmType _determineElementType = ArchitectureTyping.determineElementType(sourceModelTypeReference);
+            JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_determineElementType);
+            boolean _isSubTypeOf_1 = ArchitectureTyping.isSubTypeOf(_resolveType, baseTypeReference);
+            boolean _not_1 = (!_isSubTypeOf_1);
+            if (_not_1) {
+              String _qualifiedName = sourceModelTypeReference.getQualifiedName();
+              String _plus = ("Source model type " + _qualifiedName);
+              String _plus_1 = (_plus + 
+                " does not match weaver base type ");
+              String _qualifiedName_1 = baseTypeReference.getQualifiedName();
+              String _plus_2 = (_plus_1 + _qualifiedName_1);
+              this.error(_plus_2, 
+                ArchitecturePackage.Literals.FRAGMENT__SOURCE_MODEL);
             }
           }
-        } else {
-          String _qualifiedName_2 = ((JvmGenericType)weaverJvmType).getQualifiedName();
-          String _plus_3 = ("Weaver expected, but " + _qualifiedName_2);
-          String _plus_4 = (_plus_3 + " found.");
-          this.error(_plus_4, 
-            ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
         }
+      } else {
+        String _qualifiedName_2 = ((JvmGenericType)weaverJvmType).getQualifiedName();
+        String _plus_3 = ("Weaver expected, but " + _qualifiedName_2);
+        String _plus_4 = (_plus_3 + " found.");
+        this.error(_plus_4, 
+          ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
       }
     }
     if (!_matched) {
@@ -107,73 +92,71 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
   public void checkGeneratorSourceModelType(final Generator generator) {
     final JvmType generatorJvmType = generator.getReference();
     boolean _matched = false;
-    if (!_matched) {
-      if (generatorJvmType instanceof JvmGenericType) {
-        _matched=true;
-        EList<JvmTypeReference> _superTypes = ((JvmGenericType)generatorJvmType).getSuperTypes();
-        final Function1<JvmTypeReference, Boolean> _function = (JvmTypeReference it) -> {
-          JvmType _type = it.getType();
-          String _simpleName = _type.getSimpleName();
-          return Boolean.valueOf(_simpleName.equals("IGenerator"));
-        };
-        final Iterable<JvmTypeReference> match = IterableExtensions.<JvmTypeReference>filter(_superTypes, _function);
-        int _size = IterableExtensions.size(match);
-        boolean _greaterThan = (_size > 0);
-        if (_greaterThan) {
-          Object _get = ((Object[])Conversions.unwrapArray(match, Object.class))[0];
-          if ((_get instanceof JvmParameterizedTypeReference)) {
-            final JvmTypeReference inputTypeReference = ArchitectureTyping.determineGeneratorInputType(((JvmGenericType)generatorJvmType));
-            SourceModelSelector _sourceModel = generator.getSourceModel();
-            final JvmTypeReference sourceModelTypeReference = ArchitectureTyping.resolveType(_sourceModel);
-            boolean _notEquals = (!Objects.equal(sourceModelTypeReference, null));
-            if (_notEquals) {
-              boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(sourceModelTypeReference, inputTypeReference);
-              boolean _not = (!_isSubTypeOf);
-              if (_not) {
-                JvmType _determineElementType = ArchitectureTyping.determineElementType(sourceModelTypeReference);
-                JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_determineElementType);
-                boolean _isSubTypeOf_1 = ArchitectureTyping.isSubTypeOf(_resolveType, inputTypeReference);
-                boolean _not_1 = (!_isSubTypeOf_1);
-                if (_not_1) {
-                  JvmType _determineElementType_1 = ArchitectureTyping.determineElementType(sourceModelTypeReference);
-                  String _qualifiedName = _determineElementType_1.getQualifiedName();
-                  String _plus = ("Source model type " + _qualifiedName);
-                  String _plus_1 = (_plus + 
-                    " does not match generator source type ");
-                  String _qualifiedName_1 = inputTypeReference.getQualifiedName();
-                  String _plus_2 = (_plus_1 + _qualifiedName_1);
-                  this.error(_plus_2, 
-                    ArchitecturePackage.Literals.FRAGMENT__SOURCE_MODEL);
-                }
+    if (generatorJvmType instanceof JvmGenericType) {
+      _matched=true;
+      EList<JvmTypeReference> _superTypes = ((JvmGenericType)generatorJvmType).getSuperTypes();
+      final Function1<JvmTypeReference, Boolean> _function = (JvmTypeReference it) -> {
+        JvmType _type = it.getType();
+        String _simpleName = _type.getSimpleName();
+        return Boolean.valueOf(_simpleName.equals("IGenerator"));
+      };
+      final Iterable<JvmTypeReference> match = IterableExtensions.<JvmTypeReference>filter(_superTypes, _function);
+      int _size = IterableExtensions.size(match);
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
+        Object _get = ((Object[])Conversions.unwrapArray(match, Object.class))[0];
+        if ((_get instanceof JvmParameterizedTypeReference)) {
+          final JvmTypeReference inputTypeReference = ArchitectureTyping.determineGeneratorInputType(((JvmGenericType)generatorJvmType));
+          SourceModelSelector _sourceModel = generator.getSourceModel();
+          final JvmTypeReference sourceModelTypeReference = ArchitectureTyping.resolveType(_sourceModel);
+          boolean _notEquals = (!Objects.equal(sourceModelTypeReference, null));
+          if (_notEquals) {
+            boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(sourceModelTypeReference, inputTypeReference);
+            boolean _not = (!_isSubTypeOf);
+            if (_not) {
+              JvmType _determineElementType = ArchitectureTyping.determineElementType(sourceModelTypeReference);
+              JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_determineElementType);
+              boolean _isSubTypeOf_1 = ArchitectureTyping.isSubTypeOf(_resolveType, inputTypeReference);
+              boolean _not_1 = (!_isSubTypeOf_1);
+              if (_not_1) {
+                JvmType _determineElementType_1 = ArchitectureTyping.determineElementType(sourceModelTypeReference);
+                String _qualifiedName = _determineElementType_1.getQualifiedName();
+                String _plus = ("Source model type " + _qualifiedName);
+                String _plus_1 = (_plus + 
+                  " does not match generator source type ");
+                String _qualifiedName_1 = inputTypeReference.getQualifiedName();
+                String _plus_2 = (_plus_1 + _qualifiedName_1);
+                this.error(_plus_2, 
+                  ArchitecturePackage.Literals.FRAGMENT__SOURCE_MODEL);
               }
             }
-            final JvmTypeReference outputTypeReference = ArchitectureTyping.determineGeneratorOutputType(((JvmGenericType)generatorJvmType));
-            TargetModel _targetModel = generator.getTargetModel();
-            boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
-            if (_notEquals_1) {
-              TargetModel _targetModel_1 = generator.getTargetModel();
-              final JvmTypeReference targetModelTypeReference = ArchitectureTyping.resolveType(_targetModel_1);
-              boolean _isSubTypeOf_2 = ArchitectureTyping.isSubTypeOf(outputTypeReference, targetModelTypeReference);
-              boolean _not_2 = (!_isSubTypeOf_2);
-              if (_not_2) {
-                String _qualifiedName_2 = sourceModelTypeReference.getQualifiedName();
-                String _plus_3 = ("Target model type " + _qualifiedName_2);
-                String _plus_4 = (_plus_3 + 
-                  " does not match generator target type ");
-                String _qualifiedName_3 = inputTypeReference.getQualifiedName();
-                String _plus_5 = (_plus_4 + _qualifiedName_3);
-                this.error(_plus_5, 
-                  ArchitecturePackage.Literals.FRAGMENT__TARGET_MODEL);
-              }
+          }
+          final JvmTypeReference outputTypeReference = ArchitectureTyping.determineGeneratorOutputType(((JvmGenericType)generatorJvmType));
+          TargetModel _targetModel = generator.getTargetModel();
+          boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
+          if (_notEquals_1) {
+            TargetModel _targetModel_1 = generator.getTargetModel();
+            final JvmTypeReference targetModelTypeReference = ArchitectureTyping.resolveType(_targetModel_1);
+            boolean _isSubTypeOf_2 = ArchitectureTyping.isSubTypeOf(outputTypeReference, targetModelTypeReference);
+            boolean _not_2 = (!_isSubTypeOf_2);
+            if (_not_2) {
+              String _qualifiedName_2 = sourceModelTypeReference.getQualifiedName();
+              String _plus_3 = ("Target model type " + _qualifiedName_2);
+              String _plus_4 = (_plus_3 + 
+                " does not match generator target type ");
+              String _qualifiedName_3 = inputTypeReference.getQualifiedName();
+              String _plus_5 = (_plus_4 + _qualifiedName_3);
+              this.error(_plus_5, 
+                ArchitecturePackage.Literals.FRAGMENT__TARGET_MODEL);
             }
-          } else {
-            this.error("Generator expected, but illegal type found. Please check for build failures.", 
-              ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
           }
         } else {
           this.error("Generator expected, but illegal type found. Please check for build failures.", 
             ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
         }
+      } else {
+        this.error("Generator expected, but illegal type found. Please check for build failures.", 
+          ArchitecturePackage.Literals.FRAGMENT__REFERENCE);
       }
     }
     if (!_matched) {

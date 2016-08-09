@@ -23,11 +23,9 @@ public class JvmRegisterMetamodelImportScope implements IScope {
   public JvmRegisterMetamodelImportScope(final JvmType type, final ResourceSet resourceSet, final IJvmTypeProvider.Factory typeProviderFactory) {
     String _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (type instanceof JvmDeclaredType) {
-        _matched=true;
-        _switchResult = ((JvmDeclaredType)type).getPackageName();
-      }
+    if (type instanceof JvmDeclaredType) {
+      _matched=true;
+      _switchResult = ((JvmDeclaredType)type).getPackageName();
     }
     if (!_matched) {
       _switchResult = "nop";

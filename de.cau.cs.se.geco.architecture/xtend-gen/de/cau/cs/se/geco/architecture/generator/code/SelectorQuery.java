@@ -218,17 +218,15 @@ public class SelectorQuery {
   private CharSequence _createConstraint(final Literal expression) {
     String _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (expression instanceof ArrayLiteral) {
-        _matched=true;
-        EList<Literal> _literals = ((ArrayLiteral)expression).getLiterals();
-        final Function1<Literal, CharSequence> _function = (Literal it) -> {
-          return this.createConstraint(it);
-        };
-        List<CharSequence> _map = ListExtensions.<Literal, CharSequence>map(_literals, _function);
-        String _plus = ("{" + _map);
-        _switchResult = (_plus + "}");
-      }
+    if (expression instanceof ArrayLiteral) {
+      _matched=true;
+      EList<Literal> _literals = ((ArrayLiteral)expression).getLiterals();
+      final Function1<Literal, CharSequence> _function = (Literal it) -> {
+        return this.createConstraint(it);
+      };
+      List<CharSequence> _map = ListExtensions.<Literal, CharSequence>map(_literals, _function);
+      String _plus = ("{" + _map);
+      _switchResult = (_plus + "}");
     }
     if (!_matched) {
       if (expression instanceof BooleanLiteral) {

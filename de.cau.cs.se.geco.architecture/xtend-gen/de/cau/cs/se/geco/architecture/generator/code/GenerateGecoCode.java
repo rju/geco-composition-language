@@ -359,11 +359,9 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
       final Fragment processor = unit.getFragment();
       CharSequence _switchResult = null;
       boolean _matched = false;
-      if (!_matched) {
-        if (processor instanceof Generator) {
-          _matched=true;
-          _switchResult = this.createGeneratorExecution(((Generator)processor), unit);
-        }
+      if (processor instanceof Generator) {
+        _matched=true;
+        _switchResult = this.createGeneratorExecution(((Generator)processor), unit);
       }
       if (!_matched) {
         if (processor instanceof Weaver) {

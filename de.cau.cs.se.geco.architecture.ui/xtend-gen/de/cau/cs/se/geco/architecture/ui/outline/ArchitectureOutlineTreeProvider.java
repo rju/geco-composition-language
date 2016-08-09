@@ -18,10 +18,8 @@ public class ArchitectureOutlineTreeProvider extends DefaultOutlineTreeProvider 
   @Override
   protected void createNode(final IOutlineNode parent, final EObject modelElement) {
     boolean _matched = false;
-    if (!_matched) {
-      if (modelElement instanceof ModelType) {
-        _matched=true;
-      }
+    if (modelElement instanceof ModelType) {
+      _matched=true;
     }
     if (!_matched) {
       super.createNode(parent, modelElement);

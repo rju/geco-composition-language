@@ -210,33 +210,19 @@ public class ArchitectureTyping {
   }
   
   public static boolean isSubTypeOf(final JvmTypeReference type, final JvmTypeReference matchingType) {
-    boolean _and = false;
-    JvmType _type = type.getType();
-    if (!(_type instanceof JvmGenericType)) {
-      _and = false;
-    } else {
-      JvmType _type_1 = matchingType.getType();
-      _and = (_type_1 instanceof JvmGenericType);
-    }
-    if (_and) {
+    if (((type.getType() instanceof JvmGenericType) && (matchingType.getType() instanceof JvmGenericType))) {
       boolean _eIsProxy = type.eIsProxy();
       if (_eIsProxy) {
-        JvmType _type_2 = type.getType();
-        _type_2.hashCode();
+        JvmType _type = type.getType();
+        _type.hashCode();
       }
-      JvmType _type_3 = type.getType();
-      final JvmGenericType left = ((JvmGenericType) _type_3);
-      JvmType _type_4 = matchingType.getType();
-      final JvmGenericType right = ((JvmGenericType) _type_4);
+      JvmType _type_1 = type.getType();
+      final JvmGenericType left = ((JvmGenericType) _type_1);
+      JvmType _type_2 = matchingType.getType();
+      final JvmGenericType right = ((JvmGenericType) _type_2);
       boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(left, right);
       if (_isSubTypeOf) {
-        boolean _and_1 = false;
-        if (!(type instanceof JvmParameterizedTypeReference)) {
-          _and_1 = false;
-        } else {
-          _and_1 = (matchingType instanceof JvmParameterizedTypeReference);
-        }
-        if (_and_1) {
+        if (((type instanceof JvmParameterizedTypeReference) && (matchingType instanceof JvmParameterizedTypeReference))) {
           final EList<JvmTypeReference> leftArg = ((JvmParameterizedTypeReference) type).getArguments();
           final EList<JvmTypeReference> rightArg = ((JvmParameterizedTypeReference) matchingType).getArguments();
           int _size = leftArg.size();
@@ -281,11 +267,9 @@ public class ArchitectureTyping {
           final JvmType superType = it.getType();
           boolean _switchResult = false;
           boolean _matched = false;
-          if (!_matched) {
-            if (superType instanceof JvmGenericType) {
-              _matched=true;
-              _switchResult = ArchitectureTyping.isSubTypeOf(((JvmGenericType)superType), matchingType);
-            }
+          if (superType instanceof JvmGenericType) {
+            _matched=true;
+            _switchResult = ArchitectureTyping.isSubTypeOf(((JvmGenericType)superType), matchingType);
           }
           if (!_matched) {
             if (superType instanceof JvmVoid) {
@@ -316,18 +300,16 @@ public class ArchitectureTyping {
       final String name = _type.getQualifiedName();
       boolean _switchResult = false;
       boolean _matched = false;
-      if (!_matched) {
-        if (Objects.equal(name, null)) {
-          _matched=true;
-          boolean _xblockexpression_1 = false;
-          {
-            JvmType _type_1 = type.getType();
-            String _plus = ((("AnnotationType? " + type) + " -- ") + _type_1);
-            System.out.println(_plus);
-            _xblockexpression_1 = false;
-          }
-          _switchResult = _xblockexpression_1;
+      if (Objects.equal(name, null)) {
+        _matched=true;
+        boolean _xblockexpression_1 = false;
+        {
+          JvmType _type_1 = type.getType();
+          String _plus = ((("AnnotationType? " + type) + " -- ") + _type_1);
+          System.out.println(_plus);
+          _xblockexpression_1 = false;
         }
+        _switchResult = _xblockexpression_1;
       }
       if (!_matched) {
         if (Objects.equal(name, "java.util.Collection")) {
@@ -373,31 +355,29 @@ public class ArchitectureTyping {
   public static JvmType determineElementType(final JvmTypeReference reference) {
     JvmType _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (reference instanceof JvmParameterizedTypeReference) {
-        _matched=true;
-        JvmType _xifexpression = null;
-        EList<JvmTypeReference> _arguments = ((JvmParameterizedTypeReference)reference).getArguments();
-        int _size = _arguments.size();
-        boolean _equals = (_size == 1);
-        if (_equals) {
-          EList<JvmTypeReference> _arguments_1 = ((JvmParameterizedTypeReference)reference).getArguments();
-          JvmTypeReference _get = _arguments_1.get(0);
-          _xifexpression = _get.getType();
-        } else {
-          JvmType _xifexpression_1 = null;
-          EList<JvmTypeReference> _arguments_2 = ((JvmParameterizedTypeReference)reference).getArguments();
-          int _size_1 = _arguments_2.size();
-          boolean _equals_1 = (_size_1 == 2);
-          if (_equals_1) {
-            EList<JvmTypeReference> _arguments_3 = ((JvmParameterizedTypeReference)reference).getArguments();
-            JvmTypeReference _get_1 = _arguments_3.get(1);
-            _xifexpression_1 = _get_1.getType();
-          }
-          _xifexpression = _xifexpression_1;
+    if (reference instanceof JvmParameterizedTypeReference) {
+      _matched=true;
+      JvmType _xifexpression = null;
+      EList<JvmTypeReference> _arguments = ((JvmParameterizedTypeReference)reference).getArguments();
+      int _size = _arguments.size();
+      boolean _equals = (_size == 1);
+      if (_equals) {
+        EList<JvmTypeReference> _arguments_1 = ((JvmParameterizedTypeReference)reference).getArguments();
+        JvmTypeReference _get = _arguments_1.get(0);
+        _xifexpression = _get.getType();
+      } else {
+        JvmType _xifexpression_1 = null;
+        EList<JvmTypeReference> _arguments_2 = ((JvmParameterizedTypeReference)reference).getArguments();
+        int _size_1 = _arguments_2.size();
+        boolean _equals_1 = (_size_1 == 2);
+        if (_equals_1) {
+          EList<JvmTypeReference> _arguments_3 = ((JvmParameterizedTypeReference)reference).getArguments();
+          JvmTypeReference _get_1 = _arguments_3.get(1);
+          _xifexpression_1 = _get_1.getType();
         }
-        _switchResult = _xifexpression;
+        _xifexpression = _xifexpression_1;
       }
+      _switchResult = _xifexpression;
     }
     if (!_matched) {
       _switchResult = reference.getType();
@@ -475,35 +455,14 @@ public class ArchitectureTyping {
    * Check if the given model declaration is a simple or collection type.
    */
   public static boolean isCollectionType(final ModelDeclaration declaration) {
-    boolean _or = false;
-    ModelType _selector = declaration.getSelector();
-    JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_selector);
-    boolean _isListType = ArchitectureTyping.isListType(_resolveType);
-    if (_isListType) {
-      _or = true;
-    } else {
-      Model _model = declaration.getModel();
-      EObject _eContainer = _model.eContainer();
-      ModelType _type = ((ModelSequence) _eContainer).getType();
-      boolean _isCollection = _type.isCollection();
-      _or = _isCollection;
-    }
-    return _or;
+    return (ArchitectureTyping.isListType(ArchitectureTyping.resolveType(declaration.getSelector())) || 
+      ((ModelSequence) declaration.getModel().eContainer()).getType().isCollection());
   }
   
   public static boolean isCollectionType(final Model model) {
     EObject _eContainer = model.eContainer();
     final ModelType nodeType = ((ModelSequence) _eContainer).getType();
-    boolean _or = false;
-    JvmTypeReference _resolveType = ArchitectureTyping.resolveType(nodeType);
-    boolean _isListType = ArchitectureTyping.isListType(_resolveType);
-    if (_isListType) {
-      _or = true;
-    } else {
-      boolean _isCollection = nodeType.isCollection();
-      _or = _isCollection;
-    }
-    return _or;
+    return (ArchitectureTyping.isListType(ArchitectureTyping.resolveType(nodeType)) || nodeType.isCollection());
   }
   
   /**

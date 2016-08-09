@@ -60,12 +60,10 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     EList<Fragment> _fragments = input.getFragments();
     final Consumer<Fragment> _function_1 = (Fragment fragment) -> {
       boolean _matched = false;
-      if (!_matched) {
-        if (fragment instanceof Generator) {
-          _matched=true;
-          Unit _createGenerator = this.createGenerator(((Generator)fragment));
-          units.add(_createGenerator);
-        }
+      if (fragment instanceof Generator) {
+        _matched=true;
+        Unit _createGenerator = this.createGenerator(((Generator)fragment));
+        units.add(_createGenerator);
       }
       if (!_matched) {
         if (fragment instanceof Weaver) {
@@ -159,37 +157,35 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   private void print(final Unit unit) {
     final Fragment processor = unit.getFragment();
     boolean _matched = false;
-    if (!_matched) {
-      if (processor instanceof Generator) {
-        _matched=true;
-        JvmType _reference = ((Generator)processor).getReference();
-        String _qualifiedName = _reference.getQualifiedName();
-        String _plus = ("\tG " + _qualifiedName);
-        System.out.print(_plus);
-        TargetTraceModel _targetTraceModel = ((Generator)processor).getTargetTraceModel();
-        boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
-        if (_notEquals) {
-          TargetTraceModel _targetTraceModel_1 = ((Generator)processor).getTargetTraceModel();
-          TraceModel _determineTraceModel = this.determineTraceModel(_targetTraceModel_1);
-          String _name = _determineTraceModel.getName();
-          String _plus_1 = (" write " + _name);
-          System.out.print(_plus_1);
-        }
-        EList<TraceModelReference> _sourceTraceModels = ((Generator)processor).getSourceTraceModels();
-        boolean _notEquals_1 = (!Objects.equal(_sourceTraceModels, null));
-        if (_notEquals_1) {
-          EList<TraceModelReference> _sourceTraceModels_1 = ((Generator)processor).getSourceTraceModels();
-          final Function1<TraceModelReference, String> _function = (TraceModelReference it) -> {
-            TraceModel _determineTraceModel_1 = this.determineTraceModel(it);
-            return _determineTraceModel_1.getName();
-          };
-          List<String> _map = ListExtensions.<TraceModelReference, String>map(_sourceTraceModels_1, _function);
-          String _join = IterableExtensions.join(_map, ", ");
-          String _plus_2 = (" read " + _join);
-          System.out.print(_plus_2);
-        }
-        System.out.println();
+    if (processor instanceof Generator) {
+      _matched=true;
+      JvmType _reference = ((Generator)processor).getReference();
+      String _qualifiedName = _reference.getQualifiedName();
+      String _plus = ("\tG " + _qualifiedName);
+      System.out.print(_plus);
+      TargetTraceModel _targetTraceModel = ((Generator)processor).getTargetTraceModel();
+      boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
+      if (_notEquals) {
+        TargetTraceModel _targetTraceModel_1 = ((Generator)processor).getTargetTraceModel();
+        TraceModel _determineTraceModel = this.determineTraceModel(_targetTraceModel_1);
+        String _name = _determineTraceModel.getName();
+        String _plus_1 = (" write " + _name);
+        System.out.print(_plus_1);
       }
+      EList<TraceModelReference> _sourceTraceModels = ((Generator)processor).getSourceTraceModels();
+      boolean _notEquals_1 = (!Objects.equal(_sourceTraceModels, null));
+      if (_notEquals_1) {
+        EList<TraceModelReference> _sourceTraceModels_1 = ((Generator)processor).getSourceTraceModels();
+        final Function1<TraceModelReference, String> _function = (TraceModelReference it) -> {
+          TraceModel _determineTraceModel_1 = this.determineTraceModel(it);
+          return _determineTraceModel_1.getName();
+        };
+        List<String> _map = ListExtensions.<TraceModelReference, String>map(_sourceTraceModels_1, _function);
+        String _join = IterableExtensions.join(_map, ", ");
+        String _plus_2 = (" read " + _join);
+        System.out.print(_plus_2);
+      }
+      System.out.println();
     }
     if (!_matched) {
       if (processor instanceof Weaver) {
@@ -206,31 +202,20 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
    * Check if the given group provides the necessary inputs for the unit.
    */
   private boolean matchGroup(final Unit unit, final Group group) {
-    boolean _and = false;
-    EList<Model> _sourceModels = unit.getSourceModels();
-    final Function1<Model, Boolean> _function = (Model unitMM) -> {
-      EList<Model> _sourceModels_1 = group.getSourceModels();
-      final Function1<Model, Boolean> _function_1 = (Model it) -> {
+    return (IterableExtensions.<Model>forall(unit.getSourceModels(), ((Function1<Model, Boolean>) (Model unitMM) -> {
+      EList<Model> _sourceModels = group.getSourceModels();
+      final Function1<Model, Boolean> _function = (Model it) -> {
         return Boolean.valueOf(it.equals(unitMM));
       };
-      return Boolean.valueOf(IterableExtensions.<Model>exists(_sourceModels_1, _function_1));
-    };
-    boolean _forall = IterableExtensions.<Model>forall(_sourceModels, _function);
-    if (!_forall) {
-      _and = false;
-    } else {
-      EList<TraceModel> _sourceTraceModels = unit.getSourceTraceModels();
-      final Function1<TraceModel, Boolean> _function_1 = (TraceModel unitTR) -> {
-        EList<TraceModel> _sourceTraceModels_1 = group.getSourceTraceModels();
-        final Function1<TraceModel, Boolean> _function_2 = (TraceModel it) -> {
+      return Boolean.valueOf(IterableExtensions.<Model>exists(_sourceModels, _function));
+    })) && 
+      IterableExtensions.<TraceModel>forall(unit.getSourceTraceModels(), ((Function1<TraceModel, Boolean>) (TraceModel unitTR) -> {
+        EList<TraceModel> _sourceTraceModels = group.getSourceTraceModels();
+        final Function1<TraceModel, Boolean> _function = (TraceModel it) -> {
           return Boolean.valueOf(it.equals(unitTR));
         };
-        return Boolean.valueOf(IterableExtensions.<TraceModel>exists(_sourceTraceModels_1, _function_2));
-      };
-      boolean _forall_1 = IterableExtensions.<TraceModel>forall(_sourceTraceModels, _function_1);
-      _and = _forall_1;
-    }
-    return _and;
+        return Boolean.valueOf(IterableExtensions.<TraceModel>exists(_sourceTraceModels, _function));
+      })));
   }
   
   /**
@@ -411,11 +396,9 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   private TraceModel determineTraceModel(final TargetTraceModel model) {
     TraceModel _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (model instanceof TraceModel) {
-        _matched=true;
-        _switchResult = ((TraceModel)model);
-      }
+    if (model instanceof TraceModel) {
+      _matched=true;
+      _switchResult = ((TraceModel)model);
     }
     if (!_matched) {
       if (model instanceof TraceModelReference) {

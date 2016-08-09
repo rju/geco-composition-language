@@ -65,19 +65,8 @@ public class JvmMemberTypeScope implements IScope {
   @Override
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
     final Function2<JvmOperation, IEObjectDescription, Boolean> _function = (JvmOperation object, IEObjectDescription description) -> {
-      boolean _or = false;
-      String _createName = this.createName(object, "get");
-      String _string = name.toString();
-      boolean _equals = _createName.equals(_string);
-      if (_equals) {
-        _or = true;
-      } else {
-        String _createName_1 = this.createName(object, "is");
-        String _string_1 = name.toString();
-        boolean _equals_1 = _createName_1.equals(_string_1);
-        _or = _equals_1;
-      }
-      return Boolean.valueOf(_or);
+      return Boolean.valueOf((this.createName(object, "get").equals(name.toString()) || 
+        this.createName(object, "is").equals(name.toString())));
     };
     Map<JvmOperation, IEObjectDescription> _filter = MapExtensions.<JvmOperation, IEObjectDescription>filter(this.fields, _function);
     return _filter.values();
