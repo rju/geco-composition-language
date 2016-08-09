@@ -3,34 +3,25 @@ package de.cau.cs.se.geco.architecture.graph;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
-import de.cau.cs.kieler.core.kgraph.KEdge;
-import de.cau.cs.kieler.core.kgraph.KNode;
-import de.cau.cs.kieler.core.kgraph.KPort;
-import de.cau.cs.kieler.core.krendering.KColor;
-import de.cau.cs.kieler.core.krendering.KGridPlacement;
-import de.cau.cs.kieler.core.krendering.KPolyline;
-import de.cau.cs.kieler.core.krendering.KRectangle;
-import de.cau.cs.kieler.core.krendering.KRenderingFactory;
-import de.cau.cs.kieler.core.krendering.KRoundedRectangle;
-import de.cau.cs.kieler.core.krendering.KText;
-import de.cau.cs.kieler.core.krendering.LineJoin;
-import de.cau.cs.kieler.core.krendering.LineStyle;
-import de.cau.cs.kieler.core.krendering.extensions.KColorExtensions;
-import de.cau.cs.kieler.core.krendering.extensions.KContainerRenderingExtensions;
-import de.cau.cs.kieler.core.krendering.extensions.KEdgeExtensions;
-import de.cau.cs.kieler.core.krendering.extensions.KLabelExtensions;
-import de.cau.cs.kieler.core.krendering.extensions.KNodeExtensions;
-import de.cau.cs.kieler.core.krendering.extensions.KPolylineExtensions;
-import de.cau.cs.kieler.core.krendering.extensions.KPortExtensions;
-import de.cau.cs.kieler.core.krendering.extensions.KRenderingExtensions;
-import de.cau.cs.kieler.kiml.options.Direction;
-import de.cau.cs.kieler.kiml.options.EdgeRouting;
-import de.cau.cs.kieler.kiml.options.LayoutOptions;
-import de.cau.cs.kieler.kiml.options.NodeLabelPlacement;
-import de.cau.cs.kieler.kiml.options.PortConstraints;
-import de.cau.cs.kieler.kiml.options.PortSide;
 import de.cau.cs.kieler.klighd.KlighdConstants;
 import de.cau.cs.kieler.klighd.SynthesisOption;
+import de.cau.cs.kieler.klighd.krendering.KColor;
+import de.cau.cs.kieler.klighd.krendering.KGridPlacement;
+import de.cau.cs.kieler.klighd.krendering.KPolyline;
+import de.cau.cs.kieler.klighd.krendering.KRectangle;
+import de.cau.cs.kieler.klighd.krendering.KRenderingFactory;
+import de.cau.cs.kieler.klighd.krendering.KRoundedRectangle;
+import de.cau.cs.kieler.klighd.krendering.KText;
+import de.cau.cs.kieler.klighd.krendering.LineJoin;
+import de.cau.cs.kieler.klighd.krendering.LineStyle;
+import de.cau.cs.kieler.klighd.krendering.extensions.KColorExtensions;
+import de.cau.cs.kieler.klighd.krendering.extensions.KContainerRenderingExtensions;
+import de.cau.cs.kieler.klighd.krendering.extensions.KEdgeExtensions;
+import de.cau.cs.kieler.klighd.krendering.extensions.KLabelExtensions;
+import de.cau.cs.kieler.klighd.krendering.extensions.KNodeExtensions;
+import de.cau.cs.kieler.klighd.krendering.extensions.KPolylineExtensions;
+import de.cau.cs.kieler.klighd.krendering.extensions.KPortExtensions;
+import de.cau.cs.kieler.klighd.krendering.extensions.KRenderingExtensions;
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis;
 import de.cau.cs.se.geco.architecture.architecture.AspectModel;
 import de.cau.cs.se.geco.architecture.architecture.CombinedModel;
@@ -60,6 +51,15 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import javax.inject.Inject;
+import org.eclipse.elk.alg.layered.properties.LayeredOptions;
+import org.eclipse.elk.core.options.Direction;
+import org.eclipse.elk.core.options.EdgeRouting;
+import org.eclipse.elk.core.options.NodeLabelPlacement;
+import org.eclipse.elk.core.options.PortConstraints;
+import org.eclipse.elk.core.options.PortSide;
+import org.eclipse.elk.graph.KEdge;
+import org.eclipse.elk.graph.KNode;
+import org.eclipse.elk.graph.KPort;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmGenericType;
@@ -194,10 +194,9 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     final KNode root = this.<KNode>associateWith(_createNode, model);
     final Procedure1<KNode> _function = new Procedure1<KNode>() {
       public void apply(final KNode it) {
-        ModelDiagramSynthesis.this._kNodeExtensions.<String>addLayoutParam(it, LayoutOptions.ALGORITHM, "de.cau.cs.kieler.klay.layered");
         Object _objectValue = ModelDiagramSynthesis.this.getObjectValue(ModelDiagramSynthesis.SPACING);
-        ModelDiagramSynthesis.this.<KNode, Float>setLayoutOption(it, LayoutOptions.SPACING, ((Float) _objectValue));
-        ModelDiagramSynthesis.this.<KNode, Direction>setLayoutOption(it, LayoutOptions.DIRECTION, Direction.RIGHT);
+        ModelDiagramSynthesis.this.<KNode, Float>setLayoutOption(it, LayeredOptions.SPACING_BORDER, ((Float) _objectValue));
+        ModelDiagramSynthesis.this.<KNode, Direction>setLayoutOption(it, LayeredOptions.DIRECTION, Direction.RIGHT);
         EdgeRouting _switchResult = null;
         Object _objectValue_1 = ModelDiagramSynthesis.this.getObjectValue(ModelDiagramSynthesis.ROUTING);
         boolean _matched = false;
@@ -219,7 +218,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
             _switchResult = EdgeRouting.SPLINES;
           }
         }
-        ModelDiagramSynthesis.this.<KNode, EdgeRouting>setLayoutOption(it, LayoutOptions.EDGE_ROUTING, _switchResult);
+        ModelDiagramSynthesis.this.<KNode, EdgeRouting>setLayoutOption(it, LayeredOptions.EDGE_ROUTING, _switchResult);
         EList<ModelSequence> _models = model.getModels();
         ModelDiagramSynthesis.this.createNamedModels(_models, it);
         EList<Fragment> _fragments = model.getFragments();
@@ -791,13 +790,13 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
   private KNode drawModelRectangle(final KNode node, final String instanceName, final String className) {
     final Procedure1<KNode> _function = new Procedure1<KNode>() {
       public void apply(final KNode it) {
-        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayeredOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
         EList<KPort> _ports = it.getPorts();
         KPort _createPort = ModelDiagramSynthesis.this._kPortExtensions.createPort();
         final Procedure1<KPort> _function = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.WEST);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.WEST);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -812,7 +811,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         final Procedure1<KPort> _function_1 = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.EAST);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.EAST);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -900,13 +899,13 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     KNode _associateWith = this.<KNode>associateWith(_createNode, weaver);
     final Procedure1<KNode> _function = new Procedure1<KNode>() {
       public void apply(final KNode it) {
-        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayeredOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
         EList<KPort> _ports = it.getPorts();
         KPort _createPort = ModelDiagramSynthesis.this._kPortExtensions.createPort();
         final Procedure1<KPort> _function = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.WEST);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.WEST);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -921,7 +920,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         final Procedure1<KPort> _function_1 = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.EAST);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.EAST);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -936,7 +935,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         final Procedure1<KPort> _function_2 = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.SOUTH);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -960,9 +959,9 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
           final Procedure1<KPort> _function_3 = new Procedure1<KPort>() {
             public void apply(final KPort it) {
               ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.SOUTH);
               EnumSet<NodeLabelPlacement> _insideBottomLeft = NodeLabelPlacement.insideBottomLeft();
-              ModelDiagramSynthesis.this.<KPort, EnumSet<NodeLabelPlacement>>setLayoutOption(it, LayoutOptions.NODE_LABEL_PLACEMENT, _insideBottomLeft);
+              ModelDiagramSynthesis.this.<KPort, EnumSet<NodeLabelPlacement>>setLayoutOption(it, LayeredOptions.NODE_LABELS_PLACEMENT, _insideBottomLeft);
               KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
               KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
               KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -1030,13 +1029,13 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     KNode _associateWith = this.<KNode>associateWith(_createNode, generator);
     final Procedure1<KNode> _function = new Procedure1<KNode>() {
       public void apply(final KNode it) {
-        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+        ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayeredOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
         EList<KPort> _ports = it.getPorts();
         KPort _createPort = ModelDiagramSynthesis.this._kPortExtensions.createPort();
         final Procedure1<KPort> _function = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.WEST);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.WEST);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -1051,7 +1050,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         final Procedure1<KPort> _function_1 = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.EAST);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.EAST);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -1066,7 +1065,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         final Procedure1<KPort> _function_2 = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.SOUTH);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -1081,7 +1080,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         final Procedure1<KPort> _function_3 = new Procedure1<KPort>() {
           public void apply(final KPort it) {
             ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.NORTH);
+            ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.NORTH);
             KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
             KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
             KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -1158,13 +1157,13 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
       KNode _associateWith = this.<KNode>associateWith(_createNode, traceModel);
       final Procedure1<KNode> _function_1 = new Procedure1<KNode>() {
         public void apply(final KNode it) {
-          ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+          ModelDiagramSynthesis.this.<KNode, PortConstraints>setLayoutOption(it, LayeredOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
           EList<KPort> _ports = it.getPorts();
           KPort _createPort = ModelDiagramSynthesis.this._kPortExtensions.createPort();
           final Procedure1<KPort> _function = new Procedure1<KPort>() {
             public void apply(final KPort it) {
               ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.SOUTH);
+              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.SOUTH);
               KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
               KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
               KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);
@@ -1179,7 +1178,7 @@ public class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
           final Procedure1<KPort> _function_1 = new Procedure1<KPort>() {
             public void apply(final KPort it) {
               ModelDiagramSynthesis.this._kPortExtensions.setPortSize(it, 2, 2);
-              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayoutOptions.PORT_SIDE, PortSide.NORTH);
+              ModelDiagramSynthesis.this.<KPort, PortSide>setLayoutOption(it, LayeredOptions.PORT_SIDE, PortSide.NORTH);
               KRectangle _addRectangle = ModelDiagramSynthesis.this._kRenderingExtensions.addRectangle(it);
               KColor _color = ModelDiagramSynthesis.this._kColorExtensions.getColor("black");
               KRectangle _setBackground = ModelDiagramSynthesis.this._kRenderingExtensions.<KRectangle>setBackground(_addRectangle, _color);

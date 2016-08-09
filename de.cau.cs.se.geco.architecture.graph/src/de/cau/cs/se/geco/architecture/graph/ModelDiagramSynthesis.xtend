@@ -1,53 +1,50 @@
 package de.cau.cs.se.geco.architecture.graph
 
-import de.cau.cs.kieler.core.kgraph.KEdge
-import de.cau.cs.kieler.core.kgraph.KNode
-import de.cau.cs.kieler.core.krendering.KRenderingFactory
-import de.cau.cs.kieler.core.krendering.LineJoin
-import de.cau.cs.kieler.core.krendering.LineStyle
-import de.cau.cs.kieler.core.krendering.extensions.KColorExtensions
-import de.cau.cs.kieler.core.krendering.extensions.KContainerRenderingExtensions
-import de.cau.cs.kieler.core.krendering.extensions.KEdgeExtensions
-import de.cau.cs.kieler.core.krendering.extensions.KLabelExtensions
-import de.cau.cs.kieler.core.krendering.extensions.KNodeExtensions
-import de.cau.cs.kieler.core.krendering.extensions.KPolylineExtensions
-import de.cau.cs.kieler.core.krendering.extensions.KPortExtensions
-import de.cau.cs.kieler.core.krendering.extensions.KRenderingExtensions
-import de.cau.cs.kieler.kiml.options.Direction
-import de.cau.cs.kieler.kiml.options.EdgeRouting
-import de.cau.cs.kieler.kiml.options.LayoutOptions
-import de.cau.cs.kieler.kiml.options.PortConstraints
-import de.cau.cs.kieler.kiml.options.PortSide
+import com.google.common.collect.ImmutableList
 import de.cau.cs.kieler.klighd.KlighdConstants
+import de.cau.cs.kieler.klighd.SynthesisOption
+import de.cau.cs.kieler.klighd.krendering.KRenderingFactory
+import de.cau.cs.kieler.klighd.krendering.LineJoin
+import de.cau.cs.kieler.klighd.krendering.LineStyle
+import de.cau.cs.kieler.klighd.krendering.extensions.KColorExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KContainerRenderingExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KEdgeExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KLabelExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KNodeExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KPolylineExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KPortExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KRenderingExtensions
 import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
+import de.cau.cs.se.geco.architecture.architecture.AspectModel
+import de.cau.cs.se.geco.architecture.architecture.CombinedModel
 import de.cau.cs.se.geco.architecture.architecture.Fragment
+import de.cau.cs.se.geco.architecture.architecture.GecoModel
 import de.cau.cs.se.geco.architecture.architecture.Generator
 import de.cau.cs.se.geco.architecture.architecture.Model
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence
-import de.cau.cs.se.geco.architecture.architecture.GecoModel
+import de.cau.cs.se.geco.architecture.architecture.SeparateModels
 import de.cau.cs.se.geco.architecture.architecture.TargetModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModel
 import de.cau.cs.se.geco.architecture.architecture.TraceModelReference
 import de.cau.cs.se.geco.architecture.architecture.Weaver
 import de.cau.cs.se.geco.architecture.framework.IGenerator
+import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
 import java.util.HashMap
 import java.util.Map
 import javax.inject.Inject
+import org.eclipse.elk.core.options.Direction
+import org.eclipse.elk.core.options.EdgeRouting
+import org.eclipse.elk.core.options.NodeLabelPlacement
+import org.eclipse.elk.core.options.PortConstraints
+import org.eclipse.elk.core.options.PortSide
+import org.eclipse.elk.graph.KEdge
+import org.eclipse.elk.graph.KNode
 import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
-import de.cau.cs.kieler.klay.layered.properties.Properties
-import de.cau.cs.kieler.klighd.SynthesisOption
-import com.google.common.collect.ImmutableList
-import de.cau.cs.se.geco.architecture.architecture.CombinedModel
-import de.cau.cs.se.geco.architecture.architecture.SeparateModels
-import de.cau.cs.se.geco.architecture.architecture.AspectModel
-import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
-import de.cau.cs.kieler.kiml.options.NodeLabelPlacement
-import java.util.EnumSet
-import de.cau.cs.kieler.kiml.klayoutdata.KShapeLayout
+import org.eclipse.elk.alg.layered.properties.LayeredOptions
 
 class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     
@@ -121,10 +118,10 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         val root = model.createNode().associateWith(model);
         
         root => [
-        	it.addLayoutParam(LayoutOptions::ALGORITHM, "de.cau.cs.kieler.klay.layered")
-            it.setLayoutOption(LayoutOptions::SPACING, SPACING.objectValue as Float)
-            it.setLayoutOption(LayoutOptions::DIRECTION, Direction::RIGHT)
-            it.setLayoutOption(LayoutOptions::EDGE_ROUTING, switch(ROUTING.objectValue) {
+//        	it.addLayoutParam(LayoutOptions::ALGORITHM, "de.cau.cs.kieler.klay.layered") // obsolete
+            it.setLayoutOption(LayeredOptions.SPACING_BORDER, SPACING.objectValue as Float)
+            it.setLayoutOption(LayeredOptions.DIRECTION, Direction::RIGHT)
+            it.setLayoutOption(LayeredOptions::EDGE_ROUTING, switch(ROUTING.objectValue) {
             	case ROUTING_POLYLINE: EdgeRouting::POLYLINE
             	case ROUTING_ORTHOGONAL: EdgeRouting::ORTHOGONAL
             	case ROUTING_SPLINES: EdgeRouting::SPLINES
@@ -432,11 +429,11 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 */
 	private def KNode drawModelRectangle(KNode node, String instanceName, String className) {
 		node => [
-			it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
+			it.setLayoutOption(LayeredOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
 			
 			it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.WEST)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.WEST)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -444,7 +441,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		])
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.EAST)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.EAST)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -497,11 +494,11 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	
 	private def KNode drawWeaver(Weaver weaver) {
 		val weaverNode = weaver.createNode().associateWith(weaver) => [
-			it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
+			it.setLayoutOption(LayeredOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
 			
 			it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.WEST)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.WEST)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -509,7 +506,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		])
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.EAST)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.EAST)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -517,7 +514,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		])
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.SOUTH)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.SOUTH)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -526,8 +523,8 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		if (weaver.hasSeparatePointcut) {
 	    		it.ports.add(createPort() => [
 	    			it.setPortSize(2,2)
-	    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.SOUTH)
-	    			it.setLayoutOption(LayoutOptions.NODE_LABEL_PLACEMENT,  NodeLabelPlacement.insideBottomLeft)
+	    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.SOUTH)
+	    			it.setLayoutOption(LayeredOptions.NODE_LABELS_PLACEMENT,  NodeLabelPlacement.insideBottomLeft)
 	    			
 	    			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
 	                
@@ -563,11 +560,11 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 */
 	private def KNode drawGenerator(Generator generator) {
 		val generatorNode = generator.createNode().associateWith(generator) => [
-			it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
+			it.setLayoutOption(LayeredOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
     		
 			it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.WEST)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.WEST)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -575,7 +572,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		])
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.EAST)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.EAST)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -583,7 +580,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		])
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.SOUTH)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.SOUTH)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -591,7 +588,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		])
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.NORTH)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.NORTH)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -621,10 +618,10 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		it.targetNodes.map[it.type.simpleName].join(',') + ')'
     	].join(' ')
     	traceModel.createNode().associateWith(traceModel) => [
-    		it.setLayoutOption(LayoutOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
+    		it.setLayoutOption(LayeredOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE)
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.SOUTH)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.SOUTH)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name
@@ -632,7 +629,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     		])
     		it.ports.add(createPort() => [
     			it.setPortSize(2,2)
-    			it.setLayoutOption(LayoutOptions.PORT_SIDE, PortSide.NORTH)
+    			it.setLayoutOption(LayeredOptions.PORT_SIDE, PortSide.NORTH)
     			it.addRectangle.setBackground("black".color).lineJoin=LineJoin.JOIN_ROUND
                 
                 // last but not least add a label exhibiting the ports name

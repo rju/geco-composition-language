@@ -3,17 +3,17 @@ Bundle-ManifestVersion: 2
 Bundle-Name: de.cau.cs.se.geco.architecture.graph
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: de.cau.cs.se.geco.architecture.graph; singleton:=true
+Bundle-SymbolicName: de.cau.cs.se.geco.architecture.graph;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: javax.inject,
  com.google.guava,
  com.google.inject,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtext.common.types,
- de.cau.cs.kieler.core.krendering,
- de.cau.cs.kieler.core.krendering.extensions,
- de.cau.cs.kieler.kiml,
- de.cau.cs.kieler.klay.layered,
+ org.eclipse.elk.core,
+ org.eclipse.elk.graph,
+ org.eclipse.elk.alg.layered,
+ de.cau.cs.kieler.klighd.krendering.extensions,
  de.cau.cs.kieler.klighd,
  de.cau.cs.kieler.klighd.ui,
  de.cau.cs.kieler.klighd.piccolo,
