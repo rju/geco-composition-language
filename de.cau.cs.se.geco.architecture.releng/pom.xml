@@ -15,8 +15,9 @@
     <properties>
         <tycho.version>0.23.0</tycho.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
-        <eclipse-repo.url>http://download.eclipse.org/releases/mars</eclipse-repo.url>
-        <kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/nightly</kieler-repo.url>
+        <eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
+        <kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/</kieler-repo.url>
+        <elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.1.0/</elk-repo.url>        
         <atl-repo.url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/</atl-repo.url>
         <checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
     </properties>
@@ -35,6 +36,11 @@
         <repository>
             <id>eclipse</id>
             <url>${eclipse-repo.url}</url>
+            <layout>p2</layout>
+        </repository>
+		<repository>
+            <id>elk</id>
+            <url>${elk-repo.url}</url>
             <layout>p2</layout>
         </repository>
 		<repository>

@@ -1,7 +1,18 @@
 package de.cau.cs.se.geco.architecture.framework;
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.m2m.atl.emftvm.EmftvmFactory;
+import org.eclipse.m2m.atl.emftvm.ExecEnv;
+import org.eclipse.m2m.atl.emftvm.Model;
+import org.eclipse.m2m.atl.emftvm.util.DefaultModuleResolver;
+import org.eclipse.m2m.atl.emftvm.util.ModuleResolver;
+import org.eclipse.m2m.atl.emftvm.util.TimingData;
 
 /**
  * The AbstractATLTransformation must be subclassed and the
@@ -31,33 +42,26 @@ public abstract class AbstractATLTransformation<S extends EObject, T extends EOb
   
   @Override
   public T generate(final S input) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nExecEnv cannot be resolved to a type."
-      + "\nModel cannot be resolved to a type."
-      + "\nModel cannot be resolved to a type."
-      + "\nModuleResolver cannot be resolved to a type."
-      + "\nTimingData cannot be resolved to a type."
-      + "\nThe method or field EmftvmFactory is undefined"
-      + "\nThe method or field EmftvmFactory is undefined"
-      + "\nThe method or field EmftvmFactory is undefined"
-      + "\nDefaultModuleResolver cannot be resolved."
-      + "\nTimingData cannot be resolved."
-      + "\neINSTANCE cannot be resolved"
-      + "\ncreateExecEnv cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\ncreateModel cannot be resolved"
-      + "\nsetResource cannot be resolved"
-      + "\nregisterInputModel cannot be resolved"
-      + "\neINSTANCE cannot be resolved"
-      + "\ncreateModel cannot be resolved"
-      + "\nsetResource cannot be resolved"
-      + "\nregisterOutputModel cannot be resolved"
-      + "\nloadModule cannot be resolved"
-      + "\nfinishLoading cannot be resolved"
-      + "\nrun cannot be resolved"
-      + "\nfinish cannot be resolved"
-      + "\ngetResource cannot be resolved"
-      + "\ncontents cannot be resolved"
-      + "\nget cannot be resolved");
+    final ExecEnv env = EmftvmFactory.eINSTANCE.createExecEnv();
+    final ResourceSet resourceSet = new ResourceSetImpl();
+    URI _createURI = URI.createURI("internal://memory");
+    final Resource outputResource = resourceSet.createResource(_createURI);
+    final Model inModel = EmftvmFactory.eINSTANCE.createModel();
+    Resource _eResource = ((EObject) input).eResource();
+    inModel.setResource(_eResource);
+    env.registerInputModel("IN", inModel);
+    final Model outModel = EmftvmFactory.eINSTANCE.createModel();
+    outModel.setResource(outputResource);
+    env.registerOutputModel("OUT", outModel);
+    final ModuleResolver moduleResolver = new DefaultModuleResolver(this.transformationDir, resourceSet);
+    final TimingData timingData = new TimingData();
+    env.loadModule(moduleResolver, this.transformationModule);
+    timingData.finishLoading();
+    env.run(timingData);
+    timingData.finish();
+    Resource _resource = outModel.getResource();
+    EList<EObject> _contents = _resource.getContents();
+    EObject _get = _contents.get(0);
+    return ((T) _get);
   }
 }
