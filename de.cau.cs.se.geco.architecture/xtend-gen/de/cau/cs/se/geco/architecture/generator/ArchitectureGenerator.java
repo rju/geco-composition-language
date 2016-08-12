@@ -39,7 +39,7 @@ public class ArchitectureGenerator implements IGenerator {
     final GenerateBoxingModel generateBoxingModel = new GenerateBoxingModel();
     final GenerateGecoCode generateGecoCode = new GenerateGecoCode(className);
     final BoxingModel boxingModel = generateBoxingModel.generate(model);
-    final CharSequence textOutput = generateGecoCode.generate(boxingModel);
+    final String textOutput = "";
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(path, "");
     _builder.append(File.separator, "");
