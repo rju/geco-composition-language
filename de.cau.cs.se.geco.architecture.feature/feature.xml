@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature
-      id="de.cau.cs.se.geco.architecture.sdk"
-      label="Architecture SDK Feature "
-      version="1.0.0.qualifier">
-
-   <plugin
-         id="de.cau.cs.se.geco.architecture"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="de.cau.cs.se.geco.architecture.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="de.cau.cs.se.geco.architecture.framework"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
+<feature id="de.cau.cs.se.geco.architecture.feature"
+	label="Architecture Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="de.cau.cs.se.geco.architecture"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="de.cau.cs.se.geco.architecture.ide"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="de.cau.cs.se.geco.architecture.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="de.cau.cs.se.geco.architecture.framework"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
 </feature>
