@@ -51,8 +51,6 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
           final JvmParameterizedTypeReference iface = ((JvmParameterizedTypeReference) _get_1);
           EList<JvmTypeReference> _arguments = iface.getArguments();
           final JvmTypeReference baseTypeReference = _arguments.get(0);
-          EList<JvmTypeReference> _arguments_1 = iface.getArguments();
-          final JvmTypeReference aspectTypeReference = _arguments_1.get(1);
           SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
           final JvmTypeReference sourceModelTypeReference = ArchitectureTyping.resolveType(_resolveWeaverSourceModel);
           boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(sourceModelTypeReference, baseTypeReference);

@@ -3,7 +3,6 @@ package de.cau.cs.se.geco.architecture.graph
 import com.google.common.collect.ImmutableList
 import de.cau.cs.kieler.klighd.KlighdConstants
 import de.cau.cs.kieler.klighd.SynthesisOption
-import de.cau.cs.kieler.klighd.krendering.KRenderingFactory
 import de.cau.cs.kieler.klighd.krendering.LineJoin
 import de.cau.cs.kieler.klighd.krendering.LineStyle
 import de.cau.cs.kieler.klighd.krendering.extensions.KColorExtensions
@@ -32,6 +31,7 @@ import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
 import java.util.HashMap
 import java.util.Map
 import javax.inject.Inject
+import org.eclipse.elk.alg.layered.properties.LayeredOptions
 import org.eclipse.elk.core.options.Direction
 import org.eclipse.elk.core.options.EdgeRouting
 import org.eclipse.elk.core.options.NodeLabelPlacement
@@ -44,7 +44,6 @@ import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
-import org.eclipse.elk.alg.layered.properties.LayeredOptions
 
 class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     
@@ -56,7 +55,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     @Inject extension KContainerRenderingExtensions
     @Inject extension KPolylineExtensions
     @Inject extension KColorExtensions
-    extension KRenderingFactory = KRenderingFactory.eINSTANCE
+    // extension KRenderingFactory = KRenderingFactory.eINSTANCE
     
     /** changes in visualization */
     private static val TRACE_MODEL_VISIBLE_NAME = "Trace models visible"

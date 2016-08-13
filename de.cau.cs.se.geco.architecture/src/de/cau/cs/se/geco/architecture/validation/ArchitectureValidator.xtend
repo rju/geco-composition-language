@@ -15,7 +15,7 @@ import de.cau.cs.se.geco.architecture.framework.IWeaver
 import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
 
 /**
- * Custom validation rules. 
+ * This class contains custom validation rules. 
  *
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
@@ -27,7 +27,7 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 //	def checkGreetingStartsWithCapital(Greeting greeting) {
 //		if (!Character.isUpperCase(greeting.name.charAt(0))) {
 //			warning('Name should start with a capital', 
-//					MyDslPackage.Literals.GREETING__NAME,
+//					ArchitecturePackage.Literals.GREETING__NAME,
 //					INVALID_NAME)
 //		}
 //	}
@@ -45,7 +45,7 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 					if (match.get(0) instanceof JvmParameterizedTypeReference) {
 						val iface = match.get(0) as JvmParameterizedTypeReference
 						val baseTypeReference = iface.arguments.get(0)
-						val aspectTypeReference = iface.arguments.get(1)
+						// TODO val aspectTypeReference = iface.arguments.get(1)
 						val sourceModelTypeReference = weaver.resolveWeaverSourceModel.resolveType
 						if (!sourceModelTypeReference.isSubTypeOf(baseTypeReference)) {
 							if (!sourceModelTypeReference.determineElementType.resolveType.isSubTypeOf(baseTypeReference)) {
