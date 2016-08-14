@@ -9,11 +9,7 @@ Bundle-SymbolicName: de.cau.cs.se.geco.architecture;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.xtext.generator;resolution:=optional,
- org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
- org.eclipse.emf.codegen.ecore;resolution:=optional,
- org.eclipse.emf.mwe.utils;resolution:=optional,
- org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  de.cau.cs.se.geco.architecture;visibility:=reexport,
@@ -23,7 +19,8 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common,
- de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0"
+ de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0",
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.cau.cs.se.geco.architecture,
  de.cau.cs.se.geco.architecture.parser.antlr,

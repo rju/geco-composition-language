@@ -3,3 +3,6 @@
 **.*._trace
 **.xtendbin
 **/target/**
+**/.settings/**
+**/.project
+

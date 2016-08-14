@@ -76,15 +76,15 @@ public class InternalArchitectureLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g"; }
+    public String getGrammarFileName() { return "InternalArchitecture.g"; }
 
     // $ANTLR start "T__14"
     public final void mT__14() throws RecognitionException {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:11:7: ( 'package' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:11:9: 'package'
+            // InternalArchitecture.g:11:7: ( 'package' )
+            // InternalArchitecture.g:11:9: 'package'
             {
             match("package"); 
 
@@ -104,8 +104,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:12:7: ( 'import' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:12:9: 'import'
+            // InternalArchitecture.g:12:7: ( 'import' )
+            // InternalArchitecture.g:12:9: 'import'
             {
             match("import"); 
 
@@ -125,8 +125,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:13:7: ( 'register' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:13:9: 'register'
+            // InternalArchitecture.g:13:7: ( 'register' )
+            // InternalArchitecture.g:13:9: 'register'
             {
             match("register"); 
 
@@ -146,8 +146,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:14:7: ( 'text' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:14:9: 'text'
+            // InternalArchitecture.g:14:7: ( 'text' )
+            // InternalArchitecture.g:14:9: 'text'
             {
             match("text"); 
 
@@ -167,8 +167,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:15:7: ( 'model' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:15:9: 'model'
+            // InternalArchitecture.g:15:7: ( 'model' )
+            // InternalArchitecture.g:15:9: 'model'
             {
             match("model"); 
 
@@ -188,8 +188,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:16:7: ( ',' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:16:9: ','
+            // InternalArchitecture.g:16:7: ( ',' )
+            // InternalArchitecture.g:16:9: ','
             {
             match(','); 
 
@@ -208,8 +208,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:17:7: ( 'weave' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:17:9: 'weave'
+            // InternalArchitecture.g:17:7: ( 'weave' )
+            // InternalArchitecture.g:17:9: 'weave'
             {
             match("weave"); 
 
@@ -229,8 +229,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:18:7: ( 'link' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:18:9: 'link'
+            // InternalArchitecture.g:18:7: ( 'link' )
+            // InternalArchitecture.g:18:9: 'link'
             {
             match("link"); 
 
@@ -250,8 +250,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:19:7: ( '=>' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:19:9: '=>'
+            // InternalArchitecture.g:19:7: ( '=>' )
+            // InternalArchitecture.g:19:9: '=>'
             {
             match("=>"); 
 
@@ -271,8 +271,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:20:7: ( 'pointcut' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:20:9: 'pointcut'
+            // InternalArchitecture.g:20:7: ( 'pointcut' )
+            // InternalArchitecture.g:20:9: 'pointcut'
             {
             match("pointcut"); 
 
@@ -292,8 +292,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:21:7: ( 'advice' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:21:9: 'advice'
+            // InternalArchitecture.g:21:7: ( 'advice' )
+            // InternalArchitecture.g:21:9: 'advice'
             {
             match("advice"); 
 
@@ -313,8 +313,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:22:7: ( 'generate' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:22:9: 'generate'
+            // InternalArchitecture.g:22:7: ( 'generate' )
+            // InternalArchitecture.g:22:9: 'generate'
             {
             match("generate"); 
 
@@ -334,8 +334,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:23:7: ( '(' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:23:9: '('
+            // InternalArchitecture.g:23:7: ( '(' )
+            // InternalArchitecture.g:23:9: '('
             {
             match('('); 
 
@@ -354,8 +354,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:24:7: ( ')' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:24:9: ')'
+            // InternalArchitecture.g:24:7: ( ')' )
+            // InternalArchitecture.g:24:9: ')'
             {
             match(')'); 
 
@@ -374,8 +374,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:25:7: ( 'source' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:25:9: 'source'
+            // InternalArchitecture.g:25:7: ( 'source' )
+            // InternalArchitecture.g:25:9: 'source'
             {
             match("source"); 
 
@@ -395,8 +395,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:26:7: ( 'target' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:26:9: 'target'
+            // InternalArchitecture.g:26:7: ( 'target' )
+            // InternalArchitecture.g:26:9: 'target'
             {
             match("target"); 
 
@@ -416,8 +416,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:27:7: ( 'trace' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:27:9: 'trace'
+            // InternalArchitecture.g:27:7: ( 'trace' )
+            // InternalArchitecture.g:27:9: 'trace'
             {
             match("trace"); 
 
@@ -437,8 +437,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:28:7: ( 'out' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:28:9: 'out'
+            // InternalArchitecture.g:28:7: ( 'out' )
+            // InternalArchitecture.g:28:9: 'out'
             {
             match("out"); 
 
@@ -458,8 +458,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:29:7: ( 'in' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:29:9: 'in'
+            // InternalArchitecture.g:29:7: ( 'in' )
+            // InternalArchitecture.g:29:9: 'in'
             {
             match("in"); 
 
@@ -479,8 +479,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:30:7: ( '[' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:30:9: '['
+            // InternalArchitecture.g:30:7: ( '[' )
+            // InternalArchitecture.g:30:9: '['
             {
             match('['); 
 
@@ -499,8 +499,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:31:7: ( ']' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:31:9: ']'
+            // InternalArchitecture.g:31:7: ( ']' )
+            // InternalArchitecture.g:31:9: ']'
             {
             match(']'); 
 
@@ -519,8 +519,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:32:7: ( '/' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:32:9: '/'
+            // InternalArchitecture.g:32:7: ( '/' )
+            // InternalArchitecture.g:32:9: '/'
             {
             match('/'); 
 
@@ -539,8 +539,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:33:7: ( 'null' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:33:9: 'null'
+            // InternalArchitecture.g:33:7: ( 'null' )
+            // InternalArchitecture.g:33:9: 'null'
             {
             match("null"); 
 
@@ -560,8 +560,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:34:7: ( '[]' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:34:9: '[]'
+            // InternalArchitecture.g:34:7: ( '[]' )
+            // InternalArchitecture.g:34:9: '[]'
             {
             match("[]"); 
 
@@ -581,8 +581,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:35:7: ( '!' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:35:9: '!'
+            // InternalArchitecture.g:35:7: ( '!' )
+            // InternalArchitecture.g:35:9: '!'
             {
             match('!'); 
 
@@ -601,8 +601,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:36:7: ( 'is' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:36:9: 'is'
+            // InternalArchitecture.g:36:7: ( 'is' )
+            // InternalArchitecture.g:36:9: 'is'
             {
             match("is"); 
 
@@ -622,8 +622,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:37:7: ( 'use' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:37:9: 'use'
+            // InternalArchitecture.g:37:7: ( 'use' )
+            // InternalArchitecture.g:37:9: 'use'
             {
             match("use"); 
 
@@ -643,8 +643,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:38:7: ( '<' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:38:9: '<'
+            // InternalArchitecture.g:38:7: ( '<' )
+            // InternalArchitecture.g:38:9: '<'
             {
             match('<'); 
 
@@ -663,8 +663,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:39:7: ( '>' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:39:9: '>'
+            // InternalArchitecture.g:39:7: ( '>' )
+            // InternalArchitecture.g:39:9: '>'
             {
             match('>'); 
 
@@ -683,8 +683,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:40:7: ( ':' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:40:9: ':'
+            // InternalArchitecture.g:40:7: ( ':' )
+            // InternalArchitecture.g:40:9: ':'
             {
             match(':'); 
 
@@ -703,8 +703,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:41:7: ( '{' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:41:9: '{'
+            // InternalArchitecture.g:41:7: ( '{' )
+            // InternalArchitecture.g:41:9: '{'
             {
             match('{'); 
 
@@ -723,8 +723,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:42:7: ( '}' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:42:9: '}'
+            // InternalArchitecture.g:42:7: ( '}' )
+            // InternalArchitecture.g:42:9: '}'
             {
             match('}'); 
 
@@ -743,8 +743,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:43:7: ( '.' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:43:9: '.'
+            // InternalArchitecture.g:43:7: ( '.' )
+            // InternalArchitecture.g:43:9: '.'
             {
             match('.'); 
 
@@ -763,8 +763,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:44:7: ( 'io' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:44:9: 'io'
+            // InternalArchitecture.g:44:7: ( 'io' )
+            // InternalArchitecture.g:44:9: 'io'
             {
             match("io"); 
 
@@ -784,8 +784,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:45:7: ( '&' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:45:9: '&'
+            // InternalArchitecture.g:45:7: ( '&' )
+            // InternalArchitecture.g:45:9: '&'
             {
             match('&'); 
 
@@ -804,8 +804,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:46:7: ( '|' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:46:9: '|'
+            // InternalArchitecture.g:46:7: ( '|' )
+            // InternalArchitecture.g:46:9: '|'
             {
             match('|'); 
 
@@ -824,8 +824,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:47:7: ( '==' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:47:9: '=='
+            // InternalArchitecture.g:47:7: ( '==' )
+            // InternalArchitecture.g:47:9: '=='
             {
             match("=="); 
 
@@ -845,8 +845,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:48:7: ( '!=' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:48:9: '!='
+            // InternalArchitecture.g:48:7: ( '!=' )
+            // InternalArchitecture.g:48:9: '!='
             {
             match("!="); 
 
@@ -866,8 +866,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:49:7: ( '>=' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:49:9: '>='
+            // InternalArchitecture.g:49:7: ( '>=' )
+            // InternalArchitecture.g:49:9: '>='
             {
             match(">="); 
 
@@ -887,8 +887,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:50:7: ( '<=' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:50:9: '<='
+            // InternalArchitecture.g:50:7: ( '<=' )
+            // InternalArchitecture.g:50:9: '<='
             {
             match("<="); 
 
@@ -908,8 +908,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:51:7: ( '~' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:51:9: '~'
+            // InternalArchitecture.g:51:7: ( '~' )
+            // InternalArchitecture.g:51:9: '~'
             {
             match('~'); 
 
@@ -926,8 +926,8 @@ public class InternalArchitectureLexer extends Lexer {
     // $ANTLR start "RULE_DIGIT"
     public final void mRULE_DIGIT() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2331:21: ( '0' .. '9' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2331:23: '0' .. '9'
+            // InternalArchitecture.g:2372:21: ( '0' .. '9' )
+            // InternalArchitecture.g:2372:23: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -944,17 +944,17 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:12: ( ( ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )? | ( '-' )? ( RULE_DIGIT )+ 'f' ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:14: ( ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )? | ( '-' )? ( RULE_DIGIT )+ 'f' )
+            // InternalArchitecture.g:2374:12: ( ( ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )? | ( '-' )? ( RULE_DIGIT )+ 'f' ) )
+            // InternalArchitecture.g:2374:14: ( ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )? | ( '-' )? ( RULE_DIGIT )+ 'f' )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:14: ( ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )? | ( '-' )? ( RULE_DIGIT )+ 'f' )
+            // InternalArchitecture.g:2374:14: ( ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )? | ( '-' )? ( RULE_DIGIT )+ 'f' )
             int alt10=2;
             alt10 = dfa10.predict(input);
             switch (alt10) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:15: ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )?
+                    // InternalArchitecture.g:2374:15: ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )?
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:15: ( '-' )?
+                    // InternalArchitecture.g:2374:15: ( '-' )?
                     int alt1=2;
                     int LA1_0 = input.LA(1);
 
@@ -963,7 +963,7 @@ public class InternalArchitectureLexer extends Lexer {
                     }
                     switch (alt1) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:15: '-'
+                            // InternalArchitecture.g:2374:15: '-'
                             {
                             match('-'); 
 
@@ -972,7 +972,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:20: ( RULE_DIGIT )+
+                    // InternalArchitecture.g:2374:20: ( RULE_DIGIT )+
                     int cnt2=0;
                     loop2:
                     do {
@@ -986,7 +986,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:20: RULE_DIGIT
+                    	    // InternalArchitecture.g:2374:20: RULE_DIGIT
                     	    {
                     	    mRULE_DIGIT(); 
 
@@ -1003,7 +1003,7 @@ public class InternalArchitectureLexer extends Lexer {
                     } while (true);
 
                     match('.'); 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:36: ( RULE_DIGIT )*
+                    // InternalArchitecture.g:2374:36: ( RULE_DIGIT )*
                     loop3:
                     do {
                         int alt3=2;
@@ -1016,7 +1016,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                         switch (alt3) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:36: RULE_DIGIT
+                    	    // InternalArchitecture.g:2374:36: RULE_DIGIT
                     	    {
                     	    mRULE_DIGIT(); 
 
@@ -1028,7 +1028,7 @@ public class InternalArchitectureLexer extends Lexer {
                         }
                     } while (true);
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:48: ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )?
+                    // InternalArchitecture.g:2374:48: ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1037,7 +1037,7 @@ public class InternalArchitectureLexer extends Lexer {
                     }
                     switch (alt6) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:49: ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+
+                            // InternalArchitecture.g:2374:49: ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -1048,7 +1048,7 @@ public class InternalArchitectureLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:59: ( '+' | '-' )?
+                            // InternalArchitecture.g:2374:59: ( '+' | '-' )?
                             int alt4=2;
                             int LA4_0 = input.LA(1);
 
@@ -1057,7 +1057,7 @@ public class InternalArchitectureLexer extends Lexer {
                             }
                             switch (alt4) {
                                 case 1 :
-                                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:
+                                    // InternalArchitecture.g:
                                     {
                                     if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
                                         input.consume();
@@ -1074,7 +1074,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                             }
 
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:70: ( RULE_DIGIT )+
+                            // InternalArchitecture.g:2374:70: ( RULE_DIGIT )+
                             int cnt5=0;
                             loop5:
                             do {
@@ -1088,7 +1088,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                                 switch (alt5) {
                             	case 1 :
-                            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:70: RULE_DIGIT
+                            	    // InternalArchitecture.g:2374:70: RULE_DIGIT
                             	    {
                             	    mRULE_DIGIT(); 
 
@@ -1110,7 +1110,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:84: ( 'f' )?
+                    // InternalArchitecture.g:2374:84: ( 'f' )?
                     int alt7=2;
                     int LA7_0 = input.LA(1);
 
@@ -1119,7 +1119,7 @@ public class InternalArchitectureLexer extends Lexer {
                     }
                     switch (alt7) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:84: 'f'
+                            // InternalArchitecture.g:2374:84: 'f'
                             {
                             match('f'); 
 
@@ -1132,9 +1132,9 @@ public class InternalArchitectureLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:89: ( '-' )? ( RULE_DIGIT )+ 'f'
+                    // InternalArchitecture.g:2374:89: ( '-' )? ( RULE_DIGIT )+ 'f'
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:89: ( '-' )?
+                    // InternalArchitecture.g:2374:89: ( '-' )?
                     int alt8=2;
                     int LA8_0 = input.LA(1);
 
@@ -1143,7 +1143,7 @@ public class InternalArchitectureLexer extends Lexer {
                     }
                     switch (alt8) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:89: '-'
+                            // InternalArchitecture.g:2374:89: '-'
                             {
                             match('-'); 
 
@@ -1152,7 +1152,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:94: ( RULE_DIGIT )+
+                    // InternalArchitecture.g:2374:94: ( RULE_DIGIT )+
                     int cnt9=0;
                     loop9:
                     do {
@@ -1166,7 +1166,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2333:94: RULE_DIGIT
+                    	    // InternalArchitecture.g:2374:94: RULE_DIGIT
                     	    {
                     	    mRULE_DIGIT(); 
 
@@ -1205,10 +1205,10 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2335:14: ( ( 'true' | 'false' ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2335:16: ( 'true' | 'false' )
+            // InternalArchitecture.g:2376:14: ( ( 'true' | 'false' ) )
+            // InternalArchitecture.g:2376:16: ( 'true' | 'false' )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2335:16: ( 'true' | 'false' )
+            // InternalArchitecture.g:2376:16: ( 'true' | 'false' )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1226,7 +1226,7 @@ public class InternalArchitectureLexer extends Lexer {
             }
             switch (alt11) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2335:17: 'true'
+                    // InternalArchitecture.g:2376:17: 'true'
                     {
                     match("true"); 
 
@@ -1234,7 +1234,7 @@ public class InternalArchitectureLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2335:24: 'false'
+                    // InternalArchitecture.g:2376:24: 'false'
                     {
                     match("false"); 
 
@@ -1260,10 +1260,10 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2337:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2337:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalArchitecture.g:2378:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalArchitecture.g:2378:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2337:11: ( '^' )?
+            // InternalArchitecture.g:2378:11: ( '^' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1272,7 +1272,7 @@ public class InternalArchitectureLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2337:11: '^'
+                    // InternalArchitecture.g:2378:11: '^'
                     {
                     match('^'); 
 
@@ -1290,7 +1290,7 @@ public class InternalArchitectureLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2337:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalArchitecture.g:2378:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop13:
             do {
                 int alt13=2;
@@ -1303,7 +1303,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                 switch (alt13) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:
+            	    // InternalArchitecture.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -1339,10 +1339,10 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2339:10: ( ( '0' .. '9' )+ )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2339:12: ( '0' .. '9' )+
+            // InternalArchitecture.g:2380:10: ( ( '0' .. '9' )+ )
+            // InternalArchitecture.g:2380:12: ( '0' .. '9' )+
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2339:12: ( '0' .. '9' )+
+            // InternalArchitecture.g:2380:12: ( '0' .. '9' )+
             int cnt14=0;
             loop14:
             do {
@@ -1356,7 +1356,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2339:13: '0' .. '9'
+            	    // InternalArchitecture.g:2380:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1388,10 +1388,10 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalArchitecture.g:2382:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalArchitecture.g:2382:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalArchitecture.g:2382:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -1409,10 +1409,10 @@ public class InternalArchitectureLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalArchitecture.g:2382:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalArchitecture.g:2382:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop15:
                     do {
                         int alt15=3;
@@ -1428,7 +1428,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                         switch (alt15) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:21: '\\\\' .
+                    	    // InternalArchitecture.g:2382:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1436,7 +1436,7 @@ public class InternalArchitectureLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalArchitecture.g:2382:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1461,10 +1461,10 @@ public class InternalArchitectureLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalArchitecture.g:2382:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalArchitecture.g:2382:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop16:
                     do {
                         int alt16=3;
@@ -1480,7 +1480,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                         switch (alt16) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:54: '\\\\' .
+                    	    // InternalArchitecture.g:2382:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1488,7 +1488,7 @@ public class InternalArchitectureLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2341:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalArchitecture.g:2382:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1531,12 +1531,12 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2343:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2343:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalArchitecture.g:2384:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalArchitecture.g:2384:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2343:24: ( options {greedy=false; } : . )*
+            // InternalArchitecture.g:2384:24: ( options {greedy=false; } : . )*
             loop18:
             do {
                 int alt18=2;
@@ -1561,7 +1561,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                 switch (alt18) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2343:52: .
+            	    // InternalArchitecture.g:2384:52: .
             	    {
             	    matchAny(); 
 
@@ -1591,12 +1591,12 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2345:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2345:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalArchitecture.g:2386:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalArchitecture.g:2386:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2345:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalArchitecture.g:2386:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop19:
             do {
                 int alt19=2;
@@ -1609,7 +1609,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                 switch (alt19) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2345:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalArchitecture.g:2386:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1629,7 +1629,7 @@ public class InternalArchitectureLexer extends Lexer {
                 }
             } while (true);
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2345:40: ( ( '\\r' )? '\\n' )?
+            // InternalArchitecture.g:2386:40: ( ( '\\r' )? '\\n' )?
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -1638,9 +1638,9 @@ public class InternalArchitectureLexer extends Lexer {
             }
             switch (alt21) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2345:41: ( '\\r' )? '\\n'
+                    // InternalArchitecture.g:2386:41: ( '\\r' )? '\\n'
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2345:41: ( '\\r' )?
+                    // InternalArchitecture.g:2386:41: ( '\\r' )?
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
@@ -1649,7 +1649,7 @@ public class InternalArchitectureLexer extends Lexer {
                     }
                     switch (alt20) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2345:41: '\\r'
+                            // InternalArchitecture.g:2386:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1681,10 +1681,10 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2347:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2347:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalArchitecture.g:2388:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalArchitecture.g:2388:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2347:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalArchitecture.g:2388:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt22=0;
             loop22:
             do {
@@ -1698,7 +1698,7 @@ public class InternalArchitectureLexer extends Lexer {
 
                 switch (alt22) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:
+            	    // InternalArchitecture.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1738,8 +1738,8 @@ public class InternalArchitectureLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2349:16: ( . )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2349:18: .
+            // InternalArchitecture.g:2390:16: ( . )
+            // InternalArchitecture.g:2390:18: .
             {
             matchAny(); 
 
@@ -1754,355 +1754,355 @@ public class InternalArchitectureLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:8: ( T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | RULE_FLOAT | RULE_BOOLEAN | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        // InternalArchitecture.g:1:8: ( T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | RULE_FLOAT | RULE_BOOLEAN | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
         int alt23=50;
         alt23 = dfa23.predict(input);
         switch (alt23) {
             case 1 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:10: T__14
+                // InternalArchitecture.g:1:10: T__14
                 {
                 mT__14(); 
 
                 }
                 break;
             case 2 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:16: T__15
+                // InternalArchitecture.g:1:16: T__15
                 {
                 mT__15(); 
 
                 }
                 break;
             case 3 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:22: T__16
+                // InternalArchitecture.g:1:22: T__16
                 {
                 mT__16(); 
 
                 }
                 break;
             case 4 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:28: T__17
+                // InternalArchitecture.g:1:28: T__17
                 {
                 mT__17(); 
 
                 }
                 break;
             case 5 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:34: T__18
+                // InternalArchitecture.g:1:34: T__18
                 {
                 mT__18(); 
 
                 }
                 break;
             case 6 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:40: T__19
+                // InternalArchitecture.g:1:40: T__19
                 {
                 mT__19(); 
 
                 }
                 break;
             case 7 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:46: T__20
+                // InternalArchitecture.g:1:46: T__20
                 {
                 mT__20(); 
 
                 }
                 break;
             case 8 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:52: T__21
+                // InternalArchitecture.g:1:52: T__21
                 {
                 mT__21(); 
 
                 }
                 break;
             case 9 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:58: T__22
+                // InternalArchitecture.g:1:58: T__22
                 {
                 mT__22(); 
 
                 }
                 break;
             case 10 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:64: T__23
+                // InternalArchitecture.g:1:64: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
             case 11 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:70: T__24
+                // InternalArchitecture.g:1:70: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
             case 12 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:76: T__25
+                // InternalArchitecture.g:1:76: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
             case 13 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:82: T__26
+                // InternalArchitecture.g:1:82: T__26
                 {
                 mT__26(); 
 
                 }
                 break;
             case 14 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:88: T__27
+                // InternalArchitecture.g:1:88: T__27
                 {
                 mT__27(); 
 
                 }
                 break;
             case 15 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:94: T__28
+                // InternalArchitecture.g:1:94: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
             case 16 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:100: T__29
+                // InternalArchitecture.g:1:100: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
             case 17 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:106: T__30
+                // InternalArchitecture.g:1:106: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
             case 18 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:112: T__31
+                // InternalArchitecture.g:1:112: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
             case 19 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:118: T__32
+                // InternalArchitecture.g:1:118: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
             case 20 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:124: T__33
+                // InternalArchitecture.g:1:124: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
             case 21 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:130: T__34
+                // InternalArchitecture.g:1:130: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
             case 22 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:136: T__35
+                // InternalArchitecture.g:1:136: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
             case 23 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:142: T__36
+                // InternalArchitecture.g:1:142: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
             case 24 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:148: T__37
+                // InternalArchitecture.g:1:148: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
             case 25 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:154: T__38
+                // InternalArchitecture.g:1:154: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
             case 26 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:160: T__39
+                // InternalArchitecture.g:1:160: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
             case 27 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:166: T__40
+                // InternalArchitecture.g:1:166: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
             case 28 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:172: T__41
+                // InternalArchitecture.g:1:172: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
             case 29 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:178: T__42
+                // InternalArchitecture.g:1:178: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
             case 30 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:184: T__43
+                // InternalArchitecture.g:1:184: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
             case 31 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:190: T__44
+                // InternalArchitecture.g:1:190: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
             case 32 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:196: T__45
+                // InternalArchitecture.g:1:196: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
             case 33 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:202: T__46
+                // InternalArchitecture.g:1:202: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
             case 34 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:208: T__47
+                // InternalArchitecture.g:1:208: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
             case 35 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:214: T__48
+                // InternalArchitecture.g:1:214: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
             case 36 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:220: T__49
+                // InternalArchitecture.g:1:220: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
             case 37 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:226: T__50
+                // InternalArchitecture.g:1:226: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
             case 38 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:232: T__51
+                // InternalArchitecture.g:1:232: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
             case 39 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:238: T__52
+                // InternalArchitecture.g:1:238: T__52
                 {
                 mT__52(); 
 
                 }
                 break;
             case 40 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:244: T__53
+                // InternalArchitecture.g:1:244: T__53
                 {
                 mT__53(); 
 
                 }
                 break;
             case 41 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:250: T__54
+                // InternalArchitecture.g:1:250: T__54
                 {
                 mT__54(); 
 
                 }
                 break;
             case 42 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:256: RULE_FLOAT
+                // InternalArchitecture.g:1:256: RULE_FLOAT
                 {
                 mRULE_FLOAT(); 
 
                 }
                 break;
             case 43 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:267: RULE_BOOLEAN
+                // InternalArchitecture.g:1:267: RULE_BOOLEAN
                 {
                 mRULE_BOOLEAN(); 
 
                 }
                 break;
             case 44 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:280: RULE_ID
+                // InternalArchitecture.g:1:280: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
             case 45 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:288: RULE_INT
+                // InternalArchitecture.g:1:288: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
             case 46 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:297: RULE_STRING
+                // InternalArchitecture.g:1:297: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
             case 47 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:309: RULE_ML_COMMENT
+                // InternalArchitecture.g:1:309: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
             case 48 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:325: RULE_SL_COMMENT
+                // InternalArchitecture.g:1:325: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
             case 49 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:341: RULE_WS
+                // InternalArchitecture.g:1:341: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
             case 50 :
-                // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1:349: RULE_ANY_OTHER
+                // InternalArchitecture.g:1:349: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -2166,7 +2166,7 @@ public class InternalArchitectureLexer extends Lexer {
             this.transition = DFA10_transition;
         }
         public String getDescription() {
-            return "2333:14: ( ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )? | ( '-' )? ( RULE_DIGIT )+ 'f' )";
+            return "2374:14: ( ( '-' )? ( RULE_DIGIT )+ '.' ( RULE_DIGIT )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_DIGIT )+ )? ( 'f' )? | ( '-' )? ( RULE_DIGIT )+ 'f' )";
         }
     }
     static final String DFA23_eotS =

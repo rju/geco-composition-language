@@ -17,12 +17,10 @@ Require-Bundle: de.cau.cs.se.geco.architecture,
  org.eclipse.xtext.builder,
  org.eclipse.xtend.lib;resolution:=optional,
  org.eclipse.xtext.xbase.lib,
- org.antlr.runtime,
  org.eclipse.xtext.common.types.ui
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.cau.cs.se.geco.architecture.ui.internal,
  de.cau.cs.se.geco.architecture.ui.quickfix,
- de.cau.cs.se.geco.architecture.ui.contentassist,
- de.cau.cs.se.geco.architecture.ui.contentassist.antlr
+ de.cau.cs.se.geco.architecture.ui.contentassist
 Bundle-Activator: de.cau.cs.se.geco.architecture.ui.internal.ArchitectureActivator

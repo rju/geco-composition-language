@@ -1,4 +1,4 @@
-package de.cau.cs.se.geco.architecture.parser.antlr.internal; 
+package de.cau.cs.se.geco.architecture.parser.antlr.internal;
 
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parser.*;
@@ -92,23 +92,23 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         
 
     public String[] getTokenNames() { return InternalArchitectureParser.tokenNames; }
-    public String getGrammarFileName() { return "../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g"; }
+    public String getGrammarFileName() { return "InternalArchitecture.g"; }
 
 
 
      	private ArchitectureGrammarAccess grammarAccess;
-     	
+
         public InternalArchitectureParser(TokenStream input, ArchitectureGrammarAccess grammarAccess) {
             this(input);
             this.grammarAccess = grammarAccess;
             registerRules(grammarAccess.getGrammar());
         }
-        
+
         @Override
         protected String getFirstRuleName() {
-        	return "GecoModel";	
+        	return "GecoModel";
        	}
-       	
+
        	@Override
        	protected ArchitectureGrammarAccess getGrammarAccess() {
        		return grammarAccess;
@@ -116,8 +116,9 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
 
+
     // $ANTLR start "entryRuleGecoModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:68:1: entryRuleGecoModel returns [EObject current=null] : iv_ruleGecoModel= ruleGecoModel EOF ;
+    // InternalArchitecture.g:65:1: entryRuleGecoModel returns [EObject current=null] : iv_ruleGecoModel= ruleGecoModel EOF ;
     public final EObject entryRuleGecoModel() throws RecognitionException {
         EObject current = null;
 
@@ -125,13 +126,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:69:2: (iv_ruleGecoModel= ruleGecoModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:70:2: iv_ruleGecoModel= ruleGecoModel EOF
+            // InternalArchitecture.g:65:50: (iv_ruleGecoModel= ruleGecoModel EOF )
+            // InternalArchitecture.g:66:2: iv_ruleGecoModel= ruleGecoModel EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getGecoModelRule()); 
             }
-            pushFollow(FOLLOW_ruleGecoModel_in_entryRuleGecoModel75);
+            pushFollow(FOLLOW_1);
             iv_ruleGecoModel=ruleGecoModel();
 
             state._fsp--;
@@ -139,16 +140,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleGecoModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleGecoModel85); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -157,7 +158,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGecoModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:77:1: ruleGecoModel returns [EObject current=null] : (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )* ) ;
+    // InternalArchitecture.g:72:1: ruleGecoModel returns [EObject current=null] : (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )* ) ;
     public final EObject ruleGecoModel() throws RecognitionException {
         EObject current = null;
 
@@ -173,49 +174,50 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_fragments_5_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:80:28: ( (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )* ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:81:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )* )
+            // InternalArchitecture.g:78:2: ( (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )* ) )
+            // InternalArchitecture.g:79:2: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )* )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:81:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )* )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:81:3: otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )*
+            // InternalArchitecture.g:79:2: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )* )
+            // InternalArchitecture.g:80:3: otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_imports_2_0= ruleImport ) )* ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )* ( (lv_models_4_0= ruleModelSequence ) )* ( (lv_fragments_5_0= ruleFragment ) )*
             {
-            otherlv_0=(Token)match(input,14,FOLLOW_14_in_ruleGecoModel122); if (state.failed) return current;
+            otherlv_0=(Token)match(input,14,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getGecoModelAccess().getPackageKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getGecoModelAccess().getPackageKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:85:1: ( (lv_name_1_0= ruleQualifiedName ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:86:1: (lv_name_1_0= ruleQualifiedName )
+            // InternalArchitecture.g:84:3: ( (lv_name_1_0= ruleQualifiedName ) )
+            // InternalArchitecture.g:85:4: (lv_name_1_0= ruleQualifiedName )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:86:1: (lv_name_1_0= ruleQualifiedName )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:87:3: lv_name_1_0= ruleQualifiedName
+            // InternalArchitecture.g:85:4: (lv_name_1_0= ruleQualifiedName )
+            // InternalArchitecture.g:86:5: lv_name_1_0= ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getGecoModelAccess().getNameQualifiedNameParserRuleCall_1_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getGecoModelAccess().getNameQualifiedNameParserRuleCall_1_0());
+              				
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleGecoModel143);
+            pushFollow(FOLLOW_4);
             lv_name_1_0=ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getGecoModelRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"name",
-                      		lv_name_1_0, 
-                      		"QualifiedName");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getGecoModelRule());
+              					}
+              					set(
+              						current,
+              						"name",
+              						lv_name_1_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.QualifiedName");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -223,7 +225,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:103:2: ( (lv_imports_2_0= ruleImport ) )*
+            // InternalArchitecture.g:103:3: ( (lv_imports_2_0= ruleImport ) )*
             loop1:
             do {
                 int alt1=2;
@@ -236,33 +238,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:104:1: (lv_imports_2_0= ruleImport )
+            	    // InternalArchitecture.g:104:4: (lv_imports_2_0= ruleImport )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:104:1: (lv_imports_2_0= ruleImport )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:105:3: lv_imports_2_0= ruleImport
+            	    // InternalArchitecture.g:104:4: (lv_imports_2_0= ruleImport )
+            	    // InternalArchitecture.g:105:5: lv_imports_2_0= ruleImport
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getGecoModelAccess().getImportsImportParserRuleCall_2_0()); 
-            	      	    
+
+            	      					newCompositeNode(grammarAccess.getGecoModelAccess().getImportsImportParserRuleCall_2_0());
+            	      				
             	    }
-            	    pushFollow(FOLLOW_ruleImport_in_ruleGecoModel164);
+            	    pushFollow(FOLLOW_4);
             	    lv_imports_2_0=ruleImport();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getGecoModelRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"imports",
-            	              		lv_imports_2_0, 
-            	              		"Import");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      					if (current==null) {
+            	      						current = createModelElementForParent(grammarAccess.getGecoModelRule());
+            	      					}
+            	      					add(
+            	      						current,
+            	      						"imports",
+            	      						lv_imports_2_0,
+            	      						"de.cau.cs.se.geco.architecture.Architecture.Import");
+            	      					afterParserOrEnumRuleCall();
+            	      				
             	    }
 
             	    }
@@ -276,7 +278,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:121:3: ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )*
+            // InternalArchitecture.g:122:3: ( (lv_registeredRootClass_3_0= ruleRegisteredRootClass ) )*
             loop2:
             do {
                 int alt2=2;
@@ -289,33 +291,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:122:1: (lv_registeredRootClass_3_0= ruleRegisteredRootClass )
+            	    // InternalArchitecture.g:123:4: (lv_registeredRootClass_3_0= ruleRegisteredRootClass )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:122:1: (lv_registeredRootClass_3_0= ruleRegisteredRootClass )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:123:3: lv_registeredRootClass_3_0= ruleRegisteredRootClass
+            	    // InternalArchitecture.g:123:4: (lv_registeredRootClass_3_0= ruleRegisteredRootClass )
+            	    // InternalArchitecture.g:124:5: lv_registeredRootClass_3_0= ruleRegisteredRootClass
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getGecoModelAccess().getRegisteredRootClassRegisteredRootClassParserRuleCall_3_0()); 
-            	      	    
+
+            	      					newCompositeNode(grammarAccess.getGecoModelAccess().getRegisteredRootClassRegisteredRootClassParserRuleCall_3_0());
+            	      				
             	    }
-            	    pushFollow(FOLLOW_ruleRegisteredRootClass_in_ruleGecoModel186);
+            	    pushFollow(FOLLOW_5);
             	    lv_registeredRootClass_3_0=ruleRegisteredRootClass();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getGecoModelRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"registeredRootClass",
-            	              		lv_registeredRootClass_3_0, 
-            	              		"RegisteredRootClass");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      					if (current==null) {
+            	      						current = createModelElementForParent(grammarAccess.getGecoModelRule());
+            	      					}
+            	      					add(
+            	      						current,
+            	      						"registeredRootClass",
+            	      						lv_registeredRootClass_3_0,
+            	      						"de.cau.cs.se.geco.architecture.Architecture.RegisteredRootClass");
+            	      					afterParserOrEnumRuleCall();
+            	      				
             	    }
 
             	    }
@@ -329,7 +331,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:139:3: ( (lv_models_4_0= ruleModelSequence ) )*
+            // InternalArchitecture.g:141:3: ( (lv_models_4_0= ruleModelSequence ) )*
             loop3:
             do {
                 int alt3=2;
@@ -342,33 +344,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:140:1: (lv_models_4_0= ruleModelSequence )
+            	    // InternalArchitecture.g:142:4: (lv_models_4_0= ruleModelSequence )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:140:1: (lv_models_4_0= ruleModelSequence )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:141:3: lv_models_4_0= ruleModelSequence
+            	    // InternalArchitecture.g:142:4: (lv_models_4_0= ruleModelSequence )
+            	    // InternalArchitecture.g:143:5: lv_models_4_0= ruleModelSequence
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getGecoModelAccess().getModelsModelSequenceParserRuleCall_4_0()); 
-            	      	    
+
+            	      					newCompositeNode(grammarAccess.getGecoModelAccess().getModelsModelSequenceParserRuleCall_4_0());
+            	      				
             	    }
-            	    pushFollow(FOLLOW_ruleModelSequence_in_ruleGecoModel208);
+            	    pushFollow(FOLLOW_6);
             	    lv_models_4_0=ruleModelSequence();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getGecoModelRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"models",
-            	              		lv_models_4_0, 
-            	              		"ModelSequence");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      					if (current==null) {
+            	      						current = createModelElementForParent(grammarAccess.getGecoModelRule());
+            	      					}
+            	      					add(
+            	      						current,
+            	      						"models",
+            	      						lv_models_4_0,
+            	      						"de.cau.cs.se.geco.architecture.Architecture.ModelSequence");
+            	      					afterParserOrEnumRuleCall();
+            	      				
             	    }
 
             	    }
@@ -382,7 +384,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:157:3: ( (lv_fragments_5_0= ruleFragment ) )*
+            // InternalArchitecture.g:160:3: ( (lv_fragments_5_0= ruleFragment ) )*
             loop4:
             do {
                 int alt4=2;
@@ -395,33 +397,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:158:1: (lv_fragments_5_0= ruleFragment )
+            	    // InternalArchitecture.g:161:4: (lv_fragments_5_0= ruleFragment )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:158:1: (lv_fragments_5_0= ruleFragment )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:159:3: lv_fragments_5_0= ruleFragment
+            	    // InternalArchitecture.g:161:4: (lv_fragments_5_0= ruleFragment )
+            	    // InternalArchitecture.g:162:5: lv_fragments_5_0= ruleFragment
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getGecoModelAccess().getFragmentsFragmentParserRuleCall_5_0()); 
-            	      	    
+
+            	      					newCompositeNode(grammarAccess.getGecoModelAccess().getFragmentsFragmentParserRuleCall_5_0());
+            	      				
             	    }
-            	    pushFollow(FOLLOW_ruleFragment_in_ruleGecoModel230);
+            	    pushFollow(FOLLOW_7);
             	    lv_fragments_5_0=ruleFragment();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getGecoModelRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"fragments",
-            	              		lv_fragments_5_0, 
-            	              		"Fragment");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      					if (current==null) {
+            	      						current = createModelElementForParent(grammarAccess.getGecoModelRule());
+            	      					}
+            	      					add(
+            	      						current,
+            	      						"fragments",
+            	      						lv_fragments_5_0,
+            	      						"de.cau.cs.se.geco.architecture.Architecture.Fragment");
+            	      					afterParserOrEnumRuleCall();
+            	      				
             	    }
 
             	    }
@@ -442,14 +444,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -458,7 +462,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleImport"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:183:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
+    // InternalArchitecture.g:183:1: entryRuleImport returns [EObject current=null] : iv_ruleImport= ruleImport EOF ;
     public final EObject entryRuleImport() throws RecognitionException {
         EObject current = null;
 
@@ -466,13 +470,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:184:2: (iv_ruleImport= ruleImport EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:185:2: iv_ruleImport= ruleImport EOF
+            // InternalArchitecture.g:183:47: (iv_ruleImport= ruleImport EOF )
+            // InternalArchitecture.g:184:2: iv_ruleImport= ruleImport EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getImportRule()); 
             }
-            pushFollow(FOLLOW_ruleImport_in_entryRuleImport267);
+            pushFollow(FOLLOW_1);
             iv_ruleImport=ruleImport();
 
             state._fsp--;
@@ -480,16 +484,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleImport; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleImport277); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -498,54 +502,55 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleImport"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:192:1: ruleImport returns [EObject current=null] : (otherlv_0= 'import' ( ( ruleQualifiedName ) ) ) ;
+    // InternalArchitecture.g:190:1: ruleImport returns [EObject current=null] : (otherlv_0= 'import' ( ( ruleQualifiedName ) ) ) ;
     public final EObject ruleImport() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:195:28: ( (otherlv_0= 'import' ( ( ruleQualifiedName ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:196:1: (otherlv_0= 'import' ( ( ruleQualifiedName ) ) )
+            // InternalArchitecture.g:196:2: ( (otherlv_0= 'import' ( ( ruleQualifiedName ) ) ) )
+            // InternalArchitecture.g:197:2: (otherlv_0= 'import' ( ( ruleQualifiedName ) ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:196:1: (otherlv_0= 'import' ( ( ruleQualifiedName ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:196:3: otherlv_0= 'import' ( ( ruleQualifiedName ) )
+            // InternalArchitecture.g:197:2: (otherlv_0= 'import' ( ( ruleQualifiedName ) ) )
+            // InternalArchitecture.g:198:3: otherlv_0= 'import' ( ( ruleQualifiedName ) )
             {
-            otherlv_0=(Token)match(input,15,FOLLOW_15_in_ruleImport314); if (state.failed) return current;
+            otherlv_0=(Token)match(input,15,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:200:1: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:201:1: ( ruleQualifiedName )
+            // InternalArchitecture.g:202:3: ( ( ruleQualifiedName ) )
+            // InternalArchitecture.g:203:4: ( ruleQualifiedName )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:201:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:202:3: ruleQualifiedName
+            // InternalArchitecture.g:203:4: ( ruleQualifiedName )
+            // InternalArchitecture.g:204:5: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getImportRule());
-              	        }
-                      
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getImportRule());
+              					}
+              				
             }
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getImportAccess().getImportedNamespaceJvmTypeCrossReference_1_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getImportAccess().getImportedNamespaceJvmTypeCrossReference_1_0());
+              				
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleImport337);
+            pushFollow(FOLLOW_2);
             ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               
-              	        afterParserOrEnumRuleCall();
-              	    
+
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -560,14 +565,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -576,7 +583,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRegisteredRootClass"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:223:1: entryRuleRegisteredRootClass returns [EObject current=null] : iv_ruleRegisteredRootClass= ruleRegisteredRootClass EOF ;
+    // InternalArchitecture.g:222:1: entryRuleRegisteredRootClass returns [EObject current=null] : iv_ruleRegisteredRootClass= ruleRegisteredRootClass EOF ;
     public final EObject entryRuleRegisteredRootClass() throws RecognitionException {
         EObject current = null;
 
@@ -584,13 +591,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:224:2: (iv_ruleRegisteredRootClass= ruleRegisteredRootClass EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:225:2: iv_ruleRegisteredRootClass= ruleRegisteredRootClass EOF
+            // InternalArchitecture.g:222:60: (iv_ruleRegisteredRootClass= ruleRegisteredRootClass EOF )
+            // InternalArchitecture.g:223:2: iv_ruleRegisteredRootClass= ruleRegisteredRootClass EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getRegisteredRootClassRule()); 
             }
-            pushFollow(FOLLOW_ruleRegisteredRootClass_in_entryRuleRegisteredRootClass373);
+            pushFollow(FOLLOW_1);
             iv_ruleRegisteredRootClass=ruleRegisteredRootClass();
 
             state._fsp--;
@@ -598,16 +605,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleRegisteredRootClass; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRegisteredRootClass383); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -616,7 +623,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRegisteredRootClass"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:232:1: ruleRegisteredRootClass returns [EObject current=null] : (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) ) ) ;
+    // InternalArchitecture.g:229:1: ruleRegisteredRootClass returns [EObject current=null] : (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) ) ) ;
     public final EObject ruleRegisteredRootClass() throws RecognitionException {
         EObject current = null;
 
@@ -625,44 +632,45 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         Token lv_isText_3_0=null;
         Token lv_extension_4_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:235:28: ( (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:236:1: (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) ) )
+            // InternalArchitecture.g:235:2: ( (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) ) ) )
+            // InternalArchitecture.g:236:2: (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:236:1: (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:236:3: otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) )
+            // InternalArchitecture.g:236:2: (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) ) )
+            // InternalArchitecture.g:237:3: otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) )
             {
-            otherlv_0=(Token)match(input,16,FOLLOW_16_in_ruleRegisteredRootClass420); if (state.failed) return current;
+            otherlv_0=(Token)match(input,16,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getRegisteredRootClassAccess().getRegisterKeyword_0());
-                  
-            }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:240:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:241:1: (lv_name_1_0= RULE_ID )
-            {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:241:1: (lv_name_1_0= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:242:3: lv_name_1_0= RULE_ID
-            {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRegisteredRootClass437); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              			newLeafNode(lv_name_1_0, grammarAccess.getRegisteredRootClassAccess().getNameIDTerminalRuleCall_1_0()); 
+              			newLeafNode(otherlv_0, grammarAccess.getRegisteredRootClassAccess().getRegisterKeyword_0());
               		
             }
+            // InternalArchitecture.g:241:3: ( (lv_name_1_0= RULE_ID ) )
+            // InternalArchitecture.g:242:4: (lv_name_1_0= RULE_ID )
+            {
+            // InternalArchitecture.g:242:4: (lv_name_1_0= RULE_ID )
+            // InternalArchitecture.g:243:5: lv_name_1_0= RULE_ID
+            {
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_8); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getRegisteredRootClassRule());
-              	        }
-                     		setWithLastConsumed(
-                     			current, 
-                     			"name",
-                      		lv_name_1_0, 
-                      		"ID");
-              	    
+              					newLeafNode(lv_name_1_0, grammarAccess.getRegisteredRootClassAccess().getNameIDTerminalRuleCall_1_0());
+              				
+            }
+            if ( state.backtracking==0 ) {
+
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getRegisteredRootClassRule());
+              					}
+              					setWithLastConsumed(
+              						current,
+              						"name",
+              						lv_name_1_0,
+              						"org.eclipse.xtext.common.Terminals.ID");
+              				
             }
 
             }
@@ -670,7 +678,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:258:2: ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) )
+            // InternalArchitecture.g:259:3: ( ( ( ruleQualifiedName ) ) | ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -689,35 +697,35 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt5) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:258:3: ( ( ruleQualifiedName ) )
+                    // InternalArchitecture.g:260:4: ( ( ruleQualifiedName ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:258:3: ( ( ruleQualifiedName ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:259:1: ( ruleQualifiedName )
+                    // InternalArchitecture.g:260:4: ( ( ruleQualifiedName ) )
+                    // InternalArchitecture.g:261:5: ( ruleQualifiedName )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:259:1: ( ruleQualifiedName )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:260:3: ruleQualifiedName
+                    // InternalArchitecture.g:261:5: ( ruleQualifiedName )
+                    // InternalArchitecture.g:262:6: ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
 
-                      			if (current==null) {
-                      	            current = createModelElement(grammarAccess.getRegisteredRootClassRule());
-                      	        }
-                              
+                      						if (current==null) {
+                      							current = createModelElement(grammarAccess.getRegisteredRootClassRule());
+                      						}
+                      					
                     }
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getRegisteredRootClassAccess().getImportedNamespaceJvmTypeCrossReference_2_0_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getRegisteredRootClassAccess().getImportedNamespaceJvmTypeCrossReference_2_0_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleRegisteredRootClass466);
+                    pushFollow(FOLLOW_2);
                     ruleQualifiedName();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                      	        afterParserOrEnumRuleCall();
-                      	    
+
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -729,60 +737,60 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:274:6: ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) )
+                    // InternalArchitecture.g:277:4: ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:274:6: ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:274:7: ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) )
+                    // InternalArchitecture.g:277:4: ( ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) ) )
+                    // InternalArchitecture.g:278:5: ( (lv_isText_3_0= 'text' ) ) ( (lv_extension_4_0= RULE_STRING ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:274:7: ( (lv_isText_3_0= 'text' ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:275:1: (lv_isText_3_0= 'text' )
+                    // InternalArchitecture.g:278:5: ( (lv_isText_3_0= 'text' ) )
+                    // InternalArchitecture.g:279:6: (lv_isText_3_0= 'text' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:275:1: (lv_isText_3_0= 'text' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:276:3: lv_isText_3_0= 'text'
+                    // InternalArchitecture.g:279:6: (lv_isText_3_0= 'text' )
+                    // InternalArchitecture.g:280:7: lv_isText_3_0= 'text'
                     {
-                    lv_isText_3_0=(Token)match(input,17,FOLLOW_17_in_ruleRegisteredRootClass491); if (state.failed) return current;
+                    lv_isText_3_0=(Token)match(input,17,FOLLOW_9); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              newLeafNode(lv_isText_3_0, grammarAccess.getRegisteredRootClassAccess().getIsTextTextKeyword_2_1_0_0());
-                          
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getRegisteredRootClassRule());
-                      	        }
-                             		setWithLastConsumed(current, "isText", true, "text");
-                      	    
-                    }
-
-                    }
-
-
-                    }
-
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:289:2: ( (lv_extension_4_0= RULE_STRING ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:290:1: (lv_extension_4_0= RULE_STRING )
-                    {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:290:1: (lv_extension_4_0= RULE_STRING )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:291:3: lv_extension_4_0= RULE_STRING
-                    {
-                    lv_extension_4_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleRegisteredRootClass521); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      			newLeafNode(lv_extension_4_0, grammarAccess.getRegisteredRootClassAccess().getExtensionSTRINGTerminalRuleCall_2_1_1_0()); 
-                      		
+                      							newLeafNode(lv_isText_3_0, grammarAccess.getRegisteredRootClassAccess().getIsTextTextKeyword_2_1_0_0());
+                      						
                     }
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getRegisteredRootClassRule());
-                      	        }
-                             		setWithLastConsumed(
-                             			current, 
-                             			"extension",
-                              		lv_extension_4_0, 
-                              		"STRING");
-                      	    
+                      							if (current==null) {
+                      								current = createModelElement(grammarAccess.getRegisteredRootClassRule());
+                      							}
+                      							setWithLastConsumed(current, "isText", true, "text");
+                      						
+                    }
+
+                    }
+
+
+                    }
+
+                    // InternalArchitecture.g:292:5: ( (lv_extension_4_0= RULE_STRING ) )
+                    // InternalArchitecture.g:293:6: (lv_extension_4_0= RULE_STRING )
+                    {
+                    // InternalArchitecture.g:293:6: (lv_extension_4_0= RULE_STRING )
+                    // InternalArchitecture.g:294:7: lv_extension_4_0= RULE_STRING
+                    {
+                    lv_extension_4_0=(Token)match(input,RULE_STRING,FOLLOW_2); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      							newLeafNode(lv_extension_4_0, grammarAccess.getRegisteredRootClassAccess().getExtensionSTRINGTerminalRuleCall_2_1_1_0());
+                      						
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      							if (current==null) {
+                      								current = createModelElement(grammarAccess.getRegisteredRootClassRule());
+                      							}
+                      							setWithLastConsumed(
+                      								current,
+                      								"extension",
+                      								lv_extension_4_0,
+                      								"org.eclipse.xtext.common.Terminals.STRING");
+                      						
                     }
 
                     }
@@ -806,14 +814,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -822,7 +832,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleModelSequence"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:315:1: entryRuleModelSequence returns [EObject current=null] : iv_ruleModelSequence= ruleModelSequence EOF ;
+    // InternalArchitecture.g:316:1: entryRuleModelSequence returns [EObject current=null] : iv_ruleModelSequence= ruleModelSequence EOF ;
     public final EObject entryRuleModelSequence() throws RecognitionException {
         EObject current = null;
 
@@ -830,13 +840,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:316:2: (iv_ruleModelSequence= ruleModelSequence EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:317:2: iv_ruleModelSequence= ruleModelSequence EOF
+            // InternalArchitecture.g:316:54: (iv_ruleModelSequence= ruleModelSequence EOF )
+            // InternalArchitecture.g:317:2: iv_ruleModelSequence= ruleModelSequence EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getModelSequenceRule()); 
             }
-            pushFollow(FOLLOW_ruleModelSequence_in_entryRuleModelSequence564);
+            pushFollow(FOLLOW_1);
             iv_ruleModelSequence=ruleModelSequence();
 
             state._fsp--;
@@ -844,16 +854,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleModelSequence; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleModelSequence574); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -862,7 +872,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModelSequence"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:324:1: ruleModelSequence returns [EObject current=null] : (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* ) ;
+    // InternalArchitecture.g:323:1: ruleModelSequence returns [EObject current=null] : (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* ) ;
     public final EObject ruleModelSequence() throws RecognitionException {
         EObject current = null;
 
@@ -877,49 +887,50 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_models_5_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:327:28: ( (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:1: (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* )
+            // InternalArchitecture.g:329:2: ( (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* ) )
+            // InternalArchitecture.g:330:2: (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:1: (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:328:3: otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )*
+            // InternalArchitecture.g:330:2: (otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )* )
+            // InternalArchitecture.g:331:3: otherlv_0= 'model' ( (lv_modifier_1_0= ruleModelModifier ) ) ( (lv_type_2_0= ruleModelType ) ) ( (lv_models_3_0= ruleModel ) ) (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )*
             {
-            otherlv_0=(Token)match(input,18,FOLLOW_18_in_ruleModelSequence611); if (state.failed) return current;
+            otherlv_0=(Token)match(input,18,FOLLOW_10); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getModelSequenceAccess().getModelKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getModelSequenceAccess().getModelKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:332:1: ( (lv_modifier_1_0= ruleModelModifier ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:333:1: (lv_modifier_1_0= ruleModelModifier )
+            // InternalArchitecture.g:335:3: ( (lv_modifier_1_0= ruleModelModifier ) )
+            // InternalArchitecture.g:336:4: (lv_modifier_1_0= ruleModelModifier )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:333:1: (lv_modifier_1_0= ruleModelModifier )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:334:3: lv_modifier_1_0= ruleModelModifier
+            // InternalArchitecture.g:336:4: (lv_modifier_1_0= ruleModelModifier )
+            // InternalArchitecture.g:337:5: lv_modifier_1_0= ruleModelModifier
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getModelSequenceAccess().getModifierModelModifierEnumRuleCall_1_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getModelSequenceAccess().getModifierModelModifierEnumRuleCall_1_0());
+              				
             }
-            pushFollow(FOLLOW_ruleModelModifier_in_ruleModelSequence632);
+            pushFollow(FOLLOW_3);
             lv_modifier_1_0=ruleModelModifier();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getModelSequenceRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"modifier",
-                      		lv_modifier_1_0, 
-                      		"ModelModifier");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getModelSequenceRule());
+              					}
+              					set(
+              						current,
+              						"modifier",
+              						lv_modifier_1_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.ModelModifier");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -927,34 +938,34 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:350:2: ( (lv_type_2_0= ruleModelType ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:351:1: (lv_type_2_0= ruleModelType )
+            // InternalArchitecture.g:354:3: ( (lv_type_2_0= ruleModelType ) )
+            // InternalArchitecture.g:355:4: (lv_type_2_0= ruleModelType )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:351:1: (lv_type_2_0= ruleModelType )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:352:3: lv_type_2_0= ruleModelType
+            // InternalArchitecture.g:355:4: (lv_type_2_0= ruleModelType )
+            // InternalArchitecture.g:356:5: lv_type_2_0= ruleModelType
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getModelSequenceAccess().getTypeModelTypeParserRuleCall_2_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getModelSequenceAccess().getTypeModelTypeParserRuleCall_2_0());
+              				
             }
-            pushFollow(FOLLOW_ruleModelType_in_ruleModelSequence653);
+            pushFollow(FOLLOW_3);
             lv_type_2_0=ruleModelType();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getModelSequenceRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"type",
-                      		lv_type_2_0, 
-                      		"ModelType");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getModelSequenceRule());
+              					}
+              					set(
+              						current,
+              						"type",
+              						lv_type_2_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.ModelType");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -962,34 +973,34 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:368:2: ( (lv_models_3_0= ruleModel ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:369:1: (lv_models_3_0= ruleModel )
+            // InternalArchitecture.g:373:3: ( (lv_models_3_0= ruleModel ) )
+            // InternalArchitecture.g:374:4: (lv_models_3_0= ruleModel )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:369:1: (lv_models_3_0= ruleModel )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:370:3: lv_models_3_0= ruleModel
+            // InternalArchitecture.g:374:4: (lv_models_3_0= ruleModel )
+            // InternalArchitecture.g:375:5: lv_models_3_0= ruleModel
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_3_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_3_0());
+              				
             }
-            pushFollow(FOLLOW_ruleModel_in_ruleModelSequence674);
+            pushFollow(FOLLOW_11);
             lv_models_3_0=ruleModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getModelSequenceRule());
-              	        }
-                     		add(
-                     			current, 
-                     			"models",
-                      		lv_models_3_0, 
-                      		"Model");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getModelSequenceRule());
+              					}
+              					add(
+              						current,
+              						"models",
+              						lv_models_3_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.Model");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -997,7 +1008,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:386:2: (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )*
+            // InternalArchitecture.g:392:3: (otherlv_4= ',' ( (lv_models_5_0= ruleModel ) ) )*
             loop6:
             do {
                 int alt6=2;
@@ -1010,42 +1021,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt6) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:386:4: otherlv_4= ',' ( (lv_models_5_0= ruleModel ) )
+            	    // InternalArchitecture.g:393:4: otherlv_4= ',' ( (lv_models_5_0= ruleModel ) )
             	    {
-            	    otherlv_4=(Token)match(input,19,FOLLOW_19_in_ruleModelSequence687); if (state.failed) return current;
+            	    otherlv_4=(Token)match(input,19,FOLLOW_3); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_4, grammarAccess.getModelSequenceAccess().getCommaKeyword_4_0());
-            	          
+            	      				newLeafNode(otherlv_4, grammarAccess.getModelSequenceAccess().getCommaKeyword_4_0());
+            	      			
             	    }
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:390:1: ( (lv_models_5_0= ruleModel ) )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:391:1: (lv_models_5_0= ruleModel )
+            	    // InternalArchitecture.g:397:4: ( (lv_models_5_0= ruleModel ) )
+            	    // InternalArchitecture.g:398:5: (lv_models_5_0= ruleModel )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:391:1: (lv_models_5_0= ruleModel )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:392:3: lv_models_5_0= ruleModel
+            	    // InternalArchitecture.g:398:5: (lv_models_5_0= ruleModel )
+            	    // InternalArchitecture.g:399:6: lv_models_5_0= ruleModel
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_4_1_0()); 
-            	      	    
+
+            	      						newCompositeNode(grammarAccess.getModelSequenceAccess().getModelsModelParserRuleCall_4_1_0());
+            	      					
             	    }
-            	    pushFollow(FOLLOW_ruleModel_in_ruleModelSequence708);
+            	    pushFollow(FOLLOW_11);
             	    lv_models_5_0=ruleModel();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getModelSequenceRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"models",
-            	              		lv_models_5_0, 
-            	              		"Model");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      						if (current==null) {
+            	      							current = createModelElementForParent(grammarAccess.getModelSequenceRule());
+            	      						}
+            	      						add(
+            	      							current,
+            	      							"models",
+            	      							lv_models_5_0,
+            	      							"de.cau.cs.se.geco.architecture.Architecture.Model");
+            	      						afterParserOrEnumRuleCall();
+            	      					
             	    }
 
             	    }
@@ -1069,14 +1080,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1085,7 +1098,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:416:1: entryRuleModel returns [EObject current=null] : iv_ruleModel= ruleModel EOF ;
+    // InternalArchitecture.g:421:1: entryRuleModel returns [EObject current=null] : iv_ruleModel= ruleModel EOF ;
     public final EObject entryRuleModel() throws RecognitionException {
         EObject current = null;
 
@@ -1093,13 +1106,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:417:2: (iv_ruleModel= ruleModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:418:2: iv_ruleModel= ruleModel EOF
+            // InternalArchitecture.g:421:46: (iv_ruleModel= ruleModel EOF )
+            // InternalArchitecture.g:422:2: iv_ruleModel= ruleModel EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getModelRule()); 
             }
-            pushFollow(FOLLOW_ruleModel_in_entryRuleModel746);
+            pushFollow(FOLLOW_1);
             iv_ruleModel=ruleModel();
 
             state._fsp--;
@@ -1107,16 +1120,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleModel756); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1125,41 +1138,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:425:1: ruleModel returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
+    // InternalArchitecture.g:428:1: ruleModel returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
     public final EObject ruleModel() throws RecognitionException {
         EObject current = null;
 
         Token lv_name_0_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:428:28: ( ( (lv_name_0_0= RULE_ID ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:429:1: ( (lv_name_0_0= RULE_ID ) )
+            // InternalArchitecture.g:434:2: ( ( (lv_name_0_0= RULE_ID ) ) )
+            // InternalArchitecture.g:435:2: ( (lv_name_0_0= RULE_ID ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:429:1: ( (lv_name_0_0= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:430:1: (lv_name_0_0= RULE_ID )
+            // InternalArchitecture.g:435:2: ( (lv_name_0_0= RULE_ID ) )
+            // InternalArchitecture.g:436:3: (lv_name_0_0= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:430:1: (lv_name_0_0= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:431:3: lv_name_0_0= RULE_ID
+            // InternalArchitecture.g:436:3: (lv_name_0_0= RULE_ID )
+            // InternalArchitecture.g:437:4: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleModel797); if (state.failed) return current;
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_name_0_0, grammarAccess.getModelAccess().getNameIDTerminalRuleCall_0()); 
-              		
+              				newLeafNode(lv_name_0_0, grammarAccess.getModelAccess().getNameIDTerminalRuleCall_0());
+              			
             }
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getModelRule());
-              	        }
-                     		setWithLastConsumed(
-                     			current, 
-                     			"name",
-                      		lv_name_0_0, 
-                      		"ID");
-              	    
+              				if (current==null) {
+              					current = createModelElement(grammarAccess.getModelRule());
+              				}
+              				setWithLastConsumed(
+              					current,
+              					"name",
+              					lv_name_0_0,
+              					"org.eclipse.xtext.common.Terminals.ID");
+              			
             }
 
             }
@@ -1171,14 +1185,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1187,7 +1203,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFragment"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:455:1: entryRuleFragment returns [EObject current=null] : iv_ruleFragment= ruleFragment EOF ;
+    // InternalArchitecture.g:456:1: entryRuleFragment returns [EObject current=null] : iv_ruleFragment= ruleFragment EOF ;
     public final EObject entryRuleFragment() throws RecognitionException {
         EObject current = null;
 
@@ -1195,13 +1211,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:456:2: (iv_ruleFragment= ruleFragment EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:457:2: iv_ruleFragment= ruleFragment EOF
+            // InternalArchitecture.g:456:49: (iv_ruleFragment= ruleFragment EOF )
+            // InternalArchitecture.g:457:2: iv_ruleFragment= ruleFragment EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFragmentRule()); 
             }
-            pushFollow(FOLLOW_ruleFragment_in_entryRuleFragment837);
+            pushFollow(FOLLOW_1);
             iv_ruleFragment=ruleFragment();
 
             state._fsp--;
@@ -1209,16 +1225,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFragment; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFragment847); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1227,7 +1243,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFragment"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:464:1: ruleFragment returns [EObject current=null] : (this_Generator_0= ruleGenerator | this_Weaver_1= ruleWeaver ) ;
+    // InternalArchitecture.g:463:1: ruleFragment returns [EObject current=null] : (this_Generator_0= ruleGenerator | this_Weaver_1= ruleWeaver ) ;
     public final EObject ruleFragment() throws RecognitionException {
         EObject current = null;
 
@@ -1236,13 +1252,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject this_Weaver_1 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:467:28: ( (this_Generator_0= ruleGenerator | this_Weaver_1= ruleWeaver ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:468:1: (this_Generator_0= ruleGenerator | this_Weaver_1= ruleWeaver )
+            // InternalArchitecture.g:469:2: ( (this_Generator_0= ruleGenerator | this_Weaver_1= ruleWeaver ) )
+            // InternalArchitecture.g:470:2: (this_Generator_0= ruleGenerator | this_Weaver_1= ruleWeaver )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:468:1: (this_Generator_0= ruleGenerator | this_Weaver_1= ruleWeaver )
+            // InternalArchitecture.g:470:2: (this_Generator_0= ruleGenerator | this_Weaver_1= ruleWeaver )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1261,45 +1278,45 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt7) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:469:5: this_Generator_0= ruleGenerator
+                    // InternalArchitecture.g:471:3: this_Generator_0= ruleGenerator
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getFragmentAccess().getGeneratorParserRuleCall_0()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getFragmentAccess().getGeneratorParserRuleCall_0());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleGenerator_in_ruleFragment894);
+                    pushFollow(FOLLOW_2);
                     this_Generator_0=ruleGenerator();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_Generator_0; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_Generator_0;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:479:5: this_Weaver_1= ruleWeaver
+                    // InternalArchitecture.g:480:3: this_Weaver_1= ruleWeaver
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getFragmentAccess().getWeaverParserRuleCall_1()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getFragmentAccess().getWeaverParserRuleCall_1());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleWeaver_in_ruleFragment921);
+                    pushFollow(FOLLOW_2);
                     this_Weaver_1=ruleWeaver();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_Weaver_1; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_Weaver_1;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
@@ -1311,14 +1328,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1327,7 +1346,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleWeaver"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:495:1: entryRuleWeaver returns [EObject current=null] : iv_ruleWeaver= ruleWeaver EOF ;
+    // InternalArchitecture.g:492:1: entryRuleWeaver returns [EObject current=null] : iv_ruleWeaver= ruleWeaver EOF ;
     public final EObject entryRuleWeaver() throws RecognitionException {
         EObject current = null;
 
@@ -1335,13 +1354,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:496:2: (iv_ruleWeaver= ruleWeaver EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:497:2: iv_ruleWeaver= ruleWeaver EOF
+            // InternalArchitecture.g:492:47: (iv_ruleWeaver= ruleWeaver EOF )
+            // InternalArchitecture.g:493:2: iv_ruleWeaver= ruleWeaver EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getWeaverRule()); 
             }
-            pushFollow(FOLLOW_ruleWeaver_in_entryRuleWeaver956);
+            pushFollow(FOLLOW_1);
             iv_ruleWeaver=ruleWeaver();
 
             state._fsp--;
@@ -1349,16 +1368,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleWeaver; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWeaver966); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1367,7 +1386,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWeaver"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:504:1: ruleWeaver returns [EObject current=null] : (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? ) ;
+    // InternalArchitecture.g:499:1: ruleWeaver returns [EObject current=null] : (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? ) ;
     public final EObject ruleWeaver() throws RecognitionException {
         EObject current = null;
 
@@ -1382,39 +1401,40 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_targetModel_6_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:507:28: ( (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:1: (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? )
+            // InternalArchitecture.g:505:2: ( (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? ) )
+            // InternalArchitecture.g:506:2: (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:1: (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:508:3: otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )?
+            // InternalArchitecture.g:506:2: (otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )? )
+            // InternalArchitecture.g:507:3: otherlv_0= 'weave' ( (otherlv_1= RULE_ID ) ) ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' ) ( (lv_aspectModel_4_0= ruleAspectModel ) ) (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )?
             {
-            otherlv_0=(Token)match(input,20,FOLLOW_20_in_ruleWeaver1003); if (state.failed) return current;
+            otherlv_0=(Token)match(input,20,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getWeaverAccess().getWeaveKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getWeaverAccess().getWeaveKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:512:1: ( (otherlv_1= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:513:1: (otherlv_1= RULE_ID )
+            // InternalArchitecture.g:511:3: ( (otherlv_1= RULE_ID ) )
+            // InternalArchitecture.g:512:4: (otherlv_1= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:513:1: (otherlv_1= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:514:3: otherlv_1= RULE_ID
+            // InternalArchitecture.g:512:4: (otherlv_1= RULE_ID )
+            // InternalArchitecture.g:513:5: otherlv_1= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getWeaverRule());
-              	        }
-                      
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getWeaverRule());
+              					}
+              				
             }
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleWeaver1023); if (state.failed) return current;
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_12); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_1, grammarAccess.getWeaverAccess().getReferenceJvmTypeCrossReference_1_0()); 
-              	
+              					newLeafNode(otherlv_1, grammarAccess.getWeaverAccess().getReferenceJvmTypeCrossReference_1_0());
+              				
             }
 
             }
@@ -1422,7 +1442,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:2: ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' )
+            // InternalArchitecture.g:524:3: ( ( (lv_sourceModel_2_0= ruleSourceModelSelector ) ) | otherlv_3= 'link' )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1441,36 +1461,36 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt8) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:3: ( (lv_sourceModel_2_0= ruleSourceModelSelector ) )
+                    // InternalArchitecture.g:525:4: ( (lv_sourceModel_2_0= ruleSourceModelSelector ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:525:3: ( (lv_sourceModel_2_0= ruleSourceModelSelector ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:526:1: (lv_sourceModel_2_0= ruleSourceModelSelector )
+                    // InternalArchitecture.g:525:4: ( (lv_sourceModel_2_0= ruleSourceModelSelector ) )
+                    // InternalArchitecture.g:526:5: (lv_sourceModel_2_0= ruleSourceModelSelector )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:526:1: (lv_sourceModel_2_0= ruleSourceModelSelector )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:527:3: lv_sourceModel_2_0= ruleSourceModelSelector
+                    // InternalArchitecture.g:526:5: (lv_sourceModel_2_0= ruleSourceModelSelector )
+                    // InternalArchitecture.g:527:6: lv_sourceModel_2_0= ruleSourceModelSelector
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getWeaverAccess().getSourceModelSourceModelSelectorParserRuleCall_2_0_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getWeaverAccess().getSourceModelSourceModelSelectorParserRuleCall_2_0_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleSourceModelSelector_in_ruleWeaver1045);
+                    pushFollow(FOLLOW_13);
                     lv_sourceModel_2_0=ruleSourceModelSelector();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getWeaverRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"sourceModel",
-                              		lv_sourceModel_2_0, 
-                              		"SourceModelSelector");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getWeaverRule());
+                      						}
+                      						set(
+                      							current,
+                      							"sourceModel",
+                      							lv_sourceModel_2_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.SourceModelSelector");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -1482,13 +1502,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:544:7: otherlv_3= 'link'
+                    // InternalArchitecture.g:545:4: otherlv_3= 'link'
                     {
-                    otherlv_3=(Token)match(input,21,FOLLOW_21_in_ruleWeaver1063); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,21,FOLLOW_13); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_3, grammarAccess.getWeaverAccess().getLinkKeyword_2_1());
-                          
+                      				newLeafNode(otherlv_3, grammarAccess.getWeaverAccess().getLinkKeyword_2_1());
+                      			
                     }
 
                     }
@@ -1496,34 +1516,34 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:548:2: ( (lv_aspectModel_4_0= ruleAspectModel ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:549:1: (lv_aspectModel_4_0= ruleAspectModel )
+            // InternalArchitecture.g:550:3: ( (lv_aspectModel_4_0= ruleAspectModel ) )
+            // InternalArchitecture.g:551:4: (lv_aspectModel_4_0= ruleAspectModel )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:549:1: (lv_aspectModel_4_0= ruleAspectModel )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:550:3: lv_aspectModel_4_0= ruleAspectModel
+            // InternalArchitecture.g:551:4: (lv_aspectModel_4_0= ruleAspectModel )
+            // InternalArchitecture.g:552:5: lv_aspectModel_4_0= ruleAspectModel
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getWeaverAccess().getAspectModelAspectModelParserRuleCall_3_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getWeaverAccess().getAspectModelAspectModelParserRuleCall_3_0());
+              				
             }
-            pushFollow(FOLLOW_ruleAspectModel_in_ruleWeaver1085);
+            pushFollow(FOLLOW_14);
             lv_aspectModel_4_0=ruleAspectModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getWeaverRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"aspectModel",
-                      		lv_aspectModel_4_0, 
-                      		"AspectModel");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getWeaverRule());
+              					}
+              					set(
+              						current,
+              						"aspectModel",
+              						lv_aspectModel_4_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.AspectModel");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -1531,7 +1551,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:566:2: (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )?
+            // InternalArchitecture.g:569:3: (otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) ) )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1540,42 +1560,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:566:4: otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) )
+                    // InternalArchitecture.g:570:4: otherlv_5= '=>' ( (lv_targetModel_6_0= ruleTargetModel ) )
                     {
-                    otherlv_5=(Token)match(input,22,FOLLOW_22_in_ruleWeaver1098); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,22,FOLLOW_3); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_5, grammarAccess.getWeaverAccess().getEqualsSignGreaterThanSignKeyword_4_0());
-                          
+                      				newLeafNode(otherlv_5, grammarAccess.getWeaverAccess().getEqualsSignGreaterThanSignKeyword_4_0());
+                      			
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:570:1: ( (lv_targetModel_6_0= ruleTargetModel ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:571:1: (lv_targetModel_6_0= ruleTargetModel )
+                    // InternalArchitecture.g:574:4: ( (lv_targetModel_6_0= ruleTargetModel ) )
+                    // InternalArchitecture.g:575:5: (lv_targetModel_6_0= ruleTargetModel )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:571:1: (lv_targetModel_6_0= ruleTargetModel )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:572:3: lv_targetModel_6_0= ruleTargetModel
+                    // InternalArchitecture.g:575:5: (lv_targetModel_6_0= ruleTargetModel )
+                    // InternalArchitecture.g:576:6: lv_targetModel_6_0= ruleTargetModel
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getWeaverAccess().getTargetModelTargetModelParserRuleCall_4_1_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getWeaverAccess().getTargetModelTargetModelParserRuleCall_4_1_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleTargetModel_in_ruleWeaver1119);
+                    pushFollow(FOLLOW_2);
                     lv_targetModel_6_0=ruleTargetModel();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getWeaverRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"targetModel",
-                              		lv_targetModel_6_0, 
-                              		"TargetModel");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getWeaverRule());
+                      						}
+                      						set(
+                      							current,
+                      							"targetModel",
+                      							lv_targetModel_6_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.TargetModel");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -1596,14 +1616,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1612,7 +1634,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAspectModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:596:1: entryRuleAspectModel returns [EObject current=null] : iv_ruleAspectModel= ruleAspectModel EOF ;
+    // InternalArchitecture.g:598:1: entryRuleAspectModel returns [EObject current=null] : iv_ruleAspectModel= ruleAspectModel EOF ;
     public final EObject entryRuleAspectModel() throws RecognitionException {
         EObject current = null;
 
@@ -1620,13 +1642,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:597:2: (iv_ruleAspectModel= ruleAspectModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:598:2: iv_ruleAspectModel= ruleAspectModel EOF
+            // InternalArchitecture.g:598:52: (iv_ruleAspectModel= ruleAspectModel EOF )
+            // InternalArchitecture.g:599:2: iv_ruleAspectModel= ruleAspectModel EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAspectModelRule()); 
             }
-            pushFollow(FOLLOW_ruleAspectModel_in_entryRuleAspectModel1157);
+            pushFollow(FOLLOW_1);
             iv_ruleAspectModel=ruleAspectModel();
 
             state._fsp--;
@@ -1634,16 +1656,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAspectModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAspectModel1167); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1652,7 +1674,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAspectModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:605:1: ruleAspectModel returns [EObject current=null] : (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels ) ;
+    // InternalArchitecture.g:605:1: ruleAspectModel returns [EObject current=null] : (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels ) ;
     public final EObject ruleAspectModel() throws RecognitionException {
         EObject current = null;
 
@@ -1661,13 +1683,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject this_SeparateModels_1 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:608:28: ( (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:609:1: (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels )
+            // InternalArchitecture.g:611:2: ( (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels ) )
+            // InternalArchitecture.g:612:2: (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:609:1: (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels )
+            // InternalArchitecture.g:612:2: (this_CombinedModel_0= ruleCombinedModel | this_SeparateModels_1= ruleSeparateModels )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1686,45 +1709,45 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt10) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:610:5: this_CombinedModel_0= ruleCombinedModel
+                    // InternalArchitecture.g:613:3: this_CombinedModel_0= ruleCombinedModel
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getAspectModelAccess().getCombinedModelParserRuleCall_0()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getAspectModelAccess().getCombinedModelParserRuleCall_0());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleCombinedModel_in_ruleAspectModel1214);
+                    pushFollow(FOLLOW_2);
                     this_CombinedModel_0=ruleCombinedModel();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_CombinedModel_0; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_CombinedModel_0;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:620:5: this_SeparateModels_1= ruleSeparateModels
+                    // InternalArchitecture.g:622:3: this_SeparateModels_1= ruleSeparateModels
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getAspectModelAccess().getSeparateModelsParserRuleCall_1()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getAspectModelAccess().getSeparateModelsParserRuleCall_1());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleSeparateModels_in_ruleAspectModel1241);
+                    pushFollow(FOLLOW_2);
                     this_SeparateModels_1=ruleSeparateModels();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_SeparateModels_1; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_SeparateModels_1;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
@@ -1736,14 +1759,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1752,7 +1777,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSeparateModels"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:636:1: entryRuleSeparateModels returns [EObject current=null] : iv_ruleSeparateModels= ruleSeparateModels EOF ;
+    // InternalArchitecture.g:634:1: entryRuleSeparateModels returns [EObject current=null] : iv_ruleSeparateModels= ruleSeparateModels EOF ;
     public final EObject entryRuleSeparateModels() throws RecognitionException {
         EObject current = null;
 
@@ -1760,13 +1785,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:637:2: (iv_ruleSeparateModels= ruleSeparateModels EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:638:2: iv_ruleSeparateModels= ruleSeparateModels EOF
+            // InternalArchitecture.g:634:55: (iv_ruleSeparateModels= ruleSeparateModels EOF )
+            // InternalArchitecture.g:635:2: iv_ruleSeparateModels= ruleSeparateModels EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSeparateModelsRule()); 
             }
-            pushFollow(FOLLOW_ruleSeparateModels_in_entryRuleSeparateModels1276);
+            pushFollow(FOLLOW_1);
             iv_ruleSeparateModels=ruleSeparateModels();
 
             state._fsp--;
@@ -1774,16 +1799,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleSeparateModels; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSeparateModels1286); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1792,7 +1817,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSeparateModels"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:645:1: ruleSeparateModels returns [EObject current=null] : (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) ) ;
+    // InternalArchitecture.g:641:1: ruleSeparateModels returns [EObject current=null] : (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) ) ;
     public final EObject ruleSeparateModels() throws RecognitionException {
         EObject current = null;
 
@@ -1803,49 +1828,50 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_advice_3_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:648:28: ( (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:1: (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) )
+            // InternalArchitecture.g:647:2: ( (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) ) )
+            // InternalArchitecture.g:648:2: (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:1: (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:649:3: otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) )
+            // InternalArchitecture.g:648:2: (otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) ) )
+            // InternalArchitecture.g:649:3: otherlv_0= 'pointcut' ( (lv_pointcut_1_0= ruleTargetModel ) ) otherlv_2= 'advice' ( (lv_advice_3_0= ruleCombinedModel ) )
             {
-            otherlv_0=(Token)match(input,23,FOLLOW_23_in_ruleSeparateModels1323); if (state.failed) return current;
+            otherlv_0=(Token)match(input,23,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getSeparateModelsAccess().getPointcutKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getSeparateModelsAccess().getPointcutKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:653:1: ( (lv_pointcut_1_0= ruleTargetModel ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:654:1: (lv_pointcut_1_0= ruleTargetModel )
+            // InternalArchitecture.g:653:3: ( (lv_pointcut_1_0= ruleTargetModel ) )
+            // InternalArchitecture.g:654:4: (lv_pointcut_1_0= ruleTargetModel )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:654:1: (lv_pointcut_1_0= ruleTargetModel )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:655:3: lv_pointcut_1_0= ruleTargetModel
+            // InternalArchitecture.g:654:4: (lv_pointcut_1_0= ruleTargetModel )
+            // InternalArchitecture.g:655:5: lv_pointcut_1_0= ruleTargetModel
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getSeparateModelsAccess().getPointcutTargetModelParserRuleCall_1_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getSeparateModelsAccess().getPointcutTargetModelParserRuleCall_1_0());
+              				
             }
-            pushFollow(FOLLOW_ruleTargetModel_in_ruleSeparateModels1344);
+            pushFollow(FOLLOW_15);
             lv_pointcut_1_0=ruleTargetModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getSeparateModelsRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"pointcut",
-                      		lv_pointcut_1_0, 
-                      		"TargetModel");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getSeparateModelsRule());
+              					}
+              					set(
+              						current,
+              						"pointcut",
+              						lv_pointcut_1_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.TargetModel");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -1853,40 +1879,40 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_24_in_ruleSeparateModels1356); if (state.failed) return current;
+            otherlv_2=(Token)match(input,24,FOLLOW_16); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_2, grammarAccess.getSeparateModelsAccess().getAdviceKeyword_2());
-                  
+              			newLeafNode(otherlv_2, grammarAccess.getSeparateModelsAccess().getAdviceKeyword_2());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:675:1: ( (lv_advice_3_0= ruleCombinedModel ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:676:1: (lv_advice_3_0= ruleCombinedModel )
+            // InternalArchitecture.g:676:3: ( (lv_advice_3_0= ruleCombinedModel ) )
+            // InternalArchitecture.g:677:4: (lv_advice_3_0= ruleCombinedModel )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:676:1: (lv_advice_3_0= ruleCombinedModel )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:677:3: lv_advice_3_0= ruleCombinedModel
+            // InternalArchitecture.g:677:4: (lv_advice_3_0= ruleCombinedModel )
+            // InternalArchitecture.g:678:5: lv_advice_3_0= ruleCombinedModel
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getSeparateModelsAccess().getAdviceCombinedModelParserRuleCall_3_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getSeparateModelsAccess().getAdviceCombinedModelParserRuleCall_3_0());
+              				
             }
-            pushFollow(FOLLOW_ruleCombinedModel_in_ruleSeparateModels1377);
+            pushFollow(FOLLOW_2);
             lv_advice_3_0=ruleCombinedModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getSeparateModelsRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"advice",
-                      		lv_advice_3_0, 
-                      		"CombinedModel");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getSeparateModelsRule());
+              					}
+              					set(
+              						current,
+              						"advice",
+              						lv_advice_3_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.CombinedModel");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -1901,14 +1927,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1917,7 +1945,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCombinedModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:701:1: entryRuleCombinedModel returns [EObject current=null] : iv_ruleCombinedModel= ruleCombinedModel EOF ;
+    // InternalArchitecture.g:699:1: entryRuleCombinedModel returns [EObject current=null] : iv_ruleCombinedModel= ruleCombinedModel EOF ;
     public final EObject entryRuleCombinedModel() throws RecognitionException {
         EObject current = null;
 
@@ -1925,13 +1953,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:702:2: (iv_ruleCombinedModel= ruleCombinedModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:703:2: iv_ruleCombinedModel= ruleCombinedModel EOF
+            // InternalArchitecture.g:699:54: (iv_ruleCombinedModel= ruleCombinedModel EOF )
+            // InternalArchitecture.g:700:2: iv_ruleCombinedModel= ruleCombinedModel EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCombinedModelRule()); 
             }
-            pushFollow(FOLLOW_ruleCombinedModel_in_entryRuleCombinedModel1413);
+            pushFollow(FOLLOW_1);
             iv_ruleCombinedModel=ruleCombinedModel();
 
             state._fsp--;
@@ -1939,16 +1967,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCombinedModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCombinedModel1423); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -1957,7 +1985,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCombinedModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:710:1: ruleCombinedModel returns [EObject current=null] : (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator ) ;
+    // InternalArchitecture.g:706:1: ruleCombinedModel returns [EObject current=null] : (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator ) ;
     public final EObject ruleCombinedModel() throws RecognitionException {
         EObject current = null;
 
@@ -1966,13 +1994,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject this_Generator_1 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:713:28: ( (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:714:1: (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator )
+            // InternalArchitecture.g:712:2: ( (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator ) )
+            // InternalArchitecture.g:713:2: (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:714:1: (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator )
+            // InternalArchitecture.g:713:2: (this_TargetModel_0= ruleTargetModel | this_Generator_1= ruleGenerator )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1991,45 +2020,45 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt11) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:715:5: this_TargetModel_0= ruleTargetModel
+                    // InternalArchitecture.g:714:3: this_TargetModel_0= ruleTargetModel
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getCombinedModelAccess().getTargetModelParserRuleCall_0()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getCombinedModelAccess().getTargetModelParserRuleCall_0());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleTargetModel_in_ruleCombinedModel1470);
+                    pushFollow(FOLLOW_2);
                     this_TargetModel_0=ruleTargetModel();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_TargetModel_0; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_TargetModel_0;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:725:5: this_Generator_1= ruleGenerator
+                    // InternalArchitecture.g:723:3: this_Generator_1= ruleGenerator
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getCombinedModelAccess().getGeneratorParserRuleCall_1()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getCombinedModelAccess().getGeneratorParserRuleCall_1());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleGenerator_in_ruleCombinedModel1497);
+                    pushFollow(FOLLOW_2);
                     this_Generator_1=ruleGenerator();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_Generator_1; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_Generator_1;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
@@ -2041,14 +2070,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -2057,7 +2088,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleGenerator"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:741:1: entryRuleGenerator returns [EObject current=null] : iv_ruleGenerator= ruleGenerator EOF ;
+    // InternalArchitecture.g:735:1: entryRuleGenerator returns [EObject current=null] : iv_ruleGenerator= ruleGenerator EOF ;
     public final EObject entryRuleGenerator() throws RecognitionException {
         EObject current = null;
 
@@ -2065,13 +2096,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:742:2: (iv_ruleGenerator= ruleGenerator EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:743:2: iv_ruleGenerator= ruleGenerator EOF
+            // InternalArchitecture.g:735:50: (iv_ruleGenerator= ruleGenerator EOF )
+            // InternalArchitecture.g:736:2: iv_ruleGenerator= ruleGenerator EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getGeneratorRule()); 
             }
-            pushFollow(FOLLOW_ruleGenerator_in_entryRuleGenerator1532);
+            pushFollow(FOLLOW_1);
             iv_ruleGenerator=ruleGenerator();
 
             state._fsp--;
@@ -2079,16 +2110,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleGenerator; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleGenerator1542); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -2097,7 +2128,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGenerator"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:750:1: ruleGenerator returns [EObject current=null] : (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? ) ;
+    // InternalArchitecture.g:742:1: ruleGenerator returns [EObject current=null] : (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? ) ;
     public final EObject ruleGenerator() throws RecognitionException {
         EObject current = null;
 
@@ -2127,39 +2158,40 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_sourceTraceModels_17_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:753:28: ( (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:1: (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? )
+            // InternalArchitecture.g:748:2: ( (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? ) )
+            // InternalArchitecture.g:749:2: (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:1: (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:754:3: otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )?
+            // InternalArchitecture.g:749:2: (otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )? )
+            // InternalArchitecture.g:750:3: otherlv_0= 'generate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )? otherlv_7= 'source' ( (lv_sourceModel_8_0= ruleSourceModelSelector ) ) (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )? (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )?
             {
-            otherlv_0=(Token)match(input,25,FOLLOW_25_in_ruleGenerator1579); if (state.failed) return current;
+            otherlv_0=(Token)match(input,25,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getGeneratorAccess().getGenerateKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getGeneratorAccess().getGenerateKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:758:1: ( (otherlv_1= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:759:1: (otherlv_1= RULE_ID )
+            // InternalArchitecture.g:754:3: ( (otherlv_1= RULE_ID ) )
+            // InternalArchitecture.g:755:4: (otherlv_1= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:759:1: (otherlv_1= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:760:3: otherlv_1= RULE_ID
+            // InternalArchitecture.g:755:4: (otherlv_1= RULE_ID )
+            // InternalArchitecture.g:756:5: otherlv_1= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getGeneratorRule());
-              	        }
-                      
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getGeneratorRule());
+              					}
+              				
             }
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleGenerator1599); if (state.failed) return current;
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_17); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_1, grammarAccess.getGeneratorAccess().getReferenceJvmTypeCrossReference_1_0()); 
-              	
+              					newLeafNode(otherlv_1, grammarAccess.getGeneratorAccess().getReferenceJvmTypeCrossReference_1_0());
+              				
             }
 
             }
@@ -2167,7 +2199,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:771:2: (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )?
+            // InternalArchitecture.g:767:3: (otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')' )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2176,42 +2208,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt13) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:771:4: otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')'
+                    // InternalArchitecture.g:768:4: otherlv_2= '(' ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) ) (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )* otherlv_6= ')'
                     {
-                    otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleGenerator1612); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,26,FOLLOW_18); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_2, grammarAccess.getGeneratorAccess().getLeftParenthesisKeyword_2_0());
-                          
+                      				newLeafNode(otherlv_2, grammarAccess.getGeneratorAccess().getLeftParenthesisKeyword_2_0());
+                      			
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:775:1: ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:776:1: (lv_sourceAuxModels_3_0= ruleSourceModelSelector )
+                    // InternalArchitecture.g:772:4: ( (lv_sourceAuxModels_3_0= ruleSourceModelSelector ) )
+                    // InternalArchitecture.g:773:5: (lv_sourceAuxModels_3_0= ruleSourceModelSelector )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:776:1: (lv_sourceAuxModels_3_0= ruleSourceModelSelector )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:777:3: lv_sourceAuxModels_3_0= ruleSourceModelSelector
+                    // InternalArchitecture.g:773:5: (lv_sourceAuxModels_3_0= ruleSourceModelSelector )
+                    // InternalArchitecture.g:774:6: lv_sourceAuxModels_3_0= ruleSourceModelSelector
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceAuxModelsSourceModelSelectorParserRuleCall_2_1_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getGeneratorAccess().getSourceAuxModelsSourceModelSelectorParserRuleCall_2_1_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleSourceModelSelector_in_ruleGenerator1633);
+                    pushFollow(FOLLOW_19);
                     lv_sourceAuxModels_3_0=ruleSourceModelSelector();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getGeneratorRule());
-                      	        }
-                             		add(
-                             			current, 
-                             			"sourceAuxModels",
-                              		lv_sourceAuxModels_3_0, 
-                              		"SourceModelSelector");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getGeneratorRule());
+                      						}
+                      						add(
+                      							current,
+                      							"sourceAuxModels",
+                      							lv_sourceAuxModels_3_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.SourceModelSelector");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -2219,7 +2251,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:793:2: (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )*
+                    // InternalArchitecture.g:791:4: (otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) ) )*
                     loop12:
                     do {
                         int alt12=2;
@@ -2232,42 +2264,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:793:4: otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) )
+                    	    // InternalArchitecture.g:792:5: otherlv_4= ',' ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,19,FOLLOW_19_in_ruleGenerator1646); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,19,FOLLOW_18); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	          	newLeafNode(otherlv_4, grammarAccess.getGeneratorAccess().getCommaKeyword_2_2_0());
-                    	          
+                    	      					newLeafNode(otherlv_4, grammarAccess.getGeneratorAccess().getCommaKeyword_2_2_0());
+                    	      				
                     	    }
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:797:1: ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) )
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:798:1: (lv_sourceAuxModels_5_0= ruleSourceModelSelector )
+                    	    // InternalArchitecture.g:796:5: ( (lv_sourceAuxModels_5_0= ruleSourceModelSelector ) )
+                    	    // InternalArchitecture.g:797:6: (lv_sourceAuxModels_5_0= ruleSourceModelSelector )
                     	    {
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:798:1: (lv_sourceAuxModels_5_0= ruleSourceModelSelector )
-                    	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:799:3: lv_sourceAuxModels_5_0= ruleSourceModelSelector
+                    	    // InternalArchitecture.g:797:6: (lv_sourceAuxModels_5_0= ruleSourceModelSelector )
+                    	    // InternalArchitecture.g:798:7: lv_sourceAuxModels_5_0= ruleSourceModelSelector
                     	    {
                     	    if ( state.backtracking==0 ) {
-                    	       
-                    	      	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceAuxModelsSourceModelSelectorParserRuleCall_2_2_1_0()); 
-                    	      	    
+
+                    	      							newCompositeNode(grammarAccess.getGeneratorAccess().getSourceAuxModelsSourceModelSelectorParserRuleCall_2_2_1_0());
+                    	      						
                     	    }
-                    	    pushFollow(FOLLOW_ruleSourceModelSelector_in_ruleGenerator1667);
+                    	    pushFollow(FOLLOW_19);
                     	    lv_sourceAuxModels_5_0=ruleSourceModelSelector();
 
                     	    state._fsp--;
                     	    if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	      	        if (current==null) {
-                    	      	            current = createModelElementForParent(grammarAccess.getGeneratorRule());
-                    	      	        }
-                    	             		add(
-                    	             			current, 
-                    	             			"sourceAuxModels",
-                    	              		lv_sourceAuxModels_5_0, 
-                    	              		"SourceModelSelector");
-                    	      	        afterParserOrEnumRuleCall();
-                    	      	    
+                    	      							if (current==null) {
+                    	      								current = createModelElementForParent(grammarAccess.getGeneratorRule());
+                    	      							}
+                    	      							add(
+                    	      								current,
+                    	      								"sourceAuxModels",
+                    	      								lv_sourceAuxModels_5_0,
+                    	      								"de.cau.cs.se.geco.architecture.Architecture.SourceModelSelector");
+                    	      							afterParserOrEnumRuleCall();
+                    	      						
                     	    }
 
                     	    }
@@ -2284,11 +2316,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_6=(Token)match(input,27,FOLLOW_27_in_ruleGenerator1681); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,27,FOLLOW_20); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_6, grammarAccess.getGeneratorAccess().getRightParenthesisKeyword_2_3());
-                          
+                      				newLeafNode(otherlv_6, grammarAccess.getGeneratorAccess().getRightParenthesisKeyword_2_3());
+                      			
                     }
 
                     }
@@ -2296,40 +2328,40 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_7=(Token)match(input,28,FOLLOW_28_in_ruleGenerator1695); if (state.failed) return current;
+            otherlv_7=(Token)match(input,28,FOLLOW_18); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_7, grammarAccess.getGeneratorAccess().getSourceKeyword_3());
-                  
+              			newLeafNode(otherlv_7, grammarAccess.getGeneratorAccess().getSourceKeyword_3());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:823:1: ( (lv_sourceModel_8_0= ruleSourceModelSelector ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:824:1: (lv_sourceModel_8_0= ruleSourceModelSelector )
+            // InternalArchitecture.g:825:3: ( (lv_sourceModel_8_0= ruleSourceModelSelector ) )
+            // InternalArchitecture.g:826:4: (lv_sourceModel_8_0= ruleSourceModelSelector )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:824:1: (lv_sourceModel_8_0= ruleSourceModelSelector )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:825:3: lv_sourceModel_8_0= ruleSourceModelSelector
+            // InternalArchitecture.g:826:4: (lv_sourceModel_8_0= ruleSourceModelSelector )
+            // InternalArchitecture.g:827:5: lv_sourceModel_8_0= ruleSourceModelSelector
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceModelSourceModelSelectorParserRuleCall_4_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getGeneratorAccess().getSourceModelSourceModelSelectorParserRuleCall_4_0());
+              				
             }
-            pushFollow(FOLLOW_ruleSourceModelSelector_in_ruleGenerator1716);
+            pushFollow(FOLLOW_21);
             lv_sourceModel_8_0=ruleSourceModelSelector();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getGeneratorRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"sourceModel",
-                      		lv_sourceModel_8_0, 
-                      		"SourceModelSelector");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getGeneratorRule());
+              					}
+              					set(
+              						current,
+              						"sourceModel",
+              						lv_sourceModel_8_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.SourceModelSelector");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -2337,7 +2369,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:841:2: (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )?
+            // InternalArchitecture.g:844:3: (otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) ) )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -2346,42 +2378,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt14) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:841:4: otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) )
+                    // InternalArchitecture.g:845:4: otherlv_9= 'target' ( (lv_targetModel_10_0= ruleTargetModel ) )
                     {
-                    otherlv_9=(Token)match(input,29,FOLLOW_29_in_ruleGenerator1729); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,29,FOLLOW_3); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_9, grammarAccess.getGeneratorAccess().getTargetKeyword_5_0());
-                          
+                      				newLeafNode(otherlv_9, grammarAccess.getGeneratorAccess().getTargetKeyword_5_0());
+                      			
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:845:1: ( (lv_targetModel_10_0= ruleTargetModel ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:846:1: (lv_targetModel_10_0= ruleTargetModel )
+                    // InternalArchitecture.g:849:4: ( (lv_targetModel_10_0= ruleTargetModel ) )
+                    // InternalArchitecture.g:850:5: (lv_targetModel_10_0= ruleTargetModel )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:846:1: (lv_targetModel_10_0= ruleTargetModel )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:847:3: lv_targetModel_10_0= ruleTargetModel
+                    // InternalArchitecture.g:850:5: (lv_targetModel_10_0= ruleTargetModel )
+                    // InternalArchitecture.g:851:6: lv_targetModel_10_0= ruleTargetModel
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getGeneratorAccess().getTargetModelTargetModelParserRuleCall_5_1_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getGeneratorAccess().getTargetModelTargetModelParserRuleCall_5_1_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleTargetModel_in_ruleGenerator1750);
+                    pushFollow(FOLLOW_22);
                     lv_targetModel_10_0=ruleTargetModel();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getGeneratorRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"targetModel",
-                              		lv_targetModel_10_0, 
-                              		"TargetModel");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getGeneratorRule());
+                      						}
+                      						set(
+                      							current,
+                      							"targetModel",
+                      							lv_targetModel_10_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.TargetModel");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -2395,7 +2427,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:863:4: (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )?
+            // InternalArchitecture.g:869:3: (otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )? )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -2404,15 +2436,15 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt18) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:863:6: otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )?
+                    // InternalArchitecture.g:870:4: otherlv_11= 'trace' (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )? (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )?
                     {
-                    otherlv_11=(Token)match(input,30,FOLLOW_30_in_ruleGenerator1765); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,30,FOLLOW_23); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_11, grammarAccess.getGeneratorAccess().getTraceKeyword_6_0());
-                          
+                      				newLeafNode(otherlv_11, grammarAccess.getGeneratorAccess().getTraceKeyword_6_0());
+                      			
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:867:1: (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )?
+                    // InternalArchitecture.g:874:4: (otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) ) )?
                     int alt15=2;
                     int LA15_0 = input.LA(1);
 
@@ -2421,42 +2453,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt15) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:867:3: otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) )
+                            // InternalArchitecture.g:875:5: otherlv_12= 'out' ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) )
                             {
-                            otherlv_12=(Token)match(input,31,FOLLOW_31_in_ruleGenerator1778); if (state.failed) return current;
+                            otherlv_12=(Token)match(input,31,FOLLOW_24); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_12, grammarAccess.getGeneratorAccess().getOutKeyword_6_1_0());
-                                  
+                              					newLeafNode(otherlv_12, grammarAccess.getGeneratorAccess().getOutKeyword_6_1_0());
+                              				
                             }
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:871:1: ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) )
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:872:1: (lv_targetTraceModel_13_0= ruleTargetTraceModel )
+                            // InternalArchitecture.g:879:5: ( (lv_targetTraceModel_13_0= ruleTargetTraceModel ) )
+                            // InternalArchitecture.g:880:6: (lv_targetTraceModel_13_0= ruleTargetTraceModel )
                             {
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:872:1: (lv_targetTraceModel_13_0= ruleTargetTraceModel )
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:873:3: lv_targetTraceModel_13_0= ruleTargetTraceModel
+                            // InternalArchitecture.g:880:6: (lv_targetTraceModel_13_0= ruleTargetTraceModel )
+                            // InternalArchitecture.g:881:7: lv_targetTraceModel_13_0= ruleTargetTraceModel
                             {
                             if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getGeneratorAccess().getTargetTraceModelTargetTraceModelParserRuleCall_6_1_1_0()); 
-                              	    
+
+                              							newCompositeNode(grammarAccess.getGeneratorAccess().getTargetTraceModelTargetTraceModelParserRuleCall_6_1_1_0());
+                              						
                             }
-                            pushFollow(FOLLOW_ruleTargetTraceModel_in_ruleGenerator1799);
+                            pushFollow(FOLLOW_25);
                             lv_targetTraceModel_13_0=ruleTargetTraceModel();
 
                             state._fsp--;
                             if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getGeneratorRule());
-                              	        }
-                                     		set(
-                                     			current, 
-                                     			"targetTraceModel",
-                                      		lv_targetTraceModel_13_0, 
-                                      		"TargetTraceModel");
-                              	        afterParserOrEnumRuleCall();
-                              	    
+                              							if (current==null) {
+                              								current = createModelElementForParent(grammarAccess.getGeneratorRule());
+                              							}
+                              							set(
+                              								current,
+                              								"targetTraceModel",
+                              								lv_targetTraceModel_13_0,
+                              								"de.cau.cs.se.geco.architecture.Architecture.TargetTraceModel");
+                              							afterParserOrEnumRuleCall();
+                              						
                             }
 
                             }
@@ -2470,7 +2502,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:889:4: (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )?
+                    // InternalArchitecture.g:899:4: (otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )* )?
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
@@ -2479,42 +2511,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt17) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:889:6: otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )*
+                            // InternalArchitecture.g:900:5: otherlv_14= 'in' ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) ) (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )*
                             {
-                            otherlv_14=(Token)match(input,32,FOLLOW_32_in_ruleGenerator1814); if (state.failed) return current;
+                            otherlv_14=(Token)match(input,32,FOLLOW_3); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_14, grammarAccess.getGeneratorAccess().getInKeyword_6_2_0());
-                                  
+                              					newLeafNode(otherlv_14, grammarAccess.getGeneratorAccess().getInKeyword_6_2_0());
+                              				
                             }
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:893:1: ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) )
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:894:1: (lv_sourceTraceModels_15_0= ruleTraceModelReference )
+                            // InternalArchitecture.g:904:5: ( (lv_sourceTraceModels_15_0= ruleTraceModelReference ) )
+                            // InternalArchitecture.g:905:6: (lv_sourceTraceModels_15_0= ruleTraceModelReference )
                             {
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:894:1: (lv_sourceTraceModels_15_0= ruleTraceModelReference )
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:895:3: lv_sourceTraceModels_15_0= ruleTraceModelReference
+                            // InternalArchitecture.g:905:6: (lv_sourceTraceModels_15_0= ruleTraceModelReference )
+                            // InternalArchitecture.g:906:7: lv_sourceTraceModels_15_0= ruleTraceModelReference
                             {
                             if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_1_0()); 
-                              	    
+
+                              							newCompositeNode(grammarAccess.getGeneratorAccess().getSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_1_0());
+                              						
                             }
-                            pushFollow(FOLLOW_ruleTraceModelReference_in_ruleGenerator1835);
+                            pushFollow(FOLLOW_11);
                             lv_sourceTraceModels_15_0=ruleTraceModelReference();
 
                             state._fsp--;
                             if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getGeneratorRule());
-                              	        }
-                                     		add(
-                                     			current, 
-                                     			"sourceTraceModels",
-                                      		lv_sourceTraceModels_15_0, 
-                                      		"TraceModelReference");
-                              	        afterParserOrEnumRuleCall();
-                              	    
+                              							if (current==null) {
+                              								current = createModelElementForParent(grammarAccess.getGeneratorRule());
+                              							}
+                              							add(
+                              								current,
+                              								"sourceTraceModels",
+                              								lv_sourceTraceModels_15_0,
+                              								"de.cau.cs.se.geco.architecture.Architecture.TraceModelReference");
+                              							afterParserOrEnumRuleCall();
+                              						
                             }
 
                             }
@@ -2522,7 +2554,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:911:2: (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )*
+                            // InternalArchitecture.g:923:5: (otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) ) )*
                             loop16:
                             do {
                                 int alt16=2;
@@ -2535,42 +2567,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                                 switch (alt16) {
                             	case 1 :
-                            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:911:4: otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) )
+                            	    // InternalArchitecture.g:924:6: otherlv_16= ',' ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) )
                             	    {
-                            	    otherlv_16=(Token)match(input,19,FOLLOW_19_in_ruleGenerator1848); if (state.failed) return current;
+                            	    otherlv_16=(Token)match(input,19,FOLLOW_3); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
-                            	          	newLeafNode(otherlv_16, grammarAccess.getGeneratorAccess().getCommaKeyword_6_2_2_0());
-                            	          
+                            	      						newLeafNode(otherlv_16, grammarAccess.getGeneratorAccess().getCommaKeyword_6_2_2_0());
+                            	      					
                             	    }
-                            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:915:1: ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) )
-                            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:916:1: (lv_sourceTraceModels_17_0= ruleTraceModelReference )
+                            	    // InternalArchitecture.g:928:6: ( (lv_sourceTraceModels_17_0= ruleTraceModelReference ) )
+                            	    // InternalArchitecture.g:929:7: (lv_sourceTraceModels_17_0= ruleTraceModelReference )
                             	    {
-                            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:916:1: (lv_sourceTraceModels_17_0= ruleTraceModelReference )
-                            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:917:3: lv_sourceTraceModels_17_0= ruleTraceModelReference
+                            	    // InternalArchitecture.g:929:7: (lv_sourceTraceModels_17_0= ruleTraceModelReference )
+                            	    // InternalArchitecture.g:930:8: lv_sourceTraceModels_17_0= ruleTraceModelReference
                             	    {
                             	    if ( state.backtracking==0 ) {
-                            	       
-                            	      	        newCompositeNode(grammarAccess.getGeneratorAccess().getSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_2_1_0()); 
-                            	      	    
+
+                            	      								newCompositeNode(grammarAccess.getGeneratorAccess().getSourceTraceModelsTraceModelReferenceParserRuleCall_6_2_2_1_0());
+                            	      							
                             	    }
-                            	    pushFollow(FOLLOW_ruleTraceModelReference_in_ruleGenerator1869);
+                            	    pushFollow(FOLLOW_11);
                             	    lv_sourceTraceModels_17_0=ruleTraceModelReference();
 
                             	    state._fsp--;
                             	    if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
-                            	      	        if (current==null) {
-                            	      	            current = createModelElementForParent(grammarAccess.getGeneratorRule());
-                            	      	        }
-                            	             		add(
-                            	             			current, 
-                            	             			"sourceTraceModels",
-                            	              		lv_sourceTraceModels_17_0, 
-                            	              		"TraceModelReference");
-                            	      	        afterParserOrEnumRuleCall();
-                            	      	    
+                            	      								if (current==null) {
+                            	      									current = createModelElementForParent(grammarAccess.getGeneratorRule());
+                            	      								}
+                            	      								add(
+                            	      									current,
+                            	      									"sourceTraceModels",
+                            	      									lv_sourceTraceModels_17_0,
+                            	      									"de.cau.cs.se.geco.architecture.Architecture.TraceModelReference");
+                            	      								afterParserOrEnumRuleCall();
+                            	      							
                             	    }
 
                             	    }
@@ -2606,14 +2638,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -2622,7 +2656,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSourceModelSelector"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:941:1: entryRuleSourceModelSelector returns [EObject current=null] : iv_ruleSourceModelSelector= ruleSourceModelSelector EOF ;
+    // InternalArchitecture.g:954:1: entryRuleSourceModelSelector returns [EObject current=null] : iv_ruleSourceModelSelector= ruleSourceModelSelector EOF ;
     public final EObject entryRuleSourceModelSelector() throws RecognitionException {
         EObject current = null;
 
@@ -2630,13 +2664,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:942:2: (iv_ruleSourceModelSelector= ruleSourceModelSelector EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:943:2: iv_ruleSourceModelSelector= ruleSourceModelSelector EOF
+            // InternalArchitecture.g:954:60: (iv_ruleSourceModelSelector= ruleSourceModelSelector EOF )
+            // InternalArchitecture.g:955:2: iv_ruleSourceModelSelector= ruleSourceModelSelector EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSourceModelSelectorRule()); 
             }
-            pushFollow(FOLLOW_ruleSourceModelSelector_in_entryRuleSourceModelSelector1911);
+            pushFollow(FOLLOW_1);
             iv_ruleSourceModelSelector=ruleSourceModelSelector();
 
             state._fsp--;
@@ -2644,16 +2678,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleSourceModelSelector; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSourceModelSelector1921); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -2662,7 +2696,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSourceModelSelector"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:950:1: ruleSourceModelSelector returns [EObject current=null] : ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) ) ;
+    // InternalArchitecture.g:961:1: ruleSourceModelSelector returns [EObject current=null] : ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) ) ;
     public final EObject ruleSourceModelSelector() throws RecognitionException {
         EObject current = null;
 
@@ -2676,13 +2710,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_property_5_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:953:28: ( ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:954:1: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) )
+            // InternalArchitecture.g:967:2: ( ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) ) )
+            // InternalArchitecture.g:968:2: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:954:1: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) )
+            // InternalArchitecture.g:968:2: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? ) | ( () otherlv_7= 'null' ) )
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -2701,29 +2736,29 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt21) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:954:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? )
+                    // InternalArchitecture.g:969:3: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:954:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:954:3: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )?
+                    // InternalArchitecture.g:969:3: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )? )
+                    // InternalArchitecture.g:970:4: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )?
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:954:3: ( (otherlv_0= RULE_ID ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:955:1: (otherlv_0= RULE_ID )
+                    // InternalArchitecture.g:970:4: ( (otherlv_0= RULE_ID ) )
+                    // InternalArchitecture.g:971:5: (otherlv_0= RULE_ID )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:955:1: (otherlv_0= RULE_ID )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:956:3: otherlv_0= RULE_ID
+                    // InternalArchitecture.g:971:5: (otherlv_0= RULE_ID )
+                    // InternalArchitecture.g:972:6: otherlv_0= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
 
-                      			if (current==null) {
-                      	            current = createModelElement(grammarAccess.getSourceModelSelectorRule());
-                      	        }
-                              
+                      						if (current==null) {
+                      							current = createModelElement(grammarAccess.getSourceModelSelectorRule());
+                      						}
+                      					
                     }
-                    otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleSourceModelSelector1967); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,RULE_ID,FOLLOW_26); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      		newLeafNode(otherlv_0, grammarAccess.getSourceModelSelectorAccess().getReferenceModelCrossReference_0_0_0()); 
-                      	
+                      						newLeafNode(otherlv_0, grammarAccess.getSourceModelSelectorAccess().getReferenceModelCrossReference_0_0_0());
+                      					
                     }
 
                     }
@@ -2731,7 +2766,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:967:2: (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )?
+                    // InternalArchitecture.g:983:4: (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )?
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
@@ -2740,42 +2775,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt19) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:967:4: otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']'
+                            // InternalArchitecture.g:984:5: otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']'
                             {
-                            otherlv_1=(Token)match(input,33,FOLLOW_33_in_ruleSourceModelSelector1980); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,33,FOLLOW_27); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_1, grammarAccess.getSourceModelSelectorAccess().getLeftSquareBracketKeyword_0_1_0());
-                                  
+                              					newLeafNode(otherlv_1, grammarAccess.getSourceModelSelectorAccess().getLeftSquareBracketKeyword_0_1_0());
+                              				
                             }
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:971:1: ( (lv_constraint_2_0= ruleConstraintExpression ) )
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:972:1: (lv_constraint_2_0= ruleConstraintExpression )
+                            // InternalArchitecture.g:988:5: ( (lv_constraint_2_0= ruleConstraintExpression ) )
+                            // InternalArchitecture.g:989:6: (lv_constraint_2_0= ruleConstraintExpression )
                             {
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:972:1: (lv_constraint_2_0= ruleConstraintExpression )
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:973:3: lv_constraint_2_0= ruleConstraintExpression
+                            // InternalArchitecture.g:989:6: (lv_constraint_2_0= ruleConstraintExpression )
+                            // InternalArchitecture.g:990:7: lv_constraint_2_0= ruleConstraintExpression
                             {
                             if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getSourceModelSelectorAccess().getConstraintConstraintExpressionParserRuleCall_0_1_1_0()); 
-                              	    
+
+                              							newCompositeNode(grammarAccess.getSourceModelSelectorAccess().getConstraintConstraintExpressionParserRuleCall_0_1_1_0());
+                              						
                             }
-                            pushFollow(FOLLOW_ruleConstraintExpression_in_ruleSourceModelSelector2001);
+                            pushFollow(FOLLOW_28);
                             lv_constraint_2_0=ruleConstraintExpression();
 
                             state._fsp--;
                             if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getSourceModelSelectorRule());
-                              	        }
-                                     		set(
-                                     			current, 
-                                     			"constraint",
-                                      		lv_constraint_2_0, 
-                                      		"ConstraintExpression");
-                              	        afterParserOrEnumRuleCall();
-                              	    
+                              							if (current==null) {
+                              								current = createModelElementForParent(grammarAccess.getSourceModelSelectorRule());
+                              							}
+                              							set(
+                              								current,
+                              								"constraint",
+                              								lv_constraint_2_0,
+                              								"de.cau.cs.se.geco.architecture.Architecture.ConstraintExpression");
+                              							afterParserOrEnumRuleCall();
+                              						
                             }
 
                             }
@@ -2783,11 +2818,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                             }
 
-                            otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleSourceModelSelector2013); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,34,FOLLOW_29); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_3, grammarAccess.getSourceModelSelectorAccess().getRightSquareBracketKeyword_0_1_2());
-                                  
+                              					newLeafNode(otherlv_3, grammarAccess.getSourceModelSelectorAccess().getRightSquareBracketKeyword_0_1_2());
+                              				
                             }
 
                             }
@@ -2795,7 +2830,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:993:3: (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )?
+                    // InternalArchitecture.g:1012:4: (otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) ) )?
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
@@ -2804,42 +2839,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     switch (alt20) {
                         case 1 :
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:993:5: otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) )
+                            // InternalArchitecture.g:1013:5: otherlv_4= '/' ( (lv_property_5_0= ruleNodeProperty ) )
                             {
-                            otherlv_4=(Token)match(input,35,FOLLOW_35_in_ruleSourceModelSelector2028); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,35,FOLLOW_3); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                                  	newLeafNode(otherlv_4, grammarAccess.getSourceModelSelectorAccess().getSolidusKeyword_0_2_0());
-                                  
+                              					newLeafNode(otherlv_4, grammarAccess.getSourceModelSelectorAccess().getSolidusKeyword_0_2_0());
+                              				
                             }
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:997:1: ( (lv_property_5_0= ruleNodeProperty ) )
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:998:1: (lv_property_5_0= ruleNodeProperty )
+                            // InternalArchitecture.g:1017:5: ( (lv_property_5_0= ruleNodeProperty ) )
+                            // InternalArchitecture.g:1018:6: (lv_property_5_0= ruleNodeProperty )
                             {
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:998:1: (lv_property_5_0= ruleNodeProperty )
-                            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:999:3: lv_property_5_0= ruleNodeProperty
+                            // InternalArchitecture.g:1018:6: (lv_property_5_0= ruleNodeProperty )
+                            // InternalArchitecture.g:1019:7: lv_property_5_0= ruleNodeProperty
                             {
                             if ( state.backtracking==0 ) {
-                               
-                              	        newCompositeNode(grammarAccess.getSourceModelSelectorAccess().getPropertyNodePropertyParserRuleCall_0_2_1_0()); 
-                              	    
+
+                              							newCompositeNode(grammarAccess.getSourceModelSelectorAccess().getPropertyNodePropertyParserRuleCall_0_2_1_0());
+                              						
                             }
-                            pushFollow(FOLLOW_ruleNodeProperty_in_ruleSourceModelSelector2049);
+                            pushFollow(FOLLOW_2);
                             lv_property_5_0=ruleNodeProperty();
 
                             state._fsp--;
                             if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
-                              	        if (current==null) {
-                              	            current = createModelElementForParent(grammarAccess.getSourceModelSelectorRule());
-                              	        }
-                                     		set(
-                                     			current, 
-                                     			"property",
-                                      		lv_property_5_0, 
-                                      		"NodeProperty");
-                              	        afterParserOrEnumRuleCall();
-                              	    
+                              							if (current==null) {
+                              								current = createModelElementForParent(grammarAccess.getSourceModelSelectorRule());
+                              							}
+                              							set(
+                              								current,
+                              								"property",
+                              								lv_property_5_0,
+                              								"de.cau.cs.se.geco.architecture.Architecture.NodeProperty");
+                              							afterParserOrEnumRuleCall();
+                              						
                             }
 
                             }
@@ -2860,29 +2895,29 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1016:6: ( () otherlv_7= 'null' )
+                    // InternalArchitecture.g:1039:3: ( () otherlv_7= 'null' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1016:6: ( () otherlv_7= 'null' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1016:7: () otherlv_7= 'null'
+                    // InternalArchitecture.g:1039:3: ( () otherlv_7= 'null' )
+                    // InternalArchitecture.g:1040:4: () otherlv_7= 'null'
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1016:7: ()
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1017:5: 
+                    // InternalArchitecture.g:1040:4: ()
+                    // InternalArchitecture.g:1041:5: 
                     {
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElement(
-                                  grammarAccess.getSourceModelSelectorAccess().getSourceModelSelectorAction_1_0(),
-                                  current);
-                          
+                      					current = forceCreateModelElement(
+                      						grammarAccess.getSourceModelSelectorAccess().getSourceModelSelectorAction_1_0(),
+                      						current);
+                      				
                     }
 
                     }
 
-                    otherlv_7=(Token)match(input,36,FOLLOW_36_in_ruleSourceModelSelector2080); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,36,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_7, grammarAccess.getSourceModelSelectorAccess().getNullKeyword_1_1());
-                          
+                      				newLeafNode(otherlv_7, grammarAccess.getSourceModelSelectorAccess().getNullKeyword_1_1());
+                      			
                     }
 
                     }
@@ -2897,14 +2932,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -2913,7 +2950,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTargetModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1034:1: entryRuleTargetModel returns [EObject current=null] : iv_ruleTargetModel= ruleTargetModel EOF ;
+    // InternalArchitecture.g:1056:1: entryRuleTargetModel returns [EObject current=null] : iv_ruleTargetModel= ruleTargetModel EOF ;
     public final EObject entryRuleTargetModel() throws RecognitionException {
         EObject current = null;
 
@@ -2921,13 +2958,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1035:2: (iv_ruleTargetModel= ruleTargetModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1036:2: iv_ruleTargetModel= ruleTargetModel EOF
+            // InternalArchitecture.g:1056:52: (iv_ruleTargetModel= ruleTargetModel EOF )
+            // InternalArchitecture.g:1057:2: iv_ruleTargetModel= ruleTargetModel EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTargetModelRule()); 
             }
-            pushFollow(FOLLOW_ruleTargetModel_in_entryRuleTargetModel2117);
+            pushFollow(FOLLOW_1);
             iv_ruleTargetModel=ruleTargetModel();
 
             state._fsp--;
@@ -2935,16 +2972,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTargetModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTargetModel2127); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -2953,52 +2990,53 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTargetModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1043:1: ruleTargetModel returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) ) ;
+    // InternalArchitecture.g:1063:1: ruleTargetModel returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) ) ;
     public final EObject ruleTargetModel() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1046:28: ( ( () ( (otherlv_1= RULE_ID ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1047:1: ( () ( (otherlv_1= RULE_ID ) ) )
+            // InternalArchitecture.g:1069:2: ( ( () ( (otherlv_1= RULE_ID ) ) ) )
+            // InternalArchitecture.g:1070:2: ( () ( (otherlv_1= RULE_ID ) ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1047:1: ( () ( (otherlv_1= RULE_ID ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1047:2: () ( (otherlv_1= RULE_ID ) )
+            // InternalArchitecture.g:1070:2: ( () ( (otherlv_1= RULE_ID ) ) )
+            // InternalArchitecture.g:1071:3: () ( (otherlv_1= RULE_ID ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1047:2: ()
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1048:5: 
-            {
-            if ( state.backtracking==0 ) {
-
-                      current = forceCreateModelElement(
-                          grammarAccess.getTargetModelAccess().getTargetModelAction_0(),
-                          current);
-                  
-            }
-
-            }
-
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1053:2: ( (otherlv_1= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1054:1: (otherlv_1= RULE_ID )
-            {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1054:1: (otherlv_1= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1055:3: otherlv_1= RULE_ID
+            // InternalArchitecture.g:1071:3: ()
+            // InternalArchitecture.g:1072:4: 
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getTargetModelRule());
-              	        }
-                      
+              				current = forceCreateModelElement(
+              					grammarAccess.getTargetModelAccess().getTargetModelAction_0(),
+              					current);
+              			
             }
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTargetModel2181); if (state.failed) return current;
+
+            }
+
+            // InternalArchitecture.g:1078:3: ( (otherlv_1= RULE_ID ) )
+            // InternalArchitecture.g:1079:4: (otherlv_1= RULE_ID )
+            {
+            // InternalArchitecture.g:1079:4: (otherlv_1= RULE_ID )
+            // InternalArchitecture.g:1080:5: otherlv_1= RULE_ID
+            {
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_1, grammarAccess.getTargetModelAccess().getReferenceModelCrossReference_1_0()); 
-              	
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getTargetModelRule());
+              					}
+              				
+            }
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              					newLeafNode(otherlv_1, grammarAccess.getTargetModelAccess().getReferenceModelCrossReference_1_0());
+              				
             }
 
             }
@@ -3013,14 +3051,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3029,7 +3069,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleModelType"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1074:1: entryRuleModelType returns [EObject current=null] : iv_ruleModelType= ruleModelType EOF ;
+    // InternalArchitecture.g:1095:1: entryRuleModelType returns [EObject current=null] : iv_ruleModelType= ruleModelType EOF ;
     public final EObject entryRuleModelType() throws RecognitionException {
         EObject current = null;
 
@@ -3037,13 +3077,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1075:2: (iv_ruleModelType= ruleModelType EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1076:2: iv_ruleModelType= ruleModelType EOF
+            // InternalArchitecture.g:1095:50: (iv_ruleModelType= ruleModelType EOF )
+            // InternalArchitecture.g:1096:2: iv_ruleModelType= ruleModelType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getModelTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleModelType_in_entryRuleModelType2217);
+            pushFollow(FOLLOW_1);
             iv_ruleModelType=ruleModelType();
 
             state._fsp--;
@@ -3051,16 +3091,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleModelType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleModelType2227); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3069,7 +3109,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModelType"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1083:1: ruleModelType returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? ) ;
+    // InternalArchitecture.g:1102:1: ruleModelType returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? ) ;
     public final EObject ruleModelType() throws RecognitionException {
         EObject current = null;
 
@@ -3079,33 +3119,34 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_property_2_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1086:28: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1087:1: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? )
+            // InternalArchitecture.g:1108:2: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? ) )
+            // InternalArchitecture.g:1109:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1087:1: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1087:2: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )?
+            // InternalArchitecture.g:1109:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )? )
+            // InternalArchitecture.g:1110:3: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )? ( (lv_collection_3_0= '[]' ) )?
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1087:2: ( (otherlv_0= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1088:1: (otherlv_0= RULE_ID )
+            // InternalArchitecture.g:1110:3: ( (otherlv_0= RULE_ID ) )
+            // InternalArchitecture.g:1111:4: (otherlv_0= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1088:1: (otherlv_0= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1089:3: otherlv_0= RULE_ID
+            // InternalArchitecture.g:1111:4: (otherlv_0= RULE_ID )
+            // InternalArchitecture.g:1112:5: otherlv_0= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getModelTypeRule());
-              	        }
-                      
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getModelTypeRule());
+              					}
+              				
             }
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleModelType2272); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_30); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_0, grammarAccess.getModelTypeAccess().getTargetRegisteredRootClassCrossReference_0_0()); 
-              	
+              					newLeafNode(otherlv_0, grammarAccess.getModelTypeAccess().getTargetRegisteredRootClassCrossReference_0_0());
+              				
             }
 
             }
@@ -3113,7 +3154,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1100:2: (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )?
+            // InternalArchitecture.g:1123:3: (otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) ) )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
@@ -3122,42 +3163,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt22) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1100:4: otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) )
+                    // InternalArchitecture.g:1124:4: otherlv_1= '/' ( (lv_property_2_0= ruleNodeProperty ) )
                     {
-                    otherlv_1=(Token)match(input,35,FOLLOW_35_in_ruleModelType2285); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,35,FOLLOW_3); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_1, grammarAccess.getModelTypeAccess().getSolidusKeyword_1_0());
-                          
+                      				newLeafNode(otherlv_1, grammarAccess.getModelTypeAccess().getSolidusKeyword_1_0());
+                      			
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1104:1: ( (lv_property_2_0= ruleNodeProperty ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1105:1: (lv_property_2_0= ruleNodeProperty )
+                    // InternalArchitecture.g:1128:4: ( (lv_property_2_0= ruleNodeProperty ) )
+                    // InternalArchitecture.g:1129:5: (lv_property_2_0= ruleNodeProperty )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1105:1: (lv_property_2_0= ruleNodeProperty )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1106:3: lv_property_2_0= ruleNodeProperty
+                    // InternalArchitecture.g:1129:5: (lv_property_2_0= ruleNodeProperty )
+                    // InternalArchitecture.g:1130:6: lv_property_2_0= ruleNodeProperty
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getModelTypeAccess().getPropertyNodePropertyParserRuleCall_1_1_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getModelTypeAccess().getPropertyNodePropertyParserRuleCall_1_1_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleNodeProperty_in_ruleModelType2306);
+                    pushFollow(FOLLOW_31);
                     lv_property_2_0=ruleNodeProperty();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getModelTypeRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"property",
-                              		lv_property_2_0, 
-                              		"NodeProperty");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getModelTypeRule());
+                      						}
+                      						set(
+                      							current,
+                      							"property",
+                      							lv_property_2_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.NodeProperty");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -3171,7 +3212,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1122:4: ( (lv_collection_3_0= '[]' ) )?
+            // InternalArchitecture.g:1148:3: ( (lv_collection_3_0= '[]' ) )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -3180,24 +3221,24 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt23) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1123:1: (lv_collection_3_0= '[]' )
+                    // InternalArchitecture.g:1149:4: (lv_collection_3_0= '[]' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1123:1: (lv_collection_3_0= '[]' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1124:3: lv_collection_3_0= '[]'
+                    // InternalArchitecture.g:1149:4: (lv_collection_3_0= '[]' )
+                    // InternalArchitecture.g:1150:5: lv_collection_3_0= '[]'
                     {
-                    lv_collection_3_0=(Token)match(input,37,FOLLOW_37_in_ruleModelType2326); if (state.failed) return current;
+                    lv_collection_3_0=(Token)match(input,37,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              newLeafNode(lv_collection_3_0, grammarAccess.getModelTypeAccess().getCollectionLeftSquareBracketRightSquareBracketKeyword_2_0());
-                          
+                      					newLeafNode(lv_collection_3_0, grammarAccess.getModelTypeAccess().getCollectionLeftSquareBracketRightSquareBracketKeyword_2_0());
+                      				
                     }
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getModelTypeRule());
-                      	        }
-                             		setWithLastConsumed(current, "collection", true, "[]");
-                      	    
+                      					if (current==null) {
+                      						current = createModelElement(grammarAccess.getModelTypeRule());
+                      					}
+                      					setWithLastConsumed(current, "collection", true, "[]");
+                      				
                     }
 
                     }
@@ -3215,14 +3256,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3231,7 +3274,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNodeProperty"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1145:1: entryRuleNodeProperty returns [EObject current=null] : iv_ruleNodeProperty= ruleNodeProperty EOF ;
+    // InternalArchitecture.g:1166:1: entryRuleNodeProperty returns [EObject current=null] : iv_ruleNodeProperty= ruleNodeProperty EOF ;
     public final EObject entryRuleNodeProperty() throws RecognitionException {
         EObject current = null;
 
@@ -3239,13 +3282,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1146:2: (iv_ruleNodeProperty= ruleNodeProperty EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1147:2: iv_ruleNodeProperty= ruleNodeProperty EOF
+            // InternalArchitecture.g:1166:53: (iv_ruleNodeProperty= ruleNodeProperty EOF )
+            // InternalArchitecture.g:1167:2: iv_ruleNodeProperty= ruleNodeProperty EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNodePropertyRule()); 
             }
-            pushFollow(FOLLOW_ruleNodeProperty_in_entryRuleNodeProperty2376);
+            pushFollow(FOLLOW_1);
             iv_ruleNodeProperty=ruleNodeProperty();
 
             state._fsp--;
@@ -3253,16 +3296,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNodeProperty; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNodeProperty2386); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3271,7 +3314,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNodeProperty"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1154:1: ruleNodeProperty returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )? ) ;
+    // InternalArchitecture.g:1173:1: ruleNodeProperty returns [EObject current=null] : ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )? ) ;
     public final EObject ruleNodeProperty() throws RecognitionException {
         EObject current = null;
 
@@ -3284,33 +3327,34 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_subProperty_5_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1157:28: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )? ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1158:1: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )? )
+            // InternalArchitecture.g:1179:2: ( ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )? ) )
+            // InternalArchitecture.g:1180:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )? )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1158:1: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1158:2: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )?
+            // InternalArchitecture.g:1180:2: ( ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )? )
+            // InternalArchitecture.g:1181:3: ( (otherlv_0= RULE_ID ) ) (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )? (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )?
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1158:2: ( (otherlv_0= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1159:1: (otherlv_0= RULE_ID )
+            // InternalArchitecture.g:1181:3: ( (otherlv_0= RULE_ID ) )
+            // InternalArchitecture.g:1182:4: (otherlv_0= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1159:1: (otherlv_0= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1160:3: otherlv_0= RULE_ID
+            // InternalArchitecture.g:1182:4: (otherlv_0= RULE_ID )
+            // InternalArchitecture.g:1183:5: otherlv_0= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getNodePropertyRule());
-              	        }
-                      
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getNodePropertyRule());
+              					}
+              				
             }
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleNodeProperty2431); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_26); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_0, grammarAccess.getNodePropertyAccess().getPropertyJvmMemberCrossReference_0_0()); 
-              	
+              					newLeafNode(otherlv_0, grammarAccess.getNodePropertyAccess().getPropertyJvmMemberCrossReference_0_0());
+              				
             }
 
             }
@@ -3318,7 +3362,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1171:2: (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )?
+            // InternalArchitecture.g:1194:3: (otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']' )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -3327,42 +3371,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt24) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1171:4: otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']'
+                    // InternalArchitecture.g:1195:4: otherlv_1= '[' ( (lv_constraint_2_0= ruleConstraintExpression ) ) otherlv_3= ']'
                     {
-                    otherlv_1=(Token)match(input,33,FOLLOW_33_in_ruleNodeProperty2444); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,33,FOLLOW_27); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_1, grammarAccess.getNodePropertyAccess().getLeftSquareBracketKeyword_1_0());
-                          
+                      				newLeafNode(otherlv_1, grammarAccess.getNodePropertyAccess().getLeftSquareBracketKeyword_1_0());
+                      			
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1175:1: ( (lv_constraint_2_0= ruleConstraintExpression ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1176:1: (lv_constraint_2_0= ruleConstraintExpression )
+                    // InternalArchitecture.g:1199:4: ( (lv_constraint_2_0= ruleConstraintExpression ) )
+                    // InternalArchitecture.g:1200:5: (lv_constraint_2_0= ruleConstraintExpression )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1176:1: (lv_constraint_2_0= ruleConstraintExpression )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1177:3: lv_constraint_2_0= ruleConstraintExpression
+                    // InternalArchitecture.g:1200:5: (lv_constraint_2_0= ruleConstraintExpression )
+                    // InternalArchitecture.g:1201:6: lv_constraint_2_0= ruleConstraintExpression
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getNodePropertyAccess().getConstraintConstraintExpressionParserRuleCall_1_1_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getNodePropertyAccess().getConstraintConstraintExpressionParserRuleCall_1_1_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleConstraintExpression_in_ruleNodeProperty2465);
+                    pushFollow(FOLLOW_28);
                     lv_constraint_2_0=ruleConstraintExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getNodePropertyRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"constraint",
-                              		lv_constraint_2_0, 
-                              		"ConstraintExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getNodePropertyRule());
+                      						}
+                      						set(
+                      							current,
+                      							"constraint",
+                      							lv_constraint_2_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.ConstraintExpression");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -3370,11 +3414,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleNodeProperty2477); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,34,FOLLOW_29); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_3, grammarAccess.getNodePropertyAccess().getRightSquareBracketKeyword_1_2());
-                          
+                      				newLeafNode(otherlv_3, grammarAccess.getNodePropertyAccess().getRightSquareBracketKeyword_1_2());
+                      			
                     }
 
                     }
@@ -3382,7 +3426,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1197:3: (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )?
+            // InternalArchitecture.g:1223:3: (otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) ) )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -3391,42 +3435,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt25) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1197:5: otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) )
+                    // InternalArchitecture.g:1224:4: otherlv_4= '/' ( (lv_subProperty_5_0= ruleNodeProperty ) )
                     {
-                    otherlv_4=(Token)match(input,35,FOLLOW_35_in_ruleNodeProperty2492); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,35,FOLLOW_3); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_4, grammarAccess.getNodePropertyAccess().getSolidusKeyword_2_0());
-                          
+                      				newLeafNode(otherlv_4, grammarAccess.getNodePropertyAccess().getSolidusKeyword_2_0());
+                      			
                     }
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1201:1: ( (lv_subProperty_5_0= ruleNodeProperty ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1202:1: (lv_subProperty_5_0= ruleNodeProperty )
+                    // InternalArchitecture.g:1228:4: ( (lv_subProperty_5_0= ruleNodeProperty ) )
+                    // InternalArchitecture.g:1229:5: (lv_subProperty_5_0= ruleNodeProperty )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1202:1: (lv_subProperty_5_0= ruleNodeProperty )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1203:3: lv_subProperty_5_0= ruleNodeProperty
+                    // InternalArchitecture.g:1229:5: (lv_subProperty_5_0= ruleNodeProperty )
+                    // InternalArchitecture.g:1230:6: lv_subProperty_5_0= ruleNodeProperty
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getNodePropertyAccess().getSubPropertyNodePropertyParserRuleCall_2_1_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getNodePropertyAccess().getSubPropertyNodePropertyParserRuleCall_2_1_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleNodeProperty_in_ruleNodeProperty2513);
+                    pushFollow(FOLLOW_2);
                     lv_subProperty_5_0=ruleNodeProperty();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getNodePropertyRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"subProperty",
-                              		lv_subProperty_5_0, 
-                              		"NodeProperty");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getNodePropertyRule());
+                      						}
+                      						set(
+                      							current,
+                      							"subProperty",
+                      							lv_subProperty_5_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.NodeProperty");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -3447,14 +3491,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3463,7 +3509,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConstraintExpression"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1227:1: entryRuleConstraintExpression returns [EObject current=null] : iv_ruleConstraintExpression= ruleConstraintExpression EOF ;
+    // InternalArchitecture.g:1252:1: entryRuleConstraintExpression returns [EObject current=null] : iv_ruleConstraintExpression= ruleConstraintExpression EOF ;
     public final EObject entryRuleConstraintExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3471,13 +3517,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1228:2: (iv_ruleConstraintExpression= ruleConstraintExpression EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1229:2: iv_ruleConstraintExpression= ruleConstraintExpression EOF
+            // InternalArchitecture.g:1252:61: (iv_ruleConstraintExpression= ruleConstraintExpression EOF )
+            // InternalArchitecture.g:1253:2: iv_ruleConstraintExpression= ruleConstraintExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConstraintExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleConstraintExpression_in_entryRuleConstraintExpression2551);
+            pushFollow(FOLLOW_1);
             iv_ruleConstraintExpression=ruleConstraintExpression();
 
             state._fsp--;
@@ -3485,16 +3531,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleConstraintExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstraintExpression2561); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3503,7 +3549,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConstraintExpression"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1236:1: ruleConstraintExpression returns [EObject current=null] : (this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )? ) ;
+    // InternalArchitecture.g:1259:1: ruleConstraintExpression returns [EObject current=null] : (this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )? ) ;
     public final EObject ruleConstraintExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3514,32 +3560,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_right_3_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1239:28: ( (this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )? ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1240:1: (this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )? )
+            // InternalArchitecture.g:1265:2: ( (this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )? ) )
+            // InternalArchitecture.g:1266:2: (this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )? )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1240:1: (this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1241:5: this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )?
+            // InternalArchitecture.g:1266:2: (this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )? )
+            // InternalArchitecture.g:1267:3: this_CompareExpression_0= ruleCompareExpression ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )?
             {
             if ( state.backtracking==0 ) {
-               
-                      newCompositeNode(grammarAccess.getConstraintExpressionAccess().getCompareExpressionParserRuleCall_0()); 
-                  
+
+              			newCompositeNode(grammarAccess.getConstraintExpressionAccess().getCompareExpressionParserRuleCall_0());
+              		
             }
-            pushFollow(FOLLOW_ruleCompareExpression_in_ruleConstraintExpression2608);
+            pushFollow(FOLLOW_32);
             this_CompareExpression_0=ruleCompareExpression();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               
-                      current = this_CompareExpression_0; 
-                      afterParserOrEnumRuleCall();
-                  
+
+              			current = this_CompareExpression_0;
+              			afterParserOrEnumRuleCall();
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:1: ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )?
+            // InternalArchitecture.g:1275:3: ( ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) ) )?
             int alt26=2;
             int LA26_0 = input.LA(1);
 
@@ -3559,55 +3606,55 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt26) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:2: ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) )
+                    // InternalArchitecture.g:1276:4: ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) ) ( (lv_right_3_0= ruleConstraintExpression ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:2: ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:3: ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) )
+                    // InternalArchitecture.g:1276:4: ( ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) ) )
+                    // InternalArchitecture.g:1277:5: ( ( () ( ( ruleLogicOperator ) ) ) )=> ( () ( (lv_operator_2_0= ruleLogicOperator ) ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1254:6: ( () ( (lv_operator_2_0= ruleLogicOperator ) ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1254:7: () ( (lv_operator_2_0= ruleLogicOperator ) )
+                    // InternalArchitecture.g:1287:5: ( () ( (lv_operator_2_0= ruleLogicOperator ) ) )
+                    // InternalArchitecture.g:1288:6: () ( (lv_operator_2_0= ruleLogicOperator ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1254:7: ()
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1255:5: 
+                    // InternalArchitecture.g:1288:6: ()
+                    // InternalArchitecture.g:1289:7: 
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      							current = forceCreateModelElementAndSet(
+                      								grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0(),
+                      								current);
+                      						
+                    }
+
+                    }
+
+                    // InternalArchitecture.g:1295:6: ( (lv_operator_2_0= ruleLogicOperator ) )
+                    // InternalArchitecture.g:1296:7: (lv_operator_2_0= ruleLogicOperator )
+                    {
+                    // InternalArchitecture.g:1296:7: (lv_operator_2_0= ruleLogicOperator )
+                    // InternalArchitecture.g:1297:8: lv_operator_2_0= ruleLogicOperator
                     {
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElementAndSet(
-                                  grammarAccess.getConstraintExpressionAccess().getConstraintExpressionLeftAction_1_0_0_0(),
-                                  current);
-                          
+                      								newCompositeNode(grammarAccess.getConstraintExpressionAccess().getOperatorLogicOperatorEnumRuleCall_1_0_0_1_0());
+                      							
                     }
-
-                    }
-
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1260:2: ( (lv_operator_2_0= ruleLogicOperator ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1261:1: (lv_operator_2_0= ruleLogicOperator )
-                    {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1261:1: (lv_operator_2_0= ruleLogicOperator )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1262:3: lv_operator_2_0= ruleLogicOperator
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getConstraintExpressionAccess().getOperatorLogicOperatorEnumRuleCall_1_0_0_1_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleLogicOperator_in_ruleConstraintExpression2657);
+                    pushFollow(FOLLOW_27);
                     lv_operator_2_0=ruleLogicOperator();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getConstraintExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"operator",
-                              		lv_operator_2_0, 
-                              		"LogicOperator");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      								if (current==null) {
+                      									current = createModelElementForParent(grammarAccess.getConstraintExpressionRule());
+                      								}
+                      								set(
+                      									current,
+                      									"operator",
+                      									lv_operator_2_0,
+                      									"de.cau.cs.se.geco.architecture.Architecture.LogicOperator");
+                      								afterParserOrEnumRuleCall();
+                      							
                     }
 
                     }
@@ -3621,34 +3668,34 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1278:4: ( (lv_right_3_0= ruleConstraintExpression ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1279:1: (lv_right_3_0= ruleConstraintExpression )
+                    // InternalArchitecture.g:1316:4: ( (lv_right_3_0= ruleConstraintExpression ) )
+                    // InternalArchitecture.g:1317:5: (lv_right_3_0= ruleConstraintExpression )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1279:1: (lv_right_3_0= ruleConstraintExpression )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1280:3: lv_right_3_0= ruleConstraintExpression
+                    // InternalArchitecture.g:1317:5: (lv_right_3_0= ruleConstraintExpression )
+                    // InternalArchitecture.g:1318:6: lv_right_3_0= ruleConstraintExpression
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getConstraintExpressionAccess().getRightConstraintExpressionParserRuleCall_1_1_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getConstraintExpressionAccess().getRightConstraintExpressionParserRuleCall_1_1_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleConstraintExpression_in_ruleConstraintExpression2680);
+                    pushFollow(FOLLOW_2);
                     lv_right_3_0=ruleConstraintExpression();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getConstraintExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"right",
-                              		lv_right_3_0, 
-                              		"ConstraintExpression");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getConstraintExpressionRule());
+                      						}
+                      						set(
+                      							current,
+                      							"right",
+                      							lv_right_3_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.ConstraintExpression");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -3669,14 +3716,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3685,7 +3734,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCompareExpression"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1304:1: entryRuleCompareExpression returns [EObject current=null] : iv_ruleCompareExpression= ruleCompareExpression EOF ;
+    // InternalArchitecture.g:1340:1: entryRuleCompareExpression returns [EObject current=null] : iv_ruleCompareExpression= ruleCompareExpression EOF ;
     public final EObject entryRuleCompareExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3693,13 +3742,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1305:2: (iv_ruleCompareExpression= ruleCompareExpression EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1306:2: iv_ruleCompareExpression= ruleCompareExpression EOF
+            // InternalArchitecture.g:1340:58: (iv_ruleCompareExpression= ruleCompareExpression EOF )
+            // InternalArchitecture.g:1341:2: iv_ruleCompareExpression= ruleCompareExpression EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCompareExpressionRule()); 
             }
-            pushFollow(FOLLOW_ruleCompareExpression_in_entryRuleCompareExpression2718);
+            pushFollow(FOLLOW_1);
             iv_ruleCompareExpression=ruleCompareExpression();
 
             state._fsp--;
@@ -3707,16 +3756,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCompareExpression; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCompareExpression2728); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3725,7 +3774,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCompareExpression"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1313:1: ruleCompareExpression returns [EObject current=null] : (this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )? ) ;
+    // InternalArchitecture.g:1347:1: ruleCompareExpression returns [EObject current=null] : (this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )? ) ;
     public final EObject ruleCompareExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3736,85 +3785,86 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_right_3_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1316:28: ( (this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )? ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1317:1: (this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )? )
+            // InternalArchitecture.g:1353:2: ( (this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )? ) )
+            // InternalArchitecture.g:1354:2: (this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )? )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1317:1: (this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )? )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1318:5: this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )?
+            // InternalArchitecture.g:1354:2: (this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )? )
+            // InternalArchitecture.g:1355:3: this_BasicConstraint_0= ruleBasicConstraint ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )?
             {
             if ( state.backtracking==0 ) {
-               
-                      newCompositeNode(grammarAccess.getCompareExpressionAccess().getBasicConstraintParserRuleCall_0()); 
-                  
+
+              			newCompositeNode(grammarAccess.getCompareExpressionAccess().getBasicConstraintParserRuleCall_0());
+              		
             }
-            pushFollow(FOLLOW_ruleBasicConstraint_in_ruleCompareExpression2775);
+            pushFollow(FOLLOW_33);
             this_BasicConstraint_0=ruleBasicConstraint();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               
-                      current = this_BasicConstraint_0; 
-                      afterParserOrEnumRuleCall();
-                  
+
+              			current = this_BasicConstraint_0;
+              			afterParserOrEnumRuleCall();
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:1: ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )?
+            // InternalArchitecture.g:1363:3: ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )?
             int alt27=2;
             alt27 = dfa27.predict(input);
             switch (alt27) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:2: ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) )
+                    // InternalArchitecture.g:1364:4: ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:2: ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:3: ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) )
+                    // InternalArchitecture.g:1364:4: ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) )
+                    // InternalArchitecture.g:1365:5: ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1331:6: ( () ( (lv_comparator_2_0= ruleComparator ) ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1331:7: () ( (lv_comparator_2_0= ruleComparator ) )
+                    // InternalArchitecture.g:1375:5: ( () ( (lv_comparator_2_0= ruleComparator ) ) )
+                    // InternalArchitecture.g:1376:6: () ( (lv_comparator_2_0= ruleComparator ) )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1331:7: ()
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1332:5: 
+                    // InternalArchitecture.g:1376:6: ()
+                    // InternalArchitecture.g:1377:7: 
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      							current = forceCreateModelElementAndSet(
+                      								grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0(),
+                      								current);
+                      						
+                    }
+
+                    }
+
+                    // InternalArchitecture.g:1383:6: ( (lv_comparator_2_0= ruleComparator ) )
+                    // InternalArchitecture.g:1384:7: (lv_comparator_2_0= ruleComparator )
+                    {
+                    // InternalArchitecture.g:1384:7: (lv_comparator_2_0= ruleComparator )
+                    // InternalArchitecture.g:1385:8: lv_comparator_2_0= ruleComparator
                     {
                     if ( state.backtracking==0 ) {
 
-                              current = forceCreateModelElementAndSet(
-                                  grammarAccess.getCompareExpressionAccess().getCompareExpressionLeftAction_1_0_0_0(),
-                                  current);
-                          
+                      								newCompositeNode(grammarAccess.getCompareExpressionAccess().getComparatorComparatorEnumRuleCall_1_0_0_1_0());
+                      							
                     }
-
-                    }
-
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1337:2: ( (lv_comparator_2_0= ruleComparator ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1338:1: (lv_comparator_2_0= ruleComparator )
-                    {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1338:1: (lv_comparator_2_0= ruleComparator )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1339:3: lv_comparator_2_0= ruleComparator
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getCompareExpressionAccess().getComparatorComparatorEnumRuleCall_1_0_0_1_0()); 
-                      	    
-                    }
-                    pushFollow(FOLLOW_ruleComparator_in_ruleCompareExpression2824);
+                    pushFollow(FOLLOW_27);
                     lv_comparator_2_0=ruleComparator();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getCompareExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"comparator",
-                              		lv_comparator_2_0, 
-                              		"Comparator");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      								if (current==null) {
+                      									current = createModelElementForParent(grammarAccess.getCompareExpressionRule());
+                      								}
+                      								set(
+                      									current,
+                      									"comparator",
+                      									lv_comparator_2_0,
+                      									"de.cau.cs.se.geco.architecture.Architecture.Comparator");
+                      								afterParserOrEnumRuleCall();
+                      							
                     }
 
                     }
@@ -3828,34 +3878,34 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1355:4: ( (lv_right_3_0= ruleBasicConstraint ) )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1356:1: (lv_right_3_0= ruleBasicConstraint )
+                    // InternalArchitecture.g:1404:4: ( (lv_right_3_0= ruleBasicConstraint ) )
+                    // InternalArchitecture.g:1405:5: (lv_right_3_0= ruleBasicConstraint )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1356:1: (lv_right_3_0= ruleBasicConstraint )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1357:3: lv_right_3_0= ruleBasicConstraint
+                    // InternalArchitecture.g:1405:5: (lv_right_3_0= ruleBasicConstraint )
+                    // InternalArchitecture.g:1406:6: lv_right_3_0= ruleBasicConstraint
                     {
                     if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getCompareExpressionAccess().getRightBasicConstraintParserRuleCall_1_1_0()); 
-                      	    
+
+                      						newCompositeNode(grammarAccess.getCompareExpressionAccess().getRightBasicConstraintParserRuleCall_1_1_0());
+                      					
                     }
-                    pushFollow(FOLLOW_ruleBasicConstraint_in_ruleCompareExpression2847);
+                    pushFollow(FOLLOW_2);
                     lv_right_3_0=ruleBasicConstraint();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getCompareExpressionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"right",
-                              		lv_right_3_0, 
-                              		"BasicConstraint");
-                      	        afterParserOrEnumRuleCall();
-                      	    
+                      						if (current==null) {
+                      							current = createModelElementForParent(grammarAccess.getCompareExpressionRule());
+                      						}
+                      						set(
+                      							current,
+                      							"right",
+                      							lv_right_3_0,
+                      							"de.cau.cs.se.geco.architecture.Architecture.BasicConstraint");
+                      						afterParserOrEnumRuleCall();
+                      					
                     }
 
                     }
@@ -3876,14 +3926,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3892,7 +3944,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBasicConstraint"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1381:1: entryRuleBasicConstraint returns [EObject current=null] : iv_ruleBasicConstraint= ruleBasicConstraint EOF ;
+    // InternalArchitecture.g:1428:1: entryRuleBasicConstraint returns [EObject current=null] : iv_ruleBasicConstraint= ruleBasicConstraint EOF ;
     public final EObject entryRuleBasicConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -3900,13 +3952,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1382:2: (iv_ruleBasicConstraint= ruleBasicConstraint EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1383:2: iv_ruleBasicConstraint= ruleBasicConstraint EOF
+            // InternalArchitecture.g:1428:56: (iv_ruleBasicConstraint= ruleBasicConstraint EOF )
+            // InternalArchitecture.g:1429:2: iv_ruleBasicConstraint= ruleBasicConstraint EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBasicConstraintRule()); 
             }
-            pushFollow(FOLLOW_ruleBasicConstraint_in_entryRuleBasicConstraint2885);
+            pushFollow(FOLLOW_1);
             iv_ruleBasicConstraint=ruleBasicConstraint();
 
             state._fsp--;
@@ -3914,16 +3966,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBasicConstraint; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBasicConstraint2895); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -3932,7 +3984,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBasicConstraint"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1390:1: ruleBasicConstraint returns [EObject current=null] : (this_ParenthesisConstraint_0= ruleParenthesisConstraint | this_Operand_1= ruleOperand | this_Negation_2= ruleNegation ) ;
+    // InternalArchitecture.g:1435:1: ruleBasicConstraint returns [EObject current=null] : (this_ParenthesisConstraint_0= ruleParenthesisConstraint | this_Operand_1= ruleOperand | this_Negation_2= ruleNegation ) ;
     public final EObject ruleBasicConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -3943,13 +3995,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject this_Negation_2 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1393:28: ( (this_ParenthesisConstraint_0= ruleParenthesisConstraint | this_Operand_1= ruleOperand | this_Negation_2= ruleNegation ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1394:1: (this_ParenthesisConstraint_0= ruleParenthesisConstraint | this_Operand_1= ruleOperand | this_Negation_2= ruleNegation )
+            // InternalArchitecture.g:1441:2: ( (this_ParenthesisConstraint_0= ruleParenthesisConstraint | this_Operand_1= ruleOperand | this_Negation_2= ruleNegation ) )
+            // InternalArchitecture.g:1442:2: (this_ParenthesisConstraint_0= ruleParenthesisConstraint | this_Operand_1= ruleOperand | this_Negation_2= ruleNegation )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1394:1: (this_ParenthesisConstraint_0= ruleParenthesisConstraint | this_Operand_1= ruleOperand | this_Negation_2= ruleNegation )
+            // InternalArchitecture.g:1442:2: (this_ParenthesisConstraint_0= ruleParenthesisConstraint | this_Operand_1= ruleOperand | this_Negation_2= ruleNegation )
             int alt28=3;
             switch ( input.LA(1) ) {
             case 26:
@@ -3983,67 +4036,67 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             switch (alt28) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1395:5: this_ParenthesisConstraint_0= ruleParenthesisConstraint
+                    // InternalArchitecture.g:1443:3: this_ParenthesisConstraint_0= ruleParenthesisConstraint
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getBasicConstraintAccess().getParenthesisConstraintParserRuleCall_0()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getBasicConstraintAccess().getParenthesisConstraintParserRuleCall_0());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleParenthesisConstraint_in_ruleBasicConstraint2942);
+                    pushFollow(FOLLOW_2);
                     this_ParenthesisConstraint_0=ruleParenthesisConstraint();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_ParenthesisConstraint_0; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_ParenthesisConstraint_0;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1405:5: this_Operand_1= ruleOperand
+                    // InternalArchitecture.g:1452:3: this_Operand_1= ruleOperand
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getBasicConstraintAccess().getOperandParserRuleCall_1()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getBasicConstraintAccess().getOperandParserRuleCall_1());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleOperand_in_ruleBasicConstraint2969);
+                    pushFollow(FOLLOW_2);
                     this_Operand_1=ruleOperand();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_Operand_1; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_Operand_1;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1415:5: this_Negation_2= ruleNegation
+                    // InternalArchitecture.g:1461:3: this_Negation_2= ruleNegation
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getBasicConstraintAccess().getNegationParserRuleCall_2()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getBasicConstraintAccess().getNegationParserRuleCall_2());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleNegation_in_ruleBasicConstraint2996);
+                    pushFollow(FOLLOW_2);
                     this_Negation_2=ruleNegation();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_Negation_2; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_Negation_2;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
@@ -4055,14 +4108,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4071,7 +4126,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNegation"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1431:1: entryRuleNegation returns [EObject current=null] : iv_ruleNegation= ruleNegation EOF ;
+    // InternalArchitecture.g:1473:1: entryRuleNegation returns [EObject current=null] : iv_ruleNegation= ruleNegation EOF ;
     public final EObject entryRuleNegation() throws RecognitionException {
         EObject current = null;
 
@@ -4079,13 +4134,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1432:2: (iv_ruleNegation= ruleNegation EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1433:2: iv_ruleNegation= ruleNegation EOF
+            // InternalArchitecture.g:1473:49: (iv_ruleNegation= ruleNegation EOF )
+            // InternalArchitecture.g:1474:2: iv_ruleNegation= ruleNegation EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNegationRule()); 
             }
-            pushFollow(FOLLOW_ruleNegation_in_entryRuleNegation3031);
+            pushFollow(FOLLOW_1);
             iv_ruleNegation=ruleNegation();
 
             state._fsp--;
@@ -4093,16 +4148,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNegation; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNegation3041); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4111,7 +4166,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNegation"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1440:1: ruleNegation returns [EObject current=null] : (otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) ) ) ;
+    // InternalArchitecture.g:1480:1: ruleNegation returns [EObject current=null] : (otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) ) ) ;
     public final EObject ruleNegation() throws RecognitionException {
         EObject current = null;
 
@@ -4119,49 +4174,50 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_constraint_1_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1443:28: ( (otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1444:1: (otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) ) )
+            // InternalArchitecture.g:1486:2: ( (otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) ) ) )
+            // InternalArchitecture.g:1487:2: (otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1444:1: (otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1444:3: otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) )
+            // InternalArchitecture.g:1487:2: (otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) ) )
+            // InternalArchitecture.g:1488:3: otherlv_0= '!' ( (lv_constraint_1_0= ruleConstraintExpression ) )
             {
-            otherlv_0=(Token)match(input,38,FOLLOW_38_in_ruleNegation3078); if (state.failed) return current;
+            otherlv_0=(Token)match(input,38,FOLLOW_27); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getNegationAccess().getExclamationMarkKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getNegationAccess().getExclamationMarkKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1448:1: ( (lv_constraint_1_0= ruleConstraintExpression ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1449:1: (lv_constraint_1_0= ruleConstraintExpression )
+            // InternalArchitecture.g:1492:3: ( (lv_constraint_1_0= ruleConstraintExpression ) )
+            // InternalArchitecture.g:1493:4: (lv_constraint_1_0= ruleConstraintExpression )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1449:1: (lv_constraint_1_0= ruleConstraintExpression )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1450:3: lv_constraint_1_0= ruleConstraintExpression
+            // InternalArchitecture.g:1493:4: (lv_constraint_1_0= ruleConstraintExpression )
+            // InternalArchitecture.g:1494:5: lv_constraint_1_0= ruleConstraintExpression
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getNegationAccess().getConstraintConstraintExpressionParserRuleCall_1_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getNegationAccess().getConstraintConstraintExpressionParserRuleCall_1_0());
+              				
             }
-            pushFollow(FOLLOW_ruleConstraintExpression_in_ruleNegation3099);
+            pushFollow(FOLLOW_2);
             lv_constraint_1_0=ruleConstraintExpression();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getNegationRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"constraint",
-                      		lv_constraint_1_0, 
-                      		"ConstraintExpression");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getNegationRule());
+              					}
+              					set(
+              						current,
+              						"constraint",
+              						lv_constraint_1_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.ConstraintExpression");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -4176,14 +4232,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4192,7 +4250,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParenthesisConstraint"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1474:1: entryRuleParenthesisConstraint returns [EObject current=null] : iv_ruleParenthesisConstraint= ruleParenthesisConstraint EOF ;
+    // InternalArchitecture.g:1515:1: entryRuleParenthesisConstraint returns [EObject current=null] : iv_ruleParenthesisConstraint= ruleParenthesisConstraint EOF ;
     public final EObject entryRuleParenthesisConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -4200,13 +4258,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1475:2: (iv_ruleParenthesisConstraint= ruleParenthesisConstraint EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1476:2: iv_ruleParenthesisConstraint= ruleParenthesisConstraint EOF
+            // InternalArchitecture.g:1515:62: (iv_ruleParenthesisConstraint= ruleParenthesisConstraint EOF )
+            // InternalArchitecture.g:1516:2: iv_ruleParenthesisConstraint= ruleParenthesisConstraint EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParenthesisConstraintRule()); 
             }
-            pushFollow(FOLLOW_ruleParenthesisConstraint_in_entryRuleParenthesisConstraint3135);
+            pushFollow(FOLLOW_1);
             iv_ruleParenthesisConstraint=ruleParenthesisConstraint();
 
             state._fsp--;
@@ -4214,16 +4272,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParenthesisConstraint; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParenthesisConstraint3145); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4232,7 +4290,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParenthesisConstraint"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1483:1: ruleParenthesisConstraint returns [EObject current=null] : (otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')' ) ;
+    // InternalArchitecture.g:1522:1: ruleParenthesisConstraint returns [EObject current=null] : (otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')' ) ;
     public final EObject ruleParenthesisConstraint() throws RecognitionException {
         EObject current = null;
 
@@ -4241,49 +4299,50 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_constraint_1_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1486:28: ( (otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')' ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1487:1: (otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')' )
+            // InternalArchitecture.g:1528:2: ( (otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')' ) )
+            // InternalArchitecture.g:1529:2: (otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')' )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1487:1: (otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1487:3: otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')'
+            // InternalArchitecture.g:1529:2: (otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')' )
+            // InternalArchitecture.g:1530:3: otherlv_0= '(' ( (lv_constraint_1_0= ruleConstraintExpression ) ) otherlv_2= ')'
             {
-            otherlv_0=(Token)match(input,26,FOLLOW_26_in_ruleParenthesisConstraint3182); if (state.failed) return current;
+            otherlv_0=(Token)match(input,26,FOLLOW_27); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getParenthesisConstraintAccess().getLeftParenthesisKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getParenthesisConstraintAccess().getLeftParenthesisKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1491:1: ( (lv_constraint_1_0= ruleConstraintExpression ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1492:1: (lv_constraint_1_0= ruleConstraintExpression )
+            // InternalArchitecture.g:1534:3: ( (lv_constraint_1_0= ruleConstraintExpression ) )
+            // InternalArchitecture.g:1535:4: (lv_constraint_1_0= ruleConstraintExpression )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1492:1: (lv_constraint_1_0= ruleConstraintExpression )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1493:3: lv_constraint_1_0= ruleConstraintExpression
+            // InternalArchitecture.g:1535:4: (lv_constraint_1_0= ruleConstraintExpression )
+            // InternalArchitecture.g:1536:5: lv_constraint_1_0= ruleConstraintExpression
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getParenthesisConstraintAccess().getConstraintConstraintExpressionParserRuleCall_1_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getParenthesisConstraintAccess().getConstraintConstraintExpressionParserRuleCall_1_0());
+              				
             }
-            pushFollow(FOLLOW_ruleConstraintExpression_in_ruleParenthesisConstraint3203);
+            pushFollow(FOLLOW_34);
             lv_constraint_1_0=ruleConstraintExpression();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getParenthesisConstraintRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"constraint",
-                      		lv_constraint_1_0, 
-                      		"ConstraintExpression");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getParenthesisConstraintRule());
+              					}
+              					set(
+              						current,
+              						"constraint",
+              						lv_constraint_1_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.ConstraintExpression");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -4291,11 +4350,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,27,FOLLOW_27_in_ruleParenthesisConstraint3215); if (state.failed) return current;
+            otherlv_2=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_2, grammarAccess.getParenthesisConstraintAccess().getRightParenthesisKeyword_2());
-                  
+              			newLeafNode(otherlv_2, grammarAccess.getParenthesisConstraintAccess().getRightParenthesisKeyword_2());
+              		
             }
 
             }
@@ -4304,14 +4363,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4320,7 +4381,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOperand"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1521:1: entryRuleOperand returns [EObject current=null] : iv_ruleOperand= ruleOperand EOF ;
+    // InternalArchitecture.g:1561:1: entryRuleOperand returns [EObject current=null] : iv_ruleOperand= ruleOperand EOF ;
     public final EObject entryRuleOperand() throws RecognitionException {
         EObject current = null;
 
@@ -4328,13 +4389,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1522:2: (iv_ruleOperand= ruleOperand EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1523:2: iv_ruleOperand= ruleOperand EOF
+            // InternalArchitecture.g:1561:48: (iv_ruleOperand= ruleOperand EOF )
+            // InternalArchitecture.g:1562:2: iv_ruleOperand= ruleOperand EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOperandRule()); 
             }
-            pushFollow(FOLLOW_ruleOperand_in_entryRuleOperand3251);
+            pushFollow(FOLLOW_1);
             iv_ruleOperand=ruleOperand();
 
             state._fsp--;
@@ -4342,16 +4403,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOperand; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOperand3261); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4360,7 +4421,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOperand"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1530:1: ruleOperand returns [EObject current=null] : (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf ) ;
+    // InternalArchitecture.g:1568:1: ruleOperand returns [EObject current=null] : (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf ) ;
     public final EObject ruleOperand() throws RecognitionException {
         EObject current = null;
 
@@ -4371,13 +4432,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject this_InstanceOf_2 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1533:28: ( (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1534:1: (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf )
+            // InternalArchitecture.g:1574:2: ( (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf ) )
+            // InternalArchitecture.g:1575:2: (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1534:1: (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf )
+            // InternalArchitecture.g:1575:2: (this_Literal_0= ruleLiteral | this_NodeProperty_1= ruleNodeProperty | this_InstanceOf_2= ruleInstanceOf )
             int alt29=3;
             switch ( input.LA(1) ) {
             case RULE_STRING:
@@ -4409,67 +4471,67 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             switch (alt29) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1535:5: this_Literal_0= ruleLiteral
+                    // InternalArchitecture.g:1576:3: this_Literal_0= ruleLiteral
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getOperandAccess().getLiteralParserRuleCall_0()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getOperandAccess().getLiteralParserRuleCall_0());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleLiteral_in_ruleOperand3308);
+                    pushFollow(FOLLOW_2);
                     this_Literal_0=ruleLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_Literal_0; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_Literal_0;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1545:5: this_NodeProperty_1= ruleNodeProperty
+                    // InternalArchitecture.g:1585:3: this_NodeProperty_1= ruleNodeProperty
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getOperandAccess().getNodePropertyParserRuleCall_1()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getOperandAccess().getNodePropertyParserRuleCall_1());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleNodeProperty_in_ruleOperand3335);
+                    pushFollow(FOLLOW_2);
                     this_NodeProperty_1=ruleNodeProperty();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_NodeProperty_1; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_NodeProperty_1;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1555:5: this_InstanceOf_2= ruleInstanceOf
+                    // InternalArchitecture.g:1594:3: this_InstanceOf_2= ruleInstanceOf
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getOperandAccess().getInstanceOfParserRuleCall_2()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getOperandAccess().getInstanceOfParserRuleCall_2());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleInstanceOf_in_ruleOperand3362);
+                    pushFollow(FOLLOW_2);
                     this_InstanceOf_2=ruleInstanceOf();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_InstanceOf_2; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_InstanceOf_2;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
@@ -4481,14 +4543,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4497,7 +4561,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInstanceOf"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1571:1: entryRuleInstanceOf returns [EObject current=null] : iv_ruleInstanceOf= ruleInstanceOf EOF ;
+    // InternalArchitecture.g:1606:1: entryRuleInstanceOf returns [EObject current=null] : iv_ruleInstanceOf= ruleInstanceOf EOF ;
     public final EObject entryRuleInstanceOf() throws RecognitionException {
         EObject current = null;
 
@@ -4505,13 +4569,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1572:2: (iv_ruleInstanceOf= ruleInstanceOf EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1573:2: iv_ruleInstanceOf= ruleInstanceOf EOF
+            // InternalArchitecture.g:1606:51: (iv_ruleInstanceOf= ruleInstanceOf EOF )
+            // InternalArchitecture.g:1607:2: iv_ruleInstanceOf= ruleInstanceOf EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstanceOfRule()); 
             }
-            pushFollow(FOLLOW_ruleInstanceOf_in_entryRuleInstanceOf3397);
+            pushFollow(FOLLOW_1);
             iv_ruleInstanceOf=ruleInstanceOf();
 
             state._fsp--;
@@ -4519,16 +4583,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstanceOf; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstanceOf3407); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4537,46 +4601,47 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInstanceOf"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1580:1: ruleInstanceOf returns [EObject current=null] : (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) ) ;
+    // InternalArchitecture.g:1613:1: ruleInstanceOf returns [EObject current=null] : (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) ) ;
     public final EObject ruleInstanceOf() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1583:28: ( (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:1: (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) )
+            // InternalArchitecture.g:1619:2: ( (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) ) )
+            // InternalArchitecture.g:1620:2: (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:1: (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1584:3: otherlv_0= 'is' ( (otherlv_1= RULE_ID ) )
+            // InternalArchitecture.g:1620:2: (otherlv_0= 'is' ( (otherlv_1= RULE_ID ) ) )
+            // InternalArchitecture.g:1621:3: otherlv_0= 'is' ( (otherlv_1= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,39,FOLLOW_39_in_ruleInstanceOf3444); if (state.failed) return current;
+            otherlv_0=(Token)match(input,39,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getInstanceOfAccess().getIsKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getInstanceOfAccess().getIsKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1588:1: ( (otherlv_1= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1589:1: (otherlv_1= RULE_ID )
+            // InternalArchitecture.g:1625:3: ( (otherlv_1= RULE_ID ) )
+            // InternalArchitecture.g:1626:4: (otherlv_1= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1589:1: (otherlv_1= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1590:3: otherlv_1= RULE_ID
+            // InternalArchitecture.g:1626:4: (otherlv_1= RULE_ID )
+            // InternalArchitecture.g:1627:5: otherlv_1= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getInstanceOfRule());
-              	        }
-                      
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getInstanceOfRule());
+              					}
+              				
             }
-            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleInstanceOf3464); if (state.failed) return current;
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_1, grammarAccess.getInstanceOfAccess().getTypeJvmTypeCrossReference_1_0()); 
-              	
+              					newLeafNode(otherlv_1, grammarAccess.getInstanceOfAccess().getTypeJvmTypeCrossReference_1_0());
+              				
             }
 
             }
@@ -4591,14 +4656,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4607,7 +4674,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTargetTraceModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1609:1: entryRuleTargetTraceModel returns [EObject current=null] : iv_ruleTargetTraceModel= ruleTargetTraceModel EOF ;
+    // InternalArchitecture.g:1642:1: entryRuleTargetTraceModel returns [EObject current=null] : iv_ruleTargetTraceModel= ruleTargetTraceModel EOF ;
     public final EObject entryRuleTargetTraceModel() throws RecognitionException {
         EObject current = null;
 
@@ -4615,13 +4682,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1610:2: (iv_ruleTargetTraceModel= ruleTargetTraceModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1611:2: iv_ruleTargetTraceModel= ruleTargetTraceModel EOF
+            // InternalArchitecture.g:1642:57: (iv_ruleTargetTraceModel= ruleTargetTraceModel EOF )
+            // InternalArchitecture.g:1643:2: iv_ruleTargetTraceModel= ruleTargetTraceModel EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTargetTraceModelRule()); 
             }
-            pushFollow(FOLLOW_ruleTargetTraceModel_in_entryRuleTargetTraceModel3500);
+            pushFollow(FOLLOW_1);
             iv_ruleTargetTraceModel=ruleTargetTraceModel();
 
             state._fsp--;
@@ -4629,16 +4696,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTargetTraceModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTargetTraceModel3510); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4647,7 +4714,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTargetTraceModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1618:1: ruleTargetTraceModel returns [EObject current=null] : (this_TraceModel_0= ruleTraceModel | (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference ) ) ;
+    // InternalArchitecture.g:1649:1: ruleTargetTraceModel returns [EObject current=null] : (this_TraceModel_0= ruleTraceModel | (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference ) ) ;
     public final EObject ruleTargetTraceModel() throws RecognitionException {
         EObject current = null;
 
@@ -4657,13 +4724,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject this_TraceModelReference_2 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1621:28: ( (this_TraceModel_0= ruleTraceModel | (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1622:1: (this_TraceModel_0= ruleTraceModel | (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference ) )
+            // InternalArchitecture.g:1655:2: ( (this_TraceModel_0= ruleTraceModel | (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference ) ) )
+            // InternalArchitecture.g:1656:2: (this_TraceModel_0= ruleTraceModel | (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1622:1: (this_TraceModel_0= ruleTraceModel | (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference ) )
+            // InternalArchitecture.g:1656:2: (this_TraceModel_0= ruleTraceModel | (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference ) )
             int alt30=2;
             int LA30_0 = input.LA(1);
 
@@ -4682,54 +4750,54 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt30) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1623:5: this_TraceModel_0= ruleTraceModel
+                    // InternalArchitecture.g:1657:3: this_TraceModel_0= ruleTraceModel
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getTargetTraceModelAccess().getTraceModelParserRuleCall_0()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getTargetTraceModelAccess().getTraceModelParserRuleCall_0());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleTraceModel_in_ruleTargetTraceModel3557);
+                    pushFollow(FOLLOW_2);
                     this_TraceModel_0=ruleTraceModel();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_TraceModel_0; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_TraceModel_0;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1632:6: (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference )
+                    // InternalArchitecture.g:1666:3: (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1632:6: (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1632:8: otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference
+                    // InternalArchitecture.g:1666:3: (otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference )
+                    // InternalArchitecture.g:1667:4: otherlv_1= 'use' this_TraceModelReference_2= ruleTraceModelReference
                     {
-                    otherlv_1=(Token)match(input,40,FOLLOW_40_in_ruleTargetTraceModel3575); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,40,FOLLOW_3); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_1, grammarAccess.getTargetTraceModelAccess().getUseKeyword_1_0());
-                          
+                      				newLeafNode(otherlv_1, grammarAccess.getTargetTraceModelAccess().getUseKeyword_1_0());
+                      			
                     }
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getTargetTraceModelAccess().getTraceModelReferenceParserRuleCall_1_1()); 
-                          
+
+                      				newCompositeNode(grammarAccess.getTargetTraceModelAccess().getTraceModelReferenceParserRuleCall_1_1());
+                      			
                     }
-                    pushFollow(FOLLOW_ruleTraceModelReference_in_ruleTargetTraceModel3597);
+                    pushFollow(FOLLOW_2);
                     this_TraceModelReference_2=ruleTraceModelReference();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_TraceModelReference_2; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      				current = this_TraceModelReference_2;
+                      				afterParserOrEnumRuleCall();
+                      			
                     }
 
                     }
@@ -4744,14 +4812,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4760,7 +4830,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTraceModelReference"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1653:1: entryRuleTraceModelReference returns [EObject current=null] : iv_ruleTraceModelReference= ruleTraceModelReference EOF ;
+    // InternalArchitecture.g:1684:1: entryRuleTraceModelReference returns [EObject current=null] : iv_ruleTraceModelReference= ruleTraceModelReference EOF ;
     public final EObject entryRuleTraceModelReference() throws RecognitionException {
         EObject current = null;
 
@@ -4768,13 +4838,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1654:2: (iv_ruleTraceModelReference= ruleTraceModelReference EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1655:2: iv_ruleTraceModelReference= ruleTraceModelReference EOF
+            // InternalArchitecture.g:1684:60: (iv_ruleTraceModelReference= ruleTraceModelReference EOF )
+            // InternalArchitecture.g:1685:2: iv_ruleTraceModelReference= ruleTraceModelReference EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTraceModelReferenceRule()); 
             }
-            pushFollow(FOLLOW_ruleTraceModelReference_in_entryRuleTraceModelReference3633);
+            pushFollow(FOLLOW_1);
             iv_ruleTraceModelReference=ruleTraceModelReference();
 
             state._fsp--;
@@ -4782,16 +4852,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTraceModelReference; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTraceModelReference3643); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4800,36 +4870,37 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTraceModelReference"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1662:1: ruleTraceModelReference returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
+    // InternalArchitecture.g:1691:1: ruleTraceModelReference returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
     public final EObject ruleTraceModelReference() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1665:28: ( ( (otherlv_0= RULE_ID ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1666:1: ( (otherlv_0= RULE_ID ) )
+            // InternalArchitecture.g:1697:2: ( ( (otherlv_0= RULE_ID ) ) )
+            // InternalArchitecture.g:1698:2: ( (otherlv_0= RULE_ID ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1666:1: ( (otherlv_0= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1667:1: (otherlv_0= RULE_ID )
+            // InternalArchitecture.g:1698:2: ( (otherlv_0= RULE_ID ) )
+            // InternalArchitecture.g:1699:3: (otherlv_0= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1667:1: (otherlv_0= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1668:3: otherlv_0= RULE_ID
+            // InternalArchitecture.g:1699:3: (otherlv_0= RULE_ID )
+            // InternalArchitecture.g:1700:4: otherlv_0= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getTraceModelReferenceRule());
-              	        }
-                      
+              				if (current==null) {
+              					current = createModelElement(grammarAccess.getTraceModelReferenceRule());
+              				}
+              			
             }
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTraceModelReference3687); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_0, grammarAccess.getTraceModelReferenceAccess().getTraceModelTraceModelCrossReference_0()); 
-              	
+              				newLeafNode(otherlv_0, grammarAccess.getTraceModelReferenceAccess().getTraceModelTraceModelCrossReference_0());
+              			
             }
 
             }
@@ -4841,14 +4912,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4857,7 +4930,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTraceModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1687:1: entryRuleTraceModel returns [EObject current=null] : iv_ruleTraceModel= ruleTraceModel EOF ;
+    // InternalArchitecture.g:1714:1: entryRuleTraceModel returns [EObject current=null] : iv_ruleTraceModel= ruleTraceModel EOF ;
     public final EObject entryRuleTraceModel() throws RecognitionException {
         EObject current = null;
 
@@ -4865,13 +4938,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1688:2: (iv_ruleTraceModel= ruleTraceModel EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1689:2: iv_ruleTraceModel= ruleTraceModel EOF
+            // InternalArchitecture.g:1714:51: (iv_ruleTraceModel= ruleTraceModel EOF )
+            // InternalArchitecture.g:1715:2: iv_ruleTraceModel= ruleTraceModel EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTraceModelRule()); 
             }
-            pushFollow(FOLLOW_ruleTraceModel_in_entryRuleTraceModel3722);
+            pushFollow(FOLLOW_1);
             iv_ruleTraceModel=ruleTraceModel();
 
             state._fsp--;
@@ -4879,16 +4952,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTraceModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTraceModel3732); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -4897,7 +4970,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTraceModel"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1696:1: ruleTraceModel returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>' ) ;
+    // InternalArchitecture.g:1721:1: ruleTraceModel returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>' ) ;
     public final EObject ruleTraceModel() throws RecognitionException {
         EObject current = null;
 
@@ -4907,52 +4980,53 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_nodeSetRelations_2_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1699:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>' ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1700:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>' )
+            // InternalArchitecture.g:1727:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>' ) )
+            // InternalArchitecture.g:1728:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>' )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1700:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1700:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>'
+            // InternalArchitecture.g:1728:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>' )
+            // InternalArchitecture.g:1729:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '<' ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+ otherlv_3= '>'
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1700:2: ( (lv_name_0_0= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1701:1: (lv_name_0_0= RULE_ID )
+            // InternalArchitecture.g:1729:3: ( (lv_name_0_0= RULE_ID ) )
+            // InternalArchitecture.g:1730:4: (lv_name_0_0= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1701:1: (lv_name_0_0= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1702:3: lv_name_0_0= RULE_ID
+            // InternalArchitecture.g:1730:4: (lv_name_0_0= RULE_ID )
+            // InternalArchitecture.g:1731:5: lv_name_0_0= RULE_ID
             {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTraceModel3774); if (state.failed) return current;
+            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_35); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_name_0_0, grammarAccess.getTraceModelAccess().getNameIDTerminalRuleCall_0_0()); 
+              					newLeafNode(lv_name_0_0, grammarAccess.getTraceModelAccess().getNameIDTerminalRuleCall_0_0());
+              				
+            }
+            if ( state.backtracking==0 ) {
+
+              					if (current==null) {
+              						current = createModelElement(grammarAccess.getTraceModelRule());
+              					}
+              					setWithLastConsumed(
+              						current,
+              						"name",
+              						lv_name_0_0,
+              						"org.eclipse.xtext.common.Terminals.ID");
+              				
+            }
+
+            }
+
+
+            }
+
+            otherlv_1=(Token)match(input,41,FOLLOW_36); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(otherlv_1, grammarAccess.getTraceModelAccess().getLessThanSignKeyword_1());
               		
             }
-            if ( state.backtracking==0 ) {
-
-              	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getTraceModelRule());
-              	        }
-                     		setWithLastConsumed(
-                     			current, 
-                     			"name",
-                      		lv_name_0_0, 
-                      		"ID");
-              	    
-            }
-
-            }
-
-
-            }
-
-            otherlv_1=(Token)match(input,41,FOLLOW_41_in_ruleTraceModel3791); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-                  	newLeafNode(otherlv_1, grammarAccess.getTraceModelAccess().getLessThanSignKeyword_1());
-                  
-            }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1722:1: ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+
+            // InternalArchitecture.g:1751:3: ( (lv_nodeSetRelations_2_0= ruleNodeSetRelation ) )+
             int cnt31=0;
             loop31:
             do {
@@ -4966,33 +5040,33 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt31) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1723:1: (lv_nodeSetRelations_2_0= ruleNodeSetRelation )
+            	    // InternalArchitecture.g:1752:4: (lv_nodeSetRelations_2_0= ruleNodeSetRelation )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1723:1: (lv_nodeSetRelations_2_0= ruleNodeSetRelation )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1724:3: lv_nodeSetRelations_2_0= ruleNodeSetRelation
+            	    // InternalArchitecture.g:1752:4: (lv_nodeSetRelations_2_0= ruleNodeSetRelation )
+            	    // InternalArchitecture.g:1753:5: lv_nodeSetRelations_2_0= ruleNodeSetRelation
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getTraceModelAccess().getNodeSetRelationsNodeSetRelationParserRuleCall_2_0()); 
-            	      	    
+
+            	      					newCompositeNode(grammarAccess.getTraceModelAccess().getNodeSetRelationsNodeSetRelationParserRuleCall_2_0());
+            	      				
             	    }
-            	    pushFollow(FOLLOW_ruleNodeSetRelation_in_ruleTraceModel3812);
+            	    pushFollow(FOLLOW_37);
             	    lv_nodeSetRelations_2_0=ruleNodeSetRelation();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getTraceModelRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"nodeSetRelations",
-            	              		lv_nodeSetRelations_2_0, 
-            	              		"NodeSetRelation");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      					if (current==null) {
+            	      						current = createModelElementForParent(grammarAccess.getTraceModelRule());
+            	      					}
+            	      					add(
+            	      						current,
+            	      						"nodeSetRelations",
+            	      						lv_nodeSetRelations_2_0,
+            	      						"de.cau.cs.se.geco.architecture.Architecture.NodeSetRelation");
+            	      					afterParserOrEnumRuleCall();
+            	      				
             	    }
 
             	    }
@@ -5011,11 +5085,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                 cnt31++;
             } while (true);
 
-            otherlv_3=(Token)match(input,42,FOLLOW_42_in_ruleTraceModel3825); if (state.failed) return current;
+            otherlv_3=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_3, grammarAccess.getTraceModelAccess().getGreaterThanSignKeyword_3());
-                  
+              			newLeafNode(otherlv_3, grammarAccess.getTraceModelAccess().getGreaterThanSignKeyword_3());
+              		
             }
 
             }
@@ -5024,14 +5098,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5040,7 +5116,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNodeSetRelation"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1752:1: entryRuleNodeSetRelation returns [EObject current=null] : iv_ruleNodeSetRelation= ruleNodeSetRelation EOF ;
+    // InternalArchitecture.g:1778:1: entryRuleNodeSetRelation returns [EObject current=null] : iv_ruleNodeSetRelation= ruleNodeSetRelation EOF ;
     public final EObject entryRuleNodeSetRelation() throws RecognitionException {
         EObject current = null;
 
@@ -5048,13 +5124,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1753:2: (iv_ruleNodeSetRelation= ruleNodeSetRelation EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1754:2: iv_ruleNodeSetRelation= ruleNodeSetRelation EOF
+            // InternalArchitecture.g:1778:56: (iv_ruleNodeSetRelation= ruleNodeSetRelation EOF )
+            // InternalArchitecture.g:1779:2: iv_ruleNodeSetRelation= ruleNodeSetRelation EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNodeSetRelationRule()); 
             }
-            pushFollow(FOLLOW_ruleNodeSetRelation_in_entryRuleNodeSetRelation3861);
+            pushFollow(FOLLOW_1);
             iv_ruleNodeSetRelation=ruleNodeSetRelation();
 
             state._fsp--;
@@ -5062,16 +5138,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNodeSetRelation; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNodeSetRelation3871); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5080,7 +5156,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNodeSetRelation"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1761:1: ruleNodeSetRelation returns [EObject current=null] : (otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')' ) ;
+    // InternalArchitecture.g:1785:1: ruleNodeSetRelation returns [EObject current=null] : (otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')' ) ;
     public final EObject ruleNodeSetRelation() throws RecognitionException {
         EObject current = null;
 
@@ -5098,49 +5174,50 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_targetNodes_7_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1764:28: ( (otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')' ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1765:1: (otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')' )
+            // InternalArchitecture.g:1791:2: ( (otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')' ) )
+            // InternalArchitecture.g:1792:2: (otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')' )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1765:1: (otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1765:3: otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')'
+            // InternalArchitecture.g:1792:2: (otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')' )
+            // InternalArchitecture.g:1793:3: otherlv_0= '(' ( (lv_sourceNodes_1_0= ruleNodeType ) ) (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )* otherlv_4= ':' ( (lv_targetNodes_5_0= ruleNodeType ) ) (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )* otherlv_8= ')'
             {
-            otherlv_0=(Token)match(input,26,FOLLOW_26_in_ruleNodeSetRelation3908); if (state.failed) return current;
+            otherlv_0=(Token)match(input,26,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getNodeSetRelationAccess().getLeftParenthesisKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getNodeSetRelationAccess().getLeftParenthesisKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1769:1: ( (lv_sourceNodes_1_0= ruleNodeType ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1770:1: (lv_sourceNodes_1_0= ruleNodeType )
+            // InternalArchitecture.g:1797:3: ( (lv_sourceNodes_1_0= ruleNodeType ) )
+            // InternalArchitecture.g:1798:4: (lv_sourceNodes_1_0= ruleNodeType )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1770:1: (lv_sourceNodes_1_0= ruleNodeType )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1771:3: lv_sourceNodes_1_0= ruleNodeType
+            // InternalArchitecture.g:1798:4: (lv_sourceNodes_1_0= ruleNodeType )
+            // InternalArchitecture.g:1799:5: lv_sourceNodes_1_0= ruleNodeType
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getNodeSetRelationAccess().getSourceNodesNodeTypeParserRuleCall_1_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getNodeSetRelationAccess().getSourceNodesNodeTypeParserRuleCall_1_0());
+              				
             }
-            pushFollow(FOLLOW_ruleNodeType_in_ruleNodeSetRelation3929);
+            pushFollow(FOLLOW_38);
             lv_sourceNodes_1_0=ruleNodeType();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getNodeSetRelationRule());
-              	        }
-                     		add(
-                     			current, 
-                     			"sourceNodes",
-                      		lv_sourceNodes_1_0, 
-                      		"NodeType");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getNodeSetRelationRule());
+              					}
+              					add(
+              						current,
+              						"sourceNodes",
+              						lv_sourceNodes_1_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.NodeType");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -5148,7 +5225,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1787:2: (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )*
+            // InternalArchitecture.g:1816:3: (otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) ) )*
             loop32:
             do {
                 int alt32=2;
@@ -5161,42 +5238,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt32) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1787:4: otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) )
+            	    // InternalArchitecture.g:1817:4: otherlv_2= ',' ( (lv_sourceNodes_3_0= ruleNodeType ) )
             	    {
-            	    otherlv_2=(Token)match(input,19,FOLLOW_19_in_ruleNodeSetRelation3942); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,19,FOLLOW_3); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_2, grammarAccess.getNodeSetRelationAccess().getCommaKeyword_2_0());
-            	          
+            	      				newLeafNode(otherlv_2, grammarAccess.getNodeSetRelationAccess().getCommaKeyword_2_0());
+            	      			
             	    }
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1791:1: ( (lv_sourceNodes_3_0= ruleNodeType ) )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1792:1: (lv_sourceNodes_3_0= ruleNodeType )
+            	    // InternalArchitecture.g:1821:4: ( (lv_sourceNodes_3_0= ruleNodeType ) )
+            	    // InternalArchitecture.g:1822:5: (lv_sourceNodes_3_0= ruleNodeType )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1792:1: (lv_sourceNodes_3_0= ruleNodeType )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1793:3: lv_sourceNodes_3_0= ruleNodeType
+            	    // InternalArchitecture.g:1822:5: (lv_sourceNodes_3_0= ruleNodeType )
+            	    // InternalArchitecture.g:1823:6: lv_sourceNodes_3_0= ruleNodeType
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getNodeSetRelationAccess().getSourceNodesNodeTypeParserRuleCall_2_1_0()); 
-            	      	    
+
+            	      						newCompositeNode(grammarAccess.getNodeSetRelationAccess().getSourceNodesNodeTypeParserRuleCall_2_1_0());
+            	      					
             	    }
-            	    pushFollow(FOLLOW_ruleNodeType_in_ruleNodeSetRelation3963);
+            	    pushFollow(FOLLOW_38);
             	    lv_sourceNodes_3_0=ruleNodeType();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getNodeSetRelationRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"sourceNodes",
-            	              		lv_sourceNodes_3_0, 
-            	              		"NodeType");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      						if (current==null) {
+            	      							current = createModelElementForParent(grammarAccess.getNodeSetRelationRule());
+            	      						}
+            	      						add(
+            	      							current,
+            	      							"sourceNodes",
+            	      							lv_sourceNodes_3_0,
+            	      							"de.cau.cs.se.geco.architecture.Architecture.NodeType");
+            	      						afterParserOrEnumRuleCall();
+            	      					
             	    }
 
             	    }
@@ -5213,40 +5290,40 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,43,FOLLOW_43_in_ruleNodeSetRelation3977); if (state.failed) return current;
+            otherlv_4=(Token)match(input,43,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_4, grammarAccess.getNodeSetRelationAccess().getColonKeyword_3());
-                  
+              			newLeafNode(otherlv_4, grammarAccess.getNodeSetRelationAccess().getColonKeyword_3());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1813:1: ( (lv_targetNodes_5_0= ruleNodeType ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1814:1: (lv_targetNodes_5_0= ruleNodeType )
+            // InternalArchitecture.g:1845:3: ( (lv_targetNodes_5_0= ruleNodeType ) )
+            // InternalArchitecture.g:1846:4: (lv_targetNodes_5_0= ruleNodeType )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1814:1: (lv_targetNodes_5_0= ruleNodeType )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1815:3: lv_targetNodes_5_0= ruleNodeType
+            // InternalArchitecture.g:1846:4: (lv_targetNodes_5_0= ruleNodeType )
+            // InternalArchitecture.g:1847:5: lv_targetNodes_5_0= ruleNodeType
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getNodeSetRelationAccess().getTargetNodesNodeTypeParserRuleCall_4_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getNodeSetRelationAccess().getTargetNodesNodeTypeParserRuleCall_4_0());
+              				
             }
-            pushFollow(FOLLOW_ruleNodeType_in_ruleNodeSetRelation3998);
+            pushFollow(FOLLOW_19);
             lv_targetNodes_5_0=ruleNodeType();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getNodeSetRelationRule());
-              	        }
-                     		add(
-                     			current, 
-                     			"targetNodes",
-                      		lv_targetNodes_5_0, 
-                      		"NodeType");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getNodeSetRelationRule());
+              					}
+              					add(
+              						current,
+              						"targetNodes",
+              						lv_targetNodes_5_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.NodeType");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -5254,7 +5331,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1831:2: (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )*
+            // InternalArchitecture.g:1864:3: (otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) ) )*
             loop33:
             do {
                 int alt33=2;
@@ -5267,42 +5344,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt33) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1831:4: otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) )
+            	    // InternalArchitecture.g:1865:4: otherlv_6= ',' ( (lv_targetNodes_7_0= ruleNodeType ) )
             	    {
-            	    otherlv_6=(Token)match(input,19,FOLLOW_19_in_ruleNodeSetRelation4011); if (state.failed) return current;
+            	    otherlv_6=(Token)match(input,19,FOLLOW_3); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_6, grammarAccess.getNodeSetRelationAccess().getCommaKeyword_5_0());
-            	          
+            	      				newLeafNode(otherlv_6, grammarAccess.getNodeSetRelationAccess().getCommaKeyword_5_0());
+            	      			
             	    }
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1835:1: ( (lv_targetNodes_7_0= ruleNodeType ) )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1836:1: (lv_targetNodes_7_0= ruleNodeType )
+            	    // InternalArchitecture.g:1869:4: ( (lv_targetNodes_7_0= ruleNodeType ) )
+            	    // InternalArchitecture.g:1870:5: (lv_targetNodes_7_0= ruleNodeType )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1836:1: (lv_targetNodes_7_0= ruleNodeType )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1837:3: lv_targetNodes_7_0= ruleNodeType
+            	    // InternalArchitecture.g:1870:5: (lv_targetNodes_7_0= ruleNodeType )
+            	    // InternalArchitecture.g:1871:6: lv_targetNodes_7_0= ruleNodeType
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getNodeSetRelationAccess().getTargetNodesNodeTypeParserRuleCall_5_1_0()); 
-            	      	    
+
+            	      						newCompositeNode(grammarAccess.getNodeSetRelationAccess().getTargetNodesNodeTypeParserRuleCall_5_1_0());
+            	      					
             	    }
-            	    pushFollow(FOLLOW_ruleNodeType_in_ruleNodeSetRelation4032);
+            	    pushFollow(FOLLOW_19);
             	    lv_targetNodes_7_0=ruleNodeType();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getNodeSetRelationRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"targetNodes",
-            	              		lv_targetNodes_7_0, 
-            	              		"NodeType");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      						if (current==null) {
+            	      							current = createModelElementForParent(grammarAccess.getNodeSetRelationRule());
+            	      						}
+            	      						add(
+            	      							current,
+            	      							"targetNodes",
+            	      							lv_targetNodes_7_0,
+            	      							"de.cau.cs.se.geco.architecture.Architecture.NodeType");
+            	      						afterParserOrEnumRuleCall();
+            	      					
             	    }
 
             	    }
@@ -5319,11 +5396,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_8=(Token)match(input,27,FOLLOW_27_in_ruleNodeSetRelation4046); if (state.failed) return current;
+            otherlv_8=(Token)match(input,27,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_8, grammarAccess.getNodeSetRelationAccess().getRightParenthesisKeyword_6());
-                  
+              			newLeafNode(otherlv_8, grammarAccess.getNodeSetRelationAccess().getRightParenthesisKeyword_6());
+              		
             }
 
             }
@@ -5332,14 +5409,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5348,7 +5427,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNodeType"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1865:1: entryRuleNodeType returns [EObject current=null] : iv_ruleNodeType= ruleNodeType EOF ;
+    // InternalArchitecture.g:1897:1: entryRuleNodeType returns [EObject current=null] : iv_ruleNodeType= ruleNodeType EOF ;
     public final EObject entryRuleNodeType() throws RecognitionException {
         EObject current = null;
 
@@ -5356,13 +5435,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1866:2: (iv_ruleNodeType= ruleNodeType EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1867:2: iv_ruleNodeType= ruleNodeType EOF
+            // InternalArchitecture.g:1897:49: (iv_ruleNodeType= ruleNodeType EOF )
+            // InternalArchitecture.g:1898:2: iv_ruleNodeType= ruleNodeType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNodeTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleNodeType_in_entryRuleNodeType4082);
+            pushFollow(FOLLOW_1);
             iv_ruleNodeType=ruleNodeType();
 
             state._fsp--;
@@ -5370,16 +5449,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNodeType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNodeType4092); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5388,36 +5467,37 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNodeType"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1874:1: ruleNodeType returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
+    // InternalArchitecture.g:1904:1: ruleNodeType returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
     public final EObject ruleNodeType() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1877:28: ( ( (otherlv_0= RULE_ID ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1878:1: ( (otherlv_0= RULE_ID ) )
+            // InternalArchitecture.g:1910:2: ( ( (otherlv_0= RULE_ID ) ) )
+            // InternalArchitecture.g:1911:2: ( (otherlv_0= RULE_ID ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1878:1: ( (otherlv_0= RULE_ID ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1879:1: (otherlv_0= RULE_ID )
+            // InternalArchitecture.g:1911:2: ( (otherlv_0= RULE_ID ) )
+            // InternalArchitecture.g:1912:3: (otherlv_0= RULE_ID )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1879:1: (otherlv_0= RULE_ID )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1880:3: otherlv_0= RULE_ID
+            // InternalArchitecture.g:1912:3: (otherlv_0= RULE_ID )
+            // InternalArchitecture.g:1913:4: otherlv_0= RULE_ID
             {
             if ( state.backtracking==0 ) {
 
-              			if (current==null) {
-              	            current = createModelElement(grammarAccess.getNodeTypeRule());
-              	        }
-                      
+              				if (current==null) {
+              					current = createModelElement(grammarAccess.getNodeTypeRule());
+              				}
+              			
             }
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleNodeType4136); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_0, grammarAccess.getNodeTypeAccess().getTypeJvmTypeCrossReference_0()); 
-              	
+              				newLeafNode(otherlv_0, grammarAccess.getNodeTypeAccess().getTypeJvmTypeCrossReference_0());
+              			
             }
 
             }
@@ -5429,14 +5509,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5445,7 +5527,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1899:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
+    // InternalArchitecture.g:1927:1: entryRuleLiteral returns [EObject current=null] : iv_ruleLiteral= ruleLiteral EOF ;
     public final EObject entryRuleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -5453,13 +5535,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1900:2: (iv_ruleLiteral= ruleLiteral EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1901:2: iv_ruleLiteral= ruleLiteral EOF
+            // InternalArchitecture.g:1927:48: (iv_ruleLiteral= ruleLiteral EOF )
+            // InternalArchitecture.g:1928:2: iv_ruleLiteral= ruleLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral4171);
+            pushFollow(FOLLOW_1);
             iv_ruleLiteral=ruleLiteral();
 
             state._fsp--;
@@ -5467,16 +5549,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral4181); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5485,7 +5567,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1908:1: ruleLiteral returns [EObject current=null] : (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ArrayLiteral_4= ruleArrayLiteral ) ;
+    // InternalArchitecture.g:1934:1: ruleLiteral returns [EObject current=null] : (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ArrayLiteral_4= ruleArrayLiteral ) ;
     public final EObject ruleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -5500,13 +5582,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject this_ArrayLiteral_4 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1911:28: ( (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ArrayLiteral_4= ruleArrayLiteral ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1912:1: (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ArrayLiteral_4= ruleArrayLiteral )
+            // InternalArchitecture.g:1940:2: ( (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ArrayLiteral_4= ruleArrayLiteral ) )
+            // InternalArchitecture.g:1941:2: (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ArrayLiteral_4= ruleArrayLiteral )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1912:1: (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ArrayLiteral_4= ruleArrayLiteral )
+            // InternalArchitecture.g:1941:2: (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ArrayLiteral_4= ruleArrayLiteral )
             int alt34=5;
             switch ( input.LA(1) ) {
             case RULE_STRING:
@@ -5544,111 +5627,111 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             switch (alt34) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1913:5: this_StringLiteral_0= ruleStringLiteral
+                    // InternalArchitecture.g:1942:3: this_StringLiteral_0= ruleStringLiteral
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getLiteralAccess().getStringLiteralParserRuleCall_0()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getLiteralAccess().getStringLiteralParserRuleCall_0());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleStringLiteral_in_ruleLiteral4228);
+                    pushFollow(FOLLOW_2);
                     this_StringLiteral_0=ruleStringLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_StringLiteral_0; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_StringLiteral_0;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1923:5: this_IntLiteral_1= ruleIntLiteral
+                    // InternalArchitecture.g:1951:3: this_IntLiteral_1= ruleIntLiteral
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getLiteralAccess().getIntLiteralParserRuleCall_1()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getLiteralAccess().getIntLiteralParserRuleCall_1());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleIntLiteral_in_ruleLiteral4255);
+                    pushFollow(FOLLOW_2);
                     this_IntLiteral_1=ruleIntLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_IntLiteral_1; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_IntLiteral_1;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1933:5: this_FloatLiteral_2= ruleFloatLiteral
+                    // InternalArchitecture.g:1960:3: this_FloatLiteral_2= ruleFloatLiteral
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getLiteralAccess().getFloatLiteralParserRuleCall_2()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getLiteralAccess().getFloatLiteralParserRuleCall_2());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleFloatLiteral_in_ruleLiteral4282);
+                    pushFollow(FOLLOW_2);
                     this_FloatLiteral_2=ruleFloatLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_FloatLiteral_2; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_FloatLiteral_2;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 4 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1943:5: this_BooleanLiteral_3= ruleBooleanLiteral
+                    // InternalArchitecture.g:1969:3: this_BooleanLiteral_3= ruleBooleanLiteral
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getLiteralAccess().getBooleanLiteralParserRuleCall_3()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getLiteralAccess().getBooleanLiteralParserRuleCall_3());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleBooleanLiteral_in_ruleLiteral4309);
+                    pushFollow(FOLLOW_2);
                     this_BooleanLiteral_3=ruleBooleanLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_BooleanLiteral_3; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_BooleanLiteral_3;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
                     break;
                 case 5 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1953:5: this_ArrayLiteral_4= ruleArrayLiteral
+                    // InternalArchitecture.g:1978:3: this_ArrayLiteral_4= ruleArrayLiteral
                     {
                     if ( state.backtracking==0 ) {
-                       
-                              newCompositeNode(grammarAccess.getLiteralAccess().getArrayLiteralParserRuleCall_4()); 
-                          
+
+                      			newCompositeNode(grammarAccess.getLiteralAccess().getArrayLiteralParserRuleCall_4());
+                      		
                     }
-                    pushFollow(FOLLOW_ruleArrayLiteral_in_ruleLiteral4336);
+                    pushFollow(FOLLOW_2);
                     this_ArrayLiteral_4=ruleArrayLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
-                       
-                              current = this_ArrayLiteral_4; 
-                              afterParserOrEnumRuleCall();
-                          
+
+                      			current = this_ArrayLiteral_4;
+                      			afterParserOrEnumRuleCall();
+                      		
                     }
 
                     }
@@ -5660,14 +5743,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5676,7 +5761,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArrayLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1969:1: entryRuleArrayLiteral returns [EObject current=null] : iv_ruleArrayLiteral= ruleArrayLiteral EOF ;
+    // InternalArchitecture.g:1990:1: entryRuleArrayLiteral returns [EObject current=null] : iv_ruleArrayLiteral= ruleArrayLiteral EOF ;
     public final EObject entryRuleArrayLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -5684,13 +5769,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1970:2: (iv_ruleArrayLiteral= ruleArrayLiteral EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1971:2: iv_ruleArrayLiteral= ruleArrayLiteral EOF
+            // InternalArchitecture.g:1990:53: (iv_ruleArrayLiteral= ruleArrayLiteral EOF )
+            // InternalArchitecture.g:1991:2: iv_ruleArrayLiteral= ruleArrayLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArrayLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleArrayLiteral_in_entryRuleArrayLiteral4371);
+            pushFollow(FOLLOW_1);
             iv_ruleArrayLiteral=ruleArrayLiteral();
 
             state._fsp--;
@@ -5698,16 +5783,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleArrayLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayLiteral4381); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5716,7 +5801,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArrayLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1978:1: ruleArrayLiteral returns [EObject current=null] : (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' ) ;
+    // InternalArchitecture.g:1997:1: ruleArrayLiteral returns [EObject current=null] : (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' ) ;
     public final EObject ruleArrayLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -5728,49 +5813,50 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         EObject lv_literals_3_0 = null;
 
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1981:28: ( (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1982:1: (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' )
+            // InternalArchitecture.g:2003:2: ( (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' ) )
+            // InternalArchitecture.g:2004:2: (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1982:1: (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1982:3: otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}'
+            // InternalArchitecture.g:2004:2: (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' )
+            // InternalArchitecture.g:2005:3: otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,44,FOLLOW_44_in_ruleArrayLiteral4418); if (state.failed) return current;
+            otherlv_0=(Token)match(input,44,FOLLOW_39); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getArrayLiteralAccess().getLeftCurlyBracketKeyword_0());
-                  
+              			newLeafNode(otherlv_0, grammarAccess.getArrayLiteralAccess().getLeftCurlyBracketKeyword_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1986:1: ( (lv_literals_1_0= ruleLiteral ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1987:1: (lv_literals_1_0= ruleLiteral )
+            // InternalArchitecture.g:2009:3: ( (lv_literals_1_0= ruleLiteral ) )
+            // InternalArchitecture.g:2010:4: (lv_literals_1_0= ruleLiteral )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1987:1: (lv_literals_1_0= ruleLiteral )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1988:3: lv_literals_1_0= ruleLiteral
+            // InternalArchitecture.g:2010:4: (lv_literals_1_0= ruleLiteral )
+            // InternalArchitecture.g:2011:5: lv_literals_1_0= ruleLiteral
             {
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getArrayLiteralAccess().getLiteralsLiteralParserRuleCall_1_0()); 
-              	    
+
+              					newCompositeNode(grammarAccess.getArrayLiteralAccess().getLiteralsLiteralParserRuleCall_1_0());
+              				
             }
-            pushFollow(FOLLOW_ruleLiteral_in_ruleArrayLiteral4439);
+            pushFollow(FOLLOW_40);
             lv_literals_1_0=ruleLiteral();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getArrayLiteralRule());
-              	        }
-                     		add(
-                     			current, 
-                     			"literals",
-                      		lv_literals_1_0, 
-                      		"Literal");
-              	        afterParserOrEnumRuleCall();
-              	    
+              					if (current==null) {
+              						current = createModelElementForParent(grammarAccess.getArrayLiteralRule());
+              					}
+              					add(
+              						current,
+              						"literals",
+              						lv_literals_1_0,
+              						"de.cau.cs.se.geco.architecture.Architecture.Literal");
+              					afterParserOrEnumRuleCall();
+              				
             }
 
             }
@@ -5778,7 +5864,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2004:2: (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )*
+            // InternalArchitecture.g:2028:3: (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )*
             loop35:
             do {
                 int alt35=2;
@@ -5791,42 +5877,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt35) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2004:4: otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) )
+            	    // InternalArchitecture.g:2029:4: otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) )
             	    {
-            	    otherlv_2=(Token)match(input,19,FOLLOW_19_in_ruleArrayLiteral4452); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,19,FOLLOW_39); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_2, grammarAccess.getArrayLiteralAccess().getCommaKeyword_2_0());
-            	          
+            	      				newLeafNode(otherlv_2, grammarAccess.getArrayLiteralAccess().getCommaKeyword_2_0());
+            	      			
             	    }
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2008:1: ( (lv_literals_3_0= ruleLiteral ) )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2009:1: (lv_literals_3_0= ruleLiteral )
+            	    // InternalArchitecture.g:2033:4: ( (lv_literals_3_0= ruleLiteral ) )
+            	    // InternalArchitecture.g:2034:5: (lv_literals_3_0= ruleLiteral )
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2009:1: (lv_literals_3_0= ruleLiteral )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2010:3: lv_literals_3_0= ruleLiteral
+            	    // InternalArchitecture.g:2034:5: (lv_literals_3_0= ruleLiteral )
+            	    // InternalArchitecture.g:2035:6: lv_literals_3_0= ruleLiteral
             	    {
             	    if ( state.backtracking==0 ) {
-            	       
-            	      	        newCompositeNode(grammarAccess.getArrayLiteralAccess().getLiteralsLiteralParserRuleCall_2_1_0()); 
-            	      	    
+
+            	      						newCompositeNode(grammarAccess.getArrayLiteralAccess().getLiteralsLiteralParserRuleCall_2_1_0());
+            	      					
             	    }
-            	    pushFollow(FOLLOW_ruleLiteral_in_ruleArrayLiteral4473);
+            	    pushFollow(FOLLOW_40);
             	    lv_literals_3_0=ruleLiteral();
 
             	    state._fsp--;
             	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getArrayLiteralRule());
-            	      	        }
-            	             		add(
-            	             			current, 
-            	             			"literals",
-            	              		lv_literals_3_0, 
-            	              		"Literal");
-            	      	        afterParserOrEnumRuleCall();
-            	      	    
+            	      						if (current==null) {
+            	      							current = createModelElementForParent(grammarAccess.getArrayLiteralRule());
+            	      						}
+            	      						add(
+            	      							current,
+            	      							"literals",
+            	      							lv_literals_3_0,
+            	      							"de.cau.cs.se.geco.architecture.Architecture.Literal");
+            	      						afterParserOrEnumRuleCall();
+            	      					
             	    }
 
             	    }
@@ -5843,11 +5929,11 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,45,FOLLOW_45_in_ruleArrayLiteral4487); if (state.failed) return current;
+            otherlv_4=(Token)match(input,45,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_4, grammarAccess.getArrayLiteralAccess().getRightCurlyBracketKeyword_3());
-                  
+              			newLeafNode(otherlv_4, grammarAccess.getArrayLiteralAccess().getRightCurlyBracketKeyword_3());
+              		
             }
 
             }
@@ -5856,14 +5942,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5872,7 +5960,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2038:1: entryRuleStringLiteral returns [EObject current=null] : iv_ruleStringLiteral= ruleStringLiteral EOF ;
+    // InternalArchitecture.g:2061:1: entryRuleStringLiteral returns [EObject current=null] : iv_ruleStringLiteral= ruleStringLiteral EOF ;
     public final EObject entryRuleStringLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -5880,13 +5968,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2039:2: (iv_ruleStringLiteral= ruleStringLiteral EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2040:2: iv_ruleStringLiteral= ruleStringLiteral EOF
+            // InternalArchitecture.g:2061:54: (iv_ruleStringLiteral= ruleStringLiteral EOF )
+            // InternalArchitecture.g:2062:2: iv_ruleStringLiteral= ruleStringLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getStringLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral4523);
+            pushFollow(FOLLOW_1);
             iv_ruleStringLiteral=ruleStringLiteral();
 
             state._fsp--;
@@ -5894,16 +5982,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleStringLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringLiteral4533); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5912,41 +6000,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2047:1: ruleStringLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
+    // InternalArchitecture.g:2068:1: ruleStringLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
     public final EObject ruleStringLiteral() throws RecognitionException {
         EObject current = null;
 
         Token lv_value_0_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2050:28: ( ( (lv_value_0_0= RULE_STRING ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2051:1: ( (lv_value_0_0= RULE_STRING ) )
+            // InternalArchitecture.g:2074:2: ( ( (lv_value_0_0= RULE_STRING ) ) )
+            // InternalArchitecture.g:2075:2: ( (lv_value_0_0= RULE_STRING ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2051:1: ( (lv_value_0_0= RULE_STRING ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2052:1: (lv_value_0_0= RULE_STRING )
+            // InternalArchitecture.g:2075:2: ( (lv_value_0_0= RULE_STRING ) )
+            // InternalArchitecture.g:2076:3: (lv_value_0_0= RULE_STRING )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2052:1: (lv_value_0_0= RULE_STRING )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2053:3: lv_value_0_0= RULE_STRING
+            // InternalArchitecture.g:2076:3: (lv_value_0_0= RULE_STRING )
+            // InternalArchitecture.g:2077:4: lv_value_0_0= RULE_STRING
             {
-            lv_value_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringLiteral4574); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,RULE_STRING,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_value_0_0, grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0()); 
-              		
+              				newLeafNode(lv_value_0_0, grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0());
+              			
             }
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getStringLiteralRule());
-              	        }
-                     		setWithLastConsumed(
-                     			current, 
-                     			"value",
-                      		lv_value_0_0, 
-                      		"STRING");
-              	    
+              				if (current==null) {
+              					current = createModelElement(grammarAccess.getStringLiteralRule());
+              				}
+              				setWithLastConsumed(
+              					current,
+              					"value",
+              					lv_value_0_0,
+              					"org.eclipse.xtext.common.Terminals.STRING");
+              			
             }
 
             }
@@ -5958,14 +6047,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -5974,7 +6065,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2077:1: entryRuleIntLiteral returns [EObject current=null] : iv_ruleIntLiteral= ruleIntLiteral EOF ;
+    // InternalArchitecture.g:2096:1: entryRuleIntLiteral returns [EObject current=null] : iv_ruleIntLiteral= ruleIntLiteral EOF ;
     public final EObject entryRuleIntLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -5982,13 +6073,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2078:2: (iv_ruleIntLiteral= ruleIntLiteral EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2079:2: iv_ruleIntLiteral= ruleIntLiteral EOF
+            // InternalArchitecture.g:2096:51: (iv_ruleIntLiteral= ruleIntLiteral EOF )
+            // InternalArchitecture.g:2097:2: iv_ruleIntLiteral= ruleIntLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIntLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleIntLiteral_in_entryRuleIntLiteral4614);
+            pushFollow(FOLLOW_1);
             iv_ruleIntLiteral=ruleIntLiteral();
 
             state._fsp--;
@@ -5996,16 +6087,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIntLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntLiteral4624); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6014,41 +6105,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2086:1: ruleIntLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
+    // InternalArchitecture.g:2103:1: ruleIntLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
     public final EObject ruleIntLiteral() throws RecognitionException {
         EObject current = null;
 
         Token lv_value_0_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2089:28: ( ( (lv_value_0_0= RULE_INT ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2090:1: ( (lv_value_0_0= RULE_INT ) )
+            // InternalArchitecture.g:2109:2: ( ( (lv_value_0_0= RULE_INT ) ) )
+            // InternalArchitecture.g:2110:2: ( (lv_value_0_0= RULE_INT ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2090:1: ( (lv_value_0_0= RULE_INT ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2091:1: (lv_value_0_0= RULE_INT )
+            // InternalArchitecture.g:2110:2: ( (lv_value_0_0= RULE_INT ) )
+            // InternalArchitecture.g:2111:3: (lv_value_0_0= RULE_INT )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2091:1: (lv_value_0_0= RULE_INT )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2092:3: lv_value_0_0= RULE_INT
+            // InternalArchitecture.g:2111:3: (lv_value_0_0= RULE_INT )
+            // InternalArchitecture.g:2112:4: lv_value_0_0= RULE_INT
             {
-            lv_value_0_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleIntLiteral4665); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,RULE_INT,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_value_0_0, grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0()); 
-              		
+              				newLeafNode(lv_value_0_0, grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0());
+              			
             }
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getIntLiteralRule());
-              	        }
-                     		setWithLastConsumed(
-                     			current, 
-                     			"value",
-                      		lv_value_0_0, 
-                      		"INT");
-              	    
+              				if (current==null) {
+              					current = createModelElement(grammarAccess.getIntLiteralRule());
+              				}
+              				setWithLastConsumed(
+              					current,
+              					"value",
+              					lv_value_0_0,
+              					"org.eclipse.xtext.common.Terminals.INT");
+              			
             }
 
             }
@@ -6060,14 +6152,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6076,7 +6170,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFloatLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2116:1: entryRuleFloatLiteral returns [EObject current=null] : iv_ruleFloatLiteral= ruleFloatLiteral EOF ;
+    // InternalArchitecture.g:2131:1: entryRuleFloatLiteral returns [EObject current=null] : iv_ruleFloatLiteral= ruleFloatLiteral EOF ;
     public final EObject entryRuleFloatLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -6084,13 +6178,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2117:2: (iv_ruleFloatLiteral= ruleFloatLiteral EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2118:2: iv_ruleFloatLiteral= ruleFloatLiteral EOF
+            // InternalArchitecture.g:2131:53: (iv_ruleFloatLiteral= ruleFloatLiteral EOF )
+            // InternalArchitecture.g:2132:2: iv_ruleFloatLiteral= ruleFloatLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFloatLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleFloatLiteral_in_entryRuleFloatLiteral4705);
+            pushFollow(FOLLOW_1);
             iv_ruleFloatLiteral=ruleFloatLiteral();
 
             state._fsp--;
@@ -6098,16 +6192,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFloatLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatLiteral4715); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6116,41 +6210,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFloatLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2125:1: ruleFloatLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_FLOAT ) ) ;
+    // InternalArchitecture.g:2138:1: ruleFloatLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_FLOAT ) ) ;
     public final EObject ruleFloatLiteral() throws RecognitionException {
         EObject current = null;
 
         Token lv_value_0_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2128:28: ( ( (lv_value_0_0= RULE_FLOAT ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2129:1: ( (lv_value_0_0= RULE_FLOAT ) )
+            // InternalArchitecture.g:2144:2: ( ( (lv_value_0_0= RULE_FLOAT ) ) )
+            // InternalArchitecture.g:2145:2: ( (lv_value_0_0= RULE_FLOAT ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2129:1: ( (lv_value_0_0= RULE_FLOAT ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2130:1: (lv_value_0_0= RULE_FLOAT )
+            // InternalArchitecture.g:2145:2: ( (lv_value_0_0= RULE_FLOAT ) )
+            // InternalArchitecture.g:2146:3: (lv_value_0_0= RULE_FLOAT )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2130:1: (lv_value_0_0= RULE_FLOAT )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2131:3: lv_value_0_0= RULE_FLOAT
+            // InternalArchitecture.g:2146:3: (lv_value_0_0= RULE_FLOAT )
+            // InternalArchitecture.g:2147:4: lv_value_0_0= RULE_FLOAT
             {
-            lv_value_0_0=(Token)match(input,RULE_FLOAT,FOLLOW_RULE_FLOAT_in_ruleFloatLiteral4756); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,RULE_FLOAT,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_value_0_0, grammarAccess.getFloatLiteralAccess().getValueFLOATTerminalRuleCall_0()); 
-              		
+              				newLeafNode(lv_value_0_0, grammarAccess.getFloatLiteralAccess().getValueFLOATTerminalRuleCall_0());
+              			
             }
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getFloatLiteralRule());
-              	        }
-                     		setWithLastConsumed(
-                     			current, 
-                     			"value",
-                      		lv_value_0_0, 
-                      		"FLOAT");
-              	    
+              				if (current==null) {
+              					current = createModelElement(grammarAccess.getFloatLiteralRule());
+              				}
+              				setWithLastConsumed(
+              					current,
+              					"value",
+              					lv_value_0_0,
+              					"de.cau.cs.se.geco.architecture.Architecture.FLOAT");
+              			
             }
 
             }
@@ -6162,14 +6257,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6178,7 +6275,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBooleanLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2155:1: entryRuleBooleanLiteral returns [EObject current=null] : iv_ruleBooleanLiteral= ruleBooleanLiteral EOF ;
+    // InternalArchitecture.g:2166:1: entryRuleBooleanLiteral returns [EObject current=null] : iv_ruleBooleanLiteral= ruleBooleanLiteral EOF ;
     public final EObject entryRuleBooleanLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -6186,13 +6283,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2156:2: (iv_ruleBooleanLiteral= ruleBooleanLiteral EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2157:2: iv_ruleBooleanLiteral= ruleBooleanLiteral EOF
+            // InternalArchitecture.g:2166:55: (iv_ruleBooleanLiteral= ruleBooleanLiteral EOF )
+            // InternalArchitecture.g:2167:2: iv_ruleBooleanLiteral= ruleBooleanLiteral EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getBooleanLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral4796);
+            pushFollow(FOLLOW_1);
             iv_ruleBooleanLiteral=ruleBooleanLiteral();
 
             state._fsp--;
@@ -6200,16 +6297,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleBooleanLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanLiteral4806); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6218,41 +6315,42 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBooleanLiteral"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2164:1: ruleBooleanLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_BOOLEAN ) ) ;
+    // InternalArchitecture.g:2173:1: ruleBooleanLiteral returns [EObject current=null] : ( (lv_value_0_0= RULE_BOOLEAN ) ) ;
     public final EObject ruleBooleanLiteral() throws RecognitionException {
         EObject current = null;
 
         Token lv_value_0_0=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2167:28: ( ( (lv_value_0_0= RULE_BOOLEAN ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2168:1: ( (lv_value_0_0= RULE_BOOLEAN ) )
+            // InternalArchitecture.g:2179:2: ( ( (lv_value_0_0= RULE_BOOLEAN ) ) )
+            // InternalArchitecture.g:2180:2: ( (lv_value_0_0= RULE_BOOLEAN ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2168:1: ( (lv_value_0_0= RULE_BOOLEAN ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2169:1: (lv_value_0_0= RULE_BOOLEAN )
+            // InternalArchitecture.g:2180:2: ( (lv_value_0_0= RULE_BOOLEAN ) )
+            // InternalArchitecture.g:2181:3: (lv_value_0_0= RULE_BOOLEAN )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2169:1: (lv_value_0_0= RULE_BOOLEAN )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2170:3: lv_value_0_0= RULE_BOOLEAN
+            // InternalArchitecture.g:2181:3: (lv_value_0_0= RULE_BOOLEAN )
+            // InternalArchitecture.g:2182:4: lv_value_0_0= RULE_BOOLEAN
             {
-            lv_value_0_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_RULE_BOOLEAN_in_ruleBooleanLiteral4847); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_value_0_0, grammarAccess.getBooleanLiteralAccess().getValueBOOLEANTerminalRuleCall_0()); 
-              		
+              				newLeafNode(lv_value_0_0, grammarAccess.getBooleanLiteralAccess().getValueBOOLEANTerminalRuleCall_0());
+              			
             }
             if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getBooleanLiteralRule());
-              	        }
-                     		setWithLastConsumed(
-                     			current, 
-                     			"value",
-                      		lv_value_0_0, 
-                      		"BOOLEAN");
-              	    
+              				if (current==null) {
+              					current = createModelElement(grammarAccess.getBooleanLiteralRule());
+              				}
+              				setWithLastConsumed(
+              					current,
+              					"value",
+              					lv_value_0_0,
+              					"de.cau.cs.se.geco.architecture.Architecture.BOOLEAN");
+              			
             }
 
             }
@@ -6264,14 +6362,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6280,7 +6380,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2194:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
+    // InternalArchitecture.g:2201:1: entryRuleQualifiedName returns [String current=null] : iv_ruleQualifiedName= ruleQualifiedName EOF ;
     public final String entryRuleQualifiedName() throws RecognitionException {
         String current = null;
 
@@ -6288,13 +6388,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2195:2: (iv_ruleQualifiedName= ruleQualifiedName EOF )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2196:2: iv_ruleQualifiedName= ruleQualifiedName EOF
+            // InternalArchitecture.g:2201:53: (iv_ruleQualifiedName= ruleQualifiedName EOF )
+            // InternalArchitecture.g:2202:2: iv_ruleQualifiedName= ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQualifiedNameRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName4888);
+            pushFollow(FOLLOW_1);
             iv_ruleQualifiedName=ruleQualifiedName();
 
             state._fsp--;
@@ -6302,16 +6402,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQualifiedName.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName4899); if (state.failed) return current;
+            match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
             }
 
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6320,7 +6420,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2203:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* ) ;
+    // InternalArchitecture.g:2208:1: ruleQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* ) ;
     public final AntlrDatatypeRuleToken ruleQualifiedName() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -6328,27 +6428,28 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         Token kw=null;
         Token this_ID_2=null;
 
-         enterRule(); 
-            
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2206:28: ( (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2207:1: (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* )
+            // InternalArchitecture.g:2214:2: ( (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* ) )
+            // InternalArchitecture.g:2215:2: (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2207:1: (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2207:6: this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )*
+            // InternalArchitecture.g:2215:2: (this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )* )
+            // InternalArchitecture.g:2216:3: this_ID_0= RULE_ID ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )*
             {
-            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName4939); if (state.failed) return current;
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_41); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		current.merge(this_ID_0);
-                  
+              			current.merge(this_ID_0);
+              		
             }
             if ( state.backtracking==0 ) {
-               
-                  newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
-                  
+
+              			newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0());
+              		
             }
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2214:1: ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )*
+            // InternalArchitecture.g:2223:3: ( ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID )*
             loop36:
             do {
                 int alt36=2;
@@ -6361,31 +6462,31 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
                 switch (alt36) {
             	case 1 :
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2214:2: ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID
+            	    // InternalArchitecture.g:2224:4: ( ( '.' )=>kw= '.' ) this_ID_2= RULE_ID
             	    {
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2214:2: ( ( '.' )=>kw= '.' )
-            	    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2214:3: ( '.' )=>kw= '.'
+            	    // InternalArchitecture.g:2224:4: ( ( '.' )=>kw= '.' )
+            	    // InternalArchitecture.g:2225:5: ( '.' )=>kw= '.'
             	    {
-            	    kw=(Token)match(input,46,FOLLOW_46_in_ruleQualifiedName4967); if (state.failed) return current;
+            	    kw=(Token)match(input,46,FOLLOW_3); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	              current.merge(kw);
-            	              newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
-            	          
+            	      					current.merge(kw);
+            	      					newLeafNode(kw, grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0());
+            	      				
             	    }
 
             	    }
 
-            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQualifiedName4983); if (state.failed) return current;
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_41); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	      		current.merge(this_ID_2);
-            	          
+            	      				current.merge(this_ID_2);
+            	      			
             	    }
             	    if ( state.backtracking==0 ) {
-            	       
-            	          newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
-            	          
+
+            	      				newLeafNode(this_ID_2, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1());
+            	      			
             	    }
 
             	    }
@@ -6403,14 +6504,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6419,7 +6522,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModelModifier"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2239:1: ruleModelModifier returns [Enumerator current=null] : ( (enumLiteral_0= 'in' ) | (enumLiteral_1= 'out' ) | (enumLiteral_2= 'io' ) ) ;
+    // InternalArchitecture.g:2244:1: ruleModelModifier returns [Enumerator current=null] : ( (enumLiteral_0= 'in' ) | (enumLiteral_1= 'out' ) | (enumLiteral_2= 'io' ) ) ;
     public final Enumerator ruleModelModifier() throws RecognitionException {
         Enumerator current = null;
 
@@ -6427,12 +6530,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         Token enumLiteral_1=null;
         Token enumLiteral_2=null;
 
-         enterRule(); 
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2241:28: ( ( (enumLiteral_0= 'in' ) | (enumLiteral_1= 'out' ) | (enumLiteral_2= 'io' ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2242:1: ( (enumLiteral_0= 'in' ) | (enumLiteral_1= 'out' ) | (enumLiteral_2= 'io' ) )
+            // InternalArchitecture.g:2250:2: ( ( (enumLiteral_0= 'in' ) | (enumLiteral_1= 'out' ) | (enumLiteral_2= 'io' ) ) )
+            // InternalArchitecture.g:2251:2: ( (enumLiteral_0= 'in' ) | (enumLiteral_1= 'out' ) | (enumLiteral_2= 'io' ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2242:1: ( (enumLiteral_0= 'in' ) | (enumLiteral_1= 'out' ) | (enumLiteral_2= 'io' ) )
+            // InternalArchitecture.g:2251:2: ( (enumLiteral_0= 'in' ) | (enumLiteral_1= 'out' ) | (enumLiteral_2= 'io' ) )
             int alt37=3;
             switch ( input.LA(1) ) {
             case 32:
@@ -6460,17 +6565,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             switch (alt37) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2242:2: (enumLiteral_0= 'in' )
+                    // InternalArchitecture.g:2252:3: (enumLiteral_0= 'in' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2242:2: (enumLiteral_0= 'in' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2242:4: enumLiteral_0= 'in'
+                    // InternalArchitecture.g:2252:3: (enumLiteral_0= 'in' )
+                    // InternalArchitecture.g:2253:4: enumLiteral_0= 'in'
                     {
-                    enumLiteral_0=(Token)match(input,32,FOLLOW_32_in_ruleModelModifier5046); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,32,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getModelModifierAccess().getINPUTEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_0, grammarAccess.getModelModifierAccess().getINPUTEnumLiteralDeclaration_0()); 
-                          
+                      				current = grammarAccess.getModelModifierAccess().getINPUTEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_0, grammarAccess.getModelModifierAccess().getINPUTEnumLiteralDeclaration_0());
+                      			
                     }
 
                     }
@@ -6479,17 +6584,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2248:6: (enumLiteral_1= 'out' )
+                    // InternalArchitecture.g:2260:3: (enumLiteral_1= 'out' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2248:6: (enumLiteral_1= 'out' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2248:8: enumLiteral_1= 'out'
+                    // InternalArchitecture.g:2260:3: (enumLiteral_1= 'out' )
+                    // InternalArchitecture.g:2261:4: enumLiteral_1= 'out'
                     {
-                    enumLiteral_1=(Token)match(input,31,FOLLOW_31_in_ruleModelModifier5063); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,31,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getModelModifierAccess().getOUTPUTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_1, grammarAccess.getModelModifierAccess().getOUTPUTEnumLiteralDeclaration_1()); 
-                          
+                      				current = grammarAccess.getModelModifierAccess().getOUTPUTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_1, grammarAccess.getModelModifierAccess().getOUTPUTEnumLiteralDeclaration_1());
+                      			
                     }
 
                     }
@@ -6498,17 +6603,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2254:6: (enumLiteral_2= 'io' )
+                    // InternalArchitecture.g:2268:3: (enumLiteral_2= 'io' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2254:6: (enumLiteral_2= 'io' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2254:8: enumLiteral_2= 'io'
+                    // InternalArchitecture.g:2268:3: (enumLiteral_2= 'io' )
+                    // InternalArchitecture.g:2269:4: enumLiteral_2= 'io'
                     {
-                    enumLiteral_2=(Token)match(input,47,FOLLOW_47_in_ruleModelModifier5080); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,47,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getModelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_2, grammarAccess.getModelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2()); 
-                          
+                      				current = grammarAccess.getModelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_2, grammarAccess.getModelModifierAccess().getINTERMEDIATEEnumLiteralDeclaration_2());
+                      			
                     }
 
                     }
@@ -6523,14 +6628,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6539,19 +6646,21 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicOperator"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2264:1: ruleLogicOperator returns [Enumerator current=null] : ( (enumLiteral_0= '&' ) | (enumLiteral_1= '|' ) ) ;
+    // InternalArchitecture.g:2279:1: ruleLogicOperator returns [Enumerator current=null] : ( (enumLiteral_0= '&' ) | (enumLiteral_1= '|' ) ) ;
     public final Enumerator ruleLogicOperator() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
 
-         enterRule(); 
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2266:28: ( ( (enumLiteral_0= '&' ) | (enumLiteral_1= '|' ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2267:1: ( (enumLiteral_0= '&' ) | (enumLiteral_1= '|' ) )
+            // InternalArchitecture.g:2285:2: ( ( (enumLiteral_0= '&' ) | (enumLiteral_1= '|' ) ) )
+            // InternalArchitecture.g:2286:2: ( (enumLiteral_0= '&' ) | (enumLiteral_1= '|' ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2267:1: ( (enumLiteral_0= '&' ) | (enumLiteral_1= '|' ) )
+            // InternalArchitecture.g:2286:2: ( (enumLiteral_0= '&' ) | (enumLiteral_1= '|' ) )
             int alt38=2;
             int LA38_0 = input.LA(1);
 
@@ -6570,17 +6679,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
             switch (alt38) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2267:2: (enumLiteral_0= '&' )
+                    // InternalArchitecture.g:2287:3: (enumLiteral_0= '&' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2267:2: (enumLiteral_0= '&' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2267:4: enumLiteral_0= '&'
+                    // InternalArchitecture.g:2287:3: (enumLiteral_0= '&' )
+                    // InternalArchitecture.g:2288:4: enumLiteral_0= '&'
                     {
-                    enumLiteral_0=(Token)match(input,48,FOLLOW_48_in_ruleLogicOperator5125); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,48,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getLogicOperatorAccess().getANDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_0, grammarAccess.getLogicOperatorAccess().getANDEnumLiteralDeclaration_0()); 
-                          
+                      				current = grammarAccess.getLogicOperatorAccess().getANDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_0, grammarAccess.getLogicOperatorAccess().getANDEnumLiteralDeclaration_0());
+                      			
                     }
 
                     }
@@ -6589,17 +6698,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2273:6: (enumLiteral_1= '|' )
+                    // InternalArchitecture.g:2295:3: (enumLiteral_1= '|' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2273:6: (enumLiteral_1= '|' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2273:8: enumLiteral_1= '|'
+                    // InternalArchitecture.g:2295:3: (enumLiteral_1= '|' )
+                    // InternalArchitecture.g:2296:4: enumLiteral_1= '|'
                     {
-                    enumLiteral_1=(Token)match(input,49,FOLLOW_49_in_ruleLogicOperator5142); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,49,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getLogicOperatorAccess().getOREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_1, grammarAccess.getLogicOperatorAccess().getOREnumLiteralDeclaration_1()); 
-                          
+                      				current = grammarAccess.getLogicOperatorAccess().getOREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_1, grammarAccess.getLogicOperatorAccess().getOREnumLiteralDeclaration_1());
+                      			
                     }
 
                     }
@@ -6614,14 +6723,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6630,7 +6741,7 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComparator"
-    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2283:1: ruleComparator returns [Enumerator current=null] : ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) | (enumLiteral_2= '>' ) | (enumLiteral_3= '<' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) | (enumLiteral_6= '~' ) ) ;
+    // InternalArchitecture.g:2306:1: ruleComparator returns [Enumerator current=null] : ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) | (enumLiteral_2= '>' ) | (enumLiteral_3= '<' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) | (enumLiteral_6= '~' ) ) ;
     public final Enumerator ruleComparator() throws RecognitionException {
         Enumerator current = null;
 
@@ -6642,12 +6753,14 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
         Token enumLiteral_5=null;
         Token enumLiteral_6=null;
 
-         enterRule(); 
+
+        	enterRule();
+
         try {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2285:28: ( ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) | (enumLiteral_2= '>' ) | (enumLiteral_3= '<' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) | (enumLiteral_6= '~' ) ) )
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2286:1: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) | (enumLiteral_2= '>' ) | (enumLiteral_3= '<' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) | (enumLiteral_6= '~' ) )
+            // InternalArchitecture.g:2312:2: ( ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) | (enumLiteral_2= '>' ) | (enumLiteral_3= '<' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) | (enumLiteral_6= '~' ) ) )
+            // InternalArchitecture.g:2313:2: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) | (enumLiteral_2= '>' ) | (enumLiteral_3= '<' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) | (enumLiteral_6= '~' ) )
             {
-            // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2286:1: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) | (enumLiteral_2= '>' ) | (enumLiteral_3= '<' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) | (enumLiteral_6= '~' ) )
+            // InternalArchitecture.g:2313:2: ( (enumLiteral_0= '==' ) | (enumLiteral_1= '!=' ) | (enumLiteral_2= '>' ) | (enumLiteral_3= '<' ) | (enumLiteral_4= '>=' ) | (enumLiteral_5= '<=' ) | (enumLiteral_6= '~' ) )
             int alt39=7;
             switch ( input.LA(1) ) {
             case 50:
@@ -6695,17 +6808,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
             switch (alt39) {
                 case 1 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2286:2: (enumLiteral_0= '==' )
+                    // InternalArchitecture.g:2314:3: (enumLiteral_0= '==' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2286:2: (enumLiteral_0= '==' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2286:4: enumLiteral_0= '=='
+                    // InternalArchitecture.g:2314:3: (enumLiteral_0= '==' )
+                    // InternalArchitecture.g:2315:4: enumLiteral_0= '=='
                     {
-                    enumLiteral_0=(Token)match(input,50,FOLLOW_50_in_ruleComparator5187); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,50,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getComparatorAccess().getEQEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_0, grammarAccess.getComparatorAccess().getEQEnumLiteralDeclaration_0()); 
-                          
+                      				current = grammarAccess.getComparatorAccess().getEQEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_0, grammarAccess.getComparatorAccess().getEQEnumLiteralDeclaration_0());
+                      			
                     }
 
                     }
@@ -6714,17 +6827,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2292:6: (enumLiteral_1= '!=' )
+                    // InternalArchitecture.g:2322:3: (enumLiteral_1= '!=' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2292:6: (enumLiteral_1= '!=' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2292:8: enumLiteral_1= '!='
+                    // InternalArchitecture.g:2322:3: (enumLiteral_1= '!=' )
+                    // InternalArchitecture.g:2323:4: enumLiteral_1= '!='
                     {
-                    enumLiteral_1=(Token)match(input,51,FOLLOW_51_in_ruleComparator5204); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,51,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getComparatorAccess().getNEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_1, grammarAccess.getComparatorAccess().getNEEnumLiteralDeclaration_1()); 
-                          
+                      				current = grammarAccess.getComparatorAccess().getNEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_1, grammarAccess.getComparatorAccess().getNEEnumLiteralDeclaration_1());
+                      			
                     }
 
                     }
@@ -6733,17 +6846,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2298:6: (enumLiteral_2= '>' )
+                    // InternalArchitecture.g:2330:3: (enumLiteral_2= '>' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2298:6: (enumLiteral_2= '>' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2298:8: enumLiteral_2= '>'
+                    // InternalArchitecture.g:2330:3: (enumLiteral_2= '>' )
+                    // InternalArchitecture.g:2331:4: enumLiteral_2= '>'
                     {
-                    enumLiteral_2=(Token)match(input,42,FOLLOW_42_in_ruleComparator5221); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getComparatorAccess().getGREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_2, grammarAccess.getComparatorAccess().getGREnumLiteralDeclaration_2()); 
-                          
+                      				current = grammarAccess.getComparatorAccess().getGREnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_2, grammarAccess.getComparatorAccess().getGREnumLiteralDeclaration_2());
+                      			
                     }
 
                     }
@@ -6752,17 +6865,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2304:6: (enumLiteral_3= '<' )
+                    // InternalArchitecture.g:2338:3: (enumLiteral_3= '<' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2304:6: (enumLiteral_3= '<' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2304:8: enumLiteral_3= '<'
+                    // InternalArchitecture.g:2338:3: (enumLiteral_3= '<' )
+                    // InternalArchitecture.g:2339:4: enumLiteral_3= '<'
                     {
-                    enumLiteral_3=(Token)match(input,41,FOLLOW_41_in_ruleComparator5238); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,41,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getComparatorAccess().getLWEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_3, grammarAccess.getComparatorAccess().getLWEnumLiteralDeclaration_3()); 
-                          
+                      				current = grammarAccess.getComparatorAccess().getLWEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_3, grammarAccess.getComparatorAccess().getLWEnumLiteralDeclaration_3());
+                      			
                     }
 
                     }
@@ -6771,17 +6884,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2310:6: (enumLiteral_4= '>=' )
+                    // InternalArchitecture.g:2346:3: (enumLiteral_4= '>=' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2310:6: (enumLiteral_4= '>=' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2310:8: enumLiteral_4= '>='
+                    // InternalArchitecture.g:2346:3: (enumLiteral_4= '>=' )
+                    // InternalArchitecture.g:2347:4: enumLiteral_4= '>='
                     {
-                    enumLiteral_4=(Token)match(input,52,FOLLOW_52_in_ruleComparator5255); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,52,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getComparatorAccess().getGEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_4, grammarAccess.getComparatorAccess().getGEEnumLiteralDeclaration_4()); 
-                          
+                      				current = grammarAccess.getComparatorAccess().getGEEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_4, grammarAccess.getComparatorAccess().getGEEnumLiteralDeclaration_4());
+                      			
                     }
 
                     }
@@ -6790,17 +6903,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2316:6: (enumLiteral_5= '<=' )
+                    // InternalArchitecture.g:2354:3: (enumLiteral_5= '<=' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2316:6: (enumLiteral_5= '<=' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2316:8: enumLiteral_5= '<='
+                    // InternalArchitecture.g:2354:3: (enumLiteral_5= '<=' )
+                    // InternalArchitecture.g:2355:4: enumLiteral_5= '<='
                     {
-                    enumLiteral_5=(Token)match(input,53,FOLLOW_53_in_ruleComparator5272); if (state.failed) return current;
+                    enumLiteral_5=(Token)match(input,53,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getComparatorAccess().getLEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_5, grammarAccess.getComparatorAccess().getLEEnumLiteralDeclaration_5()); 
-                          
+                      				current = grammarAccess.getComparatorAccess().getLEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_5, grammarAccess.getComparatorAccess().getLEEnumLiteralDeclaration_5());
+                      			
                     }
 
                     }
@@ -6809,17 +6922,17 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2322:6: (enumLiteral_6= '~' )
+                    // InternalArchitecture.g:2362:3: (enumLiteral_6= '~' )
                     {
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2322:6: (enumLiteral_6= '~' )
-                    // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2322:8: enumLiteral_6= '~'
+                    // InternalArchitecture.g:2362:3: (enumLiteral_6= '~' )
+                    // InternalArchitecture.g:2363:4: enumLiteral_6= '~'
                     {
-                    enumLiteral_6=(Token)match(input,54,FOLLOW_54_in_ruleComparator5289); if (state.failed) return current;
+                    enumLiteral_6=(Token)match(input,54,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                              current = grammarAccess.getComparatorAccess().getLIKEEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-                              newLeafNode(enumLiteral_6, grammarAccess.getComparatorAccess().getLIKEEnumLiteralDeclaration_6()); 
-                          
+                      				current = grammarAccess.getComparatorAccess().getLIKEEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
+                      				newLeafNode(enumLiteral_6, grammarAccess.getComparatorAccess().getLIKEEnumLiteralDeclaration_6());
+                      			
                     }
 
                     }
@@ -6834,14 +6947,16 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             }
 
             if ( state.backtracking==0 ) {
-               leaveRule(); 
+
+              	leaveRule();
+
             }
         }
-         
-            catch (RecognitionException re) { 
-                recover(input,re); 
+
+            catch (RecognitionException re) {
+                recover(input,re);
                 appendSkippedTokens();
-            } 
+            }
         finally {
         }
         return current;
@@ -6850,24 +6965,24 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred1_InternalArchitecture
     public final void synpred1_InternalArchitecture_fragment() throws RecognitionException {   
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:3: ( ( () ( ( ruleLogicOperator ) ) ) )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:4: ( () ( ( ruleLogicOperator ) ) )
+        // InternalArchitecture.g:1277:5: ( ( () ( ( ruleLogicOperator ) ) ) )
+        // InternalArchitecture.g:1277:6: ( () ( ( ruleLogicOperator ) ) )
         {
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:4: ( () ( ( ruleLogicOperator ) ) )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:5: () ( ( ruleLogicOperator ) )
+        // InternalArchitecture.g:1277:6: ( () ( ( ruleLogicOperator ) ) )
+        // InternalArchitecture.g:1278:6: () ( ( ruleLogicOperator ) )
         {
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1249:5: ()
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1250:1: 
+        // InternalArchitecture.g:1278:6: ()
+        // InternalArchitecture.g:1279:6: 
         {
         }
 
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1250:2: ( ( ruleLogicOperator ) )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1251:1: ( ruleLogicOperator )
+        // InternalArchitecture.g:1280:6: ( ( ruleLogicOperator ) )
+        // InternalArchitecture.g:1281:7: ( ruleLogicOperator )
         {
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1251:1: ( ruleLogicOperator )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1252:1: ruleLogicOperator
+        // InternalArchitecture.g:1281:7: ( ruleLogicOperator )
+        // InternalArchitecture.g:1282:8: ruleLogicOperator
         {
-        pushFollow(FOLLOW_ruleLogicOperator_in_synpred1_InternalArchitecture2627);
+        pushFollow(FOLLOW_2);
         ruleLogicOperator();
 
         state._fsp--;
@@ -6888,24 +7003,24 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred2_InternalArchitecture
     public final void synpred2_InternalArchitecture_fragment() throws RecognitionException {   
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:3: ( ( () ( ( ruleComparator ) ) ) )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:4: ( () ( ( ruleComparator ) ) )
+        // InternalArchitecture.g:1365:5: ( ( () ( ( ruleComparator ) ) ) )
+        // InternalArchitecture.g:1365:6: ( () ( ( ruleComparator ) ) )
         {
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:4: ( () ( ( ruleComparator ) ) )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:5: () ( ( ruleComparator ) )
+        // InternalArchitecture.g:1365:6: ( () ( ( ruleComparator ) ) )
+        // InternalArchitecture.g:1366:6: () ( ( ruleComparator ) )
         {
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1326:5: ()
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1327:1: 
+        // InternalArchitecture.g:1366:6: ()
+        // InternalArchitecture.g:1367:6: 
         {
         }
 
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1327:2: ( ( ruleComparator ) )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1328:1: ( ruleComparator )
+        // InternalArchitecture.g:1368:6: ( ( ruleComparator ) )
+        // InternalArchitecture.g:1369:7: ( ruleComparator )
         {
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1328:1: ( ruleComparator )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:1329:1: ruleComparator
+        // InternalArchitecture.g:1369:7: ( ruleComparator )
+        // InternalArchitecture.g:1370:8: ruleComparator
         {
-        pushFollow(FOLLOW_ruleComparator_in_synpred2_InternalArchitecture2794);
+        pushFollow(FOLLOW_2);
         ruleComparator();
 
         state._fsp--;
@@ -6926,10 +7041,10 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
     // $ANTLR start synpred3_InternalArchitecture
     public final void synpred3_InternalArchitecture_fragment() throws RecognitionException {   
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2214:3: ( '.' )
-        // ../de.cau.cs.se.geco.architecture/src-gen/de/cau/cs/se/geco/architecture/parser/antlr/internal/InternalArchitecture.g:2215:2: '.'
+        // InternalArchitecture.g:2225:5: ( '.' )
+        // InternalArchitecture.g:2225:6: '.'
         {
-        match(input,46,FOLLOW_46_in_synpred3_InternalArchitecture4958); if (state.failed) return ;
+        match(input,46,FOLLOW_2); if (state.failed) return ;
 
         }
     }
@@ -6982,19 +7097,13 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
 
 
     protected DFA27 dfa27 = new DFA27(this);
-    static final String DFA27_eotS =
-        "\12\uffff";
-    static final String DFA27_eofS =
-        "\1\10\11\uffff";
-    static final String DFA27_minS =
-        "\1\33\7\0\2\uffff";
-    static final String DFA27_maxS =
-        "\1\66\7\0\2\uffff";
-    static final String DFA27_acceptS =
-        "\10\uffff\1\2\1\1";
-    static final String DFA27_specialS =
-        "\1\uffff\1\0\1\2\1\4\1\6\1\1\1\3\1\5\2\uffff}>";
-    static final String[] DFA27_transitionS = {
+    static final String dfa_1s = "\12\uffff";
+    static final String dfa_2s = "\1\10\11\uffff";
+    static final String dfa_3s = "\1\33\7\0\2\uffff";
+    static final String dfa_4s = "\1\66\7\0\2\uffff";
+    static final String dfa_5s = "\10\uffff\1\2\1\1";
+    static final String dfa_6s = "\1\uffff\1\0\1\2\1\4\1\6\1\1\1\3\1\5\2\uffff}>";
+    static final String[] dfa_7s = {
             "\1\10\6\uffff\1\10\6\uffff\1\4\1\3\5\uffff\2\10\1\1\1\2\1\5\1\6\1\7",
             "\1\uffff",
             "\1\uffff",
@@ -7007,37 +7116,29 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] DFA27_eot = DFA.unpackEncodedString(DFA27_eotS);
-    static final short[] DFA27_eof = DFA.unpackEncodedString(DFA27_eofS);
-    static final char[] DFA27_min = DFA.unpackEncodedStringToUnsignedChars(DFA27_minS);
-    static final char[] DFA27_max = DFA.unpackEncodedStringToUnsignedChars(DFA27_maxS);
-    static final short[] DFA27_accept = DFA.unpackEncodedString(DFA27_acceptS);
-    static final short[] DFA27_special = DFA.unpackEncodedString(DFA27_specialS);
-    static final short[][] DFA27_transition;
-
-    static {
-        int numStates = DFA27_transitionS.length;
-        DFA27_transition = new short[numStates][];
-        for (int i=0; i<numStates; i++) {
-            DFA27_transition[i] = DFA.unpackEncodedString(DFA27_transitionS[i]);
-        }
-    }
+    static final short[] dfa_1 = DFA.unpackEncodedString(dfa_1s);
+    static final short[] dfa_2 = DFA.unpackEncodedString(dfa_2s);
+    static final char[] dfa_3 = DFA.unpackEncodedStringToUnsignedChars(dfa_3s);
+    static final char[] dfa_4 = DFA.unpackEncodedStringToUnsignedChars(dfa_4s);
+    static final short[] dfa_5 = DFA.unpackEncodedString(dfa_5s);
+    static final short[] dfa_6 = DFA.unpackEncodedString(dfa_6s);
+    static final short[][] dfa_7 = unpackEncodedStringArray(dfa_7s);
 
     class DFA27 extends DFA {
 
         public DFA27(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
             this.decisionNumber = 27;
-            this.eot = DFA27_eot;
-            this.eof = DFA27_eof;
-            this.min = DFA27_min;
-            this.max = DFA27_max;
-            this.accept = DFA27_accept;
-            this.special = DFA27_special;
-            this.transition = DFA27_transition;
+            this.eot = dfa_1;
+            this.eof = dfa_2;
+            this.min = dfa_3;
+            this.max = dfa_4;
+            this.accept = dfa_5;
+            this.special = dfa_6;
+            this.transition = dfa_7;
         }
         public String getDescription() {
-            return "1326:1: ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )?";
+            return "1363:3: ( ( ( ( () ( ( ruleComparator ) ) ) )=> ( () ( (lv_comparator_2_0= ruleComparator ) ) ) ) ( (lv_right_3_0= ruleBasicConstraint ) ) )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
@@ -7158,215 +7259,46 @@ public class InternalArchitectureParser extends AbstractInternalAntlrParser {
     }
  
 
-    public static final BitSet FOLLOW_ruleGecoModel_in_entryRuleGecoModel75 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleGecoModel85 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleGecoModel122 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleGecoModel143 = new BitSet(new long[]{0x0000000002158002L});
-    public static final BitSet FOLLOW_ruleImport_in_ruleGecoModel164 = new BitSet(new long[]{0x0000000002158002L});
-    public static final BitSet FOLLOW_ruleRegisteredRootClass_in_ruleGecoModel186 = new BitSet(new long[]{0x0000000002150002L});
-    public static final BitSet FOLLOW_ruleModelSequence_in_ruleGecoModel208 = new BitSet(new long[]{0x0000000002140002L});
-    public static final BitSet FOLLOW_ruleFragment_in_ruleGecoModel230 = new BitSet(new long[]{0x0000000002100002L});
-    public static final BitSet FOLLOW_ruleImport_in_entryRuleImport267 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleImport277 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_ruleImport314 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleImport337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRegisteredRootClass_in_entryRuleRegisteredRootClass373 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRegisteredRootClass383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_ruleRegisteredRootClass420 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleRegisteredRootClass437 = new BitSet(new long[]{0x0000000000020010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleRegisteredRootClass466 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_ruleRegisteredRootClass491 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleRegisteredRootClass521 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModelSequence_in_entryRuleModelSequence564 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleModelSequence574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_ruleModelSequence611 = new BitSet(new long[]{0x0000800180000000L});
-    public static final BitSet FOLLOW_ruleModelModifier_in_ruleModelSequence632 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleModelType_in_ruleModelSequence653 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleModel_in_ruleModelSequence674 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_19_in_ruleModelSequence687 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleModel_in_ruleModelSequence708 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_ruleModel_in_entryRuleModel746 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleModel756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleModel797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFragment_in_entryRuleFragment837 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFragment847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGenerator_in_ruleFragment894 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWeaver_in_ruleFragment921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWeaver_in_entryRuleWeaver956 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWeaver966 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_ruleWeaver1003 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleWeaver1023 = new BitSet(new long[]{0x0000001000200010L});
-    public static final BitSet FOLLOW_ruleSourceModelSelector_in_ruleWeaver1045 = new BitSet(new long[]{0x0000000002800010L});
-    public static final BitSet FOLLOW_21_in_ruleWeaver1063 = new BitSet(new long[]{0x0000000002800010L});
-    public static final BitSet FOLLOW_ruleAspectModel_in_ruleWeaver1085 = new BitSet(new long[]{0x0000000000400002L});
-    public static final BitSet FOLLOW_22_in_ruleWeaver1098 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTargetModel_in_ruleWeaver1119 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAspectModel_in_entryRuleAspectModel1157 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAspectModel1167 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCombinedModel_in_ruleAspectModel1214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSeparateModels_in_ruleAspectModel1241 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSeparateModels_in_entryRuleSeparateModels1276 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSeparateModels1286 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ruleSeparateModels1323 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTargetModel_in_ruleSeparateModels1344 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_24_in_ruleSeparateModels1356 = new BitSet(new long[]{0x0000000002000010L});
-    public static final BitSet FOLLOW_ruleCombinedModel_in_ruleSeparateModels1377 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCombinedModel_in_entryRuleCombinedModel1413 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCombinedModel1423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTargetModel_in_ruleCombinedModel1470 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGenerator_in_ruleCombinedModel1497 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGenerator_in_entryRuleGenerator1532 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleGenerator1542 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ruleGenerator1579 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleGenerator1599 = new BitSet(new long[]{0x0000000014000000L});
-    public static final BitSet FOLLOW_26_in_ruleGenerator1612 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_ruleSourceModelSelector_in_ruleGenerator1633 = new BitSet(new long[]{0x0000000008080000L});
-    public static final BitSet FOLLOW_19_in_ruleGenerator1646 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_ruleSourceModelSelector_in_ruleGenerator1667 = new BitSet(new long[]{0x0000000008080000L});
-    public static final BitSet FOLLOW_27_in_ruleGenerator1681 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_28_in_ruleGenerator1695 = new BitSet(new long[]{0x0000001000000010L});
-    public static final BitSet FOLLOW_ruleSourceModelSelector_in_ruleGenerator1716 = new BitSet(new long[]{0x0000000060000002L});
-    public static final BitSet FOLLOW_29_in_ruleGenerator1729 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTargetModel_in_ruleGenerator1750 = new BitSet(new long[]{0x0000000040000002L});
-    public static final BitSet FOLLOW_30_in_ruleGenerator1765 = new BitSet(new long[]{0x0000000180000002L});
-    public static final BitSet FOLLOW_31_in_ruleGenerator1778 = new BitSet(new long[]{0x0000010000000010L});
-    public static final BitSet FOLLOW_ruleTargetTraceModel_in_ruleGenerator1799 = new BitSet(new long[]{0x0000000100000002L});
-    public static final BitSet FOLLOW_32_in_ruleGenerator1814 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTraceModelReference_in_ruleGenerator1835 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_19_in_ruleGenerator1848 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTraceModelReference_in_ruleGenerator1869 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_ruleSourceModelSelector_in_entryRuleSourceModelSelector1911 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSourceModelSelector1921 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleSourceModelSelector1967 = new BitSet(new long[]{0x0000000A00000002L});
-    public static final BitSet FOLLOW_33_in_ruleSourceModelSelector1980 = new BitSet(new long[]{0x000010C0040001F0L});
-    public static final BitSet FOLLOW_ruleConstraintExpression_in_ruleSourceModelSelector2001 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleSourceModelSelector2013 = new BitSet(new long[]{0x0000000800000002L});
-    public static final BitSet FOLLOW_35_in_ruleSourceModelSelector2028 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeProperty_in_ruleSourceModelSelector2049 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_ruleSourceModelSelector2080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTargetModel_in_entryRuleTargetModel2117 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTargetModel2127 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleTargetModel2181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleModelType_in_entryRuleModelType2217 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleModelType2227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleModelType2272 = new BitSet(new long[]{0x0000002800000002L});
-    public static final BitSet FOLLOW_35_in_ruleModelType2285 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeProperty_in_ruleModelType2306 = new BitSet(new long[]{0x0000002000000002L});
-    public static final BitSet FOLLOW_37_in_ruleModelType2326 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNodeProperty_in_entryRuleNodeProperty2376 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNodeProperty2386 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleNodeProperty2431 = new BitSet(new long[]{0x0000000A00000002L});
-    public static final BitSet FOLLOW_33_in_ruleNodeProperty2444 = new BitSet(new long[]{0x000010C0040001F0L});
-    public static final BitSet FOLLOW_ruleConstraintExpression_in_ruleNodeProperty2465 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleNodeProperty2477 = new BitSet(new long[]{0x0000000800000002L});
-    public static final BitSet FOLLOW_35_in_ruleNodeProperty2492 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeProperty_in_ruleNodeProperty2513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstraintExpression_in_entryRuleConstraintExpression2551 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstraintExpression2561 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCompareExpression_in_ruleConstraintExpression2608 = new BitSet(new long[]{0x0003000000000002L});
-    public static final BitSet FOLLOW_ruleLogicOperator_in_ruleConstraintExpression2657 = new BitSet(new long[]{0x000010C0040001F0L});
-    public static final BitSet FOLLOW_ruleConstraintExpression_in_ruleConstraintExpression2680 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCompareExpression_in_entryRuleCompareExpression2718 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCompareExpression2728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBasicConstraint_in_ruleCompareExpression2775 = new BitSet(new long[]{0x007C060000000002L});
-    public static final BitSet FOLLOW_ruleComparator_in_ruleCompareExpression2824 = new BitSet(new long[]{0x000010C0040001F0L});
-    public static final BitSet FOLLOW_ruleBasicConstraint_in_ruleCompareExpression2847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBasicConstraint_in_entryRuleBasicConstraint2885 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBasicConstraint2895 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParenthesisConstraint_in_ruleBasicConstraint2942 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOperand_in_ruleBasicConstraint2969 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNegation_in_ruleBasicConstraint2996 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNegation_in_entryRuleNegation3031 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNegation3041 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_ruleNegation3078 = new BitSet(new long[]{0x000010C0040001F0L});
-    public static final BitSet FOLLOW_ruleConstraintExpression_in_ruleNegation3099 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParenthesisConstraint_in_entryRuleParenthesisConstraint3135 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParenthesisConstraint3145 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleParenthesisConstraint3182 = new BitSet(new long[]{0x000010C0040001F0L});
-    public static final BitSet FOLLOW_ruleConstraintExpression_in_ruleParenthesisConstraint3203 = new BitSet(new long[]{0x0000000008000000L});
-    public static final BitSet FOLLOW_27_in_ruleParenthesisConstraint3215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOperand_in_entryRuleOperand3251 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOperand3261 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleOperand3308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNodeProperty_in_ruleOperand3335 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstanceOf_in_ruleOperand3362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstanceOf_in_entryRuleInstanceOf3397 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstanceOf3407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_ruleInstanceOf3444 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleInstanceOf3464 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTargetTraceModel_in_entryRuleTargetTraceModel3500 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTargetTraceModel3510 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTraceModel_in_ruleTargetTraceModel3557 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleTargetTraceModel3575 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleTraceModelReference_in_ruleTargetTraceModel3597 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTraceModelReference_in_entryRuleTraceModelReference3633 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTraceModelReference3643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleTraceModelReference3687 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTraceModel_in_entryRuleTraceModel3722 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTraceModel3732 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleTraceModel3774 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_41_in_ruleTraceModel3791 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_ruleNodeSetRelation_in_ruleTraceModel3812 = new BitSet(new long[]{0x0000040004000000L});
-    public static final BitSet FOLLOW_42_in_ruleTraceModel3825 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNodeSetRelation_in_entryRuleNodeSetRelation3861 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNodeSetRelation3871 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleNodeSetRelation3908 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeType_in_ruleNodeSetRelation3929 = new BitSet(new long[]{0x0000080000080000L});
-    public static final BitSet FOLLOW_19_in_ruleNodeSetRelation3942 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeType_in_ruleNodeSetRelation3963 = new BitSet(new long[]{0x0000080000080000L});
-    public static final BitSet FOLLOW_43_in_ruleNodeSetRelation3977 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeType_in_ruleNodeSetRelation3998 = new BitSet(new long[]{0x0000000008080000L});
-    public static final BitSet FOLLOW_19_in_ruleNodeSetRelation4011 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleNodeType_in_ruleNodeSetRelation4032 = new BitSet(new long[]{0x0000000008080000L});
-    public static final BitSet FOLLOW_27_in_ruleNodeSetRelation4046 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNodeType_in_entryRuleNodeType4082 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNodeType4092 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleNodeType4136 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral4171 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral4181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_ruleLiteral4228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntLiteral_in_ruleLiteral4255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatLiteral_in_ruleLiteral4282 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanLiteral_in_ruleLiteral4309 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayLiteral_in_ruleLiteral4336 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayLiteral_in_entryRuleArrayLiteral4371 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArrayLiteral4381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_44_in_ruleArrayLiteral4418 = new BitSet(new long[]{0x00001000000001E0L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleArrayLiteral4439 = new BitSet(new long[]{0x0000200000080000L});
-    public static final BitSet FOLLOW_19_in_ruleArrayLiteral4452 = new BitSet(new long[]{0x00001000000001E0L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleArrayLiteral4473 = new BitSet(new long[]{0x0000200000080000L});
-    public static final BitSet FOLLOW_45_in_ruleArrayLiteral4487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral4523 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringLiteral4533 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringLiteral4574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntLiteral_in_entryRuleIntLiteral4614 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntLiteral4624 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleIntLiteral4665 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatLiteral_in_entryRuleFloatLiteral4705 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatLiteral4715 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_FLOAT_in_ruleFloatLiteral4756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral4796 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanLiteral4806 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_BOOLEAN_in_ruleBooleanLiteral4847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName4888 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName4899 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName4939 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_46_in_ruleQualifiedName4967 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName4983 = new BitSet(new long[]{0x0000400000000002L});
-    public static final BitSet FOLLOW_32_in_ruleModelModifier5046 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_ruleModelModifier5063 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_47_in_ruleModelModifier5080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleLogicOperator5125 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_ruleLogicOperator5142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_ruleComparator5187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_ruleComparator5204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_ruleComparator5221 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_ruleComparator5238 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_52_in_ruleComparator5255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_53_in_ruleComparator5272 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_54_in_ruleComparator5289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLogicOperator_in_synpred1_InternalArchitecture2627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleComparator_in_synpred2_InternalArchitecture2794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_synpred3_InternalArchitecture4958 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000002158002L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000002150002L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000002140002L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000002100002L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000020010L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000800180000000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000001000200010L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000002800010L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000400002L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000002000010L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000014000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000001000000010L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000008080000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000060000002L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000180000002L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000010000000010L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000100000002L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000A00000002L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x000010C0040001F0L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000800000002L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000002800000002L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000002000000002L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0003000000000002L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x007C060000000002L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000040004000000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000080000080000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x00001000000001E0L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000200000080000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000400000000002L});
 
 }

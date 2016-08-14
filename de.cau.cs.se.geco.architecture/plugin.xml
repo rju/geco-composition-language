@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
-
 <plugin>
-
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.cau.de/cs/se/geco/architecture/Architecture" 
-       class = "de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage"
-       genModel = "model/generated/Architecture.genmodel" /> 
-	
-  </extension>
-
-
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package 
+			uri = "http://www.cau.de/cs/se/geco/architecture/Architecture"
+			class = "de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage"
+			genModel = "model/generated/Architecture.genmodel" />
+	</extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated BoxingModel -->
@@ -20,5 +15,4 @@
             class="de.cau.cs.se.geco.architecture.model.boxing.BoxingPackage"
             genModel="src/de/cau/cs/se/geco/architecture/model/BoxingModel.genmodel"/>
    </extension>
-
 </plugin>

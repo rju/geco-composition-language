@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.geco.architecture/src" modelPluginID="de.cau.cs.se.geco.architecture"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.geco.architecture/model-gen" modelPluginID="de.cau.cs.se.geco.architecture"
     modelName="BoxingModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     usedGenPackages="../../../../../../../../model/generated/Architecture.genmodel#//architecture ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types"
@@ -9,14 +9,31 @@
   <genPackages prefix="Boxing" basePackage="de.cau.cs.se.geco.architecture.model"
       disposableProviderFactory="true" ecorePackage="BoxingModel.ecore#/">
     <genClasses ecoreClass="BoxingModel.ecore#//BoxingModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//BoxingModel/groups"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//BoxingModel/derivedFrom"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//BoxingModel/allProcessors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//BoxingModel/models"/>
     </genClasses>
-    <genClasses ecoreClass="BoxingModel.ecore#//RootModelNode">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//RootModelNode/declaredModel"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//RootModelNode/models"/>
+    <genClasses ecoreClass="BoxingModel.ecore#//ModelDeclaration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//ModelDeclaration/selector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//ModelDeclaration/model"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BoxingModel.ecore#//ModelDeclaration/modifier"/>
     </genClasses>
-    <genClasses ecoreClass="BoxingModel.ecore#//PropertyModelNode">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//PropertyModelNode/declaredNodeProperty"/>
+    <genClasses ecoreClass="BoxingModel.ecore#//Unit">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Unit/sourceTraceModels"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Unit/sourceModels"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Unit/fragment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Unit/targetModel"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Unit/targetTraceModel"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Unit/inputTypeReference"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Unit/outputTypeReference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute BoxingModel.ecore#//Unit/auxiliaryInputTypeMap"/>
+    </genClasses>
+    <genClasses ecoreClass="BoxingModel.ecore#//Group">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Group/units"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Group/subGroups"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Group/sourceTraceModels"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference BoxingModel.ecore#//Group/sourceModels"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
