@@ -3,13 +3,15 @@
  */
 package de.cau.cs.se.geco.architecture;
 
+import de.cau.cs.se.geco.architecture.ArchitectureStandaloneSetupGenerated;
+
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class ArchitectureStandaloneSetup /* implements ArchitectureStandaloneSetupGenerated  */{
+public class ArchitectureStandaloneSetup extends ArchitectureStandaloneSetupGenerated {
   public static void doSetup() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createInjectorAndDoEMFRegistration() is undefined for the type ArchitectureStandaloneSetup");
+    ArchitectureStandaloneSetup _architectureStandaloneSetup = new ArchitectureStandaloneSetup();
+    _architectureStandaloneSetup.createInjectorAndDoEMFRegistration();
   }
 }

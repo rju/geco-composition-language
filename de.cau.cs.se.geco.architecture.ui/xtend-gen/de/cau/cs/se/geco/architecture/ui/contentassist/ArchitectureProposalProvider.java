@@ -3,10 +3,12 @@
  */
 package de.cau.cs.se.geco.architecture.ui.contentassist;
 
+import de.cau.cs.se.geco.architecture.ui.contentassist.AbstractArchitectureProposalProvider;
+
 /**
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#content-assist
  * on how to customize the content assistant.
  */
 @SuppressWarnings("all")
-public class ArchitectureProposalProvider /* implements AbstractArchitectureProposalProvider  */{
+public class ArchitectureProposalProvider extends AbstractArchitectureProposalProvider {
 }

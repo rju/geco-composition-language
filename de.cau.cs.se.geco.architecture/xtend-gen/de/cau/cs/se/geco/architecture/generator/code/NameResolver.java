@@ -1,5 +1,7 @@
 package de.cau.cs.se.geco.architecture.generator.code;
 
+import de.cau.cs.se.geco.architecture.architecture.Model;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
@@ -8,9 +10,12 @@ public class NameResolver {
   /**
    * Name of internal collections for models for a specific metamodel.
    */
-  public CharSequence collectionName(final /* Model */Object model) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved");
+  public CharSequence collectionName(final Model model) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = model.getName();
+    _builder.append(_name, "");
+    _builder.append("BaseCollection");
+    return _builder;
   }
   
   /**

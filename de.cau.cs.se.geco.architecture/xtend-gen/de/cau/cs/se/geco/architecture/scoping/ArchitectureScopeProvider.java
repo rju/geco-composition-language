@@ -3,22 +3,52 @@
  */
 package de.cau.cs.se.geco.architecture.scoping;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
+import de.cau.cs.se.geco.architecture.architecture.Generator;
+import de.cau.cs.se.geco.architecture.architecture.Import;
+import de.cau.cs.se.geco.architecture.architecture.InstanceOf;
+import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
+import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
+import de.cau.cs.se.geco.architecture.architecture.NodeSetRelation;
+import de.cau.cs.se.geco.architecture.architecture.NodeType;
+import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
+import de.cau.cs.se.geco.architecture.architecture.Weaver;
+import de.cau.cs.se.geco.architecture.framework.IGenerator;
+import de.cau.cs.se.geco.architecture.framework.IWeaver;
+import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut;
+import de.cau.cs.se.geco.architecture.scoping.AbstractArchitectureScopeProvider;
+import de.cau.cs.se.geco.architecture.scoping.JvmImportTypeScope;
 import de.cau.cs.se.geco.architecture.scoping.JvmMemberTypeScope;
+import de.cau.cs.se.geco.architecture.scoping.JvmRegisterMetamodelImportScope;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmMember;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.scoping.impl.IDelegatingScopeProvider;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * This class contains custom scoping description.
@@ -27,7 +57,7 @@ import org.eclipse.xtext.scoping.impl.IDelegatingScopeProvider;
  * on how and when to use it.
  */
 @SuppressWarnings("all")
-public class ArchitectureScopeProvider implements /* AbstractArchitectureScopeProvider */IDelegatingScopeProvider {
+public class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider implements IDelegatingScopeProvider {
   @Inject
   private IJvmTypeProvider.Factory typeProviderFactory;
   
@@ -37,31 +67,100 @@ public class ArchitectureScopeProvider implements /* AbstractArchitectureScopePr
   
   @Override
   public IScope getScope(final EObject context, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nNodeProperty cannot be resolved to a type."
-      + "\nGenerator cannot be resolved to a type."
-      + "\nWeaver cannot be resolved to a type."
-      + "\nNodeType cannot be resolved to a type."
-      + "\nInstanceOf cannot be resolved to a type."
-      + "\nGenerator cannot be resolved to a type."
-      + "\nTraceModelReference cannot be resolved to a type."
-      + "\nImport cannot be resolved to a type."
-      + "\nModelType cannot be resolved to a type."
-      + "\nRegisteredRootClass cannot be resolved to a type."
-      + "\nSourceModelSelector cannot be resolved to a type."
-      + "\nTargetModel cannot be resolved to a type."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nThe method createGeneratorReferenceScope(Generator, EReference) from the type ArchitectureScopeProvider refers to the missing type Generator"
-      + "\nThe method createWeaverReferenceScope(Weaver, EReference) from the type ArchitectureScopeProvider refers to the missing type Weaver"
-      + "\nThe method createNodeTypeScope(NodeType, EReference) from the type ArchitectureScopeProvider refers to the missing type NodeType"
-      + "\nThe method createInstanceOfScope(InstanceOf, EReference) from the type ArchitectureScopeProvider refers to the missing type InstanceOf");
+    IScope _switchResult = null;
+    boolean _matched = false;
+    if (context instanceof NodeProperty) {
+      String _name = reference.getName();
+      boolean _equals = _name.equals("property");
+      if (_equals) {
+        _matched=true;
+        EObject _eContainer = ((NodeProperty)context).eContainer();
+        _switchResult = this.createPropertyScope(_eContainer, reference);
+      }
+    }
+    if (!_matched) {
+      if (context instanceof Generator) {
+        String _name = reference.getName();
+        boolean _equals = _name.equals("reference");
+        if (_equals) {
+          _matched=true;
+          _switchResult = this.createGeneratorReferenceScope(((Generator)context), reference);
+        }
+      }
+    }
+    if (!_matched) {
+      if (context instanceof Weaver) {
+        String _name = reference.getName();
+        boolean _equals = _name.equals("reference");
+        if (_equals) {
+          _matched=true;
+          _switchResult = this.createWeaverReferenceScope(((Weaver)context), reference);
+        }
+      }
+    }
+    if (!_matched) {
+      if (context instanceof NodeType) {
+        _matched=true;
+        _switchResult = this.createNodeTypeScope(((NodeType)context), reference);
+      }
+    }
+    if (!_matched) {
+      if (context instanceof InstanceOf) {
+        _matched=true;
+        _switchResult = this.createInstanceOfScope(((InstanceOf)context), reference);
+      }
+    }
+    if (!_matched) {
+      if (context instanceof Generator) {
+        String _name = reference.getName();
+        boolean _equals = _name.equals("readTraceModels");
+        if (_equals) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof TraceModelReference) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof Import) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof ModelType) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof RegisteredRootClass) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof SourceModelSelector) {
+          _matched=true;
+        }
+      }
+      if (!_matched) {
+        if (context instanceof TargetModel) {
+          _matched=true;
+        }
+      }
+      if (_matched) {
+        _switchResult = this.delegate.getScope(context, reference);
+      }
+    }
+    if (!_matched) {
+      {
+        System.out.println((((">> " + context) + " ") + reference));
+        Class<? extends EObject> _class = context.getClass();
+        String _plus = ("No scope available for " + _class);
+        throw new UnsupportedOperationException(_plus);
+      }
+    }
+    return _switchResult;
   }
   
   @Override
@@ -73,31 +172,48 @@ public class ArchitectureScopeProvider implements /* AbstractArchitectureScopePr
    * Create scope for property.
    */
   private IScope createPropertyScope(final EObject container, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nModelType cannot be resolved to a type."
-      + "\nNodeProperty cannot be resolved to a type."
-      + "\nSourceModelSelector cannot be resolved to a type."
-      + "\nModelSequence cannot be resolved to a type."
-      + "\nInstanceOf cannot be resolved to a type."
-      + "\nInstanceOf cannot be resolved to a type."
-      + "\nThe method or field target is undefined for the type EObject"
-      + "\nThe method or field property is undefined for the type EObject"
-      + "\nThe method or field reference is undefined for the type EObject"
-      + "\nThe method or field constraint is undefined for the type EObject"
-      + "\nThe method or field constraint is undefined for the type EObject"
-      + "\nThe method or field constraint is undefined for the type EObject"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nimportedNamespace cannot be resolved"
-      + "\ncreateJvmDeclaredTypeScope cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\nresolveType cannot be resolved"
-      + "\ndetermineElementType cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\ncreateJvmDeclaredTypeScope cannot be resolved"
-      + "\ncreateJvmDeclaredTypeScope cannot be resolved");
+    IScope _switchResult = null;
+    boolean _matched = false;
+    if (container instanceof ModelType) {
+      _matched=true;
+      RegisteredRootClass _target = ((ModelType)container).getTarget();
+      JvmType _importedNamespace = _target.getImportedNamespace();
+      _switchResult = this.createJvmDeclaredTypeScope(_importedNamespace, reference);
+    }
+    if (!_matched) {
+      if (container instanceof NodeProperty) {
+        _matched=true;
+        JvmMember _property = ((NodeProperty)container).getProperty();
+        JvmTypeReference _returnType = ((JvmOperation) _property).getReturnType();
+        JvmType _type = _returnType.getType();
+        _switchResult = this.createJvmDeclaredTypeScope(_type, reference);
+      }
+    }
+    if (!_matched) {
+      if (container instanceof SourceModelSelector) {
+        _matched=true;
+        Model _reference = ((SourceModelSelector)container).getReference();
+        EObject _eContainer = _reference.eContainer();
+        ModelType _type = ((ModelSequence) _eContainer).getType();
+        JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_type);
+        final JvmType genericType = ArchitectureTyping.determineElementType(_resolveType);
+        ConstraintExpression _constraint = ((SourceModelSelector)container).getConstraint();
+        boolean _notEquals = (!Objects.equal(_constraint, null));
+        if (_notEquals) {
+          ConstraintExpression _constraint_1 = ((SourceModelSelector)container).getConstraint();
+          if ((_constraint_1 instanceof InstanceOf)) {
+            ConstraintExpression _constraint_2 = ((SourceModelSelector)container).getConstraint();
+            JvmType _type_1 = ((InstanceOf) _constraint_2).getType();
+            return this.createJvmDeclaredTypeScope(_type_1, reference);
+          }
+        }
+        return this.createJvmDeclaredTypeScope(genericType, reference);
+      }
+    }
+    if (!_matched) {
+      _switchResult = IScope.NULLSCOPE;
+    }
+    return _switchResult;
   }
   
   /**
@@ -119,110 +235,222 @@ public class ArchitectureScopeProvider implements /* AbstractArchitectureScopePr
   /**
    * Scope for generators.
    */
-  private IScope createGeneratorReferenceScope(final /* Generator */Object context, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field importedNamespace is undefined for the type Object"
-      + "\nThe constructor JvmImportTypeScope(Iterable<Import>) refers to the missing type Import"
-      + "\nmodelRoot cannot be resolved"
-      + "\nimports cannot be resolved"
-      + "\nfilter cannot be resolved"
-      + "\nimplementsInterface cannot be resolved");
+  private IScope createGeneratorReferenceScope(final Generator context, final EReference reference) {
+    GecoModel _modelRoot = this.getModelRoot(context);
+    EList<Import> _imports = _modelRoot.getImports();
+    final Function1<Import, Boolean> _function = (Import it) -> {
+      JvmType _importedNamespace = it.getImportedNamespace();
+      String _name = IGenerator.class.getName();
+      return this.implementsInterface(_importedNamespace, context, _name);
+    };
+    Iterable<Import> _filter = IterableExtensions.<Import>filter(_imports, _function);
+    return new JvmImportTypeScope(_filter);
   }
   
   /**
    * Scope for weavers.
    */
-  private IScope createWeaverReferenceScope(final /* Weaver */Object context, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field importedNamespace is undefined for the type Object"
-      + "\nThe method or field importedNamespace is undefined for the type Object"
-      + "\nThe constructor JvmImportTypeScope(Iterable<Import>) refers to the missing type Import"
-      + "\nmodelRoot cannot be resolved"
-      + "\nimports cannot be resolved"
-      + "\nfilter cannot be resolved"
-      + "\nimplementsInterface cannot be resolved"
-      + "\n|| cannot be resolved"
-      + "\nimplementsInterface cannot be resolved");
+  private IScope createWeaverReferenceScope(final Weaver context, final EReference reference) {
+    GecoModel _modelRoot = this.getModelRoot(context);
+    EList<Import> _imports = _modelRoot.getImports();
+    final Function1<Import, Boolean> _function = (Import it) -> {
+      return Boolean.valueOf(((this.implementsInterface(it.getImportedNamespace(), context, IWeaver.class.getName())).booleanValue() || 
+        (this.implementsInterface(it.getImportedNamespace(), context, IWeaverSeparatePointcut.class.getName())).booleanValue()));
+    };
+    Iterable<Import> _filter = IterableExtensions.<Import>filter(_imports, _function);
+    return new JvmImportTypeScope(_filter);
   }
   
   /**
    * Scope for the trace model scope.
    */
-  private IScope createNodeTypeScope(final /* NodeType */Object nodeType, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nNodeSetRelation cannot be resolved to a type."
-      + "\nWeaver cannot be resolved to a type."
-      + "\nWeaver cannot be resolved to a type."
-      + "\ngeneratorContextNode cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\nsourceNodes cannot be resolved"
-      + "\nexists cannot be resolved"
-      + "\nsourceModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nsourceModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nresolveType cannot be resolved"
-      + "\ndetermineElementType cannot be resolved"
-      + "\nmodelRoot cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\ngetResourceSet cannot be resolved"
-      + "\ntargetModel cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\nresolveWeaverSourceModel cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nresolveType cannot be resolved"
-      + "\ndetermineElementType cannot be resolved"
-      + "\nmodelRoot cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\ngetResourceSet cannot be resolved"
-      + "\ntargetModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nresolveType cannot be resolved"
-      + "\ndetermineElementType cannot be resolved"
-      + "\nmodelRoot cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\ngetResourceSet cannot be resolved");
+  private IScope createNodeTypeScope(final NodeType nodeType, final EReference reference) {
+    IScope _xblockexpression = null;
+    {
+      final Generator generator = this.getGeneratorContextNode(nodeType);
+      IScope _xifexpression = null;
+      EObject _eContainer = nodeType.eContainer();
+      EList<NodeType> _sourceNodes = ((NodeSetRelation) _eContainer).getSourceNodes();
+      final Function1<NodeType, Boolean> _function = (NodeType it) -> {
+        return Boolean.valueOf(it.equals(nodeType));
+      };
+      boolean _exists = IterableExtensions.<NodeType>exists(_sourceNodes, _function);
+      if (_exists) {
+        SourceModelSelector _sourceModel = generator.getSourceModel();
+        Model _reference = _sourceModel.getReference();
+        boolean _notEquals = (!Objects.equal(_reference, null));
+        if (_notEquals) {
+          SourceModelSelector _sourceModel_1 = generator.getSourceModel();
+          Model _reference_1 = _sourceModel_1.getReference();
+          JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference_1);
+          JvmType _determineElementType = ArchitectureTyping.determineElementType(_resolveType);
+          GecoModel _modelRoot = this.getModelRoot(nodeType);
+          Resource _eResource = _modelRoot.eResource();
+          ResourceSet _resourceSet = _eResource.getResourceSet();
+          return new JvmRegisterMetamodelImportScope(_determineElementType, _resourceSet, this.typeProviderFactory);
+        } else {
+          return IScope.NULLSCOPE;
+        }
+      } else {
+        IScope _xifexpression_1 = null;
+        TargetModel _targetModel = generator.getTargetModel();
+        boolean _equals = Objects.equal(_targetModel, null);
+        if (_equals) {
+          IScope _xifexpression_2 = null;
+          EObject _eContainer_1 = generator.eContainer();
+          if ((_eContainer_1 instanceof Weaver)) {
+            EObject _eContainer_2 = generator.eContainer();
+            final SourceModelSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(((Weaver) _eContainer_2));
+            boolean _notEquals_1 = (!Objects.equal(sourceModel, null));
+            if (_notEquals_1) {
+              Model _reference_2 = sourceModel.getReference();
+              JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(_reference_2);
+              JvmType _determineElementType_1 = ArchitectureTyping.determineElementType(_resolveType_1);
+              GecoModel _modelRoot_1 = this.getModelRoot(nodeType);
+              Resource _eResource_1 = _modelRoot_1.eResource();
+              ResourceSet _resourceSet_1 = _eResource_1.getResourceSet();
+              return new JvmRegisterMetamodelImportScope(_determineElementType_1, _resourceSet_1, this.typeProviderFactory);
+            } else {
+              return IScope.NULLSCOPE;
+            }
+          } else {
+            _xifexpression_2 = IScope.NULLSCOPE;
+          }
+          _xifexpression_1 = _xifexpression_2;
+        } else {
+          TargetModel _targetModel_1 = generator.getTargetModel();
+          Model _reference_3 = _targetModel_1.getReference();
+          JvmTypeReference _resolveType_2 = ArchitectureTyping.resolveType(_reference_3);
+          JvmType _determineElementType_2 = ArchitectureTyping.determineElementType(_resolveType_2);
+          GecoModel _modelRoot_2 = this.getModelRoot(nodeType);
+          Resource _eResource_2 = _modelRoot_2.eResource();
+          ResourceSet _resourceSet_2 = _eResource_2.getResourceSet();
+          return new JvmRegisterMetamodelImportScope(_determineElementType_2, _resourceSet_2, this.typeProviderFactory);
+        }
+        _xifexpression = _xifexpression_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
   /**
    * Scope for the type of call.
    */
-  private IScope createInstanceOfScope(final /* InstanceOf */Object type, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nmetaModelContextNode cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nmodelRoot cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\ngetResourceSet cannot be resolved");
+  private IScope createInstanceOfScope(final InstanceOf type, final EReference reference) {
+    IScope _xblockexpression = null;
+    {
+      final JvmType context = this.getMetaModelContextNode(type);
+      IScope _xifexpression = null;
+      boolean _notEquals = (!Objects.equal(context, null));
+      if (_notEquals) {
+        GecoModel _modelRoot = this.getModelRoot(type);
+        Resource _eResource = _modelRoot.eResource();
+        ResourceSet _resourceSet = _eResource.getResourceSet();
+        return new JvmRegisterMetamodelImportScope(context, _resourceSet, 
+          this.typeProviderFactory);
+      } else {
+        _xifexpression = IScope.NULLSCOPE;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
-  private /* GecoModel */Object getModelRoot(final EObject object) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nGecoModel cannot be resolved to a type."
-      + "\nThe method getModelRoot(EObject) from the type ArchitectureScopeProvider refers to the missing type GecoModel");
+  private GecoModel getModelRoot(final EObject object) {
+    try {
+      GecoModel _xblockexpression = null;
+      {
+        final EObject container = object.eContainer();
+        GecoModel _switchResult = null;
+        boolean _matched = false;
+        if (container instanceof GecoModel) {
+          _matched=true;
+          return ((GecoModel)container);
+        }
+        if (!_matched) {
+          if (Objects.equal(container, null)) {
+            _matched=true;
+            throw new Exception("Corrupted model: No Model node.");
+          }
+        }
+        if (!_matched) {
+          _switchResult = this.getModelRoot(container);
+        }
+        _xblockexpression = _switchResult;
+      }
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   private JvmType getMetaModelContextNode(final EObject type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nNodeProperty cannot be resolved to a type."
-      + "\nSourceModelSelector cannot be resolved to a type."
-      + "\nThe method or field property is undefined for the type EObject"
-      + "\nThe method or field reference is undefined for the type EObject"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nresolveType cannot be resolved"
-      + "\ndetermineElementType cannot be resolved"
-      + "\nresolveType cannot be resolved"
-      + "\ndetermineElementType cannot be resolved");
+    try {
+      JvmType _xblockexpression = null;
+      {
+        final EObject container = type.eContainer();
+        JvmType _switchResult = null;
+        boolean _matched = false;
+        if (container instanceof NodeProperty) {
+          _matched=true;
+          JvmMember _property = ((NodeProperty)container).getProperty();
+          JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_property);
+          return ArchitectureTyping.determineElementType(_resolveType);
+        }
+        if (!_matched) {
+          if (container instanceof SourceModelSelector) {
+            _matched=true;
+            Model _reference = ((SourceModelSelector)container).getReference();
+            JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_reference);
+            return ArchitectureTyping.determineElementType(_resolveType);
+          }
+        }
+        if (!_matched) {
+          if (Objects.equal(container, null)) {
+            _matched=true;
+            throw new Exception("Corrupted model: Cannot find NodeProperty or SourceModelNodeSelector context.");
+          }
+        }
+        if (!_matched) {
+          EObject _eContainer = type.eContainer();
+          _switchResult = this.getMetaModelContextNode(_eContainer);
+        }
+        _xblockexpression = _switchResult;
+      }
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
-  private /* Generator */Object getGeneratorContextNode(final EObject type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nGenerator cannot be resolved to a type."
-      + "\nThe method getGeneratorContextNode(EObject) from the type ArchitectureScopeProvider refers to the missing type Generator");
+  private Generator getGeneratorContextNode(final EObject type) {
+    try {
+      Generator _xblockexpression = null;
+      {
+        final EObject container = type.eContainer();
+        Generator _switchResult = null;
+        boolean _matched = false;
+        if (container instanceof Generator) {
+          _matched=true;
+          return ((Generator)container);
+        }
+        if (!_matched) {
+          if (Objects.equal(container, null)) {
+            _matched=true;
+            throw new Exception("Corrupted model: Cannot find Generator context.");
+          }
+        }
+        if (!_matched) {
+          EObject _eContainer = type.eContainer();
+          _switchResult = this.getGeneratorContextNode(_eContainer);
+        }
+        _xblockexpression = _switchResult;
+      }
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   /**

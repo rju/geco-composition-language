@@ -3,9 +3,11 @@
  */
 package de.cau.cs.se.geco.architecture;
 
+import de.cau.cs.se.geco.architecture.AbstractArchitectureRuntimeModule;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class ArchitectureRuntimeModule /* implements AbstractArchitectureRuntimeModule  */{
+public class ArchitectureRuntimeModule extends AbstractArchitectureRuntimeModule {
 }

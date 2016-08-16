@@ -1,257 +1,433 @@
 package de.cau.cs.se.geco.architecture.generator.boxing;
 
+import com.google.common.base.Objects;
+import de.cau.cs.se.geco.architecture.architecture.AspectModel;
+import de.cau.cs.se.geco.architecture.architecture.Fragment;
+import de.cau.cs.se.geco.architecture.architecture.GecoModel;
+import de.cau.cs.se.geco.architecture.architecture.Generator;
+import de.cau.cs.se.geco.architecture.architecture.Model;
+import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
+import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
+import de.cau.cs.se.geco.architecture.architecture.ModelType;
+import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
+import de.cau.cs.se.geco.architecture.architecture.TargetModel;
+import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
+import de.cau.cs.se.geco.architecture.architecture.TraceModel;
+import de.cau.cs.se.geco.architecture.architecture.TraceModelReference;
+import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
+import de.cau.cs.se.geco.architecture.model.boxing.BoxingFactory;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
 import de.cau.cs.se.geco.architecture.model.boxing.Group;
+import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
 import de.cau.cs.se.geco.architecture.model.boxing.Unit;
+import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
-public class GenerateBoxingModel /* implements IGenerator<GecoModel, BoxingModel>  */{
+public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   @Override
-  public BoxingModel generate(final /* GecoModel */Object input) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nGenerator cannot be resolved to a type."
-      + "\nWeaver cannot be resolved to a type."
-      + "\nGenerator cannot be resolved to a type."
-      + "\nGenerator cannot be resolved to a type."
-      + "\nWeaver cannot be resolved to a type."
-      + "\nThe method derivedFrom(GecoModel) is undefined for the type BoxingModel"
-      + "\nThe method or field models is undefined for the type Object"
-      + "\nThe method selector(Object) is undefined for the type ModelDeclaration"
-      + "\nThe method or field type is undefined for the type Object"
-      + "\nThe method model(Object) is undefined for the type ModelDeclaration"
-      + "\nThe method modifier(Object) is undefined for the type ModelDeclaration"
-      + "\nThe method or field modifier is undefined for the type Object"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nThe method createGenerator(Generator) from the type GenerateBoxingModel refers to the missing type Generator"
-      + "\nThe method createGenerator(Generator) from the type GenerateBoxingModel refers to the missing type Generator"
-      + "\nThe method createWeaver(Weaver) from the type GenerateBoxingModel refers to the missing type Weaver"
-      + "\nThe method createGroup(EList<ModelSequence>) from the type GenerateBoxingModel refers to the missing type ModelSequence"
-      + "\nmodels cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\nfragments cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\naspectModel cannot be resolved"
-      + "\naspectModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\naspectModel cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nmodels cannot be resolved");
+  public BoxingModel generate(final GecoModel input) {
+    final BoxingModel result = BoxingFactory.eINSTANCE.createBoxingModel();
+    result.setDerivedFrom(input);
+    EList<ModelSequence> _models = input.getModels();
+    final Consumer<ModelSequence> _function = (ModelSequence sequence) -> {
+      EList<Model> _models_1 = sequence.getModels();
+      final Consumer<Model> _function_1 = (Model model) -> {
+        final ModelDeclaration modeldeclaration = BoxingFactory.eINSTANCE.createModelDeclaration();
+        ModelType _type = sequence.getType();
+        modeldeclaration.setSelector(_type);
+        modeldeclaration.setModel(model);
+        ModelModifier _modifier = sequence.getModifier();
+        modeldeclaration.setModifier(_modifier);
+        EList<ModelDeclaration> _models_2 = result.getModels();
+        _models_2.add(modeldeclaration);
+      };
+      _models_1.forEach(_function_1);
+    };
+    _models.forEach(_function);
+    final ArrayList<Unit> units = new ArrayList<Unit>();
+    EList<Fragment> _fragments = input.getFragments();
+    final Consumer<Fragment> _function_1 = (Fragment fragment) -> {
+      boolean _matched = false;
+      if (fragment instanceof Generator) {
+        _matched=true;
+        Unit _createGenerator = this.createGenerator(((Generator)fragment));
+        units.add(_createGenerator);
+      }
+      if (!_matched) {
+        if (fragment instanceof Weaver) {
+          AspectModel _aspectModel = ((Weaver)fragment).getAspectModel();
+          if ((_aspectModel instanceof Generator)) {
+            _matched=true;
+            Unit _createGenerator = this.createGenerator(((Weaver)fragment));
+            units.add(_createGenerator);
+            EList<JvmType> _allProcessors = result.getAllProcessors();
+            AspectModel _aspectModel_1 = ((Weaver)fragment).getAspectModel();
+            JvmType _reference = ((Generator) _aspectModel_1).getReference();
+            this.addUniqueType(_allProcessors, _reference);
+          }
+        }
+      }
+      if (!_matched) {
+        if (fragment instanceof Weaver) {
+          AspectModel _aspectModel = ((Weaver)fragment).getAspectModel();
+          boolean _equals = Objects.equal(_aspectModel, null);
+          if (_equals) {
+            _matched=true;
+            Unit _createWeaver = this.createWeaver(((Weaver)fragment));
+            units.add(_createWeaver);
+          }
+        }
+      }
+      EList<JvmType> _allProcessors = result.getAllProcessors();
+      JvmType _reference = fragment.getReference();
+      this.addUniqueType(_allProcessors, _reference);
+    };
+    _fragments.forEach(_function_1);
+    EList<ModelSequence> _models_1 = input.getModels();
+    Group group = this.createGroup(_models_1);
+    EList<Group> _groups = result.getGroups();
+    _groups.add(group);
+    while ((units.size() > 0)) {
+      {
+        for (int i = 0; (i < units.size()); i++) {
+          {
+            final Unit unit = units.get(i);
+            boolean _matchGroup = this.matchGroup(unit, group);
+            if (_matchGroup) {
+              units.remove(i);
+              EList<Unit> _units = group.getUnits();
+              _units.add(unit);
+              i--;
+            }
+          }
+        }
+        int _size = units.size();
+        boolean _greaterThan = (_size > 0);
+        if (_greaterThan) {
+          Group _createGroup = this.createGroup(group);
+          group = _createGroup;
+          EList<Group> _groups_1 = result.getGroups();
+          _groups_1.add(group);
+        }
+      }
+    }
+    System.out.println("start");
+    final Consumer<Unit> _function_2 = (Unit unit) -> {
+      this.print(unit);
+    };
+    units.forEach(_function_2);
+    EList<Group> _groups_1 = result.getGroups();
+    final Consumer<Group> _function_3 = (Group it) -> {
+      this.print(it);
+      EList<Unit> _units = it.getUnits();
+      final Consumer<Unit> _function_4 = (Unit unit) -> {
+        this.print(unit);
+      };
+      _units.forEach(_function_4);
+    };
+    _groups_1.forEach(_function_3);
+    return result;
   }
   
   private void print(final Group group) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field sourceTraceModels is undefined for the type Group"
-      + "\nThe method determineTraceModel(TargetTraceModel) from the type GenerateBoxingModel refers to the missing type TraceModel"
-      + "\nmap cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\njoin cannot be resolved");
+    System.out.println("group");
+    EList<TraceModel> _sourceTraceModels = group.getSourceTraceModels();
+    final Function1<TraceModel, String> _function = (TraceModel it) -> {
+      TraceModel _determineTraceModel = this.determineTraceModel(it);
+      return _determineTraceModel.getName();
+    };
+    List<String> _map = ListExtensions.<TraceModel, String>map(_sourceTraceModels, _function);
+    String _join = IterableExtensions.join(_map, ", ");
+    String _plus = ("\tread " + _join);
+    System.out.println(_plus);
   }
   
   private void print(final Unit unit) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nGenerator cannot be resolved to a type."
-      + "\nWeaver cannot be resolved to a type."
-      + "\nThe method or field fragment is undefined for the type Unit"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nThe method determineTraceModel(TargetTraceModel) from the type GenerateBoxingModel refers to the missing type TraceModel"
-      + "\nreference cannot be resolved"
-      + "\nqualifiedName cannot be resolved"
-      + "\ntargetTraceModel cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\ntargetTraceModel cannot be resolved"
-      + "\ndetermineTraceModel cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nsourceTraceModels cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nsourceTraceModels cannot be resolved"
-      + "\nmap cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\njoin cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nqualifiedName cannot be resolved");
+    final Fragment processor = unit.getFragment();
+    boolean _matched = false;
+    if (processor instanceof Generator) {
+      _matched=true;
+      JvmType _reference = ((Generator)processor).getReference();
+      String _qualifiedName = _reference.getQualifiedName();
+      String _plus = ("\tG " + _qualifiedName);
+      System.out.print(_plus);
+      TargetTraceModel _targetTraceModel = ((Generator)processor).getTargetTraceModel();
+      boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
+      if (_notEquals) {
+        TargetTraceModel _targetTraceModel_1 = ((Generator)processor).getTargetTraceModel();
+        TraceModel _determineTraceModel = this.determineTraceModel(_targetTraceModel_1);
+        String _name = _determineTraceModel.getName();
+        String _plus_1 = (" write " + _name);
+        System.out.print(_plus_1);
+      }
+      EList<TraceModelReference> _sourceTraceModels = ((Generator)processor).getSourceTraceModels();
+      boolean _notEquals_1 = (!Objects.equal(_sourceTraceModels, null));
+      if (_notEquals_1) {
+        EList<TraceModelReference> _sourceTraceModels_1 = ((Generator)processor).getSourceTraceModels();
+        final Function1<TraceModelReference, String> _function = (TraceModelReference it) -> {
+          TraceModel _determineTraceModel_1 = this.determineTraceModel(it);
+          return _determineTraceModel_1.getName();
+        };
+        List<String> _map = ListExtensions.<TraceModelReference, String>map(_sourceTraceModels_1, _function);
+        String _join = IterableExtensions.join(_map, ", ");
+        String _plus_2 = (" read " + _join);
+        System.out.print(_plus_2);
+      }
+      System.out.println();
+    }
+    if (!_matched) {
+      if (processor instanceof Weaver) {
+        _matched=true;
+        JvmType _reference = ((Weaver)processor).getReference();
+        String _qualifiedName = _reference.getQualifiedName();
+        String _plus = ("\tW " + _qualifiedName);
+        System.out.println(_plus);
+      }
+    }
   }
   
   /**
    * Check if the given group provides the necessary inputs for the unit.
    */
   private boolean matchGroup(final Unit unit, final Group group) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field sourceModels is undefined for the type Unit"
-      + "\nThe method or field sourceModels is undefined for the type Group"
-      + "\nThe method or field sourceTraceModels is undefined for the type Unit"
-      + "\nThe method or field sourceTraceModels is undefined for the type Group"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nforall cannot be resolved"
-      + "\nexists cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nforall cannot be resolved"
-      + "\nexists cannot be resolved");
+    return (IterableExtensions.<Model>forall(unit.getSourceModels(), ((Function1<Model, Boolean>) (Model unitMM) -> {
+      EList<Model> _sourceModels = group.getSourceModels();
+      final Function1<Model, Boolean> _function = (Model it) -> {
+        return Boolean.valueOf(it.equals(unitMM));
+      };
+      return Boolean.valueOf(IterableExtensions.<Model>exists(_sourceModels, _function));
+    })) && 
+      IterableExtensions.<TraceModel>forall(unit.getSourceTraceModels(), ((Function1<TraceModel, Boolean>) (TraceModel unitTR) -> {
+        EList<TraceModel> _sourceTraceModels = group.getSourceTraceModels();
+        final Function1<TraceModel, Boolean> _function = (TraceModel it) -> {
+          return Boolean.valueOf(it.equals(unitTR));
+        };
+        return Boolean.valueOf(IterableExtensions.<TraceModel>exists(_sourceTraceModels, _function));
+      })));
   }
   
   /**
    * Create a new group based on a sequence of free metamodels.
    */
-  private Group createGroup(final /* EList<ModelSequence> */Object metamodels) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field modifier is undefined for the type Object"
-      + "\nThe method or field ModelModifier is undefined"
-      + "\nThe method or field models is undefined for the type Object"
-      + "\nThe method or field sourceModels is undefined for the type Group"
-      + "\n== cannot be resolved"
-      + "\nINPUT cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\nadd cannot be resolved");
+  private Group createGroup(final EList<ModelSequence> metamodels) {
+    final Group group = BoxingFactory.eINSTANCE.createGroup();
+    final Consumer<ModelSequence> _function = (ModelSequence sequence) -> {
+      ModelModifier _modifier = sequence.getModifier();
+      boolean _equals = Objects.equal(_modifier, ModelModifier.INPUT);
+      if (_equals) {
+        EList<Model> _models = sequence.getModels();
+        final Consumer<Model> _function_1 = (Model it) -> {
+          EList<Model> _sourceModels = group.getSourceModels();
+          _sourceModels.add(it);
+        };
+        _models.forEach(_function_1);
+      }
+    };
+    metamodels.forEach(_function);
+    return group;
   }
   
   /**
    * Create a new group based on the previous groups inputs and all outputs of its units.
    */
   private Group createGroup(final Group oldGroup) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field sourceModels is undefined for the type Group"
-      + "\nThe method or field sourceModels is undefined for the type Group"
-      + "\nThe method or field sourceTraceModels is undefined for the type Group"
-      + "\nThe method or field sourceTraceModels is undefined for the type Group"
-      + "\nThe method or field sourceModels is undefined for the type Group"
-      + "\nThe method or field targetModel is undefined for the type Unit"
-      + "\nThe method or field targetTraceModel is undefined for the type Unit"
-      + "\nThe method or field sourceTraceModels is undefined for the type Group"
-      + "\nThe method or field targetTraceModel is undefined for the type Unit"
-      + "\naddAll cannot be resolved"
-      + "\naddAll cannot be resolved"
-      + "\naddUnique cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\naddUnique cannot be resolved");
+    final Group group = BoxingFactory.eINSTANCE.createGroup();
+    EList<Model> _sourceModels = group.getSourceModels();
+    EList<Model> _sourceModels_1 = oldGroup.getSourceModels();
+    _sourceModels.addAll(_sourceModels_1);
+    EList<TraceModel> _sourceTraceModels = group.getSourceTraceModels();
+    EList<TraceModel> _sourceTraceModels_1 = oldGroup.getSourceTraceModels();
+    _sourceTraceModels.addAll(_sourceTraceModels_1);
+    EList<Unit> _units = oldGroup.getUnits();
+    final Consumer<Unit> _function = (Unit unit) -> {
+      EList<Model> _sourceModels_2 = group.getSourceModels();
+      Model _targetModel = unit.getTargetModel();
+      this.addUnique(_sourceModels_2, _targetModel);
+      TraceModel _targetTraceModel = unit.getTargetTraceModel();
+      boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
+      if (_notEquals) {
+        EList<TraceModel> _sourceTraceModels_2 = group.getSourceTraceModels();
+        TraceModel _targetTraceModel_1 = unit.getTargetTraceModel();
+        this.addUnique(_sourceTraceModels_2, _targetTraceModel_1);
+      }
+    };
+    _units.forEach(_function);
+    return group;
   }
   
   /**
    * create a unit node for a generator.
    */
-  private Unit createGenerator(final /* Generator */Object generator) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method fragment(Generator) is undefined for the type Unit"
-      + "\nThe method or field sourceModels is undefined for the type Unit"
-      + "\nThe method or field sourceModels is undefined for the type Unit"
-      + "\nThe method or field reference is undefined for the type Object"
-      + "\nThe method or field sourceTraceModels is undefined for the type Unit"
-      + "\nThe method targetModel(Object) is undefined for the type Unit"
-      + "\nThe method targetTraceModel(Object) is undefined for the type Unit"
-      + "\nThe method targetTraceModel(Object) is undefined for the type Unit"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nsourceModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\nsourceModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nsourceAuxModels cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\naddUnique cannot be resolved"
-      + "\naddAllUnique cannot be resolved"
-      + "\nsourceTraceModels cannot be resolved"
-      + "\ntargetModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\ntargetTraceModel cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\ntargetTraceModel cannot be resolved"
-      + "\ndetermineTraceModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nreference cannot be resolved");
+  private Unit createGenerator(final Generator generator) {
+    final Unit result = BoxingFactory.eINSTANCE.createUnit();
+    result.setFragment(generator);
+    SourceModelSelector _sourceModel = generator.getSourceModel();
+    Model _reference = _sourceModel.getReference();
+    boolean _notEquals = (!Objects.equal(_reference, null));
+    if (_notEquals) {
+      EList<Model> _sourceModels = result.getSourceModels();
+      SourceModelSelector _sourceModel_1 = generator.getSourceModel();
+      Model _reference_1 = _sourceModel_1.getReference();
+      _sourceModels.add(_reference_1);
+    }
+    EList<SourceModelSelector> _sourceAuxModels = generator.getSourceAuxModels();
+    final Consumer<SourceModelSelector> _function = (SourceModelSelector model) -> {
+      EList<Model> _sourceModels_1 = result.getSourceModels();
+      Model _reference_2 = model.getReference();
+      this.addUnique(_sourceModels_1, _reference_2);
+    };
+    _sourceAuxModels.forEach(_function);
+    EList<TraceModel> _sourceTraceModels = result.getSourceTraceModels();
+    EList<TraceModelReference> _sourceTraceModels_1 = generator.getSourceTraceModels();
+    this.addAllUnique(_sourceTraceModels, _sourceTraceModels_1);
+    TargetModel _targetModel = generator.getTargetModel();
+    Model _reference_2 = _targetModel.getReference();
+    result.setTargetModel(_reference_2);
+    TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
+    boolean _notEquals_1 = (!Objects.equal(_targetTraceModel, null));
+    if (_notEquals_1) {
+      TargetTraceModel _targetTraceModel_1 = generator.getTargetTraceModel();
+      TraceModel _determineTraceModel = this.determineTraceModel(_targetTraceModel_1);
+      result.setTargetTraceModel(_determineTraceModel);
+    } else {
+      result.setTargetTraceModel(null);
+    }
+    JvmType _reference_3 = generator.getReference();
+    if ((_reference_3 instanceof JvmGenericType)) {
+      JvmType _reference_4 = generator.getReference();
+      final JvmGenericType type = ((JvmGenericType) _reference_4);
+      JvmTypeReference _determineGeneratorInputType = ArchitectureTyping.determineGeneratorInputType(type);
+      result.setInputTypeReference(_determineGeneratorInputType);
+      JvmTypeReference _determineGeneratorOutputType = ArchitectureTyping.determineGeneratorOutputType(type);
+      result.setOutputTypeReference(_determineGeneratorOutputType);
+      Map<String, JvmTypeReference> _determineGeneratorAuxTypes = ArchitectureTyping.determineGeneratorAuxTypes(type);
+      result.setAuxiliaryInputTypeMap(_determineGeneratorAuxTypes);
+    }
+    return result;
   }
   
   /**
    * create a unit node for a weaver-generator combination.
    */
-  private Unit createGenerator(final /* Weaver */Object weaver) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nGenerator cannot be resolved to a type."
-      + "\nThe method fragment(Weaver) is undefined for the type Unit"
-      + "\nThe method or field sourceModels is undefined for the type Unit"
-      + "\nThe method or field sourceModels is undefined for the type Unit"
-      + "\nThe method or field reference is undefined for the type Object"
-      + "\nThe method or field sourceTraceModels is undefined for the type Unit"
-      + "\nThe method targetModel(Object) is undefined for the type Unit"
-      + "\nThe method or field sourceModels is undefined for the type Unit"
-      + "\nThe method or field targetModel is undefined for the type Unit"
-      + "\nThe method targetTraceModel(Object) is undefined for the type Unit"
-      + "\nThe method targetTraceModel(Object) is undefined for the type Unit"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nThe method resolveWeaverSourceModel(Weaver) from the type ArchitectureTyping refers to the missing type SourceModelSelector"
-      + "\naspectModel cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\nsourceModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nsourceAuxModels cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\naddUnique cannot be resolved"
-      + "\naddAllUnique cannot be resolved"
-      + "\nsourceTraceModels cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\naddUnique cannot be resolved"
-      + "\ntargetTraceModel cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\ntargetTraceModel cannot be resolved"
-      + "\ndetermineTraceModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nreference cannot be resolved");
+  private Unit createGenerator(final Weaver weaver) {
+    final Unit result = BoxingFactory.eINSTANCE.createUnit();
+    result.setFragment(weaver);
+    AspectModel _aspectModel = weaver.getAspectModel();
+    final Generator generator = ((Generator) _aspectModel);
+    EList<Model> _sourceModels = result.getSourceModels();
+    SourceModelSelector _sourceModel = generator.getSourceModel();
+    Model _reference = _sourceModel.getReference();
+    _sourceModels.add(_reference);
+    EList<SourceModelSelector> _sourceAuxModels = generator.getSourceAuxModels();
+    final Consumer<SourceModelSelector> _function = (SourceModelSelector model) -> {
+      EList<Model> _sourceModels_1 = result.getSourceModels();
+      Model _reference_1 = model.getReference();
+      this.addUnique(_sourceModels_1, _reference_1);
+    };
+    _sourceAuxModels.forEach(_function);
+    EList<TraceModel> _sourceTraceModels = result.getSourceTraceModels();
+    EList<TraceModelReference> _sourceTraceModels_1 = generator.getSourceTraceModels();
+    this.addAllUnique(_sourceTraceModels, _sourceTraceModels_1);
+    SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+    Model _reference_1 = _resolveWeaverSourceModel.getReference();
+    result.setTargetModel(_reference_1);
+    EList<Model> _sourceModels_1 = result.getSourceModels();
+    Model _targetModel = result.getTargetModel();
+    this.addUnique(_sourceModels_1, _targetModel);
+    TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
+    boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
+    if (_notEquals) {
+      TargetTraceModel _targetTraceModel_1 = generator.getTargetTraceModel();
+      TraceModel _determineTraceModel = this.determineTraceModel(_targetTraceModel_1);
+      result.setTargetTraceModel(_determineTraceModel);
+    } else {
+      result.setTargetTraceModel(null);
+    }
+    JvmType _reference_2 = generator.getReference();
+    if ((_reference_2 instanceof JvmGenericType)) {
+      JvmType _reference_3 = generator.getReference();
+      final JvmGenericType type = ((JvmGenericType) _reference_3);
+      JvmTypeReference _determineGeneratorInputType = ArchitectureTyping.determineGeneratorInputType(type);
+      result.setInputTypeReference(_determineGeneratorInputType);
+      JvmTypeReference _determineGeneratorOutputType = ArchitectureTyping.determineGeneratorOutputType(type);
+      result.setOutputTypeReference(_determineGeneratorOutputType);
+      Map<String, JvmTypeReference> _determineGeneratorAuxTypes = ArchitectureTyping.determineGeneratorAuxTypes(type);
+      result.setAuxiliaryInputTypeMap(_determineGeneratorAuxTypes);
+    }
+    return result;
   }
   
   /**
    * create a unit node for a weaver.
    */
-  private Unit createWeaver(final /* Weaver */Object weaver) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nTargetModel cannot be resolved to a type."
-      + "\nThe method fragment(Weaver) is undefined for the type Unit"
-      + "\nThe method or field sourceModels is undefined for the type Unit"
-      + "\nThe method or field sourceModels is undefined for the type Unit"
-      + "\nThe method targetModel(Object) is undefined for the type Unit"
-      + "\nThe method targetTraceModel(Object) is undefined for the type Unit"
-      + "\nThe method resolveWeaverSourceModel(Weaver) from the type ArchitectureTyping refers to the missing type SourceModelSelector"
-      + "\nadd cannot be resolved"
-      + "\nsourceModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nadd cannot be resolved"
-      + "\naspectModel cannot be resolved"
-      + "\nreference cannot be resolved"
-      + "\nreference cannot be resolved");
+  private Unit createWeaver(final Weaver weaver) {
+    final Unit result = BoxingFactory.eINSTANCE.createUnit();
+    result.setFragment(weaver);
+    EList<Model> _sourceModels = result.getSourceModels();
+    SourceModelSelector _sourceModel = weaver.getSourceModel();
+    Model _reference = _sourceModel.getReference();
+    _sourceModels.add(_reference);
+    EList<Model> _sourceModels_1 = result.getSourceModels();
+    AspectModel _aspectModel = weaver.getAspectModel();
+    Model _reference_1 = ((TargetModel) _aspectModel).getReference();
+    _sourceModels_1.add(_reference_1);
+    SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
+    Model _reference_2 = _resolveWeaverSourceModel.getReference();
+    result.setTargetModel(_reference_2);
+    result.setTargetTraceModel(null);
+    return result;
   }
   
   /**
    * Determine the trace model.
    */
-  private /* TraceModel */Object determineTraceModel(final /* TargetTraceModel */Object model) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nTraceModel cannot be resolved to a type."
-      + "\nTraceModelReference cannot be resolved to a type."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\ntraceModel cannot be resolved");
+  private TraceModel determineTraceModel(final TargetTraceModel model) {
+    TraceModel _switchResult = null;
+    boolean _matched = false;
+    if (model instanceof TraceModel) {
+      _matched=true;
+      _switchResult = ((TraceModel)model);
+    }
+    if (!_matched) {
+      if (model instanceof TraceModelReference) {
+        _matched=true;
+        _switchResult = ((TraceModelReference)model).getTraceModel();
+      }
+    }
+    if (!_matched) {
+      throw new UnsupportedOperationException("what???");
+    }
+    return _switchResult;
   }
   
   /**
    * Add a list of trace model to a trace model list. Check for each element if it is
    * already in the list. If so do not add it again.
    */
-  private void addAllUnique(final /* EList<TraceModel> */Object list, final /* EList<TraceModelReference> */Object insert) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field traceModel is undefined for the type Object"
-      + "\nThe method addUnique(EList<TraceModel>, TraceModel) from the type GenerateBoxingModel refers to the missing type TraceModel");
+  private void addAllUnique(final EList<TraceModel> list, final EList<TraceModelReference> insert) {
+    final Consumer<TraceModelReference> _function = (TraceModelReference it) -> {
+      TraceModel _traceModel = it.getTraceModel();
+      this.addUnique(list, _traceModel);
+    };
+    insert.forEach(_function);
   }
   
   /**
    * Add a write trace model if it is not already in the list.
    */
-  private void addUnique(final /* EList<TraceModel> */Object list, final /* TraceModel */Object model) {
+  private void addUnique(final EList<TraceModel> list, final TraceModel model) {
     boolean _contains = list.contains(model);
     boolean _not = (!_contains);
     if (_not) {
@@ -262,7 +438,7 @@ public class GenerateBoxingModel /* implements IGenerator<GecoModel, BoxingModel
   /**
    * Add a write trace model if it is not already in the list.
    */
-  private void addUnique(final /* EList<Model> */Object list, final /* Model */Object model) {
+  private void addUnique(final EList<Model> list, final Model model) {
     boolean _contains = list.contains(model);
     boolean _not = (!_contains);
     if (_not) {

@@ -3,6 +3,8 @@
  */
 package de.cau.cs.se.geco.architecture.ui;
 
+import de.cau.cs.se.geco.architecture.ui.AbstractArchitectureUiModule;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 
 /**
@@ -10,5 +12,8 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
  */
 @FinalFieldsConstructor
 @SuppressWarnings("all")
-public class ArchitectureUiModule /* implements AbstractArchitectureUiModule  */{
+public class ArchitectureUiModule extends AbstractArchitectureUiModule {
+  public ArchitectureUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
+  }
 }
