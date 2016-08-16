@@ -32,7 +32,7 @@
 		<module>de.cau.cs.se.geco.architecture.feature</module>
 		<module>de.cau.cs.se.geco.architecture.repository</module>
 		<module>de.cau.cs.se.geco.architecture.tests</module>
-		<module>de.cau.cs.se.geco.architecture.ui.tests</module>
+		<!--  module>de.cau.cs.se.geco.architecture.ui.tests</module -->
 	</modules>
 	<build>
 		<plugins>
