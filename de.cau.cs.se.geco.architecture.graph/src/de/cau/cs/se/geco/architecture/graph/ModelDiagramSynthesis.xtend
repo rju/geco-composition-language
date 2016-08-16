@@ -42,7 +42,7 @@ import org.eclipse.elk.graph.KNode
 import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
-import org.eclipse.elk.alg.layered.properties.LayeredOptions
+//import org.eclipse.elk.alg.layered.properties.LayeredOptions
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
 

@@ -2,22 +2,6 @@ package de.cau.cs.se.geco.architecture.typing;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import de.cau.cs.se.geco.architecture.architecture.BasicConstraint;
-import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
-import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
-import de.cau.cs.se.geco.architecture.architecture.Fragment;
-import de.cau.cs.se.geco.architecture.architecture.GecoModel;
-import de.cau.cs.se.geco.architecture.architecture.InstanceOf;
-import de.cau.cs.se.geco.architecture.architecture.Model;
-import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
-import de.cau.cs.se.geco.architecture.architecture.ModelType;
-import de.cau.cs.se.geco.architecture.architecture.Negation;
-import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
-import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
-import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
-import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
-import de.cau.cs.se.geco.architecture.architecture.TargetModel;
-import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -41,79 +25,46 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class ArchitectureTyping {
-  protected static JvmTypeReference _resolveType(final SourceModelSelector selector) {
-    NodeProperty _property = selector.getProperty();
-    boolean _notEquals = (!Objects.equal(_property, null));
-    if (_notEquals) {
-      NodeProperty _property_1 = selector.getProperty();
-      return ArchitectureTyping.resolveType(_property_1);
-    } else {
-      Model _reference = selector.getReference();
-      JvmTypeReference _resolveType = null;
-      if (_reference!=null) {
-        _resolveType=ArchitectureTyping.resolveType(_reference);
-      }
-      final JvmTypeReference genericTypeReference = _resolveType;
-      ConstraintExpression _constraint = selector.getConstraint();
-      boolean _notEquals_1 = (!Objects.equal(_constraint, null));
-      if (_notEquals_1) {
-        ConstraintExpression _constraint_1 = selector.getConstraint();
-        if ((_constraint_1 instanceof InstanceOf)) {
-          boolean _isListType = ArchitectureTyping.isListType(genericTypeReference);
-          if (_isListType) {
-            final JvmParameterizedTypeReference paramTypeReference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
-            JvmType _type = genericTypeReference.getType();
-            paramTypeReference.setType(_type);
-            EList<JvmTypeReference> _arguments = paramTypeReference.getArguments();
-            ConstraintExpression _constraint_2 = selector.getConstraint();
-            JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(((InstanceOf) _constraint_2));
-            _arguments.add(_resolveType_1);
-            return paramTypeReference;
-          } else {
-            ConstraintExpression _constraint_3 = selector.getConstraint();
-            return ArchitectureTyping.resolveType(((InstanceOf) _constraint_3));
-          }
-        } else {
-          return genericTypeReference;
-        }
-      } else {
-        return genericTypeReference;
-      }
-    }
+  protected static JvmTypeReference _resolveType(final /* SourceModelSelector */Object selector) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nInstanceOf cannot be resolved to a type."
+      + "\nInstanceOf cannot be resolved to a type."
+      + "\nInstanceOf cannot be resolved to a type."
+      + "\nproperty cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nproperty cannot be resolved"
+      + "\nresolveType cannot be resolved"
+      + "\nreference cannot be resolved"
+      + "\nresolveType cannot be resolved"
+      + "\nconstraint cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nconstraint cannot be resolved"
+      + "\nisListType cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nconstraint cannot be resolved"
+      + "\nresolveType cannot be resolved"
+      + "\nconstraint cannot be resolved"
+      + "\nresolveType cannot be resolved");
   }
   
-  protected static JvmTypeReference _resolveType(final Model model) {
-    EObject _eContainer = model.eContainer();
-    ModelType _type = ((ModelSequence) _eContainer).getType();
-    return ArchitectureTyping.resolveType(_type);
+  protected static JvmTypeReference _resolveType(final /* Model */Object model) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nModelSequence cannot be resolved to a type."
+      + "\neContainer cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nresolveType cannot be resolved");
   }
   
-  protected static JvmTypeReference _resolveType(final ModelType type) {
-    JvmTypeReference _xifexpression = null;
-    NodeProperty _property = type.getProperty();
-    boolean _equals = Objects.equal(_property, null);
-    if (_equals) {
-      RegisteredRootClass _target = type.getTarget();
-      JvmType _importedNamespace = _target.getImportedNamespace();
-      _xifexpression = ArchitectureTyping.resolveType(_importedNamespace);
-    } else {
-      NodeProperty _property_1 = type.getProperty();
-      _xifexpression = ArchitectureTyping.resolveType(_property_1);
-    }
-    final JvmTypeReference result = _xifexpression;
-    boolean _isCollection = type.isCollection();
-    if (_isCollection) {
-      final JvmParameterizedTypeReference list = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
-      final JvmGenericType listType = TypesFactory.eINSTANCE.createJvmGenericType();
-      listType.setPackageName("java.lang");
-      listType.setSimpleName("Collection");
-      list.setType(listType);
-      EList<JvmTypeReference> _arguments = list.getArguments();
-      _arguments.add(result);
-      return list;
-    } else {
-      return result;
-    }
+  protected static JvmTypeReference _resolveType(final /* ModelType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nproperty cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\ntarget cannot be resolved"
+      + "\nimportedNamespace cannot be resolved"
+      + "\nresolveType cannot be resolved"
+      + "\nproperty cannot be resolved"
+      + "\nresolveType cannot be resolved"
+      + "\ncollection cannot be resolved");
   }
   
   protected static JvmTypeReference _resolveType(final JvmType type) {
@@ -122,27 +73,20 @@ public class ArchitectureTyping {
     return reference;
   }
   
-  protected static JvmTypeReference _resolveType(final NodeProperty property) {
-    JvmTypeReference _xifexpression = null;
-    NodeProperty _subProperty = property.getSubProperty();
-    boolean _equals = Objects.equal(_subProperty, null);
-    if (_equals) {
-      JvmMember _property = property.getProperty();
-      _xifexpression = ArchitectureTyping.resolveType(_property);
-    } else {
-      NodeProperty _subProperty_1 = property.getSubProperty();
-      _xifexpression = ArchitectureTyping.resolveType(_subProperty_1);
-    }
-    return _xifexpression;
+  protected static JvmTypeReference _resolveType(final /* NodeProperty */Object property) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nsubProperty cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\nproperty cannot be resolved"
+      + "\nresolveType cannot be resolved"
+      + "\nsubProperty cannot be resolved"
+      + "\nresolveType cannot be resolved");
   }
   
-  protected static JvmTypeReference _resolveType(final TargetModel model) {
-    Model _reference = model.getReference();
-    JvmTypeReference _resolveType = null;
-    if (_reference!=null) {
-      _resolveType=ArchitectureTyping.resolveType(_reference);
-    }
-    return _resolveType;
+  protected static JvmTypeReference _resolveType(final /* TargetModel */Object model) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nreference cannot be resolved"
+      + "\nresolveType cannot be resolved");
   }
   
   protected static JvmTypeReference _resolveType(final JvmOperation operation) {
@@ -152,52 +96,48 @@ public class ArchitectureTyping {
   /**
    * Evaluate type of an ConstraintExpression.
    */
-  protected static JvmTypeReference _resolveType(final ConstraintExpression expression) {
-    CompareExpression _left = expression.getLeft();
-    final JvmTypeReference result = ArchitectureTyping.resolveType(_left);
-    boolean _equals = Objects.equal(result, null);
-    if (_equals) {
-      ConstraintExpression _right = expression.getRight();
-      boolean _notEquals = (!Objects.equal(_right, null));
-      if (_notEquals) {
-        ConstraintExpression _right_1 = expression.getRight();
-        return ArchitectureTyping.resolveType(_right_1);
-      } else {
-        return null;
-      }
-    } else {
-      return result;
-    }
+  protected static JvmTypeReference _resolveType(final /* ConstraintExpression */Object expression) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nleft cannot be resolved"
+      + "\nresolveType cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\nright cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nright cannot be resolved"
+      + "\nresolveType cannot be resolved");
   }
   
   /**
    * Evaluate type of an ParenthesisConstraint.
    */
-  protected static JvmTypeReference _resolveType(final ParenthesisConstraint expression) {
-    ConstraintExpression _constraint = expression.getConstraint();
-    return ArchitectureTyping.resolveType(_constraint);
+  protected static JvmTypeReference _resolveType(final /* ParenthesisConstraint */Object expression) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nconstraint cannot be resolved"
+      + "\nresolveType cannot be resolved");
   }
   
   /**
    * Evaluate type of an Typeof.
    */
-  protected static JvmTypeReference _resolveType(final InstanceOf expression) {
-    JvmType _type = expression.getType();
-    return ArchitectureTyping.resolveType(_type);
+  protected static JvmTypeReference _resolveType(final /* InstanceOf */Object expression) {
+    throw new Error("Unresolved compilation problems:"
+      + "\ntype cannot be resolved"
+      + "\nresolveType cannot be resolved");
   }
   
   /**
    * Evaluate type of an Negation.
    */
-  protected static JvmTypeReference _resolveType(final Negation expression) {
-    ConstraintExpression _constraint = expression.getConstraint();
-    return ArchitectureTyping.resolveType(_constraint);
+  protected static JvmTypeReference _resolveType(final /* Negation */Object expression) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nconstraint cannot be resolved"
+      + "\nresolveType cannot be resolved");
   }
   
   /**
    * Evaluate type of an BasicConstraint.
    */
-  protected static JvmTypeReference _resolveType(final BasicConstraint expression) {
+  protected static JvmTypeReference _resolveType(final /* BasicConstraint */Object expression) {
     throw new UnsupportedOperationException("BasicConstraint cannot be handled in resolveType");
   }
   
@@ -455,84 +395,87 @@ public class ArchitectureTyping {
    * Check if the given model declaration is a simple or collection type.
    */
   public static boolean isCollectionType(final ModelDeclaration declaration) {
-    return (ArchitectureTyping.isListType(ArchitectureTyping.resolveType(declaration.getSelector())) || 
-      ((ModelSequence) declaration.getModel().eContainer()).getType().isCollection());
+    throw new Error("Unresolved compilation problems:"
+      + "\nModelSequence cannot be resolved to a type."
+      + "\nThe method or field selector is undefined for the type ModelDeclaration"
+      + "\nThe method or field model is undefined for the type ModelDeclaration"
+      + "\nresolveType cannot be resolved"
+      + "\nisListType cannot be resolved"
+      + "\n|| cannot be resolved"
+      + "\neContainer cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\ncollection cannot be resolved");
   }
   
-  public static boolean isCollectionType(final Model model) {
-    EObject _eContainer = model.eContainer();
-    final ModelType nodeType = ((ModelSequence) _eContainer).getType();
-    return (ArchitectureTyping.isListType(ArchitectureTyping.resolveType(nodeType)) || nodeType.isCollection());
+  public static boolean isCollectionType(final /* Model */Object model) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nModelSequence cannot be resolved to a type."
+      + "\neContainer cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nresolveType cannot be resolved"
+      + "\nisListType cannot be resolved"
+      + "\n|| cannot be resolved"
+      + "\ncollection cannot be resolved");
   }
   
   /**
    * Resolve the source model reference of the weaver instance.
    */
-  public static SourceModelSelector resolveWeaverSourceModel(final Weaver weaver) {
-    SourceModelSelector _xifexpression = null;
-    SourceModelSelector _sourceModel = weaver.getSourceModel();
-    boolean _notEquals = (!Objects.equal(_sourceModel, null));
-    if (_notEquals) {
-      _xifexpression = weaver.getSourceModel();
-    } else {
-      Weaver _predecessingWeaver = ArchitectureTyping.predecessingWeaver(weaver);
-      SourceModelSelector _resolveWeaverSourceModel = null;
-      if (_predecessingWeaver!=null) {
-        _resolveWeaverSourceModel=ArchitectureTyping.resolveWeaverSourceModel(_predecessingWeaver);
-      }
-      _xifexpression = _resolveWeaverSourceModel;
-    }
-    return _xifexpression;
+  public static /* SourceModelSelector */Object resolveWeaverSourceModel(final /* Weaver */Object weaver) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nsourceModel cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nsourceModel cannot be resolved"
+      + "\npredecessingWeaver cannot be resolved"
+      + "\nresolveWeaverSourceModel cannot be resolved");
   }
   
   /**
    * Returns the predecessing weaver of the given weaver or null on error.
    */
-  public static Weaver predecessingWeaver(final Weaver weaver) {
-    EObject _eContainer = weaver.eContainer();
-    final EList<Fragment> connections = ((GecoModel) _eContainer).getFragments();
-    final int index = connections.lastIndexOf(weaver);
-    if ((index > 0)) {
-      int i = 1;
-      while ((((index - i) >= 0) && (!(connections.get((index - i)) instanceof Weaver)))) {
-        i++;
-      }
-      if ((i <= index)) {
-        Fragment _get = connections.get((index - i));
-        return ((Weaver) _get);
-      } else {
-        return null;
-      }
-    } else {
-      return null;
-    }
+  public static /* Weaver */Object predecessingWeaver(final /* Weaver */Object weaver) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nGecoModel cannot be resolved to a type."
+      + "\nWeaver cannot be resolved to a type."
+      + "\nWeaver cannot be resolved to a type."
+      + "\neContainer cannot be resolved"
+      + "\nfragments cannot be resolved"
+      + "\nlastIndexOf cannot be resolved"
+      + "\n> cannot be resolved"
+      + "\n- cannot be resolved"
+      + "\n>= cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\n- cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\n- cannot be resolved");
   }
   
   public static JvmTypeReference resolveType(final EObject operation) {
     if (operation instanceof JvmOperation) {
       return _resolveType((JvmOperation)operation);
-    } else if (operation instanceof InstanceOf) {
-      return _resolveType((InstanceOf)operation);
-    } else if (operation instanceof NodeProperty) {
-      return _resolveType((NodeProperty)operation);
-    } else if (operation instanceof Negation) {
-      return _resolveType((Negation)operation);
-    } else if (operation instanceof ParenthesisConstraint) {
-      return _resolveType((ParenthesisConstraint)operation);
-    } else if (operation instanceof BasicConstraint) {
-      return _resolveType((BasicConstraint)operation);
-    } else if (operation instanceof TargetModel) {
-      return _resolveType((TargetModel)operation);
     } else if (operation instanceof JvmType) {
       return _resolveType((JvmType)operation);
-    } else if (operation instanceof ConstraintExpression) {
-      return _resolveType((ConstraintExpression)operation);
-    } else if (operation instanceof Model) {
-      return _resolveType((Model)operation);
-    } else if (operation instanceof ModelType) {
-      return _resolveType((ModelType)operation);
-    } else if (operation instanceof SourceModelSelector) {
-      return _resolveType((SourceModelSelector)operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
+    } else if (operation != null) {
+      return _resolveType(operation);
     } else if (operation != null) {
       return _resolveType(operation);
     } else {

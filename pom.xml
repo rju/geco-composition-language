@@ -9,8 +9,9 @@
 	<name>GECO Generator Composition Framework and Language Release Management</name>
 
 	<properties>
-		<tycho-version>0.23.1</tycho-version>
-		<xtextVersion>2.10.0</xtextVersion>
+		<tycho-version>0.25.0</tycho-version>
+		<tycho-extras-version>0.25.0</tycho-extras-version>
+		<xtext-version>2.10.0</xtext-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -87,13 +88,15 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<pomDependencies>consider</pomDependencies>
 					<target>
 						<artifact>
-							<groupId>de.cau.cs.se.geco.architecture</groupId>
+							<groupId>${project.groupId}</groupId>
 							<artifactId>de.cau.cs.se.geco.architecture.target</artifactId>
 							<version>${project.version}</version>
 						</artifact>
 					</target>
+					<executionEnvironment>JavaSE-1.8</executionEnvironment>
 					<environments>
 						<environment>
 							<os>macosx</os>
@@ -126,7 +129,7 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtextVersion}</version>
+					<version>${xtext-version}</version>
 					<executions>
 						<execution>
 							<goals>
@@ -314,7 +317,4 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
-	<dependencies>
-	</dependencies>
 </project>

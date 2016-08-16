@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-	<feature id="de.cau.cs.se.geco.architecture.feature" version="0.0.0">
-		<category name="main"/>
-	</feature>
-	<feature id="de.cau.cs.se.geco.architecture.feature.source" version="0.0.0">
-		<category name="main.source"/>
-	</feature>
-	<category-def name="main" label="GECO Generator Composition Megamodel"/>
-	<category-def name="main.source" label="GECO Generator Composition Megamodel (Sources)"/>
+   <feature id="de.cau.cs.se.geco.architecture.feature" version="0.0.0">
+      <category name="de.cau.cs.se.geco.architecture"/>
+   </feature>
+   <feature id="de.cau.cs.se.geco.architecture.feature.source" version="0.0.0">
+      <category name="de.cau.cs.se.geco.architecture.source"/>
+   </feature>
+   <category-def name="de.cau.cs.se.geco.architecture" label="GECO Generator Composition Megamodel"/>
+   <category-def name="de.cau.cs.se.geco.architecture.source" label="GECO Generator Composition Megamodel (Sources)"/>
 </site>
