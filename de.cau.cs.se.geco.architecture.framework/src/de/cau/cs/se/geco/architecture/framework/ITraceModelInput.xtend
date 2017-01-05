@@ -1,5 +1,7 @@
 package de.cau.cs.se.geco.architecture.framework
 
+import org.eclipse.emf.ecore.EObject
+
 /**
  * Trace model provider setter interface. This is only a generic
  * interface to all to add various trace models. In context of
@@ -11,7 +13,7 @@ package de.cau.cs.se.geco.architecture.framework
  * 
  * @since 1.1
  */
-interface ITraceModelInput<S,T> {
+interface ITraceModelInput<S extends EObject, T> {
 
 	/**
 	 * Allows to add a variable list of trace model providers to the generator.
