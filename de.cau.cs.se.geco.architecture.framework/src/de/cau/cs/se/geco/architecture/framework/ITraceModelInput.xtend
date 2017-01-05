@@ -1,10 +1,8 @@
 package de.cau.cs.se.geco.architecture.framework
 
-import java.util.Iterator
-
 /**
- * Trace model provider setter interface. This is only a convenience 
- * interface in case only one trace model is used. In context of
+ * Trace model provider setter interface. This is only a generic
+ * interface to all to add various trace models. In context of
  * the GECO language it is better to define specific provider setter
  * and annotate them with @TraceModel
  * 
@@ -14,7 +12,11 @@ import java.util.Iterator
  * @since 1.1
  */
 interface ITraceModelInput<S,T> {
-	
-	@TraceModel
-	def void setTraceModelProviders(Iterator<ITraceModelProvider<S,T>> traceModelProvider)
+
+	/**
+	 * Allows to add a variable list of trace model providers to the generator.
+	 * 
+	 * @param traceModelProviders various trace model providers to be registered with the generator
+	 */	
+	def void setTraceModelProviders(ITraceModelProvider<S,T>... traceModelProviders)
 }
