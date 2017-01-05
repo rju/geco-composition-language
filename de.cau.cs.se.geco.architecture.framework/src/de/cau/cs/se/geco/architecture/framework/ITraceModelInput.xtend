@@ -1,5 +1,7 @@
 package de.cau.cs.se.geco.architecture.framework
 
+import java.util.Iterator
+
 /**
  * Trace model provider setter interface. This is only a convenience 
  * interface in case only one trace model is used. In context of
@@ -14,5 +16,5 @@ package de.cau.cs.se.geco.architecture.framework
 interface ITraceModelInput<S,T> {
 	
 	@TraceModel
-	def void setTraceModelProvider(ITraceModelProvider<S,T> traceModelProvider)
+	def void setTraceModelProviders(Iterator<ITraceModelProvider<S,T>> traceModelProvider)
 }

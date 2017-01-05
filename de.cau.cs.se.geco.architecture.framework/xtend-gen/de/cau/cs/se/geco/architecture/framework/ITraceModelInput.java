@@ -2,6 +2,7 @@ package de.cau.cs.se.geco.architecture.framework;
 
 import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider;
 import de.cau.cs.se.geco.architecture.framework.TraceModel;
+import java.util.Iterator;
 
 /**
  * Trace model provider setter interface. This is only a convenience
@@ -17,5 +18,5 @@ import de.cau.cs.se.geco.architecture.framework.TraceModel;
 @SuppressWarnings("all")
 public interface ITraceModelInput<S extends Object, T extends Object> {
   @TraceModel
-  public abstract void setTraceModelProvider(final ITraceModelProvider<S, T> traceModelProvider);
+  public abstract void setTraceModelProviders(final Iterator<ITraceModelProvider<S, T>> traceModelProvider);
 }
