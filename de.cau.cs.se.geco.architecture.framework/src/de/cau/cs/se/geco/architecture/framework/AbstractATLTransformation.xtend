@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright 2017 GECO Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.geco.architecture.framework
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
@@ -24,8 +39,10 @@ import org.eclipse.m2m.atl.emftvm.ExecEnv
  * 
  * See http://victorguana.blogspot.de/2015/02/running-atl-emftvm-transformations.html
  * for more details.
- * 
+ *  
  * @author Reiner Jung
+ * 
+ * @since 1.0
  */
 abstract class AbstractATLTransformation<S extends EObject,T extends EObject> implements IGenerator<S, T> { 
 	
