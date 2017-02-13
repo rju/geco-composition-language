@@ -22,13 +22,13 @@
 <repository location="http://download.eclipse.org/releases/neon"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="de.cau.cs.kieler.kgraph.feature.feature.group" version="0.10.0.201610170203"/>
-<unit id="de.cau.cs.kieler.klighd.view.feature.feature.group" version="0.3.1.201610170203"/>
-<unit id="de.cau.cs.kieler.klighd.feature.feature.group" version="0.11.3.201610170203"/>
-<unit id="de.cau.cs.kieler.klighd.draw2d.feature.feature.group" version="0.1.0.201610170203"/>
-<unit id="de.cau.cs.kieler.klighd.freehep.feature.feature.group" version="0.5.0.201610170203"/>
-<unit id="de.cau.cs.kieler.kiml.ogdf.feature.feature.group" version="0.9.0.201610170203"/>
-<unit id="de.cau.cs.kieler.klighd.sdk.feature.feature.group" version="0.9.0.201610170203"/>
+<unit id="de.cau.cs.kieler.kgraph.feature.feature.group" version="0.10.0.201701180303"/>
+<unit id="de.cau.cs.kieler.klighd.view.feature.feature.group" version="0.3.1.201701180303"/>
+<unit id="de.cau.cs.kieler.klighd.feature.feature.group" version="0.11.4.201701180303"/>
+<unit id="de.cau.cs.kieler.klighd.draw2d.feature.feature.group" version="0.1.0.201701180303"/>
+<unit id="de.cau.cs.kieler.klighd.freehep.feature.feature.group" version="0.5.0.201701180303"/>
+<unit id="de.cau.cs.kieler.kiml.ogdf.feature.feature.group" version="0.9.0.201701180303"/>
+<unit id="de.cau.cs.kieler.klighd.sdk.feature.feature.group" version="0.9.0.201701180303"/>
 <repository location="http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/"/>
 </location>
 </locations>
