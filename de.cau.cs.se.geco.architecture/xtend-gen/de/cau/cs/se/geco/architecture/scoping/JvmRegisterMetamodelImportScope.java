@@ -2,7 +2,6 @@ package de.cau.cs.se.geco.architecture.scoping;
 
 import com.google.common.base.Objects;
 import java.util.ArrayList;
-import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
@@ -31,8 +30,7 @@ public class JvmRegisterMetamodelImportScope implements IScope {
       _switchResult = "nop";
     }
     this.packageName = _switchResult;
-    IJvmTypeProvider _findOrCreateTypeProvider = typeProviderFactory.findOrCreateTypeProvider(resourceSet);
-    this.typeProvider = _findOrCreateTypeProvider;
+    this.typeProvider = typeProviderFactory.findOrCreateTypeProvider(resourceSet);
   }
   
   @Override
@@ -48,10 +46,7 @@ public class JvmRegisterMetamodelImportScope implements IScope {
     final JvmType type = this.typeProvider.findTypeByName(_plus);
     boolean _notEquals = (!Objects.equal(type, null));
     if (_notEquals) {
-      List<String> _segments = name.getSegments();
-      String _last = IterableExtensions.<String>last(_segments);
-      IEObjectDescription _create = EObjectDescription.create(_last, type);
-      result.add(_create);
+      result.add(EObjectDescription.create(IterableExtensions.<String>last(name.getSegments()), type));
     }
     return result;
   }
@@ -63,13 +58,11 @@ public class JvmRegisterMetamodelImportScope implements IScope {
   
   @Override
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    Iterable<IEObjectDescription> _elements = this.getElements(name);
-    return IterableExtensions.<IEObjectDescription>last(_elements);
+    return IterableExtensions.<IEObjectDescription>last(this.getElements(name));
   }
   
   @Override
   public IEObjectDescription getSingleElement(final EObject object) {
-    Iterable<IEObjectDescription> _elements = this.getElements(object);
-    return IterableExtensions.<IEObjectDescription>last(_elements);
+    return IterableExtensions.<IEObjectDescription>last(this.getElements(object));
   }
 }

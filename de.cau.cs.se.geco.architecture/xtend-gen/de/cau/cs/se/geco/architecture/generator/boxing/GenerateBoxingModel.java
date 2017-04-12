@@ -8,7 +8,6 @@ import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.Model;
 import de.cau.cs.se.geco.architecture.architecture.ModelModifier;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
-import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.TargetTraceModel;
@@ -23,13 +22,10 @@ import de.cau.cs.se.geco.architecture.model.boxing.ModelDeclaration;
 import de.cau.cs.se.geco.architecture.model.boxing.Unit;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmType;
-import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -40,42 +36,32 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   public BoxingModel generate(final GecoModel input) {
     final BoxingModel result = BoxingFactory.eINSTANCE.createBoxingModel();
     result.setDerivedFrom(input);
-    EList<ModelSequence> _models = input.getModels();
     final Consumer<ModelSequence> _function = (ModelSequence sequence) -> {
-      EList<Model> _models_1 = sequence.getModels();
       final Consumer<Model> _function_1 = (Model model) -> {
         final ModelDeclaration modeldeclaration = BoxingFactory.eINSTANCE.createModelDeclaration();
-        ModelType _type = sequence.getType();
-        modeldeclaration.setSelector(_type);
+        modeldeclaration.setSelector(sequence.getType());
         modeldeclaration.setModel(model);
-        ModelModifier _modifier = sequence.getModifier();
-        modeldeclaration.setModifier(_modifier);
-        EList<ModelDeclaration> _models_2 = result.getModels();
-        _models_2.add(modeldeclaration);
+        modeldeclaration.setModifier(sequence.getModifier());
+        result.getModels().add(modeldeclaration);
       };
-      _models_1.forEach(_function_1);
+      sequence.getModels().forEach(_function_1);
     };
-    _models.forEach(_function);
+    input.getModels().forEach(_function);
     final ArrayList<Unit> units = new ArrayList<Unit>();
-    EList<Fragment> _fragments = input.getFragments();
     final Consumer<Fragment> _function_1 = (Fragment fragment) -> {
       boolean _matched = false;
       if (fragment instanceof Generator) {
         _matched=true;
-        Unit _createGenerator = this.createGenerator(((Generator)fragment));
-        units.add(_createGenerator);
+        units.add(this.createGenerator(((Generator)fragment)));
       }
       if (!_matched) {
         if (fragment instanceof Weaver) {
           AspectModel _aspectModel = ((Weaver)fragment).getAspectModel();
           if ((_aspectModel instanceof Generator)) {
             _matched=true;
-            Unit _createGenerator = this.createGenerator(((Weaver)fragment));
-            units.add(_createGenerator);
-            EList<JvmType> _allProcessors = result.getAllProcessors();
+            units.add(this.createGenerator(((Weaver)fragment)));
             AspectModel _aspectModel_1 = ((Weaver)fragment).getAspectModel();
-            JvmType _reference = ((Generator) _aspectModel_1).getReference();
-            this.addUniqueType(_allProcessors, _reference);
+            this.addUniqueType(result.getAllProcessors(), ((Generator) _aspectModel_1).getReference());
           }
         }
       }
@@ -85,20 +71,15 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
           boolean _equals = Objects.equal(_aspectModel, null);
           if (_equals) {
             _matched=true;
-            Unit _createWeaver = this.createWeaver(((Weaver)fragment));
-            units.add(_createWeaver);
+            units.add(this.createWeaver(((Weaver)fragment)));
           }
         }
       }
-      EList<JvmType> _allProcessors = result.getAllProcessors();
-      JvmType _reference = fragment.getReference();
-      this.addUniqueType(_allProcessors, _reference);
+      this.addUniqueType(result.getAllProcessors(), fragment.getReference());
     };
-    _fragments.forEach(_function_1);
-    EList<ModelSequence> _models_1 = input.getModels();
-    Group group = this.createGroup(_models_1);
-    EList<Group> _groups = result.getGroups();
-    _groups.add(group);
+    input.getFragments().forEach(_function_1);
+    Group group = this.createGroup(input.getModels());
+    result.getGroups().add(group);
     while ((units.size() > 0)) {
       {
         for (int i = 0; (i < units.size()); i++) {
@@ -107,8 +88,7 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
             boolean _matchGroup = this.matchGroup(unit, group);
             if (_matchGroup) {
               units.remove(i);
-              EList<Unit> _units = group.getUnits();
-              _units.add(unit);
+              group.getUnits().add(unit);
               i--;
             }
           }
@@ -116,10 +96,8 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
         int _size = units.size();
         boolean _greaterThan = (_size > 0);
         if (_greaterThan) {
-          Group _createGroup = this.createGroup(group);
-          group = _createGroup;
-          EList<Group> _groups_1 = result.getGroups();
-          _groups_1.add(group);
+          group = this.createGroup(group);
+          result.getGroups().add(group);
         }
       }
     }
@@ -128,28 +106,23 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
       this.print(unit);
     };
     units.forEach(_function_2);
-    EList<Group> _groups_1 = result.getGroups();
     final Consumer<Group> _function_3 = (Group it) -> {
       this.print(it);
-      EList<Unit> _units = it.getUnits();
       final Consumer<Unit> _function_4 = (Unit unit) -> {
         this.print(unit);
       };
-      _units.forEach(_function_4);
+      it.getUnits().forEach(_function_4);
     };
-    _groups_1.forEach(_function_3);
+    result.getGroups().forEach(_function_3);
     return result;
   }
   
   private void print(final Group group) {
     System.out.println("group");
-    EList<TraceModel> _sourceTraceModels = group.getSourceTraceModels();
     final Function1<TraceModel, String> _function = (TraceModel it) -> {
-      TraceModel _determineTraceModel = this.determineTraceModel(it);
-      return _determineTraceModel.getName();
+      return this.determineTraceModel(it).getName();
     };
-    List<String> _map = ListExtensions.<TraceModel, String>map(_sourceTraceModels, _function);
-    String _join = IterableExtensions.join(_map, ", ");
+    String _join = IterableExtensions.join(ListExtensions.<TraceModel, String>map(group.getSourceTraceModels(), _function), ", ");
     String _plus = ("\tread " + _join);
     System.out.println(_plus);
   }
@@ -159,29 +132,23 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     boolean _matched = false;
     if (processor instanceof Generator) {
       _matched=true;
-      JvmType _reference = ((Generator)processor).getReference();
-      String _qualifiedName = _reference.getQualifiedName();
+      String _qualifiedName = ((Generator)processor).getReference().getQualifiedName();
       String _plus = ("\tG " + _qualifiedName);
       System.out.print(_plus);
       TargetTraceModel _targetTraceModel = ((Generator)processor).getTargetTraceModel();
       boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
       if (_notEquals) {
-        TargetTraceModel _targetTraceModel_1 = ((Generator)processor).getTargetTraceModel();
-        TraceModel _determineTraceModel = this.determineTraceModel(_targetTraceModel_1);
-        String _name = _determineTraceModel.getName();
+        String _name = this.determineTraceModel(((Generator)processor).getTargetTraceModel()).getName();
         String _plus_1 = (" write " + _name);
         System.out.print(_plus_1);
       }
       EList<TraceModelReference> _sourceTraceModels = ((Generator)processor).getSourceTraceModels();
       boolean _notEquals_1 = (!Objects.equal(_sourceTraceModels, null));
       if (_notEquals_1) {
-        EList<TraceModelReference> _sourceTraceModels_1 = ((Generator)processor).getSourceTraceModels();
         final Function1<TraceModelReference, String> _function = (TraceModelReference it) -> {
-          TraceModel _determineTraceModel_1 = this.determineTraceModel(it);
-          return _determineTraceModel_1.getName();
+          return this.determineTraceModel(it).getName();
         };
-        List<String> _map = ListExtensions.<TraceModelReference, String>map(_sourceTraceModels_1, _function);
-        String _join = IterableExtensions.join(_map, ", ");
+        String _join = IterableExtensions.join(ListExtensions.<TraceModelReference, String>map(((Generator)processor).getSourceTraceModels(), _function), ", ");
         String _plus_2 = (" read " + _join);
         System.out.print(_plus_2);
       }
@@ -190,8 +157,7 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     if (!_matched) {
       if (processor instanceof Weaver) {
         _matched=true;
-        JvmType _reference = ((Weaver)processor).getReference();
-        String _qualifiedName = _reference.getQualifiedName();
+        String _qualifiedName = ((Weaver)processor).getReference().getQualifiedName();
         String _plus = ("\tW " + _qualifiedName);
         System.out.println(_plus);
       }
@@ -203,18 +169,16 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
    */
   private boolean matchGroup(final Unit unit, final Group group) {
     return (IterableExtensions.<Model>forall(unit.getSourceModels(), ((Function1<Model, Boolean>) (Model unitMM) -> {
-      EList<Model> _sourceModels = group.getSourceModels();
       final Function1<Model, Boolean> _function = (Model it) -> {
         return Boolean.valueOf(it.equals(unitMM));
       };
-      return Boolean.valueOf(IterableExtensions.<Model>exists(_sourceModels, _function));
+      return Boolean.valueOf(IterableExtensions.<Model>exists(group.getSourceModels(), _function));
     })) && 
       IterableExtensions.<TraceModel>forall(unit.getSourceTraceModels(), ((Function1<TraceModel, Boolean>) (TraceModel unitTR) -> {
-        EList<TraceModel> _sourceTraceModels = group.getSourceTraceModels();
         final Function1<TraceModel, Boolean> _function = (TraceModel it) -> {
           return Boolean.valueOf(it.equals(unitTR));
         };
-        return Boolean.valueOf(IterableExtensions.<TraceModel>exists(_sourceTraceModels, _function));
+        return Boolean.valueOf(IterableExtensions.<TraceModel>exists(group.getSourceTraceModels(), _function));
       })));
   }
   
@@ -227,12 +191,10 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
       ModelModifier _modifier = sequence.getModifier();
       boolean _equals = Objects.equal(_modifier, ModelModifier.INPUT);
       if (_equals) {
-        EList<Model> _models = sequence.getModels();
         final Consumer<Model> _function_1 = (Model it) -> {
-          EList<Model> _sourceModels = group.getSourceModels();
-          _sourceModels.add(it);
+          group.getSourceModels().add(it);
         };
-        _models.forEach(_function_1);
+        sequence.getModels().forEach(_function_1);
       }
     };
     metamodels.forEach(_function);
@@ -244,26 +206,17 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
    */
   private Group createGroup(final Group oldGroup) {
     final Group group = BoxingFactory.eINSTANCE.createGroup();
-    EList<Model> _sourceModels = group.getSourceModels();
-    EList<Model> _sourceModels_1 = oldGroup.getSourceModels();
-    _sourceModels.addAll(_sourceModels_1);
-    EList<TraceModel> _sourceTraceModels = group.getSourceTraceModels();
-    EList<TraceModel> _sourceTraceModels_1 = oldGroup.getSourceTraceModels();
-    _sourceTraceModels.addAll(_sourceTraceModels_1);
-    EList<Unit> _units = oldGroup.getUnits();
+    group.getSourceModels().addAll(oldGroup.getSourceModels());
+    group.getSourceTraceModels().addAll(oldGroup.getSourceTraceModels());
     final Consumer<Unit> _function = (Unit unit) -> {
-      EList<Model> _sourceModels_2 = group.getSourceModels();
-      Model _targetModel = unit.getTargetModel();
-      this.addUnique(_sourceModels_2, _targetModel);
+      this.addUnique(group.getSourceModels(), unit.getTargetModel());
       TraceModel _targetTraceModel = unit.getTargetTraceModel();
       boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
       if (_notEquals) {
-        EList<TraceModel> _sourceTraceModels_2 = group.getSourceTraceModels();
-        TraceModel _targetTraceModel_1 = unit.getTargetTraceModel();
-        this.addUnique(_sourceTraceModels_2, _targetTraceModel_1);
+        this.addUnique(group.getSourceTraceModels(), unit.getTargetTraceModel());
       }
     };
-    _units.forEach(_function);
+    oldGroup.getUnits().forEach(_function);
     return group;
   }
   
@@ -273,47 +226,31 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   private Unit createGenerator(final Generator generator) {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
     result.setFragment(generator);
-    SourceModelSelector _sourceModel = generator.getSourceModel();
-    Model _reference = _sourceModel.getReference();
+    Model _reference = generator.getSourceModel().getReference();
     boolean _notEquals = (!Objects.equal(_reference, null));
     if (_notEquals) {
-      EList<Model> _sourceModels = result.getSourceModels();
-      SourceModelSelector _sourceModel_1 = generator.getSourceModel();
-      Model _reference_1 = _sourceModel_1.getReference();
-      _sourceModels.add(_reference_1);
+      result.getSourceModels().add(generator.getSourceModel().getReference());
     }
-    EList<SourceModelSelector> _sourceAuxModels = generator.getSourceAuxModels();
     final Consumer<SourceModelSelector> _function = (SourceModelSelector model) -> {
-      EList<Model> _sourceModels_1 = result.getSourceModels();
-      Model _reference_2 = model.getReference();
-      this.addUnique(_sourceModels_1, _reference_2);
+      this.addUnique(result.getSourceModels(), model.getReference());
     };
-    _sourceAuxModels.forEach(_function);
-    EList<TraceModel> _sourceTraceModels = result.getSourceTraceModels();
-    EList<TraceModelReference> _sourceTraceModels_1 = generator.getSourceTraceModels();
-    this.addAllUnique(_sourceTraceModels, _sourceTraceModels_1);
-    TargetModel _targetModel = generator.getTargetModel();
-    Model _reference_2 = _targetModel.getReference();
-    result.setTargetModel(_reference_2);
+    generator.getSourceAuxModels().forEach(_function);
+    this.addAllUnique(result.getSourceTraceModels(), generator.getSourceTraceModels());
+    result.setTargetModel(generator.getTargetModel().getReference());
     TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
     boolean _notEquals_1 = (!Objects.equal(_targetTraceModel, null));
     if (_notEquals_1) {
-      TargetTraceModel _targetTraceModel_1 = generator.getTargetTraceModel();
-      TraceModel _determineTraceModel = this.determineTraceModel(_targetTraceModel_1);
-      result.setTargetTraceModel(_determineTraceModel);
+      result.setTargetTraceModel(this.determineTraceModel(generator.getTargetTraceModel()));
     } else {
       result.setTargetTraceModel(null);
     }
-    JvmType _reference_3 = generator.getReference();
-    if ((_reference_3 instanceof JvmGenericType)) {
-      JvmType _reference_4 = generator.getReference();
-      final JvmGenericType type = ((JvmGenericType) _reference_4);
-      JvmTypeReference _determineGeneratorInputType = ArchitectureTyping.determineGeneratorInputType(type);
-      result.setInputTypeReference(_determineGeneratorInputType);
-      JvmTypeReference _determineGeneratorOutputType = ArchitectureTyping.determineGeneratorOutputType(type);
-      result.setOutputTypeReference(_determineGeneratorOutputType);
-      Map<String, JvmTypeReference> _determineGeneratorAuxTypes = ArchitectureTyping.determineGeneratorAuxTypes(type);
-      result.setAuxiliaryInputTypeMap(_determineGeneratorAuxTypes);
+    JvmType _reference_1 = generator.getReference();
+    if ((_reference_1 instanceof JvmGenericType)) {
+      JvmType _reference_2 = generator.getReference();
+      final JvmGenericType type = ((JvmGenericType) _reference_2);
+      result.setInputTypeReference(ArchitectureTyping.determineGeneratorInputType(type));
+      result.setOutputTypeReference(ArchitectureTyping.determineGeneratorOutputType(type));
+      result.setAuxiliaryInputTypeMap(ArchitectureTyping.determineGeneratorAuxTypes(type));
     }
     return result;
   }
@@ -326,45 +263,28 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     result.setFragment(weaver);
     AspectModel _aspectModel = weaver.getAspectModel();
     final Generator generator = ((Generator) _aspectModel);
-    EList<Model> _sourceModels = result.getSourceModels();
-    SourceModelSelector _sourceModel = generator.getSourceModel();
-    Model _reference = _sourceModel.getReference();
-    _sourceModels.add(_reference);
-    EList<SourceModelSelector> _sourceAuxModels = generator.getSourceAuxModels();
+    result.getSourceModels().add(generator.getSourceModel().getReference());
     final Consumer<SourceModelSelector> _function = (SourceModelSelector model) -> {
-      EList<Model> _sourceModels_1 = result.getSourceModels();
-      Model _reference_1 = model.getReference();
-      this.addUnique(_sourceModels_1, _reference_1);
+      this.addUnique(result.getSourceModels(), model.getReference());
     };
-    _sourceAuxModels.forEach(_function);
-    EList<TraceModel> _sourceTraceModels = result.getSourceTraceModels();
-    EList<TraceModelReference> _sourceTraceModels_1 = generator.getSourceTraceModels();
-    this.addAllUnique(_sourceTraceModels, _sourceTraceModels_1);
-    SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
-    Model _reference_1 = _resolveWeaverSourceModel.getReference();
-    result.setTargetModel(_reference_1);
-    EList<Model> _sourceModels_1 = result.getSourceModels();
-    Model _targetModel = result.getTargetModel();
-    this.addUnique(_sourceModels_1, _targetModel);
+    generator.getSourceAuxModels().forEach(_function);
+    this.addAllUnique(result.getSourceTraceModels(), generator.getSourceTraceModels());
+    result.setTargetModel(ArchitectureTyping.resolveWeaverSourceModel(weaver).getReference());
+    this.addUnique(result.getSourceModels(), result.getTargetModel());
     TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
     boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
     if (_notEquals) {
-      TargetTraceModel _targetTraceModel_1 = generator.getTargetTraceModel();
-      TraceModel _determineTraceModel = this.determineTraceModel(_targetTraceModel_1);
-      result.setTargetTraceModel(_determineTraceModel);
+      result.setTargetTraceModel(this.determineTraceModel(generator.getTargetTraceModel()));
     } else {
       result.setTargetTraceModel(null);
     }
-    JvmType _reference_2 = generator.getReference();
-    if ((_reference_2 instanceof JvmGenericType)) {
-      JvmType _reference_3 = generator.getReference();
-      final JvmGenericType type = ((JvmGenericType) _reference_3);
-      JvmTypeReference _determineGeneratorInputType = ArchitectureTyping.determineGeneratorInputType(type);
-      result.setInputTypeReference(_determineGeneratorInputType);
-      JvmTypeReference _determineGeneratorOutputType = ArchitectureTyping.determineGeneratorOutputType(type);
-      result.setOutputTypeReference(_determineGeneratorOutputType);
-      Map<String, JvmTypeReference> _determineGeneratorAuxTypes = ArchitectureTyping.determineGeneratorAuxTypes(type);
-      result.setAuxiliaryInputTypeMap(_determineGeneratorAuxTypes);
+    JvmType _reference = generator.getReference();
+    if ((_reference instanceof JvmGenericType)) {
+      JvmType _reference_1 = generator.getReference();
+      final JvmGenericType type = ((JvmGenericType) _reference_1);
+      result.setInputTypeReference(ArchitectureTyping.determineGeneratorInputType(type));
+      result.setOutputTypeReference(ArchitectureTyping.determineGeneratorOutputType(type));
+      result.setAuxiliaryInputTypeMap(ArchitectureTyping.determineGeneratorAuxTypes(type));
     }
     return result;
   }
@@ -375,17 +295,10 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
   private Unit createWeaver(final Weaver weaver) {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
     result.setFragment(weaver);
-    EList<Model> _sourceModels = result.getSourceModels();
-    SourceModelSelector _sourceModel = weaver.getSourceModel();
-    Model _reference = _sourceModel.getReference();
-    _sourceModels.add(_reference);
-    EList<Model> _sourceModels_1 = result.getSourceModels();
+    result.getSourceModels().add(weaver.getSourceModel().getReference());
     AspectModel _aspectModel = weaver.getAspectModel();
-    Model _reference_1 = ((TargetModel) _aspectModel).getReference();
-    _sourceModels_1.add(_reference_1);
-    SourceModelSelector _resolveWeaverSourceModel = ArchitectureTyping.resolveWeaverSourceModel(weaver);
-    Model _reference_2 = _resolveWeaverSourceModel.getReference();
-    result.setTargetModel(_reference_2);
+    result.getSourceModels().add(((TargetModel) _aspectModel).getReference());
+    result.setTargetModel(ArchitectureTyping.resolveWeaverSourceModel(weaver).getReference());
     result.setTargetTraceModel(null);
     return result;
   }
@@ -418,8 +331,7 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
    */
   private void addAllUnique(final EList<TraceModel> list, final EList<TraceModelReference> insert) {
     final Consumer<TraceModelReference> _function = (TraceModelReference it) -> {
-      TraceModel _traceModel = it.getTraceModel();
-      this.addUnique(list, _traceModel);
+      this.addUnique(list, it.getTraceModel());
     };
     insert.forEach(_function);
   }

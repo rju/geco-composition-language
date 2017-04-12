@@ -3,7 +3,6 @@ package de.cau.cs.se.geco.architecture.typing;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import de.cau.cs.se.geco.architecture.architecture.BasicConstraint;
-import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
 import de.cau.cs.se.geco.architecture.architecture.ConstraintExpression;
 import de.cau.cs.se.geco.architecture.architecture.Fragment;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
@@ -14,7 +13,6 @@ import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.Negation;
 import de.cau.cs.se.geco.architecture.architecture.NodeProperty;
 import de.cau.cs.se.geco.architecture.architecture.ParenthesisConstraint;
-import de.cau.cs.se.geco.architecture.architecture.RegisteredRootClass;
 import de.cau.cs.se.geco.architecture.architecture.SourceModelSelector;
 import de.cau.cs.se.geco.architecture.architecture.TargetModel;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
@@ -26,9 +24,7 @@ import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnyTypeReference;
-import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmGenericType;
-import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
@@ -45,8 +41,7 @@ public class ArchitectureTyping {
     NodeProperty _property = selector.getProperty();
     boolean _notEquals = (!Objects.equal(_property, null));
     if (_notEquals) {
-      NodeProperty _property_1 = selector.getProperty();
-      return ArchitectureTyping.resolveType(_property_1);
+      return ArchitectureTyping.resolveType(selector.getProperty());
     } else {
       Model _reference = selector.getReference();
       JvmTypeReference _resolveType = null;
@@ -62,12 +57,9 @@ public class ArchitectureTyping {
           boolean _isListType = ArchitectureTyping.isListType(genericTypeReference);
           if (_isListType) {
             final JvmParameterizedTypeReference paramTypeReference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference();
-            JvmType _type = genericTypeReference.getType();
-            paramTypeReference.setType(_type);
-            EList<JvmTypeReference> _arguments = paramTypeReference.getArguments();
+            paramTypeReference.setType(genericTypeReference.getType());
             ConstraintExpression _constraint_2 = selector.getConstraint();
-            JvmTypeReference _resolveType_1 = ArchitectureTyping.resolveType(((InstanceOf) _constraint_2));
-            _arguments.add(_resolveType_1);
+            paramTypeReference.getArguments().add(ArchitectureTyping.resolveType(((InstanceOf) _constraint_2)));
             return paramTypeReference;
           } else {
             ConstraintExpression _constraint_3 = selector.getConstraint();
@@ -84,8 +76,7 @@ public class ArchitectureTyping {
   
   protected static JvmTypeReference _resolveType(final Model model) {
     EObject _eContainer = model.eContainer();
-    ModelType _type = ((ModelSequence) _eContainer).getType();
-    return ArchitectureTyping.resolveType(_type);
+    return ArchitectureTyping.resolveType(((ModelSequence) _eContainer).getType());
   }
   
   protected static JvmTypeReference _resolveType(final ModelType type) {
@@ -93,12 +84,9 @@ public class ArchitectureTyping {
     NodeProperty _property = type.getProperty();
     boolean _equals = Objects.equal(_property, null);
     if (_equals) {
-      RegisteredRootClass _target = type.getTarget();
-      JvmType _importedNamespace = _target.getImportedNamespace();
-      _xifexpression = ArchitectureTyping.resolveType(_importedNamespace);
+      _xifexpression = ArchitectureTyping.resolveType(type.getTarget().getImportedNamespace());
     } else {
-      NodeProperty _property_1 = type.getProperty();
-      _xifexpression = ArchitectureTyping.resolveType(_property_1);
+      _xifexpression = ArchitectureTyping.resolveType(type.getProperty());
     }
     final JvmTypeReference result = _xifexpression;
     boolean _isCollection = type.isCollection();
@@ -108,8 +96,7 @@ public class ArchitectureTyping {
       listType.setPackageName("java.lang");
       listType.setSimpleName("Collection");
       list.setType(listType);
-      EList<JvmTypeReference> _arguments = list.getArguments();
-      _arguments.add(result);
+      list.getArguments().add(result);
       return list;
     } else {
       return result;
@@ -127,11 +114,9 @@ public class ArchitectureTyping {
     NodeProperty _subProperty = property.getSubProperty();
     boolean _equals = Objects.equal(_subProperty, null);
     if (_equals) {
-      JvmMember _property = property.getProperty();
-      _xifexpression = ArchitectureTyping.resolveType(_property);
+      _xifexpression = ArchitectureTyping.resolveType(property.getProperty());
     } else {
-      NodeProperty _subProperty_1 = property.getSubProperty();
-      _xifexpression = ArchitectureTyping.resolveType(_subProperty_1);
+      _xifexpression = ArchitectureTyping.resolveType(property.getSubProperty());
     }
     return _xifexpression;
   }
@@ -153,15 +138,13 @@ public class ArchitectureTyping {
    * Evaluate type of an ConstraintExpression.
    */
   protected static JvmTypeReference _resolveType(final ConstraintExpression expression) {
-    CompareExpression _left = expression.getLeft();
-    final JvmTypeReference result = ArchitectureTyping.resolveType(_left);
+    final JvmTypeReference result = ArchitectureTyping.resolveType(expression.getLeft());
     boolean _equals = Objects.equal(result, null);
     if (_equals) {
       ConstraintExpression _right = expression.getRight();
       boolean _notEquals = (!Objects.equal(_right, null));
       if (_notEquals) {
-        ConstraintExpression _right_1 = expression.getRight();
-        return ArchitectureTyping.resolveType(_right_1);
+        return ArchitectureTyping.resolveType(expression.getRight());
       } else {
         return null;
       }
@@ -174,24 +157,21 @@ public class ArchitectureTyping {
    * Evaluate type of an ParenthesisConstraint.
    */
   protected static JvmTypeReference _resolveType(final ParenthesisConstraint expression) {
-    ConstraintExpression _constraint = expression.getConstraint();
-    return ArchitectureTyping.resolveType(_constraint);
+    return ArchitectureTyping.resolveType(expression.getConstraint());
   }
   
   /**
    * Evaluate type of an Typeof.
    */
   protected static JvmTypeReference _resolveType(final InstanceOf expression) {
-    JvmType _type = expression.getType();
-    return ArchitectureTyping.resolveType(_type);
+    return ArchitectureTyping.resolveType(expression.getType());
   }
   
   /**
    * Evaluate type of an Negation.
    */
   protected static JvmTypeReference _resolveType(final Negation expression) {
-    ConstraintExpression _constraint = expression.getConstraint();
-    return ArchitectureTyping.resolveType(_constraint);
+    return ArchitectureTyping.resolveType(expression.getConstraint());
   }
   
   /**
@@ -202,8 +182,7 @@ public class ArchitectureTyping {
   }
   
   protected static JvmTypeReference _resolveType(final EObject operation) {
-    Class<? extends EObject> _class = operation.getClass();
-    String _name = _class.getName();
+    String _name = operation.getClass().getName();
     String _plus = ("resolve type reference for " + _name);
     String _plus_1 = (_plus + " not supported");
     throw new UnsupportedOperationException(_plus_1);
@@ -213,13 +192,12 @@ public class ArchitectureTyping {
     if (((type.getType() instanceof JvmGenericType) && (matchingType.getType() instanceof JvmGenericType))) {
       boolean _eIsProxy = type.eIsProxy();
       if (_eIsProxy) {
-        JvmType _type = type.getType();
-        _type.hashCode();
+        type.getType().hashCode();
       }
-      JvmType _type_1 = type.getType();
-      final JvmGenericType left = ((JvmGenericType) _type_1);
-      JvmType _type_2 = matchingType.getType();
-      final JvmGenericType right = ((JvmGenericType) _type_2);
+      JvmType _type = type.getType();
+      final JvmGenericType left = ((JvmGenericType) _type);
+      JvmType _type_1 = matchingType.getType();
+      final JvmGenericType right = ((JvmGenericType) _type_1);
       boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(left, right);
       if (_isSubTypeOf) {
         if (((type instanceof JvmParameterizedTypeReference) && (matchingType instanceof JvmParameterizedTypeReference))) {
@@ -231,9 +209,7 @@ public class ArchitectureTyping {
           if (_equals) {
             boolean result = true;
             for (int i = 0; (i < leftArg.size()); i++) {
-              JvmTypeReference _get = leftArg.get(i);
-              JvmTypeReference _get_1 = rightArg.get(i);
-              boolean _isSubTypeOf_1 = ArchitectureTyping.isSubTypeOf(_get, _get_1);
+              boolean _isSubTypeOf_1 = ArchitectureTyping.isSubTypeOf(leftArg.get(i), rightArg.get(i));
               boolean _not = (!_isSubTypeOf_1);
               if (_not) {
                 result = false;
@@ -260,7 +236,6 @@ public class ArchitectureTyping {
     if (_equals) {
       return true;
     } else {
-      EList<JvmTypeReference> _superTypes = type.getSuperTypes();
       final Function1<JvmTypeReference, Boolean> _function = (JvmTypeReference it) -> {
         boolean _xblockexpression = false;
         {
@@ -284,7 +259,7 @@ public class ArchitectureTyping {
         }
         return Boolean.valueOf(_xblockexpression);
       };
-      _xifexpression = IterableExtensions.<JvmTypeReference>exists(_superTypes, _function);
+      _xifexpression = IterableExtensions.<JvmTypeReference>exists(type.getSuperTypes(), _function);
     }
     return _xifexpression;
   }
@@ -296,16 +271,15 @@ public class ArchitectureTyping {
   public static boolean isListType(final JvmTypeReference type) {
     boolean _xblockexpression = false;
     {
-      JvmType _type = type.getType();
-      final String name = _type.getQualifiedName();
+      final String name = type.getType().getQualifiedName();
       boolean _switchResult = false;
       boolean _matched = false;
       if (Objects.equal(name, null)) {
         _matched=true;
         boolean _xblockexpression_1 = false;
         {
-          JvmType _type_1 = type.getType();
-          String _plus = ((("AnnotationType? " + type) + " -- ") + _type_1);
+          JvmType _type = type.getType();
+          String _plus = ((("AnnotationType? " + type) + " -- ") + _type);
           System.out.println(_plus);
           _xblockexpression_1 = false;
         }
@@ -358,22 +332,16 @@ public class ArchitectureTyping {
     if (reference instanceof JvmParameterizedTypeReference) {
       _matched=true;
       JvmType _xifexpression = null;
-      EList<JvmTypeReference> _arguments = ((JvmParameterizedTypeReference)reference).getArguments();
-      int _size = _arguments.size();
+      int _size = ((JvmParameterizedTypeReference)reference).getArguments().size();
       boolean _equals = (_size == 1);
       if (_equals) {
-        EList<JvmTypeReference> _arguments_1 = ((JvmParameterizedTypeReference)reference).getArguments();
-        JvmTypeReference _get = _arguments_1.get(0);
-        _xifexpression = _get.getType();
+        _xifexpression = ((JvmParameterizedTypeReference)reference).getArguments().get(0).getType();
       } else {
         JvmType _xifexpression_1 = null;
-        EList<JvmTypeReference> _arguments_2 = ((JvmParameterizedTypeReference)reference).getArguments();
-        int _size_1 = _arguments_2.size();
+        int _size_1 = ((JvmParameterizedTypeReference)reference).getArguments().size();
         boolean _equals_1 = (_size_1 == 2);
         if (_equals_1) {
-          EList<JvmTypeReference> _arguments_3 = ((JvmParameterizedTypeReference)reference).getArguments();
-          JvmTypeReference _get_1 = _arguments_3.get(1);
-          _xifexpression_1 = _get_1.getType();
+          _xifexpression_1 = ((JvmParameterizedTypeReference)reference).getArguments().get(1).getType();
         }
         _xifexpression = _xifexpression_1;
       }
@@ -389,13 +357,10 @@ public class ArchitectureTyping {
    * Determine the output type reference of a generator.
    */
   public static JvmTypeReference determineGeneratorOutputType(final JvmGenericType type) {
-    EList<JvmMember> _members = type.getMembers();
-    Iterable<JvmOperation> _filter = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
     final Function1<JvmOperation, Boolean> _function = (JvmOperation member) -> {
-      String _simpleName = member.getSimpleName();
-      return Boolean.valueOf(_simpleName.equals("generate"));
+      return Boolean.valueOf(member.getSimpleName().equals("generate"));
     };
-    final JvmOperation member = IterableExtensions.<JvmOperation>findFirst(_filter, _function);
+    final JvmOperation member = IterableExtensions.<JvmOperation>findFirst(Iterables.<JvmOperation>filter(type.getMembers(), JvmOperation.class), _function);
     return member.getReturnType();
   }
   
@@ -403,20 +368,14 @@ public class ArchitectureTyping {
    * Determine the input type reference of a generator.
    */
   public static JvmTypeReference determineGeneratorInputType(final JvmGenericType type) {
-    EList<JvmMember> _members = type.getMembers();
-    Iterable<JvmOperation> _filter = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
     final Function1<JvmOperation, Boolean> _function = (JvmOperation member) -> {
-      String _simpleName = member.getSimpleName();
-      return Boolean.valueOf(_simpleName.equals("generate"));
+      return Boolean.valueOf(member.getSimpleName().equals("generate"));
     };
-    final JvmOperation member = IterableExtensions.<JvmOperation>findFirst(_filter, _function);
-    EList<JvmFormalParameter> _parameters = member.getParameters();
-    int _size = _parameters.size();
+    final JvmOperation member = IterableExtensions.<JvmOperation>findFirst(Iterables.<JvmOperation>filter(type.getMembers(), JvmOperation.class), _function);
+    int _size = member.getParameters().size();
     boolean _equals = (_size == 1);
     if (_equals) {
-      EList<JvmFormalParameter> _parameters_1 = member.getParameters();
-      JvmFormalParameter _get = _parameters_1.get(0);
-      return _get.getParameterType();
+      return member.getParameters().get(0).getParameterType();
     } else {
       return null;
     }
@@ -427,27 +386,17 @@ public class ArchitectureTyping {
    */
   public static Map<String, JvmTypeReference> determineGeneratorAuxTypes(final JvmGenericType type) {
     final HashMap<String, JvmTypeReference> result = new HashMap<String, JvmTypeReference>();
-    EList<JvmMember> _members = type.getMembers();
-    Iterable<JvmOperation> _filter = Iterables.<JvmOperation>filter(_members, JvmOperation.class);
     final Consumer<JvmOperation> _function = (JvmOperation member) -> {
-      String _simpleName = member.getSimpleName();
-      boolean _startsWith = _simpleName.startsWith("set");
+      boolean _startsWith = member.getSimpleName().startsWith("set");
       if (_startsWith) {
-        EList<JvmFormalParameter> _parameters = member.getParameters();
-        int _size = _parameters.size();
+        int _size = member.getParameters().size();
         boolean _equals = (_size == 1);
         if (_equals) {
-          String _simpleName_1 = member.getSimpleName();
-          String _substring = _simpleName_1.substring(3);
-          String _firstLower = StringExtensions.toFirstLower(_substring);
-          EList<JvmFormalParameter> _parameters_1 = member.getParameters();
-          JvmFormalParameter _get = _parameters_1.get(0);
-          JvmTypeReference _parameterType = _get.getParameterType();
-          result.put(_firstLower, _parameterType);
+          result.put(StringExtensions.toFirstLower(member.getSimpleName().substring(3)), member.getParameters().get(0).getParameterType());
         }
       }
     };
-    _filter.forEach(_function);
+    Iterables.<JvmOperation>filter(type.getMembers(), JvmOperation.class).forEach(_function);
     return result;
   }
   

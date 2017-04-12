@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmDeclaredType;
 import org.eclipse.xtext.common.types.JvmMember;
@@ -30,31 +29,22 @@ public class JvmMemberTypeScope implements IScope {
   private final Map<JvmOperation, IEObjectDescription> fields = new HashMap<JvmOperation, IEObjectDescription>();
   
   public JvmMemberTypeScope(final JvmDeclaredType type) {
-    EList<JvmMember> _members = type.getMembers();
-    this.findMembers(_members, "get");
-    EList<JvmMember> _members_1 = type.getMembers();
-    this.findMembers(_members_1, "is");
+    this.findMembers(type.getMembers(), "get");
+    this.findMembers(type.getMembers(), "is");
   }
   
   private void findMembers(final List<JvmMember> members, final String prefix) {
-    Iterable<JvmOperation> _filter = Iterables.<JvmOperation>filter(members, JvmOperation.class);
     final Function1<JvmOperation, Boolean> _function = (JvmOperation it) -> {
-      String _simpleName = it.getSimpleName();
-      return Boolean.valueOf(_simpleName.startsWith(prefix));
+      return Boolean.valueOf(it.getSimpleName().startsWith(prefix));
     };
-    Iterable<JvmOperation> _filter_1 = IterableExtensions.<JvmOperation>filter(_filter, _function);
     final Consumer<JvmOperation> _function_1 = (JvmOperation it) -> {
-      String _createName = this.createName(it, prefix);
-      IEObjectDescription _create = EObjectDescription.create(_createName, it);
-      this.fields.put(it, _create);
+      this.fields.put(it, EObjectDescription.create(this.createName(it, prefix), it));
     };
-    _filter_1.forEach(_function_1);
+    IterableExtensions.<JvmOperation>filter(Iterables.<JvmOperation>filter(members, JvmOperation.class), _function).forEach(_function_1);
   }
   
   private String createName(final JvmOperation operation, final String prefix) {
-    String _simpleName = operation.getSimpleName();
-    String _replaceFirst = _simpleName.replaceFirst(prefix, "");
-    return StringExtensions.toFirstLower(_replaceFirst);
+    return StringExtensions.toFirstLower(operation.getSimpleName().replaceFirst(prefix, ""));
   }
   
   @Override
@@ -68,8 +58,7 @@ public class JvmMemberTypeScope implements IScope {
       return Boolean.valueOf((this.createName(object, "get").equals(name.toString()) || 
         this.createName(object, "is").equals(name.toString())));
     };
-    Map<JvmOperation, IEObjectDescription> _filter = MapExtensions.<JvmOperation, IEObjectDescription>filter(this.fields, _function);
-    return _filter.values();
+    return MapExtensions.<JvmOperation, IEObjectDescription>filter(this.fields, _function).values();
   }
   
   @Override
@@ -77,19 +66,16 @@ public class JvmMemberTypeScope implements IScope {
     final Function2<JvmOperation, IEObjectDescription, Boolean> _function = (JvmOperation op, IEObjectDescription description) -> {
       return Boolean.valueOf(op.equals(object));
     };
-    Map<JvmOperation, IEObjectDescription> _filter = MapExtensions.<JvmOperation, IEObjectDescription>filter(this.fields, _function);
-    return _filter.values();
+    return MapExtensions.<JvmOperation, IEObjectDescription>filter(this.fields, _function).values();
   }
   
   @Override
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    Iterable<IEObjectDescription> _elements = this.getElements(name);
-    return IterableExtensions.<IEObjectDescription>last(_elements);
+    return IterableExtensions.<IEObjectDescription>last(this.getElements(name));
   }
   
   @Override
   public IEObjectDescription getSingleElement(final EObject object) {
-    Iterable<IEObjectDescription> _elements = this.getElements(object);
-    return IterableExtensions.<IEObjectDescription>last(_elements);
+    return IterableExtensions.<IEObjectDescription>last(this.getElements(object));
   }
 }

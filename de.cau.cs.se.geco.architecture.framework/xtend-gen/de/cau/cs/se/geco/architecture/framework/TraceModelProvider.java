@@ -23,7 +23,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -92,8 +91,7 @@ public class TraceModelProvider<S extends Object, T extends Object> implements I
    */
   @Override
   public <V extends T> Iterable<V> lookup(final S source, final Class<V> clazz) {
-    List<T> _get = this.map.get(source);
-    return Iterables.<V>filter(_get, clazz);
+    return Iterables.<V>filter(this.map.get(source), clazz);
   }
   
   /**
@@ -108,14 +106,10 @@ public class TraceModelProvider<S extends Object, T extends Object> implements I
   @Override
   public <SV extends S, TV extends T> Iterable<TV> lookup(final Class<SV> sourceClass, final Class<TV> targetClass) {
     final ArrayList<TV> result = new ArrayList<TV>();
-    Set<S> _keySet = this.map.keySet();
-    Iterable<SV> _filter = Iterables.<SV>filter(_keySet, sourceClass);
     final Consumer<SV> _function = (SV source) -> {
-      List<T> _get = this.map.get(source);
-      Iterable<TV> _filter_1 = Iterables.<TV>filter(_get, targetClass);
-      Iterables.<TV>addAll(result, _filter_1);
+      Iterables.<TV>addAll(result, Iterables.<TV>filter(this.map.get(source), targetClass));
     };
-    _filter.forEach(_function);
+    Iterables.<SV>filter(this.map.keySet(), sourceClass).forEach(_function);
     return result;
   }
   
@@ -128,8 +122,7 @@ public class TraceModelProvider<S extends Object, T extends Object> implements I
    */
   @Override
   public <SV extends S> Iterable<SV> allSources(final Class<SV> sourceClass) {
-    Set<S> _keySet = this.map.keySet();
-    return Iterables.<SV>filter(_keySet, sourceClass);
+    return Iterables.<SV>filter(this.map.keySet(), sourceClass);
   }
   
   /**
@@ -162,8 +155,7 @@ public class TraceModelProvider<S extends Object, T extends Object> implements I
   public <SV extends S, TV extends T> ITraceModelProvider<SV, TV> subset(final Class<SV> sourceClass, final Class<TV> targetClass) {
     final TraceModelProvider<SV, TV> resultMap = new TraceModelProvider<SV, TV>();
     final BiConsumer<S, List<T>> _function = (S key, List<T> value) -> {
-      Class<?> _class = key.getClass();
-      boolean _equals = _class.equals(sourceClass);
+      boolean _equals = key.getClass().equals(sourceClass);
       if (_equals) {
         final Iterable<TV> matchingValues = Iterables.<TV>filter(value, targetClass);
         boolean _isEmpty = IterableExtensions.isEmpty(matchingValues);

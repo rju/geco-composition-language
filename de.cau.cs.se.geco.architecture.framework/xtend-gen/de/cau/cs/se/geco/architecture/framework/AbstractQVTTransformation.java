@@ -16,7 +16,6 @@
 package de.cau.cs.se.geco.architecture.framework;
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
-import java.util.List;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -58,8 +57,7 @@ public abstract class AbstractQVTTransformation<S extends EObject, T extends EOb
     int _severity = result.getSeverity();
     boolean _equals = (_severity == Diagnostic.OK);
     if (_equals) {
-      List<EObject> _contents = outputModel.getContents();
-      EObject _get = _contents.get(0);
+      EObject _get = outputModel.getContents().get(0);
       return ((T) _get);
     } else {
       return null;

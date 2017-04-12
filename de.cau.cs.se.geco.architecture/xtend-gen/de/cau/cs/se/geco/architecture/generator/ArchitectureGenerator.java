@@ -9,10 +9,6 @@ import de.cau.cs.se.geco.architecture.generator.boxing.GenerateBoxingModel;
 import de.cau.cs.se.geco.architecture.generator.code.GenerateGecoCode;
 import de.cau.cs.se.geco.architecture.model.boxing.BoxingModel;
 import java.io.File;
-import java.util.Iterator;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
@@ -29,22 +25,17 @@ import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 public class ArchitectureGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext contex) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterator<GecoModel> _filter = Iterators.<GecoModel>filter(_allContents, GecoModel.class);
-    final GecoModel model = IteratorExtensions.<GecoModel>last(_filter);
-    URI _uRI = resource.getURI();
-    URI _trimFileExtension = _uRI.trimFileExtension();
-    final String className = _trimFileExtension.lastSegment();
-    String _name = model.getName();
-    final String path = _name.replace(".", File.separator);
+    final GecoModel model = IteratorExtensions.<GecoModel>last(Iterators.<GecoModel>filter(resource.getAllContents(), GecoModel.class));
+    final String className = resource.getURI().trimFileExtension().lastSegment();
+    final String path = model.getName().replace(".", File.separator);
     final GenerateBoxingModel generateBoxingModel = new GenerateBoxingModel();
     final GenerateGecoCode generateGecoCode = new GenerateGecoCode(className);
     final BoxingModel boxingModel = generateBoxingModel.generate(model);
     final String textOutput = "";
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append(path, "");
-    _builder.append(File.separator, "");
-    _builder.append(className, "");
+    _builder.append(path);
+    _builder.append(File.separator);
+    _builder.append(className);
     _builder.append(".xtend");
     fsa.generateFile(_builder.toString(), textOutput);
   }

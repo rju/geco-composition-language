@@ -24,12 +24,8 @@ public class JvmImportTypeScope implements IScope {
   
   public JvmImportTypeScope(final Iterable<Import> list) {
     final Consumer<Import> _function = (Import it) -> {
-      JvmType _importedNamespace = it.getImportedNamespace();
-      JvmType _importedNamespace_1 = it.getImportedNamespace();
-      String _simpleName = _importedNamespace_1.getSimpleName();
-      JvmType _importedNamespace_2 = it.getImportedNamespace();
-      IEObjectDescription _create = EObjectDescription.create(_simpleName, _importedNamespace_2);
-      this.imports.put(_importedNamespace, _create);
+      this.imports.put(it.getImportedNamespace(), 
+        EObjectDescription.create(it.getImportedNamespace().getSimpleName(), it.getImportedNamespace()));
     };
     list.forEach(_function);
   }
@@ -42,12 +38,9 @@ public class JvmImportTypeScope implements IScope {
   @Override
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
     final Function2<JvmType, IEObjectDescription, Boolean> _function = (JvmType type, IEObjectDescription description) -> {
-      String _simpleName = type.getSimpleName();
-      String _string = name.toString();
-      return Boolean.valueOf(_simpleName.equals(_string));
+      return Boolean.valueOf(type.getSimpleName().equals(name.toString()));
     };
-    Map<JvmType, IEObjectDescription> _filter = MapExtensions.<JvmType, IEObjectDescription>filter(this.imports, _function);
-    return _filter.values();
+    return MapExtensions.<JvmType, IEObjectDescription>filter(this.imports, _function).values();
   }
   
   @Override
@@ -55,19 +48,16 @@ public class JvmImportTypeScope implements IScope {
     final Function2<JvmType, IEObjectDescription, Boolean> _function = (JvmType type, IEObjectDescription description) -> {
       return Boolean.valueOf(type.equals(object));
     };
-    Map<JvmType, IEObjectDescription> _filter = MapExtensions.<JvmType, IEObjectDescription>filter(this.imports, _function);
-    return _filter.values();
+    return MapExtensions.<JvmType, IEObjectDescription>filter(this.imports, _function).values();
   }
   
   @Override
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    Iterable<IEObjectDescription> _elements = this.getElements(name);
-    return IterableExtensions.<IEObjectDescription>last(_elements);
+    return IterableExtensions.<IEObjectDescription>last(this.getElements(name));
   }
   
   @Override
   public IEObjectDescription getSingleElement(final EObject object) {
-    Iterable<IEObjectDescription> _elements = this.getElements(object);
-    return IterableExtensions.<IEObjectDescription>last(_elements);
+    return IterableExtensions.<IEObjectDescription>last(this.getElements(object));
   }
 }

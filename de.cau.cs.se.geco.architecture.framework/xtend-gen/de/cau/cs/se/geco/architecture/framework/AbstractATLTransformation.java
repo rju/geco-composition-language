@@ -16,7 +16,6 @@
 package de.cau.cs.se.geco.architecture.framework;
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -61,11 +60,9 @@ public abstract class AbstractATLTransformation<S extends EObject, T extends EOb
   public T generate(final S input) {
     final ExecEnv env = EmftvmFactory.eINSTANCE.createExecEnv();
     final ResourceSet resourceSet = new ResourceSetImpl();
-    URI _createURI = URI.createURI("internal://memory");
-    final Resource outputResource = resourceSet.createResource(_createURI);
+    final Resource outputResource = resourceSet.createResource(URI.createURI("internal://memory"));
     final Model inModel = EmftvmFactory.eINSTANCE.createModel();
-    Resource _eResource = ((EObject) input).eResource();
-    inModel.setResource(_eResource);
+    inModel.setResource(((EObject) input).eResource());
     env.registerInputModel("IN", inModel);
     final Model outModel = EmftvmFactory.eINSTANCE.createModel();
     outModel.setResource(outputResource);
@@ -76,9 +73,7 @@ public abstract class AbstractATLTransformation<S extends EObject, T extends EOb
     timingData.finishLoading();
     env.run(timingData);
     timingData.finish();
-    Resource _resource = outModel.getResource();
-    EList<EObject> _contents = _resource.getContents();
-    EObject _get = _contents.get(0);
+    EObject _get = outModel.getResource().getContents().get(0);
     return ((T) _get);
   }
 }

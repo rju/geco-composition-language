@@ -6,12 +6,9 @@ package de.cau.cs.se.geco.architecture.ui.labeling;
 import com.google.inject.Inject;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.ModelSequence;
-import de.cau.cs.se.geco.architecture.architecture.ModelType;
 import de.cau.cs.se.geco.architecture.architecture.Weaver;
 import de.cau.cs.se.geco.architecture.typing.ArchitectureTyping;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-import org.eclipse.xtext.common.types.JvmType;
-import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 /**
@@ -27,20 +24,16 @@ public class ArchitectureLabelProvider extends DefaultEObjectLabelProvider {
   }
   
   public String text(final ModelSequence sequence) {
-    ModelType _type = sequence.getType();
-    JvmTypeReference _resolveType = ArchitectureTyping.resolveType(_type);
-    return _resolveType.getSimpleName();
+    return ArchitectureTyping.resolveType(sequence.getType()).getSimpleName();
   }
   
   public String text(final Generator generator) {
-    JvmType _reference = generator.getReference();
-    String _simpleName = _reference.getSimpleName();
+    String _simpleName = generator.getReference().getSimpleName();
     return ("generator " + _simpleName);
   }
   
   public String text(final Weaver weaver) {
-    JvmType _reference = weaver.getReference();
-    String _simpleName = _reference.getSimpleName();
+    String _simpleName = weaver.getReference().getSimpleName();
     return ("weaver " + _simpleName);
   }
 }

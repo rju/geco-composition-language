@@ -13,7 +13,7 @@ public class NameResolver {
   public CharSequence collectionName(final Model model) {
     StringConcatenation _builder = new StringConcatenation();
     String _name = model.getName();
-    _builder.append(_name, "");
+    _builder.append(_name);
     _builder.append("BaseCollection");
     return _builder;
   }
@@ -22,7 +22,6 @@ public class NameResolver {
    * Create the name of an unnamed instance based on its type.
    */
   public String getInstanceName(final JvmType type) {
-    String _simpleName = type.getSimpleName();
-    return StringExtensions.toFirstLower(_simpleName);
+    return StringExtensions.toFirstLower(type.getSimpleName());
   }
 }

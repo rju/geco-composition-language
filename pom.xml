@@ -141,6 +141,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+<<<<<<< HEAD
 
 		<pluginManagement>
 			<plugins>
@@ -164,6 +165,8 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+=======
+>>>>>>> minor update
 	</build>
 
 	<repositories>

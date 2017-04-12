@@ -11,7 +11,6 @@ import de.cau.cs.se.geco.architecture.ArchitectureStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class ArchitectureStandaloneSetup extends ArchitectureStandaloneSetupGenerated {
   public static void doSetup() {
-    ArchitectureStandaloneSetup _architectureStandaloneSetup = new ArchitectureStandaloneSetup();
-    _architectureStandaloneSetup.createInjectorAndDoEMFRegistration();
+    new ArchitectureStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
 }
