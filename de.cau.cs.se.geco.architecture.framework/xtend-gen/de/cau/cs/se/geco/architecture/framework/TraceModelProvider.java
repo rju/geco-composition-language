@@ -15,7 +15,6 @@
  */
 package de.cau.cs.se.geco.architecture.framework;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider;
 import java.util.ArrayList;
@@ -58,8 +57,7 @@ public class TraceModelProvider<S extends Object, T extends Object> implements I
   @Override
   public void add(final S source, final T target) {
     final List<T> list = this.map.get(source);
-    boolean _equals = Objects.equal(list, null);
-    if (_equals) {
+    if ((list == null)) {
       ArrayList<T> _arrayList = new ArrayList<T>();
       this.map.put(source, _arrayList);
       this.add(source, target);

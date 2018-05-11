@@ -1,6 +1,5 @@
 package de.cau.cs.se.geco.architecture.generator.code;
 
-import com.google.common.base.Objects;
 import de.cau.cs.se.geco.architecture.architecture.ArrayLiteral;
 import de.cau.cs.se.geco.architecture.architecture.BooleanLiteral;
 import de.cau.cs.se.geco.architecture.architecture.CompareExpression;
@@ -32,8 +31,8 @@ public class SelectorQuery {
   public CharSequence createSelectorQuery(final ModelType type, final String modelName) {
     CharSequence _xifexpression = null;
     NodeProperty _property = type.getProperty();
-    boolean _equals = Objects.equal(_property, null);
-    if (_equals) {
+    boolean _tripleEquals = (_property == null);
+    if (_tripleEquals) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(modelName);
       _builder.append(".add(it)");
@@ -71,8 +70,8 @@ public class SelectorQuery {
   public CharSequence createSourceAuxModel(final SourceModelSelector sourceAuxModel, final int i) {
     CharSequence _xifexpression = null;
     NodeProperty _property = sourceAuxModel.getProperty();
-    boolean _equals = Objects.equal(_property, null);
-    if (_equals) {
+    boolean _tripleEquals = (_property == null);
+    if (_tripleEquals) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("val aux");
       _builder.append(i);
@@ -115,8 +114,8 @@ public class SelectorQuery {
   private CharSequence createPropertyQuery(final NodeProperty property, final String modelName) {
     CharSequence _xifexpression = null;
     NodeProperty _subProperty = property.getSubProperty();
-    boolean _equals = Objects.equal(_subProperty, null);
-    if (_equals) {
+    boolean _tripleEquals = (_subProperty == null);
+    if (_tripleEquals) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(modelName);
       _builder.append(".add(it)");
@@ -153,8 +152,7 @@ public class SelectorQuery {
    */
   public CharSequence createConstraintFilter(final ConstraintExpression expression) {
     CharSequence _xifexpression = null;
-    boolean _equals = Objects.equal(expression, null);
-    if (_equals) {
+    if ((expression == null)) {
       StringConcatenation _builder = new StringConcatenation();
       _xifexpression = _builder;
     } else {

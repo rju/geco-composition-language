@@ -1,6 +1,5 @@
 package de.cau.cs.se.geco.architecture.scoping;
 
-import com.google.common.base.Objects;
 import java.util.ArrayList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -44,8 +43,7 @@ public class JvmRegisterMetamodelImportScope implements IScope {
     String _string = name.toString();
     String _plus = ((this.packageName + ".") + _string);
     final JvmType type = this.typeProvider.findTypeByName(_plus);
-    boolean _notEquals = (!Objects.equal(type, null));
-    if (_notEquals) {
+    if ((type != null)) {
       result.add(EObjectDescription.create(IterableExtensions.<String>last(name.getSegments()), type));
     }
     return result;

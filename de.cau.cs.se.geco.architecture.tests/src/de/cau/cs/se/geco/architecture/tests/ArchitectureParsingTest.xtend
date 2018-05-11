@@ -13,7 +13,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
-@InjectWith(ArchitectureInjectorProvider)
 class ArchitectureParsingTest{
 
 	@Inject

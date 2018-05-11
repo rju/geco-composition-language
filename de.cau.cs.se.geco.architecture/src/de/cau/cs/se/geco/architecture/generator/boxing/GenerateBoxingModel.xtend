@@ -50,7 +50,7 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 					units.add(createGenerator(fragment))
 					result.allProcessors.addUniqueType((fragment.aspectModel as Generator).reference)
 				}
-				Weaver case (fragment.aspectModel == null): units.add(createWeaver(fragment))
+				Weaver case (fragment.aspectModel === null): units.add(createWeaver(fragment))
 			}
 			result.allProcessors.addUniqueType(fragment.reference)
 		]
@@ -96,10 +96,10 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 		switch(processor) {
 			Generator: {
 				System.out.print("\tG " + processor.reference.qualifiedName)
-				if (processor.targetTraceModel != null) {
+				if (processor.targetTraceModel !== null) {
 					System.out.print(" write " + processor.targetTraceModel.determineTraceModel.name)
 				}
-				if (processor.sourceTraceModels != null) {
+				if (processor.sourceTraceModels !== null) {
 					System.out.print(" read " + processor.sourceTraceModels.map[it.determineTraceModel.name].join(", "))
 				}
 				System.out.println()
@@ -142,7 +142,7 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 		group.sourceTraceModels.addAll(oldGroup.sourceTraceModels)
 		oldGroup.units.forEach[unit | 
 			group.sourceModels.addUnique(unit.targetModel)
-			if (unit.targetTraceModel != null)
+			if (unit.targetTraceModel !== null)
 				group.sourceTraceModels.addUnique(unit.targetTraceModel)
 		]
 		
@@ -156,12 +156,12 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 		val result = BoxingFactory.eINSTANCE.createUnit
 		
 		result.fragment = generator
-		if (generator.sourceModel.reference != null)
+		if (generator.sourceModel.reference !== null)
 			result.sourceModels.add(generator.sourceModel.reference)
 		generator.sourceAuxModels.forEach[model | result.sourceModels.addUnique(model.reference)]
 		result.sourceTraceModels.addAllUnique(generator.sourceTraceModels)
 		result.targetModel = generator.targetModel.reference
-		if (generator.targetTraceModel != null)
+		if (generator.targetTraceModel !== null)
 			result.targetTraceModel = generator.targetTraceModel.determineTraceModel
 		else
 			result.targetTraceModel = null
@@ -193,7 +193,7 @@ class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
 		result.sourceTraceModels.addAllUnique(generator.sourceTraceModels)
 		result.targetModel = ArchitectureTyping.resolveWeaverSourceModel(weaver).reference
 		result.sourceModels.addUnique(result.targetModel)
-		if (generator.targetTraceModel != null)
+		if (generator.targetTraceModel !== null)
 			result.targetTraceModel = generator.targetTraceModel.determineTraceModel
 		else
 			result.targetTraceModel = null

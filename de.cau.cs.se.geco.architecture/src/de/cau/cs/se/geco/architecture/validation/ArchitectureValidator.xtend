@@ -77,7 +77,7 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 						
 						val sourceModelTypeReference = generator.sourceModel.resolveType
 						/** check whether the sourceModel is equal or subtype to inputType */
-						if (sourceModelTypeReference != null) {
+						if (sourceModelTypeReference !== null) {
 							if (!sourceModelTypeReference.isSubTypeOf(inputTypeReference)) {
 								if (!sourceModelTypeReference.determineElementType.resolveType.isSubTypeOf(inputTypeReference)) {
 									error('Source model type ' + sourceModelTypeReference.determineElementType.qualifiedName + 
@@ -88,7 +88,7 @@ class ArchitectureValidator extends AbstractArchitectureValidator {
 						}
 						
 						val outputTypeReference = generatorJvmType.determineGeneratorOutputType
-						if (generator.targetModel != null) {
+						if (generator.targetModel !== null) {
 							val targetModelTypeReference = generator.targetModel.resolveType
 							if (!outputTypeReference.isSubTypeOf(targetModelTypeReference))
 								error('Target model type ' + sourceModelTypeReference.qualifiedName + 

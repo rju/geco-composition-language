@@ -68,8 +68,8 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
       if (!_matched) {
         if (fragment instanceof Weaver) {
           AspectModel _aspectModel = ((Weaver)fragment).getAspectModel();
-          boolean _equals = Objects.equal(_aspectModel, null);
-          if (_equals) {
+          boolean _tripleEquals = (_aspectModel == null);
+          if (_tripleEquals) {
             _matched=true;
             units.add(this.createWeaver(((Weaver)fragment)));
           }
@@ -136,15 +136,15 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
       String _plus = ("\tG " + _qualifiedName);
       System.out.print(_plus);
       TargetTraceModel _targetTraceModel = ((Generator)processor).getTargetTraceModel();
-      boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
-      if (_notEquals) {
+      boolean _tripleNotEquals = (_targetTraceModel != null);
+      if (_tripleNotEquals) {
         String _name = this.determineTraceModel(((Generator)processor).getTargetTraceModel()).getName();
         String _plus_1 = (" write " + _name);
         System.out.print(_plus_1);
       }
       EList<TraceModelReference> _sourceTraceModels = ((Generator)processor).getSourceTraceModels();
-      boolean _notEquals_1 = (!Objects.equal(_sourceTraceModels, null));
-      if (_notEquals_1) {
+      boolean _tripleNotEquals_1 = (_sourceTraceModels != null);
+      if (_tripleNotEquals_1) {
         final Function1<TraceModelReference, String> _function = (TraceModelReference it) -> {
           return this.determineTraceModel(it).getName();
         };
@@ -211,8 +211,8 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     final Consumer<Unit> _function = (Unit unit) -> {
       this.addUnique(group.getSourceModels(), unit.getTargetModel());
       TraceModel _targetTraceModel = unit.getTargetTraceModel();
-      boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
-      if (_notEquals) {
+      boolean _tripleNotEquals = (_targetTraceModel != null);
+      if (_tripleNotEquals) {
         this.addUnique(group.getSourceTraceModels(), unit.getTargetTraceModel());
       }
     };
@@ -227,8 +227,8 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     final Unit result = BoxingFactory.eINSTANCE.createUnit();
     result.setFragment(generator);
     Model _reference = generator.getSourceModel().getReference();
-    boolean _notEquals = (!Objects.equal(_reference, null));
-    if (_notEquals) {
+    boolean _tripleNotEquals = (_reference != null);
+    if (_tripleNotEquals) {
       result.getSourceModels().add(generator.getSourceModel().getReference());
     }
     final Consumer<SourceModelSelector> _function = (SourceModelSelector model) -> {
@@ -238,8 +238,8 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     this.addAllUnique(result.getSourceTraceModels(), generator.getSourceTraceModels());
     result.setTargetModel(generator.getTargetModel().getReference());
     TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
-    boolean _notEquals_1 = (!Objects.equal(_targetTraceModel, null));
-    if (_notEquals_1) {
+    boolean _tripleNotEquals_1 = (_targetTraceModel != null);
+    if (_tripleNotEquals_1) {
       result.setTargetTraceModel(this.determineTraceModel(generator.getTargetTraceModel()));
     } else {
       result.setTargetTraceModel(null);
@@ -272,8 +272,8 @@ public class GenerateBoxingModel implements IGenerator<GecoModel, BoxingModel> {
     result.setTargetModel(ArchitectureTyping.resolveWeaverSourceModel(weaver).getReference());
     this.addUnique(result.getSourceModels(), result.getTargetModel());
     TargetTraceModel _targetTraceModel = generator.getTargetTraceModel();
-    boolean _notEquals = (!Objects.equal(_targetTraceModel, null));
-    if (_notEquals) {
+    boolean _tripleNotEquals = (_targetTraceModel != null);
+    if (_tripleNotEquals) {
       result.setTargetTraceModel(this.determineTraceModel(generator.getTargetTraceModel()));
     } else {
       result.setTargetTraceModel(null);

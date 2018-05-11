@@ -32,7 +32,7 @@ class JvmRegisterMetamodelImportScope implements IScope {
 	override getElements(QualifiedName name) {
 		val result = new ArrayList<IEObjectDescription>
 		val type = typeProvider.findTypeByName(packageName + "." + name.toString)
-		if (type != null)
+		if (type !== null)
 			result.add(EObjectDescription.create(name.segments.last, type))
 		return result
 	}

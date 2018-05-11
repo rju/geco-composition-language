@@ -29,11 +29,11 @@ class ArchitectureTyping {
 	
 	
 	def dispatch static JvmTypeReference resolveType(SourceModelSelector selector) {
-		if (selector.property != null)
+		if (selector.property !== null)
 			return selector.property.resolveType
 		else {
 			val genericTypeReference = selector.reference?.resolveType
-			if (selector.constraint != null) {
+			if (selector.constraint !== null) {
 				if (selector.constraint instanceof InstanceOf) {
 					if (genericTypeReference.isListType) {
 						val paramTypeReference = TypesFactory.eINSTANCE.createJvmParameterizedTypeReference
@@ -54,7 +54,7 @@ class ArchitectureTyping {
 	}
 	
 	def dispatch static JvmTypeReference resolveType(ModelType type) {
-		val result = if (type.property == null)
+		val result = if (type.property === null)
 			type.target.importedNamespace.resolveType
 		else
 			type.property.resolveType
@@ -79,7 +79,7 @@ class ArchitectureTyping {
 	} 
 	
 	def dispatch static JvmTypeReference resolveType(NodeProperty property) {
-		if (property.subProperty == null) {
+		if (property.subProperty === null) {
 			property.property.resolveType
 		} else
 			property.subProperty.resolveType
@@ -99,8 +99,8 @@ class ArchitectureTyping {
 	 */
 	def dispatch static JvmTypeReference resolveType(ConstraintExpression expression) {
 		val result = expression.left.resolveType
-		if (result == null)
-			if (expression.right != null)
+		if (result === null)
+			if (expression.right !== null)
 				return expression.right.resolveType
 			else
 				return null
@@ -283,7 +283,7 @@ class ArchitectureTyping {
 	 * Resolve the source model reference of the weaver instance.
 	 */
 	def static SourceModelSelector resolveWeaverSourceModel(Weaver weaver) {
-		if (weaver.sourceModel != null)
+		if (weaver.sourceModel !== null)
 			weaver.sourceModel
 		else 
 			weaver.predecessingWeaver?.resolveWeaverSourceModel

@@ -5,9 +5,7 @@ package de.cau.cs.se.geco.architecture.tests;
 
 import com.google.inject.Inject;
 import de.cau.cs.se.geco.architecture.architecture.GecoModel;
-import de.cau.cs.se.geco.architecture.tests.ArchitectureInjectorProvider;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -16,7 +14,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(XtextRunner.class)
-@InjectWith(ArchitectureInjectorProvider.class)
 @SuppressWarnings("all")
 public class ArchitectureParsingTest {
   @Inject

@@ -91,7 +91,7 @@ class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider implem
 			SourceModelSelector: {
 				val genericType = (container.reference.eContainer as ModelSequence).type.resolveType.determineElementType
 				// TODO this must be converted into a typing method
-				if (container.constraint != null) {
+				if (container.constraint !== null) {
 					if (container.constraint instanceof InstanceOf) {
 						return (container.constraint as InstanceOf).type.createJvmDeclaredTypeScope(reference)
 					}
@@ -139,7 +139,7 @@ class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider implem
 	private def IScope createNodeTypeScope(NodeType nodeType, EReference reference) {
 		val generator = nodeType.generatorContextNode
 		if ((nodeType.eContainer as NodeSetRelation).sourceNodes.exists[it.equals(nodeType)]) {
-			if (generator.sourceModel.reference != null) {
+			if (generator.sourceModel.reference !== null) {
 				/** source node type */
 				
 				return new JvmRegisterMetamodelImportScope(generator.sourceModel.reference.resolveType.determineElementType, 
@@ -148,10 +148,10 @@ class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider implem
 			} else /** this should not happen in a valid model. Provide solid fallback for incomplete model. */
 				return IScope.NULLSCOPE
 		} else {
-			if (generator.targetModel == null) {
+			if (generator.targetModel === null) {
 				if (generator.eContainer instanceof Weaver) {
 					val sourceModel = (generator.eContainer as Weaver).resolveWeaverSourceModel
-					if (sourceModel != null)
+					if (sourceModel !== null)
 						return new JvmRegisterMetamodelImportScope(sourceModel.reference.resolveType.determineElementType,
 							nodeType.modelRoot.eResource().getResourceSet(), typeProviderFactory
 						)
@@ -172,7 +172,7 @@ class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider implem
 	 */
 	private def IScope createInstanceOfScope(InstanceOf type, EReference reference) {
 		val context = type.metaModelContextNode
-		if (context != null) {
+		if (context !== null) {
 			return new JvmRegisterMetamodelImportScope(context, 
 				type.modelRoot.eResource().getResourceSet(),
 				typeProviderFactory

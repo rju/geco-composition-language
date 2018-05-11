@@ -24,7 +24,7 @@ class SelectorQuery {
 	 * If the property has a flat type only add the single value.
 	 */
 	def createSelectorQuery(ModelType type, String modelName) {
-		if (type.property == null)
+		if (type.property === null)
 			'''«modelName».add(it)'''
 		else if (type.property.property.resolveType.isListType) {
 			'''it.«type.property.property.simpleName»().forEach[«type.property.createPropertyQuery(modelName)»]'''			
@@ -38,7 +38,7 @@ class SelectorQuery {
 	 * Create an initialization section for an auxiliary model collection.
 	 */
 	def createSourceAuxModel(SourceModelSelector sourceAuxModel, int i) {
-		if (sourceAuxModel.property == null) {
+		if (sourceAuxModel.property === null) {
 			'''val aux«i» = «sourceAuxModel.reference.name»«sourceAuxModel.constraint.createConstraintFilter»''' 
 		} else { 
 			'''
@@ -56,7 +56,7 @@ class SelectorQuery {
 	 * value add for non list types.
 	 */
 	private def CharSequence createPropertyQuery(NodeProperty property, String modelName) {
-		if (property.subProperty == null)
+		if (property.subProperty === null)
 			'''«modelName».add(it)'''
 		else if (property.property.resolveType.isListType) {
 			'''it.«property.property.simpleName»().forEach[«property.subProperty.createPropertyQuery(modelName)»]'''
@@ -71,7 +71,7 @@ class SelectorQuery {
 	 * Create a constraint filter for a query if a filter is defined.
 	 */
 	def createConstraintFilter(ConstraintExpression expression) {
-		if (expression == null)
+		if (expression === null)
 			''''''
 		else if (expression instanceof InstanceOf)
 			'''.filter(«expression.type.qualifiedName»)'''

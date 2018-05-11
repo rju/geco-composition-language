@@ -50,7 +50,7 @@ class TraceModelProvider<S,T> implements ITraceModelProvider<S,T> {
 	 */
 	override void add(S source, T target) {
 		val list = map.get(source)
-		if (list == null) { /** new entry */
+		if (list === null) { /** new entry */
 			map.put(source, new ArrayList<T>())
 			this.add(source, target)
 		} else {

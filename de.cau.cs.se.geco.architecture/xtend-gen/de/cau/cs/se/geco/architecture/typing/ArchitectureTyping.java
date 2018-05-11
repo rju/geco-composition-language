@@ -39,8 +39,8 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 public class ArchitectureTyping {
   protected static JvmTypeReference _resolveType(final SourceModelSelector selector) {
     NodeProperty _property = selector.getProperty();
-    boolean _notEquals = (!Objects.equal(_property, null));
-    if (_notEquals) {
+    boolean _tripleNotEquals = (_property != null);
+    if (_tripleNotEquals) {
       return ArchitectureTyping.resolveType(selector.getProperty());
     } else {
       Model _reference = selector.getReference();
@@ -50,8 +50,8 @@ public class ArchitectureTyping {
       }
       final JvmTypeReference genericTypeReference = _resolveType;
       ConstraintExpression _constraint = selector.getConstraint();
-      boolean _notEquals_1 = (!Objects.equal(_constraint, null));
-      if (_notEquals_1) {
+      boolean _tripleNotEquals_1 = (_constraint != null);
+      if (_tripleNotEquals_1) {
         ConstraintExpression _constraint_1 = selector.getConstraint();
         if ((_constraint_1 instanceof InstanceOf)) {
           boolean _isListType = ArchitectureTyping.isListType(genericTypeReference);
@@ -82,8 +82,8 @@ public class ArchitectureTyping {
   protected static JvmTypeReference _resolveType(final ModelType type) {
     JvmTypeReference _xifexpression = null;
     NodeProperty _property = type.getProperty();
-    boolean _equals = Objects.equal(_property, null);
-    if (_equals) {
+    boolean _tripleEquals = (_property == null);
+    if (_tripleEquals) {
       _xifexpression = ArchitectureTyping.resolveType(type.getTarget().getImportedNamespace());
     } else {
       _xifexpression = ArchitectureTyping.resolveType(type.getProperty());
@@ -112,8 +112,8 @@ public class ArchitectureTyping {
   protected static JvmTypeReference _resolveType(final NodeProperty property) {
     JvmTypeReference _xifexpression = null;
     NodeProperty _subProperty = property.getSubProperty();
-    boolean _equals = Objects.equal(_subProperty, null);
-    if (_equals) {
+    boolean _tripleEquals = (_subProperty == null);
+    if (_tripleEquals) {
       _xifexpression = ArchitectureTyping.resolveType(property.getProperty());
     } else {
       _xifexpression = ArchitectureTyping.resolveType(property.getSubProperty());
@@ -139,11 +139,10 @@ public class ArchitectureTyping {
    */
   protected static JvmTypeReference _resolveType(final ConstraintExpression expression) {
     final JvmTypeReference result = ArchitectureTyping.resolveType(expression.getLeft());
-    boolean _equals = Objects.equal(result, null);
-    if (_equals) {
+    if ((result == null)) {
       ConstraintExpression _right = expression.getRight();
-      boolean _notEquals = (!Objects.equal(_right, null));
-      if (_notEquals) {
+      boolean _tripleNotEquals = (_right != null);
+      if (_tripleNotEquals) {
         return ArchitectureTyping.resolveType(expression.getRight());
       } else {
         return null;
@@ -420,8 +419,8 @@ public class ArchitectureTyping {
   public static SourceModelSelector resolveWeaverSourceModel(final Weaver weaver) {
     SourceModelSelector _xifexpression = null;
     SourceModelSelector _sourceModel = weaver.getSourceModel();
-    boolean _notEquals = (!Objects.equal(_sourceModel, null));
-    if (_notEquals) {
+    boolean _tripleNotEquals = (_sourceModel != null);
+    if (_tripleNotEquals) {
       _xifexpression = weaver.getSourceModel();
     } else {
       Weaver _predecessingWeaver = ArchitectureTyping.predecessingWeaver(weaver);

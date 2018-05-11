@@ -158,7 +158,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * Create nested loops for a generator call.
 	 */
 	private def createSourceModelNesting(SourceModelSelector sourceModel, Weaver weaver, Unit unit) {
-		if (sourceModel.reference == null) {
+		if (sourceModel.reference === null) {
 			weaver.createWeaverCall(unit, 'null')
 		} else {
 			if (sourceModel.resolveType.isSubTypeOf(unit.inputTypeReference))
@@ -175,7 +175,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * Create nested loops for a generator call.
 	 */
 	private def CharSequence createSourceModelNesting(NodeProperty node, Weaver weaver, Unit unit, String modelVarName) {
-		if (node == null)
+		if (node === null)
 			weaver.createWeaverCall(unit, modelVarName)
 		else
 			if (node.resolveType.isSubTypeOf(unit.inputTypeReference))
@@ -230,7 +230,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * which are automatically woven into a model.
 	 */
 	private def createTargetModel(Generator generator) {
-		if (generator.targetModel != null) {
+		if (generator.targetModel !== null) {
 			if (generator.targetModel.reference.isCollectionType) 
 				'''«generator.targetModel.reference.name» += '''
 			else
@@ -243,7 +243,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * Create nested loops for a generator call.
 	 */
 	private def createSourceModelNesting(SourceModelSelector sourceModel, Generator generator, Unit unit) {
-		if (sourceModel.reference == null) {
+		if (sourceModel.reference === null) {
 			generator.createGeneratorCall('null')
 		} else {
 			if (sourceModel.resolveType.isSubTypeOf(unit.inputTypeReference))
@@ -260,7 +260,7 @@ class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence>{
 	 * Create nested loops for a generator call.
 	 */
 	private def CharSequence createSourceModelNesting(NodeProperty node, Generator generator, Unit unit, String modelVarName) {
-		if (node == null)
+		if (node === null)
 			generator.createGeneratorCall(modelVarName)
 		else
 			if (node.resolveType.isSubTypeOf(unit.inputTypeReference))

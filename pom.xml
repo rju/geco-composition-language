@@ -13,15 +13,15 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<tycho.version>0.25.0</tycho.version>
-		<tycho.extras.version>0.25.0</tycho.extras.version>
-		<xtext.version>2.10.0</xtext.version>
+		<tycho.version>1.1.0</tycho.version>
+		<tycho.extras.version>1.1.0</tycho.extras.version>
+		<xtext.version>2.13.0</xtext.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
-		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/</kieler-repo.url>
-		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.1.0/</elk-repo.url>
+		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen</eclipse-repo.url>
+		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2017-11/</kieler-repo.url>
+		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
 		<atl-repo.url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/</atl-repo.url>
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 	</properties>

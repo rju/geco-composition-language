@@ -31,20 +31,20 @@ import de.cau.cs.se.geco.architecture.framework.IWeaverSeparatePointcut
 import java.util.HashMap
 import java.util.Map
 import javax.inject.Inject
-import org.eclipse.elk.alg.layered.properties.LayeredOptions
 import org.eclipse.elk.core.options.Direction
 import org.eclipse.elk.core.options.EdgeRouting
 import org.eclipse.elk.core.options.NodeLabelPlacement
 import org.eclipse.elk.core.options.PortConstraints
 import org.eclipse.elk.core.options.PortSide
-import org.eclipse.elk.graph.KEdge
-import org.eclipse.elk.graph.KNode
+import de.cau.cs.kieler.klighd.kgraph.KEdge
+import de.cau.cs.kieler.klighd.kgraph.KNode
 import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 //import org.eclipse.elk.alg.layered.properties.LayeredOptions
 
 import static extension de.cau.cs.se.geco.architecture.typing.ArchitectureTyping.*
+import org.eclipse.elk.alg.layered.options.LayeredOptions
 
 class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
     
@@ -119,7 +119,6 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         
         root => [
 //        	it.addLayoutParam(LayoutOptions::ALGORITHM, "de.cau.cs.kieler.klay.layered") // obsolete
-            it.setLayoutOption(LayeredOptions.SPACING_BORDER, SPACING.objectValue as Float)
             it.setLayoutOption(LayeredOptions.DIRECTION, Direction::RIGHT)
             it.setLayoutOption(LayeredOptions::EDGE_ROUTING, switch(ROUTING.objectValue) {
             	case ROUTING_POLYLINE: EdgeRouting::POLYLINE
@@ -161,7 +160,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 * edge to the source base model of the weaver.
 	 */
 	private def createSourceBaseModelEdgeForWeaver(Weaver weaver, KNode weaverNode) {
-		val sourceModelNode = if (weaver.sourceModel != null) {
+		val sourceModelNode = if (weaver.sourceModel !== null) {
     		modelNodes.get(weaver.sourceModel.reference)
     	} else {
     		targetWeaverModelNodes.get(weaver.predecessingWeaver)
@@ -177,7 +176,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 * edge to the source base model of the weaver.
 	 */
 	private def createTargetBaseModelEdgeForWeaver(Weaver weaver, KNode weaverNode) {
-		val targetModelNode = if (weaver.targetModel != null) {
+		val targetModelNode = if (weaver.targetModel !== null) {
     		modelNodes.get(weaver.targetModel.reference)
     	} else {
     		targetWeaverModelNodes.get(weaver)
@@ -224,14 +223,14 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 * Create edges between the generator and the models.
 	 */
 	private def void createEdgesForGenerator(KNode root, Generator generator, KNode generatorNode) {
-    	val sourceModelNode = if (generator.sourceModel.reference !=null) {
+    	val sourceModelNode = if (generator.sourceModel.reference !== null) {
     		modelNodes.get(generator.sourceModel.reference)
     	} else {
     		val anonymousModelNode = drawModelRectangle(createNode(), "", "empty")
     		root.children += anonymousModelNode
     		anonymousModelNode
     	}
-    	val targetModelNode = if (generator.targetModel != null) {
+    	val targetModelNode = if (generator.targetModel !== null) {
     		modelNodes.get(generator.targetModel.reference)
     	} else {
     		if (generator.eContainer instanceof Weaver) {
@@ -269,7 +268,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
         	weaverNodes.put(weaver, weaverNode)
         	parent.children += weaverNode
         	weaver.aspectModel.createSublevelGenerator(parent)
-        	if (weaver.targetModel == null) {
+        	if (weaver.targetModel === null) {
         		val anonymousModelNode = weaver.createAnonymousModel
         		targetWeaverModelNodes.put(weaver, anonymousModelNode)
         		parent.children += anonymousModelNode
@@ -304,7 +303,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 		generatorNodes.put(generator, generatorNode)
 		
 		/** create trace model and write edge. */
-		if (generator.targetTraceModel != null && TRACE_MODEL_VISIBLE.objectValue.equals(TRACE_MODEL_VISIBLE_YES)) {
+		if (generator.targetTraceModel !== null && TRACE_MODEL_VISIBLE.objectValue.equals(TRACE_MODEL_VISIBLE_YES)) {
 			val traceModelNode = switch(generator.targetTraceModel) {
 				TraceModel: (generator.targetTraceModel as TraceModel).createTraceModel(parent)
 				TraceModelReference: traceModelNodes.get((generator.targetTraceModel as TraceModelReference).traceModel)
@@ -337,7 +336,7 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 * Create a tracemodel if one is required.
 	 */
 	def void handleTraceModel(Generator generator, KNode parent) {
-		if (generator.targetTraceModel != null) {
+		if (generator.targetTraceModel !== null) {
 			if (generator.targetTraceModel instanceof TraceModel) {
 				val traceModelNode = (generator.targetTraceModel as TraceModel).createTraceModel(parent)
 				
@@ -378,13 +377,13 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	 */
 	private def dispatch KNode createAnonymousModel(Generator generator) {
 		val instanceName = "" 
-		val className = if (generator.targetModel != null)
+		val className = if (generator.targetModel !== null)
 			generator.targetModel.reference.resolveType.simpleName
 		else {
 			if (generator.reference instanceof JvmGenericType) {
 				val superTypes = (generator.reference as JvmGenericType).superTypes
 				val interfaceType = superTypes.findFirst[it.simpleName.startsWith(IGenerator.simpleName + '<')]
-				if (interfaceType != null) {
+				if (interfaceType !== null) {
 					switch (interfaceType) {
 						JvmParameterizedTypeReference: interfaceType.arguments.get(1).simpleName
 						default: 'ERROR'
@@ -404,8 +403,8 @@ class ModelDiagramSynthesis extends AbstractDiagramSynthesis<GecoModel> {
 	private def dispatch KNode createAnonymousModel(Weaver weaver) {
 		val sourceModel = weaver.resolveWeaverSourceModel
 		val instanceName = sourceModel.reference.name
-		val className = if (weaver.targetModel != null)
-			if (weaver.targetModel.reference != null)
+		val className = if (weaver.targetModel !== null)
+			if (weaver.targetModel.reference !== null)
 				weaver.targetModel.reference.resolveType.simpleName
 			else
 				sourceModel.resolveType.simpleName

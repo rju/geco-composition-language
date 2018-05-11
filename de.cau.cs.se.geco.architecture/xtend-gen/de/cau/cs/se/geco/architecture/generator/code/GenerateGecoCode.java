@@ -375,8 +375,8 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   private CharSequence createSourceModelNesting(final SourceModelSelector sourceModel, final Weaver weaver, final Unit unit) {
     CharSequence _xifexpression = null;
     Model _reference = sourceModel.getReference();
-    boolean _equals = Objects.equal(_reference, null);
-    if (_equals) {
+    boolean _tripleEquals = (_reference == null);
+    if (_tripleEquals) {
       _xifexpression = this.createWeaverCall(weaver, unit, "null");
     } else {
       CharSequence _xifexpression_1 = null;
@@ -408,8 +408,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
    */
   private CharSequence createSourceModelNesting(final NodeProperty node, final Weaver weaver, final Unit unit, final String modelVarName) {
     CharSequence _xifexpression = null;
-    boolean _equals = Objects.equal(node, null);
-    if (_equals) {
+    if ((node == null)) {
       _xifexpression = this.createWeaverCall(weaver, unit, modelVarName);
     } else {
       CharSequence _xifexpression_1 = null;
@@ -542,8 +541,8 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   private CharSequence createTargetModel(final Generator generator) {
     CharSequence _xifexpression = null;
     TargetModel _targetModel = generator.getTargetModel();
-    boolean _notEquals = (!Objects.equal(_targetModel, null));
-    if (_notEquals) {
+    boolean _tripleNotEquals = (_targetModel != null);
+    if (_tripleNotEquals) {
       CharSequence _xifexpression_1 = null;
       boolean _isCollectionType = ArchitectureTyping.isCollectionType(generator.getTargetModel().getReference());
       if (_isCollectionType) {
@@ -574,8 +573,8 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
   private CharSequence createSourceModelNesting(final SourceModelSelector sourceModel, final Generator generator, final Unit unit) {
     CharSequence _xifexpression = null;
     Model _reference = sourceModel.getReference();
-    boolean _equals = Objects.equal(_reference, null);
-    if (_equals) {
+    boolean _tripleEquals = (_reference == null);
+    if (_tripleEquals) {
       _xifexpression = this.createGeneratorCall(generator, "null");
     } else {
       CharSequence _xifexpression_1 = null;
@@ -607,8 +606,7 @@ public class GenerateGecoCode implements IGenerator<BoxingModel, CharSequence> {
    */
   private CharSequence createSourceModelNesting(final NodeProperty node, final Generator generator, final Unit unit, final String modelVarName) {
     CharSequence _xifexpression = null;
-    boolean _equals = Objects.equal(node, null);
-    if (_equals) {
+    if ((node == null)) {
       _xifexpression = this.createGeneratorCall(generator, modelVarName);
     } else {
       CharSequence _xifexpression_1 = null;

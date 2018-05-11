@@ -3,7 +3,6 @@
  */
 package de.cau.cs.se.geco.architecture.validation;
 
-import com.google.common.base.Objects;
 import de.cau.cs.se.geco.architecture.architecture.ArchitecturePackage;
 import de.cau.cs.se.geco.architecture.architecture.Generator;
 import de.cau.cs.se.geco.architecture.architecture.TargetModel;
@@ -96,8 +95,7 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
         if ((_get instanceof JvmParameterizedTypeReference)) {
           final JvmTypeReference inputTypeReference = ArchitectureTyping.determineGeneratorInputType(((JvmGenericType)generatorJvmType));
           final JvmTypeReference sourceModelTypeReference = ArchitectureTyping.resolveType(generator.getSourceModel());
-          boolean _notEquals = (!Objects.equal(sourceModelTypeReference, null));
-          if (_notEquals) {
+          if ((sourceModelTypeReference != null)) {
             boolean _isSubTypeOf = ArchitectureTyping.isSubTypeOf(sourceModelTypeReference, inputTypeReference);
             boolean _not = (!_isSubTypeOf);
             if (_not) {
@@ -117,8 +115,8 @@ public class ArchitectureValidator extends AbstractArchitectureValidator {
           }
           final JvmTypeReference outputTypeReference = ArchitectureTyping.determineGeneratorOutputType(((JvmGenericType)generatorJvmType));
           TargetModel _targetModel = generator.getTargetModel();
-          boolean _notEquals_1 = (!Objects.equal(_targetModel, null));
-          if (_notEquals_1) {
+          boolean _tripleNotEquals = (_targetModel != null);
+          if (_tripleNotEquals) {
             final JvmTypeReference targetModelTypeReference = ArchitectureTyping.resolveType(generator.getTargetModel());
             boolean _isSubTypeOf_2 = ArchitectureTyping.isSubTypeOf(outputTypeReference, targetModelTypeReference);
             boolean _not_2 = (!_isSubTypeOf_2);

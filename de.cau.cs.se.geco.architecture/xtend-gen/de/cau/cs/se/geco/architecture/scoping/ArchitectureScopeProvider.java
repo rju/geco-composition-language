@@ -183,8 +183,8 @@ public class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider
         EObject _eContainer = ((SourceModelSelector)container).getReference().eContainer();
         final JvmType genericType = ArchitectureTyping.determineElementType(ArchitectureTyping.resolveType(((ModelSequence) _eContainer).getType()));
         ConstraintExpression _constraint = ((SourceModelSelector)container).getConstraint();
-        boolean _notEquals = (!Objects.equal(_constraint, null));
-        if (_notEquals) {
+        boolean _tripleNotEquals = (_constraint != null);
+        if (_tripleNotEquals) {
           ConstraintExpression _constraint_1 = ((SourceModelSelector)container).getConstraint();
           if ((_constraint_1 instanceof InstanceOf)) {
             ConstraintExpression _constraint_2 = ((SourceModelSelector)container).getConstraint();
@@ -254,8 +254,8 @@ public class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider
       boolean _exists = IterableExtensions.<NodeType>exists(((NodeSetRelation) _eContainer).getSourceNodes(), _function);
       if (_exists) {
         Model _reference = generator.getSourceModel().getReference();
-        boolean _notEquals = (!Objects.equal(_reference, null));
-        if (_notEquals) {
+        boolean _tripleNotEquals = (_reference != null);
+        if (_tripleNotEquals) {
           JvmType _determineElementType = ArchitectureTyping.determineElementType(ArchitectureTyping.resolveType(generator.getSourceModel().getReference()));
           ResourceSet _resourceSet = this.getModelRoot(nodeType).eResource().getResourceSet();
           return new JvmRegisterMetamodelImportScope(_determineElementType, _resourceSet, this.typeProviderFactory);
@@ -265,15 +265,14 @@ public class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider
       } else {
         IScope _xifexpression_1 = null;
         TargetModel _targetModel = generator.getTargetModel();
-        boolean _equals = Objects.equal(_targetModel, null);
-        if (_equals) {
+        boolean _tripleEquals = (_targetModel == null);
+        if (_tripleEquals) {
           IScope _xifexpression_2 = null;
           EObject _eContainer_1 = generator.eContainer();
           if ((_eContainer_1 instanceof Weaver)) {
             EObject _eContainer_2 = generator.eContainer();
             final SourceModelSelector sourceModel = ArchitectureTyping.resolveWeaverSourceModel(((Weaver) _eContainer_2));
-            boolean _notEquals_1 = (!Objects.equal(sourceModel, null));
-            if (_notEquals_1) {
+            if ((sourceModel != null)) {
               JvmType _determineElementType_1 = ArchitectureTyping.determineElementType(ArchitectureTyping.resolveType(sourceModel.getReference()));
               ResourceSet _resourceSet_1 = this.getModelRoot(nodeType).eResource().getResourceSet();
               return new JvmRegisterMetamodelImportScope(_determineElementType_1, _resourceSet_1, this.typeProviderFactory);
@@ -304,8 +303,7 @@ public class ArchitectureScopeProvider extends AbstractArchitectureScopeProvider
     {
       final JvmType context = this.getMetaModelContextNode(type);
       IScope _xifexpression = null;
-      boolean _notEquals = (!Objects.equal(context, null));
-      if (_notEquals) {
+      if ((context != null)) {
         ResourceSet _resourceSet = this.getModelRoot(type).eResource().getResourceSet();
         return new JvmRegisterMetamodelImportScope(context, _resourceSet, 
           this.typeProviderFactory);
