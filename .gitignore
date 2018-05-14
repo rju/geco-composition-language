@@ -6,4 +6,7 @@
 **/.settings/**
 **/.project
 **/src-gen/*/**
+**/xtend-gen/**
 de.cau.cs.se.geco.architecture/model/**
+**/.antlr-generator-3.2.0-patch.jar
+
