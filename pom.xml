@@ -16,14 +16,16 @@
 		<tycho.version>1.1.0</tycho.version>
 		<tycho.extras.version>1.1.0</tycho.extras.version>
 		<xtext.version>2.13.0</xtext.version>
+		<xtend.maven.version>2.13.0</xtend.maven.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen</eclipse-repo.url>
+		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen/</eclipse-repo.url>
 		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2017-11/</kieler-repo.url>
 		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
 		<atl-repo.url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/</atl-repo.url>
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
+		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
 	</properties>
 
 	<modules>
@@ -143,13 +145,17 @@
 		</plugins>
 
 		<pluginManagement>
+			<!-- xtend-maven-plugin is in pluginManagement instead of in plugins so 
+				that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way we 
+				can list it after. -->
 			<plugins>
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtext.version}</version>
+					<version>${xtend.maven.version}</version>
 					<executions>
 						<execution>
+							<phase>process-sources</phase>
 							<goals>
 								<goal>compile</goal>
 								<goal>xtend-install-debug-info</goal>
@@ -159,8 +165,29 @@
 						</execution>
 					</executions>
 					<configuration>
-						<outputDirectory>xtend-gen</outputDirectory>
+						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<id>gen-clean</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+							<configuration>
+								<filesets>
+									<fileset>
+										<directory>${basedir}/xtend-gen</directory>
+									</fileset>
+								</filesets>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
