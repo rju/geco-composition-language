@@ -9,5 +9,5 @@
 	<artifactId>de.cau.cs.se.geco.architecture.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
 
-	<name>GECO Generator Composition Language and Framework Feature</name>
+	<name>GECO Generator Composition Feature</name>
 </project>
