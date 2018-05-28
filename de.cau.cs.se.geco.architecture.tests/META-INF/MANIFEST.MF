@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.cau.cs.se.geco.architecture.tests
-Bundle-Vendor: My Company
+Bundle-Vendor: Kiel University
 Bundle-Version: 1.0.0
 Bundle-SymbolicName: de.cau.cs.se.geco.architecture.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
