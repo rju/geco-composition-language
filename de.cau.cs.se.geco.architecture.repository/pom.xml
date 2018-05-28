@@ -72,8 +72,8 @@
 							<serverId>repo</serverId>
 							<fromDir>${repo.path}</fromDir>
 							<includes>**</includes>
-							<url>sftp://repo@repo.se.internal/var/www/html/geco/snapshot/</url>
-							<toDir></toDir>
+							<url>sftp://repo@repo.se.internal/var/www/html/geco/</url>
+							<toDir>snapshot</toDir>
 						</configuration>
 					</execution>
 				</executions>
