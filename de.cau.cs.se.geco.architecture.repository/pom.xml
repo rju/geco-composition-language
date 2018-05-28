@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>de.cau.cs.se.geco</groupId>
 		<artifactId>de.cau.cs.se.geco.architecture.parent</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>de.cau.cs.se.geco.architecture.repository</artifactId>
 	<packaging>eclipse-repository</packaging>

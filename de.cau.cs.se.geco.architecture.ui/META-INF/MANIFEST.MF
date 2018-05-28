@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.cau.cs.se.geco.architecture.ui
 Bundle-Vendor: Kiel University
-Bundle-Version: 1.0.0
+Bundle-Version: 1.1.0.qualifier
 Bundle-SymbolicName: de.cau.cs.se.geco.architecture.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.cau.cs.se.geco.architecture,
