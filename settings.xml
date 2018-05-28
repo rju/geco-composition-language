@@ -6,7 +6,7 @@
 	    <server>
 	        <id>repo</id>
 	        <username>repo</username>
-	        <privateKey>${user.home}/Keys/jenkins-update-sites/geco</privateKey>
+	        <privateKey>${keystore}</privateKey>
 	    </server>
 	</servers>
 </settings>
