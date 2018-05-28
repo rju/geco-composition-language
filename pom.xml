@@ -26,6 +26,7 @@
 		<atl-repo.url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/</atl-repo.url>
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
+		<!-- property name="p2.mirrorsURL" value="http://www.eclipse.org/downloads/download.php?file={repository_path}&amp;format=xml"/ -->
 	</properties>
 
 	<modules>
