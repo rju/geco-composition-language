@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.cau.cs.se.geco</groupId>
 		<artifactId>de.cau.cs.se.geco.architecture.parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>de.cau.cs.se.geco.architecture.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
