@@ -17,15 +17,20 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<tycho.version>1.1.0</tycho.version>
-		<tycho.extras.version>1.1.0</tycho.extras.version>
-		<xtext.version>2.12.0</xtext.version>
-		<xtend.maven.version>2.13.0</xtend.maven.version>
+		<tycho-version>1.3.0</tycho-version>
+		<tycho-extras-version>1.3.0</tycho-extras-version>
+		
+		<xtext-version>2.16.0</xtext-version>
+		<xtend-maven-version>2.16.0</xtend-maven-version>
+
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
+		<platform-version>[3.9,4.7)</platform-version>
+
 		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen/</eclipse-repo.url>
-		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2017-11/</kieler-repo.url>
+		<!--  old http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/ -->
+		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/</kieler-repo.url>
 		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
 		<atl-repo.url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/</atl-repo.url>
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
@@ -45,18 +50,29 @@
 		<module>de.cau.cs.se.geco.architecture.tests</module>
 		<!-- module>de.cau.cs.se.geco.architecture.ui.tests</module -->
 	</modules>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<compilerArgs>
+						<arg>-err:-forbidden,-discouraged</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<executions>
 					<execution>
 						<id>plugin-source</id>
@@ -69,7 +85,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho.extras</groupId>
 				<artifactId>tycho-source-feature-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<executions>
 					<execution>
 						<id>source-feature</id>
@@ -83,7 +99,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<executions>
 					<execution>
 						<id>attach-p2-metadata</id>
@@ -97,7 +113,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
 					<target>
@@ -163,7 +179,7 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtend.maven.version}</version>
+					<version>${xtend-maven-version}</version>
 					<executions>
 						<execution>
 							<phase>process-sources</phase>
@@ -231,6 +247,7 @@
 			<url>${kieler-repo.url}</url>
 			<layout>p2</layout>
 		</repository>
+
 		<repository>
 			<id>atl</id>
 			<url>${atl-repo.url}</url>

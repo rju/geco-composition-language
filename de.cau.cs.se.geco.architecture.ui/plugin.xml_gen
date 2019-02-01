@@ -204,6 +204,15 @@
 			</activeWhen>
 		</handler>
 	</extension>
+	<extension point="org.eclipse.core.contenttype.contentTypes">
+		<content-type
+			base-type="org.eclipse.core.runtime.text"
+			file-extensions="geco"
+			id="de.cau.cs.se.geco.architecture.Architecture.contenttype"
+			name="Architecture File"
+			priority="normal">
+		</content-type>
+	</extension>
 	<!-- adding resource factories -->
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
@@ -388,12 +397,18 @@
 			class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="geco">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="de.cau.cs.se.geco.architecture.Architecture.contenttype"
+			contentViewerId="de.cau.cs.se.geco.architecture.Architecture.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="de.cau.cs.se.geco.architecture.Architecture.compare.contentMergeViewers"
 			class="de.cau.cs.se.geco.architecture.ui.ArchitectureExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="geco" label="Architecture Compare">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="de.cau.cs.se.geco.architecture.Architecture.contenttype"
+			contentMergeViewerId="de.cau.cs.se.geco.architecture.Architecture.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="de.cau.cs.se.geco.architecture.Architecture.editors.documentProviders"
