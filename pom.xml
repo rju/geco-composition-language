@@ -32,7 +32,8 @@
 		<!--  old http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/ -->
 		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/</kieler-repo.url>
 		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
-		<atl-repo.url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/</atl-repo.url>
+		<atl-repo.url>http://download.eclipse.org/mmt/atl/updates/releases/3.3/R201209061455/</atl-repo.url>
+		<!-- atl-repo.url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/</atl-repo.url -->
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
 		<!-- property name="p2.mirrorsURL" value="http://www.eclipse.org/downloads/download.php?file={repository_path}&amp;format=xml"/ -->
