@@ -18,7 +18,7 @@ pipeline {
 		}
 		stage('Update Repository') {
 			steps {
-				sh 'mvn -Dkeystore=$KEYSTORE package'
+				sh 'mvn -X -Dkeystore=$KEYSTORE package'
 			}
 		}
 	}
