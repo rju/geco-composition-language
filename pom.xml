@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>de.cau.cs.se.geco</groupId>
-	<artifactId>de.cau.cs.se.geco.architecture.parent</artifactId>
+	<groupId>de.cau.cs.se.geco.architecture</groupId>
 	<version>1.1.0-SNAPSHOT</version>
+	<artifactId>de.cau.cs.se.geco.architecture.parent</artifactId>
 	<packaging>pom</packaging>
 
 	<name>GECO Generator Composition Framework and Language Release Management</name>
@@ -15,30 +15,34 @@
 	</scm>
 
 	<properties>
+		<xtextVersion>2.21.0</xtextVersion>
+		<mwe2Version>2.11.2</mwe2Version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<tycho-version>1.3.0</tycho-version>
-		<tycho-extras-version>1.3.0</tycho-extras-version>
-		
-		<xtext-version>2.16.0</xtext-version>
-		<xtend-maven-version>2.16.0</xtend-maven-version>
-
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<!-- Tycho settings -->
+		<tycho-version>1.6.0</tycho-version>
+		<!-- Define overridable properties for tycho-surefire-plugin -->
+		<platformSystemProperties></platformSystemProperties>
+		<moduleProperties></moduleProperties>
+		<systemProperties></systemProperties>
+		<additionalTestArguments></additionalTestArguments>
 
-		<platform-version>[3.9,4.7)</platform-version>
+		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
 
-		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen/</eclipse-repo.url>
-		<!--  old http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/ -->
-		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/</kieler-repo.url>
-		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
-		<atl-repo.url>http://download.eclipse.org/mmt/atl/updates/releases/3.3/R201209061455/</atl-repo.url>
-		<!-- atl-repo.url>https://hudson.eclipse.org/shared/job/mmt-atl-master/lastSuccessfulBuild/artifact/releng/org.eclipse.m2m.atl.update/target/repository/</atl-repo.url -->
+		<platform-version>[3.9,4.17)</platform-version>
+
+		<kieler-prag-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2020-02/</kieler-prag-repo.url>
+		<kieler-sema-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/nightly/semantics/</kieler-sema-repo.url>
+		<kieler-klighd-repo.url>http://services.typefox.io/open-source/jenkins/job/KLighD/job/releases-2020-02-1.0.0/lastSuccessfulBuild/artifact/updatesite/</kieler-klighd-repo.url>
+		<elk-repo.url>https://build.eclipse.org/modeling/elk/updates/0.6.1/</elk-repo.url>
+		<atl-repo.url>https://download.eclipse.org/mmt/atl/updates/releases/4.2.0/</atl-repo.url>
+		<qvt-repo.url>https://download.eclipse.org/mmt/qvto/updates/releases/latest</qvt-repo.url>
+		<emf-repo.url>http://download.eclipse.org/modeling/emf/validation/updates/releases/</emf-repo.url>
+		<ocl-repo.url>https://archive.eclipse.org/modeling/mdt/ocl/updates/releases/</ocl-repo.url>
+
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
-		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
-		<!-- property name="p2.mirrorsURL" value="http://www.eclipse.org/downloads/download.php?file={repository_path}&amp;format=xml"/ -->
 	</properties>
-
 	<modules>
 		<module>de.cau.cs.se.geco.architecture.framework</module>
 		<module>de.cau.cs.se.geco.architecture</module>
@@ -49,9 +53,19 @@
 		<module>de.cau.cs.se.geco.architecture.feature</module>
 		<module>de.cau.cs.se.geco.architecture.repository</module>
 		<module>de.cau.cs.se.geco.architecture.tests</module>
-		<!-- module>de.cau.cs.se.geco.architecture.ui.tests</module -->
+		<module>de.cau.cs.se.geco.architecture.ui.tests</module>
 	</modules>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>xtext-dev-bom</artifactId>
+				<version>${xtextVersion}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -59,16 +73,6 @@
 				<artifactId>tycho-maven-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-compiler-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<compilerArgs>
-						<arg>-err:-forbidden,-discouraged</arg>
-					</compilerArgs>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -116,26 +120,14 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<pomDependencies>consider</pomDependencies>
 					<target>
 						<artifact>
-							<groupId>${project.groupId}</groupId>
+							<groupId>de.cau.cs.se.geco.architecture</groupId>
 							<artifactId>de.cau.cs.se.geco.architecture.target</artifactId>
 							<version>${project.version}</version>
 						</artifact>
 					</target>
-					<executionEnvironment>JavaSE-1.8</executionEnvironment>
 					<environments>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86_64</arch>
-						</environment>
 						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
@@ -144,17 +136,33 @@
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
-							<arch>x86</arch>
+							<arch>x86_64</arch>
 						</environment>
 						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
+							<os>linux</os>
+							<ws>gtk</ws>
 							<arch>x86_64</arch>
 						</environment>
 					</environments>
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.xtext.logging</id>
+								<versionRange>1.2.15</versionRange>
+							</requirement>
+							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
+								platform is Luna or later. (backward compatible with kepler and previous 
+								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.rcp</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
 				</configuration>
 			</plugin>
-
 			<!-- checkstyle plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -171,19 +179,14 @@
 		        <version>2.5.3</version>
 		      </plugin>
 		</plugins>
-
 		<pluginManagement>
-			<!-- xtend-maven-plugin is in pluginManagement instead of in plugins so 
-				that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way we 
-				can list it after. -->
 			<plugins>
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtend-maven-version}</version>
+					<version>${xtextVersion}</version>
 					<executions>
 						<execution>
-							<phase>process-sources</phase>
 							<goals>
 								<goal>compile</goal>
 								<goal>xtend-install-debug-info</goal>
@@ -194,39 +197,130 @@
 					</executions>
 					<configuration>
 						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+						<testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory>
 					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-clean-plugin</artifactId>
-					<version>3.0.0</version>
-					<executions>
-						<execution>
-							<id>gen-clean</id>
-							<phase>clean</phase>
-							<goals>
-								<goal>clean</goal>
-							</goals>
-							<configuration>
-								<filesets>
-									<fileset>
-										<directory>${basedir}/xtend-gen</directory>
-									</fileset>
-								</filesets>
-							</configuration>
-						</execution>
-					</executions>
+					<version>3.1.0</version>
+					<configuration>
+						<filesets>
+							<fileset>
+								<directory>${basedir}/xtend-gen</directory>
+								<includes>
+									<include>**/*</include>
+								</includes>
+							</fileset>
+						</filesets>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											build-helper-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.9.1,)
+										</versionRange>
+										<goals>
+											<goal>add-resource</goal>
+											<goal>add-source</goal>
+											<goal>add-test-resource</goal>
+											<goal>add-test-source</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.eclipse.tycho
+										</groupId>
+										<artifactId>
+											tycho-compiler-plugin
+										</artifactId>
+										<versionRange>
+											[0.23.1,)
+										</versionRange>
+										<goals>
+											<goal>compile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.eclipse.tycho
+										</groupId>
+										<artifactId>
+											tycho-packaging-plugin
+										</artifactId>
+										<versionRange>
+											[0.23.1,)
+										</versionRange>
+										<goals>
+											<goal>build-qualifier</goal>
+											<goal>build-qualifier-aggregator</goal>
+											<goal>validate-id</goal>
+											<goal>validate-version</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- 
+						Can be removed after first generator execution
+						https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097
+					-->
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<compilerArgument>-err:-forbidden</compilerArgument>
+						<useProjectSettings>false</useProjectSettings>
+					</configuration>
+				</plugin>
+				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
+					To skip tests, but still compile them, use: -DskipTests
+					To allow all tests in a pom to pass/fail, use commandline flag: -fae (fail
+					at end) -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-surefire-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
+						<argLine>${platformSystemProperties} ${systemProperties} ${moduleProperties} ${additionalTestArguments}</argLine>
+						<failIfNoTests>false</failIfNoTests>
+						<useUIHarness>false</useUIHarness>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-
 	<repositories>
-		<repository>
-			<id>eclipse</id>
-			<url>${eclipse-repo.url}</url>
-			<layout>p2</layout>
-		</repository>
 		<repository>
 			<id>elk</id>
 			<url>${elk-repo.url}</url>
@@ -244,18 +338,41 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>kieler</id>
-			<url>${kieler-repo.url}</url>
+			<id>kieler-prag</id>
+			<url>${kieler-prag-repo.url}</url>
 			<layout>p2</layout>
 		</repository>
-
+		<repository>
+			<id>kieler-sema</id>
+			<url>${kieler-sema-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>kieler-klighd</id>
+			<url>${kieler-klighd-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
 		<repository>
 			<id>atl</id>
 			<url>${atl-repo.url}</url>
 			<layout>p2</layout>
 		</repository>
+		<repository>
+			<id>qvt</id>
+			<url>${qvt-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>emf</id>
+			<url>${emf-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>ocl</id>
+			<url>${ocl-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
@@ -269,6 +386,33 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	<profiles>
+		<profile>
+			<id>macos</id>
+			<activation>
+				<os>
+					<family>mac</family>
+				</os>
+			</activation>
+			<properties>
+				<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
+				<platformSystemProperties>-XstartOnFirstThread</platformSystemProperties>
+			</properties>
+		</profile>
+		<profile>
+			<id>jdk9-or-newer</id>
+			<activation>
+				<jdk>[9,)</jdk>
+			</activation>
+			<properties>
+				<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencies>
+	</dependencies>
+
 	<reporting>
 		<plugins>
 			<plugin>

@@ -27,6 +27,6 @@ package de.cau.cs.se.geco.architecture.framework
  * 
  * @since 1.0
  */
-public interface IGenerator<S,T> {
+interface IGenerator<S,T> {
 	def T generate(S input)
 }

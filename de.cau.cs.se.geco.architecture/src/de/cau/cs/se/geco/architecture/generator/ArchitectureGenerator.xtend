@@ -27,7 +27,7 @@ class ArchitectureGenerator extends AbstractGenerator {
 		val generateGecoCode = new GenerateGecoCode(className)
 		
 		val boxingModel = generateBoxingModel.generate(model)
-		val textOutput = "" // generateGecoCode.generate(boxingModel)
+		val textOutput = generateGecoCode.generate(boxingModel)
 		
 		fsa.generateFile('''«path»«File.separator»«className».xtend''', textOutput)
 	}

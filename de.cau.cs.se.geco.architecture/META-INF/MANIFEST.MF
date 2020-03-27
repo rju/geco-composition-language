@@ -1,26 +1,25 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: de.cau.cs.se.geco.architecture
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-Vendor: %providerName
-Bundle-Localization: plugin
+Bundle-Name: de.cau.cs.se.geco.architecture
+Bundle-Vendor: Kiel University
 Bundle-Version: 1.1.0.qualifier
-Bundle-ClassPath: .
-Bundle-SymbolicName: de.cau.cs.se.geco.architecture;singleton:=true
+Bundle-SymbolicName: de.cau.cs.se.geco.architecture; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext;bundle-version="2.13.0",
- org.eclipse.xtext.xbase;bundle-version="2.13.0",
- org.eclipse.equinox.common;bundle-version="3.9.0",
- org.eclipse.core.runtime;bundle-version="3.13.0",
- org.eclipse.emf.ecore;bundle-version="2.13.0";visibility:=reexport,
- de.cau.cs.se.geco.architecture;visibility:=reexport,
- org.eclipse.xtext.common.types;bundle-version="2.13.0";visibility:=reexport,
- org.eclipse.xtext.xbase.lib;bundle-version="2.13.0",
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- org.eclipse.xtext.util;bundle-version="2.13.0",
- org.eclipse.xtend.lib;bundle-version="2.13.0",
- org.eclipse.emf.common;bundle-version="2.13.0",
+ org.eclipse.core.runtime;bundle-version="3.17.100",
+ de.cau.cs.se.geco.architecture;visibility:=reexport,
+ org.eclipse.xtext.common.types;bundle-version="2.21.0";visibility:=reexport,
+ org.eclipse.xtend.lib;bundle-version="2.21.0",
  de.cau.cs.se.geco.architecture.framework;bundle-version="1.1.0",
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[7.2.0,7.3.0)";resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.cau.cs.se.geco.architecture,
  de.cau.cs.se.geco.architecture.parser.antlr,
@@ -38,4 +37,3 @@ Export-Package: de.cau.cs.se.geco.architecture,
  de.cau.cs.se.geco.architecture.model.boxing.impl,
  de.cau.cs.se.geco.architecture.model.boxing.util
 Import-Package: org.apache.log4j
-Automatic-Module-Name: de.cau.cs.se.geco.architecture
