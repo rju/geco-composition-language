@@ -1,5 +1,9 @@
 pipeline {
 	agent any
+
+	environment {
+		KEYSTORE = credentials('geco-repo-key')
+	}
 	
 	stages {
 		stage('Build') {
