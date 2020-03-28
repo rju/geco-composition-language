@@ -15,9 +15,9 @@
 	</scm>
 
 	<properties>
-		<xtextVersion>2.21.0</xtextVersion>
 		<mwe2Version>2.11.2</mwe2Version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<platform-version>[3.9,4.17)</platform-version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<!-- Tycho settings -->
@@ -29,8 +29,7 @@
 		<additionalTestArguments></additionalTestArguments>
 
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-
-		<platform-version>[3.9,4.17)</platform-version>
+		<xtextVersion>2.21.0</xtextVersion>
 
 		<kieler-prag-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2020-02/</kieler-prag-repo.url>
 		<kieler-sema-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/nightly/semantics/</kieler-sema-repo.url>
@@ -40,8 +39,6 @@
 		<qvt-repo.url>https://download.eclipse.org/mmt/qvto/updates/releases/latest</qvt-repo.url>
 		<emf-repo.url>http://download.eclipse.org/modeling/emf/validation/updates/releases/</emf-repo.url>
 		<ocl-repo.url>https://archive.eclipse.org/modeling/mdt/ocl/updates/releases/</ocl-repo.url>
-
-		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 	</properties>
 	<modules>
 		<module>de.cau.cs.se.geco.architecture.framework</module>
