@@ -9,6 +9,7 @@ pipeline {
 	stages {
 		stage('Cleanup') {
 			steps {
+				sh 'echo ${env.WORKSPACE}'
 				sh 'git clean -xffd -e "ws-repo/**"'
 			}
 		}
