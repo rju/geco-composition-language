@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright (C) 2016 Reiner Jung
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.geco.architecture.graph;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -21,12 +36,11 @@ import de.cau.cs.se.geco.architecture.ArchitectureStandaloneSetupGenerated;
 
 /**
  * A simple handler for opening diagrams.
+ * 
+ * @author Reiner Jung
  */
 public class OpenDiagramHandler extends AbstractHandler {
 
-    /**
-     * {@inheritDoc}
-     */
     public Object execute(final ExecutionEvent event) throws ExecutionException {
         final ISelection selection = HandlerUtil.getCurrentSelection(event);
         if (selection instanceof IStructuredSelection) {
