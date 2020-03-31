@@ -17,6 +17,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<platform-version>[3.9,4.17)</platform-version>
 
+		<pmd-version>6.13.0</pmd-version>
 		<checkstyle-version>3.1.1</checkstyle-version>
 		<checkstyle-crawler-version>8.29</checkstyle-crawler-version>
 
