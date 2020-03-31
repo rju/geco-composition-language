@@ -9,7 +9,6 @@ pipeline {
 	stages {
 		stage('Cleanup') {
 			steps {
-				sh 'echo ${env.WORKSPACE}'
 				sh 'git clean -xffd -e "ws-repo/**"'
 			}
 		}
@@ -25,7 +24,7 @@ pipeline {
 		}
 		stage('Check') {
 			steps {
-				sh 'mvn -Dtycho.mode=maven --batch-mode checkstyle:checkstyle -Dworkspace=' + env.WORKSPACE // pmd:pmd spotbugs:spotbugs
+				sh 'mvn --batch-mode package checkstyle:checkstyle -Dworkspace=' + env.WORKSPACE // pmd:pmd spotbugs:spotbugs
 			}
 			post {
 				always {
