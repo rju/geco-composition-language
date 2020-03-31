@@ -19,7 +19,7 @@ pipeline {
 		}
 		stage('Check') {
 			steps {
-				sh 'mvn -Dtycho.mode=maven --batch-mode package checkstyle:checkstyle -Dworkspace=' + env.WORKSPACE // pmd:pmd spotbugs:spotbugs
+				sh 'mvn -Dtycho.mode=maven --batch-mode checkstyle:checkstyle -Dworkspace=' + env.WORKSPACE // pmd:pmd spotbugs:spotbugs
 			}
 			post {
 				always {
