@@ -7,6 +7,11 @@ pipeline {
 	}
 
 	stages {
+		stage('Cleanup') {
+			steps {
+				sh 'git -xffd -e "ws-repo/**"'
+			}
+		}
 		stage('Build') {
 			steps {
 				sh 'mvn --batch-mode compile'
