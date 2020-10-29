@@ -108,7 +108,7 @@
 							<serverId>repo</serverId>
 							<fromDir>${repo.path}</fromDir>
 							<includes>**</includes>
-							<url>sftp://repo@repo.se.internal/var/www/html/geco/</url>
+							<url>sftp://repo@repo.se.internal/geco/</url>
 							<toDir>snapshot</toDir>
 						</configuration>
 					</execution>
