@@ -1,10 +1,10 @@
 pipeline {
 	agent {
 		docker {
-			image 'maven:3.6.3-adoptopenjdk-11'
+			image 'maven:3.6.3-openjdk-11'
 			alwaysPull true
 			args env.DOCKER_ARGS
-        	}
+		}
 	}
 
 	environment {
@@ -20,17 +20,17 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				sh 'mvn --batch-mode compile'
+				sh 'mvn --batch-mode -Dmaven.repo.local=/opt/project/maven compile'
 			}
 		}
 		stage('Test') {
 			steps {
-				sh 'mvn --batch-mode test'
+				sh 'mvn --batch-mode -Dmaven.repo.local=/opt/project/maven test'
 			}
 		}
 		stage('Check') {
 			steps {
-				sh 'mvn --batch-mode package checkstyle:checkstyle -Dworkspace=' + env.WORKSPACE // pmd:pmd spotbugs:spotbugs
+				sh 'mvn --batch-mode -Dmaven.repo.local=/opt/project/maven package checkstyle:checkstyle -Dworkspace=' + env.WORKSPACE // pmd:pmd spotbugs:spotbugs
 			}
 			post {
 				always {
@@ -46,7 +46,7 @@ pipeline {
 				branch 'master'
 			}
 			steps {
-				sh 'mvn --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} package'
+				sh 'mvn --settings settings.xml --batch-mode -Dmaven.repo.local=/opt/project/maven -Dkeystore=${KEYSTORE} package'
 			}
 		}
 	}

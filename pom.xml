@@ -13,7 +13,7 @@
 	<name>GECO Generator Composition Framework and Language Release Management</name>
 
 	<properties>
-		<tycho-version>1.6.0</tycho-version>
+		<tycho-version>2.0.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<platform-version>[3.9,4.17)</platform-version>
 
