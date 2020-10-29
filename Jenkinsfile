@@ -1,7 +1,7 @@
 pipeline {
 	agent {
 		docker {
-			image 'kieker/kieker-build:openjdk8'
+			image 'maven:3.6.3-adoptopenjdk-11'
 			alwaysPull true
 			args env.DOCKER_ARGS
         	}
