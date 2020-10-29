@@ -26,6 +26,11 @@
 				<artifactId>wagon-ssh</artifactId>
 				<version>3.0.0</version>
 			</extension>
+			<extension>
+                                <groupId>org.apache.maven.wagon</groupId>
+                                <artifactId>wagon-file</artifactId>
+                                <version>3.0.0</version>
+                        </extension>
 		</extensions>
 
 		<pluginManagement>
@@ -108,6 +113,7 @@
 							<serverId>repo</serverId>
 							<fromDir>${repo.path}</fromDir>
 							<includes>**</includes>
+							<!--<url>file:///home/reiner/temp</url>-->
 							<url>sftp://repo@repo.se.internal/geco/</url>
 							<toDir>snapshot</toDir>
 						</configuration>
