@@ -1,5 +1,7 @@
 pipeline {
-	agent build-node8
+	agent {
+		label 'build-node8'
+	}
 
 	environment {
 		KEYSTORE = credentials('geco-repo-key')
