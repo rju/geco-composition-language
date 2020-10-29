@@ -47,7 +47,8 @@ pipeline {
 				branch 'master'
 			}
 			steps {
-				sh 'mvn -X --settings settings.xml --batch-mode -Dmaven.repo.local=maven -Dkeystore=${KEYSTORE} package install'
+				sh 'mvn -X --settings settings.xml --batch-mode -Dmaven.repo.local=maven -Dkeystore=${KEYSTORE} package'
+				sh 'mvn -X --settings settings.xml --batch-mode -Dmaven.repo.local=maven -Dkeystore=${KEYSTORE} install'
 			}
 		}
 	}
