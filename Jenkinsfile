@@ -20,6 +20,7 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
+				sh 'if [ ! -d maven ] ; then mkdir maven ; else echo dir exists; fi'
 				sh 'mvn --batch-mode -Dmaven.repo.local=/opt/project/maven compile'
 			}
 		}
