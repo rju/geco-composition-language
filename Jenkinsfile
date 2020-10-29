@@ -1,5 +1,5 @@
 pipeline {
-	agent bild-node8
+	agent build-node8
 
 	environment {
 		KEYSTORE = credentials('geco-repo-key')
