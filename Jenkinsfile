@@ -48,7 +48,7 @@ pipeline {
 			}
 			steps {
 				sh 'mvn --settings settings.xml --batch-mode -Dmaven.repo.local=maven -Dkeystore=${KEYSTORE} package'
-				sh 'mvn --settings settings.xml --batch-mode -pl -de.cau.cs.se.geco.architecture.ui.tests -Dmaven.repo.local=maven -Dkeystore=${KEYSTORE} install'
+				sh 'mvn -X --settings settings.xml --batch-mode -pl -de.cau.cs.se.geco.architecture.ui.tests -Dmaven.repo.local=maven -Dkeystore=${KEYSTORE} install'
 			}
 		}
 	}
