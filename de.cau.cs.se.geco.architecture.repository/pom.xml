@@ -115,7 +115,7 @@
 							<includes>**</includes>
 							<!--<url>file:///opt/project</url>-->
 							<!--<url>file:///home/reiner/temp</url>-->
-							<url>sftp://repo@repo.se.internal/geco/</url>
+							<url>sftp://repo.se.internal/var/www/html/geco</url>
 							<toDir>snapshot</toDir>
 						</configuration>
 					</execution>
