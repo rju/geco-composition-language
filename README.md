@@ -1,3 +1,6 @@
+# Note
+The code moved to https://codeberg.org/prefec2/geco-composition-language
+
 # GECO Composition Language
 
 The GECO approach provides methods to construct and evolve generators
